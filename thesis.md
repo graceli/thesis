@@ -103,10 +103,10 @@ Research timeline:
 
 Timeline of papers to be written (by priority):
       paper        finish manuscripts
-(1) inositol  -  July 2010 
-(2) seeding - August 2010
-(3) Salt-links - August 2010
-SH3 / GDN - Oct/Nov 2010
+(1) inositol (both KLVFFAE and abeta)  -  Dec 2011 
+(2) seeding - ???
+(3) Salt-links - ??? 
+SH3 / GDN - March/April 2011
 
 Notes on getting started:
 
