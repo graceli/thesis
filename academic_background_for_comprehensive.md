@@ -57,6 +57,25 @@ Note: protein aggregation is really a 4D problem that is a function of solvent, 
 - biomaterial applications - this is interesting ... can we take all of our data is use that for creating new biomaterials?
 		
 
+Sarah's defense questions:
+- her committee
+- boris
+- ray kapral
+- shekhar garde
+- chris yip
+- fred keely
+- regis 
+
+1) Why was MC not used?  
+- MC is not good for use with explicit solvent?
+- What are other reasons?
+    - Sarah said she'd have to test that ...
+
+2) Questions relating to experiments that were done on elastin under different experimental conditions and what the stress strain curve was tropoelastin?
+
+3) Show that ST obeys detailed balance
+
+
 
 
 
