@@ -40,10 +40,7 @@ Nov 13 2011 - ideas and concepts that came up in Sarah's thesis defense that may
 - Good and bad solvents <- I don't fully understand this idea.
 	- I think these are just *phenomenological* terms that physicists label to different solution states that they don't fully understand what is going on at the molecular level.
 
-
 - elastin peptide aggregation versus amyloid aggregation
-
-
 
 - Relationship of the monomer conf eq to the aggregate ?
 	- does the monomer predict the morphology of the aggregate or the behavior of the aggregate?
@@ -75,6 +72,13 @@ Sarah's defense questions:
 
 3) Show that ST obeys detailed balance
 
+Nov 29 2011
+- I decided that I should download and read all of DE Shaw and Vijay Pande's papers.  I should follow closely all the people in the field that are pushing the boundaries and limitations of MD simulations.  
+	- Are they doing a good job?
+		- What kinds of questions are they going after?
+	- How productive are they?
+	- What kinds of methods are they using / Developing?
+	- What could I do? What could we do? THINK BIG!
 
 
 
