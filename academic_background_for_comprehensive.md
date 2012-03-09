@@ -22,6 +22,11 @@ Questions that *always* comes up in the lab:
 
 - what is the relationship between free energy and what we get out of simulations?
 
+- Theoretical foundations of MD
+	- why MD works?
+	- How is MD connected to Stat Mech.
+	http://en.wikipedia.org/wiki/Ergodic_hypothesis
+
 - why is it that we need to do enhanced sampling algorithms
 	- because of inaccessible states 
 	- how do we choose which sampling algorithm to use to approach the problem at hand?

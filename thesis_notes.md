@@ -1,0 +1,106 @@
+# An attempt to pull together notes from all over the place made on my thesis research project
+(March 2012)
+
+# Notebook (not sure what I did with the physical notebook after I typed up the notes)
+
+Sept 2009:
+Moelbert et al. summary of kosmo/ chaotropic effects (this article was somewhat confusing)
+Lim, 2008 GDM does not hbond with backbone, but instead through stacking to the peptide group.
+Mixture of both direct and indirect osmolyte and protein interactions.
+Osmolyte protein interactions are weak.  Polyols are excluded from the peptide-backbone (Bolen, 2008 #50)
+
+Trehalose - consistent with preferential hydration of protein, but what does preferential hydration really mean?  (Moelbert et al. & ref within)
+- does trehalose increase the solubility of peptides (ie. "hydrating" the peptides) - the paper seems to suggests this
+     - because trehalose hydrates things
+- weakens the hydrophobic effect?
+
+Oct 2009
+No disaggregation since concentration and box sizes are biased towares aggregation state and molar ratios are reversed (if you compare with experimental results).
+      - Expt. small peptide concentration, large molar ratio.  
+      - Why not emulate experimental results?  This is not yet feasible with our simulation systems 
+
+Binding of inositol to phe and some polar sidechain not unlike sugar (glucose/mannose binding to lectins).
+Match KLVFFAE is located within the full fibril or find evidence that my proposed binding site can be accessible.
+
+Fragment-based approaches in drug delivery (Krishmanmthy)
+Discovered multivalency (what is it exactly?) -- Would be exactly right if I said inositol makes multivalent interations with an aggregate (not sure what I mean here any more). 
+     - only F is too weak
+     - only glu is too weak
+     - F+glu provides the right amount of specificity in binding
+
+
+- A mechanistic hypothesis for inositol binding:
+Stacking interface involves KLVFFAE => So binding could abolish fibril lateral stacking?
+- Are there mutations that have been shown to stop aggregation interactions?
+
+Oct 31 2009 - Notes from the committee meeting
+- At the time introduction about the amyloid aggregation pathway is still fuzzy
+Intro
+- AD pathogenesis involves Abeta
+- Hippocampus / cerebral cortex
+     - plaques Abeta and tangles tau (polymers of hyperphosphorylated)
+-mutations (rare) in APP, which increases Abeta production, that will cause an increase in the risk of getting AD
+(mutations in presenilins as well?)
+
+Abeta => induce tau phosphorylation - this has been shown
+
+Dodart Mouse study = fibrils not the pathogenic species
+- Lambert 1998 study should that oligomers are spherical with 4-5 nm diameter
+- Oligomers are found to inhibit Long term potentiation
+- oligomers has specificity with neurons - hippocampal but not cerebellar cultures
+found that *12-24mers* are the more "active" forms - but not very small oligomers 
+toxicity hypothesis in AD: soluble and globular oligomers cause toxicity at synapse
+- could inositol stop oligomer binding at synapses?
+
+What is the current status on Abeta assembly in vivo?
+	- How would this even be assessed?
+	
+# Some notes on what I've learned about science and deriving understanding from models:
+
+- Real life  => (try to minimize error) model construction => simulations => data collection (in MD: we care about convergence, multiple events -> statistics) => analysis => firm conclusions / speculation ( speculation is usually still based on data)
+- Make sure that you've modelled and derived conclusions within your model.
+- The cartoon model from my data help experimentalist understand things and derive new hypotheses.  I think the cartoon fits between conclusions and speculations.
+
+# Literature notes on oligomers
+
+- Parkinson's alpha-synuclein - caughey and lansbury, 2003 formed monomers -> oligomers -> Abeta
+- Prions
+- Transthyretin - TTR
+- IAPP 
+	- IAPP peptide cosecreted with insulin
+	- Butler 2004 IAPP oligomers
+
+Bucciantini et al - oligomers common toxicity mechanism
+Kayed - antibodies recognize oligomers
+- Chormy 2003 - cites antibodies that bind oligomers, not fibrils
+
+Shenk 1999 - antibodies - vaccination ( I don't fully understand how antibodies work)
+Gong 2003 - oligomers from AD brain extracts
+Oligomers are very soluble and is clear in solution. If they appear in solution, then they are not oligomers. [ I drew picture of the brain with CSF and blood and where the oligomer might be present ( in both blood, deposited on the brain and CSF)]
+
+Tetramer is presumably a nontoxic species
+Protofibril 12-mer - toxic species
+
+# Lab meeting - My practice seminar talk - Feedback:
+- Pointer usage: point longer to the spot on the slide.  Point to structures which illustrates what you are saying.
+- Point *don't* circle ... very distracting
+- Present with more detail
+	- Rationale needs to be very clear
+	- Stress the rigor of unbiased MD simulations 
+			- Unbiased simulations allow to get to equilibrium
+				- You don't assume binding modes
+			- Allow reversible binding (be careful of reversible binding term usage with experimentalists, all binding is reversible ... except the ones that are covalently attached to the binding site)
+	- Results - do more comparisons of the systems.  Comment on the experimental discrepancies (including concentration and peptide:inositol ratio descrepancy).  What about the length of the peptide?
+	- Elaborate on your hypothesis of why inositol is inhibiting fibril formation
+	- Connect the simulation movie shown to the thread of the talk
+		- Say: "Water is removed for clarity"
+	- *Explain how the activity of the drug relates to its Kd* (TODO)
+	- Possible audience type questions:
+		- How do you know your force field is good enough to distinguish between scyllo and chiro binding to F?
+				- A: We found a difference in binding mode (see binding to F)
+				- We're getting close to expt concentrations for functional activity
+				- Why is KLVFFAE relevant in the context of AD / Abeta42?
+				
+
+
+
