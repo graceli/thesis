@@ -1,5 +1,13 @@
 May 29 2010  - Research Plan - GL (Final version on Google docs)
 
+Skeleton of my thesis
+
+Some constraints
+- Intro must be at least 40 pp
+- Defense talk is 45 minutes
+
+Introduction
+
 (1) Inositol (INOS)
 
 - We now know that inositol does not act on monomers or disordered oligomers of KLVFFAE
