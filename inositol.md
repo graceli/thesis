@@ -25,6 +25,17 @@ Could come up with a summary of the mechanism
 	- Factors not considered in simulation: influence of salt (klement) 
 	- Differences in fibril structure.
 
+- Fibril structures of Abeta40 and Abeta42 are similar
+There are brain derived structures of Abeta40.  Are these structures similar to the synthetic ones? No - similar ultrastructure, but exhibit polymorphism. Different amyloid fibril structures might exhibit different toxicities. (Paravastu, 2009, PNAS)
+
+- Weak binding (This is known from several sources and my own data)
+- Sequestration - toxic in vivo effects may be eliminated through sequestering the hydrophobic areas of the monomer; Affibody with nanomolar binding affinity (Dobson)
+
+###Question: 
+- structural clues as to what amyloid species is degradable in vivo ?
+
+
+
 
 # Sugar binding to Abeta42
 	* Fung and McLaurin et al
