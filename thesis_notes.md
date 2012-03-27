@@ -81,6 +81,8 @@ Oligomers are very soluble and is clear in solution. If they appear in solution,
 Tetramer is presumably a nontoxic species
 Protofibril 12-mer - toxic species
 
+So at this point - all observations for both chiro- and scyllo- are the same with the exception of the one difference
+
 # Lab meeting - My practice seminar talk - Feedback:
 - Pointer usage: point longer to the spot on the slide.  Point to structures which illustrates what you are saying.
 - Point *don't* circle ... very distracting
@@ -92,15 +94,62 @@ Protofibril 12-mer - toxic species
 			- Allow reversible binding (be careful of reversible binding term usage with experimentalists, all binding is reversible ... except the ones that are covalently attached to the binding site)
 	- Results - do more comparisons of the systems.  Comment on the experimental discrepancies (including concentration and peptide:inositol ratio descrepancy).  What about the length of the peptide?
 	- Elaborate on your hypothesis of why inositol is inhibiting fibril formation
+	- If inositol works by competitive inhibition - how do they actually measure that in the brain?
+	- Something about the BBB (this is a recurring theme)
 	- Connect the simulation movie shown to the thread of the talk
 		- Say: "Water is removed for clarity"
+	- Why also study chiro-?
+	
 	- *Explain how the activity of the drug relates to its Kd* (TODO)
+	- Do not delete the words "in vitro"
+	- "well-known" - replace with "it's shown by NMR spectroscopy". Well-known means VERY convincing experiments.
+	- Another recurring comment - be explicit in hypothesis.  Refine hypothesis.  Be explicit in presentation.
+	
+	- Cite experimental conditions (5 mM citation)
+	
+	- make it clear what is done, and what is still ongoing
+	
 	- Possible audience type questions:
 		- How do you know your force field is good enough to distinguish between scyllo and chiro binding to F?
 				- A: We found a difference in binding mode (see binding to F)
 				- We're getting close to expt concentrations for functional activity
 				- Why is KLVFFAE relevant in the context of AD / Abeta42?
-				
+
+Oct 30, 2009 
+- Dan Kirschner - saw loss of intra-sheet signal (Q: was this ever published?)				
+- *Important* - explain binding affinity - why no difference?
+	- inositol doesn't act on KLVFFAE
+	- some how separate out the binding modes that they have in common?
+
+- Note C-terminus difference for Ab40 and Ab42 (it is a hairpin for 42?)
+- cooperativity question (don't remember what this was about)
+- Joanne: chiro doesn't work as a drug as it can't get transported into the brain
+
+## What I should review
+- AD
+- Inositol background
+- Thermodynamic vs kinetic
+	- thermodynamic is related to binding
+			- related to the amount in the brain and you can get a high concentration in the brain
+- Binding constants
+	- review all "theory" behind this
+	- ITC to determine binding
+- What exactly is a small molecule?
+	- A low molecular weight molecule that is not a polymer.  
+	- restricted to something that binds a biopolymer with high affinity? (REF?)
+
+- It was indicated that high molar ratio is the most important b/c it may reveal cooperativity effects which are not considered in current simulations.
+
+- JoAnne 
+	- Abeta42 + scyllo -> disaggregate over time (a long time - how long? weeks?).  Personal communications - this is not published data
+	- Fiber, preformed
+
+- IC50 is not calculated for inositol
+
+- mass spec data (Austin Yang)
+	- Abeta42 binds 1 scyllo or 2 scyllo suggests that scyllo has some stable interactions with Abeta42 that does not exist with Abeta40
+	- Abeta40 nothing
+- Note osmolyte effect b/c does not work for Abeta40 => unlikely to be crowding
 
 # Other chapters notes
 ### Some of this might not appear in the actual thesis
