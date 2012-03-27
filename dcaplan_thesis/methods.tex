@@ -1,0 +1,228 @@
+\chapter{Methods}
+
+\section{Overview of computational methods}
+
+\subsection{Molecular dynamics}
+
+Molecular mechanics (MM) is the empirical mathematical representation of atomic interactions in the classical limit. MM was developed over 50 years ago and has been applied to organic chemistry as a tool to estimate specific energetic properties of small molecules. Since then it has evolved into various functional forms (known as ``force fields'') used to describe the potential energy of a system by computing atomic interactions. Force fields may vary in the way that they represent atomic particles to balance experimental accuracy with computational efficiency. Molecular dynamics (MD) is a MM-based method in which force fields are used to calculate the position, velocity, and acceleration of atoms over time to produce a trajectory.
+
+In this thesis, molecular dynamics is used to study cytochrome \emph{c} oxidase at the molecular level. Molecular dynamics is based on the classical equations of motion. The movements of an atom $i$ is governed by Newton's second law of motion:
+\begin{equation}
+\label{eqn:fma}
+\vec{F}_i = m_i\vec{a}_i
+\end{equation}
+where $F_i$ is the force exerted on an atom $i$, $m_i$ is its mass and $a_i$ is its acceleration. Its velocity $v_i$ and position $r_i$ can be expressed as:
+\begin{equation}
+\label{eqn:fma2}
+\vec{F}_i = m_i\vec{a}_i = m_i\frac{d\vec{v}_i}{dt} = m_i\frac{d^2\vec{r}_i}{dt^2}
+\end{equation}
+The force on an atom $i$ can also be expressed as the gradient of the potential energy (with respect to the position of particle $i$), $\nabla_i U(\vec{R})$:
+\begin{equation}
+\label{eqn:fma3}
+\vec{F}_i = -\nabla_i U(\vec{R}) = -\frac{dU}{d\vec{r}_i} = -(\vec{u}_x \frac{dU}{dx_i} + \vec{u}_y \frac{dU}{dy_i} + \vec{u}_z \frac{dU}{dz_i})
+\end{equation}
+Where $\vec{u}_x$, $\vec{u}_y$, and $\vec{u}_z$ are unit vectors along the $x$, $y$, and $z$ axes, respectively. The potential energy of a system, $U(\vec{r}_1, \vec{r}_2, ..., \vec{r}_n)$, is a function of the atomic coordinates $r$ and the number of particles ($n$) in the system. In molecular dynamics, the potential energy of a system is approximated from a force field equation. The combination of equations \ref{eqn:fma2} and \ref{eqn:fma3} relates the derivative of the potential energy to changes in atomic positions as a function of time:
+\begin{equation}
+\label{eqn:fma2potentialenergy}
+-\frac{dU}{d\vec{r}_i} = m_i\frac{d^2 \vec{r}_i}{dt^2}
+\end{equation}
+% TODO: describe time integration algorithm, Langevin dynamics
+These equations are solved numerically using a time integration algorithm over very small time steps in which the forces and accelerations are presumed to be constant. An MD simulation requires starting coordinates and velocities of all atoms as input. Coordinates are often obtained from nuclear magnetic resonance (NMR) or X-ray crystallography. Initial velocities are generated from a Maxwell-Boltzmann distribution at a given temperature \cite{Brooks:2009p6618}. From the starting structure, the potential energy is calculated via the force field and the force on each atom is calculated. The choice of time step is limited by the timescales of the motions of the system and should be shorter than the fastest motions present in the system. In the case of atomistic simulations, bond vibrations are the fastest motion, which (in theory) limits the time steps to 1 fs. If bonds involving hydrogen are held fixed, as is often the case, then a time step of 2 fs can be used. By iterating through small time steps, the positions and velocities of all atoms in the system can be updated, thus generating a time trajectory.
+
+\subsection{The CHARMM force field}
+
+The functional form of a force field is comprised of bonded and non-bonded terms describing covalently bonded atoms and long-range interactions, namely coulombic and van der Waals forces. Bond and angle terms are usually modelled as harmonic oscillators in force fields that do not allow bond breaking. Proper dihedral potentials are usually included. Additionally, ``improper torsional'' terms may be added to enforce the planarity of aromatic rings and other conjugated systems, and ``cross-terms'' that describe coupling of different internal variables such as angles and bond lengths. Some force fields also include explicit terms for hydrogen bonds. The non-bonded terms are the most computationally intensive because they include many interactions per atom. The van der Waals term is usually computed with a Lennard-Jones potential and the electrostatic term with Coulomb's law. The specific decomposition of the individual terms depends on the force field.
+
+The CHARMM force field is one of many existing force fields. It is a fully atomistic force field and is parameterized to closely match experimental data. In the CHARMM force field \cite{Brooks:2009p6618}, the contributing components to the potential energy are given by the following equation:
+
+\begin{align}
+\label{eqn:charmm}
+U(\vec{R}) = &\mathop{\sum}_{\rm bonds}K_b (b - b_{0})^2
+                     + \mathop{\sum}_{\rm angles} K_\theta (\theta - \theta_{0})^2
+                     + \mathop{\sum}_{\rm dihedrals} K_\varphi [1 + {\rm cos}(n\varphi - \delta)] \notag \\
+                     & + \mathop{\sum}_{\rm impropers} K_\omega (\omega - \omega_{0})^2
+                     + \mathop{\sum}_{\rm Urey-Bradley} K_{UB} (S - S_{0})^2 \notag \\
+                     &+ \mathop{\sum}_{\substack{\rm non-bonded \\ \rm pairs}} \left\{\epsilon^{min}_{ij} \left[\left(\frac{R^{min}_{ij}}{r_{ij}}\right)^{12} - 2\left(\frac{R^{min}_{ij}}{r_{ij}}\right)^{6}\right] + \frac{q_{i}q_{j}}{4\pi\epsilon_0 r_{ij}}\right\}
+\end{align}
+
+The first term accounts for bond stretches where $K_b$ is the bond force constant and $b - b_{0}$ is the distance from equilibrium extension $b_{0}$. The second term accounts for bond angles where $K_\theta$ is the angle force constant and $\theta - \theta_{0}$ is the angle from equilibrium between 3 bonded atoms. The third term is for dihedral angles (or torsions) where $K_\phi$ is the dihedral force constant, $n$ is the multiplicity of the function, $\varphi$ is the dihedral angle and $\delta$ is the phase shift. The fourth term accounts for the improper dihedral angles, used to maintain chirality and planarity, where $K_\omega$ is the force constant and $\omega - \omega_{0}$ is the deviation from the equilibrium dihedral value $\omega_{0}$ (since there are cases where $\omega_{0}$ is not planar). The fifth term (Urey-Bradley) accounts for angle bending in 1,3 interactions where $K_{UB}$ is the force constant and $S - S_{0}$ is the distance between the 1,3 atoms bound to a common third atom. Non-bonded interactions between pairs of atoms are represented by the last two terms accounting for the van der Waals (VDW) and electrostatic energies. The VDW and electrostatic potentials are calculated with the Lennard-Jones (LJ) 6-12 potential and the Coulombic potential, respectively, between all atom pairs (separated by at least three bonds) within a user-specified interatomic cutoff distance. In the LJ term, $\epsilon^{min}_{ij}$ is the well depth, $r_{ij}$ is the distance between the non-bonded atoms, and $R^{min}_{ij}$ is the point at which the potential is zero. Typically, $\epsilon^{min}_{ii}$ and $R^{min}_{i}$ are obtained for individual atom types and then combined to yield $\epsilon^{min}_{ij}$ and $R^{min}_{ij}$ for the interacting atoms via the geometric and arithmetic means, respectively. In the Coulombic term, $\epsilon_0$ is the permittivity of vacuum, $q_i$ and $q_j$ are the point charges of atoms $i$ and $j$, respectively, and $r_{ij}$ is the distance between the atoms. The most realistic simulations treat the solvent environment by explicitly including the water molecules, ions, and lipids (if required), and impose periodic boundary conditions (PBC), which mimic an infinite system by reproducing the central simulation ``cell'' or ``box''. In such cases, long-range electostatics are calculated using particle mesh Ewald (PME), a highly efficient (order $Nlog(N)$) method for computing the electrostatic interaction energies of periodic systems \cite{Darden:10089,Essmann:1995p5799}, whereby the atomic charge distribution is approximated by a gridded charge distribution.
+
+In order to run MD simulations, atomic parameters must be specified for all the terms in the energy function. In addition to the functional form of the potentials (eq. \ref{eqn:charmm}), a force field defines a set of parameters for each type of atom. For example, a force field would include distinct parameters for an oxygen atom in a carbonyl functional group and in a hydroxyl group. The typical parameter set includes values for atomic mass, van der Waals radius, partial charges for individual atoms, equilibrium values of bond lengths, bond angles, dihedral angles for pairs, triplets, and quadruplets of bonded atoms, and values corresponding to the effective spring constants for each potential. Most current force fields use a ``fixed-charge'' model by which each atom is assigned a single value for the atomic charge that is independent of the local electrostatic environment. Proposed developments in next-generation force fields incorporate models for electronic polarizability, in which a particle's charge is influenced by electrostatic interactions with its neighbours \cite{Patel:2004p6622,Patel:2004p6626}. The introduction of polarizable force fields into common use has been inhibited by the high computational cost associated with solving this problem self-consistently.
+
+Although many molecular simulations involve biological macromolecules such as proteins, DNA, and RNA, the parameters for given atom types are generally derived from observations on small organic molecules that are more tractable for experimental studies and quantum calculations. Different force fields can be derived from various types of experimental data, such as enthalpy of vaporization, enthalpy of sublimation, dipole moments, or various spectroscopic parameters. Parameter sets and functional forms are defined by force field developers to be self-consistent. Because the functional forms of the potential terms vary extensively between even closely related force fields (or successive versions of the same force field), the parameters from one force field should never be used in conjunction with the potential from another.
+
+\subsection{Free energy calculations}
+
+% Ken Dill Molecular Driving Forces
+the Gibbs free energy ($G$) is of central importance in biochemistry as a thermodynamic quantity that measures the ``useful'' work obtainable from a system at a constant temperature and pressure. The change in Gibbs free energy, $\Delta G$, is an equilibrium property that measures whether a reversible biochemical process will occur spontaneously in a closed system under constant pressure and temperature. The statistical mechanical representation of such a system is the isothermal-isobaric ensemble, also known as the $NPT$ ensemble. The $NPT$ ensemble corresponds most closely to laboratory conditions, which is why it is commonly used. In the $NPT$ ensemble, the number of particles ($N$) is kept constant, a constant pressure ($P$) is applied, and the temperature ($T$) is maintained by coupling to a ``heat bath'' of constant temperature. The ensemble is the collection of all possible ``microstates'' or arrangements of the system.
+
+The probability $p_i$ of finding the system in a particular microscopic state $i$ with energy level $E_i$ is:
+\begin{align}
+\label{eqn:boltzmann_probability}
+p_i = \frac{e^{-E_i/k_{B}T}}{Z}
+\end{align}
+where $k_{B}$ is the Boltzmann constant, $T$ is the temperature, and $Z$ is the partition function:
+\begin{align}
+\label{eqn:boltzmann_partition}
+Z = \mathop{\sum}_{\rm j} g_j \cdot e^{-E_j/k_{b}T}
+\end{align}
+where $g_j$ is the degeneracy factor, or the number of states which have the same energy level $E_j$. Strictly speaking, the Boltzmann distribution defined by equation \ref{eqn:boltzmann_probability} corresponds to the canonical ensemble, also known as the $NVT$ ensemble, where volume is kept constant. In biomolecular simulations performed in the $NPT$ ensemble, volume fluctuations are negligible, thus allowing us to calculate Boltzmann-weighted microscopic states probabilities. The Gibbs free energy can be expressed in terms of the relative probability of any two states:
+\begin{align}
+\label{eqn:gibbs_boltzmann}
+\Delta G = -k_{B}Tln \left( \frac{p_0}{p_1} \right)
+\end{align}
+where $k_{B}$ is the Boltzmann constant, and $p_0$ and $p_1$ are the probabilities (eq. \ref{eqn:boltzmann_probability}) of states 0 and 1, respectively. The movements of atoms in a molecular dynamics simulation are dictated by a potential energy function. A molecular dynamics simulation will sample states according to the Boltzmann distribution. Given infinite time, a simulation will sample all accessible states at a given temperature $T$. However, infinitely long simulations are not computationally feasible, and due to the rugged potential energy surfaces common to biomolecular systems, many states may not even be sampled during a typical simulation. We can use enhanced sampling techniques to overcome energetic barriers that separate relevant states.
+
+\subsection{Enhanced sampling techniques}
+
+The requirement for multiple transitions between states is due to the fact molecular dynamics simulations, by nature, sample states with a frequency that not only depends on their relative energies, but also on the barriers between them. Thus, a simulation may become trapped in a local minimum, and sample states with incorrect probabilities. If one can obtain the free energy profile between two states directly, including their relative free energies and the heights of the energetic barriers between them, this problem can be avoided. Consequently, in enhanced sampling techniques, the calculation of the free energy between two states is often broken up into a series of states along a predefined reaction coordinate. The result is a free energy profile of the system along the reaction coordinate, known as the potential of mean force (PMF). Free energy profiles are very useful to understanding the energetic basis of molecular mechanisms \cite{Roux:2004ul,Henry:2011p10221,Henry:2009p4543}.
+
+One method commonly used to calculate such free energy profiles is umbrella sampling (US) \cite{Torrie:1974p5323}, whereby the potential energy of the system is biased along a predefined reaction coordinate $\lambda$. In US, the potential energy function $U(\vec{R})$ can be modified to include an extra harmonic (``umbrella'') potential:
+\begin{align}
+\label{eqn:us_harmonic}
+U_i(\lambda) = \frac{1}{2}K_i(\lambda - \lambda_i)^2
+\end{align}
+where $U_i(\lambda)$ is the new harmonic potential for a position ($i$) along the reaction coordinate. $\lambda_i$ and $K_i$ are the centre and force constant of the umbrella at position $i$. In the US method, multiple independent simulations (``replicas'') are run such that they differ in location along the reaction coordinate. The values of $\lambda$ sampled by each simulation are recorded, producing population values representing the biased potential energy surface according to eq. \ref{eqn:gibbs_boltzmann}. Following the independent simulation runs the population data are unbiased to obtain the true underlying energy surface, thus producing the PMF. The Weighted Histogram Analysis Method (WHAM) is commonly used for this purpose \cite{Kumar:1995p5435}. WHAM is performed in two steps. First, biased population data are converted to energy space where the biases from the known harmonic potential (eq. \ref{eqn:us_harmonic}) are removed. The individual unbiased segments are then ``stitched'' together by overlapping regions sampled by adjacent umbrellas.
+
+\subsection{Theoretical p$K_a$ calculations}
+
+The protonated and deprotonated states of titratable (or ionizable) compounds are in an equilibrium which can be expressed as:
+\begin{equation}
+\cee{HA <=>[\text{K$_a$}] A^- + H^+},
+\end{equation}
+where HA is a generic acidic compound that dissociates by splitting into A$^-$ as the conjugate base of the acid, and \ce{H^+} is a proton which exists as a solvated hydronium ion (\ce{H3O^+}) in aqueous solutions. K$_a$ is the dissociation constant that represents the quotient of equilibrium concentrations:
+\begin{equation}
+\mbox{K}_a = \frac{[\mbox{H}^+][\mbox{A}^-]}{[\mbox{HA}]}.
+\end{equation}
+The dissociation constant can be related to the change in Gibbs free energy by the equation:
+\begin{equation}
+\Delta G = -k_{B}Tln\mbox{K}_a,
+\end{equation}
+where $k_{B}$ is the Boltzmann constant and $T$ is the absolute temperature. For convenience, a logarithmic measure of the dissociation constant, $-logK_a$, also known as p$K_a$, is typically used in practice. The p$K_a$ can also be expressed in terms of Gibbs free energy via the expression:
+\begin{equation}
+\mbox{p}K_a = \frac{\Delta G}{ln(10)RT}.
+\end{equation}
+
+It is generally impractical to directly determine protein p$K_a$s by simulating dissociation reactions using computational methods as such reactions involve the breaking of bonds, although it can be done for small molecules using quantum mechanical techniques \cite{AguilellaArzo:2010p10956,Bashford:2004p10958}. Instead, a common approach has been to calculate shifts in experimental p$K_a$ values of model compounds (compounds that mimic protein side chains) in solution \cite{Nielsen:2001p10773}. Such shifts can be obtained from the change in free energy for transferring the compound from solution into the protein environment ($\Delta G_x$), illustrated by the thermodynamic cycle in Figure \ref{fig:acid_cycle}. 
+\begin{figure}[htbp]
+\centering
+\includegraphics{figures/pka_thermodynamic_cycle/cycle.png}
+\caption[Thermodynamic cycle used to determine protein p$K_a$ values.]{Thermodynamic cycle used to determine protein p$K_a$ values. The dissociation reactions for a compound in water and protein are shown. $\Delta G_x$ represents the change in free energy for transferring a compound from water into the protein environment.}
+\label{fig:acid_cycle}
+% $\Delta G (aq)$ represents the free energy of dissociation of a model compound in water, and $\Delta G (protein)$ represents the free energy of dissociation of the same compound within a protein. 
+% \begin{eqnarray*}
+% \cee{HA(aq) <=>[\text{K$_a$ (aq)}] A^-(aq) + H^+(aq)}
+% \cee{HA(protein) <=>[\text{K$_a$ (protein)}] A^-(protein) + H^+(protein)}
+% \end{eqnarray*}
+\end{figure}
+In the thermodynamic cycle, the dissociation reactions for a compound in water and protein are shown, in addition to $\Delta G_x$, which represents the change in free energy for transferring the compound from water into the protein environment. The free energy of dissociation for the compound in the protein is $\Delta G (protein) = -RTln\mbox{K}_a (protein)$. It is an unknown value that can be expressed as a perturbation of $\Delta G (aq)$:
+\begin{equation}
+\Delta G(protein) = \Delta G(aq) + \Delta G_x(A^-) - \Delta G_x(HA)
+\end{equation}
+
+The quantities $\Delta G_x(A^-)$ and $\Delta G_x(HA)$ can be determined computationally by calculating the electrostatic energies of both compounds in various states \cite{Bashford:2004p10958}. Continuum electrostatics is widely used for this purpose and offers a compromise between accuracy and computational efficiency \cite{Gilson:1991p10947,Bashford:2004p10958}. In continuum models, solvent is represented implicitly (by a continuum) and space is divided between regions with different dielectric constants such as the protein interior, the lipid membrane, and bulk water. The Poisson-Boltzmann equation (PBE) is a continuum model that describes electrostatic energy in heterogeneous protein-solvent systems by allowing the dielectric constant and ionic strength to vary through space \cite{Gilson:1988p10954}.
+
+The finite-difference Poisson-Boltzman (FDPB) method is commonly used to apply the PBE to systems of complex geometry, such as a solvated protein system \cite{AguilellaArzo:2010p10956,Bashford:2004p10958}. The FDPB method divides the space into a 3D grid, such that each grid point is assigned a dielectric constant, ionic strength and charge density. The FDPB method has been successful in reproducing experimental observations on the electrostatic properties of proteins \cite{Gilson:1991p10947} and it is used in this work, in conjunction with molecular dynamics, to determine the intrinsic p$K_a$ value of residue E286 in cytochrome \emph{c} oxidase mutants.
+
+
+\section{Preparation of the unconstrained simulation system}
+
+The fully unconstrained (or unbiased) model consists of cytochrome \emph{c} oxidase embedded in a hydrated lipid bilayer. The initial conformation of the protein was the crystallographic structure of C\emph{c}O from \emph{R. sphaeroides} solved at 2.3 Å by Svensson-Ek et al. in 2002 (PDB ID 1M56) \cite{SvenssonEk:2002p5595}. All simulations of the unbiased system were performed using Langevin dynamics with a friction coefficient of 2 ps$^{-1}$ applied to all heavy atoms, and an integration timestep of 2 fs. The NAMD software (version 2.7b2) \cite{Phillips:2005p10251} and CHARMM all-atom force-field (version C36) was employed in the $NPT$ ensemble \cite{Brooks:2009p6618,Klauda:2010p8136} at a temperature of 323.15 K and pressure of 1 atm. Constant pressure is achieved via the Langevin piston Nosé-Hoover method implemented in NAMD, which is a combination of the Nosé-Hoover constant pressure method \cite{Martyna:1994p10578}, and the piston fluctuation control method implemented using Langevin dynamics \cite{Feller:1995p10769}. This procedure preserves the anisotropy of the planar lipid bilayer, via proper coupling between cell-length fluctuations along the bilayer normal (``piston'') and in the plane of the bilayer. All simulations were run with a piston oscillation time scale of 100 fs and a barostat damping time scale of 50 fs. The SHAKE algorithm was used to fix all covalent bonds involving hydrogen atoms (to increase computational efficiency), with a bond deviation tolerance of $10^{-8}$ \cite{Ryckaert:1977p5453}. Non-bonded interactions were calculated with a switching function between 10 and 13.5 Å. Long-range electrostatic interactions were calculated with the
+particle mesh Ewald (PME) method \cite{Darden:10089,Essmann:1995p5799}.
+
+The protein was initially parameterized in the R state of the catalytic cycle (which contains no intermediate ligands in the active site), with charges for heme $a$ and the binuclear centre obtained from Fadda et al. (2008) \cite{Fadda:2008p5482}. The \ce{Cu_A} site parameters were obtained from Johansson et al. (2008) \cite{Johansson:2008p5653}. Titratable residues were simulated at their standard protonation states at pH 7. Residue E286 was deprotonated to simulate the proton loading state of the D-channel, and all heme propionates remained deprotonated. Additional local harmonic restraints were included within the BNC, heme $a$, \ce{Mg}, and \ce{Cu_A} sites to prevent the deviation of the cofactors from their crystallographic conformations during simulations (see Table \ref{tbl:harmonic_restraints}). The bond lengths correspond to those in the starting crystallographic structure (PDB ID 1M56) \cite{SvenssonEk:2002p5595}, and the standard CHARMM parameter set (version C36) was used as a reference for the force constants.
+
+\begin{table}
+    \begin{center}
+    \begin{singlespaced}
+    \caption{Local harmonic restraints for cofactors included in the unbiased system. Distances correspond to those seen in the starting crystallographic structure (PDB ID 1M56) \cite{SvenssonEk:2002p5595}. The force constants applied are within the range of similar bond force constants found in the CHARMM parameter set (version C36).}
+    \vspace{10pt}
+    \label{tbl:harmonic_restraints}
+    \begin{tabular}{l|c|c}
+    Bond & $K_b$ (kcal/mol/Å$^2$) & $b_0$ (Å) \\
+    \hline
+    \ce{Fe_a} \ce{\bond{-}} His102:NE2 & 50 & 2.5 \\
+    \ce{Fe_{a3}} \ce{\bond{-}} His419:NE2 & 200 & 2.5 \\
+    \ce{Fe_{a3}} \ce{\bond{-}}  \ce{Cu_B} & 200 & 3.0 \\
+    \ce{Cu_B} \ce{\bond{-}} His284:ND1 & 100 & 2.2 \\
+    \ce{Cu_B} \ce{\bond{-}} His333:NE2 & 100 & 2.2 \\
+    \ce{Cu_B} \ce{\bond{-}} His334:NE2 & 100 & 2.2 \\
+    \ce{Mg} \ce{\bond{-}} His411:NE2 & 10 & 2.1 \\
+    \ce{Mg} \ce{\bond{-}} Asp412:OD2 & 10 & 1.8 \\
+    \ce{Mg} \ce{\bond{-}} Glu254:OE1 & 10 & 1.9 \\
+    \ce{Cu_{A1}} \ce{\bond{-}} \ce{Cu_{A2}} & 100 & 4.5 \\
+    \ce{Cu_{A1}} \ce{\bond{-}} Cys252:SG & 500 & 2.1 \\
+    \ce{Cu_{A1}} \ce{\bond{-}} Cys256:SG & 500 & 2.1 \\
+    \ce{Cu_{A2}} \ce{\bond{-}} Cys252:SG & 500 & 2.1 \\
+    \ce{Cu_{A2}} \ce{\bond{-}} Cys256:SG & 500 & 2.1 \\
+    \ce{Cu_{A2}} \ce{\bond{-}} His217:ND1 & 500 & 2.4 \\
+    \ce{Cu_{A1}} \ce{\bond{-}} His260:ND1 & 500 & 2.43 \\
+    \ce{Cu_{A2}} \ce{\bond{-}} Met263:SD & 500 & 2.55 \\
+    \ce{Cu_{A1}} \ce{\bond{-}} Glu254:O & 500 & 2.35 \\
+    \hline
+    \end{tabular}
+    \end{singlespaced}
+    \end{center}
+\end{table}
+
+To construct the membrane, a TIP3P-solvated DPPC bilayer (180 lipids) was generated using CHARMM-GUI \cite{Jo:2008p10248}. The resulting bilayer was then energy-minimized and equilibrated for 40 ns. The equilibrated bilayer was enlarged 4-fold by duplication along the x and y axes to create a larger bilayer ($n=720$) for embedding the protein. Using the INFLATEGRO protocol \cite{Kandt:2007p912}, the bilayer was expanded to fit the entire protein. The protein was then added to the center of the system. The bilayer was then repeatedly compressed (in the xy-plane) and energy-minimized until its area per lipid reached 64 Å$^2$ (the experimentally-determined value for DPPC bilayers) \cite{Taylor:2009p7408,Sonne:2007p7409}. For better simulation efficiency, the size of the bilayer was reduced by removing individual lipid molecules from the edges of the simulation box, such that an average of 10 lipid molecules remained between periodic images of the protein. The final system containing 510 DPPC molecules was solvated with 53,624 TIP3P water molecules, 251 \ce{Cl^-} ions, and 267 \ce{K^+} ions (0.15 M \ce{KCl}). Figure \ref{fig:full_system} shows two views of the protein embedded in the bilayer.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{figures/full_system/full_system_horizontal.png}
+\caption[Representative snapshots of cytochrome \emph{c} oxidase embedded in a solvated lipid bilayer.]{Left: Side view of cytochrome \emph{c} oxidase embedded in a solvated lipid bilayer. Right: Top view of the same system. The protein is shown in blue, embedded cofactors (hemes and lipids) in yellow, lipid bilayer in grey, and water molecules in red (no hydrogen atoms are shown).}
+\label{fig:full_system}
+\end{figure}
+
+The initial wildtype system was energy-minimized and equilibrated for 20 ns, after which residues 132 and 139 were mutated \emph{in silico} to prepare the following variants: N139D, D132N, and N139D/D132N. Each of the four variants were then equilibrated for at least 40 ns. The N139A variant was also prepared and equilibrated for 25 ns.
+
+\section{Hydration analysis of equilibration trajectories}
+
+Hydration analysis was performed on the unbiased molecular dynamics equilibration trajectories from the following variants: wildtype, N193D, D132N, N139D/D132N, and N139A. Trajectories were visualized using VMD \cite{Humphrey:1996p5456} and analysis was performed using the freely available MDAnalysis Python package \cite{MichaudAgrawal:2011p10254}. Calculations of water distribution were done using a molecule counting module for MDAnalysis developed in-house. The algorithm counts atoms within a cylindrical region defined by two points in the structure. The D-channel, which contains a sharp bend, is defined by two cylinders of 10 Å diameter. The first is formed by an axis of between the C$_{\alpha}$ atoms of residues 132 and 139, and the second is formed by an axis between the C$_{\alpha}$ atoms of residue 139 and 286. The K-channel is defined by a cylinder of 10 Å diameter formed by an axis connecting the C$_{\alpha}$ atom of G312 (at the entrance to K-channel) to the iron atom of heme $a_3$. The ``active site'' is defined by the cylinder of 10 Å radius between the C$_{\alpha}$ atom of residue E286 and the D-propionate of heme $a_3$.
+
+\section{Conformational isomerization of residue 139}
+\label{sec:methods-isomerization}
+
+% general protocol
+As in previous studies \cite{Henry:2009p4543,Henry:2011p10221}, the potential of mean force (PMF) or reversible thermodynamic work for the rotation about the $\chi_1$ torsion angle of residue 139 was calculated using umbrella sampling (US) in four variants: wildtype, N139D, D132N, and N139D/D132N. In each umbrella, the $\chi_{1}$ torsion of residue 139 was restrained by a quadratic biasing potential in the form of $U_{i}(\chi_1) = \frac{1}{2}K_{i}(\chi_{1}-\chi_{1,i})^2$ where $K_i = 0.02$ kcal/mol/deg$^2$ is the restoring force constant, and $\chi_1$ ranges from $10^\circ$ to $340^\circ$, in $10^\circ$ increments. As described above, molecular dynamics trajectories were generated with NAMD (version 2.7b2) \cite{Phillips:2005p10251} and the CHARMM force-field (version C36).
+
+The construction of the 55 starting structures (``replicas'') began from the equilibrated structures of each variant, N139 or D139, in their previously determined ``closed'' orientations at $195^\circ$ and $210^\circ$, respectively \cite{Henry:2009p4543}. From these initial conformations, structures were generated by successive running 50 ps of Langevin dynamics at incrementally increasing or decreasing values of $\chi_1$. Given a starting structure at $\chi_1$, two new structures with $\chi_{1,i} = \chi_1 + 10^{\circ}$ and $\chi_1 = \chi_{1,j} - 10^{\circ}$ were generated as required. All replicas were then equilibrated independently with a torsional force constant of $k = 0.02$ kcal/mol/deg$^2$. Total sampling time was 500 ns for wildtype, 450 ns for N139D, 430 ns for D132N, and 430 ns for N139D/D132N. PMFs were calculated using Alan Grossfield’s implementation of WHAM \cite{Kumar:1995p5435}. Error was calculated using block averaging, where a PMF is generated for each sequential block of data and the standard deviation between those PMFs is calculated.
+
+% \section{p$K_a$ calculations of residue E286}
+% 
+% The p$K_a$ of residue E286 was calculated by the same protocol as in \cite{Henry:2011p10221}, using the PBEQ module of CHARMM (version 28) \cite{Brooks:2009p6618}. The PBEQ module solves the Poisson-Boltzmann equation using the finite-difference method (FDPB) for a given protein structure. The atomic radii and dielectric constants assigned to different regions of the system were the same as those used in an earlier study of the same system \cite{Fadda:2008p5482}. A coarse grid with a mesh size of 0.60 Å, focused on regions of interest (up to a 0.30 Å mesh size) was used. p$K_a$ values were determined by averaging over 150 randomly selected snapshots from independent 2.5 ns molecular dynamics trajectories from the biased simulation system in four variants: wildtype, N139D, D132N, and N139D/D132N.
+
+\section{Thermodynamics of \ce{K^+} translocation through the D-channel}
+
+Molecular dynamics with umbrella sampling (US) was used to calculate the free energy of a \ce{K^+} cation at various points along a predefined reaction coordinate from bulk water through the D-channel to residue E286. The reaction coordinate was defined as the position of the cation on the z-axis, relative to the C$_{\alpha}$ of residue E286 ($z_i = z_{K^+}-z_{E286}$). A simple harmonic biasing potential was added to restrain the cation at various points along the reaction coordinate. The potential was defined as $U_i(z) = \frac{1}{2}K_{i}(z-z_{i})^2$, where $K_i = 7.0$ kcal/mol/Å$^2$ is the restoring force constant, $z_{i}$ is the reference coordinate for the replica, and $z$ is the current z-coordinate. A snapshot of the simulation system used in this study is shown in Figure \ref{fig:k_binding_system}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{figures/kbinding_system/kbinding_system.png}
+\caption[Snapshot of a wildtype simulation system used in the \ce{K^+} translocation study.]{Snapshot of a wildtype simulation system used in the \ce{K^+} translocation study. The full range of the reaction coordinate along the z-axis, from bulk water to residue E286, is shown. D-channel residues D132, N139, and E286 are labeled for reference, and a \ce{K^+} ion is also shown near E286. The protein is shown in translucent grey ``cartoon'' form, bulk water is displayed as red points and the DPPC membrane is depicted in yellow dots.}
+\label{fig:k_binding_system}
+\end{figure}
+
+A set of five starting structures from four variant systems (wildtype, N139D, D132N, and N139D/D132N) were extracted from their respective unbiased equilibration trajectories. Replica sets were prepared from each of these starting structures from a set of template structures containing the cation at various specific positions along the reaction coordinate. The template structures were prepared using a simple repetitive procedure. First, a cation was placed manually at various positions along the reaction coordinate. Starting from each of these structures, the cation was then successively moved up or down by altering its position along the reaction coordinate in 0.5 Å increments. This procedure was repeated until the entire reaction coordinate was covered by overlapping umbrellas. A total of 126 replicas were generated for each starting structure. The biasing force for all umbrellas was set to 7 kcal/mol/Å$^2$. From bulk water ($z = 0$ Å) to residue 132, a flat-bottom potential was used to retain the cation within a cylinder of 4 Å radius formed by the $(x,y)$ coordinate of the C$_{\alpha}$ of residue 139. This virtual cylinder was used to restrict radial mobility of \ce{K^+} and to contain the ion within a fixed volume of bulk water. This restriction keeps the bulk water concentration of \ce{K^+} constant, which is critical for calculating the dissociation constant for the binding of \ce{K^+} to the D-channel vestibule (see section \ref{sec:dissociation_constants} below).
+
+Each replica was simulated independently for 2 ns for a total of 252 ns per replica set and 1.26 $\mu s$ per system of five independent replica sets. The location of \ce{K^+} along the z-axis was recorded every 6 ps during production runs. Prior to analysis, the first 500 ps of data was cut off and the remaining data was split into sequential blocks. Alan Grossfield's implementation of WHAM \cite{Kumar:1995p5435} was run on each block (200 bins and a convergence tolerance of 0.0001) to produce the PMFs which where then averaged. Error was estimated by calculating the standard deviation between the resulting PMFs for each variant.
+
+\subsection{Calculating the dissociation constant for \ce{K^+} for binding to the D-channel vestibule}
+\label{sec:dissociation_constants}
+
+Binding of \ce{K^+} to the D-channel vestibule is defined by the following dissociation reaction
+\begin{equation}
+\cee{ES <=>[\text{K$_d$}] E + S},
+\end{equation}
+Where E is the enzyme and S is a \ce{K^+} ion. The corresponding dissociation constant is defined as
+\begin{equation}
+\mbox{K}_d = \frac{[\mbox{E}][\mbox{S}]}{[\mbox{ES}]}.
+\end{equation}
+The effective concentration of \ce{K^+} for binding to the vestibule of the D-channel is the concentration of \ce{K^+} in bulk water at which the D-channel vestibule has a 50\% chance of being occupied. At 50\% occupancy, the probability of the binding site being occupied is equal to the probability that it is unoccupied, so [E] = [ES]. Therefore, at these concentrations, $\mbox{K}_d = $ [S]. We can calculate $\mbox{K}_d$ from free energy data by determining the value of [S] at 50\% occupancy.
+
+Umbrella sampling is used in this study to generate PMFs for the translocation of a \ce{K^+} ion from bulk water through the D-channel. The PMFs represent the free energy of the ion along a reaction coordinate, $E(z)$, where $E$ is free energy and $z$ is the position along the reaction coordinate. As described above, the Boltzmann distribution allows us to determine the probability of finding a system in a particular state with energy level $E(z)$. We can use Boltzmann integration over a region of a PMF (from $z_{min}$ to $z_{max}$) to determine the probability of a set of states, such as the \ce{K^+}-bound and \ce{K^+}-unbound states, if we can partition the reaction coordinate into bound and unbound regions. The Boltzmann integration over a region of the PMF is defined as
+\begin{equation}
+I = \int_{z_{min}}^{z_{max}} e^{-\frac{E(z)}{RT}}\,\mathrm{d}z
+\end{equation}
+At 50\% occupancy of the binding site, the probabilities of the \ce{K^+}-bound and \ce{K^+}-unbound states will be equal. The value of $I$ for the Boltzmann integration over the bound region will be equal to the length of the cylinder of radius 4 Å in which the concentration of a single \ce{K^+} ion is the effective concentration [S], which is equal to $\mbox{K}_d$.
+

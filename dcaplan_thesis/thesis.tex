@@ -1,0 +1,106 @@
+%\documentclass[10pt,singlespaced,draft]{ut-thesis}
+\documentclass[12pt,onehalfspaced]{ut-thesis}
+
+\usepackage[numbers,sort&compress]{natbib}
+%\usepackage[style=numeric-comp]{biblatex}
+
+\usepackage{amsmath}
+%\usepackage{ifxetex}
+%\usepackage{fullpage}
+%\ifxetex
+%  \usepackage{fontspec,xltxtra,xunicode}
+  %\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  %\setromanfont{Georgia}
+  %\setsansfont{Arial}
+  %\setmonofont{Bitstream Vera Sans Mono}
+%\else
+%  \usepackage[mathletters]{ucs}
+%  \usepackage[utf8x]{inputenc}
+%\fi
+\usepackage[version=3]{mhchem}
+\usepackage[mathletters]{ucs}
+\usepackage[utf8x]{inputenc}
+
+\usepackage{array}
+\usepackage[normalem]{ulem}
+\newcommand{\textsubscr}[1]{\ensuremath{_{\scriptsize\textrm{#1}}}}
+\usepackage[breaklinks=true,linktocpage,colorlinks]{hyperref}
+
+\usepackage{url}
+\usepackage{graphicx}
+
+%%        single-spaced = \linespacing{1},
+%%         1 1/2-spaced = \linespacing{1.33}, and
+%%        double-spaced = \linespacing{1.66}).
+% \linespacing{1}
+
+\setcounter{section}{0}
+%\setcounter{secnumdepth}{0}
+\setcounter{tocdepth}{1}
+\degree{Masters of Science}
+\department{Biochemistry}
+\gradyear{2012}
+\author{David A. Caplan}
+\title{A computational study of proton uptake pathways in cytochrome \emph{c} oxidase.}
+
+\begin{document}
+
+%% ***   NOTE   ***
+%% You should put all of your `\newcommand', `\newenvironment', and
+%% `\newtheorem's (in other words, all the global definitions that
+%% you will need throughout your thesis) in a separate file and use
+%% "\input{filename}" to input it here.
+
+%% This sets the page style and numbering for preliminary sections.
+\begin{preliminary}
+
+%% This generates the title page from the information given above.
+\maketitle
+
+\begin{abstract}
+Cytochrome \emph{c} oxidase (C\emph{c}O), the terminal enzyme in the electron transport chain, couples proton pumping to the reduction of dioxygen into water. The coupling mechanism remains to be elucidated. Previous studies have identified several mutations within C\emph{c}O's primary proton uptake pathway (the D-channel) that decouple proton pumping from redox activity. Here, I examine the molecular basis for decoupling in single and double mutants of highly conserved residues, D132 and N139, in order to gain insight into the coupling mechanism. In particular, I use molecular dynamics and free energy simulations of a new, unconstrained model of bacterial C\emph{c}O embedded in a solvated lipid bilayer to investigate how such mutants affect functional hydration and ionic selectivity in the D-channel. Results support earlier mechanistic insights obtained in our laboratory from simplified molecular models and predict a new, testable hypothesis by which cations such as \ce{K^+} may inhibit proton pumping in charged mutants of N139.
+\end{abstract}
+
+% \begin{dedication}
+% To \emph{academia}.
+% \end{dedication}
+% \newpage
+
+% \begin{acknowledgements}
+% Thanks to Dr. Régis Pomès and and my committee: Dr. John Rubinstein and  Dr. Emil Pai. Thanks to everyone who is or has been part of the Pomès Lab while I was there: Dr. Nilu Chakrabarti, Rowan Henry, Dr. John Holyoake, Dr. Loan Huynh, Christopher Ing, Kethika Kulleperuma, Dr. Marty Kurylowicz, Grace Li, Dr. Chris Madill, Chris Neale, Ana Nikolic, Aditi Ramesh, Dr. Sarah Rauscher, and Zhuyi Xue.
+% \end{acknowledgements}
+
+%% This generates the Table of Contents (on a separate page).
+\tableofcontents
+
+%% This generates the List of Tables (on a separate page), if needed.
+%% (uncomment to have it appear in the document)
+\listoftables
+
+%% This generates the List of Figures (on a separate page), if needed.
+%% (uncomment to have it appear in the document)
+\listoffigures
+
+%% End of the preliminary sections: reset page style and numbering.
+\end{preliminary}
+
+\include{introduction}
+\include{methods}
+\include{results}
+\include{discussion}
+\include{conclusions}
+\appendix
+\include{appendix}
+
+%% This adds a line for the Bibliography in the Table of Contents.
+\begin{singlespaced}
+\addcontentsline{toc}{chapter}{Bibliography}
+%% ***   Set the bibliography style.   ***
+%% (change according to your preference)
+\bibliographystyle{elsart-num}
+%% ***   Set the bibliography file.   ***
+%% ("thesis.bib" by default; change if needed)
+\bibliography{thesis}
+\end{singlespaced}
+
+\end{document}
