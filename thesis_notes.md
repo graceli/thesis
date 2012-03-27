@@ -102,5 +102,44 @@ Protofibril 12-mer - toxic species
 				- Why is KLVFFAE relevant in the context of AD / Abeta42?
 				
 
+# Other chapters notes
+### Some of this might not appear in the actual thesis
+
+#Notes on SH3 project
+*2011-07-02
+
+Related concepts and vocab
+==========================
+* Fluorescent correlation spectroscopy FCS
+* Small angle X-ray scattering SAXS
+* NMR
+	- lots of little things for NMR that I need to understand
+Hydrodynamic radius Rh
+	- get Rh from FCS
+Radius of gyration  Rg
+	- get pair correlation function from SAXs
+	
+* Fluid viscosity - definitions and measurements
+* Vocabulary describing the denatured state/unfolded state
+
+#Notes on salt links related stuff
+*2011-07-02
+
+- Consider writing this paper in markdown
+	- markdown draft is started with the originally written stuff on this project dated back to 2004!
+	
+### What's the story so far for this paper?
+	- how does salt link assoc. change with temp?
+	- thermodynamics, kinetics?
+	- What's next after this ... full protein? P450cam ???
+
+### Why write it?
+- Good branch off for the guanidinium + SH3 project
+- Protein stability
+	- helps answer the question what is the difference between thermophilic and mesophilic proteins?
+			- Number of salt bridges! But why?
+			
+#osmolyte structure and their effect on aggregation
+
 
 
