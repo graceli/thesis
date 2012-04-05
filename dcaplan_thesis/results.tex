@@ -1,0 +1,191 @@
+\chapter{Results}
+
+In this chapter, the hydration of proton uptake pathways and the structural fluctuations (or conformational isomerization) of the D-channel in wildtype and mutant cytochrome \emph{c} oxidase embedded in a lipid bilayer are analyzed.
+
+\section{Stability and relaxation of the simulation system}
+\label{sec:results-relaxation}
+
+The root-mean-square deviation (RMSD) of backbone heavy atoms from the initial conformation of the four unbiased simulation systems (Fig. \ref{fig:equilibration_relaxation}) shows that these systems are stable after approximately 20 ns of simulation. The RMSD remains within 2 Å from the starting structures, as a result of thermal fluctuations. In comparison, the RMSD of backbone atoms in the finite-sized simulation system used previously was within 0.3 Å due to the harmonic restraints imposed on the atoms.
+
+In the next sections of this chapter, we revisit the equilibrium properties of the D-channel in the absence of spatial restraints made possible by the presence of explicit solvent, with periodic boundary conditions mimicking an infinite system.
+%Figure \ref{fig:equilibration_relaxation}B shows the contrast between D-channel backbone (residues N139, N121, N207, S142, S200, S201, S197, and E286) relaxation in the biased system used in the current study, and unbiased system used previously. This is included to illustrate how the biased system constrains the backbone of the D-channel residues, compared to the unbiased system which is allowed to equilibrate freely.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{figures/equilibration_relaxation/backbone.png}
+\caption[Deviation from initial structure in molecular dynamics simulations of cytochrome \emph{c} oxidase.]{Equilibration plots showing backbone (C, C$_\alpha$, N) RMSD of four variants of the unbiased C\emph{c}O system embedded in a solvated DPPC bilayer.}
+\label{fig:equilibration_relaxation}
+\end{figure}
+
+\section{Conformational isomerization of residue 139}
+\label{sec:results-isomerization}
+
+In this study, The potential of mean force (PMF) for the rotation around the residue's $\chi_1$ dihedral angle is calculated in four variants of C\emph{c}O: wildtype (N139), N139D, D132N, and N139D/D132N. As found in earlier work \cite{Henry:2009p4543,Henry:2011p10221}, residue 139 exhibits three metastable rotameric states: ``outfacing'', ``closed'', and ``open''. In the ``closed'' state, the side chain of residue 139 prevents the formation of a hydrogen-bonded water wire \cite{Henry:2009p4543}. In the ``open'' state, the side chain moves out of the way, allowing a water wire to form. In the ``outfacing'' state, the residue's side chain points towards the entrance of the D-channel, with the terminal amide or carboxylate group located in the ``vestibule'' region of the D-channel. Representative snapshots of the D-channel for the three known metastable states are shown in Fig. \ref{fig:dchannel_snapshots}.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{figures/chi1_pmfs_unbiased/chi1_unbiased_pmfs.png}
+\caption[PMF for the $\chi_1$ rotation of the side chain of residue 139 in wildtype and mutant cytochrome \emph{c} oxidase.]{PMF for the $\chi_1$ rotation of N139 (blue), N139D (red), N139D the D132N/N139D double mutant (green) and N139 in the D132N mutant (cyan). All PMFs are aligned to the wildtype closed state ($\Delta G = 0$ kcal/mol). The three metastable states are labeled above the graph.}
+\label{fig:pmf_chi1_unbiased}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{figures/139_rotamers/dchannel_snapshots.png}
+\caption[Representative snapshots of the D-channel for three metastable conformations of residue 139.]{Representative snapshots of the D-channel for three metastable conformations of residue 139: (a) ``closed'' (crystallographic) conformation of N139 in the wildtype enzyme; (b) ``open'' conformation of the N139D single mutant; and (c) ``outfacing'' conformation of N139D in the D132N/N139D double mutant. Water molecules present in or near the D-channel are shown in spherical representation together with licorice representations of the side chains of residues 132, 139 and 286. The C$_\alpha$ trace of the protein is depicted as ribbons.}
+\label{fig:dchannel_snapshots}
+\end{figure}
+
+In the wildtype protein, the ``closed'' state, in which the side chain of residue 139 blocks the water wire, is the most energetically favourable. The ``outfacing'' and ``open'' states of the wildtype protein are equally energetically favourable (within 1 kcal/mol). The PMF of the D132N single mutant nearly overlaps with that of wildtype, though its ``open'' state is 2.5 kcal/mol more favourable than its ``outfacing'' state. The single N139D and double N139D/D132N mutants are almost indistinguishable. They are similarly favourable (within 2 kcal/mol) in their ``closed'' and ``open'' states, but overall they both favour the ``outfacing'' state by 4 kcal/mol.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{figures/chi1_pmfs_comparison/pmf_comparison.png}
+\caption{Comparison of PMFs for $\chi_1$ rotation of residue 139 between the biased (finite-size) and new unbiased simulation systems.}
+\label{fig:pmf_chi1_comparison}
+\end{figure}
+
+There are a few notable differences between the results from the biased and unbiased simulation systems (Fig. \ref{fig:pmf_chi1_comparison}). Upon removal of conformational restraints, the ``outfacing'' state becomes more favourable for all variants in the unbiased system. Most notably, in the N139D mutant the free energy of the ``outfacing'' state decreases by 9 kcal/mol relative to that of the closed state and becomes the most probable conformer. In the biased system, electrostatic repulsion between residues D132 and D139 (in the N139D single mutant) may have affected the stability of the ``outfacing'' conformer. However, in the unbiased system, thermal fluctuations resulted in relaxation of the D-channel, resulting in an increase in the distance between the C$_{\gamma}$ atoms of residue 132 and 139 to 9.8 Å, compared to 8.6 Å in the wildtype system, and 7.55 Å in the crystallographic structure (Table \ref{tbl:gamma_distances}) and thereby reducing the pairwise coulombic repulsion by 5 to 10 kcal/mol in the single mutant N139D.
+
+\begin{table}
+    \begin{center}
+    \begin{singlespaced}
+    \caption{Average distance between C$_{\gamma}$ of residues 132 and 139 in the outfacing state of residue 139.}
+    \vspace{10pt}
+    \label{tbl:gamma_distances}
+    \begin{tabular}{lc}
+    System  & C$_{\gamma}$ Distance \\
+    \hline
+    Wildtype & 8.6 $\pm$ 0.6 \\
+    D132N & 9.3 $\pm$ 0.3 \\
+    N139D & 9.8 $\pm$ 0.6 \\
+    N139D/D132N & 9.0 $\pm$ 0.7 \\
+    \hline
+    \end{tabular}
+    \end{singlespaced}
+    \end{center}
+\end{table}
+
+\section{Hydration analysis of equilibrium trajectories}
+\label{sec:results-hydration}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{figures/hydration/hydration.png}
+\caption[Analysis of hydration of the D-channel and K-channel.]{Analysis of hydration of the D-channel (left) and K-channel (right). The solid lines in each graph show the normalized distributions of water molecules along the lengths of the D- and K-channel cylinders. The dotted lines show the mean cumulative sums of water molecules starting from the entrance of each channel. A representative snapshot of water in each channel is displayed above each graph. In A and B, residues N/D132, N/D139, and E286 are shown from left to right. In C, residues G312, K362, and Fe$_{a3}$ are shown from left to right. Snapshot A depicts N139 in its ``closed'' conformation, B shows the double mutant (N139D/D132N) with ``outfacing'' residue D139, and C shows the wildtype hydrated K-channel.}
+\label{fig:hydration}
+\end{figure}
+
+Normalized water distributions and cumulative sums in the D- and K-channels were calculated from the equilibration trajectories of each variant (Fig. \ref{fig:hydration}). Water distributions of the D-channel in the N139 variants (wildtype and D132N, Fig. \ref{fig:hydration}A) show that 10-12 water molecules occupy the channel on average. The distributions in the same figure clearly show the bottleneck occupied by residue N139 as described by Henry et al. (2009) \cite{Henry:2009p4543}. On the other hand, the N139D variants (Fig. \ref{fig:hydration}B) show no gap in D-channel hydration, suggesting that the side chain of residue 139 does not prevent the formation of a nearly continuous water wire. As a result, 2-4 more water molecules enter the D-channel as shown by the cumulative sum plots. These data, being from unbiased simulations, represent D-channel hydration with residue 139 in its most favourable orientation (see section \ref{sec:results-isomerization} below for details): ``closed'' for N139, and ``outfacing'' for D139. In addition, the dependence of hydration on the orientation of residue 139 was also analyzed (Figs. \ref{fig:hydration_n139_allchi1} and \ref{fig:hydration_n139d_allchi1}). These results show a small but non-zero probability of hydration in the bottleneck in wildtype when residue N139 is ``outfacing'' or ``open'', also consistent with earlier work \cite{Henry:2009p4543}. No significant correlation is observed between the orientation of residue N139D and hydration of the D-channel in the N139D single mutant.
+
+Equilibrium hydration of the K-channel was observed in all simulation systems. The results show a consistent distribution across the four systems, except between 15 and 25 Å away from the entrance of the channel. The distribution supports the notion that the K-channel contains a stable water wire, consistent with previous work predicting the K-channel to be a functional proton channel \cite{Tomson:2003p10255,Ganesan:2010p8417}.
+
+% hydration of WT in outfacing, closed and open states
+\begin{figure}[htbp]
+\centering
+\includegraphics{figures/hydration/hydration_analysis/chi1_wt/all_chi1_wt.png}
+\caption[Hydration analysis of the D-channel in the wildtype (N139) when the side chain is in each of the three metastable states: outfacing, closed, and open.]{Hydration analysis of the D-channel in the wildtype (N139) when the side chain is in each of the three metastable states: outfacing, closed, and open. The solid lines show the normalized distributions of water molecules along the lengths of the D-channel cylinders. The dotted lines show the mean cumulative sums of water molecules starting from the entrance of each channel.}
+\label{fig:hydration_n139_allchi1}
+\end{figure}
+
+% hydration of N139D in outfacing, closed and open states
+\begin{figure}[htbp]
+\centering
+\includegraphics{figures/hydration/hydration_analysis/chi1_n139d/n139d_all_chi1.png}
+\caption[Hydration analysis of the D-channel in the N139D single mutant when the side chain is in each of the three metastable states: outfacing, closed, and open.]{Hydration analysis of the D-channel in the N139D single mutant when the side chain is in each of the three metastable states: outfacing, closed, and open. The solid lines show the normalized distributions of water molecules along the lengths of the D-channel cylinders. The dotted lines show the mean cumulative sums of water molecules starting from the entrance of each channel.}
+\label{fig:hydration_n139d_allchi1}
+\end{figure}
+
+\section{Thermodynamics of \ce{K^+} translocation through the D-channel}
+\label{sec:results-kplus}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{figures/kbinding_pmfs/combined_pmf.png}
+\caption[PMFs for \ce{K^+} from bulk water, through the D-channel ``vestibule'' to residue E286 in four variants.]{PMFs for \ce{K^+} from bulk water, through the D-channel ``vestibule'' to residue E286 in four variants. Each variant's PMF is the average of 5 independent replica sets. The error is standard deviation between the individual PMFs. A \ce{K^+} ion, and residues D132, N139, and E286 (wildtype) are shown at the top as a reference. The four regions (A-D) along the reaction coordinate are also shown for reference. All PMFs are aligned on the bulk water region, where $\Delta G = 0$ kcal/mol.}
+\label{fig:pmfs_kbinding}
+\end{figure}
+
+It has been proposed that the highly-conserved residue N139 acts as a barrier to cations, imparting proton selectivity to the D-channel \cite{Henry:2009p4543}. During a simulation of the N139D protein, a \ce{K^+} ion was observed within the ``vestibule'' region of the D-channel. This finding was completely unexpected and led us to investigate \ce{K^+} binding to the D-channel of C\emph{c}O variants.
+
+The PMFs of four systems for \ce{K^+} translocation from bulk water through the D-channel to residue E286 are shown in Fig. \ref{fig:pmfs_kbinding}. Each PMF shown is the average of five PMFs, one per replica set, for each individual system. Error bars represent the standard deviation between the PMFs in each set. For convenience, four regions along the reaction coordinate are defined: A (-50 to -32 Å), B (-32 to -24 Å), C (-24 to -16 Å), and D (-16 to 0 Å). Snapshots of the D-channel (in wildtype and the N139D single mutant) with the cation in each of the four regions is shown in Fig. \ref{fig:kbinding_snapshots}.
+
+% SNAPSHOTS of each region -27, -21, -13, -5
+% -27: 63, 95, 114
+% -21: 49, 58
+% -13: 51, 56, 76, 107
+% -5: 1, 27, 31
+\begin{figure}[htbp]
+\centering
+\includegraphics{figures/kbinding_snapshots/snapshots.png}
+\caption[Snapshots of each of the four regions of the reaction coordinate in wildtype and N139D D-channels showing residues D132, N139 (or D139), and E286.]{Snapshots of each of the four regions of the reaction coordinate in wildtype and N139D D-channels showing residue D132, N139 (or D139), and E286. The \ce{K^+} cation is shown as the purple sphere.}
+\label{fig:kbinding_snapshots}
+\end{figure}
+
+Region A contains bulk water, in which the PMF is flat, as \ce{K^+} diffuses freely through water. In region B (the ``vestibule'' region) the cation approaches the ``proton antenna'', which contains residue 132. There is a clear difference in free energy between the variants containing D132 (wildtype and N139D) and D132N (D132N, and N139D/D132N), suggesting that \ce{K^+} is repelled when D132 is replaced by N, but attracted to the mouth of the D-channel in the N139D single mutant. In the double mutant, $\Delta G$ is approximately zero, suggesting that the entrance to the D-channel is neither attractive nor repulsive to \ce{K^+}. In region C (which contains the top of the ``vestibule'' region), the PMFs of the N139 and D139 variants begin to diverge dramatically. The N139 bottleneck creates a 25 kcal/mol barrier in both wildtype and D132N variants. In the double mutant (N139D/D132N) we see a barrier of 5 kcal/mol, which drops to 1 kcal/mol as the cation approaches residue D139. In contrast, the single N139D mutant shows a monotonic decrease in free energy for the movement of \ce{K^+} through this region. Past residue 139, in region D, the cation is hydrated within the ``fluid-like'' region of the D-channel, and is attracted by the deprotonated glutamic acid, E286, in all the variants considered.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{figures/kbinding_chi1z/chi1z.png}
+\caption[Density maps showing the distribution of residue 139's $\chi_1$ dihedral angle as the \ce{K^+} ion translocates through the D-channel.]{Density maps showing the distribution of residue 139's $\chi_1$ dihedral angle as the \ce{K^+} ion translocates through the D-channel. Data from the two N139 variants (wildtype and D132N) are shown on the left and data from the two N139D systems are shown on the right. The three metastable states of $\chi_1$ are labeled above each heatmap. The shaded bar across the figures indicate the location of the c$_\alpha$ of residue 139, relative to the C$_\alpha$ atom of E286 (at position 0).}
+\label{fig:kbinding_chi1z}
+\end{figure}
+
+It is clear from the PMFs that residue N139 blocks \ce{K^+} when it is in the ``closed'' state. To better understand how the cation's position affects the orientation of residue 139, the distribution of residue 139's $\chi_1$ dihedral angle was plotted versus the position of the cation along its reaction coordinate (Fig. \ref{fig:kbinding_chi1z}). These data show that the cation has an influence over residue 139's $\chi_1$ dihedral angle when it is in closer proximity to the side chain (region B of Fig. \ref{fig:pmfs_kbinding}). In the N139 systems, the residue flips into its ``open'' orientation, and then back into its ``closed'' orientation as the cation approaches the N139 side chain. In the N139D systems, the side chain is further stabilized in its ``outfacing'' orientation when the cation is in the ``vestibule''. The side chain follows the cation along its path once they are closer in proximity, leading to a stable ``closed'' state as the cation enters the ``fluid-like'' region of the channel.
+
+These results suggest that residue N139 acts as a barrier for cations such as \ce{K^+}, a function which is abolished in the N139D single mutant. The double mutant seems to show a 5 kcal/mol barrier in the ``vestibule'' region, but whether this can prevent \ce{K^+} from entering the channel may depend on the concentration of \ce{K^+}. As discussed in the next chapter, we propose that this barrier may play a role in the D-channel's proton selectivity mechanism.
+
+\subsection{Dissociation constant for \ce{K^+} binding to the D-channel ``vestibule''}
+\label{sec:results_dissociation_constants}
+
+The dissociation constant for \ce{K^+} binding to the D-channel ``vestibule'' was calculated in four systems from the PMFs above (Fig. \ref{fig:pmfs_kbinding}) as per the methods in section \ref{sec:dissociation_constants}. The binding site (``vestibule'') region of the PMF is defined to be between -32 Å and -20 Å ($z_{min}$ and $z_{max}$, respectively). The results are listed in Table \ref{tbl:dissociation_constants}.
+
+\begin{table}
+    \begin{center}
+    \begin{singlespaced}
+    \caption{$K_d$ for \ce{K^+} binding to the D-channel ``vestibule'' in four C\emph{c}O variants.}
+    \vspace{10pt}
+    \label{tbl:dissociation_constants}
+    \begin{tabular}{lc}
+    Variant & $K_d$ of \ce{K^+} \\
+    \hline
+    Wildtype & 41.82 M \\
+    N139D & 0.11 mM \\
+    D132N & 24989.51 M \\
+    N139D/D132N & 75.07 M \\
+    \hline
+    \end{tabular}
+    \end{singlespaced}
+    \end{center}
+\end{table}
+
+% dG = -RTlnK K = e^{-dG/RT}
+% R = 0.00198722 kcal/mol*K
+% T = 323.15 K
+
+% [K+ unbound] = 3.3 M
+% from the restrained cylinder (1 atom in 502.66 Å^3)
+% P_unbound = 1/502.66 Å^3
+
+% [S]   = (1/6.022*10^23) / (V Å3)*(1*10^-27 L)
+%       = 1660.577881 * 1/V
+
+% at 1/2 occupancy, P_bound/P_unbound = 1, so K = [S] at 1/2 occupancy
+% C_unbound = 1 molecule / V_unbound = 1 / (length * pi * 4^2)
+% C_unbound = 1 molecule / (P_bound * pi * R^2)
+% P_unbound = 1 / V_unbound
+
+% at 1/2 occupancy
+% P_bound = P_unbound 
+% P_unbound = 1 / (L*16pi)
+% P_bound = 1 / (L_EC *16pi)
+% L_EC = 1/(P_bound*16pi)
+
+% V_EC = L_EC*16pi = 1/P_bound
+
+% P_bound
+% Wildtype          0.79        V = 39.71           [S] = 41.82 M
+% N139D             314368.82   V = 15801900.41     [S] = 0.11 mM
+% D132N             0.001322    V = 0.066451        [S] = 24989.51 M
+% N139D/D132N       0.44        V = 22.12           [S] = 75.07 M
+

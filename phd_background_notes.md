@@ -1,24 +1,4 @@
-## fundamentals
-Questions that *always* comes up in the lab:
-- technical stuff
-	- check my simulation status
-	- file management - making work more efficient
 
-- Academics
-	- Grad school, problem solving, presentations (audience), eliciting excitement, selling ...
-	- Commonly asked question: I have no results, but what would I present?
-		- Background, motivation, objectives, hypothesis, rationale, study design. all of these things comes before any results and conclusions.  Spending time here will clarify everything else that you are doing. Rushing ahead to get results and data collection, blindly often causes time wasting, but its what people do to get things done before they understand anything.  Doing comes before understanding - this is what happens in the lab. Why? because you need to utilize techniques from many different fields to get anything done in the lab.
-	- Bottle necks to progress
-		- Where to start?
-		- How to start?
-		- Tough language to cut through ... somebody show you how to get started - this is training
-		
-	- What does it all mean, why am I doing what I am doing
-		- understanding the rationale behind the work
-- how do I know if my simulation is correct?
-	- This is related to whether the simulation is converged
-	- I *want* develop a software suite implementing a basis set of criteria to help diagnose MD simulations
-		- I think we need this more than ever because of how rapidly data is being produced
 
 - what is the relationship between free energy and what we get out of simulations?
 
@@ -74,6 +54,14 @@ REAL WORLD. REAL WORLD.
 - Gibbs free energy - gibbs ensemble, pdV which is the work done in expanding the volume of the system surroundings.  However, in simulation systems, the water is essentially in compressible so for all practical purposes, NVT and NpT is equivalent.  However, they are NOT the same stat mech ensemble.
 
 - Note reference: Molecular driving forces
+
+- Distributed replica sampling (Rodinger 2006)
+
+- STDR and statistical physics algorithmic questions:
+	- pollution from higher temps?
+		- why is it possible to run multi temperature simulations and then only pick out the structures at one temperature without "pollution" to the conformational equilibrium from the higher temperatures.
+	- relationship between exponential T-distribution and P(E): The potential energy distributions for lower temperatures are narrower and more peaked than at higher T (broader and shorter)
+	- Note that we know the distribution of potential energies at T analytically for the ideal gas
 
 # basic physical chemistry
 
