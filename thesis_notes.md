@@ -1,3 +1,6 @@
+#Significance of Thesis<!-- This is pretty important.  I can't write a thesis without first writing this section. If I can write this section the rest of the thesis should come pretty easily -->- most complete study done on a single amyloid inhibitor - detection of sugar binding modes from molecular simulations - we have demonstrated that simulations are useful for studying weak binding    - generally useful method for studying sugar binding modes to proteins   - design of next generation of amyloid inhibitors for Alzheimer's disease 
+
+
 # An attempt to pull together notes from all over the place made on my thesis research project
 (March 2012)
 
