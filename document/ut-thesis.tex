@@ -160,35 +160,49 @@ Despite its promise as a therapeutic for AD, the mechanism of action of scyllo-i
 
 %% This generates a "dedication" section, if needed.
 %% (uncomment to have it appear in the document)
-%\begin{dedication}
-%% ***   Put your Dedication here.   ***
-%\end{dedication}
+\begin{dedication}
+This thesis is dedicated to my grandparents, and my mother.
+\end{dedication}
 
 %% The `dedication' and `acknowledgements' sections do not create new
 %% pages so if you want the two sections to appear on separate pages,
 %% you should put an explicit \newpage between them.
+\newpage
 
 %% This generates an "acknowledgements" section, if needed.
 %% (uncomment to have it appear in the document)
 \begin{acknowledgements}
-% ***   Put your Acknowledgements here.   ***
-First and foremost, I am grateful to my supervisor, Regis Pomes for his wisdom, insight and guidance for the past 6 years.
+	
+First and foremost, I am grateful to my supervisor, Regis Pomes for his wisdom, insight, and guidance for the past 6 years of my life.
 
-Secondly, I thank my entire lab, past and present, for their moral support and help with my work. Nilu Chakrabarti, David Caplan, John Holyoake, Loan Huynh, Kethika K. Chris Madill, Chris Neale,  Tom Rodinger ...
+Secondly, I thank the members of my lab, both past and present, for all their moral support, and assistance with my work. 
+I would like to thank the early members of the lab Drs. Chris Madill, Chris Neale, Sarah Rauscher and Tomas Rodinger for setting an example for me of how to be an excellent student of science. Not only were they brilliant scientists, they have provided the lab with invaluable insight, and technical expertise.
 
-Finally, I thank my family, mom, grandparents for their support over the years.
-\end{acknowledgements}  
+% advice and support which have had a profound influence on my perspective on life.
+Nilu Chakrabarti, David Caplan, John Holyoake, Loan Huynh, Kethika K.
+
+% Thank Mr. Zimmerman
+
+% Thank Dr. Nasir Memon
+
+% Thank SciNet & Team
+% The computations presented in this thesis were resource intensive and I could not have accomplished any of it without generous allocations from the center for computational biology (CCB) at Sickkids and the following high-performance computing (HPC) consortia of Compute Canada: SciNet, SHARCNET, CLUMEQ, WestGrid, and RQCHP.
+% My use of these computing resources was only possible because of the excellent support staff at each of these consortia. While there are perhaps one hundred people who have contributed to this thesis in this respect, I would like to mention some of those people who have provided exceptional levels of support.
+
+Finally, I thank my mom and my grandparents for all of their support over the years. Without them I would not be here today.
+
+\end{acknowledgements}
 
 %% This generates the Table of Contents (on a separate page).
-\tableofcontents
+% \tableofcontents
 
 %% This generates the List of Tables (on a separate page), if needed.
 %% (uncomment to have it appear in the document)
-%\listoftables
+% \listoftables
 
 %% This generates the List of Figures (on a separate page), if needed.
 %% (uncomment to have it appear in the document)
-%\listoffigures
+% \listoffigures
 
 %% End of the preliminary sections: reset page style and numbering.
 \end{preliminary}
@@ -202,8 +216,27 @@ Finally, I thank my family, mom, grandparents for their support over the years.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% ***   Include chapter files here.   ***
-\include{introd}
-\include{chap2}
+\include{introduction}
+
+% Model peptides
+\include{results_chapter_1}
+
+% % KLVFFAE
+% \include{results-chapter-2}
+% 
+% % Abeta42
+% \include{results-chapter-3}
+% 
+% % PGab
+% \include{results-chapter-4}
+% 
+% % Discussion / Perspectives
+% \include{conclusions}
+
+% How to separate references?
+% Combined bibliography ? 
+
+% Combine Methods -- how ?
 
 %% This adds a line for the Bibliography in the Table of Contents.
 \addcontentsline{toc}{chapter}{Bibliography}
