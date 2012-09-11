@@ -1,0 +1,70 @@
+\chapter{Introduction (outline)}
+\section{notes}
+% agonist:  a molecule that binds to and "actives"
+
+
+\subsection{Alzheimer's Disease}
+\begin{outline}
+\1 Alzheimer's was discovered nearly a hundred years ago and yet still does not have a cure today.  Alois Alzheimer met a women in her 60s that did not know herself. Now it is known that Alzheimer's Disease (AD) is a progressive neurodegenerative disease and is the most common form of dementia in persons of age 65 or older. With the increasing longevity of our population, AD is approaching epidemic proportions with no cures or preventative therapy available.\{Blennow,2006 \#221\}
+
+\1 Years later A$\beta$ was produced synthetically in the lab. A$\beta$ was found to clump together and precipitate out of solution almost immediately, which led to the discovery of amyloid fibrils.
+
+\1 AD was the main motivator for amyloid science. The study of amyloid as being spun out of many years studying AD.
+
+\1 A long-standing hypothesis known as the amyloid hypothesis states that amyloid is the underlying cause of the pathogenesis of Alzheimer's disease.  Amyloid is thought to be toxic species.  It is most recently hypothesized that amyloid causes cellular toxicity by perturbing the cell membrane (making them ion-permeable).
+\end{outline}
+
+\section{Amyloid}
+\begin{outline}
+\1 Amyloid aggregation pathway. Monomers aggregate to form oligomers. There are different type of oligomers. Some are on-pathway to fibril formation. Some are found to be end-points of the aggregation pathway. 
+
+\1 Aggregates are implicated in disease toxicity.  The structure of these aggregates have been difficult to obtain via traditional experimental protein structural determination methods because many of the aggregates aren't soluble and are structurally disordered.
+\end{outline}
+    
+\section{Amyloid inhibition by small molecule binders}
+  \begin{outline}[enumerate]
+    \1 Amyloids are a attractive drug target.  Many small molecules are found to bind to amyloids and inhibit amyloid fibrils.   Small molecules may be one effective way to develop a treatment for amyloid disorders because they have the potential to be developed into drugs.
+    
+    \1 In order to effectively treat Alzheimer's, requires small molecule to pass the blood brain barrier.  This is a difficult thing to achieve. 
+    
+    \1 Some small molecules inhibit fibril formation, some inhibits oligomerization. They are all found to be weak binders and act on millimolar concentrations. The strongest activity is EGCG
+
+    \1 Thioflavin T and Congo red are dye molecules which are used in identifying the presence of amyloid.  Both molecules bind to the fibrillar form of amyloids.
+
+    \1 Another class of molecules which binds to one or species of amyloid is polyphenols such as EGCG. These molecule is found in green tea and wine.
+  
+    \1 These molecules are found to be weak binders.  That is, they bind at high concentrations.  
+  
+    \1 They share common chemical features.  All of them are planar in geometry, have aromatic rings, and polar functional groups around the edge of these aromatic rings.
+  \end{outline}
+
+\section{Molecular simulations}
+% Why MD?
+% To properly understand drug binding - we need motion!
+
+% The first thing that want to talk about is why people have used molecular dynamics to study proteins.  Think about the reader ... they should not have questions like ... why can't you just use docking, pick a single structure -- no single structure.  Can't assume binding sites!  
+
+% Why couldn't you have just taken A$\beta$42 and simulated that from the beginning, why model peptides?  Because computationally infeasible?  -- Why ?  I think the answer comes down to answering in part why computing protein folding is hard.
+
+% Is MD is just pretty pictures or can we get quantities that are experimentally comparable.  Are some of these things experimentally testible?  -- what are some things that I've tried to compute in my simulations that others haven't been able to do? This will be something that I should anticipate and be ready to address at my defense.  In sum, all the stuff that ever came up at my student seminar and my committee meetings ... I should be ready to answer.
+
+
+Examples are to study protein dynamics - importance of protein dynamics
+
+What is molecular dynamics simulations. A set of numerical computation algorithm which solves numerically solves the N-body problem. Solves a system of Newton's equations of motion, and provides the time-trajectory of atoms with femtosecond time resolution. The integration algorithm is XXX. Time steps used are typically 2 femtoseconds to capture the hydrogen bond vibrational motion. [MORE DETAILS AND EQUATIONS HERE]
+
+Step to produce a molecular simulation:
+First take a structure from crystallography or NMR, or homology-modelling data.
+In the algorithm, the forces acting on each atom are estimated from [insert equation here]
+
+[Ref: Chris Madill's and Tom's thesis]
+
+
+\subsection{Determining protein-ligand binding free energies}
+Have an X-ray crystal structure and know of a putative binding pocket. [See Tom's thesis]
+Ligands typically have high binding affinity to a binding pocket. Here, we want to  Binding is a low probability event and therefore infeasible to simulate using brute-force MD sampling.
+
+\subsection{Application of MD simulations to amyloid inhibition}
+MD studies using brute-force sampling.
+
+Aid in medicinal chemistry by making suggestions for how to design new AD drugs
