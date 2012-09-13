@@ -1,6 +1,6 @@
 \chapter{Introduction (outline)}
 
-\section{Amyloid: the field}
+\section{Amyloid: the field} % (fold)
 % Organizational detail: AD and amyloid (which one should go first?). Center it on Amyloid, and then bring in AD as a central motivation for doing amyloid science.
 
 % I think my focus should still be on Alzheimer's disease ... the practical purpose of my work is to understand how inositol works
@@ -10,27 +10,28 @@
 % Here, my intention is to lead into the discussion of amyloid by giving a historical perspective and overview of AD
 % And use AD as a motivation for why so much work has gone into studying amyloids.
 \begin{outline}[enumerate]
-\1 Over one hundred years since Dr. AA presented the connection between the presence of neurofibrillary tangles and the clinical symptoms of presenile dementia, we still do not yet have a cure for AD.
+\1 More than a hundred years have pass since Dr. Alois Alzheimer first presented the connection between the presence of neuronal plaques and the clinical symptoms of presenile dementia characteristic of Alzheimer's disease (AD).
 
-\1 Alzheimer's Disease (AD) is known to be a progressive neurodegenerative disease and is the most common form of dementia in persons of age 65 or older. With the increasing longevity of our population, AD is approaching epidemic proportions with no cures or preventative therapy available.\{Blennow,2006 \#221\}
+\1 Today, AD is known to be the most common cause of dementia in persons of age 65 or older. With the increasing longevity of our population, AD is approaching epidemic proportions with no cures or preventative therapy available.\{Blennow,2006 \#221\}
 
-\1 Brain dissections of patient who died from AD showed a proteinaceous plaque deposit.  This led to the currently the amyloid hypothesis which says that amyloid may be the underlying cause of the pathogenesis of Alzheimer's disease.  
+% Elaborate on happened between the step above and the amyloid hypothesis?
+\1 The discovery of amyloid plaque deposits of the brains of deceased dementia patients led to the formulation of the amyloid hypothesis which posits that amyloid aggregates may cause the pathogenesis of AD.  
 
-\1 Decades after the initial discovery of the disease, A$\beta$, the protein found in the brains of patients deceased from AD, was produced synthetically in the lab. A$\beta$ was found to clump together and precipitate out of solution almost immediately, which led to the discovery of amyloid fibrils.
+\1 Decades after the initial discovery by Alois Alzheimer, A$\beta$, the central protein component of neuronal plaques, was synthetically produced in the laboratory. In vitro, A$\beta$ was found to precipitate out of solution almost immediately, which led to the discovery of A$\beta$ amyloid fibrils.
 
-	\2 A$\beta$ is produced by intramembrane proteolytic cleavage of the larger amyloid-$\beta$ precursor protein (APP) by $\beta$-secretase, and is produced constitutively as part of the normal cellular metabolism.\{Selkoe, 2002 \#222\} Depending on the position of the cleavage, A$\beta$ peptides of lengths varying from 38 to 43 residues can be produced. However, the peptides spanning residues 1--40 (A$\beta$40) or 1--42 (A$\beta$42) are predominantly found AD-associated plaques.
+% \2 A$\beta$ is produced by intramembrane proteolytic cleavage of the larger amyloid-$\beta$ precursor protein (APP) by $\beta$-secretase, and is produced constitutively as part of the normal cellular metabolism.\{Selkoe, 2002 \#222\} Depending on the position of the cleavage, A$\beta$ peptides of lengths varying from 38 to 43 residues can be produced. However, the peptides spanning residues 1--40 (A$\beta$40) or 1--42 (A$\beta$42) are predominantly found AD-associated plaques.
+
 \end{outline}
 
-
-\subsection{Amyloid Disorders}
-\1 Many diseases have been demonstrated to be linked with the presence of amyloid. Type II diabetes, Prions, Parkinsons, Huntington's ... 
-\1 From studying AD and these neurodegenerative diseases, we were able to learn a lot about biophysics of the amyloid state.
-
-
-\section{Mechanism of Amyloid formation and toxicity}
+\section{Mechanism of amyloid formation and toxicity}
 % In this section I will talk about how amyloid aggregation is thought to work. Introduce the thermodynamic model for understanding fibril formation. I will now broadly introduce to amyloid.  
 \begin{outline}[enumerate]
 \1 Although the initial studies of amyloid was motivated by attempts to understand the etiology of AD, amyloid science now have grown into its own field.
+
+\1 Many diseases have been demonstrated to be linked with the presence of amyloid. Type II diabetes, Prions, Parkinsons, Huntington's disease etc.
+
+\1 From studying AD and these neurodegenerative diseases, we were able to learn a lot about biophysics of the amyloid state.
+
   \2 It is now known that amyloid is many different species and fibril are formed from a pathway. Different forms. Monomers aggregate to form oligomers with different conformations, which exists in equilibrium.  Amyloid fibrils are the visible endpoint of peptide aggregation and has a $\beta$-sheet structure.
   \2 Nucleation-polymerization process. The formation of amyloid is characterized by a slow nucleation-phase, a rare event, followed by a more rapid growth phase (polymerization). Amyloid aggregation pathway. Monomers aggregate to form oligomers. There are different type of oligomers. Some are on-pathway to fibril formation. Some are found to be end-points of the aggregation pathway.
   \2 In the laboratory, scientists have been able to produce amyloid from a variety of proteins by denaturing them.
@@ -75,43 +76,47 @@
 \end{outline}
 
 
-\section{Molecular Dynamics Simulations}
+\section{Molecular Dynamics (MD) Simulations} % (fold)
 % Motivate MD simulations
 \1 Molecular dynamics simulations are a useful tool to study the structure, dynamics, and interaction of biomolecules. MD simulations employ an empirical mathematical function to describe the atomic interactions in a molecular system, and together with classical laws of Newtonian mechanics, atomic trajectories of motion are generated. Thermodynamic and kinetic properties can then be extracted as time averages from these trajectories and used to make a number of predictions that are often experimentally challenging to observe or measure. 
 \1 MD simulation studies have been useful in studying many existing fundamental problems of biology and biochemistry, including protein dynamics and function, protein folding, biomolecular self-aggregation, and protein-ligand binding.
 % Study protein dynamics - importance of protein dynamics.
 
-\subsection{Methodological details of MD}
-\1 What is molecular dynamics simulations. A set of numerical computation algorithm which solves numerically solves the N-body problem. Solves a system of Newton's equations of motion, and provides the time-trajectory of atoms with femtosecond time resolution. The integration algorithm is XXX. Time steps used are typically 2 femtoseconds to capture the hydrogen bond vibrational motion. [MORE DETAILS AND EQUATIONS HERE] [Ref: Chris Madill's and Tom's thesis]
+\subsection{Methodological Details} % (fold)
+% Describe the details of molecular dynamics simulations
+
+% A set of numerical computation algorithm which solves numerically solves the N-body problem. Solves a system of Newton's equations of motion, and provides the time-trajectory of atoms with femtosecond time resolution. 
+
+% The integration algorithm is XXX. Time steps used are typically 2 femtoseconds to capture the hydrogen bond vibrational motion. [MORE DETAILS AND EQUATIONS HERE] [Ref: Chris Madill's and Tom's thesis]
 % Details of the mathematics (need to review the basic theory + Taylor series expansion) - get a book - tomorrow maybe?
 
-\1 Classical equations.  MD does not account for electron movement (the assumption at a hand-wave level adapted from Tom's thesis: 
+% The assumption at a hand-wave level adapted from Tom's thesis
 
-\1 Why is MD, in theory, correct? (Assumptions of MD)
-  \2 Born-Oppenheimer approximation says that the electronic and nuclear motions are uncouple, and therefore can be treated separately). Although electrons are not taken into account in MD simulations, their presence is implicitly accounted for via the use of potential energy functions.  Nuclei can be treated as classical particles
+\1 Why is MD correct? (Some fundamental assumptions of MD)
+  \2 The Born-Oppenheimer approximation: electronic and nuclear motions are uncoupled, and therefore can be treated separately. MD does not account for the movement of electrons. Although electrons are not taken into account in MD simulations, their presence is implicitly accounted for via the use of potential energy functions.  Atomic nuclei can be treated as classical particles.
 
-  \2 Review the basic derivations of MD simulation equations and why they work:
-    \3 Assume a small integration step (why is 2 fs chosen it is both biological and for numerical stability purposes). Roughly MD follows these steps:
-      \4 F = -grad E, where E is given by the force field potential energy function.
-      \4 Determine acceleration for each atom from the forces on each atom
-      \4 From acceleration determine momentum 
-      \4 Determine positions
+  % \2 Review the basic derivations of MD simulation equations and why they work:
+  %   \3 Assume a small integration step (why is 2 fs chosen it is both biological and for numerical stability purposes). Roughly MD follows these steps:
+  %     \4 F = -grad E, where E is given by the force field potential energy function.
+  %     \4 Determine acceleration for each atom from the forces on each atom
+  %     \4 From acceleration determine momentum 
+  %     \4 Determine positions
 
 % - Relationship between force and energy 
 % - Relationship between momentum and velocity 
 % - Why numerical approach must be used (no analytical solution for N > 2)
 % - How is the force field plugged into the general algorithm.
 
-\2 Application of an empirical force field to approximate interactions.
-    \3 Type in the force field equation V(R) = bonds + angles + impropers + dihedrals + pair interactions
+  \2 Application of an empirical force field can be used approximate atomic interactions in the system.
+      \3 Include the general force field equation, where
+      \[ V(R) = bonds + angles + impropers + dihedrals + pair interactions \]
 
-\1 Many different types of force fields
-\1 In this thesis the OPLS-AA force field was used (others amber, gromos ...)
-Many parameters that need to be determined. Often one approach is to fit to QM calculations.  Optimal to compute these for small compounds and adjust parameters by comparing calculations to experimental results.
+      \3 There many different force fields (AMBER, Gromos etc), however, in this thesis we apply OPLS-AA force field in all of our simulations.
+        \4 Many parameters that need to be determined. Often one approach is to fit to QM calculations.  Optimal to compute these for small compounds and adjust parameters by comparing calculations to experimental results.
 
-\1 Step to produce a molecular simulation: 
-\2 First take a structure from crystallography or NMR, or homology-modelling data.
-\2 In the algorithm, the forces acting on each atom are estimated from [insert equation here]
+% \1 Step to produce a molecular simulation:
+%   \2 First take a structure from crystallography or NMR, or homology-modelling data.
+%   \2 In the algorithm, the forces acting on each atom are estimated from [insert equation here]
 
 \section{Role of molecular dynamics simulations in drug discovery}
 \1 (Why computational?) Can help us get protein dynamics is important for understanding protein function. We want to understand protein function because we want to be able to design drugs to cure diseases.
@@ -173,24 +178,40 @@ MD studies using brute-force sampling. Aid in medicinal chemistry by making sugg
 \1 In recent years, molecular dynamics simulations have been intensively used to investigate the molecular basis of the structure and stability of amyloid fibrils. However, most of these studies were focused on A$\beta$ and large A$\beta$ aggregates,\{Fawzi, 2008 \#553;Esposito, 2008 \#567;Sgourakis, 2007 \#609;Wei, 2006 \#656;Tarus, 2006 \#628 Karsai, 2006 \#658\} and thus, were computationally limited by the complexity of the molecular systems. To date, few studies have attempted to provide statistically meaningful results pertaining to general mechanisms of protein self-aggregation and amyloid formation. Furthermore, despite the abundance of MD studies of A$\beta$, few studies have systematically examined the mechanism of action of small molecule inhibitors of amyloids. MD simulations of Congo red binding have only been done with the protofibril-like crystal structure composed of the segment GNNQQNY.\{Wu, 2007 \#621\} A recent simulation study of an N-methylated peptide with A$\beta$16--22 models of amyloid aggregates has provided insight into the possible mechanism of action of peptide inhibitors of amyloid formation.\{Soto, 2007 \#597\} This peptide inhibitor was shown to preferentially bind monomers to form dimers, possibly acting to inhibit fibril formation by sequestering monomers. However, peptide-based inhibitors have poor pharmacological profiles as they are actively broken down by proteases in the stomach and are difficult to transport across the blood-brain barrier. In addition, these peptide inhibitors specifically target A$\beta$ and thus do not have the potential to treat multiple amyloid diseases.
 
 \subsubsection{Molecular mechanism of binding of dye molecules}
+% Review of what is known about dye binding on amyloid fibrils.
+Two types of binding modes. Bind flat on amyloid surface. Interact with hydrophobic groups exposed on the amyloid fibrils.
+Doesn't explain why the dye molecules are also able to suppress fibril formation.
 
+% Can the birefringence be explained by these binding modes?
 
-
-% subsubsection molecular_mechanism_of_binding_of_dye_molecules (end)
-
-\section{Challenges of MD}  
+\section{Challenges of MD}
 \1 There are challenges to MD on both the length and time scale. Biology happens on the time scale of milliseconds, hours, days and years. With simulation we only get microseconds at most.  And we still need really big computers to make stuff happen at the millisecond timescale, and they are not continuous simulations. See: Anton by DE Shaw. 
 
 \1 We don't know the accuracy of our empirical force fields. We don't have effective ways to determine whether our simulations are converged.
 
-\section{How I designed my study to navigate the challenges presented by the amyloid inhibition problem and MD simulations}
-At this point, explain and discuss my approach, study-design and rationale.
+\section{Challenges of understanding amyloid inhibition}
+% Here describe how I designed my study to navigate the challenges presented by the amyloid inhibition problem and MD simulations - rationale
+% At this point, explain and discuss my approach, study-design and rationale. Include the matrix figure.
 
-% Insert figure with the matrix 
-% Rationale of the study.
-% Start with model systems
+% Figure~\ref{fig:}
+
+\section{Thesis objectives and rationale}
+\begin{figure}
+  \centering
+  \includegraphics[width=6in]{figures/introduction/matrix.pdf}
+  \caption[Rationale]{Shows the progression from small, model systems to larger and structurally more complex systems involving the full-length A$\beta$42 peptide.}
+  \label{fig:rationale}
+\end{figure}
+
+\1 A$\beta$ peptides are completely disordered.  Because A$\beta$ amyloid formation consists of many different types of aggregates, a single conformation cannot be assumed for binding.  We also do not know what the binding site looks like, where it is located on these structures.
+
+\1 Beginning with the simplest model systems for an amyloidogenic peptide, the alanine dipeptide, we systematically examine binding of inositol with systems of both increasing sequence and structural complexity.
+
 % Use brute force simulations
-% Progressive complexity
+\1 We exploit conventional MD simulation techniques because we can't readily pick a reaction coordinate as in tradition enzyme-ligand binding problems. Using large-scale sampling and repeats of many simulations to determine the binding mechanism and binding equilibria.
+
+% section thesis_objectives_and_rationale (end)
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Molecular simulation notes
