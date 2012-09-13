@@ -3,28 +3,37 @@
 \section{Amyloid: the field}
 % Organizational detail: AD and amyloid (which one should go first?). Center it on Amyloid, and then bring in AD as a central motivation for doing amyloid science.
 
+% I think my focus should still be on Alzheimer's disease ... the practical purpose of my work is to understand how inositol works
+% I am not trying to cure all amyloid diseases.
+
 \subsection{Alzheimer's Disease}
 % Here, my intention is to lead into the discussion of amyloid by giving a historical perspective and overview of AD
 % And use AD as a motivation for why so much work has gone into studying amyloids.
 \begin{outline}[enumerate]
-\1 Alzheimer's was discovered nearly a hundred years ago and yet still does not have a cure today.  Alois Alzheimer met a women in her 60s that did not know herself. Today, Alzheimer's Disease (AD) is a progressive neurodegenerative disease and is the most common form of dementia in persons of age 65 or older. With the increasing longevity of our population, AD is approaching epidemic proportions with no cures or preventative therapy available.\{Blennow,2006 \#221\}
+\1 Over one hundred years since Dr. AA presented the connection between the presence of neurofibrillary tangles and the clinical symptoms of presenile dementia, we still do not yet have a cure for AD.
+
+\1 Alzheimer's Disease (AD) is known to be a progressive neurodegenerative disease and is the most common form of dementia in persons of age 65 or older. With the increasing longevity of our population, AD is approaching epidemic proportions with no cures or preventative therapy available.\{Blennow,2006 \#221\}
 
 \1 Brain dissections of patient who died from AD showed a proteinaceous plaque deposit.  This led to the currently the amyloid hypothesis which says that amyloid may be the underlying cause of the pathogenesis of Alzheimer's disease.  
 
-\1 In 19XX, decades after Alois first noticed the disease, A$\beta$, the protein found in the brains of patients deceased from AD, was produced synthetically in the lab. A$\beta$ was found to clump together and precipitate out of solution almost immediately, which led to the discovery of amyloid fibrils.
+\1 Decades after the initial discovery of the disease, A$\beta$, the protein found in the brains of patients deceased from AD, was produced synthetically in the lab. A$\beta$ was found to clump together and precipitate out of solution almost immediately, which led to the discovery of amyloid fibrils.
 
-\2 A$\beta$ is produced by intramembrane proteolytic cleavage of the larger amyloid-$\beta$ precursor protein (APP) by $\beta$-secretase, and is produced constitutively as part of the normal cellular metabolism.\{Selkoe, 2002 \#222\} Depending on the position of the cleavage, A$\beta$ peptides of lengths varying from 38 to 43 residues can be produced. However, the peptides spanning residues 1--40 (A$\beta$40) or 1--42 (A$\beta$42) are predominantly found AD-associated plaques.
+	\2 A$\beta$ is produced by intramembrane proteolytic cleavage of the larger amyloid-$\beta$ precursor protein (APP) by $\beta$-secretase, and is produced constitutively as part of the normal cellular metabolism.\{Selkoe, 2002 \#222\} Depending on the position of the cleavage, A$\beta$ peptides of lengths varying from 38 to 43 residues can be produced. However, the peptides spanning residues 1--40 (A$\beta$40) or 1--42 (A$\beta$42) are predominantly found AD-associated plaques.
 \end{outline}
 
-\subsection{Other Amyloid Disorders}
-Many diseases have been demonstrated to be linked with the presence of amyloid. Type II diabetes, Prions, Parkinsons, Huntington's ... 
+
+\subsection{Amyloid Disorders}
+\1 Many diseases have been demonstrated to be linked with the presence of amyloid. Type II diabetes, Prions, Parkinsons, Huntington's ... 
+\1 From studying AD and these neurodegenerative diseases, we were able to learn a lot about biophysics of the amyloid state.
+
 
 \section{Mechanism of Amyloid formation and toxicity}
 % In this section I will talk about how amyloid aggregation is thought to work. Introduce the thermodynamic model for understanding fibril formation. I will now broadly introduce to amyloid.  
 \begin{outline}[enumerate]
 \1 Although the initial studies of amyloid was motivated by attempts to understand the etiology of AD, amyloid science now have grown into its own field.
   \2 It is now known that amyloid is many different species and fibril are formed from a pathway. Different forms. Monomers aggregate to form oligomers with different conformations, which exists in equilibrium.  Amyloid fibrils are the visible endpoint of peptide aggregation and has a $\beta$-sheet structure.
-  \2 Nucleation-polymerization process. Amyloid aggregation pathway. Monomers aggregate to form oligomers. There are different type of oligomers. Some are on-pathway to fibril formation. Some are found to be end-points of the aggregation pathway. 
+  \2 Nucleation-polymerization process. The formation of amyloid is characterized by a slow nucleation-phase, a rare event, followed by a more rapid growth phase (polymerization). Amyloid aggregation pathway. Monomers aggregate to form oligomers. There are different type of oligomers. Some are on-pathway to fibril formation. Some are found to be end-points of the aggregation pathway.
+  \2 In the laboratory, scientists have been able to produce amyloid from a variety of proteins by denaturing them.
 
 % Key question in the field: What is the toxic species?
 \1 Toxicity. In recent years, focus has been on finding the relevant toxic species. Oligomers have been identified as a favorite for toxic causative agent.  One hypothesis is that they interact with cellular membranes and by doing so perturb the membranes, which leads to cell death.
@@ -60,7 +69,7 @@ Many diseases have been demonstrated to be linked with the presence of amyloid. 
       
       \2 Polyphenols is a class of molecules which binds to one or species of amyloid. These molecule is found in green tea and wine.  They have anti-oxidative properties.
       
-    \1 These molecules are found to be weak binders.  That is, they bind at high concentrations.  
+    \1 These molecules are found to be weak binders.  That is, they are non-specific binders and exert their effects at high concentrations.
       
         \2 Mechanism of action. Some small molecules inhibit fibril formation, some inhibits oligomerization. They are all found to be weak binders and act on millimolar concentrations. The strongest activity is a polyphenol EGCG.
 \end{outline}
@@ -159,9 +168,15 @@ Many parameters that need to be determined. Often one approach is to fit to QM c
 \subsection{Application of MD simulations to amyloid inhibition}
 MD studies using brute-force sampling. Aid in medicinal chemistry by making suggestions for how to design new AD drugs
 
-\subsection{Review of MD studies of amyloid inhibition by small molecules}
+\subsubsection{Review of MD studies of amyloid inhibition by small molecules}
 %  Excerpt from Transfer proposal
 \1 In recent years, molecular dynamics simulations have been intensively used to investigate the molecular basis of the structure and stability of amyloid fibrils. However, most of these studies were focused on A$\beta$ and large A$\beta$ aggregates,\{Fawzi, 2008 \#553;Esposito, 2008 \#567;Sgourakis, 2007 \#609;Wei, 2006 \#656;Tarus, 2006 \#628 Karsai, 2006 \#658\} and thus, were computationally limited by the complexity of the molecular systems. To date, few studies have attempted to provide statistically meaningful results pertaining to general mechanisms of protein self-aggregation and amyloid formation. Furthermore, despite the abundance of MD studies of A$\beta$, few studies have systematically examined the mechanism of action of small molecule inhibitors of amyloids. MD simulations of Congo red binding have only been done with the protofibril-like crystal structure composed of the segment GNNQQNY.\{Wu, 2007 \#621\} A recent simulation study of an N-methylated peptide with A$\beta$16--22 models of amyloid aggregates has provided insight into the possible mechanism of action of peptide inhibitors of amyloid formation.\{Soto, 2007 \#597\} This peptide inhibitor was shown to preferentially bind monomers to form dimers, possibly acting to inhibit fibril formation by sequestering monomers. However, peptide-based inhibitors have poor pharmacological profiles as they are actively broken down by proteases in the stomach and are difficult to transport across the blood-brain barrier. In addition, these peptide inhibitors specifically target A$\beta$ and thus do not have the potential to treat multiple amyloid diseases.
+
+\subsubsection{Molecular mechanism of binding of dye molecules}
+
+
+
+% subsubsection molecular_mechanism_of_binding_of_dye_molecules (end)
 
 \section{Challenges of MD}  
 \1 There are challenges to MD on both the length and time scale. Biology happens on the time scale of milliseconds, hours, days and years. With simulation we only get microseconds at most.  And we still need really big computers to make stuff happen at the millisecond timescale, and they are not continuous simulations. See: Anton by DE Shaw. 
