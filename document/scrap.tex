@@ -1,0 +1,79 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Introduction notes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Molecular simulation notes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Why MD?
+% To properly understand drug binding - we need motion!
+
+% The first thing that want to talk about is why people have used molecular dynamics to study proteins.  Think about the reader ... they should not have questions like ... why can't you just use docking, pick a single structure -- no single structure.  Can't assume binding sites!  
+
+% Why couldn't you have just taken A$\beta$42 and simulated that from the beginning, why model peptides?  Because computationally infeasible?  -- Why ?  I think the answer comes down to answering in part why computing protein folding is hard.
+
+% Is MD is just pretty pictures or can we get quantities that are experimentally comparable.  Are some of these things experimentally testible?  -- what are some things that I've tried to compute in my simulations that others haven't been able to do? This will be something that I should anticipate and be ready to address at my defense.  In sum, all the stuff that ever came up at my student seminar and my committee meetings ... I should be ready to answer.
+
+% Talk about how MD has been used in the past and present.
+
+% Thesis organization notes:
+% KEY results:
+% 
+% Sugar binding modes 
+% 
+% Binding cooperativity
+% 
+% Binding at the surface, grooves 
+% 
+% Have not explained whether the inositol is an kinetic or thermodynamic inhibitor - speculate that it's kinetic 
+% 
+% Have not resolved whether Scyllo and chiro both work or does not work on KLVFFAE
+%     - Scyllo has more specific binding modes. TODO: peel back the densities for Scyllo and chiro and see the binding hotspots. Do they differ and how ?
+%     - Scyllo can stabilize oligomers of KLVFFAE.  Chiro not sure yet. 
+
+% Should I put this here ? As advised by Sarah: If I can
+
+% \section{Significance of thesis}
+
+% - most complete study done on a single amyloid inhibitor 
+% 
+% - detection of sugar binding modes from molecular simulations 
+% 
+% - we have demonstrated that simulations are useful for studying weak binding 
+%    - generally useful method for studying sugar binding modes to proteins 
+% 
+% - design of next generation of amyloid inhibitors for Alzheimer's disease 
+% 
+%    - selection targeting to the KLVFFAE face!!!! 
+%          - both Joanne and Mark said tonnes of literature supporting this face is relevant for inhibition!!!
+%           - so far Scyllo best at binding to this face!! This is an interesting conclusion / difference that thus only could tell from from the abeta42 model because it has two different faces which brought out the preferential binding of Scyllo to this face. 
+% 
+%            - Regis what if we used Epi or myo a positive control .... Which would make this binding to the KLVFFAE face of abeta42  hypothesis more compelling ... If another inhibitor which worked in vitro also preferentially bound to the KLVFFAE face.
+
+
+% Introduction from transfer proposal:
+% 
+% In AD, the amyloid fibrils that form the extracellular plaques are a result of the self-aggregation of monomeric A$\beta$ peptides. A variety of structural studies using electron microscopy (EM), X-ray diffraction, and solid-state NMR spectroscopy (SSNMR) have demonstrated that the core of A$\beta$ fibrils contains a cross-$\beta$ sheet structure.\{Sunde, 1997 \#226;Petkova, 2002 \#205\} Furthermore, amyloid fibrils exhibit green birefringence upon binding to Congo red and enhanced fluorescence upon binding to Thioflavin T. High resolution data from SSNMR revealed that both A$\beta$40 and A$\beta$42 fibrils are highly ordered in-register parallel $\beta$-sheets.\{Tycko, 2004 \#194\} Although there is evidence that A$\beta$40 and A$\beta$42 aggregate and form fibrils through distinct pathways,\{Bitan, 2003 \#280\} the SSNMR and EM data show no discernable structural differences between the two.\{Tycko, 2004 \#194\}
+% 
+% In addition to AD, amyloid fibril formation also plays a pathologically-relevant role in many other diseases, such as type 2 diabetes, Parkinson's disease, and Huntington's disease.\{Chiti, 2006\#51\} Many different proteins, including some that are not involved in
+% disease, have also been found to form amyloid fibrils \emph{invitro.}\{Chiti, 2006 \#51\} Recently, atomic-level structures of amyloid
+% fibrils of hexameric peptide segments from 14 different amyloidogenic proteins have been determined using X-ray microcrystallography.\{Sawaya, 2007 \#233\} These structures all share a common motif of two tightly interdigitated $\beta$-sheets stacked together with a water-excluding interface.
+% 
+% A long standing question is which aggregate species is responsible for neurotoxicity. Although fibrils have been long thought to be the primary neurotoxic species, the poor quantitative correlation of plaque presence with disease severity has made fibril-related neurotoxicity difficult to explain.\{Haass, 2007 \#3\} More recently, experimental evidence has shown that the levels of soluble A$\beta$ fibrillation intermediates correlate well with neural dysfunction, and that these species are more neurotoxic than mature fibrils,\{Caughey, 2003 \#277;Lambert, 1998 \#278;Hoshi, 2003 \#279\} suggesting that they may play an important role in AD pathogenesis.
+% 
+% EM and atomic force microscopy (AFM) experiments of soluble A$\beta$ prefibrillar assemblies have found them to be annular, spherical, or curvilinear in shape. Protofibrils, in particular, are curvilinear, filamentous structures that are smaller than mature fibrils and are approximately 5--10 nm in diameter.\{Haass, 2007 \#3\} Furthermore, protofibrils bind to dyes Thioflavin T (ThT) and Congo Red (CR), suggesting the presence of substantial $\beta$-sheet content.\{Walsh, 2007 \#2;Haass, 2007 \#3;Harper, 1999 \#319;Kodali, 2007 \#367\} Despite the importance of these prefibrillar species in causing neurodegeneration, their molecular structures are still not known. However, a recent SSNMR study demonstrated that a late stage, neurotoxic A$\beta$40 spherical intermediate contained fibril-like $\beta$-sheet structure.\{Chimon, 2007\#415\}
+% 
+% 
+% Currently, no available treatments for AD can prevent or stop the progression of the disease. One promising therapeutic approach is the development of small-molecule inhibitors of A$\beta$ aggregation.\{LeVine, 2007 \#432\} Recently, \emph{scyllo}-inositol, one of eight stereoisomers of a class of simple polyols, has emerged as a therapeutic candidate.\{McLaurin, 2006 \#513\} The four most common stereoisomers of inositol in nature are \emph{scyllo}-, \emph{myo}-, \emph{epi}-, and \emph{chiro}-inositol.\{Fisher, 2002 \#541\} Both \emph{scyllo}- and \emph{myo}-inositol are found in high concentrations in the human brain. \emph{Myo}-inositol is the most abundant isomer and is found in high concentrations in tissues of the central nervous system (CNS), serving both as a precursor for inositol lipid synthesis and as a physiologically important osmolyte.\{Fisher, 2002 \#541\} \emph{Scyllo}-, \emph{myo}-, and \emph{epi}-, but not \emph{chiro}-inositol, have been shown to inhibit A$\beta$42 fibril assembly, stabilize an oligomeric complex of A$\beta$42, and attenuate A$\beta$-oligomer-induced neurotoxicity \emph{in vitro.}\{McLaurin, 2000 \#536\} Moreover, inositol exhibits stereochemistry-specific effects on A$\beta$ fibril inhibition and cytotoxicity: \emph{scyllo}- and \emph{epi}- are more effective than \emph{myo}-inositol, whereas \emph{chiro}-inositol has no activity.
+% 
+% \emph{In vivo} studies with a transgenic mouse model of AD demonstrated that alleviation of symptoms after inositol treatment was correlated with a decrease in the levels of soluble A$\beta$ oligomers, suggesting that the beneficial effects of \emph{scyllo}-inositol may be attributed to the inhibition and/or disaggregation of high-order A$\beta$ oligomers.\{McLaurin, 2006 \#513\} Taken together, these results suggest that \emph{scyllo}-inositol, and possibily its derivatives, are a potential therapy for AD with the ability to change the course of the disease. \emph{Scyllo}-inositol is currently in phase two of clinical trials.
+
+% The mechanism of action of inositol is not known at the molecular level. Amyloid fibrillation is a multi-stage process involving different species at each stage. Small molecule inhibitors such as inositol may interact with species at various stages of aggregation. Due to the heterogeneous and non-crystalline nature of prefibrillar species, experimental determination of the molecular structures of these amyloid species remains a challenge. However, computer simulations are not limited by these experimental challenges and can provide the atomistic level of detail needed to elucidate the action of inositol on the inhibition of amyloid formation.
+
+% \section{Molecular Dynamics Simulations}
+% 
+% Molecular dynamics simulations are a useful tool to study the structure, dynamics, and interaction of biomolecules. MD simulations employ an empirical mathematical function to describe the atomic interactions in a molecular system, and together with classical laws of Newtonian mechanics, atomic trajectories of motion are generated. Thermodynamic and kinetic properties can then be extracted as time averages from these trajectories and used to make a number of predictions that are often experimentally challenging to observe or measure. MD simulation studies have been useful in studying many existing fundamental problems of biology and biochemistry, including protein folding, biomolecular self-aggregation, and protein-ligand binding.
+% 
+% In recent years, molecular dynamics simulations have been intensively used to investigate the molecular basis of the structure and stability of amyloid fibrils. However, most of these studies were focused on A$\beta$ and large A$\beta$ aggregates,\{Fawzi, 2008 \#553;Esposito, 2008 \#567;Sgourakis, 2007 \#609;Wei, 2006 \#656;Tarus, 2006 \#628 Karsai, 2006 \#658\} and thus, were computationally limited by the complexity of the molecular systems. To date, few studies have attempted to provide statistically meaningful results pertaining to general mechanisms of protein self-aggregation and amyloid formation. Furthermore, despite the abundance of MD studies of A$\beta$, few studies have systematically examined the mechanism of action of small molecule inhibitors of amyloids. MD simulations of Congo red binding have only been done with the protofibril-like crystal structure composed of the segment GNNQQNY.\{Wu, 2007 \#621\} A recent simulation study of an N-methylated peptide with A$\beta$16--22 models of amyloid aggregates has provided insight into the possible mechanism of action of peptide inhibitors of amyloid formation.\{Soto, 2007 \#597\} This peptide inhibitor was shown to preferentially bind monomers to form dimers, possibly acting to inhibit fibril formation by sequestering monomers. However, peptide-based inhibitors have poor pharmacological profiles as they are actively broken down by proteases in the stomach and are difficult to transport across the blood-brain barrier. In addition, these peptide inhibitors specifically target A$\beta$ and thus do not have the potential to treat multiple amyloid diseases. 
+
+% Here, we propose to use MD to perform a systematic study of the molecular mechanism of action of inositol, a promising therapeutic candidate for the treatment of AD.
