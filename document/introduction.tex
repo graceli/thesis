@@ -61,7 +61,9 @@ Many diseases have been identified to be linked with the presence of amyloid: Ty
 % Cure, method of prevention; is there hope?
 \begin{outline}
 	\1 In this section, I will provide an overview of some of the challenges to overcome when developing a small molecule therapeutic for Alzheimer's disease.  Furthermore, using this information, I will motivate why inositol is an exciting avenue to explore.
+	
 	  \2 scyllo-Inositol is able to cross the blood brain barrier. It has high bioavailability. Because it is not broken down in the gut, it can be taken orally.
+	  
 	  \2 Inositol is not toxic to the human body.  Inositol is used in signaling pathways.
 
 	\1 Briefly mention non-small molecule putative therapies which also acts via amyloid inhibition. The focus of this thesis will be on small-molecule amyloid inhibition.
@@ -75,10 +77,26 @@ Many diseases have been identified to be linked with the presence of amyloid: Ty
       % Talk about the different kinds of small molecules that have been found to inhibition amyloid formation.  Here I will also provide a summary of what people know about the mechanism by which they inhibit amyloid formation.
       
       \2 Pharmacological perspective of the challenge of developing an Alzheimer's drug. In order to effectively treat Alzheimer's and other neurodegenerative diseases, small molecule drug candidates must pass the blood brain barrier at sufficient concentrations for inhibition.  This is difficult to achieve.
+      
       \2 In vitro screening has led to the discovery of a large number of small-molecules which were found to affect the amyloid aggregation pathway. Many of these small molecules are thought to act by directly binding to amyloidogenic peptides and aggregates.
-        \3 Thioflavin T and Congo red are dye molecules used to identify the presence of amyloid.  Both molecules bind to mature amyloid fibrils and have been shown to affect fibril formation. (Figure Part X)
 
-        \3 Polyphenols is a large group of natural and synthetic molecules.  (−)-epigallocatechin-3-gallate, curcumin, and a polyphe- nolic grape seed extract are some that was found to inhibit fibril formation. Are also known for their anti-oxidant properties. (Figure Part Y) 
+      \begin{figure}
+        \centering
+        \includegraphics[width=3in]{figures/introduction/dyes.png}
+        \caption[Small molecule binders]{Amyloid binding dyes Congo Red and Thioflavin T}
+        \label{fig:amyloid_dyes}
+      \end{figure}
+            
+        \3 Thioflavin T and Congo red are dye molecules used to identify the presence of amyloid.  Both molecules bind to mature amyloid fibrils and have been shown to affect fibril formation. Figure~\ref{fig:amyloid_dyes}
+
+        \begin{figure}
+          \centering
+          \includegraphics[width=6in]{figures/introduction/polyphenols.png}
+          \caption[Small molecule binders]{Polyphenols}
+          \label{fig:polyphenols}
+        \end{figure}
+        
+        \3 Polyphenols is a large group of natural and synthetic molecules.  (−)-epigallocatechin-3-gallate, curcumin, and a polyphe- nolic grape seed extract are some that was found to inhibit fibril formation. Are also known for their anti-oxidant properties. Figure~\ref{fig:polyphenols}
       
       \2 Small molecule inhibitors share common chemical features and groups.  They are typically planar in geometry, have many aromatic rings, and polar functional groups (hydroxyl groups) around the edge of these aromatic rings.
     
@@ -86,16 +104,27 @@ Many diseases have been identified to be linked with the presence of amyloid: Ty
     	% IC50 -- This quantitative measure indicates how much of a particular drug or other substance (inhibitor) is needed to inhibit a given biological process (or component of a process, i.e. an enzyme, cell, cell receptor or microorganism) by half.
       % EC50 -- The term half maximal effective concentration (EC50) refers to the concentration of a drug, antibody or toxicant which induces a response halfway between the baseline and maximum after some specified exposure time.[1] It is commonly used as a measure of drug's potency.
       % Ref: wikipedia
-	
+      
+      % Review of what is known about amyloid fibril ligand binding, specifically dyes.	
+	    \3 Molecular mechanism of binding of dye molecules. Two types of binding modes. Bind flat on amyloid surface. Interact with hydrophobic groups exposed on the amyloid fibrils. Doesn't explain why the dye molecules are also able to suppress fibril formation.
+      % Can the birefringence be explained by these binding modes? -- this is out of the scope of my thesis.  Don't put this in my thesis but I should be able to coherently explain this during my defense.
+      
 	\1 Inositol molecules
 	
+	\begin{figure}
+    \centering
+    \includegraphics[width=6in]{figures/introduction/inositol.png}
+    \caption[Inositol]{Inositol stereoisomers}
+    \label{fig:inositols}
+  \end{figure}
+  
 		\2 The discovery of inositol
 		
 		\2 Role of inositol in the human body 
 		
 			\3 \emph{myo}-inositol
 			
-		\2 Where is inositol found
+		\2 Where is inositol found. Human body tissues. Myo- is present in certain grains, grape fruit but scyllo- is only found in small quantities in food sources.
 		
 		\2 Role of inositol in amyloid inhibition
 		
@@ -130,19 +159,39 @@ Many diseases have been identified to be linked with the presence of amyloid: Ty
 % 3) Screen for inhibitors against a chemical library or in silico docking.
 \begin{outline}
 	\1 Enzyme and the ligand must bind tightly and specifically, so to avoid large drug doses to inhibit the enzyme, which may have adverse side effects (toxicity) in the human body.
+
 	\1 Binding constant is a measure of the affinity of a ligand to a protein. It is the concentration at which 50\% of the drug is bound to the protein. In experimental studies, $K_d$ is often used to quantitatively identify potential binders. A small $K_d$ suggests that the ligand may bind tightly to the protein.
-	\1 Binding free energies
-		\2 Absolute binding free energy
-		\2 Relative binding free energy
-		\2 Binding equilibrium
-			\[ protein+ligand <-> (protein-ligand)aq \]
-	\1 Experimental techniques for determining $K_d$. 
+
+	\1 Binding equilibrium
+
+    \begin{equation}
+      \left[ Protein\cdot Inositol \right] 
+      \rightleftharpoons 
+      \left[ Protein \right]+\left[ Inositol \right]
+    \end{equation}
+  
+    % \2 Absolute binding free energy
+    % \2 Relative binding free energy
+    
+	\1 The binding free energy of a ligand to a protein is directly related to its dissociation constant, $K_d$, the equilibrium constant of the above reaction
+
+     \begin{equation}
+        K_{d} = f_{ub}\frac{\left[ Protein \right]\left[ Inositol \right]}{\left[Protein \cdot Inositol\right]},
+     \end{equation}
+     
+	\1 Experimental techniques for estimating $K_d$
 		\2 What experimental techniques are used to estimate binding affinity? (Study up on this.)
+		\2 Isothermo-calorimetry (ITC) can be used to measure binding to peptides.
 \end{outline}	
 
-\subsection{Role of chirality in drug binding}
-Definition of chirality [Add schematic] ... etc
-
+% \subsection{Role of chirality in drug binding}
+% Stereoisomerism is important to the activity of molecules.  It modulates binding to proteins.
+% Two types of stereochemistry
+% Constitutional isomers - differs in bonding sequences and connectivity
+% Stereoisomers - differs in orientation of their atoms in space, but no connectivity differences.
+% Definition of chirality [Add schematic] ... etc
+% Molecules with chirality have a non-superimposable mirror image, called an enantiomer.
+% A carbon molecule with four different groups has chirality.
 \addcontentsline{toc}{section}{Bibliography}
 \bibliographystyle{plain}
 \bibliography{chapter1}

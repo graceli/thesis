@@ -45,8 +45,19 @@ In this article, we present an MD simulation study of the interaction of inosito
 \subsection{Analysis Protocol}
 	The DSSP geometry criteria{Kabsch, 1983 #111} were used to determine the presence of a hydrogen bond: (1) the distance between donor (D) and acceptor (A) atoms is less than 0.35 nm; (2) the distance between the hydrogen and A is less than 0.25 nm; and (3) the angle formed by D-H-A is greater than 120°. Nonpolar contacts between inositol and peptide were defined by a separation between the center of mass of inositol and the Cβ atom of alanine less than 0.45 nm. The same cut-off was used to compute protein-protein nonpolar contacts between Cβ atoms.
 	All of the dissociation constants for inositol were calculated based on the presence of intermolecular contacts as defined above. Then, assuming that the binding equilibrium of inositol is
- ,
+	
+	% Equations used in the KLVFFAE paper                                                                                                                  
+  \begin{equation}
+    \left[ Protein\cdot Inositol \right] 
+    \rightleftharpoons 
+    \left[ Protein \right]+\left[ Inositol \right]
+  \end{equation}
+  
 the dissociation constant is the equilibrium constant of this reaction and is given by 
+
+ \begin{equation}
+   K_{d} = f_{ub}\frac{\left[ Protein \right]\left[ Inositol \right]}{\left[Protein \cdot Inositol\right]},
+ \end{equation}
  
 where fub is the fraction of unbound over bound peptide states.
 	 The DSSP algorithm was used for the analysis of secondary structure of the disordered oligomer with N- and C-termini of the peptides excluded. The end-to-end distance for a $(GA)_4$ peptide was calculated as the distance between Cα atoms of the N and C-terminus of the peptide. The spatial probability density of inositol is the average spatial occupancy of the atoms of inositol and was computed using the VolMap tool from the Visual Molecular Dynamics (VMD) software package.{humphrey, 1996 #143} The planar angle between inositol and the fibrillar model of $(GA)_4$ was computed using the g_sgangle program from GROMACS analysis tools. All planar angles were corrected to a value between 0$\degree$ and 90$\degree$, using the rule $\alpha$ = f($\theta$) = 180 - $\theta$, if $\theta$ > 90$\degree$, otherwise, $f(\theta) = \theta$. The probability distribution of the planar angles, P(α), was determined for inositol molecules with atoms within 0.25 nm of the fibril. Average nonpolar and hydrogen bonding contacts in disordered aggregates were computed using the last 70 ns of each trajectory. Error bars were determined by computing the standard deviation of the averages obtained from trajectories of independent replicas. Block averaging was used whenever a single trajectory was available.
