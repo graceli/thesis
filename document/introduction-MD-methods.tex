@@ -35,9 +35,9 @@
 % - Why numerical approach must be used (no analytical solution for N > 2)
 % - How is the force field plugged into the general algorithm.
 
-  \1 Application of an empirical force field can be used approximate atomic interactions in the system. A force field typically has many parameters which need to be calculated. One approach to do this is to fit to quantum mechanical calculations.  Often experimentally observable quantities are computed for small compounds, and the fit is then adjusted by comparing to experimental measurements.
+  \1 Application of an empirical force field can be used approximate atomic interactions in the system. A force field typically has many parameters which need to be calculated. One approach to do this is to fit to quantum mechanical calculations.  Often, force fields are iteratively improved by predicting experimentally observable quantities for small compounds, and adjusting the fit based on comparisons of these computationally predicted quantities with experimental measurements.
   
-  \1 There many different force fields (AMBER, Gromos etc), each differing slightly in the potential energy function and parameterization. In this thesis we performed all of our simulations using the force field OPLS-AA/L.
+  \1 There many different force fields (AMBER, Gromos etc), each differing slightly in the potential energy function and its parameterization. In this thesis we performed all of our simulations using the force field OPLS-AA/L.
 
   \1 Force field potential energy function
   % \[ V(R) = bonds + angles + impropers + dihedrals + pair interactions \]
@@ -49,15 +49,17 @@
           + \sum_{impropers} k_{\gamma}(\phi - \phi_{0})^2 \\
           + \sum_{nonbonded} \frac{q_1q_2}{er} \\
           + \sum_{nonbonded} \epsilon [(\frac{r_{min}}{r})^{12} - 2(\frac{r_{min}}{r})^6]
-    \end{split}    
+    \end{split}
   \end{equation}
+\end{outline}
 
+% How to run a MD simulation 
 % \1 Steps to produce a molecular simulation:
 %   \2 First take a structure from crystallography or NMR, or homology-modelling data.
 %   \2 In the algorithm, the forces acting on each atom are estimated from [insert equation here]
-\end{outline}
 
 \section{Challenges and limitations of MD simulations}
+
 \begin{outline}
 	\1 MD is computationally challenging because of limitations in length and time scales.
 	
@@ -74,26 +76,20 @@
 % \1 (Why computational?) Can help us get protein dynamics is important for understanding protein function. We want to understand protein function because we want to be able to design drugs to cure diseases.
 
 % \1 A important application of MD simulation in biochemistry is the predicting of protein-ligand binding free energies.
+	\1 A broad application of simulations of proteins is to computationally design drugs and combining that with structure-based drug design. In recent years structure-based computer modeling of protein-ligand interactions have become a core component of modern drug discovery. 
 
-	\1 Cheaper, faster, get atomic resolution. Modeling can be used to rapidly prototype an experimental idea -- for example, one can performed computer alchemy, that is, ''mutate``'' residues to test hypothesis. In recent years structure-based computer modeling of protein-ligand interactions have become a core component of modern drug discovery. REF: Mobley, Dill 2004 Computers are advancing thus it is cheaper, MD may be used as a drug discovery platform. In terms of drug discovery, can be used to determine whether a chemical change will produce a more potent drug candidate.
-
-	% MD is more straightforward if there is a folded, protein structure.
-	\1 A broad application of simulations of proteins is to computationally design drugs and combining that with structure-based drug design.
+	\1 Current drug discovery platform. Typically, the first step in drug discovery is to identifying a target, a putative binding site.  Then, solve the X-ray crystal structure of the target.
+  % [See Tom's thesis]
 	
-	  \2 First you solve a protein structure using conventional structural determination methods such as X-ray crystallography or perhaps NMR.  Typically you would have an idea of where the binding pocket is as well. 
-	
-	  \2 Then taking a protein force field and apply MD simulations to the protein structure in the presence of the putative ligand.  Because the binding affinity is very high (usually the binding specificity ...
-	% The sentences above are pretty repetitive. Combine and tighten.
+	\1 Ligands which may act as potential drugs typically have high binding affinity to the binding site. The goal is to find high specificity inhibitor of a protein (usually an enzyme). The binding free energy is an important quantity which can be used to evaluate how well a ligand binds. One method of estimating binding affinity is by using computational docking methods, where the binding affinity is typically estimated without taking into account of protein dynamics.  Although docking is computationally less expensive, it is inaccurate for identifying true drug candidates because binding often involves crucial changes in protein conformation.
 
-	\1 Typically, an X-ray crystal structure of a target is first determined with a putative binding site. [See Tom's thesis]
+	\1 With computer hardware becoming faster and cheaper, MD simulation and modeling can be used to rapidly prototype experimental ideas -- for example, one can perform computational alchemy, that is, ``mutate'' residues to test various hypotheses. Furthermore, simulations may be used to determine whether a chemical change will produce a more potent drug candidate.
 	
-	\1 Ligands which may act as potential drugs typically have high binding affinity to the binding site. The goal is to find high specificity inhibitor of a protein (usually an enzyme). The binding free energy is an important quantity which can be used to evaluate how well a ligand binds. One method of estimating binding affinity is by using computational docking methods, where the binding affinity is measured without taking into account of the protein conformational entropy.  Although docking is computationally less expensive, it is inaccurate for identifying true drug candidates because binding often involves changes in protein conformation.
-
 	\1 Currently state of the art computational binding studies take into the account of change in protein conformation. MD simulations is an effective method, where the protein and drug is allowed to relax and freely move about in the system.
 
-	\1 However, in the case of very specific binding, observing binding events is a low probability event in MD simulations. Therefore it is not practical to use brute-force MD sampling to determine free energies.
+	\1 However, in the case of understanding a specific binding reaction (eg. when developing an enzyme inhibitor), the ability to observe the relevant binding events is a low probability event on the timescale achievable in our simulations. Therefore, it is  impractical in this case to solely apply brute-force sampling techniques to determine binding free energies.
 
-	  \2 Methods used to determine binding free energies using MD:
+	  \2 Methods used to determine binding free energies using simulations:
 	  % \3 Linear interaction energy -- Out of scope
 	  % \3 MM/PBSA - no explicit account for solvents -- Out of scope
 	  	\3 Thermodynamic perturbation \cite{Gilson:2007hz}
@@ -102,28 +98,43 @@
 \end{outline}
 
 \section{Review of MD studies of amyloid inhibition by small molecules}
-MD studies using brute-force sampling. Aid in medicinal chemistry by making suggestions for how to design new AD drugs
+% MD studies using brute-force sampling. Aid in medicinal chemistry by making suggestions for how to design new AD drugs.
 
 \begin{outline}
 	%  Excerpt from Transfer proposal
-	\1 In recent years, molecular dynamics simulations have been intensively used to investigate the molecular basis of the structure and stability of amyloid fibrils. However, most of these studies were focused on A$\beta$ and large A$\beta$ aggregates,\{Fawzi, 2008 \#553;Esposito, 2008 \#567;Sgourakis, 2007 \#609;Wei, 2006 \#656;Tarus, 2006 \#628 Karsai, 2006 \#658\} and thus, were computationally limited by the complexity of the molecular systems. To date, few studies have attempted to provide statistically meaningful results pertaining to general mechanisms of protein self-aggregation and amyloid formation. Furthermore, despite the abundance of MD studies of A$\beta$, few studies have systematically examined the mechanism of action of small molecule inhibitors of amyloids. MD simulations of Congo red binding have only been done with the protofibril-like crystal structure composed of the segment GNNQQNY.\{Wu, 2007 \#621\} A recent simulation study of an N-methylated peptide with A$\beta$16-22 models of amyloid aggregates has provided insight into the possible mechanism of action of peptide inhibitors of amyloid formation.\{Soto, 2007 \#597\} This peptide inhibitor was shown to preferentially bind monomers to form dimers, possibly acting to inhibit fibril formation by sequestering monomers. However, peptide-based inhibitors have poor pharmacological profiles as they are actively broken down by proteases in the stomach and are difficult to transport across the blood-brain barrier. In addition, these peptide inhibitors specifically target A$\beta$ and thus do not have the potential to treat multiple amyloid diseases.
+	\1 In recent years, molecular dynamics simulations have been intensively used to investigate the molecular basis of the structure and stability of amyloid fibrils. 
+	
+	\1 MD simulations of Congo red binding have been done with the protofibril-like crystal structure composed of the segment GNNQQNY.\{Wu, 2007 \#621\}
+	
+	\1 A recent simulation study of an N-methylated peptide with A$\beta$16-22 models of amyloid aggregates has provided insight into the possible mechanism of action of peptide inhibitors of amyloid formation.\{Soto, 2007 \#597\} This peptide inhibitor was shown to preferentially bind monomers to form dimers, possibly acting to inhibit fibril formation by sequestering monomers. However, peptide-based inhibitors have poor pharmacological profiles as they are actively broken down by proteases in the stomach and are difficult to transport across the blood-brain barrier. In addition, these peptide inhibitors specifically target A$\beta$ and thus do not have the potential to treat multiple amyloid diseases.
 \end{outline}
 
 
 \section{Thesis objectives and rationale}
 % Understanding amyloid inhibition in the context of the framework of traditional enzyme inhibition mechanism
-\subsection{Differences between amyloid inhibition and enzyme inhibition}
+\subsection{Challenges of amyloid inhibition}
 \begin{outline}
-    \1 Can we think about amyloid inhibition as a tradition enzyme inhibition problem ? Not exactly. We have the exact opposite of this framework with amyloids. Most inhibitors are found to be very weak binders ... how are they working as a drug then? And how do we approach this with MD simulations?
+       % However, most of these studies were focused on A$\beta$ and large A$\beta$ aggregates,\{Fawzi, 2008 \#553;Esposito, 2008 \#567;Sgourakis, 2007 \#609;Wei, 2006 \#656;Tarus, 2006 \#628 Karsai, 2006 \#658\} and thus, were computationally limited by the complexity of the molecular systems.
 
-    \1 The enzyme and ligand inhibition / binding model cannot be directly applied to understanding amyloid inhibition.  No folded structure, no putative structure (there are many, which one?), no putative binding site (generally presents a surface).
+
+    \1 The protein-ligand binding model developed to understand enzyme inhibition cannot be directly applied to understand the molecular mechanism of amyloid inhibition by small molecules. 
+    
+      \2 Amyloid inhibitors are found to be very weak binders. How do non-specific inhibitors act as a drug? And how do we approach this with MD simulations?
+      
+      \2  Because the A$\beta$ amyloid aggregate pathway encompasses a variety of species, some of which has no folded structure, a single conformation cannot be assumed for binding. Furthermore, structural information of amyloidogenic species lags behind those of enzymes, which tends to be globular proteins amenable for X-ray crystallography. This means that the putative binding sites are not known.
+      
+      \2 The structural disorder of the peptides involved poses a challenge for obtaining converged properties from MD simulations. 
+    
+    	\1 A$\beta$ peptides are completely disordered.  We also do not know what the binding site looks like, where it is located on these structures.
+    	
+    \1 To date, few studies have attempted to provide statistically meaningful results pertaining to general mechanisms of protein self-aggregation and amyloid formation. Furthermore, despite the abundance of MD studies of A$\beta$, few studies have systematically examined the mechanism of action of small molecule inhibitors of amyloids
 
     \1 In AD, there is the added challenge of the drug being able to cross the brain barrier, while remaining non-neurotoxic.  What kind of drugs cross the BBB?  Typically hydrophobic drugs.
 \end{outline}    
 
 \subsection{Study Design and Rationale}
 \begin{outline}
-	\1 Here describe how I designed my study to navigate the challenges presented by the amyloid inhibition problem and MD simulations - rationale. At this point, explain and discuss my approach, study-design and rationale. Include the matrix figure.
+	\1 Here describe in detail how I designed my study to circumvent the challenges presented by the amyloid inhibition problem, and the limitations  of MD simulations. At this point, clearly explain and discuss my study design and rationale. (Fig.~\ref{fig:rationale})
 
   \begin{figure}
     \centering
@@ -132,12 +143,12 @@ MD studies using brute-force sampling. Aid in medicinal chemistry by making sugg
     \label{fig:rationale}
   \end{figure}
 
-	\1 A$\beta$ peptides are completely disordered.  Because A$\beta$ amyloid formation consists of many different types of aggregates, a single conformation cannot be assumed for binding.  We also do not know what the binding site looks like, where it is located on these structures.
-
 	\1 Beginning with the simplest model systems for an amyloidogenic peptide, the alanine dipeptide, we systematically examine binding of inositol with systems of both increasing sequence and structural complexity.
 
 	% Use brute force simulations
-	\1 We exploit conventional MD simulation techniques because we can't readily pick a reaction coordinate as in tradition enzyme-ligand binding problems. Using large-scale sampling and repeats of many simulations to determine the binding mechanism and binding equilibria.	
+	\1 We exploit conventional MD simulation techniques because simulation approaches used for understanding enzyme-ligand binding is not applicable. 
+	
+	\1 Instead, we use conventional MD simulations and repeats of independent simulations to determine the binding modes, and binding equilibria of inositol with amyloidogenic peptides and aggregates of A$\beta$.
 \end{outline}
 
 \addcontentsline{toc}{section}{Bibliography}
