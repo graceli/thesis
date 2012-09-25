@@ -4,10 +4,13 @@
 
 % I think my focus should still be on Alzheimer's disease ... the practical purpose of my work is to understand how inositol works
 % I am not trying to cure all amyloid diseases.
-\section{Amyloid disorders}
+\section{Amyloid}
 Many diseases, most of them neurodegenerative, have been linked with the presence of amyloid: Prion-related diseases, Parkinson's, Huntington's disease, Type II diabetes etc.
 
-\subsection{Alzheimer's Disease}
+\subsection{Involvement in disease}
+	% Importance of understanding amyloid.  Role of amyloid in the human body.
+
+\subsubsection{Alzheimer's Disease}
 % Here, my intention is to lead into the discussion of amyloid by giving a historical perspective and overview of AD
 % And use AD as a motivation for why so much work has gone into studying amyloids.
 \begin{outline}[enumerate]
@@ -21,57 +24,89 @@ Many diseases, most of them neurodegenerative, have been linked with the presenc
 % \2 \abeta is produced by intramembrane proteolytic cleavage of the larger amyloid-$\beta$ precursor protein (APP) by $\beta$-secretase, and is produced constitutively as part of the normal cellular metabolism.\{Selkoe, 2002 \#222\} Depending on the position of the cleavage, \abeta peptides of lengths varying from 38 to 43 residues can be produced. However, the peptides spanning residues 1--40 (\abeta40) or 1--42 (\abeta42) are predominantly found AD-associated plaques.
 \end{outline}
 
-\section{Amyloid: formation and mechanism of toxicity}
-  % In this section I will talk about how amyloid aggregation is thought to work. Introduce the thermodynamic model for understanding fibril formation. I will now broadly introduce to amyloid.  
-  \begin{outline}[enumerate]
-    \1 Finding a treatment for AD and other fatal neurodegenerative diseases motivated many biochemical and biophysical studies of the amyloid state.  
-    
-    \1 In vitro, a variety of proteins and peptides, folded or intrinsically disordered, have been shown to be able to aggregate to form amyloid fibrils under certain solution conditions. Currently, it is thought that amyloid fibrillar state may be the globally stable folded state for all proteins.
+\subsubsection{Toxicity}
+% I think outline some of the ideas / hypothesis about the link between amyloid and disease, but don't go into what people speculate or data on toxicity. It is related, but this is out of the scope of your thesis.
+ \begin{outline}
+ 	% Key question in the field: What is the toxic species?
+ 	\1 Multiple lines of research have identified oligomers as a likely causative agent for neuronal cell death. By contrast, the monomeric and fibril forms are thought to be less toxic than oligomers. It is hypothesized that soluble oligomers may cause toxicity by perturbing the integrity of cellular membranes through binding and disrupting the lipid bilayer (perhaps by making them ion permeable). \cite{Walsh:2007fu}
+ 	\1 Include a paragraph about amyloid formation and lipid membranes (?)
+ 	% Understanding the toxicity or finding out whether there is a toxic species in part validates the amyloid hypothesis. 
+ \end{outline}
 
-    \1 Amyloid fibrils are formed via a complex aggregation pathway. Initially, monomers aggregate to form oligomers with different morphologies which exists in equilibrium with amyloid fibrils. Some of these oligomers are on-pathway to fibril formation, while others themselves may be end-points of the aggregation pathway. Amyloid fibrils, typically the visible endpoint of aggregation, has a cross-$\beta$ structure.
-    
-    \1 Fibrils are protease resistant and are insoluble in the presence of SDS.
+\subsection{Structure and Formation}
+  % In this section I will talk about how amyloid aggregation is thought to work. Introduce the thermodynamic model for understanding fibril formation. I will now broadly introduce to amyloid.  
+	Finding a treatment for AD and other fatal neurodegenerative diseases motivated many biochemical and biophysical studies of the amyloid state.  
+
+  \begin{outline}[enumerate]
+	\1 In vitro, a variety of proteins and peptides, folded or intrinsically disordered, have been shown to be able to aggregate to form amyloid fibrils under certain solution conditions. 
+
+	\1 Amyloid fibrils are formed via a complex aggregation pathway. Initially, monomers aggregate to form oligomers with different morphologies which exists in equilibrium with amyloid fibrils. Some of these oligomers are on-pathway to fibril formation, while others themselves may be end-points of the aggregation pathway. Biochemically, fibrils are protease resistant and are insoluble in the presence of SDS.
+
+   \1 Currently, it is thought that amyloid fibrillar state may be the globally stable folded state for all proteins.
   \end{outline}
 
- \subsection{Fibrils}
-    \subsubsection{Structure} % (fold)
+ \subsubsection{Fibrils}
+    \subsubsubsection{Structure} % (fold)
     \label{ssub:structure}
+    % Add details on the definition of the cross-$\beta$ structure and its significance. 
 
-    % subsubsection structure (end)
-   \begin{outline}
-    % \1 Add details on the definition of the cross-$\beta$ structure and its significance.
+Early X-ray diffraction studies show that fibrils have a regular structure, which is defined by a characteristic 4.8\angstrom\ interpeptide, and 10\angstrom\ intersheet spacing. Biophysicists have adopted this as the definition of the cross-$\beta$ amyloid fiber structure. (Figure~\ref{fig:fibril_diffraction})
+\begin{figure}
+  \centering
+  \includegraphics[width=6in]{figures/introduction/fibril_structure_diffraction.pdf}
+  \caption[Characteristic cross-$\beta$ spacings from X-ray fibre diffraction studies of amyloid fibrils]{This is adapted from Eisenberg, 2012}
+  \label{fig:fibril_diffraction}
+\end{figure}
 
-    \1 Decades after the initial discovery by Alois Alzheimer, \abeta, the central protein component of neuronal plaques, was synthetically produced in the laboratory. In vitro, \abeta\ was found to precipitate out of solution almost immediately. 
-  		\2 Describe the molecular structure of \abeta\ amyloid fibrils. Briefly mention the techniques that can be used to obtain structural information of amyloid fibrils. Early X-ray diffraction studies show that fibrils have a regular structure.  This structure is defined by a 4.8\angstrom\ interpeptide, and 9.8\angstrom\ intersheet spacing. This defines the cross-$\beta$ structure. (Figure~\ref{fig:fibril_diffraction})
-  	\end{outline}
+After staining amyloid fibers are visible as long unbranched fibrils under the transmission Electron microscope (TEM). Figure~\ref{fig:fibril_TEM_SSNMR}
+\begin{figure}
+  \centering
+  \includegraphics[width=6in]{figures/introduction/fibril_TEM_SSNMR.pdf}
+  \caption[Characteristic cross-$\beta$ spacings from X-ray fibre diffraction studies of amyloid fibrils]{A Example EM images of oligomers.  Adapted from Bitan G. et al. 2003 and Walsh D. 1999 C TEM image of fibrils D SSNMR model proposed by Tycko et al.  }
+  \label{fig:fibril_TEM_SSNMR}
+\end{figure}
+% Describe the molecular structure of \abeta\ amyloid fibrils. 
+% Briefly mention the techniques that can be used to obtain structural information of amyloid fibrils.
 
-    \begin{figure}
-      \centering
-      \includegraphics[width=6in]{figures/introduction/fibril_structure_diffraction.jpg}
-      \caption[Characteristic cross-$\beta$ spacings from X-ray fibre diffraction studies of amyloid fibrils]{}
-      \label{fig:fibril_diffraction}
-    \end{figure}
+% Since the discovery of the cross-$\beta$ several biophysical techniques have been applied to uncover the molecular structure of fibrils. 
 
-    \begin{figure}
-      \centering
-      \includegraphics[width=6in]{figures/introduction/fibril_structure_NMR.jpg}
-      \caption[Blah]{NMR model of the core \abeta\ amyloid fibril consistent with MPL from EM, STEM and the cross-$\beta$ structure}
-      \label{fig:NMR_fibril_model}
-    \end{figure}
-  
-  \subsection{Structure of Non-fibrillar oligomers}
+In recent years, advances in SSNMR and X-ray crystallography have recently made major contributions to our knowledge of the structures of amyloid fibrils.
+
+% SSNMR
+Both A$\beta$40 and A$\beta$42 amyloid fibrils have been studied in detail using solid-state NMR. Figure~\ref{fig:fibril_TEM_SSNMR}
+% \begin{figure}
+%   \centering
+%   \includegraphics[width=6in]{figures/introduction/fibril_structure_NMR.jpg}
+%   \caption[Blah]{NMR model of the core \abeta\ amyloid fibril consistent with MPL from EM, STEM and the cross-$\beta$ structure}
+%   \label{fig:fibril_SSNMR_model}
+% \end{figure}
+
+% X-ray structures
+Furthermore, small peptide fragments that have characteristics of amyloid fibrils, which are also amenable to single crystal X-ray diffraction analysis have demonstrated similar type structures from those studied using SSNMR.  These structures obtained by X-ray crystallography have been described to have a dry interface with stacked sheets. (Figure~\ref{fig:fibril_xray_model})
+
+\begin{figure}
+  \centering
+  \includegraphics[width=6in]{figures/introduction/fibril_xray_model.pdf}
+  \caption[Characteristic cross-$\beta$ spacings from X-ray fibre diffraction studies of amyloid fibrils]{This is adapted from Eisenberg, 2012}
+  \label{fig:fibril_xray_model}
+\end{figure}
+
+
+% Fibrils all have the cross beta structure in common
+The ubiq- uitous presence of a cross-β structure strongly supports the view that the physicochemical properties of the polypeptide chain are the major determinants of the fibrillar structure in each case. Moreover, several of the proposed structures, despite very different sequences of their component polypeptides, suggest that the core region is composed of two to four sheets that interact closely with each other. An interesting feature of these sheets is that they appear to be much less twisted than ex- pected from the analysis of the short arrays of β-strands that form β-sheets in globular protein structures. This feature was first pro- posed from cryo-EM and has been supported by Fourier transform infrared (FTIR) analy- ses (48, 61).
+
+% But fibrils vary in the length of the beta-strand involved, side chain orientation
+
+% Even fibrils formed from a single peptide can exhibit polymorphism due to the different experimental conditions under which they are formed.
+Amyloid Fibrils have been found to exhibit polymorphism at the molecular level, but all have similar ultrastructures.  % (Figure~\ref{fig:fibril_diffraction})
+
+		% \1 Decades after the initial discovery by Alois Alzheimer, \abeta, the central protein component of neuronal plaques, was synthetically produced in the laboratory. In vitro, \abeta\ was found to precipitate out of solution almost immediately. 
+
+  \subsubsection{Structure of Non-fibrillar oligomers}
    Due to their structural disorder and their insolubility, structural determination of oligomers have posed challenging experimentally.
 	
-  \subsection{Kinetics}
+  \subsubsection{Kinetics of aggregation}
   Amyloid fibrils have been observed to form via a two-step nucleation-polymerization process. In the nucleation phase, energetic barriers of aggregation must be overcome to form the initial aggregation nucleus or seed.  Following nucleation, free monomers bind to the nucleated aggregates and polymerize into mature fibrils.\cite{Murphy:2002fe}
-    
-  \subsection{Toxicity}
-  \begin{outline}
-  	% Key question in the field: What is the toxic species?
-  	\1 Multiple lines of research have identified oligomers as a likely causative agent for neuronal cell death. By contrast, the monomeric and fibril forms are thought to be less toxic than oligomers. It is hypothesized that soluble oligomers may cause toxicity by perturbing the integrity of cellular membranes through binding and disrupting the lipid bilayer (perhaps by making them ion permeable). \cite{Walsh:2007fu}
-  	\1 Include a paragraph about amyloid formation and lipid membranes (?)
-  	% Understanding the toxicity or finding out whether there is a toxic species in part validates the amyloid hypothesis. 
-  \end{outline}
 
 
 \section{Amyloid Inhibition: A promising treatment for amyloid disorders}
@@ -212,6 +247,48 @@ Many diseases, most of them neurodegenerative, have been linked with the presenc
 % Molecules with chirality have a non-superimposable mirror image, called an enantiomer.
 % A carbon molecule with four different groups has chirality.
 
+\section{Thesis objectives and rationale}
+% Understanding amyloid inhibition in the context of the framework of traditional enzyme inhibition mechanism
+\subsection{Challenges of amyloid inhibition}
+\begin{outline}
+       % However, most of these studies were focused on A$\beta$ and large A$\beta$ aggregates,\{Fawzi, 2008 \#553;Esposito, 2008 \#567;Sgourakis, 2007 \#609;Wei, 2006 \#656;Tarus, 2006 \#628 Karsai, 2006 \#658\} and thus, were computationally limited by the complexity of the molecular systems.
+
+    \1 The protein-ligand binding model developed to understand enzyme inhibition cannot be directly applied to understand the molecular mechanism of amyloid inhibition by small molecules. 
+    
+      \2 Amyloid inhibitors are found to be very weak binders. How do non-specific inhibitors act as a drug? And how do we approach this with MD simulations?
+      
+      \2  Because the A$\beta$ amyloid aggregate pathway encompasses a variety of species, some of which has no folded structure, a single conformation cannot be assumed for binding. Furthermore, structural information of amyloidogenic species lags behind those of enzymes, which tends to be globular proteins amenable for X-ray crystallography. This means that the putative binding sites are not known.
+      
+      \2 The structural disorder of the peptides involved poses a challenge for obtaining converged properties from MD simulations. 
+    
+    	\1 A$\beta$ peptides are completely disordered.  We also do not know what the binding site looks like, where it is located on these structures.
+    	
+    \1 To date, few studies have attempted to provide statistically meaningful results pertaining to general mechanisms of protein self-aggregation and amyloid formation. Furthermore, despite the abundance of MD studies of A$\beta$, few studies have systematically examined the mechanism of action of small molecule inhibitors of amyloids
+
+    \1 In AD, there is the added challenge of the drug being able to cross the brain barrier, while remaining non-neurotoxic.  What kind of drugs cross the BBB?  Typically hydrophobic drugs.
+\end{outline}    
+
+\subsection{Study Design and Rationale}
+\begin{outline}
+	\1 Here describe in detail how I designed my study to circumvent the challenges presented by the amyloid inhibition problem, and the limitations  of MD simulations. At this point, clearly explain and discuss my study design and rationale. (Fig.~\ref{fig:rationale})
+
+  \begin{figure}
+    \centering
+    \includegraphics[width=6in]{figures/introduction/matrix.pdf}
+    \caption[Rationale]{Shows the progression from small, model systems to larger and structurally more complex systems involving the full-length A$\beta$42 peptide.}
+    \label{fig:rationale}
+  \end{figure}
+
+	\1 Beginning with the simplest model systems for an amyloidogenic peptide, the alanine dipeptide, we systematically examine binding of inositol with systems of both increasing sequence and structural complexity.
+
+	% Use brute force simulations
+	\1 We exploit conventional MD simulation techniques because simulation approaches used for understanding enzyme-ligand binding is not applicable. 
+	
+	\1 Instead, we use conventional MD simulations and repeats of independent simulations to determine the binding modes, and binding equilibria of inositol with amyloidogenic peptides and aggregates of A$\beta$.
+\end{outline}
+
+\section{Thesis Organization}
+The first chapter introduces the thesis in the context of the field.  The second chapter introduces the main methods used in the work in the thesis. Chapters 3, 4, and 5 are the results of simulations of inositol with amyloid like peptides and aggregates. Chapter 6 shows work of the general applicability of our methods developed throughout this thesis to MD simulations to understand protein - carbohydrate binding. Chapter 7 provides discussion, suggestions for future work, and perspectives.
 
 \addcontentsline{toc}{section}{Bibliography}
 \bibliographystyle{plain}

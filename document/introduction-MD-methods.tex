@@ -1,4 +1,7 @@
 \chapter{Methods}
+% This isn't all methods.  The last section is a review of MD simulations of small molecule binding to amyloids.
+% But I'm hesitant to call this MD simulations chapter because ... not sure why.
+
 % Motivate MD simulations
 \begin{outline}
 \1 Molecular dynamics simulations are a useful tool to study the structure, dynamics, and interaction of biomolecules. MD simulations employ an empirical mathematical function to describe the atomic interactions in a molecular system, and together with classical laws of Newtonian mechanics, atomic trajectories of motion are generated. Thermodynamic and kinetic properties can then be extracted as time averages from these trajectories and used to make a number of predictions that are often experimentally challenging to observe or measure.
@@ -7,7 +10,7 @@
 % Study protein dynamics - importance of protein dynamics.
 \end{outline}
 
-\section{Methodological Details} % (fold)
+\section{Molecular Dynamics Simulations} % (fold)
 % Describe the details of molecular dynamics simulations
 
 % A set of numerical computation algorithm which solves numerically solves the N-body problem. Solves a system of Newton's equations of motion, and provides the time-trajectory of atoms with femtosecond time resolution. 
@@ -58,7 +61,7 @@
 %   \2 First take a structure from crystallography or NMR, or homology-modelling data.
 %   \2 In the algorithm, the forces acting on each atom are estimated from [insert equation here]
 
-\section{Challenges and limitations of MD simulations}
+\section{Challenges and limitations of MD}
 
 \begin{outline}
 	\1 MD is computationally challenging because of limitations in length and time scales.
@@ -71,7 +74,7 @@
 	\1 Limitations in the accuracy of current force fields.
 \end{outline}		
 
-\section{Application of MD: structure-based drug discovery}
+\section{Application of MD in structure-based drug discovery}
 \begin{outline}
 % \1 (Why computational?) Can help us get protein dynamics is important for understanding protein function. We want to understand protein function because we want to be able to design drugs to cure diseases.
 
@@ -108,51 +111,6 @@
 	
 	\1 A recent simulation study of an N-methylated peptide with A$\beta$16-22 models of amyloid aggregates has provided insight into the possible mechanism of action of peptide inhibitors of amyloid formation.\{Soto, 2007 \#597\} This peptide inhibitor was shown to preferentially bind monomers to form dimers, possibly acting to inhibit fibril formation by sequestering monomers. However, peptide-based inhibitors have poor pharmacological profiles as they are actively broken down by proteases in the stomach and are difficult to transport across the blood-brain barrier. In addition, these peptide inhibitors specifically target A$\beta$ and thus do not have the potential to treat multiple amyloid diseases.
 \end{outline}
-
-
-\section{Thesis objectives and rationale}
-% Understanding amyloid inhibition in the context of the framework of traditional enzyme inhibition mechanism
-\subsection{Challenges of amyloid inhibition}
-\begin{outline}
-       % However, most of these studies were focused on A$\beta$ and large A$\beta$ aggregates,\{Fawzi, 2008 \#553;Esposito, 2008 \#567;Sgourakis, 2007 \#609;Wei, 2006 \#656;Tarus, 2006 \#628 Karsai, 2006 \#658\} and thus, were computationally limited by the complexity of the molecular systems.
-
-
-    \1 The protein-ligand binding model developed to understand enzyme inhibition cannot be directly applied to understand the molecular mechanism of amyloid inhibition by small molecules. 
-    
-      \2 Amyloid inhibitors are found to be very weak binders. How do non-specific inhibitors act as a drug? And how do we approach this with MD simulations?
-      
-      \2  Because the A$\beta$ amyloid aggregate pathway encompasses a variety of species, some of which has no folded structure, a single conformation cannot be assumed for binding. Furthermore, structural information of amyloidogenic species lags behind those of enzymes, which tends to be globular proteins amenable for X-ray crystallography. This means that the putative binding sites are not known.
-      
-      \2 The structural disorder of the peptides involved poses a challenge for obtaining converged properties from MD simulations. 
-    
-    	\1 A$\beta$ peptides are completely disordered.  We also do not know what the binding site looks like, where it is located on these structures.
-    	
-    \1 To date, few studies have attempted to provide statistically meaningful results pertaining to general mechanisms of protein self-aggregation and amyloid formation. Furthermore, despite the abundance of MD studies of A$\beta$, few studies have systematically examined the mechanism of action of small molecule inhibitors of amyloids
-
-    \1 In AD, there is the added challenge of the drug being able to cross the brain barrier, while remaining non-neurotoxic.  What kind of drugs cross the BBB?  Typically hydrophobic drugs.
-\end{outline}    
-
-\subsection{Study Design and Rationale}
-\begin{outline}
-	\1 Here describe in detail how I designed my study to circumvent the challenges presented by the amyloid inhibition problem, and the limitations  of MD simulations. At this point, clearly explain and discuss my study design and rationale. (Fig.~\ref{fig:rationale})
-
-  \begin{figure}
-    \centering
-    \includegraphics[width=6in]{figures/introduction/matrix.pdf}
-    \caption[Rationale]{Shows the progression from small, model systems to larger and structurally more complex systems involving the full-length A$\beta$42 peptide.}
-    \label{fig:rationale}
-  \end{figure}
-
-	\1 Beginning with the simplest model systems for an amyloidogenic peptide, the alanine dipeptide, we systematically examine binding of inositol with systems of both increasing sequence and structural complexity.
-
-	% Use brute force simulations
-	\1 We exploit conventional MD simulation techniques because simulation approaches used for understanding enzyme-ligand binding is not applicable. 
-	
-	\1 Instead, we use conventional MD simulations and repeats of independent simulations to determine the binding modes, and binding equilibria of inositol with amyloidogenic peptides and aggregates of A$\beta$.
-\end{outline}
-
-\section{Thesis Organization}
-The first chapter introduces the thesis in the context of the field.  The second chapter introduces the main methods used in the work in the thesis. Chapters 3, 4, and 5 are the results of simulations of inositol with amyloid like peptides and aggregates. Chapter 6 shows work of the general applicability of our methods developed throughout this thesis to MD simulations to understand protein - carbohydrate binding. Chapter 7 provides discussion, suggestions for future work, and perspectives.
 
 \addcontentsline{toc}{section}{Bibliography}
 \bibliographystyle{plain}
