@@ -48,7 +48,7 @@
 
 %% *** Add any desired options. ***
 \documentclass[12pt,singlespaced,normalmargins]{ut-thesis}
-
+% \usepackage{rotating}
 \usepackage{outlines}
 \usepackage[super,sort&compress]{natbib}
 \usepackage{chapterbib}
@@ -63,9 +63,14 @@
 \usepackage[breaklinks=true,linktocpage,colorlinks]{hyperref}
 \usepackage{url}
 \usepackage{graphicx}
+\usepackage{array}
+
+ 
 \usepackage{longtable}
 % \usepackage{nomentbl}
+
 \usepackage[intoc]{nomencl}
+% \usepackage{footnote}
 \makenomenclature
 
 \degree{Doctor of Philosophy}
@@ -133,7 +138,7 @@
 
 %% This generates the Table of Contents (on a separate page).
 \tableofcontents
-%\listoftables
+\listoftables
 \listoffigures
 
 %% Generate any other material that belongs in the head matter 

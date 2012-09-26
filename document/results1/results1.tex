@@ -41,37 +41,39 @@ In this article, we present an MD simulation study of the interaction of inosito
 
 	Alanine dipeptide (ADP) was methylated at both the N- and C-terminii. The \gafour\ peptide was acetylated and amidated at the N- and C-termini, respectively. The peptides were built using PyMol\cite{Anonymous:2012p58} and modelled using the OPLS-AA/L force field\cite{Jorgensen:1996p19}. The extended OPLS-AA force field for carbohydrates\cite{Damm:1997p36} was used to model inositol stereoisomers and the TIP3P water model\cite{Jorgensen:1983p40} was used to represent the solvent. Versions 3.3.1 and 3.3.3 of the GROMACS software package\cite{VanDerSpoel:2005p56} were used to perform unrestrained all-atom MD simulations with the leap frog algorithm using an integration timestep of 2 femtoseconds. Unless otherwise noted, the following parameters were used for all simulations in this study. Electrostatic interactions were calculated using Particle Mesh Ewald (PME) summation with a grid size of 0.15 nm and a real-space cutoff of 1.45 nm.\cite{Essmann:1995p51} The Lennard-Jones potential was computed up to 1.3 nm and was switched to zero at 1.4 nm using the GROMACS switch function. The temperature and pressure were controlled at 300 K and at 1 atm using the Berendsen thermostat and pressure coupling scheme, respectively.\cite{Berendsen:1984p26} Covalent bonds involving hydrogens were constrained using the SHAKE algorithm.\cite{Ryckaert:1977p30} All resultant simulation systems were first subjected to energy minimization and equilibration with isotropic pressure coupling. Replicas of every system were generated with different random seeds for the choice of initial velocities. A trajectory frame was written to disk every picosecond and all frames were used in the final data analysis. Additional details of simulation setup and total sampling time for all systems performed in this study are listed in Table~\ref{tab:simulations}.
 	
-\begin{table}
-	\begin{center}
-	\begin{singlespaced}
-	\caption{XXX}
-	\vspace{10pt}
-	\label{tbl:simulations}
-	\begin{tabular}{lcr}
-		\hline
-		System & "" & $N_{peptides}$ &  $N_{inositol}$ & $c_{peptide}$ (mM) & $c_{Inositol}$ (mM) & $N_{replicas}$  & Time per replica ($\mu$s) & Total  time ($\mu$s) \\
-		\hline
-		alanine dipeptide & "" & 1 & 0 & 61.5 & 0 & 5 & 0.1 & 0.5\\
-		with myo- or epi- or chiro- or scyllo-inositol \& 1 \& 4 \& 61.5 \& 246 \& 5 \& 0.1 \& 0.5 \\
-		(GA)4 monomer &  & 1 & 0 & 61.5 & 0 & 1117 & 0.005 & 5.585 \\
-		with chiro- or scyllo-inositol & 1 & 2 & 61.5 & 123 & 1117 & 0.005 & 5.585 \\
-		(GA)4 disordered aggregate (preformed) &  & 4 & 0 & 246 & 0 & 5 & 0.1 & 0.5 \\
-		with chiro- or scyllo-inositol & 4 & 2 & 246 & 123 & 5 & 0.08 & 0.4 \\
-		(GA)4 disordered aggregate (dispersed) &  & 4 & 0 & 246 & 0 & 5 & 0.1 & 0.5 \\
-		with scyllo- & 4 & 2 & 246 & 123 & 4 & 0.08 & 0.32 \\
-		with chiro- & 4 & 2 & 246 & 123 & 3 & 0.08 & 0.24 \\
-		(GA)4 fibrillar aggregate &  & 16 & 0 & 437 & 0 & 3 & 0.1 & 0.3 \\
-		with chiro- or scyllo-inositol & 16 & 4 & 437 & 109 & 3 & 0.1 & 0.3 \\
-		\hline
-	\end{tabular}
-    \end{singlespaced}
+	% TODO Change the first column to be left-justified and resized ... HOW?
+  \begin{table}\footnotesize
+    \begin{center}
+    \vspace{10pt}
+    \label{tab:simulations}
+      \begin{tabular}{| p{2.5cm} | *{7}{p{1.25cm}|}}
+        \hline
+        System & $N_{peptides}$ & $N_{inositol}$ & $c_{peptide}$ (mM) & $c_{Inositol}$ (mM) & $N_{replicas}$ & Time per replica ($\mu$s) & Total time ($\mu$s) \\
+        \hline
+        \hline
+        alanine dipeptide & 1 & 0 & 61.5 & 0 & 5 & 0.1 & 0.5\\
+        with myo-,epi-,chiro- or scyllo-inositol & 1 & 4 & 61.5 & 246 & 5 & 0.1 & 0.5 \\
+        \hline
+        (GA)4 monomer & 1 & 0 & 61.5 & 0 & 1117 & 0.005 & 5.585 \\
+        with chiro- or scyllo-inositol & 1 & 2 & 61.5 & 123 & 1117 & 0.005 & 5.585 \\
+        \hline
+        (GA)4 disordered aggregate (preformed) & 4 & 0 & 246 & 0 & 5 & 0.1 & 0.5 \\
+        with chiro- or scyllo-inositol & 4 & 2 & 246 & 123 & 5 & 0.08 & 0.4 \\
+        \hline
+        (GA)4 disordered aggregate (dispersed) & 4 & 0 & 246 & 0 & 5 & 0.1 & 0.5 \\
+        with scyllo- & 4 & 2 & 246 & 123 & 4 & 0.08 & 0.32 \\
+        with chiro- & 4 & 2 & 246 & 123 & 3 & 0.08 & 0.24 \\
+        \hline
+        (GA)4 fibrillar aggregate & 16 & 0 & 437 & 0 & 3 & 0.1 & 0.3 \\
+        with chiro- or scyllo-inositol & 16 & 4 & 437 & 109 & 3 & 0.1 & 0.3 \\
+        \hline
+      \end{tabular}
+      \caption{Summary of simulation systems.}
     \end{center}
-\end{table}
-	
+  \end{table}
 
-	
-	Five initial starting conformations of ADP were obtained by taking a frame every 20 ns from a 100-ns-long simulation of ADP in water. Sets of five independent simulations were carried out successively in the presence of myo-, epi-, chiro- and scyllo-inositol. The initial conformations of monomeric \gafour\ were taken from an ensemble of monomeric structures generated in water at 296 K by simulated tempering distributed replica sampling (STDR) from a previous study.\cite{Nikolic:2011p57} STDR is a generalized-ensemble simulation method developed in our laboratory, which allows each replica in the simulation to undergo a random walk in temperature to enhance conformational sampling.\cite{Rodinger:2006p78} The STDR algorithm and implementation are described elsewhere.\cite{Rauscher:2009p41} A representative set of 1117 structures were chosen from the STDR ensemble at 296 K such that the end-to-end distance probability distribution of this selected subset is similar to the distribution of the entire STDR ensemble of structures (about 12,000 structures in total). These conformations were then used as starting points for simulations at T = 300 K in the presence of two molecules of either scyllo- or chiro-inositol. A total of 5 µs of simulation time was generated for the monomeric systems with either scyllo- or chiro-inositol (Table 1). The initial peptide conformations of disordered oligomeric systems were either dispersed monomers drawn from the STDR ensemble at 296K or a preformed \bsheet\ oligomer of \gafour\ composed of four peptides.
-	The \gafour\ peptide in the extended conformation was constructed using PyMol and was used to create the fibril-like \bsheet\ model. An eight-stranded antiparallel \bsheet\ was constructed by first creating an antiparallel dimer of \gafour. The principal axis of the dimer was then aligned with the x-dimension of the box and translated along the y-axis to form a single 8-stranded \bsheet. Two of these 8-stranded sheets were stacked in parallel in a ``face-to-back" manner (with all Ala methyl groups facing up in the z direction) and placed in the simulation box such that the first strand at the edge of the \bsheets was hydrogen-bonded in-register to the nearest periodic image of the eighth strand. The fibril-like systems were first subjected to energy minimization and a 500 ps equilibration stage. Production simulations were performed in the NVT ensemble with final box dimensions of 4 nm x 3.8 nm x 4 nm. Three independent simulations of the \gafour\ fibril-like systems were performed for 100 ns each, successively in the presence and absence of scyllo- and chiro-inositol (see Table 1).
+Five initial starting conformations of ADP were obtained by taking a frame every 20 ns from a 100-ns-long simulation of ADP in water. Sets of five independent simulations were carried out successively in the presence of myo-, epi-, chiro- and scyllo-inositol. The initial conformations of monomeric \gafour\ were taken from an ensemble of monomeric structures generated in water at 296 K by simulated tempering distributed replica sampling (STDR) from a previous study.\cite{Nikolic:2011p57} STDR is a generalized-ensemble simulation method developed in our laboratory, which allows each replica in the simulation to undergo a random walk in temperature to enhance conformational sampling.\cite{Rodinger:2006p78} The STDR algorithm and implementation are described elsewhere.\cite{Rauscher:2009p41} A representative set of 1117 structures were chosen from the STDR ensemble at 296 K such that the end-to-end distance probability distribution of this selected subset is similar to the distribution of the entire STDR ensemble of structures (about 12,000 structures in total). These conformations were then used as starting points for simulations at T = 300 K in the presence of two molecules of either scyllo- or chiro-inositol. A total of 5 µs of simulation time was generated for the monomeric systems with either scyllo- or chiro-inositol (Table~\ref{tab:simulations}). The initial peptide conformations of disordered oligomeric systems were either dispersed monomers drawn from the STDR ensemble at 296K or a preformed \bsheet\ oligomer of \gafour\ composed of four peptides.
+	The \gafour\ peptide in the extended conformation was constructed using PyMol and was used to create the fibril-like \bsheet\ model. An eight-stranded antiparallel \bsheet\ was constructed by first creating an antiparallel dimer of \gafour. The principal axis of the dimer was then aligned with the x-dimension of the box and translated along the y-axis to form a single 8-stranded \bsheet. Two of these 8-stranded sheets were stacked in parallel in a ``face-to-back" manner (with all Ala methyl groups facing up in the z direction) and placed in the simulation box such that the first strand at the edge of the \bsheets was hydrogen-bonded in-register to the nearest periodic image of the eighth strand. The fibril-like systems were first subjected to energy minimization and a 500 ps equilibration stage. Production simulations were performed in the NVT ensemble with final box dimensions of 4 nm x 3.8 nm x 4 nm. Three independent simulations of the \gafour\ fibril-like systems were performed for 100 ns each, successively in the presence and absence of scyllo- and chiro-inositol (see Table~\ref{tab:simulations}).
 
 \subsection{Analysis Protocol}
 	The DSSP geometry criteria\cite{Kabsch:1983p31} were used to determine the presence of a hydrogen bond: (1) the distance between donor (D) and acceptor (A) atoms is less than 0.35 nm; (2) the distance between the hydrogen and A is less than 0.25 nm; and (3) the angle formed by D-H-A is greater than 120°. Nonpolar contacts between inositol and peptide were defined by a separation between the center of mass of inositol and the Cβ atom of alanine less than 0.45 nm. The same cut-off was used to compute protein-protein nonpolar contacts between C$\beta$ atoms.
@@ -98,13 +100,43 @@ The planar angle between inositol and the fibrillar model of \gafour\ was comput
 
 Inositol was found to bind weakly and reversibly to all the peptidic systems considered in our simulations, allowing us to characterize binding equilibria from unbiased sampling.
 
+% This is a table with footnotes and with the footnote rule removed
+% It uses the minipage and I had to tweak the width of the page so that center can 
+% properly align the table in the middle of the page.
+\begin{table}\footnotesize
+  \vspace{10pt}
+  \label{tab:binding_constants}
+  \begin{minipage}{15cm}
+    \renewcommand{\thefootnote}{\thempfootnote}
+    \renewcommand{\footnoterule}{}
+    % \centering
+      \begin{center}
+    \begin{tabular}{| l | *{5}{ c |}}
+       \hline
+         System & Scyllo\footnote{Each dissociation constant is in units of mM. The standard error is shown within parentheses.} & Chiro \footnotemark[\value{mpfootnote}] & N$_{groups,ADP}$/N$_{groups}$ & Scyllo \footnote{K$_d$ in units of mM, estimated by scaling the K$_d$ of ADP by the ratio of the number of \\ peptide groups in ADP to the \gafour\ system } & Chiro\footnotemark[\value{mpfootnote}]\\
+         \hline
+         \hline
+         alanine dipeptide & 1100 (100) & 1000 (100) & 1.00 & 1100 & 1000 \\ 
+         (GA)4 monomer & 376 (10) & 362 (16) & 0.25 & 275 & 250 \\ 
+         (GA)4 preformed & 85 (12) & 89 (8) & 0.06 & 69 & 63 \\ 
+         (GA)4 dispersed & 87 (21) & 86 (10) & 0.06 & 69 & 63 \\ 
+         (GA)4 fibrillar & 51 (3) & 36 (15) & 0.02 & 17 & 16 \\
+         \hline
+     \end{tabular}   
+  \end{center}
+  \end{minipage}
+  \centering
+  \caption{Summary of equilibrium dissociation constants (K$_d$) for each system in the study.}
+  \end{table}
+
+
 \subsection{Alanine dipeptide}
 
-	Inositol stereoisomers bound weakly and reversibly to alanine dipeptide with a molar Kd. A list of computed dissociation constants for each stereoisomer is shown in Table 2. Because all of the results for myo- (1.0 ± 0.1 M), epi- (1.2 ± 0.2 M), chiro- (1.0 ± 0.1 M) and scyllo-inositol (1.1 ± 0.1 M) were within error bars of one another, in this section we provide detailed descriptions and data only for scyllo-inositol. A single molecule of scyllo-inositol can bind the peptidic backbone in either monodentate or bidentate fashion, as defined by the number of hydrogen bonds between hydroxyl groups of inositol and peptide groups. At a concentration of 250 mM, scyllo-inositol was bound in the monodentate and bidentate modes about 14 ± 1\% and 1.1 ± 0.1\% of the time, respectively. The dominant bidentate binding modes of scyllo-inositol involved hydrogen bonds formed with the peptide main chain either in the mean plane of the inositol ring (Fig. 2A, panels I-III) or in a ``face-to-edge" fashion, where the mean plane of the inositol ring is perpendicular to the plane of the peptide groups (Fig. 2A, panel IV).
+	Inositol stereoisomers bound weakly and reversibly to alanine dipeptide with a molar Kd. A list of computed dissociation constants for each stereoisomer is shown in Table~\ref{tab:binding_constants}. Because all of the results for myo- (1.0 ± 0.1 M), epi- (1.2 ± 0.2 M), chiro- (1.0 ± 0.1 M) and scyllo-inositol (1.1 ± 0.1 M) were within error bars of one another, in this section we provide detailed descriptions and data only for scyllo-inositol. A single molecule of scyllo-inositol can bind the peptidic backbone in either monodentate or bidentate fashion, as defined by the number of hydrogen bonds between hydroxyl groups of inositol and peptide groups. At a concentration of 250 mM, scyllo-inositol was bound in the monodentate and bidentate modes about 14 ± 1\% and 1.1 ± 0.1\% of the time, respectively. The dominant bidentate binding modes of scyllo-inositol involved hydrogen bonds formed with the peptide main chain either in the mean plane of the inositol ring (Fig. 2A, panels I-III) or in a ``face-to-edge" fashion, where the mean plane of the inositol ring is perpendicular to the plane of the peptide groups (Fig. 2A, panel IV).
 The Ramachandran map of ADP is characterized by four dominant basins representing the α-helical, polyproline II (PPII), and \bsheet\ conformations.\cite{Neale:2008p87} As shown in Fig. 2A, bidentate-bound ADP adopts backbone dihedral angles that fall within the dominant basins on the ramachandran map, demonstrating that scyllo-inositol is able to bind both helical and \bsheet\ conformations. Notably, the conformational equilibrium of ADP is shifted in favor of the β-conformer when scyllo-inositol is bound to the peptide backbone in bidentate fashion (Fig. 2B); in contrast, the relative populations of dominant conformers remained unchanged when inositol is unbound or bound in monodentate form. Taken together, our results show that although binding is weak, inositol may influence peptide conformations by binding to the peptidic backbone. In the next sections, we examine the binding of inositol to monomer and aggregates of a simple \bsheet\ forming peptide, \gafour.
 
 \subsection{\gafour\ peptide}
-In this section, we characterize the binding modes and binding affinity of inositol systematically, first with a peptide monomer, and then with oligomeric and fibrillar aggregates of \gafour. Here we examine only the active and inactive stereoisomers scyllo- and chiro-inositol. A summary of the equilibrium binding constants computed for all \gafour\ systems is shown in Table 2.
+In this section, we characterize the binding modes and binding affinity of inositol systematically, first with a peptide monomer, and then with oligomeric and fibrillar aggregates of \gafour. Here we examine only the active and inactive stereoisomers scyllo- and chiro-inositol. A summary of the equilibrium binding constants computed for all \gafour\ systems is shown in Table~\ref{tab:binding_constants}.
 
 \subsubsection{Monomer}
 
@@ -114,7 +146,7 @@ In its monomeric state in solution, \gafour\ is an intrinsically disordered pept
 
 	To probe whether inositol affects the structure and aggregation of small oligomers of \gafour\ in solution, we performed sets of simulations involving two distinct starting states of four \gafour\ peptides: (1) initially monodispersed peptides and (2) a preformed \bsheet\ aggregate. In the initially dispersed systems, the peptides rapidly aggregated to form a disordered oligomer (Fig. 4A) in which the majority of the residues (~60\%) retained a coil conformation (Fig. 4B). Similarly, systems initiated with a preformed 4-stranded \bsheet\ also evolved into a disordered oligomer over the course of the simulation. Only about 5\% and 10\% of the residues participated in a \bsheet\ or in a \bbridge, respectively (Fig. 4B).
 Despite different initial conditions and independently of the presence of inositol, all aggregates evolved to a similar morphology. The total number of peptide-peptide nonpolar and polar contacts formed within the oligomer converged to similar values for both the dispersed and preformed oligomers and did not change with time (Fig. 5). As shown in Fig. 5 (top panels), the average total number of intermolecular hydrogen bonds (~8 ± 1) was consistently \bbridge higher than the number of intramolecular hydrogen bonds (~2.1 ± 0.3). On average, about 4.3 ± 0.4 nonpolar contacts were formed upon aggregation in the absence of inositol compared to 4.4 ± 0.5 contacts for scyllo-, and 5.0 ± 0.4 for chiro-inositol (data not shown for the preformed oligomer). When taken together, the above results show that the presence of scyllo- and chiro-inositol neither prevented aggregation nor disrupted the preformed oligomer.
-	 Dissociation constants of about 80 mM to aggregates of type 1 and 2 were obtained for both scyllo- and chiro-inositol. The Kd calculated for each aggregate type is shown in Table 2. In the presence of multiple aggregated chains, a single molecule of inositol was found to cross-link multiple peptides by simultaneously hydrogen bonding to their backbones (Fig. 4A). Similar to monomers, at a concentration of 123 mM, chiro- and scyllo-inositol were bound predominantly to the backbone: ~96\% of bound scyllo-inositols formed only hydrogen bonding contacts (~94\% for chiro-inositol), whereas 2\% (3\% for chiro-inositol) were involved in nonpolar contacts only (Fig. 4C).
+	 Dissociation constants of about 80 mM to aggregates of type 1 and 2 were obtained for both scyllo- and chiro-inositol. The Kd calculated for each aggregate type is shown in Table~\ref{tab:binding_constants}. In the presence of multiple aggregated chains, a single molecule of inositol was found to cross-link multiple peptides by simultaneously hydrogen bonding to their backbones (Fig. 4A). Similar to monomers, at a concentration of 123 mM, chiro- and scyllo-inositol were bound predominantly to the backbone: ~96\% of bound scyllo-inositols formed only hydrogen bonding contacts (~94\% for chiro-inositol), whereas 2\% (3\% for chiro-inositol) were involved in nonpolar contacts only (Fig. 4C).
 
 \subsubsection{Fibril-like oligomer} % (fold)
 
@@ -127,7 +159,7 @@ Thus, although chiro- and scyllo-inositol have similar binding constants, they h
 \section{Discussion}
 In the above analysis, we have systematically characterized the association of stereoisomers scyllo-, epi-, myo- and chiro-inositol with alanine dipeptide, a simple model of the peptidic backbone. Furthermore, we examined the binding of scyllo- and chiro-inositol to various aggregated states of \gafour\ to probe the role of backbone binding in amyloid inhibition. Our results show that inositol exhibits weak binding with dissociation constants in the range of 0.04 M to 1 M to the different peptides and aggregation states considered.
 
-Furthermore, the Kd of inositol increases linearly with the number of peptide groups in the system (Table 2), indicating that inositol does not bind cooperatively to the monomer and aggregate states of \gafour\ considered. As expected, inositol binds most weakly to alanine dipeptide, with a value about 4 times smaller than the Kd of urea to N-acetyl alanine reported recently in the literature (0.3 M for urea\cite{Lee:2010p59} vs 1.1 M for scyllo-inositol). Taken together, our results indicate that the activity of inositol stereoisomers is similar to that of osmolytes, which typically have binding constants in the millimolar to molar range.\cite{Rosgen:2007p90,Street:2006p21}
+Furthermore, the Kd of inositol increases linearly with the number of peptide groups in the system (Table~\ref{tab:binding_constants}), indicating that inositol does not bind cooperatively to the monomer and aggregate states of \gafour\ considered. As expected, inositol binds most weakly to alanine dipeptide, with a value about 4 times smaller than the Kd of urea to N-acetyl alanine reported recently in the literature (0.3 M for urea\cite{Lee:2010p59} vs 1.1 M for scyllo-inositol). Taken together, our results indicate that the activity of inositol stereoisomers is similar to that of osmolytes, which typically have binding constants in the millimolar to molar range.\cite{Rosgen:2007p90,Street:2006p21}
 
 Moreover, our results are consistent with the hypothesis that osmolytes influence protein and peptide folding and stability through direct binding rather than by modifying solvent properties.\cite{Canchi:2011p53,Lee:2010p59,Street:2006p21} The spacing of consecutive OH groups of inositol is well-suited to bidentate interactions with adjacent groups of the polypeptide backbone (Fig. 2A). Our findings shown in Fig. 2A are consistent with similar binding modes observed in a recent ab initio simulation and IR spectroscopic study of the binding of glucose epimers to the phenylalanine dipeptide backbone.\cite{Cocinero:2011p54} Furthermore, inositol stereoisomers displace the backbone conformation of alanine dipeptide towards extended β-strand conformations (Fig. 2B). However, neither scyllo- nor chiro-inositol had a significant effect on the conformational equilibrium of the \gafour\ monomer. Taken together, these results indicate that inositol may not act as a drug by directly influencing monomer conformations. However, our results do not preclude the possibility that inositol may block fibril elongation by preferentially binding to monomers that are constrained to extended conformations, such as those at exposed edges of \bsheets.
 
