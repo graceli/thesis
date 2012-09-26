@@ -47,7 +47,11 @@
 %%    further customize the layout and/or formatting of the document.
 
 %% *** Add any desired options. ***
+
+ 
 \documentclass[12pt,doublespaced,normalmargins]{ut-thesis}
+
+% \usepackage{pdfsync}
 % \usepackage{rotating}
 \usepackage{outlines}
 \usepackage[super,sort&compress]{natbib}
@@ -66,10 +70,11 @@
 \usepackage{array}
 
  
-\usepackage{longtable}
+% \usepackage{longtable}
 % \usepackage{nomentbl}
 
 \usepackage[intoc]{nomencl}
+\usepackage{pdfsync}
 % \usepackage{footnote}
 \makenomenclature
 
@@ -176,7 +181,7 @@
 \include{results1/results1}
 
 % % KLVFFAE
-% \include{results-chapter-2}
+\include{results2/results2}
 % 
 % % Abeta42
 % \include{results-chapter-3}
