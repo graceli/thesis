@@ -1,48 +1,51 @@
 \chapter{Methods}
 % This isn't all methods.  The last section is a review of MD simulations of small molecule binding to amyloids.
-% But I'm hesitant to call this MD simulations chapter because ... not sure why.
+% But I'm hesitant to call this MD simulations chapter because it isn't all about MD simulations ... or is it?
 
-% Motivate MD simulations
-\begin{outline}
-\1 Molecular dynamics simulations are a useful tool to study the structure, dynamics, and interaction of biomolecules. MD simulations employ an empirical mathematical function to describe the atomic interactions in a molecular system, and together with classical laws of Newtonian mechanics, atomic trajectories of motion are generated. Thermodynamic and kinetic properties can then be extracted as time averages from these trajectories and used to make a number of predictions that are often experimentally challenging to observe or measure.
+\section{Molecular Dynamics Simulations}
 
-\1 MD simulation studies have been useful in studying many existing fundamental problems of biology and biochemistry, including protein dynamics and function, protein folding, biomolecular self-aggregation, and protein-ligand binding.
-% Study protein dynamics - importance of protein dynamics.
-\end{outline}
+MD simulations employ an empirical mathematical function to describe the atomic interactions in a molecular system, and together with classical laws of Newtonian mechanics, atomic trajectories of motion are generated. 
 
-\section{Molecular Dynamics Simulations} % (fold)
-% Describe the details of molecular dynamics simulations
+Thermodynamic and kinetic properties can then be extracted as time averages from these trajectories and used to make a number of predictions that are often experimentally challenging to observe or measure.
 
-% A set of numerical computation algorithm which solves numerically solves the N-body problem. Solves a system of Newton's equations of motion, and provides the time-trajectory of atoms with femtosecond time resolution. 
+MD simulation studies have been useful in studying many existing fundamental problems of biology and biochemistry, including protein dynamics and function, protein folding, biomolecular self-aggregation, and protein-ligand binding.
 
-% The integration algorithm is XXX. Time steps used are typically 2 femtoseconds to capture the hydrogen bond vibrational motion. [MORE DETAILS AND EQUATIONS HERE] [Ref: Chris Madill's and Tom's thesis]
-% Details of the mathematics (need to review the basic theory + Taylor series expansion) - get a book - tomorrow maybe?
+% Transition?
 
-% The assumption at a hand-wave level adapted from Tom's thesis
-\begin{outline}
-	\1 Why is MD correct? Describe the fundamental assumptions of MD. Here, I want to give the readers who aren't familiar with the methodological details of MD a sense of the rigorousness of MD.
-	
-	\1 The Born-Oppenheimer approximation: electronic and nuclear motions are uncoupled, and therefore can be treated separately. 
+Under the Born-Oppenheimer approximation, electronic and nuclear motions are uncoupled, and can therefore be treated separately. In MD atomic nuclei are treated as classical particles, where the movement of electrons are not accounted for. Instead, the effects of electronic motion is implicitly accounted for via the use of potential energy functions.
 
-	\1 MD does not account for the movement of electrons. Although electrons are not taken into account in MD simulations, their presence is implicitly accounted for via the use of potential energy functions.  Atomic nuclei can be treated as classical particles.
+The force on each atom in the simulation is the spatial derivative of the potential energy of the system,
+\begin{equation}
+F = - \nabla U
+\end{equation}
+where $U$ is the potential energy of the system. In MD simulations, $U$ is estimated using a molecular mechanics force field, a set of parameters which describes the interaction energies of the atoms in the system.
 
-% \2 Review the basic derivations of MD simulation equations and why they work:
-%   \3 Assume a small integration step (why is 2 fs chosen it is both biological and for numerical stability purposes). Roughly MD follows these steps:
-%     \4 F = -grad E, where E is given by the force field potential energy function.
-%     \4 Determine acceleration for each atom from the forces on each atom
-%     \4 From acceleration determine momentum 
-%     \4 Determine positions
+The acceleration $a$ of each atom is then given by Newton's second law of motion,
+\begin{equation}
+a = \frac{F}{m}
+\end{equation}
+where $m$ is the mass forces on each atom.
 
-% - Relationship between force and energy 
-% - Relationship between momentum and velocity 
-% - Why numerical approach must be used (no analytical solution for N > 2)
-% - How is the force field plugged into the general algorithm.
+Dynamics of the next position of the atom at time $ t + \delta t$ is then 
+\begin{equation}
+x_i(t + \delta t) = x_i(t) + v_i(t)\delta t + \frac{a_i(t)\delta t^2}{2}	
+\end{equation}
 
-  \1 Application of an empirical force field can be used approximate atomic interactions in the system. A force field typically has many parameters which need to be calculated. One approach to do this is to fit to quantum mechanical calculations.  Often, force fields are iteratively improved by predicting experimentally observable quantities for small compounds, and adjusting the fit based on comparisons of these computationally predicted quantities with experimental measurements.
+Once all of the new positions for all atoms are predicted, updated interatomic forces based on the coordinates in the newly generated frame are calculated, and the entire process is repeated.
+
+% How much detail? Talk about the velocity verlet integration algorithm ?
+% Marty's thesis included a little bit on the verlet algorithm.  CN did not.
+
+For numerical stability reasons, a small integration step or timestep is used in the calculations. Typically 2 femtosecond timestep, twice the time period for the fastest vibrational motion (for bonds involving hydrogen), is used in MD simulations of biomolecular systems.
+
+% [Ref: Chris Madill's and Tom's thesis]
+
+Application of an empirical force field is used in MD to approximate atomic interactions in the system. A force field typically has many parameters which need to be calculated. One approach to do this is to fit to quantum mechanical calculations.  Often, force fields are iteratively improved by predicting experimentally observable quantities for small compounds, and adjusting the fit based on comparisons of these computationally predicted quantities with experimental measurements.
   
-  \1 There many different force fields (AMBER, Gromos etc), each differing slightly in the potential energy function and its parameterization. In this thesis we performed all of our simulations using the force field OPLS-AA/L.
+There many different force fields (AMBER, Gromos etc), each differing slightly in the potential energy function and its parameterization. In this thesis, we have chosen to use the OPLS-AA/L force field for all of our simulations.
+% Note that if I say this .. I might have to justifiy this in my defense.
 
-  \1 Force field potential energy function
+The general form of the force field potential energy function is 
   % \[ V(R) = bonds + angles + impropers + dihedrals + pair interactions \]
   \begin{equation}
     \begin{split}
@@ -56,10 +59,14 @@
   \end{equation}
 \end{outline}
 
-% How to run a MD simulation 
-% \1 Steps to produce a molecular simulation:
-%   \2 First take a structure from crystallography or NMR, or homology-modelling data.
-%   \2 In the algorithm, the forces acting on each atom are estimated from [insert equation here]
+% Initial conditions -- initial positions of the atoms in the system
+% Inclusion of temperature in MD -- allows for the account of entropy in our systems.  This is especially important for the determination of free energies, G.
+% Note that because I talk a lot about binding ... this discussion within my methods section may be quite important for examing members that understands the physics but do not understand how MD simulations in particular is rigoroous enough to make any of those predictions.  Having those details here means that I understand how that link is established and that I'm not just making up stories based on pretty pictures.
+
+\subsection{Setting up a MD simulation: practical aspects}
+% Here are some details to run a MD simulation of a biomolecular system.  I think I could omit this from my introduction as this is not really essential in understanding the rest of my thesis, or is it? Perhaps this should go into an appendix instead.
+
+The following steps are often used to setup and start a MD simulation system of a protein. First, a pre-determined structure, typically a coordinate structure from X-ray crystallography or NMR, or homology-modelling data. Then a force field and solvent is chosen.
 
 \section{Challenges and limitations of MD}
 
@@ -115,3 +122,25 @@
 \addcontentsline{toc}{section}{Bibliography}
 \bibliographystyle{plain}
 \bibliography{chapter1}
+
+% Scrap
+% Motivate the use of MD simulations
+% Describe the details of molecular dynamics simulations
+% Review the basic derivations of MD simulation equations and why they work
+
+% Molecular dynamics simulations are a useful tool to study the structure, dynamics, and interaction of biomolecules. 
+
+% MD is a numerical algorithm which solves a system of Newtonian equations of motion, and provides as output the time-trajectory of atoms with femtosecond time resolution.
+
+% To review before my defense
+
+% Details of the mathematics (need to review the basic theory + Taylor series expansion) - get a book - tomorrow maybe?
+
+% Why is MD correct? Describe the fundamental assumptions of MD. Here, I want to give the readers who aren't familiar with the methodological details of MD a sense of the rigorousness of MD.
+
+% The assumption at a hand-wave level adapted from Tom's thesis
+
+% - Relationship between force and energy 
+% - Relationship between momentum and velocity 
+% - Why numerical approach must be used (no analytical solution for N > 2)
+% - How is the force field plugged into the general algorithm.
