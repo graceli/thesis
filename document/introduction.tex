@@ -1,31 +1,18 @@
 \chapter{Introduction}
+% Maybe start off as far back as "protein folding"? Perhaps ask Regis about this ... 
+% What would I write though?
+% Check out Misbehaving proteins the book.
 
-% Organizational detail: AD and amyloid (which one should go first?). Center it on Amyloid, and then bring in AD as a central motivation for doing amyloid science.
-
-% I think my focus should still be on Alzheimer's disease ... the practical purpose of my work is to understand how inositol works
-% I am not trying to cure all amyloid diseases.
 \section{Amyloid}
-% Broad general introduction to amyloid
-Many diseases, most of them neurodegenerative, have been linked with the presence of amyloid: Prion-related diseases, Parkinson's, Huntington's disease, Type II diabetes etc.
+% The amyloid state of proteins
+In vitro, a variety of proteins and peptides, folded or intrinsically disordered, have been found to aggregate to form amyloid fibrils under certain solution conditions. These amyloid fibrils are involved in many incurable human diseases such as prion-related diseases, Parkinson's disease, Huntington's disease, Type II diabetes etc. Furthemore, amyloid have also been known to play beneficial roles in certain living systems. REF
 
-\subsection{Structure and Formation}
-  % In this section I will talk about how amyloid aggregation is thought to work. Introduce the thermodynamic model for understanding fibril formation. I will now broadly introduce to amyloid.  
-	Finding a treatment for AD and other fatal neurodegenerative diseases motivated many biochemical and biophysical studies of the amyloid state.  
+\subsection{Structure}
+% In this section I will talk about how amyloid aggregation is thought to work. Introduce the thermodynamic model for understanding fibril formation. I will now broadly introduce amyloid.
+% Currently, it is thought that amyloid fibrillar state may be the globally stable folded state for all proteins.
 
-  \begin{outline}[enumerate]
-	\1 In vitro, a variety of proteins and peptides, folded or intrinsically disordered, have been shown to be able to aggregate to form amyloid fibrils under certain solution conditions. 
+\subsubsection{Fibrils}
 
-	\1 Amyloid fibrils are formed via a complex aggregation pathway. Initially, monomers aggregate to form oligomers with different morphologies which exists in equilibrium with amyloid fibrils. Some of these oligomers are on-pathway to fibril formation, while others themselves may be end-points of the aggregation pathway. Biochemically, fibrils are protease resistant and are insoluble in the presence of SDS.
-
-   \1 Currently, it is thought that amyloid fibrillar state may be the globally stable folded state for all proteins.
-  \end{outline}
-
- \subsubsection{Fibrils}
-    \subsubsubsection{Structure} % (fold)
-    \label{ssub:structure}
-    % Add details on the definition of the cross-$\beta$ structure and its significance. 
-
-Early X-ray diffraction studies show that fibrils have a regular structure, which is defined by a characteristic 4.8\angstrom\ interpeptide, and 10\angstrom\ intersheet spacing. Biophysicists have adopted this as the definition of the cross-$\beta$ amyloid fiber structure. (Figure~\ref{fig:fibril_diffraction})
 \begin{figure}
   \centering
   \includegraphics[width=6in]{figures/introduction/fibril_structure_diffraction.pdf}
@@ -33,28 +20,25 @@ Early X-ray diffraction studies show that fibrils have a regular structure, whic
   \label{fig:fibril_diffraction}
 \end{figure}
 
-After staining amyloid fibers are visible as long unbranched fibrils under the transmission Electron microscope (TEM). Figure~\ref{fig:fibril_TEM_SSNMR}
+Finding a treatment for AD and other fatal neurodegenerative diseases motivated many biochemical and biophysical studies of the amyloid state. Despite having dramatically differences in sequence, amyloid fibrils formed from different polypeptide all adopt a similar structure. Early structural studies using X-ray diffraction showed that fibrils have a regular structure, with a characteristic 4.8\angstrom\ interpeptide, and 10\angstrom\ intersheet spacing, which have been adopted by biophysicists as the defining characteristic signal for the \crossb\ structure.
+
+Under the transmission Electron microscope (TEM), fibrils are visible as long, ribbon-like structures of about 100 nm in length (Figure~\ref{fig:fibril_TEM_SSNMR}). Independent measurements of fibrillar structure using different instruments have all confirmed the presence of \crossb\ structure as the core structure of amyloid fibrils. (Figure~\ref{fig:fibril_diffraction})
+
+Although \crossb\ is widely known, due to the insolubility and inherent non-crystalline nature of amyloid fibrils, the details of the fibril structure at the molecular level remained elusive until recently. Advances in solid-state NMR and X-ray crystallography in the last decade have made major contributions to our knowledge of the molecular structure of amyloid fibrils.
+
+
 \begin{figure}
   \centering
   \includegraphics[width=6in]{figures/introduction/fibril_TEM_SSNMR.pdf}
-  \caption[Characteristic cross-$\beta$ spacings from X-ray fibre diffraction studies of amyloid fibrils]{A Example EM images of oligomers.  Adapted from Bitan G. et al. 2003 and Walsh D. 1999 C TEM image of fibrils D SSNMR model proposed by Tycko et al.  }
+  \caption[Characteristic cross-$\beta$ spacings from X-ray fibre diffraction studies of amyloid fibrils]{A Example EM images of oligomers.  Adapted from Bitan G. et al. 2003 and Walsh D. 1999 C TEM image of fibrils D SSNMR model proposed by Tycko et al.}
   \label{fig:fibril_TEM_SSNMR}
 \end{figure}
+
 % Describe the molecular structure of \abeta\ amyloid fibrils. 
-% Briefly mention the techniques that can be used to obtain structural information of amyloid fibrils.
-
-% Since the discovery of the cross-$\beta$ several biophysical techniques have been applied to uncover the molecular structure of fibrils. 
-
-In recent years, advances in SSNMR and X-ray crystallography have recently made major contributions to our knowledge of the structures of amyloid fibrils.
+% Briefly mention the techniques that can be used to obtain structural information of amyloid fibrils. 
 
 % SSNMR
 Both A$\beta$40 and A$\beta$42 amyloid fibrils have been studied in detail using solid-state NMR. Figure~\ref{fig:fibril_TEM_SSNMR}
-% \begin{figure}
-%   \centering
-%   \includegraphics[width=6in]{figures/introduction/fibril_structure_NMR.jpg}
-%   \caption[Blah]{NMR model of the core \abeta\ amyloid fibril consistent with MPL from EM, STEM and the cross-$\beta$ structure}
-%   \label{fig:fibril_SSNMR_model}
-% \end{figure}
 
 % X-ray structures
 Furthermore, small peptide fragments that have characteristics of amyloid fibrils, which are also amenable to single crystal X-ray diffraction analysis have demonstrated similar type structures from those studied using SSNMR.  These structures obtained by X-ray crystallography have been described to have a dry interface with stacked sheets. (Figure~\ref{fig:fibril_xray_model})
@@ -82,10 +66,11 @@ Amyloid Fibrils have been found to exhibit polymorphism at the molecular level, 
 	
  \subsection{Formation}
 % How is amyloid formed
+Amyloid fibrils are formed via a complex aggregation pathway. Initially, monomers aggregate to form oligomers with different morphologies which exists in equilibrium with amyloid fibrils. Some of these oligomers are on-pathway to fibril formation, while others themselves may be end-points of the aggregation pathway. Biochemically, fibrils are protease resistant and are insoluble in the presence of SDS.
+
+Amyloid fibrils have been observed to form via a two-step nucleation-polymerization process. In the nucleation phase, energetic barriers of aggregation must be overcome to form the initial aggregation nucleus or seed.  Following nucleation, free monomers bind to the nucleated aggregates and polymerize into mature fibrils.\cite{Murphy:2002fe}
 
 % kinetics of aggregation
-  Amyloid fibrils have been observed to form via a two-step nucleation-polymerization process. In the nucleation phase, energetic barriers of aggregation must be overcome to form the initial aggregation nucleus or seed.  Following nucleation, free monomers bind to the nucleated aggregates and polymerize into mature fibrils.\cite{Murphy:2002fe}
-
 \subsection{Involvement in disease}
 	% Importance of understanding amyloid.  Role of amyloid in the human body.
 Known to be involved in different diseases. Neurodegenerative (AD, Parkinsons, Prion), and diabetes, and systematic amyloidosis.
@@ -348,3 +333,10 @@ The first chapter introduces the thesis in the context of the field.  The second
 \addcontentsline{toc}{section}{Bibliography}
 \bibliographystyle{plain}
 \bibliography{chapter1}
+
+% \begin{figure}
+%   \centering
+%   \includegraphics[width=6in]{figures/introduction/fibril_structure_NMR.jpg}
+%   \caption[Blah]{NMR model of the core \abeta\ amyloid fibril consistent with MPL from EM, STEM and the cross-$\beta$ structure}
+%   \label{fig:fibril_SSNMR_model}
+% \end{figure}

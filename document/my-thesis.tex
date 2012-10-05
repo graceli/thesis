@@ -2,57 +2,12 @@
 %%
 %% Copyright (c) 1998-2012 Francois Pitt <fpitt@cs.utoronto.ca>
 %% last updated at 09:43 (EDT) on Fri  1 Jun 2012
-
-%% This work consists of the files listed in the accompanying README.
-
-%% SUMMARY OF FEATURES:
-%%
-%% All environments, commands, and options provided by the `ut-thesis'
-%% class will be described below, at the point where they should appear
-%% in the document.  See the file `ut-thesis.cls' for more details.
-%%
-%% To explicitly set the pagestyle of any blank page inserted with
-%% \cleardoublepage, use one of \clearemptydoublepage,
-%% \clearplaindoublepage, \clearthesisdoublepage, or
-%% \clearstandarddoublepage (to use the style currently in effect).
-%%
-%% For single-spaced quotes or quotations, use the `longquote' and
-%% `longquotation' environments.
-
-
-%%%%%%%%%%%%         PREAMBLE         %%%%%%%%%%%%
-
-%%  - Default settings format a final copy (single-sided, normal
-%%    margins, one-and-a-half-spaced with single-spaced notes).
-%%  - For a rough copy (double-sided, normal margins, double-spaced,
-%%    with the word "DRAFT" printed at each corner of every page), use
-%%    the `draft' option.
-%%  - The default global line spacing can be changed with one of the
-%%    options `singlespaced', `onehalfspaced', or `doublespaced'.
-%%  - Footnotes and marginal notes are all single-spaced by default, but
-%%    can be made to have the same spacing as the rest of the document
-%%    by using the option `standardspacednotes'.
-%%  - The size of the margins can be changed with one of the options:
-%%     . `narrowmargins' (1 1/4" left, 3/4" others),
-%%     . `normalmargins' (1 1/4" left, 1" others),
-%%     . `widemargins' (1 1/4" all),
-%%     . `extrawidemargins' (1 1/2" all).
-%%  - The pagestyle of "cleared" pages (empty pages inserted in
-%%    two-sided documents to put the next page on the right-hand side)
-%%    can be set with one of the options `cleardoublepagestyleempty',
-%%    `cleardoublepagestyleplain', or `cleardoublepagestylestandard'.
-%%  - Any other standard option for the `report' document class can be
-%%    used to override the default or draft settings (such as `10pt',
-%%    `11pt', `12pt'), and standard LaTeX packages can be used to
-%%    further customize the layout and/or formatting of the document.
-
-%% *** Add any desired options. ***
-
- 
 \documentclass[12pt,doublespaced,normalmargins]{ut-thesis}
-
-% \usepackage{pdfsync}
 % \usepackage{rotating}
+% \usepackage{longtable}
+% \usepackage{nomentbl}
+% \usepackage{footnote}
+\usepackage{pdfsync}
 \usepackage{outlines}
 \usepackage[comma,super,sort&compress]{natbib}
 \usepackage{chapterbib}
@@ -68,22 +23,18 @@
 \usepackage{url}
 \usepackage{graphicx}
 \usepackage{array}
-
- 
-% \usepackage{longtable}
-% \usepackage{nomentbl}
-
 \usepackage[intoc]{nomencl}
-\usepackage{pdfsync}
-% \usepackage{footnote}
+
+
 \makenomenclature
 
 \degree{Doctor of Philosophy}
 \department{Biochemistry}
 \gradyear{2013}
 \author{Grace Li}
-\title{Molecular Mechanism of $\beta$-amyloid Inhibition By Inositol}
-% Regis has a problem with the title -- it doesn't reflect my entire thesis
+\title{Molecular Mechanism of Amyloid Inhibition By Inositol}
+% Title refinement - Regis has a problem with the title below because he feels that it doesn't reflect my entire thesis
+% Molecular Mechanism of $\beta$-amyloid Inhibition By Inositol
 
 % Thesis global command definitions
 \input{my-thesis-commands}
@@ -113,8 +64,7 @@
 %% This generates the abstract page, with the line spacing adjusted
 %% according to SGS guidelines.
 % \begin{abstract}
-% %% *** Put your Abstract here. ***
-% %% (At most 150 words for M.Sc. or 350 words for Ph.D.)
+% (At most 150 words for M.Sc. or 350 words for Ph.D.)
 % \input{my-abstract}
 % \end{abstract}
 
@@ -123,25 +73,17 @@
 %% the table of contents starts with \clearpage.  Use \cleardoublepage
 %% for anything that you want to appear on a right-hand page.
 
-%% This generates a "dedication" section, if needed
-%% (uncomment to have it appear in the document).
 % \begin{dedication}
 % % *** Put your Dedication here. ***
 % \input{my-dedication}
 % \end{dedication}
 
-%% The `dedication' and `acknowledgements' sections do not create new
-%% pages so if you want the two sections to appear on separate pages,
-%% you should put an explicit \newpage between them.
+% \newpage
 
-%% This generates an "acknowledgements" section, if needed
-%% (uncomment to have it appear in the document).
 % \begin{acknowledgements}
-% % *** Put your Acknowledgements here. ***
 % \input{my-ack}
 % \end{acknowledgements}
 
-%% This generates the Table of Contents (on a separate page).
 \tableofcontents
 \listoftables
 \listoffigures
@@ -149,18 +91,7 @@
 %% Generate any other material that belongs in the head matter 
 %% (for example, List of Plates, Index of Symbols, or List of Appendices).
 \printnomenclature
-
 \end{preliminary}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  Put your Chapters here; the easiest way to do this is to keep     %%
-%%  each chapter in a separate file and `\include' all the files.     %%
-%%  Each chapter file should start with "\chapter{ChapterName}".      %%
-%%  Note that using `\include' instead of `\input' will make each     %%
-%%  chapter start on a new page, and allow you to format only parts   %%
-%%  of your thesis at a time by using `\includeonly'.                 %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % A Doctoral thesis is generally organized into the following sections:
 % Introduction: Although the length of the introduction is somewhat field-specific, in most cases 40-60 double-spaced pages of text should be sufficient. The last section of the General Introduction in either format should provide a clear rationale for the thesis project.
@@ -171,9 +102,7 @@
 % Bibliography: Most examiners prefer that the bibliography include titles.
 % Appendices: Appendices may be included to cover such topics as additional details pertaining to Methods; speculative ideas; projects-in-progress; and/or negative results, particularly if the second format is chosen.
 
-\include{symbols}  
-
-% \addcontentsline{toc}{chapter}{List of Symbols}
+\include{symbols}
 \include{introduction}
 \include{introduction-MD-methods}
 
@@ -194,20 +123,4 @@
 
 % Leave this to the last minute
 % Combine Introduction -- how ?
-
-%% This adds a line for the Bibliography in the Table of Contents.
-% \addcontentsline{toc}{chapter}{Bibliography}
-%% *** Set the bibliography style. ***
-%% (change according to your preference/requirements)
-% \bibliographystyle{plain}
-%% *** Set the bibliography file. ***
-%% ("thesis.bib" by default; change as needed)
-% \bibliography{thesis}
-
-%% *** NOTE ***
-%% If you don't use bibliography files, comment out the previous line
-%% and use \begin{thebibliography}...\end{thebibliography}.  (In that
-%% case, you should probably put the bibliography in a separate file and
-%% `\include' or `\input' it here).
-
 \end{document}
