@@ -294,9 +294,10 @@ They have a high EC50 for the inhibition of fibrils.  Only begun to explore thei
 % Naproxen and ibuprofen
 % From \cite{Takeda:2010gx,Raman:2009jn}
 
+% I don't think I need to include a whole paragraph summarizing ibuprofen.  It's the same story as inositol.
 One of the potential candi- dates is a nonsteroidal anti-inflammatory drug (NSAID) naproxen.11 Epidemi- ological studies have shown that chronic prophylactic intake of naproxen mod- erately reduces the risk of AD.12,13 Furthermore, reexamination of the results of large-scale clinical trials suggests that under certain conditions naproxen can reduce the AD risk by 67%.11
 
-One of the prom- ising candidates is the nonsteroidal antiinflammatory drug ibuprofen (16). Biomedical studies suggest that treatment with ibuprofen reduces the amount of Ab deposits and alleviates memory deficits in mice models (17,18). Ibuprofen intake also correlates with a decrease in the amount of Ab oligomers in mice brain tissues (18). A prophylactic long-
+Biomedical studies suggest that treatment with ibuprofen reduces the amount of Ab deposits and alleviates memory deficits in mice models (17,18). Ibuprofen intake also correlates with a decrease in the amount of Ab oligomers in mice brain tissues (18). A prophylactic long-
 term use of ibuprofen appears to reduce the risk of AD (19), but the effectiveness of this drug against preexisting AD cases is unclear (20). Several recent experimental studies have investigated the molecular aspects of interactions between Ab and ibuprofen. Binding of ibuprofen to Ab fibrils has been demonstrated when the ligand/peptide stoichiometric ratio approximates or exceeds 1 (21,22). Experimental in vitro studies have shown that ibuprofen reduces accumulation of Ab fibrils by apparently interfering with fibril elongation (23). Furthermore, ibuprofen demon- strates an ability to at least partially dissociate preformed Ab fibrils (21,23).
 
 
@@ -350,55 +351,38 @@ Some small molecules inhibit fibril formation, where as others may prevent oligo
 
 % This section provides a nice lead in to the methods section
 \section{Protein-ligand binding}
+% Binding equilibria include both modes and binding constants
 
-\section{Protein-carbohydrate}
-% How does this section fit?  Not sure, but has to be here.
-Another class of protein-ligand binding interaction, where a high \KD\ (weak affinity binding) is found are proteins which bind carbohydrates.
-
-% Mention some experimental techniques used to obtain protein sugar-binding modes, but the point here is not to review these methods ... but to point out that I am aware of these techniques.
-
-\subsection{Binding modes}
-Here I will describe general features of protein-carbohydrate binding.
-But binding is typically specific to the stereochemistry of the sugar molecule, whether if its a sugar oligosaccharride.
-
-Aromatic stacking. Sugar are often have their Nonpolar ring packed against aromatic residues at the binding sites.  An example is depicted in Figure XXX.  The hydroxyl groups provide specificity to the binding.  Depending on the residue at the binding site, they act as both hydrogen bonds donors and acceptors. Taken together both hydrogen bonding and van der waals interactions stabilize the sugar-protein complex.
-
-Examples of sugar protein binding.  L-arabinose.
-
-Lectins
-
-References:
-
-Atomic features of protein-carbohydrate interactions\cite{Vyas:1991p6498}
-
-Molecular simulations of carbohydrates and protein-carbohydrate interactions:motivation, issues and prospects\cite{Fadda:2010p5889}
-
-Lectin structure\cite{Rini:1995p2497}
-
-\subsection{Forces involved in binding}
+\subsection{Intermolecular forces involved in binding}
+% There lots of different forces; so am I present them as the ones modelled in simulation?
+% then I need to mention computer simulation earlier
 % Note that I may end up introducing the forces up in the earlier section -- reorganize as needed
-\begin{outline}
-	\1 Protein-ligand non-covalent interactions that are important for ligand binding and recognition
-		\2 Electrostatic interactions. Polar (hydrogen bonding) and charge-charge interactions
-		 % Here, it will benefit me to read Sarah's appendix C carefully.
-		\2 Nonpolar (hydrophobic) interactions
-		  \3 Van der Waals
-\end{outline}
+% Here, it will benefit me to read Sarah's appendix C carefully.
+
+In protein-ligand binding and recognition, non-covalent interactions are important.  These interactions may be roughly divided into two types: hydrophobic or electrostatic.  
+
+Hydrophobic interactions is a key driving force for ligand binding.  These interactions typically involve nonpolar groups of the ligand and protein. Hydrophobic interactions involve weak attractive intermolecular forces between atom such as Van der Waals and london disperson forces. % what are these forces.
+
+Because life takes place in water, a polar solvent, hydrogen bonding interactions is important contributor to ligand affinity and specificity.  Hydrogen bonds are formed from electrostatic interaction between dipoles.  The acceptor is an electronegative heavy atom such as oxygen. In biomolecular systems, the hydrogen bond acceptor groups are hydroxyl groups from water, and carbonyl groups from protein. Hydrogen bonds have directionality, and are stronger than van der waals forces (references).  The energy of a water-water hydrogen bond is about -3.2 kcal/mol. Charge-charge interactions may also be found in ligand-protein binding.  These are involved in salt bridge formation.
+
+% are important for protein folding and protein structure stabilization. 
+
+Methods used for studying protein-protein and protein-ligand interactions.\cite{Wang:2001ez}
+This paper\cite{Durrant:2011bm} has a nice picture of the thermodynamic cycle which I think I shall discuss in parts of this theses in methods.
 
 \subsection{Binding equilibria}
-% subsection protein_ligand_binding_theory (end)
+
 % Below is a summary of an excerpt from Tom's thesis on structure-based drug discovery.
 % Design of antibiotics 
 % 1) Target determination (biochemical)
 % 2) Structural determination (Xray, NMR, or homology); active site identified; Here would be useful to get the holo structure of the protein
 % 3) Screen for inhibitors against a chemical library or in silico docking.
-\begin{outline}
-	\1 Enzyme and its putative ligand typically bind specifically (high affinity binding).  We want to optimize binding specificity to increase the efficacy of the putative drug, and decrease adverse side effects (toxicity) in the human body.
 
-	\1 The dissociation constant, $K_d$, is a measure of the affinity of a ligand for its binding site on the host protein. Pharmacologically, it can be interpreted as the concentration at which 50\% of the drug is bound to the protein. In experimental studies, $K_d$ is often used to quantitatively screen for potential drug candidates. 
-  % A small $K_d$ suggests that the ligand may bind tightly to the protein.
+The dissociation constant, $K_d$, is a measure of the affinity of a ligand for its binding site on the host protein. Pharmacologically, it can be interpreted as the concentration at which 50\% of the drug is bound to the protein. In experimental studies, $K_d$ is used as a measurement of drug potency and is used to quantitatively screen for potential drug candidates.  A low $K_d$ indicates that the ligand is tightly bound (high affinity binding) to its binding site on the protein.  Enzyme and its putative ligand typically bind specifically high affinity binding.  Rational drug design is often applied to optimize ligand binding specificity in an effort to increase the efficacy of the putative drug, and decrease adverse side effects (toxicity) in the human body.
 
-	\1 Binding equilibrium
+Inhibitors of enzymes bind typically in the nanomolar range (???).  For example, XXX
+
+The chemical equilibrium for the binding reaction is given by,
 
     \begin{equation}
       \left[ Protein\cdot Inositol \right] 
@@ -409,17 +393,59 @@ Lectin structure\cite{Rini:1995p2497}
     % \2 Absolute binding free energy
     % \2 Relative binding free energy
     
-	\1 The binding free energy of a ligand to a protein is directly related to its dissociation constant, $K_d$, the equilibrium constant of the above reaction
+The binding free energy of a ligand to a protein is directly related to its dissociation constant, $K_d$, the equilibrium constant of the above reaction
 
+    % Kd equation
+    
      \begin{equation}
         K_{d} = f_{ub}\frac{\left[ Protein \right]\left[ Inositol \right]}{\left[Protein \cdot Inositol\right]},
      \end{equation}
      
-     % Add equation converting binding constant to gibbs free energies.
-	\1 Experimental techniques for estimating $K_d$
-		\2 What experimental techniques are used to estimate binding affinity? (May need to study up on this)
-		\2 Isothermal titration calorimetry (ITC) is a technique which can be used to measure energetics of ligand binding to peptides.
-\end{outline}
+     % Free energy equation
+     \begin{equation}
+        K_{d} = e^{\frac{-\Delta G}{RT}}
+     \end{equation}
+
+     \begin{equation}
+        \Delta G = -RT\ln K_d
+     \end{equation}
+     
+% Add equation converting binding constant to gibbs free energies.
+% Nov 23, 2012: Might be nice to have here but do I really want to defend this?
+% \1 Experimental techniques for estimating $K_d$
+% \2 What experimental techniques are used to estimate binding affinity? (May need to study up on this)
+% \2 Isothermal titration calorimetry (ITC) is a technique which can be used to measure energetics of ligand binding to peptides.
+
+
+
+\section{Protein-carbohydrate}
+% How does this section fit?  Not sure, but has to be here.
+Another class of protein-ligand binding interaction, where a high \KD\ (weak affinity binding) is found are proteins which bind carbohydrates.
+
+% Mention some experimental techniques used to obtain protein sugar-binding modes, but the point here is not to review these methods ... but to point out that I am aware of these techniques.
+
+\subsection{Binding modes}
+Here I will describe general features of protein-carbohydrate binding. Binding is typically specific to the stereochemistry of the sugar molecule, whether if its a sugar oligosaccharride or a monosaccharride.
+
+Atomic features of protein-carbohydrate interactions\cite{Vyas:1991p6498} 
+
+Aromatic stacking. Sugar often have their nonpolar ring packed against aromatic residues at binding sites.  An example is depicted in \ref{fig:sugar_protein}.  The hydroxyl groups provide specificity to the binding.  Depending on the residue at the binding site, they act as both hydrogen bonds donors and acceptors. Taken together both hydrogen bonding and van der waals interactions stabilize the sugar-protein complex.
+
+Examples of sugar protein binding.  L-arabinose. % look this up
+
+Lectins are proteins which are known to bind monosaccharrides carbohydrates. Lectin structure\cite{Rini:1995p2497}
+
+Molecular simulations of carbohydrates and protein-carbohydrate interactions: motivation, issues and prospects\cite{Fadda:2010p5889}
+
+This paper has a pretty good summary of the drug discovery process in the context of CNS. It also has summaries of the experimental techniques used to measure binding affinity\cite{Hubbard:2011fs}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=6in]{figures/introduction/sugar_protein_binding.pdf}
+  \caption[Sugar protein example]{Example of sugar-lectin mode: glucose binding to galactose chemoreceptor protein (Ref: Vyas, N. et al, 1991; Rendered from PDB ID: 2GP)}
+  \label{fig:sugar_protein}
+\end{figure}
+
 
 % \subsection{Role of chirality in drug binding}
 % Stereoisomerism is important to the activity of molecules.  It modulates binding to proteins.
@@ -488,7 +514,7 @@ The first chapter introduces the thesis in the context of the field.  The second
 
 \addcontentsline{toc}{section}{Bibliography}
 \bibliographystyle{plain}
-\bibliography{chapter1}
+\bibliography{introduction}
 
 % AD
 % Treatment - harder to treat - lack of biochemical understanding of what causes disease, which makes it difficult to develop drugs for; lack of good diagnostic methods because treatment may not be effective at end stages of the disease where brain function won't e able to be rescued.
