@@ -1,5 +1,4 @@
 \chapter{Introduction}
-
 % Maybe start off as far back as "protein folding" ?
 % What would I write though?
 % Check out Misbehaving proteins the book.
@@ -16,8 +15,7 @@
 % Protein interactions, and how protein function may be modulated by these interactions -- particularly solvent interactions.
 % Flow of information from DNA to protein, where proteins carry out core functions which enable life.
 
-Perhaps one of the most remarkable phenomenon of nature is the ability of proteins to fold and self-assemble from a polypeptide chain into structures which impart their functions as molecular machines of life.  
-% specific examples
+Perhaps one of the most remarkable phenomenon of nature is the ability of proteins to fold and self-assemble from a polypeptide chain into structures which impart their functions as molecular machines of life. % specific examples
 Proteins are involved in signal transduction, cell cycle regulation, XXX
 
 By knowing the structure of proteins, the functions of proteins at the molecular level may be deduced. Since the historical experiment performed by Anfinsen and colleagues which demonstrated that the structure of a folded protein is encoded in its amino acid sequence and solvent environment, the protein folding problem has emerged as an important problem in biochemistry and biophysics.
@@ -28,6 +26,15 @@ In recent years, a class of proteins without a uniquely folded state have gained
 % It is also thought that amyloid fibrillar state may be the globally stable folded state for all proteins.
 % Perhaps show a table here of all the proteins and diseases that they may be involved in.
 % Columns Protein, has a structure?, disordered?, disease it is involved in.
+
+% \section{Computer Simulations and Drug discovery}
+% Talk about structure-based drug discovery, and link to computer simulations.
+% The paragraph below are duplicated from Durrant et al.
+The static models produced by NMR, X-ray crystallography, and homology modeling provide valuable insights into macromolecular structure, but molecular recognition and drug binding are very dynamic processes. 
+When a small molecule like a drug (for example, a ligand) approaches its target (for example, a receptor) in solution, it encounters not a single, frozen structure, but rather a macromolecule in constant motion.
+
+As ligand binding and the important macromolecular motions associated with it are microscopic events that take place in mere millionths of a second, a complete understanding of the atomistic energetics and mechanics of binding is unattainable using current experimental techniques. Molecular dynamics simulations are useful for filling in the details where experimental methods cannot. With constant improvements in both computer power and algorithm design, the future of computer-aided drug design is promising; molecular dynamics simulations are likely to play an increasingly important role in the development of novel pharmacological therapeutics.\cite{Durrant:2011bm}
+
 
 \section{The amyloid state of proteins}
 % A paragraph as a general introduction to amyloid.
@@ -49,7 +56,6 @@ In a globular protein the polypeptide main chain and the hydrophobic side chains
 Amyloid fibrils are formed via a complex aggregation pathway. Initially, monomers aggregate to form oligomers with different morphologies which exists in equilibrium with amyloid fibrils. Some of these oligomers are on-pathway to fibril formation, while others themselves may be end-points of the aggregation pathway. Biochemically, fibrils are protease resistant and are insoluble in the presence of Sodium dodecyl sulfate (SDS).
 
 The mechanism of amyloid formation is currently undergoing study. Amyloid fibrils form via a two-step nucleation-polymerization process, a behavior that is typical of nucleated processes such as crystallization.  In the nucleation phase, a lag phase occurs where energetic barriers of aggregation must be overcome to form the initial aggregation nucleus. Seeding, a process where preformed aggregates is introduced into solutions, may eliminate the lag phase.  Following the lag phase, free monomers may bind to the nucleated aggregates and polymerize into mature fibrils.\cite{Murphy:2002fe} 
-
 
 \subsection{Fibrils}
 
@@ -102,7 +108,7 @@ The ubiquitous presence of a \crossbs supports that the organization of the pept
 
 \subsection{Polymorphism of fibrils}
 
-Although all fibrils share the \crossbs, individual fibrils exhibit polymorphism at the molecular level. Depending on the experimental conditions under which they are formed, fibrils may vary in the length of the beta-strand involved, side chain orientation, and beta-sheet packing. XXX REF
+Although all fibrils share the \crossbs, individual fibrils exhibit polymorphism at the molecular level. Depending on the experimental conditions under which they are formed, fibrils may vary in the length of the beta-strand involved, side chain orientation, and beta-sheet packing.\cite{Kodali:2007cz} %XXX
 
 \subsection{Non-fibrillar oligomers}
 \begin{figure}
@@ -114,18 +120,23 @@ Although all fibrils share the \crossbs, individual fibrils exhibit polymorphism
 
 Due to their structural disorder and their insolubility, molecular details of oligomers have been challenging to obtain using current structural determination techniques. 
 
-EM and AFM experiments have shown that transient, unstable particles may appear prior to the formation of fibrils. In particular, soluble \abeta\ prefibrillar assemblies that are annular, spherical, or curvilinear in shape have been reported in literature.REF Protofibrils, in particular, are curvilinear, filamentous structures that are smaller than mature fibrils and are approximately 5-10 nm in diameter.9 Furthermore, protofibrils bind to dyes Thioflavin T (ThT) and Congo Red (CR), suggesting the presence of substantial β-sheet content.9, 13-15 Although some of these particles may be \bsheet-rich, they are morphologically distinct and are typically much smaller than fibrillar structures. Figure~\ref{fig:oligomers}
+EM and AFM experiments have shown that transient, unstable particles may appear prior to the formation of fibrils. In particular, soluble \abeta\ prefibrillar assemblies that are annular, spherical, or curvilinear in shape have been reported in literature. REF 
 
-Despite the importance of these prefibrillar species in causing neurodegeneration, their molecular structures are still not known. However, a recent SSNMR study demonstrated that a late stage, neurotoxic Aβ40 spherical intermediate contained fibril-like β-sheet structure.16
+Protofibrils, in particular, are curvilinear, filamentous structures that are smaller than mature fibrils and are approximately 5-10 nm in diameter. REF
 
-[ Recent data show that non-fibrillar oligomers may contain fragments which are fibril-like in morphology. Most recently a study have shown that oligomers of \abeta\ ]
-[ Should briefly read up on the book chapter by Pat Walsh]
+Furthermore, protofibrils bind to dyes Thioflavin T (ThT) and Congo Red (CR), suggesting the presence of substantial β-sheet content.9, 13-15 
+
+Although some of these particles may be \bsheet-rich, they are morphologically distinct and are typically much smaller than fibrillar structures. Figure~\ref{fig:oligomers}
+
+Furthermore, it has been recently suggested that non-fibrillar oligomers may contain fragments which that are cross-beta like in morphology.REF  %A recent SSNMR study demonstrated that a late stage, neurotoxic Aβ40 spherical intermediate contained fibril-like β-sheet structure.16
+% Should briefly read up on the book chapter by Pat Walsh and cite him
+Despite the importance of these prefibrillar species in causing neurodegeneration, their molecular structures are still not known. Identifying the molecular structures of these toxic oligomers and their mechanism of toxicity is a topic of active research.
 
 \subsubsection{Amyloid Toxicity}
 % I think outline some of the ideas / hypothesis about the link between amyloid and disease, but don't go into what people speculate or data on toxicity. It is related, but this is out of the scope of your thesis.
 
 	% Key question in the field: What is the toxic species?
-Multiple lines of research have identified oligomers as a likely causative agent for neuronal cell death. By contrast, the monomeric and fibril forms are thought to be less toxic than oligomers. It is hypothesized that soluble oligomers may cause toxicity by perturbing the integrity of cellular membranes through binding and disrupting the lipid bilayer (perhaps by making them ion permeable). \cite{Walsh:2007fu}
+Multiple lines of research have identified oligomers as a likely causative agent for neuronal cell death. By contrast, the monomeric and fibril forms are thought to be less toxic than oligomers. It is hypothesized that soluble oligomers may cause toxicity by perturbing the integrity of cellular membranes through binding and disrupting the lipid bilayer (perhaps by making them ion permeable).\cite{Walsh:2007fu}
 
 % Include a paragraph about amyloid formation and lipid membranes
 
@@ -159,8 +170,9 @@ Monomeric \abeta\ is an approximately 4 kDa peptide produced by the intramembran
 Multiple lines of evidence indicate that \abetafortytwo is likely to be the more deleterious form of \abeta. Genetic studies showed that mutations which cause early-onset AD also in turn increases the ratio of \abetafortytwo to \abetaforty.\cite{Hardy:1997tu} Moreover, in vitro, \abetafortytwo\ displays significantly higher propensity for aggregation than \abetaforty, despite differing by only two amino acids. In addition, \abetaforty\ and \abetafortytwo\ also have distinct aggregation pathways in vitro: \abetafortytwo is found to form a morphologically more diverse population of intermediate oligomers than \abetaforty.\cite{Bitan:2003ut} % What about mice studies?
 \abeta\ aggregates have been found to be present in a variety of morphologies in the brain. Although plaques are often visible in the dementia patients, the plaque load does not correlate with disease progression and severity, a puzzling aspect of AD.  Instead, synaptic loss correlated well with the concentration of soluble \abeta\ oligomers in the brain.
 
-% Talk about how important it is to develop drugs for these amyloid disorders ... particularly for AD ... because it not only is a great economic burden on society, but a growing epidemic....
-Currently, AD is a growing epidemic for which there is no cure or prevention. In 2010, there are an estimated 36 million people in the world currently suffering from AD, and this number is projected to grow to 115 million people by the year 2050.\cite{alzreport:2012}  Furthermore, there are no drugs which may target the underlying disease: approved treatments today such as cholinesterase inhibitors donepezil, and memantine (N-methyl-D-aspartate antagonist) only mitigates cognitive symptoms. Hence, it is imperative that efforts be made towards the development of therapeutics for AD.  The vast number of structural and biochemical studies on amyloid structure have been crucial for the development of potential therapeutics for Alzheimer's disease.  A promising method of treatment of AD is by preventing amyloid aggregation, and decreasing amyloid production.
+% Amyloid inhibition as a treatment for Alzheimer's disease and related amyloid disorders. 
+% Talk about how important it is to develop drugs for these amyloid disorders 
+With the longevity of our population, AD is approaching epidemic proportions with no cure or preventative therapy available.\cite{Blennow:2006wd} In 2010, there are an estimated 36 million people in the world currently suffering from AD, and this number is projected to grow to 115 million people by the year 2050.\cite{alzreport:2012}  Furthermore, there are no drugs which may target the underlying disease: approved treatments today such as donepezil (a cholinesterase inhibitor), and memantine (a N-methyl-D-aspartate antagonist) only mitigates cognitive symptoms. Hence, it is imperative that efforts be made towards the development of therapeutics for AD.  The vast number of structural and biochemical studies on amyloid structure have been crucial for the development of potential therapeutics for Alzheimer's disease.  A promising method of treatment of AD is by preventing amyloid aggregation, and decreasing amyloid production.
 
 % \subsubsection{Other amyloid disorders}
 % Perhaps not enough to make it into its own subsection
@@ -170,24 +182,19 @@ Currently, AD is a growing epidemic for which there is no cure or prevention. In
 \section{Amyloid Inhibition by small molecules: A promising method of treatment for AD}
 % Review of what is known about amyloid fibril ligand binding, specifically dyes.
 
-% Cure, method of prevention; is there hope?
-
 % In this section, I will provide an overview of some of the challenges to overcome when developing a small molecule therapeutic for Alzheimer's disease.  Furthermore, using this information, I will motivate why inositol is an exciting avenue to explore.
-
-% Amyloid inhibition as a treatment for Alzheimer's disease and related amyloid disorders. 
 
 % Briefly mention non-small molecule putative therapies which also acts via amyloid inhibition. The focus of this thesis will be on small-molecule amyloid inhibition.
 
-% Use this as a transition into amyloid inhibition
-% AD presents as a major economic and health burden to modern society.  With the longevity of our population, AD is approaching epidemic proportions with no cure or preventative therapy available.\cite{Blennow:2006wd}
+Small molecules which prevent amyloid formation may be an effective method of treatment for amyloid disorders because of the potential to treat the underlying disease. 
 
-Amyloids are attractive drug targets. Small molecules which targets amyloids may be an effective method of treatment for amyloid disorders because of the potential to treat the underlying disease. Through in vitro screening, many small molecules have been found to effect the amyloid aggregation pathway.  Some were demonstrated to inhibit amyloid fibrils, where as others were shown to arrest or reduce oligomer formation.
-  
-% Here I can take a cue from Justin Lemkul`'s recent review paper.
-% Talk about the different kinds of small molecules that have been found to inhibition amyloid formation.  Here I will also provide a summary of what people know about the mechanism by which they inhibit amyloid formation.
-Pharmacological perspective of the challenge of developing an Alzheimer's drug. In order to effectively treat Alzheimer's and other neurodegenerative diseases, small molecule drug candidates must pass the blood brain barrier at sufficient concentrations for inhibition.  This is difficult to achieve.
-      
-In vitro screening has led to the discovery of a large number of small-molecules which were found to affect the amyloid aggregation pathway. Many of these small molecules are thought to act by directly binding to amyloidogenic peptides and aggregates.
+In recent years, in vitro screening has led to the discovery of a large number of small-molecules which were found to affect the amyloid aggregation pathway. Some were demonstrated to inhibit amyloid fibrils, where as others were shown to arrest or reduce oligomer formation. Many of these small molecules are thought to act by directly binding to amyloidogenic peptides and aggregates.
+
+A key pharmacological challenge of developing a drug for AD and other neurodegenerative diseases involves developing a small-molecule candidates, which can effectively penetrate the blood-brain barrier (BBB) at sufficient concentrations for their therapeutic effects (ie. to inhibit amyloid formation).
+
+The main classes of molecules that have demonstrated promise as amyloid fibrillation inhibitors are reviewed in the sections below.
+
+% Note that here I can take a cue from Justin Lemkul`'s recent review paper.
 
 \begin{figure}
 \centering
@@ -197,24 +204,21 @@ In vitro screening has led to the discovery of a large number of small-molecules
 \end{figure}
 
 \subsection{Dye molecules}
-
 % Molecular mechanism of binding of dye molecules. Thought to bind flat on on the surface grooves of amyloid fibrils where they interact with hydrophobic groups exposed at the surface. 
       % Doesn't explain why the dye molecules are also able to suppress fibril formation.
       % Can the birefringence be explained by these binding modes? -- this is out of the scope of my thesis.  Don't put this in my thesis but I should be able to coherently explain this during my defense.
 
-Among the first molecules known to bind amyloid fibrils were dyes, Thioflavin T (ThT) and Congo Red (CR) used to identify their presence.(Fig.~\ref{fig:amyloid_dyes})
+Among the first molecules known to bind amyloid fibrils were dyes molecules used to identify their presence (Fig.~\ref{fig:amyloid_dyes}). Early histological detection of amyloid binding was done using congo red, where upon binding fibrils exhibit red-green birefringence. Congo red requires the use of polarized light microscopy, a laborious process, and the interpretation of the birefringence is often not reproducible.
 
-Early histological detection of amyloid binding was done using congo red, where upon binding fibrils exhibit red-green birefringence. Congo red requires the use of polarized light microscopy, a laborious process, and the interpretation of the birefringence is often not reproducible.
+% Thioflavin T (ThT) and Congo Red (CR) 
 
-Thioflavin-T (ThT) is a benzathiole fluorescent dye also used to detect the presence of amyloid fibrils in post-mortem brain tissue samples, and monitor fibril formation in vitro. ThT exhibits a dramatic shift in the excitation spectrum maximum and an emission enhancement upon binding to fibrils, making it a sensitive and efficient report for the presence of amyloid fibrils.
+Thioflavin-T (ThT) is a benzathiole fluorescent dye also used to detect the presence of amyloid fibrils in post-mortem brain tissue samples, and monitor fibril formation in vitro. ThT exhibits a dramatic shift in the excitation spectrum maximum and an emission enhancement upon binding to fibrils, making it a sensitive and efficient report for the presence of amyloid fibrils.  ThT is soluble in water and have \KD\ in the low \micromolar\ range.  ThT also binds uniformly across fibrils prepared from synthetic and biological sources.
 
-Moreover, ThT is soluble in water and have \KD in the low \micromolar\ range.  ThT also binds uniformly across fibrils prepared from synthetic and biological sources.
-
-The studies by Naiki et al. and LeVine showed that dye binding is linked to the presence of the \crossbs of fibrils, which led to the adoption of ThT dye binding as not only an indication of the presence of fibrils, but also as an indication of the presence of the \crossbs.
-
+Due to the ubiquitous use of ThT as a amyloid fibril probe, fibril binding by ThT is well-characterized. The studies by Naiki et al. and LeVine et al demonstrated the link between ThT dye binding and the presence of \crossbs\ of fibrils.
+% which led to the adoption of ThT dye binding as not only an indication of the presence of fibrils, but also as an indication of the presence of the \crossbs.
 Dye molecules are good scaffolds for new imaging agents and new molecules to stain amyloid fibrils for different sequences.
 
-Fibril binding by ThT is well-characterized due to the ubiquitous use of ThT as a amyloid fibril probe.
+
 % How does it bind? And what causes the fluorescence when it binds?
 ThT binds hydrophobic pockets in globular proteins: It has been shown to bind to a hydrophobic pocket of human serum albumin with comparable affinity to many drug-like molecules.\cite{Groenning:2007p3436,Groenning:2007eo}
 
@@ -238,22 +242,14 @@ ThT binds hydrophobic pockets in globular proteins: It has been shown to bind to
 % Where are they found? Plants, animals, in food. What are they used for in nature?
 % Chemical features of polyphenols? Properties? Soluble?
 % What is known about their molecular mechanism?
-Polyphenols is a class of molecules found both naturally in plants.
-
-They are also made synthetically.
-
-Recently experimental evidence suggests that three such molecules X, Y, Z modulate \abeta\ aggregation, and hence may be developed into therapeutics for Alzheimer's Disease and related neurodegenerative diseases.  In this section, the discussion will be focused on these compounds and their role in fibril inhibition.
+Polyphenols is a class of molecules found both naturally in plants. They can also be made synthetically. Recently experimental evidence suggests that three such molecules X, Y, Z modulate \abeta\ aggregation, and hence may be developed into therapeutics for Alzheimer's Disease and related neurodegenerative diseases.  In this section, the discussion will be focused on these compounds and their role in fibril inhibition.
 
 (−)-epigallocatechin-3-gallate EGCG is the major polyphenolic component of green tea and  A variety of experimental in vitro cell culture paradigms have shown micromolar concentrations of EGCG to be protective against Ab-induced cell death [Bastianetto et al., 2006; Kim et al., 2007; Levites et al., 2003].
 
 Most common subgroup of phenolic compounds are flavonoids, known for their anti-oxidant properties, were shown to modulate amyloid formation.(Fig.~\ref{fig:polyphenols})
-
 % curcumin
 % morin
-
-They have a high EC50 for the inhibition of fibrils.  Only begun to explore their molecular mechanism of binding
-
-[Do they have similar mechanism of action? What are their advantage and disadvantages as a therapeutic for AD?]
+They have a high EC50 for the inhibition of fibrils.  Only begun to explore their molecular mechanism of binding [Do they have similar mechanism of action? What are their advantage and disadvantages as a therapeutic for AD?]
 
 \subsection{Non-steroidal Anti-inflammatory compounds (NSAIDs)}
 \begin{figure}
@@ -271,8 +267,6 @@ One of the potential candi- dates is a nonsteroidal anti-inflammatory drug (NSAI
 
 Biomedical studies suggest that treatment with ibuprofen reduces the amount of Ab deposits and alleviates memory deficits in mice models (17,18). Ibuprofen intake also correlates with a decrease in the amount of Ab oligomers in mice brain tissues (18). A prophylactic long-
 term use of ibuprofen appears to reduce the risk of AD (19), but the effectiveness of this drug against preexisting AD cases is unclear (20). Several recent experimental studies have investigated the molecular aspects of interactions between Ab and ibuprofen. Binding of ibuprofen to Ab fibrils has been demonstrated when the ligand/peptide stoichiometric ratio approximates or exceeds 1 (21,22). Experimental in vitro studies have shown that ibuprofen reduces accumulation of Ab fibrils by apparently interfering with fibril elongation (23). Furthermore, ibuprofen demon- strates an ability to at least partially dissociate preformed Ab fibrils (21,23).
-
-
 
 \subsection{Inositol}
 \begin{figure}
