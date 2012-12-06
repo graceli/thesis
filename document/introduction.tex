@@ -1,63 +1,48 @@
 \chapter{Introduction}
-% Maybe start off as far back as "protein folding" ?
-% What would I write though?
 % Check out Misbehaving proteins the book.
 
 % Broad theme: Protein folding, self-assembly, and its modulation ???
-% Importance of protein folding -- structure - function paradigm
-% Functions by binding with other proteins or ligands in the body.
-% Ok, we also know about intrinsically disordered proteins that have well-defined functions in the human body.
-% 
-% But what about amyloid ... this common state that all proteins reach which results from protein aggregation
-
-% The general problem of protein - structure and function
-
-% Protein interactions, and how protein function may be modulated by these interactions -- particularly solvent interactions.
 % Flow of information from DNA to protein, where proteins carry out core functions which enable life.
+% Importance of protein folding -- structure - function paradigm
+% Functions by binding with other proteins or ligands in the body. Protein interactions and how protein function may be modulated by these interactions -- particularly solvent interactions.
+% Ok, we also know about intrinsically disordered proteins that have well-defined functions in the human body.
+% But what about amyloid ... this common state that all proteins reach which results from protein aggregation .. involved in disease.
 
-Perhaps one of the most remarkable phenomenon of nature is the ability of proteins to fold and self-assemble from a polypeptide chain into structures which impart their functions as molecular machines of life. % specific examples
-Proteins are involved in signal transduction, cell cycle regulation, XXX
+One of the most remarkable phenomenon in nature is the ability of proteins to fold from a polypeptide chain into structures which impart their functions as molecular machines of life. Proteins play a key role in all aspects of life, from cell cycle regulation to signal transduction.  Furthermore, drug receptors are predominantly proteins.  Small molecules that can affect the outcome of various biochemical pathways act by binding these protein receptors. Hence, it is not surprising that many diseases may arise from the improper functioning of proteins, for example, when denature or misfold (fail to adopt their native functional state).
 
-By knowing the structure of proteins, the functions of proteins at the molecular level may be deduced. Since the historical experiment performed by Anfinsen and colleagues which demonstrated that the structure of a folded protein is encoded in its amino acid sequence and solvent environment, the protein folding problem has emerged as an important problem in biochemistry and biophysics.
+% Important to understand structure, but it is not enough.  We also need to understand dynamics
+Since the historical experiment performed by Anfinsen and colleagues which demonstrated that the structure of a folded protein is encoded in its amino acid sequence and solvent environment, protein folding and structure determination have gained much attention in the fields of biochemistry and biophysics.  The static models produced by NMR, X-ray crystallography, and homology modeling provide valuable insights into macromolecular structure, but molecular recognition and drug binding are very dynamic processes.  When a small molecule like a drug (for example, a ligand) approaches its target (for example, a receptor) in solution, it encounters not a single, frozen structure, but rather a macromolecule in constant motion. Understanding both protein structure and dynamics enable us to elucidate the molecular basis of disease pathways and ultimately will aid in the discovery of novel therapeutics. 
+
+% Computer-aided drug design using MD
+As ligand binding and the important macromolecular motions associated with it are microscopic events that take place in mere millionths of a second, a complete understanding of the atomistic energetics and mechanics of binding is unattainable using current experimental techniques. In recent years, molecular dynamics (MD) simulation of biomolecules, a physics-based computer simulation technique, became a tool of choice to investigate protein dynamics and function.  With ever increasing availability of computing power and data storage, simulations are a promising technique for aiding in the structure-based drug discovery process. In the past few years, MD simulations are able to routinely reach microseconds in sampling time.  Currently, MD simulations are the most accurate method for probing small molecule binding, and are useful for filling in the details where experimental methods cannot.  With constant improvements in both computer algorithms and processing power, molecular dynamics simulations are likely to play an increasingly important role in the development of novel pharmacological therapeutics.\cite{Durrant:2011bm}  % [There are examples already demonstrating MD's usefulness in drug ... cite some examples from that DE Shaw paper]
+
 % IDPs have function.  Break down of folded structure, and aggregation leads to loss of function.
 % Protein misfolding and aggregation
-In recent years, a class of proteins without a uniquely folded state have gained attention due to their involvement in a multitude of biochemical pathways such as regulation and cellular signaling. Among these IDPs are a subset of proteins which are involved in numerous human diseases.  These proteins have been found to aggregate to form amyloid fibrils under certain solution conditions. Amyloid fibrils are implicated in many incurable diseases such as prion-related diseases, neurodegenerative diseases, Type II diabetes, and systemic amyloidosis.
-
-% It is also thought that amyloid fibrillar state may be the globally stable folded state for all proteins.
-% Perhaps show a table here of all the proteins and diseases that they may be involved in.
-% Columns Protein, has a structure?, disordered?, disease it is involved in.
+In recent years, a class of proteins without a uniquely folded state known as intrinsically disordered proteins (IDPs) have gained attention because of their involvement in a multitude of physiological pathways and diseases. In particular, a subset of these IDPs under certain in vivo conditions are able to aggregate to form amyloid. Amyloid is known to be associated with incurable diseases such as prion disorders, neurodegenerative diseases, Type II diabetes, and systemic amyloidosis. Hence, IDPs represent a class of potential drug targets. However, their intrinsic disordered nature presents new challenges for the drug discovery process, and impedes the use of traditional structural-based drug design techniques.
 
 % \section{Computer Simulations and Drug discovery}
 % Talk about structure-based drug discovery, and link to computer simulations.
 % The paragraph below are duplicated from Durrant et al.
-The static models produced by NMR, X-ray crystallography, and homology modeling provide valuable insights into macromolecular structure, but molecular recognition and drug binding are very dynamic processes. 
-When a small molecule like a drug (for example, a ligand) approaches its target (for example, a receptor) in solution, it encounters not a single, frozen structure, but rather a macromolecule in constant motion.
-
-As ligand binding and the important macromolecular motions associated with it are microscopic events that take place in mere millionths of a second, a complete understanding of the atomistic energetics and mechanics of binding is unattainable using current experimental techniques. Molecular dynamics simulations are useful for filling in the details where experimental methods cannot. With constant improvements in both computer power and algorithm design, the future of computer-aided drug design is promising; molecular dynamics simulations are likely to play an increasingly important role in the development of novel pharmacological therapeutics.\cite{Durrant:2011bm}
-
 
 \section{The amyloid state of proteins}
 % A paragraph as a general introduction to amyloid.
 % What's the general interest behind amyloid science -- why is amyloid important
-% Here lead into a more detailed discussion about AD
-% Role of amyloid in the human body
+% Role of amyloid in the human body -- functional amyloid?
 
-150 years ago, amyloids were observed as tissue deposits of extracellular filaments.\cite{Haass:2007db,Sipe:2000fs} These fibrillar deposits were both microscopically visible, and sometimes visible by eye, deposits found on various organs in many seemingly unrelated diseases.
+150 years ago, amyloids were first discovered when tissue deposits of extracellular filaments were observed\cite{Haass:2007db,Sipe:2000fs} These fibrillar deposits were both microscopically visible, and sometimes visible by eye, deposits found on various organs in many seemingly unrelated diseases. It is now well-known that there are numerous diseases, many of which are neurodegenerative, involving the amyloid formation of a distinct aggregation-prone protein or peptides (Show table with disease and the protein involved?).
 
-% amyloid may be general to all proteins
-The ability of polypeptide chains to form amyloid structures is not restricted to the relatively small number of proteins associated with recognized clinical disorders. Amyloid fibrils were observed to be formed in vitro by many other peptides and proteins, including well-known molecules such as myoglobin, and also by homopolymers such as polythreonine or polylysine.  
-% This suggests that the amyloid state may be the globally stable for all polypeptides.
-Although the ability of proteins to form amyloid fibrils appear to be generic, the propensity for a given peptide is highly dependent on the formation condition, and vary for different sequences. 
-% The relative aggregation rates for a wide range of peptides and proteins correlates with the physicochemical features of the molecules such as charge, secondary-structure propensities and hydrophobicity. 
-In a globular protein the polypeptide main chain and the hydrophobic side chains are largely buried within the folded structure. Only when they are exposed, for example when the protein is partly unfolded (for example, at low pH) or fragmented (for example, by proteolysis), will conversion into amyloid fibrils be possible.
+% Amyloid formation may be generic to all proteins
+However, the ability of polypeptide chains to form amyloid is not restricted to the proteins associated with recognized clinical disorders. In particular, under certain in vitro solution conditions, even polypeptide chains capable of adopting well-defined tertiary structures were capable of forming amyloid fibrils (eg. myoglobin and lysozyme), suggesting that the amyloid state may be the globally-stable state for all polypeptides.  Although the ability of proteins to form amyloid fibrils appear to be generic, the propensity for a given peptide is highly dependent on the formation condition, and vary for different sequences. For example, for globular protein to form amyloid, the protein must be first partly unfolded before conversion into amyloid fibrils is possible.
+% Dobson 2006 -- The relative aggregation rates for a wide range of peptides and proteins correlates with the physicochemical features of the molecules such as charge, secondary-structure propensities and hydrophobicity. 
 
-% How is amyloid formed
-% kinetics of aggregation ?
-Amyloid fibrils are formed via a complex aggregation pathway. Initially, monomers aggregate to form oligomers with different morphologies which exists in equilibrium with amyloid fibrils. Some of these oligomers are on-pathway to fibril formation, while others themselves may be end-points of the aggregation pathway. Biochemically, fibrils are protease resistant and are insoluble in the presence of Sodium dodecyl sulfate (SDS).
+% Amyloid formation -- models of the kinetics of aggregation
+Amyloid formation appear to be kinetically similar to nucleation-polymerization processes, such as crystallization. In the nucleation phase, a lag phase occurs where energetic barriers of aggregation must be overcome to form the initial aggregation nucleus. Following the lag phase, free monomers may bind to the nucleated aggregates and polymerize into mature fibrils.\cite{Murphy:2002fe} Seeding, a process where preformed aggregates is introduced into solutions, may eliminate the lag phase.\cite{harper and lansbury 1997, Jarrett and lansbury 1993}  Amyloid fibrils are formed via a complex aggregation pathway in vivo where many intermediate species may be formed.  Much of what we understand comes from the use of in vitro models of amyloid-forming peptides. Monomers self-assemble into oligomers of different morphologies and sizes, which exist in equilibrium with amyloid fibrils, a visible endpoint of aggregation. Oligomers may either be on-pathway to fibril formation, that is, they serve only as intermediates, while others themselves may be the endpoints of aggregation.
 
-The mechanism of amyloid formation is currently undergoing study. Amyloid fibrils form via a two-step nucleation-polymerization process, a behavior that is typical of nucleated processes such as crystallization.  In the nucleation phase, a lag phase occurs where energetic barriers of aggregation must be overcome to form the initial aggregation nucleus. Seeding, a process where preformed aggregates is introduced into solutions, may eliminate the lag phase.  Following the lag phase, free monomers may bind to the nucleated aggregates and polymerize into mature fibrils.\cite{Murphy:2002fe} 
+In the sections, below we review the structure and properties of fibrillar and non-fibrillar amyloid oligomers, that are common to all amyloid-forming polypeptides.  Much of the initial detailed biochemical and biophysical characterization of amyloid formation was centered on the amyloid-beta peptide, which is involved in Alzheimer's disease, and hence our discussion will be focused on this peptide. % REWORD
 
 \subsection{Fibrils}
+
+Fibrillar amyloid deposits have several physical properties in common. Amyloid fibrils exhibit specific optical behavior upon binding certain dye molecules. After staining with Congo Red, amyloids exhibit bright green birefringence under polarized light. Fibrils are both protease resistant and are insoluble in the presence of sodium dodecyl sulfate (SDS).  
 
 \begin{figure}
   \centering
@@ -66,17 +51,11 @@ The mechanism of amyloid formation is currently undergoing study. Amyloid fibril
   \label{fig:fibril_diffraction}
 \end{figure}
 
-% Finding a treatment for AD and other fatal neurodegenerative diseases motivated many biochemical and biophysical studies of the amyloid state. 
+Despite having dramatically different sequences, amyloid fibrils formed from different polypeptides all adopt a similar morphology known as the \crossbs.  To date, independent measurements of fibrillar structure from different instruments have all confirmed the presence of \crossbs\ as the core structure of amyloid fibrils. Initial structural studies, done using X-ray fiber diffraction, showed that fibril have diffraction patterns characterized by a XXX, corresponding to a 4.8 \angstrom\ interpeptide, and 10 \angstrom\ intersheet spacing, respectively (Figure~\ref{fig:fibril_diffraction}).  These defining measurements in fiber diffraction data have been adopted by biophysicists to be indicative of the presence of \crossbs, and hence, of amyloid fibrils. Furthermore, under the transmission electron microscope (TEM), fibrillar structures are visible as long, unbranched, and ribbon-like structures with diameters between 50 - 100 nms (Figure~\ref{fig:fibril_TEM_SSNMR}). 
+% Other measurements? - MPL Mass per unit length?
 
-Fibrillar amyloid deposits have several physical properties in common. Amyloid fibrils exhibit specific optical behavior upon binding certain dye molecules. After staining with Congo Red, amyloids exhibit bright green birefringence under polarized light. 
-
-Furthermore, despite having dramatically different sequences, amyloid fibrils formed from different polypeptides all adopt a similar morphology known as the \crossbs. %Fibril structures have in common the organization of the peptidic backbone into beta-sheet structures.
-The ubiquitous presence of a \crossbs\ supports that the organization of the peptidic backbone, common to all proteins, in to \bsheets\ is a major determinant of the fibrillar structure. To date, many independent measurements of fibrillar structure using a variety of instruments have all confirmed the presence of \crossbs\ as the core structure of amyloid fibrils.  Recent proposed structures, indicate that the core region is composed of two to four sheets that interact closely with each other. The first structural studies of fibrils using X-ray fiber diffraction showed that the \crossbs\ is characterized by a 4.8\angstrom\ interpeptide, and 10\angstrom\ intersheet spacing (Figure~\ref{fig:fibril_diffraction}).  Under the transmission electron microscope (TEM), fibrillar structures are visible as long, unbranched, and ribbon-like structures that are 100s of nanometers in diameter (Figure~\ref{fig:fibril_TEM_SSNMR}). This defining characteristic of \crossb\ have now been adopted by biophysicists as an indication for the presence of amyloid fibrils.
-
-% Other measurements 
-% MPL Mass per unit length
-
-Although \crossb\ is widely known, due to the insolubility and inherent non-crystalline nature of amyloid fibrils, the molecular details of the fibril structure remained elusive until recent years. Advances in solid-state NMR (SSNMR) and X-ray crystallography in the last decade have made major contributions to our knowledge of the molecular structure of amyloid fibrils.
+% Although \crossb\ is widely known, due to the insolubility and inherent non-crystalline nature of amyloid fibrils, the molecular details of the fibril structure remained elusive until recent years. 
+% The ubiquitous presence of a \crossbs\ supports that the organization of the peptidic backbone, common to all proteins, in to \bsheets\ is a major determinant of the fibrillar structure. 
 
 \begin{figure}
   \centering
@@ -85,15 +64,6 @@ Although \crossb\ is widely known, due to the insolubility and inherent non-crys
   \label{fig:fibril_TEM_SSNMR}
 \end{figure}
 
-% Describe the molecular structure of \abeta\ amyloid fibrils. 
-% Briefly mention the techniques that can be used to obtain structural information of amyloid fibrils. 
-
-% SSNMR
-One of the early SSNMR model of an amyloid fibril was of the \abeta40\ peptide, a protein implicated in Alzheimer's Disease.  The study by Petkova et. al.\cite{Petkova:2006gx} indicated that the \bsheet\ core of \abeta40\ involves residues 10-22 and 30-40, and is linked by a loop formed by residues 23-29. The core fibril unit was found to consist of a parallel in-register \bsheet, where each strand is a \bhairpin\ with peptide-peptide backbone hydrogen-bond running along the long axis of the fibril (Figure~\ref{fig:fibril_TEM_SSNMR}).
-
-% X-ray structures
-Aggregates formed from small peptide fragments, which were amenable to single crystal X-ray diffraction analysis, produced crystal structures similar in structure to those resolved using SSNMR. These structures are composed of multiple layers of beta-sheets with a dehydrated (``dry'') stacking interface (Figure~\ref{fig:fibril_xray_model}).
-
 \begin{figure}
   \centering
   \includegraphics[width=6in]{figures/introduction/fibril_xray_model.pdf}
@@ -101,9 +71,16 @@ Aggregates formed from small peptide fragments, which were amenable to single cr
   \label{fig:fibril_xray_model}
 \end{figure}
 
-% I don't think I will talk about the twisting of the sheets too much.
+% Describe the molecular structure of \abeta\ amyloid fibrils. Briefly mention the techniques that can be used to obtain structural information of amyloid fibrils. 
+
+% SSNMR
+Advances in solid-state NMR (SSNMR) and X-ray crystallography in the last decade have made major contributions to our knowledge of the molecular structure of amyloid fibrils. One of the early SSNMR model of an amyloid fibril was of the \abeta40\ peptide, a protein implicated in Alzheimer's Disease. The study by Petkova et. al.\cite{Petkova:2006gx} indicated that the \bsheet\ core of \abeta40\ involves residues 10-22 and 30-40, and is linked by a loop formed by residues 23-29. The core fibril unit was found to consist of a parallel in-register \bsheet, where each strand is a \bhairpin\ with peptide-peptide backbone hydrogen-bond running along the long axis of the fibril (Figure~\ref{fig:fibril_TEM_SSNMR}).
+
+% X-ray structures
+Aggregates formed from small peptide fragments, which were amenable to single crystal X-ray diffraction analysis, produced crystal structures similar in structure to those resolved using SSNMR. These structures are composed of multiple layers of \bsheet\ with a dehydrated (``dry'') stacking interface (Figure~\ref{fig:fibril_xray_model}). Taken together, these recently proposed structures demonstrate that the core region is composed of two to four sheets that interact closely with each other. % I don't think I will talk about the twisting of the sheets too much. Should I mention twisting?
+
 % Fibril polymorphism
-Although all fibrils share the \crossbs, individual fibrils exhibit polymorphism at the molecular level. Depending on the experimental conditions under which they are formed, fibrils may vary in the length of the beta-strand involved, side chain orientation, and beta-sheet packing.\cite{Kodali:2007cz} %XXX
+Although all fibrils share the \crossbs, individual fibrils exhibit polymorphism at the molecular level. Depending on the experimental conditions under which they are formed, fibrils may vary in the length of the beta-strand involved, side chain orientation, and beta-sheet packing.\cite{Kodali:2007cz} XXX
 
 
 \subsection{Non-fibrillar oligomers}
@@ -120,8 +97,11 @@ Due to their structural disorder and transient nature, obtaining the molecular d
   \label{fig:fibril_xray_model}
 \end{figure}
 
-\subsection{Involvement in Disease and Toxicity}
-% I think outline some of the ideas / hypothesis about the link between amyloid and disease, but don't go into what people speculate or data on toxicity. It is related, but this is out of the scope of your thesis.
+\section{Amyloid involvement in diseases}
+% Amyloid disorders other than AD -- In addition to AD, other neurodegenerative diseases have been shown to involve the presence of amyloid.  Parkinson's disease, Huntington's, Prion disorders (Mad cow).  These diseases and their pathology are reviewed elsewhere and are beyond the scope of the thesis. In this thesis we focus on AD.
+
+% Outline some of the ideas / hypothesis about the link between amyloid and disease, but don't go into what people speculate or data on toxicity. It is related, but this is out of the scope of your thesis.
+
 % Although not the focus of this thesis, understanding the mechanism of toxicity and elucidating the underlying toxic species will be important in the development of future drug candidates.
 
 Due to a shared structure and similar overall toxicity to neurons, fibrils and amyloid plaques were initially hypothesized to be toxic to cells.  Although initial evidence showed that fibrils can possess toxicity in vivo, recent research has indicated that soluble oligomers are the likely causative agent for neurotoxicity, for several neurological diseases, including Alzheimer's, Parkinson's, Huntington's, and Prion diseases.\cite{Haass:2007db,Xue:2009da} % XXX
@@ -131,18 +111,17 @@ The role of amyloid oligomers in the disease process is most intensively studied
 The molecular mechanism of toxicity caused by amyloid oligomers is not understood. %Intensive research is currently being done to identify the toxic species in the amyloid aggregation pathway.  
 It is currently hypothesized that soluble oligomers cause toxicity by binding to the lipid bilayer and perturbing the integrity of cellular membranes (perhaps by causing them to be permeable to ions).\cite{Martins:2008bz,Walsh:2007fu}
 
-
 % Move this to the AD section?
 % The concept of intermediate involvement in AD has been used to explain why amyloid pathology (as defined by Aβ plaque load) is only poorly correlated with clinical AD presentation, while ample evidence argues that Aβ peptide must be critical to AD onset. Intermediate involvement reconciles these two apparently contradicting findings, attributing AD pathology to small Aβ structures rather than to fibril-containing amyloid plaques.
 
-\section{Alzheimer's Disease}
+
+\subsection{Alzheimer's Disease}
 
 %- Genetic support for amyloid hypothesis.  Down syndrome. FAD.  Mutations on the APP which leads to faster aggregation.
 
 Alzheimer's Disease (AD) is a devastating neurodegenerative disease that is most common cause of dementia in persons of age 65 or older.  Upon examination, the post-mortem brains of AD patients show significant neuronal dystrophy.  Pathologically, AD is characterized by the presence of extracellular deposits of senile plaques and neurofibrillary tangles, which appear as lesions on stained neuronal tissue under light microscopy.(Figure~\ref{fig:AD_tissue_pathology})
 
 Although it has been more than one hundred years since Dr. Alois Alzheimer first presented the association between the presence of neuronal plaques and the clinical symptoms of presenile dementia characteristic of Alzheimer's disease (AD), the exact relationship between the two is still under much contention.  It was not until in the 1980s, the amyloid-$\beta$ protein or \abeta\ was identified as the largest component of these plaques. The ubiquitous presence of amyloid plaque deposits found in the brains of deceased dementia patients led to the formulation of the long-standing amyloid hypothesis, which posits that the amyloidogenesis of \abeta\ plays a key role in the initiation of AD.\cite{Hardy:2002dh}
-
 
 % Pathological characterization
 \begin{figure}
@@ -158,7 +137,6 @@ Monomeric \abeta\ is an approximately 4 kDa peptide produced by the intramembran
 Multiple lines of evidence indicate that \abetafortytwo is likely to be the more deleterious form of \abeta. Genetic studies showed that mutations which cause early-onset AD also in turn increases the ratio of \abetafortytwo to \abetaforty.\cite{Hardy:1997tu} Moreover, in vitro, \abetafortytwo\ displays significantly higher propensity for aggregation than \abetaforty, despite differing by only two amino acids. In addition, \abetaforty\ and \abetafortytwo\ also have distinct aggregation pathways in vitro: \abetafortytwo is found to form a morphologically more diverse population of intermediate oligomers than \abetaforty.\cite{Bitan:2003ut} % What about mice studies?
 \abeta\ aggregates have been found to be present in a variety of morphologies in the brain. Although plaques are often visible in the dementia patients, the plaque load does not correlate with disease progression and severity, a puzzling aspect of AD.  Instead, synaptic loss correlated well with the concentration of soluble \abeta\ oligomers in the brain.
 
-
 % Tau protein - Keep discussion brief
 Although both plaques and NFTs appear together, many studies have indicated that NFTs plays a secondary role to \abeta\ in the pathogenesis of AD.\cite{XXX} % More details on evidence which show that NFTs are not likely the causative species. Knock out mouse models ... mice do not develop AD, and instead develop tau pathologies  NFTs have also been shown to be affected by \abeta\ production.
 
@@ -166,10 +144,6 @@ Although both plaques and NFTs appear together, many studies have indicated that
 % Talk about how important it is to develop drugs for these amyloid disorders 
 With the longevity of our population, AD is approaching epidemic proportions with no cure or preventative therapy available.\cite{Blennow:2006wd} In 2010, there are an estimated 36 million people in the world currently suffering from AD, and this number is projected to grow to 115 million people by the year 2050.\cite{alzreport:2012}  Furthermore, there are no drugs which may target the underlying disease: approved treatments today such as donepezil (a cholinesterase inhibitor), and memantine (a N-methyl-D-aspartate antagonist) only mitigates cognitive symptoms. Hence, it is imperative that efforts be made towards the development of therapeutics for AD.  The vast number of structural and biochemical studies on amyloid structure have been crucial for the development of potential therapeutics for Alzheimer's disease.  A promising method of treatment of AD is by preventing amyloid aggregation, and decreasing amyloid production.
 
-% \subsubsection{Other amyloid disorders}
-% Perhaps not enough to make it into its own subsection
-% I think I will not mention these things in detail in my introduction
-% In addition to AD, other neurodegenerative diseases have been shown to involve the presence of amyloid.  Parkinson's disease, Huntington's, Prion disorders (Mad cow).  These diseases and their pathology are reviewed elsewhere and are beyond the scope of the thesis.
 
 \section{Amyloid Inhibition by small molecules: A promising method of treatment for AD}
 % Review of what is known about amyloid fibril ligand binding, specifically dyes.
