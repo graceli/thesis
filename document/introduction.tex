@@ -8,17 +8,28 @@
 % Ok, we also know about intrinsically disordered proteins that have well-defined functions in the human body.
 % But what about amyloid ... this common state that all proteins reach which results from protein aggregation .. involved in disease.
 
-One of the most remarkable phenomenon in nature is the ability of proteins to fold from a polypeptide chain into structures which impart their functions as molecular machines of life. Proteins play a key role in all aspects of life, from cell cycle regulation to signal transduction.  Furthermore, drug receptors are predominantly proteins.  Small molecules that can affect the outcome of various biochemical pathways act by binding these protein receptors. Hence, it is not surprising that many diseases may arise from the improper functioning of proteins, for example, when denature or misfold (fail to adopt their native functional state).
+One of the most remarkable phenomenon in nature is the ability of proteins to fold from a polypeptide chain into structures which impart their functions as molecular machines of life. Proteins play a key role in all aspects of life, from cell cycle regulation to signal transduction.  Furthermore, drug receptors are predominantly proteins.  Small molecules that can affect the outcome of various biochemical pathways act by binding these protein receptors. Hence, it is not surprising that many diseases arise from the improper functioning of proteins, for example, when they denature or misfold (fail to adopt their native functional state).
 
 % Important to understand structure, but it is not enough.  We also need to understand dynamics
 Since the historical experiment performed by Anfinsen and colleagues which demonstrated that the structure of a folded protein is encoded in its amino acid sequence and solvent environment, protein folding and structure determination have gained much attention in the fields of biochemistry and biophysics.  The static models produced by NMR, X-ray crystallography, and homology modeling provide valuable insights into macromolecular structure, but molecular recognition and drug binding are very dynamic processes.  When a small molecule like a drug (for example, a ligand) approaches its target (for example, a receptor) in solution, it encounters not a single, frozen structure, but rather a macromolecule in constant motion. Understanding both protein structure and dynamics enable us to elucidate the molecular basis of disease pathways and ultimately will aid in the discovery of novel therapeutics. 
 
 % Computer-aided drug design using MD
-As ligand binding and the important macromolecular motions associated with it are microscopic events that take place in mere millionths of a second, a complete understanding of the atomistic energetics and mechanics of binding is unattainable using current experimental techniques. In recent years, molecular dynamics (MD) simulation of biomolecules, a physics-based computer simulation technique, became a tool of choice to investigate protein dynamics and function.  With ever increasing availability of computing power and data storage, simulations are a promising technique for aiding in the structure-based drug discovery process. In the past few years, MD simulations are able to routinely reach microseconds in sampling time.  Currently, MD simulations are the most accurate method for probing small molecule binding, and are useful for filling in the details where experimental methods cannot.  With constant improvements in both computer algorithms and processing power, molecular dynamics simulations are likely to play an increasingly important role in the development of novel pharmacological therapeutics.\cite{Durrant:2011bm}  % [There are examples already demonstrating MD's usefulness in drug ... cite some examples from that DE Shaw paper]
+As ligand binding and the important macromolecular motions associated with it are microscopic events that take place in mere millionths of a second, a complete understanding of the atomistic energetics and mechanics of binding is unattainable using current experimental techniques. In recent years, molecular dynamics (MD) simulation of biomolecules, a physics-based computer simulation technique, became a tool of choice to investigate protein dynamics and function, and ligand-binding
+
+Currently, MD simulations is the most accurate method for probing small-molecule binding, and are useful for filling in the details where experimental methods cannot.\cite{Durrant:2011bm} In the past few years, MD simulations are able to routinely reach microseconds in sampling time. With the ever increase in the availability of computing power and data storage, simulations are a promising technique for aiding in the structure-based drug discovery process. 
+% With constant improvements in both computer algorithms and processing power, molecular dynamics simulations are likely to play an increasingly important role in the development of novel pharmacological therapeutics.\cite{Durrant:2011bm}  % [There are examples already demonstrating MD's usefulness in drug ... cite some examples from that DE Shaw paper]
 
 % IDPs have function.  Break down of folded structure, and aggregation leads to loss of function.
 % Protein misfolding and aggregation
-In recent years, a class of proteins without a uniquely folded state known as intrinsically disordered proteins (IDPs) have gained attention because of their involvement in a multitude of physiological pathways and diseases. In particular, a subset of these IDPs under certain in vivo conditions are able to aggregate to form amyloid. Amyloid is known to be associated with incurable diseases such as prion disorders, neurodegenerative diseases, Type II diabetes, and systemic amyloidosis. Hence, IDPs represent a class of potential drug targets. However, their intrinsic disordered nature presents new challenges for the drug discovery process, and impedes the use of traditional structural-based drug design techniques.
+In recent years, a class of proteins without a uniquely folded state known as intrinsically disordered proteins (IDPs) have gained attention because of their involvement in a multitude of physiological pathways and diseases. \textbf{SPECIFIC EXAMPLES}.\cite{d2, dobson, sarah's thesis, caflisch disordered binding} 
+% Just having a sentence here is too generic.  I can be a little more specific.
+
+In particular, a subset of these IDPs under certain in vivo conditions are able to aggregate to form amyloid. Amyloid is known to be associated with incurable diseases such as prion disorders, neurodegenerative diseases, Type II diabetes, and systemic amyloidosis. 
+
+% Paragraphs for the end of the thesis?
+% Hence, IDPs is a class desirable drug targets. However, their intrinsic disordered nature presents new challenges for the drug discovery process, and impedes the use of traditional structural-based drug design techniques. MD is poised to revolutionize not only understanding of structure and dynamics of folded protein structures, but as systems involving disorder.  Simulations are well-suited for understanding these highly-dynamic system, and predict small-molecules binding modes with an atomistic resolution.
+% Study up - Why can't we use solution state or solid-state NMR to study small molecule binding to oligomers?
+
 
 % \section{Computer Simulations and Drug discovery}
 % Talk about structure-based drug discovery, and link to computer simulations.
@@ -29,17 +40,21 @@ In recent years, a class of proteins without a uniquely folded state known as in
 % What's the general interest behind amyloid science -- why is amyloid important
 % Role of amyloid in the human body -- functional amyloid?
 
-150 years ago, amyloids were first discovered when tissue deposits of extracellular filaments were observed\cite{Haass:2007db,Sipe:2000fs} These fibrillar deposits were both microscopically visible, and sometimes visible by eye, deposits found on various organs in many seemingly unrelated diseases. It is now well-known that there are numerous diseases, many of which are neurodegenerative, involving the amyloid formation of a distinct aggregation-prone protein or peptides (Show table with disease and the protein involved?).
+150 years ago, amyloids were first discovered when tissue deposits of extracellular filaments were observed\cite{Haass:2007db,Sipe:2000fs} These fibrillar deposits were both microscopically visible, and sometimes visible by eye, deposits found on various organs in many seemingly unrelated diseases. It is now well-known that there are numerous diseases, many of which are neurodegenerative, involving the amyloid formation of a distinct aggregation-prone protein or peptides (Table \ref{tbl:amyloid_diseases}).
 
 % Amyloid formation may be generic to all proteins
 However, the ability of polypeptide chains to form amyloid is not restricted to the proteins associated with recognized clinical disorders. In particular, under certain in vitro solution conditions, even polypeptide chains capable of adopting well-defined tertiary structures were capable of forming amyloid fibrils (eg. myoglobin and lysozyme), suggesting that the amyloid state may be the globally-stable state for all polypeptides.  Although the ability of proteins to form amyloid fibrils appear to be generic, the propensity for a given peptide is highly dependent on the formation condition, and vary for different sequences. For example, for globular protein to form amyloid, the protein must be first partly unfolded before conversion into amyloid fibrils is possible.
 % Dobson 2006 -- The relative aggregation rates for a wide range of peptides and proteins correlates with the physicochemical features of the molecules such as charge, secondary-structure propensities and hydrophobicity. 
 
 % Amyloid formation -- models of the kinetics of aggregation
-Amyloid formation appear to be kinetically similar to nucleation-polymerization processes, such as crystallization. In the nucleation phase, a lag phase occurs where energetic barriers of aggregation must be overcome to form the initial aggregation nucleus. Following the lag phase, free monomers may bind to the nucleated aggregates and polymerize into mature fibrils.\cite{Murphy:2002fe} Seeding, a process where preformed aggregates is introduced into solutions, may eliminate the lag phase.\cite{harper and lansbury 1997, Jarrett and lansbury 1993}  Amyloid fibrils are formed via a complex aggregation pathway in vivo where many intermediate species may be formed.  Much of what we understand comes from the use of in vitro models of amyloid-forming peptides. Monomers self-assemble into oligomers of different morphologies and sizes, which exist in equilibrium with amyloid fibrils, a visible endpoint of aggregation. Oligomers may either be on-pathway to fibril formation, that is, they serve only as intermediates, while others themselves may be the endpoints of aggregation.
+Kinetically, amyloid formation is similar to nucleation-polymerization processes, such as crystallization. 
+\textbf{SPECIFIC CRYSTALLIZATION; SPECIFIC FORMATION OF OTHER PROTEINS FOLLOWING THIS PROCESS eg micelle formation} Likewise, in amyloid formation, during nucleation, lag phase occurs where energetic barriers of aggregation must be overcome to form the initial aggregation nucleus. Following the lag phase, free monomers may bind to the nucleated aggregates and polymerize into mature fibrils.\cite{Murphy:2002fe} Seeding, a process where preformed aggregates is introduced into solutions, may eliminate the lag phase.\cite{harper and lansbury 1997, Jarrett and lansbury 1993}  
+
+Amyloid fibrils are formed via a complex aggregation pathway in vivo where many intermediate species may be formed.  Much of what we understand comes from the use of in vitro models of amyloid-forming peptides. Monomers self-assemble into oligomers of different morphologies and sizes, which exist in equilibrium with amyloid fibrils, a visible endpoint of aggregation. Oligomers may either be on-pathway to fibril formation, that is, they serve only as intermediates, while others themselves may be the endpoints of aggregation.
 
 In the sections, below we review the structure and properties of fibrillar and non-fibrillar amyloid oligomers, that are common to all amyloid-forming polypeptides.  Much of the initial detailed biochemical and biophysical characterization of amyloid formation was centered on the amyloid-beta peptide, which is involved in Alzheimer's disease, and hence our discussion will be focused on this peptide. % REWORD
 
+% Focus mostly on biophysical data
 \subsection{Fibrils}
 
 Fibrillar amyloid deposits have several physical properties in common. Amyloid fibrils exhibit specific optical behavior upon binding certain dye molecules. After staining with Congo Red, amyloids exhibit bright green birefringence under polarized light. Fibrils are both protease resistant and are insoluble in the presence of sodium dodecyl sulfate (SDS).  
@@ -77,13 +92,13 @@ Despite having dramatically different sequences, amyloid fibrils formed from dif
 Advances in solid-state NMR (SSNMR) and X-ray crystallography in the last decade have made major contributions to our knowledge of the molecular structure of amyloid fibrils. One of the early SSNMR model of an amyloid fibril was of the \abeta40\ peptide, a protein implicated in Alzheimer's Disease. The study by Petkova et. al.\cite{Petkova:2006gx} indicated that the \bsheet\ core of \abeta40\ involves residues 10-22 and 30-40, and is linked by a loop formed by residues 23-29. The core fibril unit was found to consist of a parallel in-register \bsheet, where each strand is a \bhairpin\ with peptide-peptide backbone hydrogen-bond running along the long axis of the fibril (Figure~\ref{fig:fibril_TEM_SSNMR}).
 
 % X-ray structures
-Aggregates formed from small peptide fragments, which were amenable to single crystal X-ray diffraction analysis, produced crystal structures similar in structure to those resolved using SSNMR. These structures are composed of multiple layers of \bsheet\ with a dehydrated (``dry'') stacking interface (Figure~\ref{fig:fibril_xray_model}). Taken together, these recently proposed structures demonstrate that the core region is composed of two to four sheets that interact closely with each other. % I don't think I will talk about the twisting of the sheets too much. Should I mention twisting?
+Aggregates formed from many different small peptide fragments of larger amyloidogenic peptides, which were amenable to single crystal X-ray diffraction analysis, produced crystal structures similar in structure to those resolved using SSNMR. These structures are composed of multiple layers of \bsheet\ with a dehydrated (``dry'') stacking interface (Figure~\ref{fig:fibril_xray_model}). Taken together, these recently proposed structures demonstrate that the core region is composed of two to four sheets that interact closely with each other. % I don't think I will talk about the twisting of the sheets too much. Should I mention twisting?
 
 % Fibril polymorphism
 Although all fibrils share the \crossbs, individual fibrils exhibit polymorphism at the molecular level. Depending on the experimental conditions under which they are formed, fibrils may vary in the length of the beta-strand involved, side chain orientation, and beta-sheet packing.\cite{Kodali:2007cz}
 Polymorphism can arise from packing differences in lateral association of peptides, and in inter-protofilament packing. A polymorphic structure introduced by a seed will continue to propagate.\cite{some new papers,petkova polymorphism in Abeta} % REFS
+\textbf{PROVIDE SPECIFIC EXAMPLES}
 % http://onlinelibrary.wiley.com/doi/10.1111/j.1742-4658.2010.07888.x/abstract?systemMessage=Wiley+Online+Library+will+be+disrupted+on+15+December+from+10%3A00-12%3A00+GMT+%2805%3A00-07%3A00+EST%29+for+essential+maintenance
-
 
 \subsection{Non-fibrillar oligomers}
 
@@ -105,7 +120,7 @@ Due to their structural disorder and transient nature, obtaining the molecular d
   \begin{center}
   \vspace{10pt}
   \caption{Summary of proteins which form amyloids}
-  \label{tbl:inhibitors}
+  \label{tbl:amyloid_diseases}
     \begin{tabular}{| c | c | c | c |}
       \hline
       Peptide & Study & fibrils & oligomers  \\
@@ -362,7 +377,7 @@ Definition of binding avidity
 % Add section titles
 In protein-ligand binding and recognition, non-covalent interactions are important.  These interactions may be roughly divided into two types: hydrophobic or electrostatic.  
 
-Hydrophobic interactions is a key driving force for ligand binding.  These interactions typically involve nonpolar groups of the ligand and protein. Hydrophobic interactions involve weak attractive intermolecular forces between atom such as Van der Waals and london disperson forces. % what are these forces.
+Hydrophobic interactions is a key driving force for ligand binding.  These interactions typically involve nonpolar groups of the ligand and protein. Hydrophobic interactions involve weak attractive intermolecular forces between atom such as Van der Waals and london dispersion forces. % what are these forces.
 
 Because life takes place in water, a polar solvent, hydrogen bonding interactions is important contributor to ligand affinity and specificity.  Hydrogen bonds are formed from electrostatic interaction between dipoles.  The acceptor is an electronegative heavy atom such as oxygen. In biomolecular systems, the hydrogen bond acceptor groups are hydroxyl groups from water, and carbonyl groups from protein. Hydrogen bonds have directionality, and are stronger than van der waals forces (references).  The energy of a water-water hydrogen bond is about -3.2 kcal/mol. Charge-charge interactions may also be found in ligand-protein binding.  These are involved in salt bridge formation.
 
