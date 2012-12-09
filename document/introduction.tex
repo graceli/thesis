@@ -40,6 +40,7 @@ In particular, a subset of these IDPs under certain in vivo conditions are able 
 % The paragraph below are duplicated from Durrant et al.
 
 \section{The amyloid state of proteins}
+\label{sec:amyloid}
 % A paragraph as a general introduction to amyloid.
 % What's the general interest behind amyloid science -- why is amyloid important
 % Role of amyloid in the human body -- functional amyloid?
@@ -199,8 +200,19 @@ Although both plaques and NFTs appear together, many studies have indicated that
 % In vitro models have been useful to screen compound libraries for inhibitors of agregation which may have therapeutic efficacy against AD.
 A key question is what is causing AD? \abeta\ aggregates have been found to be present in a variety of morphologies in the brain. Although plaques are often visible in the dementia patients, the plaque load does not correlate with disease progression and severity, a puzzling aspect of AD.  Instead, synaptic loss correlated well with the concentration of soluble \abeta\ oligomers in the brain. \textbf{MORE DETAILS ON THE CURRENT ACCEPTED MECHANISM OF TOXICITY}
 
+\section{Pharmacology .. Drugs?}
+Here would be a section explaining the desirable traits of a drug for AD, and can introduce terms such as EC50 or IC50.
+
+The structure–activity relationship (SAR) is the relationship between the chemical or 3D structure of a molecule and its biological activity. 
+
+IC50 -- This quantitative measure indicates how much of a particular drug or other substance (inhibitor) is needed to inhibit a given biological process (or component of a process, i.e. an enzyme, cell, cell receptor or microorganism) by half.
+
+EC50 -- The term half maximal effective concentration (EC50) refers to the concentration of a drug, antibody or toxicant which induces a response halfway between the baseline and maximum after some specified exposure time.[1] It is commonly used as a measure of drug's potency.
+% Ref: wikipedia
+
 % Take a look at how Lemkul covers this section and transitions to it.
 \section{Amyloid Inhibition by small molecules: A promising method of treatment for AD}
+      
 % Review of what is known about amyloid fibril ligand binding, specifically dyes.
 
 % In this section, I will provide an overview of some of the challenges to overcome when developing a small molecule therapeutic for Alzheimer's disease.  Furthermore, using this information, I will motivate why inositol is an exciting avenue to explore.
@@ -231,14 +243,13 @@ In recent years, in vitro screening has led to the discovery of a large number o
       % Doesn't explain why the dye molecules are also able to suppress fibril formation.
       % Can the birefringence be explained by these binding modes? -- this is out of the scope of my thesis.  Don't put this in my thesis but I should be able to coherently explain this during my defense.
 
-Is it specific to Abeta amyloid inhibition
-Concentration IC/EC50, Kd, binding
-Biophysical data of binding and whether they've been adapted into a drug.
+Is it specific to Abeta amyloid inhibition? Or fibril structure or what? 
+Any measured concentration of acitivity, IC/EC50, Kd of binding?
+Biophysical data of binding and whether they've been adapted into a drug or were there attempts made to adapt into a drug.
 
 Among the first molecules known to bind amyloid fibrils were dyes molecules used to identify their presence (Fig.~\ref{fig:amyloid_dyes}). Early histological detection of amyloid binding was done using congo red, where upon binding fibrils exhibit red-green birefringence. Congo red requires the use of polarized light microscopy, a laborious process, and the interpretation of the birefringence is often not reproducible.
 
-% Thioflavin T (ThT) and Congo Red (CR) 
-
+% Thioflavin T (ThT) and Congo Red (CR)
 Thioflavin-T (ThT) is a benzathiole fluorescent dye also used to detect the presence of amyloid fibrils in post-mortem brain tissue samples, and monitor fibril formation in vitro. ThT exhibits a dramatic shift in the excitation spectrum maximum and an emission enhancement upon binding to fibrils, making it a sensitive and efficient report for the presence of amyloid fibrils.  ThT is soluble in water and have \KD\ in the low \micromolar\ range.  ThT also binds uniformly across fibrils prepared from synthetic and biological sources.
 REF
 
@@ -372,15 +383,10 @@ A single small molecule may inhibit the fibril formation of different peptides.
 % Describe and discuss observed commonalities between small molecules which appear to affect amyloid aggregation.
 Small molecule inhibitors share common chemical features and groups.  They are typically planar in geometry, have many aromatic rings, and polar functional groups (hydroxyl groups) around the edge of these aromatic rings.\cite{Stempler:2011dy,Shoval:2007p3547,Porat:2006fn,Lemkul:2012da}
 
-% The structure–activity relationship (SAR) is the relationship between the chemical or 3D structure of a molecule and its biological activity. 
-
-    	% IC50 -- This quantitative measure indicates how much of a particular drug or other substance (inhibitor) is needed to inhibit a given biological process (or component of a process, i.e. an enzyme, cell, cell receptor or microorganism) by half.
-      % EC50 -- The term half maximal effective concentration (EC50) refers to the concentration of a drug, antibody or toxicant which induces a response halfway between the baseline and maximum after some specified exposure time.[1] It is commonly used as a measure of drug's potency.
-      % Ref: wikipedia
-
 % This section provides a nice lead in to the methods section
 \section{Protein-ligand binding}
 % Binding equilibria include both modes and binding constants
+These references will help me in part flesh this section out.\cite{Lu:2010jh,Kortagere:2010fc,Nunez:2012il,Copeland:2011dl,Prinz:2008kr,Sikazwe:2012gu,Copeland:2006bb}
 
 \subsection{Enzyme-Inhibitor Binding and Kinetic model}
 % Take a look at a biochemistry textbook
@@ -389,34 +395,43 @@ Definition of binding avidity
 
 \subsection{Intermolecular forces involved in binding}
 
-% Binding:
-% 
-% Hydrogen bonds - variety of hydrogen bonds with differing strength. What type of hydrogen bonds are in the biological system.  Weak hydrogen bonds .. 
-% 
+% HBs involved in Binding.
 % - What are the energetic contribution of these hydrogen bonds? (How are they measured?)
-% - Form secondary structure .. alpha-helix, beta-sheets
-% 
-% C=O .... H-N (backbone)
-% 
+% osmolytes
 % solvent - solvent interactions
-% 
 % O-H ... O-H
-% 
 
 % There lots of different forces; so am I present them as the ones modelled in simulation?
 % then I need to mention computer simulation earlier
 % Note that I may end up introducing the forces up in the earlier section -- reorganize as needed
 % Here, it will benefit me to read Sarah's appendix C carefully.
 
-% Add section titles
-In protein-ligand binding and recognition, non-covalent interactions are important.  These interactions may be roughly divided into two types: hydrophobic or electrostatic.  
+% Nonpolar
+In protein-ligand binding and recognition non-covalent interactions are important.  These interactions may be roughly divided into two types: hydrophobic or electrostatic.   
 
-Hydrophobic interactions is a key driving force for ligand binding.  These interactions typically involve nonpolar groups of the ligand and protein. Hydrophobic interactions involve weak attractive intermolecular forces between atom such as Van der Waals and london dispersion forces. % what are these forces.
+Nonpolar molecules experience London dispersion forces, which are a form of weakly attractive intermolecular force. \textbf{Define these forces}
 
-Because life takes place in water, a polar solvent, hydrogen bonding interactions is important contributor to ligand affinity and specificity.  Hydrogen bonds are formed from electrostatic interaction between dipoles.  The acceptor is an electronegative heavy atom such as oxygen. In biomolecular systems, the hydrogen bond acceptor groups are hydroxyl groups from water, and carbonyl groups from protein. Hydrogen bonds have directionality, and are stronger than van der waals forces (references).  The energy of a water-water hydrogen bond is about -3.2 kcal/mol. Charge-charge interactions may also be found in ligand-protein binding.  These are involved in salt bridge formation.
+Hydrogen bonding is a type of interaction important in biology, and in particular, for molecular recognition contributing to both protein-ligand affinity and specificity. Furthermore, hydrogen bonding is ubiquitous in water, where a single water molecule is able to tetrahedrally coordinate four other water molecules by forming a hydrogen bonding network, and gives rise to its unique properties such as high heat capacity.
+
+Proteins can form hydrogen bonds with other proteins, the surrounding solvent, carbohydrates, and lipids. In proteins, intra- and intermolecular hydrogen bonds formed by the peptidic backbone of polypeptide chains define their secondary structures such as helices and \bsheets\, and impart stability to a protein's overall tertiary structure.\cite{refs}  Large role in amyloid formation, where the polypeptide backbone are hydrogen bonded to form in-registered beta-sheets (as reviewed in Section \ref{sec:amyloid}).
+
+Hydrogen bonds are electrostatic interactions formed between two dipoles, where the acceptor group is composed of an electronegative heavy atom such as F, Cl, N, O, and the donor group is composed of electropositive atom with an attached proton (CHECK THIS XXX).  In proteins, hydrogen bonds between peptide groups involves N-H and O=C as the donor and acceptor groups, respectively. Furthermore, amino acids with polar or charged side chains are also able to hydrogen bond. 
+
+Energetically, hydrogen bonds can range from XXX to YYY kcal/mol, and are typically much stronger than van Der Waals forces.  The energy of N-H ... C=O hydrogen bond has been estimated to be XXX kcal/mol in gas phase, but is only about 0.5 to 1.5 kcal/mol in solution.\cite{energetics of hydrogen bonds in peptides} The energy of a water-water hydrogen bond is about -3.2 kcal/mol.\cite{where did I see this}
+% energy of water - water ? [hard to find a simple estimate.  Seems like something super complex]
+% In biomolecules, strongest hydrogen bonds are salt bridges, N-H ... O=C in proteins, and P-OH ... O=P in nucleic acids.
+Furthermore, hydrogen bonds have directionality.
+
+[INSERT FIGURE OF GEOMETRY OF HYDROGEN BONDS]
+
+% Discuss? - weak hydrogen bonds those arising betwen C-H and pi orbital as in sugars. C-H ... O and C-H pi.
+% Thought: This section is probably better integrated with the MD simulations or force field section.
+
+In a molecular mechanics forcefield, the energetics of hydrogen bonds are accounted for implicitly via the electrostatic and Lennard-Jones potentials. (geometry of hydrogen bond here measured experimentally as well?) In simulation, hydrogen bonds are typically counted using a geometric criteria.
+
+[Describe the geometry of a hydrogen bond used in simulations] 
 
 % are important for protein folding and protein structure stabilization. 
-
 Methods used for studying protein-protein and protein-ligand interactions.\cite{Wang:2001ez}
 This paper\cite{Durrant:2011bm} has a nice picture of the thermodynamic cycle which I think I shall discuss in parts of this theses in methods.
 
