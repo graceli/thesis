@@ -200,16 +200,6 @@ Although both plaques and NFTs appear together, many studies have indicated that
 % In vitro models have been useful to screen compound libraries for inhibitors of agregation which may have therapeutic efficacy against AD.
 A key question is what is causing AD? \abeta\ aggregates have been found to be present in a variety of morphologies in the brain. Although plaques are often visible in the dementia patients, the plaque load does not correlate with disease progression and severity, a puzzling aspect of AD.  Instead, synaptic loss correlated well with the concentration of soluble \abeta\ oligomers in the brain. \textbf{MORE DETAILS ON THE CURRENT ACCEPTED MECHANISM OF TOXICITY}
 
-\section{Pharmacology .. Drugs?}
-Here would be a section explaining the desirable traits of a drug for AD, and can introduce terms such as EC50 or IC50.
-
-The structure–activity relationship (SAR) is the relationship between the chemical or 3D structure of a molecule and its biological activity. 
-
-IC50 -- This quantitative measure indicates how much of a particular drug or other substance (inhibitor) is needed to inhibit a given biological process (or component of a process, i.e. an enzyme, cell, cell receptor or microorganism) by half.
-
-EC50 -- The term half maximal effective concentration (EC50) refers to the concentration of a drug, antibody or toxicant which induces a response halfway between the baseline and maximum after some specified exposure time.[1] It is commonly used as a measure of drug's potency.
-% Ref: wikipedia
-
 % Take a look at how Lemkul covers this section and transitions to it.
 \section{Amyloid Inhibition by small molecules: A promising method of treatment for AD}
       
@@ -372,6 +362,8 @@ Presently, scyllo-inositol has completed both phase I and II of human clinical t
 
 % Distribute this section to the above section
 \subsection{Mechanism of action of small-molecule aggregation modulators}
+% Here I can refer / discussion how small molecule binding might be different from classical binding (However, I feel like discussions might not be appropriate in this section!)
+
 % Mechanism of action.
 Some small molecules inhibit fibril formation, where as others may prevent oligomerization, but not fibrillation. A high concentration is often required to observe activity (micromolar to millimolar), which suggests that they may be non-specific, and have much weaker binding affinities compared to classical inhibitors of enzymes, which typically binds with nanomolar Kds. EGCG, one such polyphenol, is known to have the lowest IC50.  These \smi\ which act on species often without a well-defined morphology such as those of globular proteins, do not fit entirely within the classical enzyme inhibition model. They are able to be active at much lower affinities, and do not bind in one specific binding pocket.  Although the concentration of their activity is high compared with classical inhibitors,  they are still below co-solvent and osmlarity levels, which suggests these \smi\ may affect aggregation by directly binding to amyloidogenic peptides and / or aggregates.
 
@@ -388,52 +380,44 @@ Small molecule inhibitors share common chemical features and groups.  They are t
 % Binding equilibria include both modes and binding constants
 These references will help me in part flesh this section out.\cite{Lu:2010jh,Kortagere:2010fc,Nunez:2012il,Copeland:2011dl,Prinz:2008kr,Sikazwe:2012gu,Copeland:2006bb}
 
-\subsection{Enzyme-Inhibitor Binding and Kinetic model}
-% Take a look at a biochemistry textbook
-Definition of binding affinity
-Definition of binding avidity
+\section{Target-Drug binding mechanisms}
+% Here would be a section explaining the desirable traits of a drug for AD, and can introduce terms such as EC50 or IC50.
 
-\subsection{Intermolecular forces involved in binding}
+% Here is the description of target - ligand binding mechanisms in the "classical pharmacological case"
+% I don't have to describe this in detail, but I think a section should set the reader up for understanding binding to amyloid ... and how that compares and differs from the classical pharmacological perspective of targeting a protein such as an enzyme ("What people normally think of").
 
-% HBs involved in Binding.
-% - What are the energetic contribution of these hydrogen bonds? (How are they measured?)
-% osmolytes
-% solvent - solvent interactions
-% O-H ... O-H
+% [Note that I have yet to really find any study with measured Kd or IC50 for amyloid inhibiiton]
 
-% There lots of different forces; so am I present them as the ones modelled in simulation?
-% then I need to mention computer simulation earlier
-% Note that I may end up introducing the forces up in the earlier section -- reorganize as needed
-% Here, it will benefit me to read Sarah's appendix C carefully.
+% Is inositol a kinetic or thermodynamic inhibitor?
 
-% Nonpolar
-In protein-ligand binding and recognition non-covalent interactions are important.  These interactions may be roughly divided into two types: hydrophobic or electrostatic.   
+Kinetics and equilibria are metrics to characterize a lead compound. Binding kinetics is concerned with the rate constant of ligand association ($k_{on}$) and ligand dissociation ($k_{off}$). The ratio of the dissociation to the association rate constants establishes the equilibrium dissociation metric of the ligand (Kd = koff/kon), which determines the fraction of receptor occupancy at specific ligand concentrations; 
 
-Nonpolar molecules experience London dispersion forces, which are a form of weakly attractive intermolecular force. \textbf{Define these forces}
+% K , k and k are intrinsic to the target
 
-Hydrogen bonding is a type of interaction important in biology, and in particular, for molecular recognition contributing to both protein-ligand affinity and specificity. Furthermore, hydrogen bonding is ubiquitous in water, where a single water molecule is able to tetrahedrally coordinate four other water molecules by forming a hydrogen bonding network, and gives rise to its unique properties such as high heat capacity.
+There are two general binding mechanisms for a target–drug pair. 
 
-Proteins can form hydrogen bonds with other proteins, the surrounding solvent, carbohydrates, and lipids. In proteins, intra- and intermolecular hydrogen bonds formed by the peptidic backbone of polypeptide chains define their secondary structures such as helices and \bsheets\, and impart stability to a protein's overall tertiary structure.\cite{refs}  Large role in amyloid formation, where the polypeptide backbone are hydrogen bonded to form in-registered beta-sheets (as reviewed in Section \ref{sec:amyloid}).
+In mechanism 1, the receptor (R) and ligand (L) combine to form a binary complex RL with association/dissociation rate con- stants k1 (kon) and k2 (koff), respectively (Eqn (1))
 
-Hydrogen bonds are electrostatic interactions formed between two dipoles, where the acceptor group is composed of an electronegative heavy atom such as F, Cl, N, O, and the donor group is composed of electropositive atom with an attached proton (CHECK THIS XXX).  In proteins, hydrogen bonds between peptide groups involves N-H and O=C as the donor and acceptor groups, respectively. Furthermore, amino acids with polar or charged side chains are also able to hydrogen bond. 
 
-Energetically, hydrogen bonds can range from XXX to YYY kcal/mol, and are typically much stronger than van Der Waals forces.  The energy of N-H ... C=O hydrogen bond has been estimated to be XXX kcal/mol in gas phase, but is only about 0.5 to 1.5 kcal/mol in solution.\cite{energetics of hydrogen bonds in peptides} The energy of a water-water hydrogen bond is about -3.2 kcal/mol.\cite{where did I see this}
-% energy of water - water ? [hard to find a simple estimate.  Seems like something super complex]
-% In biomolecules, strongest hydrogen bonds are salt bridges, N-H ... O=C in proteins, and P-OH ... O=P in nucleic acids.
-Furthermore, hydrogen bonds have directionality.
+In mechanism 2, the ligand encounters the receptor (R) in a conformational state that is suboptimally complementary to the ligand for binding. Subsequent to the initial encounter (RL), the receptor undergoes a conformational change to a more committed state (R*) where the new binary complex (R * L) competent binding affinity than RL (Eqn (2)).
 
-[INSERT FIGURE OF GEOMETRY OF HYDROGEN BONDS]
+Two equilibrium dissociation constants are required to describe this so-called ‘induced fit’ mechanism. 
 
-% Discuss? - weak hydrogen bonds those arising betwen C-H and pi orbital as in sugars. C-H ... O and C-H pi.
-% Thought: This section is probably better integrated with the MD simulations or force field section.
+Hence, the value of koff for mechanism 2 is not defined by a single microscopic rate constant. Instead, koff entails an array of diverse rate constants associated with both RL and R * L, such that koff = k2k4/(k2 + k3 + k4). In most instances, it is the reverse isomerization rate constant k4 that is rate limiting with respect to R * L dissociation. This isomerization step adds significant potential for a more enduring partnership between the target and the ligand (Table 1). In fact, most ligands with resilient kon and koff rates are dictated by mechanism 2, in which a temporal isomerization (e.g. tautomerization) of the target (and/or ligand) to a novel state is most suitable for target–drug binding to occur [8,9].
 
-In a molecular mechanics forcefield, the energetics of hydrogen bonds are accounted for implicitly via the electrostatic and Lennard-Jones potentials. (geometry of hydrogen bond here measured experimentally as well?) In simulation, hydrogen bonds are typically counted using a geometric criteria.
+% These are important to know -- but I don't think I need to include their descriptions in the thesis
 
-[Describe the geometry of a hydrogen bond used in simulations] 
+% At this point, it is important to highlight two common scenarios where a target and its ligand physically encounter each other in solution. The first is termed the ‘closed system’, where the total receptor and ligand concentrations are constant over time. In this scenario, the only change in concentration that takes place over time is the concentration of free and bound species as the system approaches equilibrium. Thereafter, the measurements of equilibrium dissociation constants are performed [5]. In this case, the target–drug complex lifetime is approximated by the equilibrium dissociation constant [1].
 
-% are important for protein folding and protein structure stabilization. 
-Methods used for studying protein-protein and protein-ligand interactions.\cite{Wang:2001ez}
-This paper\cite{Durrant:2011bm} has a nice picture of the thermodynamic cycle which I think I shall discuss in parts of this theses in methods.
+% The second scenario is the open system, which is more relevant to physiological conditions. Here the receptor is typically kept at a fixed concentration whereas the ligand concentration is allowed to vary, mirroring factors such as metabolic clearance or diffusion through cellular compartments. Thus, the open system is characterized by continuous changes in the flux of ligand that is available for encounter with the receptor. Because the concentration of the ligand continuously changes in an open system, equilibrium measurements are not feasible.
+
+% The structure–activity relationship (SAR) is the relationship between the chemical or 3D structure of a molecule and its biological activity. 
+
+% IC50 -- This quantitative measure indicates how much of a particular drug or other substance (inhibitor) is needed to inhibit a given biological process (or component of a process, i.e. an enzyme, cell, cell receptor or microorganism) by half.
+
+% EC50 -- The term half maximal effective concentration (EC50) refers to the concentration of a drug, antibody or toxicant which induces a response halfway between the baseline and maximum after some specified exposure time.[1] It is commonly used as a measure of drug's potency.
+
+% Ref: wikipedia
 
 \subsection{Binding equilibria}
 
@@ -481,6 +465,55 @@ The binding free energy of a ligand to a protein is directly related to its diss
 
 % Link to the next section on protein-carbohydrate interactions 
 Inhibitors of enzymes bind with affinities typically in the nanomolar to micromolar range.  For example, XXX (where can I find some examples?) However, a class of protein-ligand binding interaction, where a high \KD\ (weak affinity binding) is found are protein that bind carbohydrates is one such class of proteins, where weak interactions (low affinities in the millimolar range) between carbohydrates enable their function.
+
+% \subsection{Enzyme-Inhibitor Binding and Kinetic model}
+% Take a look at a biochemistry textbook
+% Definition of binding affinity
+% Definition of binding avidity
+
+\subsection{Intermolecular forces involved in binding}
+
+% HBs involved in Binding.
+% - What are the energetic contribution of these hydrogen bonds? (How are they measured?)
+% osmolytes
+% solvent - solvent interactions
+% O-H ... O-H
+
+% There lots of different forces; so am I present them as the ones modelled in simulation?
+% then I need to mention computer simulation earlier
+% Note that I may end up introducing the forces up in the earlier section -- reorganize as needed
+% Here, it will benefit me to read Sarah's appendix C carefully.
+
+% Nonpolar
+In protein-ligand binding and recognition non-covalent interactions are important.  These interactions may be roughly divided into two types: hydrophobic or electrostatic.   
+
+Nonpolar molecules experience London dispersion forces, which are a form of weakly attractive intermolecular force. \textbf{Define these forces}
+
+Hydrogen bonding is a type of interaction important in biology, and in particular, for molecular recognition contributing to both protein-ligand affinity and specificity. Furthermore, hydrogen bonding is ubiquitous in water, where a single water molecule is able to tetrahedrally coordinate four other water molecules by forming a hydrogen bonding network, and gives rise to its unique properties such as high heat capacity.
+
+Proteins can form hydrogen bonds with other proteins, the surrounding solvent, carbohydrates, and lipids. In proteins, intra- and intermolecular hydrogen bonds formed by the peptidic backbone of polypeptide chains define their secondary structures such as helices and \bsheets\, and impart stability to a protein's overall tertiary structure.\cite{refs}  Large role in amyloid formation, where the polypeptide backbone are hydrogen bonded to form in-registered beta-sheets (as reviewed in Section \ref{sec:amyloid}).
+
+Hydrogen bonds are electrostatic interactions formed between two dipoles, where the acceptor group is composed of an electronegative heavy atom such as F, Cl, N, O, and the donor group is composed of electropositive atom with an attached proton (CHECK THIS XXX).  In proteins, hydrogen bonds between peptide groups involves N-H and O=C as the donor and acceptor groups, respectively. Furthermore, amino acids with polar or charged side chains are also able to hydrogen bond. 
+
+Energetically, hydrogen bonds can range from XXX to YYY kcal/mol, and are typically much stronger than van Der Waals forces.  The energy of N-H ... C=O hydrogen bond has been estimated to be XXX kcal/mol in gas phase, but is only about 0.5 to 1.5 kcal/mol in solution.\cite{energetics of hydrogen bonds in peptides} The energy of a water-water hydrogen bond is about -3.2 kcal/mol.\cite{where did I see this}
+% energy of water - water ? [hard to find a simple estimate.  Seems like something super complex]
+% In biomolecules, strongest hydrogen bonds are salt bridges, N-H ... O=C in proteins, and P-OH ... O=P in nucleic acids.
+Furthermore, hydrogen bonds have directionality.
+
+[INSERT FIGURE OF GEOMETRY OF HYDROGEN BONDS]
+
+% Discuss? - weak hydrogen bonds those arising betwen C-H and pi orbital as in sugars. C-H ... O and C-H pi.
+% Thought: This section is probably better integrated with the MD simulations or force field section.
+
+In a molecular mechanics forcefield, the energetics of hydrogen bonds are accounted for implicitly via the electrostatic and Lennard-Jones potentials. (geometry of hydrogen bond here measured experimentally as well?) In simulation, hydrogen bonds are typically counted using a geometric criteria.
+
+[Describe the geometry of a hydrogen bond used in simulations] 
+
+% are important for protein folding and protein structure stabilization. 
+Methods used for studying protein-protein and protein-ligand interactions.\cite{Wang:2001ez}
+This paper\cite{Durrant:2011bm} has a nice picture of the thermodynamic cycle which I think I shall discuss in parts of this theses in methods.
+
+
 
 \section{Protein-carbohydrate}
 % - Write this section without the cosmic connection
