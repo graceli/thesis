@@ -2,34 +2,74 @@
 % Funnel out!
 
 % AD What's next for this project
-If I had to go big and scale up my project, what would I reasonably do? 
-Simulating different small molecules with different peptide aggregation states 
-Going longer - move to longer timescales 
+% If I had to go big and scale up my project, what would I reasonably do? 
+% Simulating different small molecules with different peptide aggregation states -- see Caflish's recent paper ... he might have done this already.
+% Going longer - move to longer timescales - why ... and is this needed?
 
 % What new thing have I learned in all this?
 
 % Speculate on the future of AD
-Does blocking aggregation work?
-JoAnne thinks it will be a combination of drugs .. not just one miracle drugs.  Why? 
-AD many pathways of damage - Is it possible that its just like cancer? ... that is its a bunch of diseases wrapped into one ... not just a single disease?
-	
+Does blocking aggregation work for AD?
+% Reconciling with the classical understanding of enzyme inhibitor binding
+% Is inositol a kinetic or thermodynamic inhibitor?
 
-Understanding Protein-sugar interactions is an important endeavor because of antibody binding to proteins.  Viruses often express carbohydrates on their coats.  Inhibiting bacterial action involves knowing how polysaccharrides are expressed, which involves binding proteins.  The use of all of these studies is to eventually develop antibacterial therepeutics. 
+[Speculation on the future of drug development for AD with some generic crap about the significance of thesis wrt curing AD] 
 
-Simulations can be used to effectively probe weak interactions that are not readily detectable using experimental techniques.
+% JoAnne thinks it will be a combination of drugs .. not just one miracle drugs.  Why? 
+% AD has many pathways of damage - Is it possible that its just like cancer? ... that is its a bunch of diseases wrapped into one ... not just a single disease?
 
-Software has the ability to revolutionize drug discovery and take it from bench to personalized medicine.  Why are there so few new drugs being discovered nowadays?
+(WRITE SOME CONCLUSIONS HERE … RELATING TO HOW A SINGLE SMALL MOLECULE BINDS SPECIFIC MORPHOLOGICAL STRUCTURES -- clearly a key result of my works demonstrate that there is sequence specificity) Because different amyloid polymorphs may bind different small molecules, it is likely that in the future, a cocktail of compounds may be required for treating Alzheimer’s disease and other amyloid therapies. (Adapted from pharmacophore for AD 2011)
 
-The role of simulations in drug discovery to effectively predict binding modes and binding sites. Role of simulations in rational drug design - can drive experiments and generate testable hypotheses. 
+The results of our simulation here start to define a pharmacophore (I have no idea what this word means) for treating AD ... opening the way to computer-aided design of improved diagnostics and therapeutics. 
+According to wiki: A pharmacophore is an abstract description of molecular features which are necessary for molecular recognition of a ligand by a biological macromolecule.
 
-Expand simulations into the macroscopic level 
+[Thesis significance - part of the summary of what one shall make of my thesis ] This thesis demonstrates the applicability of MD simulations for this purposes in understanding how drugs might bind to amyloidogenic species and intrinsically disordered peptides. 
 
-Virtual drug screening using MD simulations as a component predicting drug toxicity.
+[Conclusions - A general interest in the specific work that I have done here ]   Our results also are feasible for understanding small molecule binding to disordered peptides (IDPs) in general. The work in this thesis have shed light into mechanism of binding disordered peptides and is a step forward in understanding how small molecules may prevent protein - protein interactions (which involves identifying the binding interfaces and understanding how to target these interfaces... Need refs here ... this is just coming off of my memory)
 
-What happens if I had the perfect simulation system? Predictive force field, simulate milliseconds in days.  How could I use this simulation system?
-Some effective use of the data? 
+Understanding how small molecules may interact with intrinsically disordered proteins goes beyond amyloid-related disorders.  As IDPs are involved in many signalling pathways, they are also viable drug targets for many diseases.   Hence, targeting these disordered peptides using small molecules may be a possible therapeutic approach. For example, c-Myc is frequently involved in many cancers, … FILL IN THE GAP ABOUT HOW IT WORKS … and thus disruption of the c-Myc-Max interaction is a possible anticancer strategy.\cite{  Iakoucheva, L.M., Brown, C.J., Lawson, J.D., Obradovic, Z. and Dunker, A.K. (2002) Intrinsic disorder in cell-signaling and cancer-associated proteins. J. Mol. Biol. 323, 573–584 .}\cite{Metallo:2010p6822,Cuchillo:2012bm}
 
-Most Useful to “somehow” integrate experimental data with simulations results
+
+[Idea] Simulations can be used to effectively probe weak and transient interactions that are not readily detectable using experimental techniques. For example, .... Protein carbohydrates are an example.\cite{weak binding review paper}
+
+[Idea] Understanding Protein-sugar interactions is an important endeavor because of antibody binding to proteins.  Viruses often express carbohydrates on their coats.  Inhibiting bacterial action involves knowing how polysaccharrides are expressed, which involves binding proteins.  The use of all of these studies is to eventually develop antibacterial therapeutics. 
+
+[Thesis significance - A contribution] We have demonstrated that MD and the current force field is viable for predicting protein-ligand binding where weak interactions are involved (because they are often not detectable by experiment), specifically for protein - carbohydrate interactions.
+
+% The role of simulations in drug discovery to effectively predict binding modes and binding sites.
+
+[Thesis significance; more perspectives] Traditionally computation studies probing protein-ligand binding is often carried out with the knowledge of a putative binding site (often determined by X-ray crystallography) and the mechanism is examined employing complicated methods using the ligands thought to be able to bind in this specific pocket, while ignoring all other possibilities.  However, with enough computing power to extend simulations to a long time, longer time scale MD simulations can be accurate in discovering new binding sites (even sites that are XXX high in affinity) without having to make any prior assumptions about the binding site. Our studies are among those which demonstrate the utility of MD to probe for binding sites that are not possible to be obtained via experimental structural determination methods.  A recent MD study have demonstrated the capability of MD in binding site prediction for a folded protein...\cite{Shan:2011bo}
+
+Shan, 2011 (the DE shaw letter) An emerging challenge in drug discovery concerns the identification of allosteric ligand-binding sites (I’m not entirely convinced yet that this is important -- because I can’t think of any situations where this might be important -- convince myself or just drop this idea), through which drugs can modulate the effects of ligands that bind at the primary site.  More generally, an important limitation of traditional virtual drug screening is that it must start with a well-defined binding site (look into limitations of current drug discovery processes … may give some clue for constructing an argument for how MD is helping …), despite promising recent developments.\cite{Hetenyi, C.; van der Spoel, D. FEBS Lett. 2006, 580, 1447. (11) Davis,I.W.;Raha,K.;Head,M.S.;Baker,D.ProteinSci.2009, 18, 1998. }
+
+% A good thought experiment - If I had the perfect simulation system? Predictive force field, simulate milliseconds in days.  How could I use this simulation system? Some effective use of the data? 
+
+% These ideas below are  lesser developed ideas … consider cutting or bulk up …
+\section{other areas that are related to my work}
+[Ab-GAG membrane binding] This branches off the fact that I looked at sugar binding with peptides - amyloids when deposited may interact with glycosaminoglycans (part of the extracellular matrix) exposed at cellular surfaces. So what about it? Is my work helping to understand how amyloids are interacting with GAGs? or what role GAGs might play in accelerating amyloid formation?
+
+\subsection{Osmolyte effects, denaturation, and macromolecular crowding}
+
+[Note this is another hairy field … and you might want to stay the hell away from it, despite the fact that your thesis is loosely connected to this field] Another field of interest is understanding solvent effects on peptide folding and disorder. Simulations are a good use for probing that.  For example what is the denaturing mechanism of urea or guanidinium? Or what is the activity of osmolytes? These are still open questions.
+Some references (recent)
+http://pubs.acs.org/doi/abs/10.1021/jp200625k -- crowding and protein association.
+
+\subsection{Relationship to Polypharmacology -- where one drug binds to different targets?}
+
+% LOOK into this: Why are there so few new drugs being discovered nowadays?
+% Expand simulations into the macroscopic level 
+
+\section{In the future ...}
+
+Software has the ability to revolutionize drug discovery and take it from bench to personalized medicine.  
+
+Role of simulations in rational drug design: can drive experiments and generate testable hypotheses.
+
+Virtual drug screening method using MD simulations as a component predicting drug toxicity.
+
+Here I'm speculating what the future of MD simulations might be ... A bit like science fiction with a touch of reality.
+
+Most Useful to “somehow” integrate experimental data with simulations results\cite{that nature paper discussing integrating MD and systems biology}
 - What are some success stories?
 what’s the real problem with drugs?
 Can we do without drugs? What are the therapies available?
@@ -37,7 +77,5 @@ Small molecule
 peptide
 antibodies
 gene therapy (viral)
-
-
-
+\cite{Hansen:2012hh}
 
