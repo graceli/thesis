@@ -613,10 +613,10 @@ This paper has a pretty good summary of the drug discovery process in the contex
 % docking and MD analysis, will likely shed light on interactions that can be exploited for the
 % development of effective anti-aggregation compounds."
 
-
 \section{Thesis objectives and rationale}
-% Understanding amyloid inhibition in the context of the framework of traditional enzyme inhibition mechanism
+% This is the stuff from my transfer proposal:
 
+% Understanding amyloid inhibition in the context of the framework of traditional enzyme inhibition mechanism
 [Challenges of developing small molecule for amyloid inhibition] Structure-based drug discovery approach developed to target folded proteins such as enzymes cannot be directly applied to discovery of small molecules which targets amyloid formation. Because the A$\beta$ amyloid aggregate pathway encompasses a variety of species, some of which are disordered, a single conformation cannot be assumed for binding. Furthermore, structural information of amyloidogenic species lags behind those of enzymes, which tends to be globular proteins amenable for X-ray crystallography. This means that the putative binding sites are not known.  Furthermore, amyloid inhibitors are found to be very weak binders. 
 % How do non-specific inhibitors act as a drug? And how do we approach this with MD simulations?
 In AD, there is the added challenge of the drug being able to cross the brain barrier, while remaining non-neurotoxic.  What kind of drugs cross the BBB?  Typically hydrophobic drugs.
@@ -654,9 +654,40 @@ Simulation challenge - The structural disorder of the peptides involved poses a 
 For sampling, we exploit conventional MD simulation techniques because simulation approaches used for understanding enzyme-ligand binding is not applicable. Conventional MD simulations were combined with many repeated independent replicas to obtain statistics on the binding equilibria.  We use many repeat simulations - why ? We can observe binding and unbinding events within several nanoseconds.  This is an approach that is typically used to trivially parallelizing simulations to speed up sampling.  Because inositol acts at higher than normal (what do you mean by this) concentrations (in vitro), we were able to approach this problem using a ``bulk" approach, by examining binding between multiple molecules of inositol with different amyloid aggregates.  Inositol's interactions are  weak (but I shouldn't be stating this as an assumption.. because 90% of inositol's interactions may be weak, but the 10% which are not may be the ones that induce its activity).
 
 % Instead, we use conventional MD simulations and repeats of independent simulations to determine the binding modes, and binding equilibria of inositol with amyloidogenic peptides and aggregates of A$\beta$.
+\subsection{Hypotheses}
+The central hypotheses of the research proposal are as follows:  (1) inositol exerts its effects through direct binding to one or more of the monomeric, aggregated, or fibrillar forms of amyloidogenic peptides and proteins; and (2) binding involves hydrogen bonding interactions with the polypeptidic backbone.
 
+	Two important lines of evidence support the above hypotheses.  First, preliminary experimental data from the McLaurin lab are showing that in addition to Aβ42, inositol can also inhibit superoxide dismutase (an amyloidogenic protein involved in amyotrophic lateral sclerosis), α-synuclein (Parkinson’s disease), and poly-Q (Huntington’s disease) amyloid assemblies in a similar manner to Aβ42 (J. McLaurin unpublished data).  Since all amyloid structures have the cross β-sheet structure in common, their findings suggest that inositol is capable of binding the polypeptide backbone.  Secondly, our own systematic MD study of inositol with alanine dipeptide, a model of the peptidic backbone, has demonstrated that inositol binds to the peptidic backbone through hydrogen bonding interactions (See Section 5.1 below).  
+
+\subsection{Rationale and Specific Aims}
+\subsection{Rationale}
+	Multiple sources of experimental evidence have demonstrated the existence of species that are morphologically distinct from fibrils in the amyloid aggregation pathway.6, 13, 29  At least two intermediates on pathway to fibril formation have been observed: oligomers and protofibrils. These species together with the monomer and fibrils, constitute a possible pathway by which Aβ aggregates to form fibrils.  
+	In order to characterize the molecular mechanism of action of inositol, it is imperative that the interaction of inositol with various aggregate species be examined.  To this end, I will carry out systematic comparative studies of amyloidogenic peptides and their aggregates of increasing sequence and composition complexity and characterize the respective role of specific interactions of inositol with the backbone and sidechains.  Inositols have been shown to have stereochemistry-dependent activity in vitro and in vivo.18, 20  Chiro-inositol is a stereoisomer that was shown to be inactive in inhibiting amyloid formation.  Thus, I will comparatively study chiro- and scyllo-inositol with each of the aggregates in the pathway to determine the stereochemical basis of the activity of inositol.
+
+Specific Aim 1: To determine the effect of inositol on the structure and thermodynamics of the self-aggregation of different amyloidogenic peptides 
+
+Specific Aim 2: To determine the effect of inositol on the kinetics of aggregation
+
+\subsection{Choice of Model Systems}
+Following the approach of studying systems of increasing complexity, we have chosen the following peptides and sequences: (1) Alanine Dipeptide; (2) (GA)4; (3) KLVFFAE; (4) SNNFGAIL; (5) Aβ40/42.  Amyloid-forming proteins involved in disease, such as Aβ, Tau (Alzheimer's) or hIAPP (diabetes), are often many residues in length and high in sequence complexity, which renders the collection of meaningful statistics from large-scale computer simulations of these protein aggregates difficult.  However, many of these longer sequences have been found to have shorter segments that preserve the amyloidogenicity and cytotoxicity of the longer parent protein.30, 31 These shorter peptides not only have been shown to retain the physiochemical properties for studying general mechanisms of amyloid formation experimentally, but also are much simpler systems suitable for detailed computational studies.
+
+4.4	Alanine Dipeptide
+	Alanine dipeptide (N-acetyl-L-alanine-N'-methylamide or AcAlaNHMe) is a minimalist model of the peptidic backbone with its two backbone dihedral angles (φ,ψ) as its significant degrees of freedom.  The dominant conformations of its conformational equilibrium span all possible dihedral angles representative of α-helices and β-sheets in (Figure 1A).  Due to the simplicity of alanine dipeptide, all relevant local peptidic backbone binding modes of inositol can be explored efficiently computationally.
+
+4.5	GAGAGAGA
+	An octamer with repetitive sequence involving only nonpolar side-chains, (GA)4 is the simplest amyloidogenic peptide32 of relevance to study the interaction of inositol with the peptidic backbone. GA is a commonly occurring sequence motif in the β-sheet forming (crystalline) domains of a variety of spider silks.33 The tetramer GAGA is a part of the B. Mori silk fibroin, which is found to contain β-sheet structure.34 The repetitive nature of (GA)4 and its low sequence complexity allow simulations to be computational tractable and thus, permits timescales needed to determine the effects of inositol on amyloid aggregation in a statistically meaningful way.  Finally, the simplicity of (GA)4 allows the detailed examination and dissection of the different possible types of inositol-peptide interactions.  
+
+4.6	KLVFFAE
+	The peptide KLVFFAE, a segment spanning residues 16 to 22 of Aβ1-40 and Aβ1-42, has been well studied both experimentally and computationally.35-38 KLVFFAE is the central hydrophobic core thought to be important in full-length Aβ assembly and is affected by four AD causing mutations: A31G (Flemish), E22Q (Dutch), E22K (Italian), and E22G (Arctic).  This peptide not only contains side chains with more bulk, but also those capable of forming charged and aromatic interactions. The protofibrillar structure has been shown by SSNMR to have anti-parallel β-sheet organization with possible parallel stacking of the β-sheets.36  
+
+% 4.7	SNNFGAIL
+%	hIAPP(20–27) (SNNFGAIL) is an octameric segment of the 37-amino acid residue hIAPP polypeptide and is both amyloidogenic and cytotoxic.39  Pancreatic amyloid in humans forms through the aggregation of islet amyloid polypeptide (hIAPP).  hIAPP-derived amyloid is found in more than 95% of type II diabetes patients and is believed to be directly involved in the pathogenesis of the disease. The peptide SNNFGAIL is different from KLVFFAE in that it is an amphipathic peptide where SNN is polar and FGAIL is nonpolar.39  Thus, the protofibrillar structure formed will likely have different surface properties despite sharing similar backbone secondary structure.
+
+4.8	Full length Aβ40 or Aβ42
+	Inositol does not necessarily act on the shorter peptide models and their aggregates. To address this possibility, I will study inositol with the Aβ peptide and aggregates.  The monomeric, oligomeric, and fibrillar structures of Aβ40 and Aβ42 have been studied both experimentally and computationally.4, 16, 40-45  Thus, I will utilize the structural data available to construct oligomeric and fibrillar species and comparatively analyze the interaction of chiro- and scyllo-inositol with these species.
 
 \section{Thesis Organization}
+
 The first chapter introduces the thesis in the context of the field.  The second chapter introduces the main methods used in the work in the thesis. Chapters 3, 4, and 5 are the results of simulations of inositol with amyloid like peptides and aggregates. Chapter 6 shows work of the general applicability of our methods developed throughout this thesis to MD simulations to understand protein - carbohydrate binding. Chapter 7 provides discussion, suggestions for future work, and perspectives.
 
 \addcontentsline{toc}{section}{Bibliography}
