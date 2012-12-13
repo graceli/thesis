@@ -224,7 +224,21 @@ A key question is what is causing AD? \abeta\ aggregates have been found to be p
 
 % Amyloid inhibition as a treatment for Alzheimer's disease and related amyloid disorders. 
 % Talk about how important it is to develop drugs for these amyloid disorders 
-With the longevity of our population, AD is approaching epidemic proportions with no cure or preventative therapy available.\cite{Blennow:2006wd} In 2010, there are an estimated 36 million people in the world currently suffering from AD, and this number is projected to grow to 115 million people by the year 2050.\cite{alzreport:2012}  Furthermore, there are no drugs which may target the underlying disease: approved treatments today such as donepezil (a cholinesterase inhibitor), and memantine (a N-methyl-D-aspartate antagonist) only mitigates cognitive symptoms. Hence, it is imperative that efforts be made towards the development of therapeutics for AD.  The vast number of structural and biochemical studies on amyloid structure have been crucial for the development of potential therapeutics for treating the underlying disease.  A promising method of treatment of AD is by preventing amyloid aggregation, and decreasing amyloid production.
+With the longevity of our population, AD is approaching epidemic proportions with no cure or preventative therapy available.\cite{Blennow:2006wd} In 2010, there are an estimated 36 million people in the world currently suffering from AD, and this number is projected to grow to 115 million people by the year 2050.\cite{alzreport:2012}  Furthermore, there are no drugs which may target the underlying disease: approved treatments today such as donepezil (a cholinesterase inhibitor), and memantine (a N-methyl-D-aspartate antagonist) only mitigates cognitive symptoms.
+\cite{Mangialasche, F. M., Solomon, A., Winblad, B., Mecocci, P., and
+Kivipelto, M. (2010) Alzheimer’s disease: clinical trials and drug devleopment’. Lancet Neurol. 9, 702−716.}
+\cite{(4) The 2012 PhRMA Report on Medicines in Development: Alzheimer’s disease. See www.phrma.org.} 
+
+% PhRMA reports in their 2012 Medicines in Development Report for AD4 that there are currently 93 medicines in various stages of development, both small molecule and biologic. In general, all 93 compounds fall into one of the following therapeutic strategies: (1) agents targeting neurotransmission, (2) agents targeting Aβ production, (3) agents targeting Aβ aggregation, (4) agents targeting Aβ clearance, (5) agents increasing brain resistance to Aβ, (6) agents targeting tau protein, and (7) agents targeting neurotrophins and agents modulating synaptic plasticity and nerve growth.1−4 \cite{From the ACS neurochem's editorial letter}
+
+% (1) Data from the Alzheimer’s association. See www.alz.org.
+% (2) Data from Alzheimer’s foundation. See www.alzfdn.org.
+% (3) Mangialasche, F. M., Solomon, A., Winblad, B., Mecocci, P., and Kivipelto, M. (2010) Alzheimer’s disease: clinical trials and drug devleopment’. Lancet Neurol. 9, 702−716. Special Issue: Alzheimer's Disease Published: November 21, 2012
+% (4) The 2012 PhRMA Report on Medicines in Development: Alzheimer’s disease. See www.phrma.org. -- I should have a look at this report
+% (5) Sadeghi-Nejad, N. (2012) The Lessons of failure: what we can learn from bapineuzumab’s blowup. Forbes (Pharma & Healthcare), August 7, 2012.
+% (6) For information of the clinical trials with MK-8931, see www. merck.com.
+
+Hence, it is imperative that efforts be made towards the development of therapeutics for AD.  The vast number of structural and biochemical studies on amyloid structure have been crucial for the development of potential therapeutics for treating the underlying disease.  A promising method of treatment of AD is by preventing amyloid aggregation, and decreasing amyloid production. Here is a paper summarizing current treatments for underlying disease\cite{Salomone:2012fh}
 
 %Small molecules which prevent amyloid formation may be an effective method of treatment for amyloid disorders because of the potential to treat the underlying disease. 
 
@@ -602,43 +616,45 @@ This paper has a pretty good summary of the drug discovery process in the contex
 
 \section{Thesis objectives and rationale}
 % Understanding amyloid inhibition in the context of the framework of traditional enzyme inhibition mechanism
-\subsection{Challenges of amyloid inhibition}
-\begin{outline}
-       % However, most of these studies were focused on A$\beta$ and large A$\beta$ aggregates,\{Fawzi, 2008 \#553;Esposito, 2008 \#567;Sgourakis, 2007 \#609;Wei, 2006 \#656;Tarus, 2006 \#628 Karsai, 2006 \#658\} and thus, were computationally limited by the complexity of the molecular systems.
 
-    \1 The protein-ligand binding model developed to understand enzyme inhibition cannot be directly applied to understand the molecular mechanism of amyloid inhibition by small molecules. 
-    
-      \2 Amyloid inhibitors are found to be very weak binders. How do non-specific inhibitors act as a drug? And how do we approach this with MD simulations?
-      
-      \2  Because the A$\beta$ amyloid aggregate pathway encompasses a variety of species, some of which has no folded structure, a single conformation cannot be assumed for binding. Furthermore, structural information of amyloidogenic species lags behind those of enzymes, which tends to be globular proteins amenable for X-ray crystallography. This means that the putative binding sites are not known.
-      
-      \2 The structural disorder of the peptides involved poses a challenge for obtaining converged properties from MD simulations. 
-    
-    	\1 A$\beta$ peptides are completely disordered.  We also do not know what the binding site looks like, where it is located on these structures.
-    	
-    \1 To date, few studies have attempted to provide statistically meaningful results pertaining to general mechanisms of protein self-aggregation and amyloid formation. Furthermore, despite the abundance of MD studies of A$\beta$, few studies have systematically examined the mechanism of action of small molecule inhibitors of amyloids
+[Challenges of developing small molecule for amyloid inhibition] Structure-based drug discovery approach developed to target folded proteins such as enzymes cannot be directly applied to discovery of small molecules which targets amyloid formation. Because the A$\beta$ amyloid aggregate pathway encompasses a variety of species, some of which are disordered, a single conformation cannot be assumed for binding. Furthermore, structural information of amyloidogenic species lags behind those of enzymes, which tends to be globular proteins amenable for X-ray crystallography. This means that the putative binding sites are not known.  Furthermore, amyloid inhibitors are found to be very weak binders. 
+% How do non-specific inhibitors act as a drug? And how do we approach this with MD simulations?
+In AD, there is the added challenge of the drug being able to cross the brain barrier, while remaining non-neurotoxic.  What kind of drugs cross the BBB?  Typically hydrophobic drugs.
 
-    \1 In AD, there is the added challenge of the drug being able to cross the brain barrier, while remaining non-neurotoxic.  What kind of drugs cross the BBB?  Typically hydrophobic drugs.
-\end{outline}    
+%     A$\beta$ peptides are completely disordered.  We also do not know what the binding site looks like, where it is located on these structures.
 
-\subsection{Study Design and Rationale}
-\begin{outline}
-	\1 Here describe in detail how I designed my study to circumvent the challenges presented by the amyloid inhibition problem, and the limitations  of MD simulations. At this point, clearly explain and discuss my study design and rationale. (Fig.~\ref{fig:rationale})
+% However, most of these studies were focused on A$\beta$ and large A$\beta$ aggregates,\{Fawzi, 2008 \#553;Esposito, 2008 \#567;Sgourakis, 2007 \#609;Wei, 2006 \#656;Tarus, 2006 \#628 Karsai, 2006 \#658\} and thus, were computationally limited by the complexity of the molecular systems.
 
-  \begin{figure}
-    \centering
-    \includegraphics[width=6in]{figures/introduction/matrix.pdf}
-    \caption[Rationale]{Shows the progression from small, model systems to larger and structurally more complex systems involving the full-length A$\beta$42 peptide.}
-    \label{fig:rationale}
-  \end{figure}
+% Here describe in detail how I designed my study to circumvent the challenges presented by the amyloid inhibition problem, and the limitations  of MD simulations. At this point, clearly explain and discuss my study design and rationale. 
+% (Don't know binding? binding site? which structure does it binding? how does it binding? "binding mechanism")
 
-	\1 Beginning with the simplest model systems for an amyloidogenic peptide, the alanine dipeptide, we systematically examine binding of inositol with systems of both increasing sequence and structural complexity.
+We don't know if a small-molecule like inositol acts by binding. if ligands bind, and if they bind, we do not know where they bind, and it is experimentally challenging to identify the binding sites using available techniques such as SSNMR, NMR, and X-ray. Although there are some data other there with experimental data, we cannot yet obtain fully atomistic detail on the interactions between the ligands and proteins.
 
-	% Use brute force simulations
-	\1 We exploit conventional MD simulation techniques because simulation approaches used for understanding enzyme-ligand binding is not applicable. 
-	
-	\1 Instead, we use conventional MD simulations and repeats of independent simulations to determine the binding modes, and binding equilibria of inositol with amyloidogenic peptides and aggregates of A$\beta$.
-\end{outline}
+Because amyloid is a group of different species, where the structures of which are largely unknown, we don't know (and we cannot assume) which aggregate species along the amyloid aggregation pathway that inositol may interact with. We want to examine representative species within the aggregation pathway, that is, monomers, disordered oligomers, and fibril like aggregates. Furthermore, we cannot assume putative binding sites - that is these binding sites are not known a priori. Unlike the case with enzymatic inhibition, a single bound molecule is unlikely to inhibit fibrillation. Instead, amyloid aggregates such as fibrils present surfaces for binding.
+
+Although amyloid fibrils of different peptide sequences share the overall cross-beta, there are specific differences in their surface properties due to their amino acid composition. Hence, we look at different species of different peptides.
+
+We took a reductionist approach to solve this problem. Beginning with the simplest model systems for an amyloidogenic peptide, the alanine dipeptide, we systematically examine binding of inositol with systems of both increasing sequence and structural complexity.
+
+% First started with the simplest peptide of relevance, the alanine dipeptide.  We started with the alanine dipeptide to look at backbone interactions. 
+We wanted to isolate the problem to something simple to examine the backbone binding mechanism of inositol.  Because inositol had many hydrogen bonding groups, and it is shaped like it is geometrically suited to bind the peptidic backbone. Why did we first choose to look at the backbone?  Because it is the common element in all polypeptides, and the common cross-beta where the backbone of polypeptide chains are organized in the same manner in the structure of amyloid fibrils suggests that backbone plays an important role in amyloid formation.  We examine aggregates of varying sequence and  structural complexity.  By examining a simple beta-sheet forming peptide, (GA)4,  an amyloid inhibitor may bind to a simple amyloidogenic peptide. An illustration of this approach is shown in Figure~\ref{fig:rationale}.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=6in]{figures/introduction/matrix.pdf}
+  \caption[Rationale]{Shows the progression from small, model systems to larger and structurally more complex systems involving the full-length A$\beta$42 peptide.}
+  \label{fig:rationale}
+\end{figure}
+
+\subsection{Study Design}
+
+Simulation challenge - The structural disorder of the peptides involved poses a challenge for obtaining converged properties from MD simulations.  To date, few studies have attempted to provide statistically meaningful results pertaining to general mechanisms of protein self-aggregation and amyloid formation. Furthermore, despite the abundance of MD studies of A$\beta$, few studies have systematically examined the mechanism of action of small molecule inhibitors of amyloids
+
+% If you mention brute force ... most scientist in the audience won't understand
+For sampling, we exploit conventional MD simulation techniques because simulation approaches used for understanding enzyme-ligand binding is not applicable. Conventional MD simulations were combined with many repeated independent replicas to obtain statistics on the binding equilibria.  We use many repeat simulations - why ? We can observe binding and unbinding events within several nanoseconds.  This is an approach that is typically used to trivially parallelizing simulations to speed up sampling.  Because inositol acts at higher than normal (what do you mean by this) concentrations (in vitro), we were able to approach this problem using a ``bulk" approach, by examining binding between multiple molecules of inositol with different amyloid aggregates.  Inositol's interactions are  weak (but I shouldn't be stating this as an assumption.. because 90% of inositol's interactions may be weak, but the 10% which are not may be the ones that induce its activity).
+
+% Instead, we use conventional MD simulations and repeats of independent simulations to determine the binding modes, and binding equilibria of inositol with amyloidogenic peptides and aggregates of A$\beta$.
+
 
 \section{Thesis Organization}
 The first chapter introduces the thesis in the context of the field.  The second chapter introduces the main methods used in the work in the thesis. Chapters 3, 4, and 5 are the results of simulations of inositol with amyloid like peptides and aggregates. Chapter 6 shows work of the general applicability of our methods developed throughout this thesis to MD simulations to understand protein - carbohydrate binding. Chapter 7 provides discussion, suggestions for future work, and perspectives.
