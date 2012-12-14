@@ -141,33 +141,32 @@ Obtaining convergence. Explain why this is difficult, in particular for systems 
 % Limitations in the accuracy of current force fields.
 % Time scale. Relevant biochemical reactions such as protein folding happens on the time scale of milliseconds, hours, and days. Currently with MD simulations, we are routinely able to approach the microsecond time scale, massive computing power is still insufficient to observe phenomena on the millisecond timescale. % Ref: DE Shaw Research.
 
-
 \section{Application of MD in structure-based drug discovery}
 
-\begin{outline}
 % \1 (Why computational?) Can help us get protein dynamics is important for understanding protein function. We want to understand protein function because we want to be able to design drugs to cure diseases.
 
 % \1 A important application of MD simulation in biochemistry is the predicting of protein-ligand binding free energies.
-	\1 A broad application of simulations of proteins is to computationally design drugs and combining that with structure-based drug design. In recent years structure-based computer modeling of protein-ligand interactions have become a core component of modern drug discovery. 
 
-	\1 Current drug discovery platform. Typically, the first step in drug discovery is to identifying a target, a putative binding site.  Then, solve the X-ray crystal structure of the target.
-  % [See Tom's thesis]
-	
-	\1 Ligands which may act as potential drugs typically have high binding affinity to the binding site. The goal is to find high specificity inhibitor of a protein (usually an enzyme). The binding free energy is an important quantity which can be used to evaluate how well a ligand binds. One method of estimating binding affinity is by using computational docking methods, where the binding affinity is typically estimated without taking into account of protein dynamics.  Although docking is computationally less expensive, it is inaccurate for identifying true drug candidates because binding often involves crucial changes in protein conformation.
+One application of MD simulations is in rational drug design. In recent years structure-based computer modeling of protein-ligand interactions have become a core component of modern drug discovery.  In early stage drug discovery, a target is identified along with putative binding sites.  Then, the structure of the target is determined using structural determination techniques such as NMR or X-ray crystallography.
+% [See Tom's thesis]
+Ligands which may act as potential drugs are expected to bind with a high affinity (low $K_d$) to the binding site. The goal is to discover,  high specificity inhibitors of a protein (usually an enzyme). In this process, the binding free energy of the ligand to its target is used to quantitatively evaluate how well a ligand binds. A crude estimate of the binding affinity can be obtained using computational docking methods, where the energetics of binding is typically estimated without accounting for either ligand or protein flexibility.  Although docking is fast, it is often inaccurate for identifying true drug candidates.
 
-	\1 With computer hardware becoming faster and cheaper, MD simulation and modeling can be used to rapidly prototype experimental ideas -- for example, one can perform computational alchemy, that is, ``mutate'' residues to test various hypotheses. Furthermore, simulations may be used to determine whether a chemical change will produce a more potent drug candidate.
-	
-	\1 Currently state of the art computational binding studies take into the account of change in protein conformation. MD simulations is an effective method, where the protein and drug is allowed to relax and freely move about in the system.
+With computer hardware becoming faster and cheaper, MD simulations can be used to rapidly prototype experimental ideas -- for example, one can perform computational alchemy, that is, ``mutate'' residues to test various hypotheses. Furthermore, simulations may be used to determine whether a chemical change will produce a more potent drug candidate. Currently, state of the art computational binding studies use MD simulations, where the protein and drug is allowed to relax and freely move about in the system. However, in the case of understanding a specific binding reaction often needed when developing an enzyme inhibitor, the ability to observe the relevant binding events is a low probability event on the timescale achievable by simulations. Therefore, a few enhanced techniques have been developed to accelerate this process.  They are briefly introduced below.
 
-	\1 However, in the case of understanding a specific binding reaction (eg. when developing an enzyme inhibitor), the ability to observe the relevant binding events is a low probability event on the timescale achievable in our simulations. Therefore, it is  impractical in this case to solely apply brute-force sampling techniques to determine binding free energies.
+\section{Free energy calculations}
+There are two advanced methods that have been developed for determining the absolute binding free energies in combination with MD simulations.
 
-	  \2 Methods used to determine binding free energies using simulations:
-	  % \3 Linear interaction energy -- Out of scope
-	  % \3 MM/PBSA - no explicit account for solvents -- Out of scope
-	  	\3 Thermodynamic perturbation \cite{Gilson:2007hz}
-			\4 thermodynamic integration
-			\4 free energy perturbation
-\end{outline}
+% \3 Linear interaction energy -- Out of scope
+% \3 MM/PBSA - no explicit account for solvents -- Out of scope
+\subsection{Thermodynamic perturbation}
+This is the paper that I am taking most of the topics here\cite{Gilson:2007hz}
+
+\subsection{Thermodynamic integration}
+I actually have no idea what this is, and would be hard pressed to explain this properly.
+In this case, I don't think I should be covering these topics in my thesis.
+
+\subsection{Free energy perturbation}
+Alchemically change one molecule into another
 
 \section{Review of MD studies of amyloid inhibition by small molecules}
 % MD studies using brute-force sampling. Aid in medicinal chemistry by making suggestions for how to design new AD drugs.
