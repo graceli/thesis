@@ -1,51 +1,73 @@
-\chapter{Methods}
+\chapter{Molecular Dynamics Simulations}
 % This isn't all methods.  The last section is a review of MD simulations of small molecule binding to amyloids.
 % But I'm hesitant to call this MD simulations chapter because it isn't all about MD simulations ... or is it?
 
-\section{Molecular Dynamics Simulations}
+MD simulations have been used in recent years to gain insight into many fundamental problems in biology and biochemistry, including protein dynamics and function, protein folding,self-aggregation, and protein-ligand binding.
 
-MD simulations employ an empirical mathematical function to describe the atomic interactions in a molecular system, and together with classical laws of Newtonian mechanics, atomic trajectories of motion are generated. 
+MD simulations employ an empirical mathematical function to describe the atomic interactions in a molecular system, and together with classical laws of Newtonian mechanics, to simulate systems undergoing thermal motion from which atomic trajectories are generated. 
 
 Thermodynamic and kinetic properties can then be extracted as time averages from these trajectories and used to make a number of predictions that are often experimentally challenging to observe or measure.
 
-MD simulation studies have been useful in studying many existing fundamental problems of biology and biochemistry, including protein dynamics and function, protein folding, biomolecular self-aggregation, and protein-ligand binding.
+\section{Approximations in MD}
+% Approximations made in MD.
+% Note the audience of your thesis.  It is good to cover basic ground.  I think I should also brief talk about enhanced techniques.
 
-% Transition?
+MD is a molecular mechanics simulation technique.  Molecular mechanics is the model of interactions in the system. There are many assumptions made in MD.  In MD, classical mechanics is used to describe the motion of atoms.  In a biomolecular system, covalent bond stretching and angle-bending motions are treated as harmonic.
 
-Under the Born-Oppenheimer approximation, electronic and nuclear motions are uncoupled, and can therefore be treated separately. In MD atomic nuclei are treated as classical particles, where the movement of electrons are not accounted for. Instead, the effects of electronic motion is implicitly accounted for via the use of potential energy functions.
+The potential energy function (or force field) is a function of the positions of atoms only.  Under the Born-Oppenheimer approximation, electronic and nuclear motions are uncoupled, and can therefore be treated separately.  
+% M. Born and R. Oppenheimer, “Quantum Theory of Molecules,” Ann. Physics, vol. 84, pp. 457–484, 1927.
+In MD, the movements of all atomic nuclei are treated as classical particles (that is, an atom is a point charge in space), where the movement of electrons are not accounted for. Instead, the effects of electronic motion is implicitly accounted for in the force field (described in more detail below). Because electronically excited states are not treated, no chemical reactions occur in the system. 
+This classical mechanics provide a valid approximation of many biological systems % XXX 
 
-The force on each atom in the simulation is the spatial derivative of the potential energy of the system,
+Current MD force fields are not polarizable because of its prohibitive computational cost.
+
+To treat a bulk system and avoid phase boundaries, periodic boundary conditions are used.  Although this is unnatural, for sufficiently large systems, the errors induced by periodic boundaries are negligible. REFS
+
+\section{Core Algorithm}
+For a system of N interacting atoms, the force for each atom pair in the system is determined by the spatial derivative of the potential energy of the atom pair in the system,
+% Not exactly ... according to Chris Madill's thesis, U is the potential energy between an atom pair
 \begin{equation}
-F = - \nabla U
+% F_i = - \nabla U
+  F_i = - \frac{\delta V}{\delta r_i}, i = 1,2,3,..., N
 \end{equation}
-where $U$ is the potential energy of the system. In MD simulations, $U$ is estimated using a molecular mechanics force field, a set of parameters which describes the interaction energies of the atoms in the system.
 
-The acceleration $a$ of each atom is then given by Newton's second law of motion,
+where $V$ is the potential energy of the system. The calculated force vectors are summed together, yielding the net force vector acting on every atom in the system. 
+
+In MD simulations, $V$ is approximated using a molecular mechanics force field, a set of parameters which describes the interaction energies of the atoms in the system.
+
+The acceleration $a_i$ of each atom is given by,
 \begin{equation}
-a = \frac{F}{m}
+a_i = \frac{F_i}{m_i}
 \end{equation}
-where $m$ is the mass forces on each atom.
+where $m_i$ is the mass of the atom $i$.
 
-Dynamics of the next position of the atom at time $ t + \delta t$ is then 
+The next position of the atom at time $ t + \delta t$
 \begin{equation}
 x_i(t + \delta t) = x_i(t) + v_i(t)\delta t + \frac{a_i(t)\delta t^2}{2}	
 \end{equation}
 
-Once all of the new positions for all atoms are predicted, updated interatomic forces based on the coordinates in the newly generated frame are calculated, and the entire process is repeated.
+The above equations are solved numerically using a time integration algorithm using a small timestep. For numerical stability reasons, a small integration step in the range of 1 - 4 femtoseconds is employed. Typically, a timestep of 2 fs is used, which is twice the time period for the fastest vibrational motion (for bonds involving hydrogen), is used in MD simulations of biomolecular systems. % [Ref: Chris Madill's and Tom's thesis]
+
+There are many different forms of integration algorithms, with the most common being the Verlet and leap-frog algorithms. 
+% According to gromacs manual:
+% md - is a leap-frog algorithm for integrating Newton's equation.
+% Note that in absence of pressure and temperature coupling, verlet and leap-frog is equivalent ... and generates identical trajectories of motion.
 
 % How much detail? Talk about the velocity verlet integration algorithm ?
+A simulation proceeds iteratively: once all of the new positions for all atoms are predicted, interatomic forces are updated based on these new coordinates, and this entire process is repeated.
+
 % Marty's thesis included a little bit on the verlet algorithm.  CN did not.
 
-For numerical stability reasons, a small integration step or timestep is used in the calculations. Typically 2 femtosecond timestep, twice the time period for the fastest vibrational motion (for bonds involving hydrogen), is used in MD simulations of biomolecular systems.
+\section{Force field}
 
-% [Ref: Chris Madill's and Tom's thesis]
+The outcome of the simulations are controlled by an expression for the total potential energy of the system collectively referred to as the force field.
 
 Application of an empirical force field is used in MD to approximate atomic interactions in the system. A force field typically has many parameters which need to be calculated. One approach to do this is to fit to quantum mechanical calculations.  Often, force fields are iteratively improved by predicting experimentally observable quantities for small compounds, and adjusting the fit based on comparisons of these computationally predicted quantities with experimental measurements.
   
-There many different force fields (AMBER, Gromos etc), each differing slightly in the potential energy function and its parameterization. In this thesis, we have chosen to use the OPLS-AA/L force field for all of our simulations.
+Many different force fields have been developed for the purpose of simulating biomolecular systems. Existing force fields such as AMBER, GROMOS, CHARMM, OPLS-AA, all differ slightly in the functional form and parameterization of the potential energy function. We have chosen to use the OPLS-AA/L (results in chapters 3 to 5) and AMBER99 force fields (chapter 6) in this thesis. OPLS models atomic connectivity based on AMBER, but was developed to reproduce liquid state properties (water, and 40 other organic liquids) such as XXX and YYY.\cite{jay ponder, the opls 1986 paper, and the 1996 all atom paper} 
 % Note that if I say this .. I might have to justifiy this in my defense.
 
-The general form of the force field potential energy function is 
+The general form of the force field potential energy function used in OPLS-AA is
   % \[ V(R) = bonds + angles + impropers + dihedrals + pair interactions \]
   \begin{equation}
     \begin{split}
@@ -60,28 +82,32 @@ The general form of the force field potential energy function is
 \end{outline}
 
 % Initial conditions -- initial positions of the atoms in the system
-% Inclusion of temperature in MD -- allows for the account of entropy in our systems.  This is especially important for the determination of free energies, G.
+Simulation systems are usually in the canonical ensemble (NVT), and isothermo-isobaric (NPT) ensembles.
+
+Inclusion of temperature in MD allows for the account of entropy in our systems.  This is especially important for the determination of free energies, G. 
+
+
 % Note that because I talk a lot about binding ... this discussion within my methods section may be quite important for examing members that understands the physics but do not understand how MD simulations in particular is rigoroous enough to make any of those predictions.  Having those details here means that I understand how that link is established and that I'm not just making up stories based on pretty pictures.
 
 % \subsection{Setting up a MD simulation: practical aspects}
 % Here are some details to run a MD simulation of a biomolecular system.  I think I could omit this from my introduction as this is not really essential in understanding the rest of my thesis, or is it? Perhaps this should go into an appendix instead.
 
-The following steps are often used to setup and start a MD simulation system of a protein. First, a pre-determined structure, typically a coordinate structure from X-ray crystallography or NMR, or homology-modelling data. Then a force field and solvent is chosen.
+% The following steps are often used to setup and start a MD simulation system of a protein. First, a pre-determined structure, typically a coordinate structure from X-ray crystallography or NMR, or homology-modelling data. Then a force field and solvent is chosen.
 
 \section{Challenges and limitations of MD}
 
-\begin{outline}
-	\1 MD is computationally challenging because of limitations in length and time scales.
-	
-		\2 Length scale. Large systems are too complex to obtain statistics and quantitative predictions.
-			
-		% Evaluating the convergence of simulations is still a challenge
-		\2 Time scale. Relevant biochemical reactions such as protein folding happens on the time scale of milliseconds, hours, and days. Currently with MD simulations, we are routinely able to approach the microsecond time scale, massive computing power is still insufficient to observe phenomena on the millisecond timescale. % Ref: DE Shaw Research.
-		\2 Obtaining convergence. Explain why this is difficult, in particular for systems with disordered peptides.
-	\1 Limitations in the accuracy of current force fields.
-\end{outline}		
+Given the approximations of MD, MD is well-suited for probing the dynamics of complex systems on the timescale of picoseconds to seconds.
+
+MD is computationally limited in both length and time scales. Many of the biologically interesting events, such as protein folding, ligand binding, and conformational isomerization occur on timescales of milliseconds and seconds.  Even with the amount of computing power available today, however, MD simulations is limited to studying systems on the timescale of microseconds, with few studies reaching timescales of milliseconds. Furthermore, many complex biological systems are still large enough to obtain quantitative predictions. Although boundaries in these respects are being pushed constantly\cite{DE Shaw, Chris Neale, Sarah}
+
+Obtaining convergence. Explain why this is difficult, in particular for systems with disordered peptides.			
+% Evaluating the convergence of simulations is still a challenge
+% Limitations in the accuracy of current force fields.
+% Time scale. Relevant biochemical reactions such as protein folding happens on the time scale of milliseconds, hours, and days. Currently with MD simulations, we are routinely able to approach the microsecond time scale, massive computing power is still insufficient to observe phenomena on the millisecond timescale. % Ref: DE Shaw Research.
+
 
 \section{Application of MD in structure-based drug discovery}
+
 \begin{outline}
 % \1 (Why computational?) Can help us get protein dynamics is important for understanding protein function. We want to understand protein function because we want to be able to design drugs to cure diseases.
 
