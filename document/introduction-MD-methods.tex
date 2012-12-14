@@ -3,6 +3,13 @@
 % But I'm hesitant to call this MD simulations chapter because it isn't all about MD simulations ... or is it?
 
 MD simulations have been used in recent years to gain insight into many fundamental problems in biology and biochemistry, including protein dynamics and function, protein folding,self-aggregation, and protein-ligand binding.
+% I like these analogies and I think it will help make my methods sections less dry
+In many respects, Molecular Dynamics simulations are very similar to real experiments. When we perform a real experiment, we first prepare a sample of the material that we wish to study. This sample is then connected to a measuring instrument from which we can measure the property of interest during a certain time interval. If our measurements are subject to statistical noise (as most measurements are), then the longer we average, the more accurate our measurement becomes. 
+
+The same approach is applied when performing a Molecular Dynamics simulation. First, a model system consisting of N particles is selected and we record the dynamics of this system (via solving Newton's equation of motion) until the properties of the system no longer change with time (we equilibrate the system). 
+
+After equilibration, we perform the actual measurement. In fact, some of the most common mistakes that can be made when performing a computer experiment are very similar to the mistakes that can be made in real experiments (e.g., the sample is not prepared correctly, the measurement is too short, the system undergoes an irreversible change during the experiment, or we do not measure what we think).
+(Copied and adapted from Molecular Simulations book)
 
 MD simulations employ an empirical mathematical function to describe the atomic interactions in a molecular system, and together with classical laws of Newtonian mechanics, to simulate systems undergoing thermal motion from which atomic trajectories are generated. 
 
@@ -19,7 +26,8 @@ The potential energy function (or force field) is a function of the positions of
 In MD, the movements of all atomic nuclei are treated as classical particles (that is, an atom is a point charge in space), where the movement of electrons are not accounted for. Instead, the effects of electronic motion is implicitly accounted for in the force field (described in more detail below). Because electronically excited states are not treated, no chemical reactions occur in the system. 
 This classical mechanics provide a valid approximation of many biological systems % XXX 
 
-Current MD force fields are not polarizable because of its prohibitive computational cost.
+Force fields do not account for polarizability of molecules.  because of its prohibitive computational cost.
+Polarizability is a property of matter, and is the measure of the change in a molecule's electron distribution in response to an applied electric field, which can also be induced by electric interactions with solvents or ionic reagents. 
 
 To treat a bulk system and avoid phase boundaries, periodic boundary conditions are used.  Although this is unnatural, for sufficiently large systems, the errors induced by periodic boundaries are negligible. REFS
 
@@ -57,6 +65,34 @@ There are many different forms of integration algorithms, with the most common b
 A simulation proceeds iteratively: once all of the new positions for all atoms are predicted, interatomic forces are updated based on these new coordinates, and this entire process is repeated.
 
 % Marty's thesis included a little bit on the verlet algorithm.  CN did not.
+\section{Temperature}
+I copied this from ``Molecular simulations the book''
+
+For instance, a convenient definition of the temperature in a (classical) many-body system makes use of the equipartition of energy over all degrees of freedom that enter quadratically in the Hamiltonian of the system. In particular for the average kinetic energy per degree of freedom, we have
+\begin{equation}
+  \langle \frac{1}{2} mv_{\alpha}^2 \rangle =   \frac{1}{2} k_BT
+\end{equation}
+
+In a simulation, we use this equation as an operational definition of the tem- perature. In practice, we would measure the total kinetic energy of the sys- tem and divide this by the number of degrees of freedom Nr (= 3N - 3 for a system of N particles with fixed total momentum1). As the total kinetic energy of a system fluctuates, so does the instantaneous temperature:
+
+\begin{equation}
+  T(t) = \sum_{i=1}^{N} \frac{m_iv_i^2(t)}{k_BN_f}
+\end{equation}
+
+\section{Temperature and pressure-coupling}
+Copied from the GROMACS manual
+
+While direct use of molecular dynamics gives rise to the NVE (constant number, constant volume, constant energy ensemble), most quantities that we wish to calculate are actually from a constant temperature (NVT) ensemble. 
+
+To simulate a system under an ensemble which matches most experimental settings, where temperature and pressure is often held constant, we can modify the above introduced equations by adding additional terms which introduces a thermal heat bath (Nose-Hoover temperature coupling scheme) to which we couple our simulation to.\cite{
+[25] Nose ́, S. A molecular dynamics method for simulations in the canonical ensemble. Mol. Phys. 52:255–268, 1984.
+[26] Hoover, W. G. Canonical dynamics: equilibrium phase-space distributions. Phys. Rev. A 31:1695–1697, 1985.
+}
+
+Using the same idea, we can couple the system to a pressure bath.  This method is called the Parrinello-Rahman pressure coupling, and the theory has been shown to correctly produce the NpT ensemble.\cite{Parrinello, M., Rahman, A. Polymorphic transitions in single crystals: A new molecular dynamics method. J. Appl. Phys. 52:7182–7190, 1981.
+[35] Nose ́, S., Klein, M. L. Constant pressure molecular dynamics for molecular systems. Mol. Phys. 50:1055–1076, 1983.}
+% Should I include the equations? I haven't seen this in other thesis, perhaps its too much detail.
+
 
 \section{Force field}
 
