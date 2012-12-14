@@ -84,18 +84,14 @@ Copied from the GROMACS manual
 
 While direct use of molecular dynamics gives rise to the NVE (constant number, constant volume, constant energy ensemble), most quantities that we wish to calculate are actually from a constant temperature (NVT) ensemble. 
 
-To simulate a system under an ensemble which matches most experimental settings, where temperature and pressure is often held constant, we can modify the above introduced equations by adding additional terms which introduces a thermal heat bath (Nose-Hoover temperature coupling scheme) to which we couple our simulation to.\cite{
-[25] Nose ́, S. A molecular dynamics method for simulations in the canonical ensemble. Mol. Phys. 52:255–268, 1984.
-[26] Hoover, W. G. Canonical dynamics: equilibrium phase-space distributions. Phys. Rev. A 31:1695–1697, 1985.
-}
+To simulate a system under an ensemble which matches most experimental settings, where temperature and pressure is often held constant, we can modify the above introduced equations by adding additional terms which introduces a thermal heat bath (Nose-Hoover temperature coupling scheme) to which we couple our simulation to.
+%\cite{[25] Nose ́, S. A molecular dynamics method for simulations in the canonical ensemble. Mol. Phys. 52:255–268, 1984.[26] Hoover, W. G. Canonical dynamics: equilibrium phase-space distributions. Phys. Rev. A 31:1695–1697, 1985.}
 
-Using the same idea, we can couple the system to a pressure bath.  This method is called the Parrinello-Rahman pressure coupling, and the theory has been shown to correctly produce the NpT ensemble.\cite{Parrinello, M., Rahman, A. Polymorphic transitions in single crystals: A new molecular dynamics method. J. Appl. Phys. 52:7182–7190, 1981.
-[35] Nose ́, S., Klein, M. L. Constant pressure molecular dynamics for molecular systems. Mol. Phys. 50:1055–1076, 1983.}
+Using the same idea, we can couple the system to a pressure bath.  This method is called the Parrinello-Rahman pressure coupling, and the theory has been shown to correctly produce the NpT ensemble.
+% \cite{Parrinello, M., Rahman, A. Polymorphic transitions in single crystals: A new molecular dynamics method. J. Appl. Phys. 52:7182–7190, 1981. [35] Nose ́, S., Klein, M. L. Constant pressure molecular dynamics for molecular systems. Mol. Phys. 50:1055–1076, 1983.}
 % Should I include the equations? I haven't seen this in other thesis, perhaps its too much detail.
 
-
 \section{Force field}
-
 The outcome of the simulations are controlled by an expression for the total potential energy of the system collectively referred to as the force field.
 
 Application of an empirical force field is used in MD to approximate atomic interactions in the system. A force field typically has many parameters which need to be calculated. One approach to do this is to fit to quantum mechanical calculations.  Often, force fields are iteratively improved by predicting experimentally observable quantities for small compounds, and adjusting the fit based on comparisons of these computationally predicted quantities with experimental measurements.
@@ -115,7 +111,6 @@ The general form of the force field potential energy function used in OPLS-AA is
           + \sum_{nonbonded} \epsilon [(\frac{r_{min}}{r})^{12} - 2(\frac{r_{min}}{r})^6]
     \end{split}
   \end{equation}
-\end{outline}
 
 % Initial conditions -- initial positions of the atoms in the system
 Simulation systems are usually in the canonical ensemble (NVT), and isothermo-isobaric (NPT) ensembles.
