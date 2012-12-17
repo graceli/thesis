@@ -4,10 +4,11 @@
 % http://www.sciencedirect.com.myaccess.library.utoronto.ca/science/article/pii/B9780444519672001550
 % http://www.sciencedirect.com.myaccess.library.utoronto.ca/science/article/pii/B9780444519672000581
 % http://www.sciencedirect.com.myaccess.library.utoronto.ca/science/article/pii/B9780444519672000313
-% http://www.sciencedirect.com.myaccess.library.utoronto.ca/science/article/pii/B0080437486011592	
+% http://www.sciencedirect.com.myaccess.library.utoronto.ca/science/article/pii/B0080437486011592
+
 \section{Summary}
 	Alzheimer's disease (AD) is a severe neurodegenerative disease with no cure. Currently, one method of targeting the underlying disease is to prevent or reverse the amyloid formation of A$\beta$42, a key pathological hallmark of AD. A small-molecule novel drug candidate, Scyllo-inositol, is a polyol small-molecule that exhibits stereochemistry dependent inhibition of the formation of fibrils in vitro.  Furthermore, recently completed phase II clinical trials demonstrated that scyllo-inositol achieved target drug levels in the cerebral spinal fluid (CSF) of AD patients, a main challenge for AD drug candidates to to overcome.
-	Despite its promise as a therapeutic for AD, the mechanism of action of scyllo-inositol at the molecular level is currently not understood.  We perform extensive atomistic molecular dynamics simulations of scyllo-inositol and its inactive stereoisomer, chiro-inositol, glucose, and the osmolyte protein stabilizer, glycerol, with the full length A$\beta$42 protofibril.  From our simulations, we characterize the stereochemistry-dependent binding modes of these three cosolu on the structure of A$\beta$42 protofibrils.  Our results provide molecular insight for the rational design of small-molecule inhibitors of A$\beta$42 and other amyloid-based diseases.
+	Despite its promise as a therapeutic for AD, the mechanism of action of scyllo-inositol at the molecular level is currently not understood.  We perform extensive atomistic molecular dynamics simulations of scyllo-inositol and its inactive stereoisomer, chiro-inositol, glucose, and the osmolyte protein stabilizer, glycerol, with the full length A$\beta$42 protofibril.  From our simulations, we characterize the stereochemistry-dependent binding modes of these three cosolutes on the structure of A$\beta$42 protofibrils.  Our results provide molecular insight for the rational design of small-molecule inhibitors of A$\beta$42 and other amyloid-based diseases.
 
   \textbf{Keywords}:
 	amyloid computational
@@ -35,6 +36,45 @@ Furthermore, osmolytes such as carbohydrates, for example, trehalose\cite{Liu:20
 Small-molecule modulators of amyloid formation may be classified into those that accelerate and / or stabilize amyloid formation and those that displace the equilibrium towards the disaggregated state (inhibitors of amyloid formation). Inositol is a polyhydroxylated compound that have been demonstrated to act on \ab42 with a stereochemistry-dependent activity. In mice studies, it [FILL IN THE BLANK HERE]. Our previous study of inositol binding to A$\beta$(16-22) suggests that inositol preferentially binds more ordered $\beta$-oligomers over small disordered aggregates.
 
 In a previous study, our results indicate that inositol preferentially bind to surfaces of $\beta$-oligomers, but not to disordered or monomeric forms of A$\beta$(16-22).  Furthermore, binding modes are sequence-dependence of binding, the equilibrium binding constants for (GA)$_4$ was XX mM compared to ~5mM for the protofibrillar aggregate of A$\beta$(16-22). In this study, we examine the binding mechanism of inositol stereoisomers, and in addition, inactive compounds glucose and glycerol, with the full length NMR structure of Abeta42.  Both glucose and glycerol are known to be inactive in preventing the fibrillation of A$\beta$42. Our results provide into the structure-activity relationship of inositol in the inhibition of A$\beta$ amyloid formation, and advances our understanding towards a pharmcophore for treating Alzheimer's Disease.
+
+%%%%%%%%%
+Here we review the following recent simulation studies 
+
+Simulations of binding to disordered peptides are computationally challenging.  Heterogeneous disordered peptides are a challenge because of the difficulty in obtaining convergence of their equilibrium ensemble of structures.  We've only seen a few of these studies carried out - there was one with A$\beta$ by Garcia et al. But I think that was it. 
+
+To unambiguously determine the effect of a single small molecule's effect on the aggregation pathway of a peptide such as A$\beta$ requires microseconds of sampling per state, and at the same time comparatively studying the aggregation equilibrium of the peptide in absence of this small molecule.
+
+Ideally, one should collectively examine the inhibitor of interest with different aggregate species in tandem with a system with which we can also observe the aggregation equilibrium of the peptide. 
+
+We have done this with inositol with many different morphologies of different peptides and all of these systems collectively to draw on a possible molecular mechanism by a small molecule inhibitor.
+
+http://www.jbc.org/content/286/48/41578.short
+
+Simulations thus far which have examined small molecule binding with peptides that are truncated (such as that of A$\beta$(12-28) and A$\beta(16-22)$) forms of the full-length peptides of Abeta (AD) or alpha synuclein or IAPP. If not the the shorter peptide, studies typically employed forms with structure such as  the protofibril of Abeta40 or Abeta42 both of which have SSNMR starting structure coordinates.
+
+In 2007, Duan et al. performed short simulation studies of the protofibrils of IAPP in the presence of four molecules of congo red. The study examined congo red binding with IAPP protofibrils, where they found that congo red predominantly adopted two binding modes: either along the group of the fibril or parallel to each of the peptide strands.  
+In 2012, Congo red binding was examined with protofibrils of A$\beta$(1-40). http://www.cell.com/biophysj/abstract/S0006-3495(12)00780-1
+Another early study of 9,10-Antrhaquinone suggests that intercalation and interactions between the backbone of peptides destabilize oligomer formation. http://onlinelibrary.wiley.com/doi/10.1002/pro.87/full
+
+In 2010, Lemkul et al. used another short simulation study to examine binding of morin molecules with the protofibril form of abeta42.  They saw that they make hydrogen bonds and they concluded that studies with different forms of abeta42 is needed because small molecules may interact with any of the species in the aggregation pathway.
+
+Molecular mechanism of ThT binding was probed in recent years by several simulation studies. Shea 2011 attempts to study the difference in binding between PIB and ThT.  Simulation of a ThT-based molecule with a charged group, another was the unmodified ThT molecule.  They were both seen to binding at the tunnel of the fibril. http://www.cell.com/biophysj/abstract/S0006-3495(11)00143-3
+
+EGCG, a small molecule that is thought to inhibit aggregation of both alpha-synuclein and abeta42 by interacting with the monomer was also a popular system.  A study by wang 2010 showed that it adopted dual binding mode depending on the stoichiometry of the EGCG.
+It was later shown that the prominent interaction comes form nonpolar binding in this study http://www.ncbi.nlm.nih.gov/pubmed/21899367 -- Liu FF study.
+
+Ibuprofen and Naproxen, molecules which show demonstrated in vitro activity as an amyloid inhibitor was also probed using molecular simulations. In that study,  replica exchange was used to probe binding of both molecules with the protofibril of Abeta40 (the ssnmr structure).  results indicate that they might bind in grooves at the edges of the oligomers, which is a possible way by which it may prevent fibril formation. and that they bound predominantly via hydrophobic interactions.  
+
+% Garcia et al. studied
+At the time of writing, recent studies of anti-amyloid agents in literature includes galantamine
+Some docking studies were also done. For more detail on this, see the recent review by Lemkul et al. http://www.ncbi.nlm.nih.gov/pubmed/23200245
+
+
+
+%%%%%%%%%%
+
+
+
 
 % Summary of Duan et al.\cite{Li:2011ei}
 % \begin{itemize}
