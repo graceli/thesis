@@ -53,13 +53,13 @@
 \begin{preliminary}
 
 %% This generates the title page from the information given above.
-\maketitle
+% \maketitle
 
 %% There should be NOTHING between the title page and abstract.
 %% However, if your document is two-sided and you want the abstract
 %% _not_ to appear on the back of the title page, then uncomment the
 %% following line.
-\cleardoublepage
+% \cleardoublepage
 
 %% This generates the abstract page, with the line spacing adjusted
 %% according to SGS guidelines.
@@ -84,13 +84,14 @@
 % \input{my-ack}
 % \end{acknowledgements}
 
-\tableofcontents
-\listoftables
-\listoffigures
+% Leave this to the end so that I don't have to scroll past the contents all the time
+% \tableofcontents
+% \listoftables
+% \listoffigures
 
 %% Generate any other material that belongs in the head matter 
 %% (for example, List of Plates, Index of Symbols, or List of Appendices).
-\printnomenclature
+% \printnomenclature
 \end{preliminary}
 
 % A Doctoral thesis is generally organized into the following sections:
@@ -102,7 +103,7 @@
 % Bibliography: Most examiners prefer that the bibliography include titles.
 % Appendices: Appendices may be included to cover such topics as additional details pertaining to Methods; speculative ideas; projects-in-progress; and/or negative results, particularly if the second format is chosen.
 
-% \include{symbols}
+\include{symbols}
 \include{introduction}
 % \include{introduction-MD-methods}
 
@@ -120,7 +121,7 @@
 % \include{results-chapter-4}
 % 
 % % Discussion / Perspectives
-\include{conclusions/conclusions}
+%\include{conclusions/conclusions}
 
 % Leave this to the last minute
 % Combine Introduction -- how ?

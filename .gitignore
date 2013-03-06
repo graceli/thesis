@@ -1,1 +1,5 @@
+*/*.aux
+*/*.blg
+*/*.bbl
 *.key
+*.pdf
