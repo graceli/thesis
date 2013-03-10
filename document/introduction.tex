@@ -453,7 +453,7 @@ Carbohydrate-binding proteins is a class of proteins where \KD's in the millimol
 
 % [More for the conclusions] Here I can link this to MD .. in MD we can calculate the drug residence times as well to get an idea of how long the receptor-ligand complex may last.  It is likely that this may be an important property for amyloid inhibition as well … what should be the rest of this logic? I think the connection for me here ends at the fact that we can also estimate residence lifetimes from simulation data: Modelling and simulations is a promising approach for drug design because of the wealth of data available from just a single atomistic simulation trajectory. For example, one can easily determine X, Y, Z … and in vivo drug residence lifetime is one such property that is useful to predict
 
-\subsection{Intermolecular forces involved in binding}
+\subsection{Intermolecular forces in biomolecular interactions}
 
 % HBs involved in Binding.
 % - What are the energetic contribution of these hydrogen bonds? (How are they measured?)
@@ -467,29 +467,23 @@ Carbohydrate-binding proteins is a class of proteins where \KD's in the millimol
 % Here, it will benefit me to read Sarah's appendix C carefully.
 
 % Nonpolar
-In protein-ligand binding and recognition non-covalent interactions are important.  These interactions may be roughly divided into two types: hydrophobic or electrostatic.   
+Non-covalent interactions important for protein-ligand recognition.   van Der Waals forces are a weak intermolecular forces existing between molecules, which can be either attractive or repulsive.  In particular, London dispersion forces is an weak attractive force between all molecules that arises from the instantaneous dipole moment induced by electronic motions of nearby molecules. These forces account for the attraction between nonpolar molecules. 
 
-Nonpolar molecules experience London dispersion forces, which are a form of weakly attractive intermolecular force. \textbf{Define these forces}
+Another interaction that is fundamental to life and for biomolecular recognition is hydrogen bonding. 
+A hydrogen bond is formed from electrostatic interactions formed between two dipoles (an acceptor and donor), where the acceptor group has an electronegative heavy atom (e.g. F, Cl, O), with exposed lone electron pairs, and the donor group is composed of an electropositive atom with an exposed proton.  Unlike dispersion forces, hydrogen bonds have directionality.
 
-Hydrogen bonding is a type of interaction important in biology, and in particular, for molecular recognition contributing to both protein-ligand affinity and specificity. Furthermore, hydrogen bonding is ubiquitous in water, where a single water molecule is able to tetrahedrally coordinate four other water molecules by forming a hydrogen bonding network, and gives rise to its unique properties such as high heat capacity.
+Hydrogen bonds are ubiquitous in water: a single water molecule is able to tetrahedrally coordinate four other water molecules to form a hydrogen bonding network, providing water with unique properties such as a high heat capacity. In proteins, intra- and intermolecular hydrogen bonds formed by the peptidic backbone of polypeptide chains  involves N-H and O=C as the donor and acceptor groups, respectively. Peptidic backbone hydrogen bonds define protein secondary structures (helices and \bsheets), and impart stability to their overall tertiary structures.\cite{refs}  In amyloid fibrils,  polypeptide backbones have their hydrogen bonded to each to form in-registered, parallel or antiparallel \bsheets\  (see Section \ref{sec:amyloid}).  Aside from the backbone, polar or charged amino acids () may also form hydrogen bonds.
 
-Proteins can form hydrogen bonds with other proteins, the surrounding solvent, carbohydrates, and lipids. In proteins, intra- and intermolecular hydrogen bonds formed by the peptidic backbone of polypeptide chains define their secondary structures such as helices and \bsheets\, and impart stability to a protein's overall tertiary structure.\cite{refs}  Large role in amyloid formation, where the polypeptide backbone are hydrogen bonded to form in-registered \bsheets\  (as reviewed in Section \ref{sec:amyloid}).
+\textbf{Salt bridges}
 
-Hydrogen bonds are electrostatic interactions formed between two dipoles, where the acceptor group is composed of an electronegative heavy atom such as F, Cl, N, O, and the donor group is composed of electropositive atom with an attached proton (CHECK THIS XXX).  In proteins, hydrogen bonds between peptide groups involves N-H and O=C as the donor and acceptor groups, respectively. Furthermore, amino acids with polar or charged side chains are also able to hydrogen bond. 
-
-Energetically, hydrogen bonds can range from XXX to YYY kcal/mol, and are typically much stronger than van Der Waals forces.  The energy of N-H ... C=O hydrogen bond has been estimated to be XXX kcal/mol in gas phase, but is only about 0.5 to 1.5 kcal/mol in solution.\cite{energetics of hydrogen bonds in peptides} The energy of a water-water hydrogen bond is about -3.2 kcal/mol.\cite{where did I see this}
+Energetically, hydrogen bonds can range from XXX to YYY kcal/mol, and are typically much stronger than van Der Waals forces.  The N-H ... C=O hydrogen bond has been estimated to be XXX kcal/mol in gas phase, and about 0.5 to 1.5 kcal/mol in solution.\cite{energetics of hydrogen bonds in peptides} A water-water hydrogen bond is estimated to be about -3.2 kcal/mol.\cite{where did I see this}
 % energy of water - water ? [hard to find a simple estimate.  Seems like something super complex]
 % In biomolecules, strongest hydrogen bonds are salt bridges, N-H ... O=C in proteins, and P-OH ... O=P in nucleic acids.
-Furthermore, hydrogen bonds have directionality.
 
-[INSERT FIGURE OF GEOMETRY OF HYDROGEN BONDS]
+% [INSERT FIGURE OF GEOMETRY OF HYDROGEN BONDS]
 
-% Discuss? - weak hydrogen bonds those arising betwen C-H and pi orbital as in sugars. C-H ... O and C-H pi.
-% Thought: This section is probably better integrated with the MD simulations or force field section.
-
-In a molecular mechanics forcefield, the energetics of hydrogen bonds are accounted for implicitly via the electrostatic and Lennard-Jones potentials. (geometry of hydrogen bond here measured experimentally as well?) In simulation, hydrogen bonds are typically counted using a geometric criteria.
-
-[Describe the geometry of a hydrogen bond used in simulations] 
+% Discuss? - weak hydrogen bonds those arising between C-H and pi orbital as in sugars. C-H ... O and C-H pi.
+% Thought: This section is probably better integrated with the MD simulations or force field section. In a molecular mechanics forcefield, the energetics of hydrogen bonds are accounted for implicitly via the electrostatic and Lennard-Jones potentials. (geometry of hydrogen bond here measured experimentally as well?) In simulation, hydrogen bonds are typically counted using a geometric criteria. [Describe the geometry of a hydrogen bond used in simulations] 
 
 % are important for protein folding and protein structure stabilization. 
 Methods used for studying protein-protein and protein-ligand interactions.\cite{Wang:2001ez}
