@@ -608,47 +608,54 @@ Structure-based rational drug design is a method that have yielded success in th
 	\label{fig:rational_drug_design}
 \end{figure}
 
-\section{Role of computer simulations}
-% (Why computational?) Can help us get protein dynamics is important for understanding protein function. We want to understand protein function because we want to be able to design drugs to cure diseases.
-% A important application of MD simulation in biochemistry is the predicting of protein-ligand binding free energies.
-% In this process, binding free energy of the ligand to its target is 
-% \textbf{Computational methods is useful to ...}  One application of MD simulations is in rational drug design. 
+\section{Molecular dynamics simulations}
 
-In recent years structure-based computer modeling of protein-ligand interactions have become a core component of the modern drug discovery process. For example, computer simulations may be used to predict protein-ligand binding free energies,  a quantity often used to evaluate how well a ligand binds in a high-throughput screening.   Computational docking, where the energetics of binding is typically estimated without accounting for either ligand or protein flexibility may be used to obtain a crude estimate of the binding affinity.  Although docking is fast, its inaccuracy often leads to many false positives. 
+In recent years structure-based computer modeling and simulations of protein-ligand interactions have become a key component of the modern drug discovery process. For example, computer simulation techniques such as molecular dynamics (MD) simulations may be used to predict protein-ligand binding free energies,  a quantity often used to evaluate how well a ligand binds in a high-throughput screening.
 
-Current state-of-the-art computational binding studies use molecular dynamics simulations, which is a much more accurate, but computationally expensive method to predict binding free energies.  With increasingly faster and cheaper computer hardware, molecular dynamics simulations are beginning to play a key role in the rational drug design process. In MD simulations, the protein and its putative ligand is allowed to relax and freely move about in the system, allowing a realistic estimate of the binding free energy to be made. \textbf{MD simulations are .... describe what MD is then go on to say what one can get from it} Simulation trajectories of protein-ligand binding can be used to quantitatively assess whether a chemical change to a compound will produce a more potent drug candidate (e.g.  residues may be ``mutated'' in silico). 
+% Describe what MD is, then go on to say what one can get from it
+% Say at very high level what MD is. Refer to the section for the detailed methods. 
+In general, MD simulations are a useful tool to study the structure, dynamics, and interaction of biomolecules (see Chapter 2 for methodological details).  MD simulation studies have been useful in studying many existing fundamental problems of biology and biochemistry, including protein folding, biomolecular self-aggregation, and protein-ligand binding.  MD simulations employ an empirical mathematical function to describe the atomic interactions in a molecular system, and together with classical laws of Newtonian mechanics, atomic trajectories of motion are generated.  Thermodynamic and kinetic properties can then be extracted as time averages from these trajectories and used to make a number of predictions that are often experimentally challenging to observe or measure.  With increasingly faster and cheaper computer hardware, MD simulations are beginning to play a key role in the rational drug design process. 
+
+Computational docking, where the energetics of binding is typically estimated without accounting for either ligand or protein flexibility may be used to obtain a crude estimate of the binding affinity.  Although docking is fast, its inaccuracy often leads to many false positives.  Current state-of-the-art computational binding studies use molecular dynamics (MD) simulations, which is a much more accurate, but computationally expensive method to predict binding free energies.   In MD simulations, the protein and its putative ligand is allowed to relax and freely move about in the system, allowing a realistic estimate of the binding free energy to be made. Simulation trajectories of protein-ligand binding can be used to quantitatively assess whether a chemical change to a compound will produce a more potent drug candidate (e.g.  residues may be ``mutated'' in silico).
+
+
+\section{Challenges and limitations of MD simulations}
+
+For molecular simulations to reliably predict, guide, and help explain experiment, simulations need to be sufficiently accurate,  possess a correct representation of the experimental conditions, adequately sample the relevant biomolecular motions.\cite{Mobley:2011ks} Ideally, a simulation should be at least 10 times longer than the slowest important timescale in a system.\cite{Zuckerman:2011dz} However, sampling relevant events on this timescale are intractable for many important biologically-relevant phenomena (eg. protein folding, ligand binding and conformational isomerization) because they occur on timescales (>1 ms) typically not reachable via MD simulations using current available computing resources.  Although modern simulations studies routinely approach microseconds in sampling, only a few studies to date were able to reach timescales of milliseconds.\cite{Dror:2012cs,Shan:2011bo,LindorffLarsen:2011gl}
+
+Consequently, running a single continuous molecular dynamics (MD) simulation alone is unlikely to achieve sufficient sampling of the important states of many biologically relevant systems. For this reason, computational algorithms which enhance sampling of the energy landscape of biomolecular systems are often employed to overcome some of the limitations of conventional MD simulations.
+
 
 % However, in the case of understanding a specific binding reaction often needed when developing an enzyme inhibitor, the ability to observe the relevant binding events is a low probability event on the timescale achievable by simulations. Therefore, a few enhanced techniques have been developed to accelerate this process.  They are briefly introduced below.
 
 % MD simulations can also be used to rapidly prototype experimental ideas -- for example, one can perform computational alchemy, that is, ``mutate'' residues to test various hypotheses. 
 
-\section{Understanding the molecular mechanism of action of small-molecule aggregation inhibitors}
+\section{Molecular mechanism of action of small-molecule aggregation inhibitors}
 
-% How is small molecule binding different from the classical ligand-enzyme binding paradigm? Why is finding small-molecule inhibitors for amyloid is different from finding enzymatic inhibitors. 
-Although structure-based rational drug discovery paradigm are well-suited to finding inhibitors of globular proteins such as enzymes, finding small-molecules which may inhibit amyloid formation present many additional challenges. \textbf{The point that I want to make: understanding the molecular mechanism is different because you can't just take an amyloid inhibitor crystallize it with its target and infer how that ligand binds}
-\textbf{Need connection}
-% These \smi\ often act on species without a well-defined morphology such as those of globular proteins. 
- A high concentration is often required to observe activity (micromolar to millimolar), which suggests that they may be non-specific, and have much weaker binding affinities compared to classical inhibitors of enzymes, which typically have nanomolar \KD's.  Although the concentration of their activity is high compared with classical inhibitors, they are still below co-solvent and osmolarity levels, which suggests these \smi\ may affect aggregation by directly binding to amyloidogenic peptides and / or aggregates.
-Hence, their binding equilibria is not described completely by the classical enzyme inhibition models.
+% How is small molecule binding different from the classical ligand-enzyme binding paradigm? 
+% Why is finding small-molecule inhibitors for amyloid is different from finding enzymatic inhibitors. 
+Although structure-based rational drug discovery paradigm are well-suited to finding inhibitors of globular proteins such as enzymes, finding small-molecules which may inhibit amyloid formation present many additional challenges. Amyloid fibrillation is a multi-stage process involving different species at each stage.  Due to the heterogeneous and non-crystalline nature of prefibrillar species, experimental determination of the molecular structures of these amyloid species remains a challenge.  Further compounding experimental challenges, rather than interacting with a specific structure, these small molecules can interact with amyloidogenic species at different stages of aggregation. 
 
-Small molecules may inhibit fibril formation, whereas some may prevent only oligomerization, but not fibrillation.   Furthermore, a single small molecule may have activity with different amyloidogenic peptides, suggesting that there are generic mechanisms at play. \textbf{Where is this going?}
+Moreover, the binding mechanism of small-molecule inhibitors of amyloid aggregation is not described completely by the classical enzyme-inhibition model.   An inhibitor concentration in the micromolar to millimolar range is often required to observe amyloid inhibition, which suggests that these \smis\ are non-specific binders, whereas substrates of enzymes typically exhibit high binding specificity with binding affinities in the nanomolar range.  Taken together, the above poses significant challenges to existing experimental methods in determining the molecular basis of the mechanism of action of \smis\ of amyloid inhibition.  By contrast, computer simulations are not limited by these experimental challenges and can provide the atomistic level of detail needed to elucidate the action of small-molecules on the inhibition of amyloid formation.
 
+% Don't make it seem like its just easily done using MD. Challenges of small molecule simulations ....
+Although many \smi\ were found to have activity in affecting amyloid formation, only a limited number of them had their binding mechanism examined by MD simulations. In this section, we review previous studies of MD simulation studies of the binding of small molecule inhibitors of amyloid formation that were published between the years of 2007 to 2013 (the time of writing of this thesis).
+
+
+% Understanding the small molecule inhibitor mechanism of action is different from classical enzymatic binding because you can't just take an amyloid inhibitor crystallize it with its target and infer how that ligand binds. Because of the dynamic and disordered nature of amyloid determining the molecular details of the binding mechanism not amenable to standard structural determination. Hence, their binding mechanism is not described completely by the classical enzyme inhibition models.
+% Unlike globular proteins, these \smi\ are known to binding to amyloidogenic species without a well-defined morphology
 % They are able to be active at much lower affinities. Their binding site on amyloids are often not know. Amyloid aggregates present a binding surface, so it is not unexpected that these small molecules do not bind in one specific binding pocket.
+%Some may inhibit fibril formation, whereas other may prevent only oligomerization, but not fibrillation.   Furthermore, a single small molecule may exhibit activity with different amyloidogenic peptides. -- Note this is repetitive because I mentioned this at the beginning when I reviewed the pharmacological aspect of the small molecules.
 
-\textbf{Why is molecular dynamics particularly useful here? Say at very high level what MD is. Refer to the section for the detailed methods.  Then connect to the review of MD studies of small-molecule amyloid binders/inhibitors below. Splice out some of the stuff on dyes from the earlier sections to move to here?}
+% Why is molecular dynamics particularly useful here? Then connect to the review of MD studies of small-molecule amyloid binders/inhibitors below. 
+
+% Splice out some of the stuff on dyes from the earlier sections to move to here?
+
+% The mechanism of action of inositol is not known at the molecular level. 
 
 % What is the evidence for direct binding? NMR studies indicate direct binding activity for several small molecules.\cite{XXX EGCG paper nature 2007}. EGCG was found to directly bind to alpha-s and Abeta.
 
-\section{Computational studies of amyloid inhibition by small molecules}
-% In recent years, molecular dynamics simulations have been intensively used to investigate the molecular basis of the structure and stability of amyloid fibrils. 
-% 
-% MD simulations of Congo red binding have been done with the protofibril-like crystal structure composed of the segment GNNQQNY.\{Wu, 2007 \#621\}
-% 
-% A recent simulation study of an N-methylated peptide with A$\beta$16-22 models of amyloid aggregates has provided insight into the possible mechanism of action of peptide inhibitors of amyloid formation.\{Soto, 2007 \#597\} This peptide inhibitor was shown to preferentially bind monomers to form dimers, possibly acting to inhibit fibril formation by sequestering monomers. However, peptide-based inhibitors have poor pharmacological profiles as they are actively broken down by proteases in the stomach and are difficult to transport across the blood-brain barrier. In addition, these peptide inhibitors specifically target A$\beta$ and thus do not have the potential to treat multiple amyloid diseases.
-
-% Simulations thus far which have examined small molecule binding with peptides that are truncated (such as that of A$\beta$(12-28) and A$\beta(16-22)$) forms of the full-length peptides of A$beta$ (AD) or alpha-synuclein or IAPP. If not the the shorter peptide, studies typically employed forms with structure such as the protofibril of Abeta40 or Abeta42 both of which have SSNMR starting structure coordinates.
-
-Although many \smi\ were found to have activity in affecting amyloid formation, only a limited number of them had their binding mechanism examined by MD simulations. In this section, we review previous studies of MD simulation studies of the binding of small molecule inhibitors of amyloid formation that were published between the years of 2007 to 2013 (the time of writing of this thesis).
+% \section{Computational studies of amyloid inhibition by small molecules}
 
 % Notes: What exactly should I cover in my reviews?
 %Explicit solvent? Is this too much detail?
@@ -688,8 +695,6 @@ Due to the ubiquitous use of ThT as a amyloid fibril probe, fibril binding by Th
 % Question - How does ThT bind? And what causes the fluorescence upon binding?
 % ThT fluorescence is only observed from those molecules that have bound to the fibrils, where they exhibit a shift in the excitation spectrum maximum, from 385 nm to 450 nm, and the emission maximum, from 445 nm to 482 nm.  
 % Which binding modes can explain ThT's excitation spectrum upon binding? Firstly, steric and electronic stabilization (via charge transfer) of the ground-state charge distribution (7,8); and 2), restriction in the rotation of the aromatic rings of the dye (see Fig. 1 A) in its electronically excited state (9,10).\cite{Wu:2011fd}} -- I think this is out of the scope of my thesis. I could get asked on this. Learn it but don't write it in.
-
-
 
 \subsection{Polyphenols}
 
@@ -776,23 +781,8 @@ Chapter 1 introduces the work presented in this thesis in the context of the fie
 % Two important lines of evidence support the above hypotheses. First, preliminary experimental data from the McLaurin lab are showing that in addition to \abeta42, inositol can also inhibit superoxide dismutase (an amyloidogenic protein involved in amyotrophic lateral sclerosis), $\alpha$±-synuclein (Parkinson's disease), and poly-Q (Huntington's disease) amyloid assemblies in a similar manner to \abeta42\ (J. McLaurin unpublished data). Since all amyloid structures have the cross $\beta$-sheet structure in common, their findings suggest that inositol is capable of binding the polypeptide backbone. Secondly, our own systematic MD study of inositol with alanine dipeptide, a model of the peptidic backbone, has demonstrated that inositol binds to the peptidic backbone through hydrogen bonding interactions (See Section 5.1 below). 
 
 
-% AD
-% Treatment - harder to treat - lack of biochemical understanding of what causes disease, which makes it difficult to develop drugs for; lack of good diagnostic methods because treatment may not be effective at end stages of the disease where brain function won't e able to be rescued.
-% Diagnosis - hard to diagnose
-% AD is difficult to diagnose. It is often not apparent that someone has AD until they exhibit symptoms severe enough to interfere with daily life or occupation. 
-
-% Amyloid hypothesis - our best guess at what causes AD and provides the best guess at what we should be targeting. 
-% A$beta$ Amyloid thus far provides the best clue to the molecular basis of AD, and thus a promising pathway to a cure for AD.
-
-% In some individuals without dementia symptoms may have as much plaque as another with severe AD. Synaptic loss can be used as a measure of disease progression. 
-
-% Perhaps use this as a transition into the general discussion of amyloid formation and structure -- not only specific to Abeta.
-% Furthermore, amyloid have also been known to play beneficial roles in certain living systems. REF
-% Increasing awareness of the amyloid state of proteins, and interest grew in amyloids because of their role in a variety of devastating human diseases.
-
-% Fibrils
-
-% In this section I will talk about how amyloid aggregation is thought to work. Introduce the thermodynamic model for understanding fibril formation.
+% Defense Q: Amyloid have also been known to play beneficial roles in certain living systems.
+% Defense Q - What kind of drugs cross the BBB? Typically hydrophobic drugs.
 
 % Understanding amyloid inhibition in the context of the framework of traditional enzyme inhibition mechanism
 %[Challenges of developing small molecule for amyloid inhibition] Structure-based drug discovery approach developed to target folded proteins such as enzymes cannot be directly applied to discovery of small molecules which targets amyloid formation.  A$\beta$ peptides are completely disordered. Because the A$\beta$ amyloid aggregate pathway encompasses a variety of species, some of which are disordered, a single conformation cannot be assumed for binding. Furthermore, structural information of amyloidogenic species lags behind those of enzymes, which tends to be globular proteins amenable for X-ray crystallography. This means that the putative binding sites are not known. 
@@ -800,24 +790,18 @@ Chapter 1 introduces the work presented in this thesis in the context of the fie
 % We don't know if a small-molecule like inositol acts by binding. Do the ligands bind? If they bind, we do not know where they bind. It is experimentally challenging to identify the binding sites using available techniques such as SSNMR, NMR, and X-ray. 
 % Although there are some data other there with experimental data, we cannot yet obtain fully atomistic detail on the interactions between the ligands and proteins.
 
-% Because amyloid is a group of different species, where the structures of which are largely unknown, we don't know (and we cannot assume) which aggregate species along the amyloid aggregation pathway that inositol may interact with. We want to examine representative species within the aggregation pathway, that is, monomers, disordered oligomers, and fibril like aggregates. Furthermore, we cannot assume putative binding sites - that is these binding sites are not known a priori. Unlike the case with enzymatic inhibition, a single bound molecule is unlikely to inhibit fibrillation. Instead, amyloid aggregates such as fibrils present surfaces for binding.
+% Because amyloid is a group of different species, where the structures of which are largely unknown, we don't know (and we cannot assume) which aggregate species along the amyloid aggregation pathway that inositol may interact with. We want to examine representative species within the aggregation pathway, that is, monomers, disordered oligomers, and fibril like aggregates. Furthermore, we cannot assume putative binding sites - that is these binding sites are not known a priori. Unlike the case with enzymatic inhibition, a single bound molecule is unlikely to inhibit fibrillation. Instead, amyloid aggregates such as fibrils present surfaces for binding. We also do not know what the binding site looks like, where it is located on these structures.
 
 % Furthermore, amyloid inhibitors are found to be very weak binders.  A key question is how do non-specific inhibitors act as a drug? 
 
 % How do we approach this with MD simulations?
-% In AD, there is the added challenge of the drug being able to cross the brain barrier, while remaining non-neurotoxic. What kind of drugs cross the BBB? Typically hydrophobic drugs.
-
-% We also do not know what the binding site looks like, where it is located on these structures.
+%We took a reductionist approach to solve this problem. Beginning with the simplest model of an amyloidogenic peptide, we systematically examine binding of inositol with systems of both increasing sequence and structural complexity.
 
 %% However, most of these studies were focused on A$\beta$ and large A$\beta$ aggregates,\{Fawzi, 2008 \#553;Esposito, 2008 \#567;Sgourakis, 2007 \#609;Wei, 2006 \#656;Tarus, 2006 \#628 Karsai, 2006 \#658\} and thus, were computationally limited by the complexity of the molecular systems.
 %
 %% Here describe in detail how I designed my study to circumvent the challenges presented by the amyloid inhibition problem, and the limitations of MD simulations. At this point, clearly explain and discuss my study design and rationale. 
-%% (Don't know binding? binding site? which structure does it binding? how does it binding? "binding mechanism")
-%
-%
-%Although amyloid fibrils of different peptide sequences share the overall cross-beta, there are specific differences in their surface properties due to their amino acid composition. Hence, we look at different species of different peptides.
-%
-%We took a reductionist approach to solve this problem. Beginning with the simplest model of an amyloidogenic peptide, we systematically examine binding of inositol with systems of both increasing sequence and structural complexity.
+
+
 %
 %% First started with the simplest peptide of relevance, the alanine dipeptide. We started with the alanine dipeptide to look at backbone interactions. 
 %We wanted to isolate the problem to something simple to examine the backbone binding mechanism of inositol. Because inositol had many hydrogen bonding groups, and it is shaped like it is geometrically suited to bind the peptidic backbone. Why did we first choose to look at the backbone? Because it is the common element in all polypeptides, and the common cross-beta where the backbone of polypeptide chains are organized in the same manner in the structure of amyloid fibrils suggests that backbone plays an important role in amyloid formation. We examine aggregates of varying sequence and structural complexity. By examining a simple beta-sheet forming peptide, (GA)4, an amyloid inhibitor may bind to a simple amyloidogenic peptide. An illustration of this approach is shown in Figure~\ref{fig:rationale}.

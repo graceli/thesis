@@ -120,64 +120,83 @@ Inclusion of temperature in MD allows for the account of entropy in our systems.
 
 % Note that because I talk a lot about binding ... this discussion within my methods section may be quite important for examing members that understands the physics but do not understand how MD simulations in particular is rigoroous enough to make any of those predictions.  Having those details here means that I understand how that link is established and that I'm not just making up stories based on pretty pictures.
 
-% \subsection{Setting up a MD simulation: practical aspects}
-% Here are some details to run a MD simulation of a biomolecular system.  I think I could omit this from my introduction as this is not really essential in understanding the rest of my thesis, or is it? Perhaps this should go into an appendix instead.
+% \subsection{Setting up a MD simulation: practical aspects} - Here are some details to run a MD simulation of a biomolecular system.  Should I omit this from my introduction? This is not really essential in understanding the rest of my thesis, or is it? Perhaps this should go into an appendix instead -- this isn't interesting. The following steps are often used to setup and start a MD simulation system of a protein. First, a pre-determined structure, typically a coordinate structure from X-ray crystallography or NMR, or homology-modelling data. Then a force field and solvent is chosen.
 
-% The following steps are often used to setup and start a MD simulation system of a protein. First, a pre-determined structure, typically a coordinate structure from X-ray crystallography or NMR, or homology-modelling data. Then a force field and solvent is chosen.
 
-\section{Challenges and limitations of MD}
+%\section{Limitations of MD simulations}
+% Rauscher:2010p5682,Rauscher:2009wr}  % Ref: DE Shaw and CN
+% Schlick T (2010) Molecular modeling and simulation: an inter- disciplinary guide, interdisciplinary applied mathematics, vol 21, 2nd edn. Springer, New York
 
-Given the approximations of MD, MD is well-suited for probing the dynamics of complex systems on the timescale of picoseconds to seconds.
 
-MD is computationally limited in both length and time scales. Many of the biologically interesting events, such as protein folding, ligand binding, and conformational isomerization occur on timescales of milliseconds and seconds.  Even with the amount of computing power available today, however, MD simulations is limited to studying systems on the timescale of microseconds, with few studies reaching timescales of milliseconds. Furthermore, many complex biological systems are still large enough to obtain quantitative predictions. Although boundaries in these respects are being pushed constantly\cite{DE Shaw, Chris Neale, Sarah}
+% Given the approximations of MD, MD is well-suited for probing the dynamics of complex systems on the timescale of picoseconds to seconds. ???
 
-Obtaining convergence. Explain why this is difficult, in particular for systems with disordered peptides.			
-% Evaluating the convergence of simulations is still a challenge
-% Limitations in the accuracy of current force fields.
-% Time scale. Relevant biochemical reactions such as protein folding happens on the time scale of milliseconds, hours, and days. Currently with MD simulations, we are routinely able to approach the microsecond time scale, massive computing power is still insufficient to observe phenomena on the millisecond timescale. % Ref: DE Shaw Research.
+%Roughly speaking, one would like to run a simulation at least 10 times longer than the slowest important timescale in a system. Unfortunately, many biomolecular timescales exceed 1 ms, and in some cases by orders of magnitude (44).\cite{Zuckerman:2011dz} For molecular simulations to reliably predict, guide, and help explain experiment, these simulations require force fields of sufficient accuracy, adequate sampling of the relevant biomolecular motions (convergence) and a correct representation of the experimental conditions. Failures in any of these areas yield results which disagree with experiment.Until sampling is adequate, equilibrium properties computed from a simulation remain biased by the system’s starting state and no meaningful comparison with experiment is possible [6]. 
 
-\section{Application of MD in structure-based drug discovery}
+%% copied from Zukerman\cite{Zuckerman:2011dz}
+%\textbf{Although routine explicit-solvent MD simula- tions are now four or five orders of magnitude longer (i.e., 100-103 ns currently), modern MD studies still appear to fall significantly short of what is needed for statistically valid equi- librium simulation (36, 38). Roughly speak- ing, one would like to run a simulation at least 10 times longer than the slowest impor- tant timescale in a system. Unfortunately, many biomolecular timescales exceed 1 ms, and in some cases by orders of magnitude (44).}
+%% Other references that are relevant for sampling \cite{Grossfield:2009bn}
+%
+%% Copied from \cite{Mobley:2011ks}
+%\textbf{For molecular simulations to reliably predict, guide, and help explain experiment, these simulations require force fields of sufficient accuracy, adequate sampling of the rel- evant biomolecular motions (convergence) and a correct representation of the experimental conditions. Failures in any of these areas yield results which disagree with experiment. 
+%
+%We may be tempted to blame disagreement with experiment on just one of these areas—force fields are perhaps the most common scapegoat, sometimes with good reason [1–5]—but any or all of the three may be a weak point. And, in some sense, adequate sampling is the weakest link. 
+%
+%Until sampling is adequate, equilibrium properties computed from a simulation remain biased by the system’s starting state and no meaningful comparison with experiment is possible [6]. 
+%
+%With an inadequate force field or a poor representation of the experimental conditions, results will disagree with experiment, but will be robust and improvement is relatively easy, but not so with inadequate sampling.}
+%
+%% copied from Sarah's thesis
+%\textbf{Achieving complete (or even adequate) conformational sampling is one of the key challenges in biomolecular simulations.\cite{Gnanakaran:2003vh} The energy landscape of most biomolecules is “rugged” and the source of this ruggedness is two-fold. The energetic barriers separating accessible states are often larger than the available thermal energy, and there are typically a large number of states to be sampled. The timescales of many biomolecular processes, such as protein folding, are still far beyond the reach of our current computational capability, which is generally limited to the 10-8-10-7 s timescale for continuous simulations. For example, even the folding of small domains or secondary structure elements, such as ?-hairpins and mini-proteins, occur on the 1-10 ?s timescale.1 
+%
+%Consequently, conventional or “brute force” molecular dynamics (MD) alone is often insufficient to achieve complete Boltzmann sampling of the important states of many biologically relevant systems. For this reason, generalized-ensemble algorithms have become popular tools for conformational sampling.}
 
-% \1 (Why computational?) Can help us get protein dynamics is important for understanding protein function. We want to understand protein function because we want to be able to design drugs to cure diseases.
-
-% \1 A important application of MD simulation in biochemistry is the predicting of protein-ligand binding free energies.
-
-One application of MD simulations is in rational drug design. In recent years structure-based computer modeling of protein-ligand interactions have become a core component of modern drug discovery.  In early stage drug discovery, a target is identified along with putative binding sites.  Then, the structure of the target is determined using structural determination techniques such as NMR or X-ray crystallography.
-% [See Tom's thesis]
-Ligands which may act as potential drugs are expected to bind with a high affinity (low $K_d$) to the binding site. The goal is to discover,  high specificity inhibitors of a protein (usually an enzyme). In this process, the binding free energy of the ligand to its target is used to quantitatively evaluate how well a ligand binds. A crude estimate of the binding affinity can be obtained using computational docking methods, where the energetics of binding is typically estimated without accounting for either ligand or protein flexibility.  Although docking is fast, it is often inaccurate for identifying true drug candidates.
-
-With computer hardware becoming faster and cheaper, MD simulations can be used to rapidly prototype experimental ideas -- for example, one can perform computational alchemy, that is, ``mutate'' residues to test various hypotheses. Furthermore, simulations may be used to determine whether a chemical change will produce a more potent drug candidate. Currently, state of the art computational binding studies use MD simulations, where the protein and drug is allowed to relax and freely move about in the system. However, in the case of understanding a specific binding reaction often needed when developing an enzyme inhibitor, the ability to observe the relevant binding events is a low probability event on the timescale achievable by simulations. Therefore, a few enhanced techniques have been developed to accelerate this process.  They are briefly introduced below.
-
-\section{Free energy calculations}
-There are two advanced methods that have been developed for determining the absolute binding free energies in combination with MD simulations.
-
-% \3 Linear interaction energy -- Out of scope
-% \3 MM/PBSA - no explicit account for solvents -- Out of scope
-\subsection{Thermodynamic perturbation}
-This is the paper that I am taking most of the topics here\cite{Gilson:2007hz}
-
-\subsection{Thermodynamic integration}
-I actually have no idea what this is, and would be hard pressed to explain this properly.
-In this case, I don't think I should be covering these topics in my thesis.
-
-\subsection{Free energy perturbation}
-Alchemically change one molecule into another
-
-\section{Review of MD studies of amyloid inhibition by small molecules}
-% MD studies using brute-force sampling. Aid in medicinal chemistry by making suggestions for how to design new AD drugs.
-
-\begin{outline}
-	%  Excerpt from Transfer proposal
-	\1 In recent years, molecular dynamics simulations have been intensively used to investigate the molecular basis of the structure and stability of amyloid fibrils. 
-	
-	\1 MD simulations of Congo red binding have been done with the protofibril-like crystal structure composed of the segment GNNQQNY.\{Wu, 2007 \#621\}
-	
-	\1 A recent simulation study of an N-methylated peptide with A$\beta$16-22 models of amyloid aggregates has provided insight into the possible mechanism of action of peptide inhibitors of amyloid formation.\{Soto, 2007 \#597\} This peptide inhibitor was shown to preferentially bind monomers to form dimers, possibly acting to inhibit fibril formation by sequestering monomers. However, peptide-based inhibitors have poor pharmacological profiles as they are actively broken down by proteases in the stomach and are difficult to transport across the blood-brain barrier. In addition, these peptide inhibitors specifically target A$\beta$ and thus do not have the potential to treat multiple amyloid diseases.
-\end{outline}
+% Topics that I'm not going to discuss
+%Evaluating the convergence of simulations is still a challenge - I don't want to  go into this as this is out of the scope of my thesis.
+%Limitations in the accuracy of current force fields - Don't talk about this .. but this will probably come up during the defense regardless.
 
 \addcontentsline{toc}{section}{Bibliography}
 \bibliographystyle{plain}
-\bibliography{chapter1}
+\bibliography{introduction}
+
+%\section{Application of MD in structure-based drug discovery}
+%
+%% \1 (Why computational?) Can help us get protein dynamics is important for understanding protein function. We want to understand protein function because we want to be able to design drugs to cure diseases.
+%
+%% \1 A important application of MD simulation in biochemistry is the predicting of protein-ligand binding free energies.
+%
+%One application of MD simulations is in rational drug design. In recent years structure-based computer modeling of protein-ligand interactions have become a core component of modern drug discovery.  In early stage drug discovery, a target is identified along with putative binding sites.  Then, the structure of the target is determined using structural determination techniques such as NMR or X-ray crystallography.
+%% [See Tom's thesis]
+%Ligands which may act as potential drugs are expected to bind with a high affinity (low $K_d$) to the binding site. The goal is to discover,  high specificity inhibitors of a protein (usually an enzyme). In this process, the binding free energy of the ligand to its target is used to quantitatively evaluate how well a ligand binds. A crude estimate of the binding affinity can be obtained using computational docking methods, where the energetics of binding is typically estimated without accounting for either ligand or protein flexibility.  Although docking is fast, it is often inaccurate for identifying true drug candidates.
+%
+%With computer hardware becoming faster and cheaper, MD simulations can be used to rapidly prototype experimental ideas -- for example, one can perform computational alchemy, that is, ``mutate'' residues to test various hypotheses. Furthermore, simulations may be used to determine whether a chemical change will produce a more potent drug candidate. Currently, state of the art computational binding studies use MD simulations, where the protein and drug is allowed to relax and freely move about in the system. However, in the case of understanding a specific binding reaction often needed when developing an enzyme inhibitor, the ability to observe the relevant binding events is a low probability event on the timescale achievable by simulations. Therefore, a few enhanced techniques have been developed to accelerate this process.  They are briefly introduced below.
+%
+%\section{Free energy calculations}
+%There are two advanced methods that have been developed for determining the absolute binding free energies in combination with MD simulations.
+%
+%% \3 Linear interaction energy -- Out of scope
+%% \3 MM/PBSA - no explicit account for solvents -- Out of scope
+%\subsection{Thermodynamic perturbation}
+%This is the paper that I am taking most of the topics here\cite{Gilson:2007hz}
+%
+%\subsection{Thermodynamic integration}
+%I actually have no idea what this is, and would be hard pressed to explain this properly.
+%In this case, I don't think I should be covering these topics in my thesis.
+%
+%\subsection{Free energy perturbation}
+%Alchemically change one molecule into another
+%
+%\section{Review of MD studies of amyloid inhibition by small molecules}
+%% MD studies using brute-force sampling. Aid in medicinal chemistry by making suggestions for how to design new AD drugs.
+%
+%\begin{outline}
+%	%  Excerpt from Transfer proposal
+%	\1 In recent years, molecular dynamics simulations have been intensively used to investigate the molecular basis of the structure and stability of amyloid fibrils. 
+%	
+%	\1 MD simulations of Congo red binding have been done with the protofibril-like crystal structure composed of the segment GNNQQNY.\{Wu, 2007 \#621\}
+%	
+%	\1 A recent simulation study of an N-methylated peptide with A$\beta$16-22 models of amyloid aggregates has provided insight into the possible mechanism of action of peptide inhibitors of amyloid formation.\{Soto, 2007 \#597\} This peptide inhibitor was shown to preferentially bind monomers to form dimers, possibly acting to inhibit fibril formation by sequestering monomers. However, peptide-based inhibitors have poor pharmacological profiles as they are actively broken down by proteases in the stomach and are difficult to transport across the blood-brain barrier. In addition, these peptide inhibitors specifically target A$\beta$ and thus do not have the potential to treat multiple amyloid diseases.
+%\end{outline}
+
 
 % Scrap
 % Motivate the use of MD simulations
