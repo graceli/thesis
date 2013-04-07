@@ -1,0 +1,122 @@
+%% ut-thesis.tex -- document template for graduate theses at UofT
+%%
+%% Copyright (c) 1998-2012 Francois Pitt <fpitt@cs.utoronto.ca>
+%% last updated at 09:43 (EDT) on Fri  1 Jun 2012
+\documentclass[12pt,doublespaced,normalmargins]{ut-thesis}
+% \usepackage{rotating}
+% \usepackage{longtable}
+% \usepackage{nomentbl}
+% \usepackage{footnote}
+\usepackage{pdfsync}
+\usepackage{outlines}
+\usepackage[comma,super,sort&compress]{natbib}
+\usepackage{chapterbib}
+\usepackage{amsmath}
+\usepackage[version=3]{mhchem}
+\usepackage[mathletters]{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage{array}
+\usepackage[normalem]{ulem}
+\newcommand{\textsubscr}[1]{\ensuremath{_{\scriptsize\textrm{#1}}}}
+
+\usepackage[breaklinks=true,linktocpage,colorlinks]{hyperref}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage[intoc]{nomencl}
+%\usepackage{lineno}
+%\linenumbers
+
+\makenomenclature
+
+\degree{Doctor of Philosophy}
+\department{Biochemistry}
+\gradyear{2013}
+\author{Grace Li}
+\title{Molecular Mechanism of Amyloid Inhibition By Inositol}
+% Title refinement - Regis has a problem with the title below because he feels that it doesn't reflect my entire thesis
+
+% Thesis global command definitions
+\input{my-thesis-commands}
+
+%% List only down to subsections in the table of contents;
+%% 0=chapter, 1=section, 2=subsection, 3=subsubsection, etc.
+\setcounter{tocdepth}{3}
+
+%% Make each page fill up the entire page.
+\flushbottom
+
+\begin{document}
+
+%% This sets the page style and numbering for preliminary sections.
+\begin{preliminary}
+
+%% This generates the title page from the information given above.
+% \maketitle
+
+%% There should be NOTHING between the title page and abstract.
+%% However, if your document is two-sided and you want the abstract
+%% _not_ to appear on the back of the title page, then uncomment the
+%% following line.
+\cleardoublepage
+
+%% This generates the abstract page, with the line spacing adjusted
+%% according to SGS guidelines.
+\begin{abstract}
+(At most 150 words for M.Sc. or 350 words for Ph.D.)
+\input{my-abstract}
+\end{abstract}
+
+%% Anything placed between the abstract and table of contents will
+%% appear on a separate page since the abstract ends with \newpage and
+%% the table of contents starts with \clearpage.  Use \cleardoublepage
+%% for anything that you want to appear on a right-hand page.
+
+\begin{dedication}
+% *** Put your Dedication here. ***
+\input{my-dedication}
+\end{dedication}
+
+\newpage
+
+\begin{acknowledgements}
+\input{my-ack}
+\end{acknowledgements}
+
+\tableofcontents
+\listoftables
+\listoffigures
+
+%% Generate any other material that belongs in the head matter 
+%% (for example, List of Plates, Index of Symbols, or List of Appendices).
+\printnomenclature
+\end{preliminary}
+
+% A Doctoral thesis is generally organized into the following sections:
+% Introduction: Although the length of the introduction is somewhat field-specific, in most cases 40-60 double-spaced pages of text should be sufficient. The last section of the General Introduction in either format should provide a clear rationale for the thesis project.
+% Title Pages and Data Attribution: If any one other than the student has contributed data to the thesis the student should clearly state this on the title page of the relevant Results Chapter(s). The student should indicate the nature of the contribution (e.g. technical assistance under the student’s guidance; independent design and interpretation of specific experiments in the Chapter etc.). If the work has been published or submitted, the full citation should also be given on this page.
+% The student must obtain any required copyright permissions, which may be needed for work that has been published. Journals often require specifically-worded citations to be included on the first page of the relevant Results Chapter. The student will need to submit the copyright permissions to SGS when submitting the final thesis.
+% Methods: Sufficient details of the methods should be given such that the research could be readily reproduced.
+% Figures: The quality of halftone figures must allow for unambiguous assessment of the data.
+% Bibliography: Most examiners prefer that the bibliography include titles.
+% Appendices: Appendices may be included to cover such topics as additional details pertaining to Methods; speculative ideas; projects-in-progress; and/or negative results, particularly if the second format is chosen.
+
+\include{symbols}
+\include{introduction}
+\include{introduction-MD-methods}
+
+% Model peptides
+\include{results1/results1}
+
+% % KLVFFAE
+\include{results2/results2}
+
+% % Abeta42
+\include{results3/results3}
+ 
+% % PGab
+\include{results4/results4}
+ 
+% % Discussion / Perspectives
+\include{conclusions/conclusions}
+\end{document}
