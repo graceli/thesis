@@ -440,34 +440,31 @@ Presently, \scylloi\ has completed both phase I and II of human clinical trials 
 % Take a look at a biochemistry textbook
 
 
-Binding kinetics is concerned with the rate constant of ligand association (\kon) and ligand dissociation (\koff). The ratio of the dissociation to the association rate constants establishes the equilibrium dissociation metric of the ligand ($K_{d}$ = \koff/\kon), which determines the fraction of receptor occupancy at specific ligand concentrations. For the binding reaction given by,
-
+Binding kinetics is concerned with the rate constant of ligand association (\kon) and ligand dissociation (\koff). The ratio of the dissociation to the association rate constants establishes the equilibrium dissociation metric of the ligand ($K_{d}$ = \koff/\kon), which determines the fraction of receptor occupancy at specific ligand concentrations. For the binding reaction given by
 \begin{equation}
-\left[ Protein\cdot Inositol \right] \rightleftharpoons \left[ Protein \right]+\left[ Inositol \right]
+\left[ Protein\cdot Ligand \right] \rightleftharpoons \left[ Protein \right]+\left[ Ligand \right]
 \end{equation}
  
   % \2 Absolute binding free energy
   % \2 Relative binding free energy
-The associated $K_{d}$ is,
+The associated equilibrium constant of the above reaction is,
 
  \begin{equation}
-  K_{d} = f_{ub}\frac{\left[ Protein \right]\left[ Inositol \right]}{\left[Protein \cdot Inositol\right]},
+  K_{d} = \frac{\left[ Protein \right]\left[ Ligand \right]}{\left[Protein \cdot Ligand\right]},
  \end{equation}
    
-The binding free energy of a ligand to a protein, $\Delta G$, is directly related to its dissociation constant, $K_d$, the equilibrium constant of the above reaction,
-
+The binding free energy of a ligand to a protein, $\Delta G$, is directly related to its $K_{d}$ by 
  % Free energy equation
+%\begin{equation}
+%	K_{d} = e^{\frac{-\Delta G}{RT}}
+%\end{equation}
 \begin{equation}
-	K_{d} = e^{\frac{-\Delta G}{RT}}
-\end{equation}
-
-\begin{equation}
-	\Delta G = -RT\ln K_d
+	\Delta G = -RT\ln K_{d}
 \end{equation}
 
 The dissociation constant, $K_d$, is a measurement of the affinity of a ligand for its binding site on the host protein with a unit of concentration. Pharmacologically, it is interpreted as the concentration of ligand at which 50\% of the drug is bound to the protein. $K_d$ is often used as quantitative indication of drug potency when screening for potential lead compounds.
 % Binding strength of a ligand to a receptor is often quantitatively assessed by its equilibrium dissociation constants or the Gibbs free energy of binding.
-A small value of $K_d$ indicates that the ligand is tightly bound (i.e. high affinity binding) to its binding site on the protein. Enzymes and their putative inhibitors have high binding affinities (or inhibition constants) in the nano to micromolar range. For example, the NSAID ibuprofen, an inhibitor of the enzyme COX-2 has an inhibition constant of $\sim$10 micromolar.\cite{Cryer:1998ti} Rational drug design is often applied to optimize ligand binding specificity in an effort to increase the efficacy of the putative drug, and decrease adverse side effects (toxicity) in the human body.
+A small value indicates that the ligand is tightly bound (i.e. possess high affinity binding) to its binding site on the protein, and inversely, a high value indicates weak binding. Enzymes and their putative inhibitors have high binding affinities (or inhibition constants) in the nano to micromolar range. For example, the NSAID ibuprofen, which inhibits the enzyme COX-2, has \KD\ of $\sim$10 \micromolar.\cite{Cryer:1998ti} Rational drug design is often applied to optimize ligand binding specificity in an effort to increase the efficacy of the putative drug, and decrease adverse side effects (toxicity) in the human body.
 % Nov 23, 2012: Might be nice to have here but do I really want to defend this?
 % \1 Experimental techniques for estimating $K_d$
 % \2 What experimental techniques are used to estimate binding affinity? (May need to study up on this)
@@ -475,7 +472,7 @@ A small value of $K_d$ indicates that the ligand is tightly bound (i.e. high aff
 
 \subsection{Binding avidity}
 % Definition and description of binding avidity
-The $K_{d}$ describes the quantitative measure for a ligand binding to a single specific binding site on its target. However, a ligand may be capable of binding at binding sites at once. Often, such a ligand may possess weak interactions with several receptor sites, but is able to achieve its binding specificity by forming many such weak interactions. In this case, instead of a binding affinity, a binding avidity constant is used, which accounts for all possible binding modes of a ligand with its receptor.
+In some cases, a ligand may be capable of interacting with its receptor at multiple binding sites. Often, such a ligand may possess weak interactions with several receptor sites, but is able to achieve its binding specificity by forming many such weak interactions. In this case, instead of using $K_{d}$, which is a measure of ligand affinity to a single binding site on its target, a binding avidity constant, which accounts for all possible binding modes of a ligand with its receptor, is used to characterize the interaction.
 
 %In mechanism 2, the ligand encounters the receptor (R) in a conformational state that is suboptimally complementary to the ligand for binding. Subsequent to the initial encounter (RL), the receptor undergoes a conformational change to a more committed state (R*) where the new binary complex (R * L) competent binding affinity than RL (Eqn (2)).
 %Two equilibrium dissociation constants are required to describe this so-called ‚Äö√Ñ√≤induced fit‚Äö√Ñ√¥ mechanism -- do I really care about this?
@@ -521,11 +518,13 @@ The $K_{d}$ describes the quantitative measure for a ligand binding to a single 
 % Nonpolar
 Non-covalent interactions are important for protein-ligand recognition.  van Der Waals forces are a weak intermolecular forces existing between molecules, which can be either attractive or repulsive. In particular, London dispersion forces is an weak attractive force between all molecules, which arises from the instantaneous dipole moment induced by electronic motions of nearby molecules. These forces predominantly account for the attraction between nonpolar molecules. 
 
-Another interaction that is fundamental to biomolecular interactions is hydrogen bonding. 
+Another type of interaction fundamental to biomolecular interactions is hydrogen bonding. 
 % Structure of the DNA ... not only proteins ... should mention this.
-A hydrogen bond is formed from electrostatic interactions formed between two dipoles (an acceptor and donor). The acceptor group is comprised of an electronegative heavy atom (e.g. F, Cl, O), with exposed lone electron pairs, and the donor group is composed of an electropositive atom with an exposed proton. However, unlike dispersion forces, hydrogen bonds have directionality. Energetically, hydrogen bonds may range from very weak (XXX) to strong (YYY kcal/mol) (about an order of magnitude stronger than van Der Waals forces).  % is hbonding considered to be a type of vdw force?
+A hydrogen bond is formed from electrostatic interactions arising between two dipoles (an acceptor and donor). The acceptor group is comprised of an electronegative heavy atom (e.g. F, Cl, O), with exposed lone pairs of electrons, and the donor group is an electropositive atom. Unlike dispersion forces, hydrogen bonds are directional. \textbf{Expand on this} Energetically, hydrogen bonds may range from weak (XXX) to strong (YYY kcal/mol) (about an order of magnitude stronger than van Der Waals forces).  % is hbonding considered to be a type of vdw force?
 
-Hydrogen bonds are ubiquitous in water: a single water molecule is able to tetrahedrally coordinate four other water molecules to form a hydrogen bonding network, providing water with unique properties such as a high heat capacity. A single water-water hydrogen bond is estimated to be about -3.2 kcal/mol.\cite{where did I see this} In proteins, intra- and intermolecular hydrogen bonds formed by the peptidic backbone of polypeptide chains have N-H and O=C as the donor and acceptor groups, respectively. The N-H ... C=O hydrogen bond is estimated to be XXX kcal/mol in the gas phase, and about 0.5 to 1.5 kcal/mol in solution.\cite{energetics of hydrogen bonds in peptides} Hydrogen bonds define protein secondary structures (helices and \bsheets), and impart overall stability to their overall tertiary structures.\cite{refs} For example, hydrogen bonding plays a key role in the \crossbs\ of amyloid fibrils: polypeptide backbones are hydrogen bonded to each other to form in-registered, parallel or antiparallel \bsheets\ (see Section \ref{sec:amyloid}). Aside from the backbone, polar or charged amino acids (what are these amino acids) may also form hydrogen bonds. Sometimes, two oppositely charged side chain may hydrogen bond to form salt bridges (eg. arginine and aspartic acid), which are the strongest type of hydrogen bonds in biomolecules. Salt bridges are important in ...
+Hydrogen bonds are ubiquitous in water: a single water molecule is able to tetrahedrally coordinate four other water molecules to form a hydrogen bonding network, providing water with unique properties such as a high heat capacity. A single water-water hydrogen bond is estimated to be about -3.2 kcal/mol.\cite{where did I see this} In proteins, intra- and intermolecular hydrogen bonds formed by the peptidic backbone of polypeptide chains have N-H and O=C as the donor and acceptor groups, respectively. The N-H ... C=O hydrogen bond is estimated to be XXX kcal/mol in the gas phase, and about 0.5 to 1.5 kcal/mol in solution.\cite{energetics of hydrogen bonds in peptides} 
+
+Hydrogen bonds define protein secondary structures (helices and \bsheets), and impart overall stability to their overall tertiary structures.REFs For example, hydrogen bonding plays a key role in defining the \crossbs\ of amyloid fibrils: polypeptide backbones are hydrogen bonded to each other to form in-registered, parallel or antiparallel \bsheets\ (see Section \ref{sec:amyloid}). Aside from the backbone, polar or charged amino acids (what are these amino acids) may also form hydrogen bonds. Salt bridges are formed between two oppositely charged amino acid side chains (eg. arginine and aspartic acid), and are the strongest type of hydrogen bonds in biomolecules. Salt bridges are found to contribute to the overall stability of a protein and are conjectured to be a stabilizing factor of proteins found in thermophilic organisms. REF
 
 % [INSERT FIGURE OF GEOMETRY OF HYDROGEN BONDS]
 
