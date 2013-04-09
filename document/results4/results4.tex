@@ -1,21 +1,6 @@
 %\author{Grace Li}
-%\affiliation[University of Toronto, Biochemistry]
-%{Department of Biochemistry, University of Toronto, 27 King's College Circle, Toronto, Ontario, Canada M5S 1A1}
-%\alsoaffiliation[Hospital for Sick Children]
-%{Molecular Structure and Function, The Hospital for Sick Children, 555 University Avenue, Toronto, Ontario, Canada M5G 1X8}
-%
 %\author{Christopher Ing}
-%\affiliation[University of Toronto, Biochemistry]
-%{Department of Biochemistry, University of Toronto, 27 King's College Circle, Toronto, Ontario, Canada M5S 1A1}
-%\alsoaffiliation[Hospital for Sick Children]
-%{Molecular Structure and Function, The Hospital for Sick Children, 555 University Avenue, Toronto, Ontario, Canada M5G 1X8}
-
 % \author{Dustin Little}
-% \affiliation[University of Toronto, Biochemistry]
-% {Department of Biochemistry, University of Toronto, 27 King's College Circle, Toronto, Ontario, Canada M5S 1A1}
-% \alsoaffiliation[Hospital for Sick Children]
-% {Molecular Structure and Function, The Hospital for Sick Children, 555 University Avenue, Toronto, Ontario, Canada M5G 1X8}
-% 
 % \author{P. Lynne Howell}
 % \email{howell@sickkids.ca}
 % \affiliation[University of Toronto, Biochemistry]
@@ -37,21 +22,20 @@
 %\alsoaffiliation[Hospital for Sick Children]
 %{Molecular Structure and Function, The Hospital for Sick Children, 555 University Avenue, Toronto, Ontario, Canada M5G 1X8}
 
-% \title {}
-
 \chapter[MD simulations of PgaB-glucosamine binding]{Molecular Dynamics simulations of PgaB and monosaccharides of N-acetyl-glucosamine}
 % The contents of this section were adapted from an article published in the \emph{Journal of Physical Chemistry}.
 
-\emph{Reference}: Provide a reference
+\emph{Reference}: Part of this work is published in ``PgaB Contains a Carbohydrate Binding Domain Required for Modification and Export of Poly-$\beta$-1,6-N-acetyl-D-glucosamine"
 \\
 \\
 \emph{Contributions}:
-Grace Li conducted the MD simulation part of the research and wrote the section. Dustin Little conducted and interpreted the experimental results. R�gis Pom�s, Lynne Howell, Mark Nitz provided editorial input and guidance.
+Grace Li conducted the MD simulation part of the research and wrote the section. Dustin Little conducted and interpreted the experimental results. Régis Pomès, Lynne Howell, Mark Nitz provided editorial input and guidance.
 
 \newpage
 
 \section{Summary}
-To be written.
+% Note that this summary was taken from a draft of the paper written by Dustin from April 5th, 2013
+Bacteria embedded in a self-produced matrix of exopolymeric substance, or biofilm, are tolerant to antibiotics, protected from the environment, and isolated from the innate immune system. Production and de-N-acetylation of the exopolysaccharide poly-$\beta$-1,6-N-acetyl-D-glucosamine (PNAG) is important for biofilm formation in Escherichia coli. PgaB is essential for the partial de-N-acetylation of PNAG (dPNAG); a process required for polymer export and subsequent biofilm formation. Here we report 1.9 Å crystal structures of PgaB’s isolated C-terminal domain (PgaB-CT) and complex with glucosamine. The structure of PgaB-CT has structural difference from the previously reported PgaB42-655 structure. Characterization of PgaB-CT using tryptophan fluorescence quenching assays shows binding to PNAG oligomers with ~1-4 mM affinity. These data in combination with molecular dynamics simulations of PgaB with N-acetylglucosamine and glucosamine suggest PNAG de-N-acetylation occurs first, with subsequent binding of dPNAG to the C-terminal domain. We believe this concerted action plays a pivotal role in targeting dPNAG for export through the outer membrane porin PgaA.
 
 \section{Introduction}
 
@@ -62,11 +46,16 @@ PgaB is a key protein that is responsible for the transport of the functionally 
 Currently, it is not known whether PgaB binds polymeric GlcNac or its de-N-acetylated end products, or both. Furthermore, binding modes, and lengths of putative substrate sugar polymers of PgaB are not known. Experimental characterization of sugar-bound structures of PgaB have been impeded by the insolubility of long sugar polymer chains (eg. those longer than a pentamer), and the weak binding of short sugar polymers (eg. di- and tri-saccharides). PgaB is hypothesized to bind sugar polymers (most likely a 15-mer) across its two domains at its surface. The polymer is speculated to extend out from the catalytic binding site (N-terminal domain) onto the charged grooves of the C-terminal domain.
 % Experimentally it is known that shallow binding pockets exist at the surface of the proteins. REF?
 
-Using molecular dynamics simulations, we exploit the weak binding affinities of N-acetyl-glucosamine (GlcNac) and glucosamine monosaccharides by using a fragment-based simulation approach to predict putative binding modes and sites of GlcNac and glucosamine. This methodology was used in our previous simulation studies to predict binding of inositol, a sugar-like amyloid inhibitor, to amyloidogenic peptides and their aggregates. To our knowledge, this is the only study thus far found in literature which employs large-scale MD simulations to predict sugar-protein interactions.
+Using molecular dynamics simulations, we exploit the weak binding affinities of N-acetyl-glucosamine (GlcNac) and glucosamine monosaccharides by using a fragment-based simulation approach to predict putative binding modes and sites of GlcNac and glucosamine. This methodology has been successfully applied in our previous simulation studies to examine the binding mechanism of inositol, a carbohydrate-like amyloid inhibitor, with amyloidogenic peptides and their aggregates. To our knowledge, this is the only study thus far in literature which employs large-scale MD simulations to predict sugar-protein interactions.
 
 % The objective of my work is to predict PNAG binding sites at the surface of PgaB using unrestrained molecular dynamics simulations in the presence of GlcNac. This methodology was used in earlier inositol studies to predict inositol binding sites on amyloid peptides and aggregates.
+\textbf{The directionality of the polymer binding.  This is currently not experimentally determined. Glucosamine molecules were observed in our simulations to form linear hydrogen bonded chains. When a vector is drawn from the X to Y atom of glucosamine, it is observed that each of the vectors have their NH3 groups facing the N terminal domain.}
 
+% I don't fully understand the directionality business.  Here is a hack job at summarizing what it is from readings.
+% From wikipedia -- An oligosaccharide has both a reducing and a non-reducing end. The reducing end of an oligosaccharide is the monosaccharide residue with hemiacetal functionality, thereby capable of reducing the Tollens’ reagent, while the non-reducing end is the monosaccharide residue in acetal form, thus incapable of reducing the Tollens’ reagent.[2] The reducing and non-reducing ends of an oligosaccharide are conventionally drawn with the reducing-end monosaccharide residue furthest to the right and the non-reducing (or terminal) end furthest to the left.[2]
 
+% directionality paper
+% http://www.jbc.org/content/274/37/26557.full
 \section{Material and Methods}
 % Modelling details
 PgaB with a loop spanning residues 613 to 619 (numbered according to the chimeric PDB structure; check with Dustin again) in the N-terminal domain modelled into the truncated crystal structure, was used in our simulations. The initial crystal structure has Ni(II) bound at its enzymatic active site. Ni(II) is tetrahedrally coordinated with surrounding residues.  The acetate ion bound near the active site, an artifact of crystallization, was removed in the simulation. Crystal waters were removed from the initial PDB structure. Histidine protonation states were assigned based on predicted pKa values using the web software PROPKA (\url{http://propka.ki.ku.dk}), and histidine hydrogen-bonding geometries in the initial crystal structure.
@@ -95,11 +84,37 @@ A second equilibration was performed for 1 ns in the NpT ensemble with isotropic
 
 
 \section{Results and Discussion}
+
 Figure~\ref{fig:pgab_density} depicts the spatial binding probability density of bound GlcNac after a total of 1.8 $\mu$s of sampling from 13 independent simulations of a chimeric PgaB in the presence of 100 mM of GlcNac. In our coloring scheme, residue numbers 43 to 310 and numbers 311 to 667 represent N- (green) and C-terminal (cyan) domains, respectively. GlcNac binds on the surface of both domains of PgaB. Our simulations suggest that PgaB may be able to bind GlcNac. Binding is specific and is localized to three main sites on the protein (Figure~\ref{fig:pgab_binding_sites}). In particular, GlcNac predominantly binds in grooves located at the interface between the two domains, where many molecules are found to bind in clusters at the mouth of the N-terminal $\beta$-barrel, in close proximity to the active site.  Moreover, when overlapped with bound GlcNac molecules, the overall binding density map suggests that PNAG may be able to bind to PgaB by wrapping around the protein (Figure~\ref{fig:pgab_density}A and B).
 
 While GlcNac molecules are able to bind on surfaces of both domains, qualitatively, they appear to preferentially bind to the C-terminal domain (Figure~\ref{fig:pgab_density}B and D). This is in corroboration with the fact that the C-terminal domain of PgaB is homologous to other carbohydrate binding domains (need to find REFs).
 
 Moreover, our simulations have identified binding sites that were not able to be predicted by solely examining the static crystal structure. Binding densities suggest that the crevice found beneath the loop (residue numbers 309 to 314) which bridges the N- and C-terminal domains may be involved in sugar binding. The role of this region of the protein has not yet been determined experimentally. Significantly, our simulations correctly identified binding to tryptophan 613, a key conserved residue found in the C-terminal domain loop (residues numbers 613 to 619), which is known to bind carbohydrates in homologous proteins. Note that this loop was not resolved in the X-ray crystal structure and was modelled into the PDB structure for our simulations.
+
+\textbf{The spatial distribution of NAG indicates that NAG preferentially binds the C-terminal domain of PgaB. Specifically, clusters of NAG molecules bind in the groove lined with acidic residues (Asp and Glu) (Figure~\ref{fig:pnag_nag_overlapped_zoomedout})}.  \textbf{In support of this preferential binding,  as depicted in Figure~\ref{fig:salt_density_distribution} salt ions do not significant bind the ion and are distributed uniformly over the protein.}
+
+\begin{figure}
+\centering
+\includegraphics[height=4.1in, width=6.23in]{figures/results4/pnag_nag_sdf_zoomedout.png}
+\caption{Comparisons of the distributions of bound PNAG and NAG.}
+\label{fig:pnag_nag_overlapped_zoomedout}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[height=4.1in, width=6.23in]{figures/results4/salt_distribution.png}
+\caption[Ionic distribution]{\textbf{Not yet rendered}. Spatial probability distribution of salt ions around \pgab}
+\label{fig:salt_density_distribution}
+\end{figure}
+
+\textbf{Furthermore, consistent with the crystal structure, in our simulations, glucosamine was observed to bind to tryptophan 613, adopting the exact binding mode shown by X-ray crystallography (Figure~\ref{fig:nag_cterminal_zoomedin}).}
+
+\begin{figure}
+\centering
+\includegraphics[height=4.1in, width=6.23in]{figures/results4/nag_cterminal_zoomedin.png}
+\caption{Distribution of NAG in the binding groove in the C-terminal domain.}
+\label{fig:nag_cterminal_zoomedin}
+\end{figure}
 
 % What is the name for positively charged glucosamine molecules? Is there a 3-letter abbrev. for it?
 Comparing the two densities for NAG and glucosamine (depicted in Figures \ref{fig:pgab_density} and XXX, respectively) it can be seen that glucosamine, unlike NAG, does not bind at the cleft between the N- and C-terminal domains. However, by contrast, glucosamine-NH3 monosaccharides predominantly bind at the C-terminal domain in the groove capped by the loop spanning residues XXX to YYY.  % Glucosamine is found to bind in the groove with acidic residues and aromatics.  Our simulation shows that glucosamine has a high affinity binding site at residue XXX. Importantly, this finding is consistent with X-ray crystal structures of full length pgab co-crystallized with glucosamine monosaccharides. Furthermore, glucosamine is predicted by our simulations to interact with residues X, Y, Z..., which are key conserved residues known to bind carbohydrates in other homologous carbohydrate-binding domains.
