@@ -1,0 +1,67 @@
+\section{Computational studies of amyloid inhibition by small molecules}
+% In recent years, molecular dynamics simulations have been intensively used to investigate the molecular basis of the structure and stability of amyloid fibrils. 
+% 
+% MD simulations of Congo red binding have been done with the protofibril-like crystal structure composed of the segment GNNQQNY.\{Wu, 2007 \#621\}
+% 
+% A recent simulation study of an N-methylated peptide with A$\beta$16-22 models of amyloid aggregates has provided insight into the possible mechanism of action of peptide inhibitors of amyloid formation.\{Soto, 2007 \#597\} This peptide inhibitor was shown to preferentially bind monomers to form dimers, possibly acting to inhibit fibril formation by sequestering monomers. However, peptide-based inhibitors have poor pharmacological profiles as they are actively broken down by proteases in the stomach and are difficult to transport across the blood-brain barrier. In addition, these peptide inhibitors specifically target A$\beta$ and thus do not have the potential to treat multiple amyloid diseases.
+
+% Simulations thus far which have examined small molecule binding with peptides that are truncated (such as that of A$\beta$(12-28) and A$\beta(16-22)$) forms of the full-length peptides of Abeta (AD) or alpha-synuclein or IAPP. If not the the shorter peptide, studies typically employed forms with structure such as the protofibril of Abeta40 or Abeta42 both of which have SSNMR starting structure coordinates.
+
+In this section, we review previous studies of MD simulation studies of the binding of small molecule inhibitors of amyloid formation.
+
+\subsection{Dye binding}
+
+An early study of an amyloid dye and inhibitor phenol red binding with NFGAIL protofibril.\cite{Wu:2006gx} Phenol red was found to bind non-specifically to the protofibril, that is, it did not adopt consistent binding modes (confusing ... what? find better words). % a dye or a polyphenol?
+
+% Congo Red:
+In 2007, Duan et al.\cite{Wu:2007p361} performed short simulations of the protofibrils of GNNQQNY in the presence of two molecules of congo red, where they found that CR predominantly adopted two binding modes: either in the grooves of the fibril parallel to the long axis of the fibril, or in between two peptide strands, perpendicular to the long axis. Based on contact binding analysis, they found that the main driving force for the binding is hydrophobic interactions Their main conclusion based on this observation is that CR molecules fill in the grooves on the amyloid protofibril surface, hence the presence of CR on the surface may block fibril growth along the beta-sheet stacking direction both by disrupting the surface pattern and by increasing the solubility of small protofibrils. Note: This study shows (really? they showed that? how?) that disrupting stacking could lead to disaggregation:  Wu, C.; Lei, H.; Duan, Y. Biophys. J. 2005, 88, 2897-2906. 
+
+In a follow-up study, Shea et. al. used a similar protocol of the study reviewed above to study the binding of CR with protofibrils of full-length \abeta40.
+
+% ThT 
+Molecular mechanism of ThT binding was probed in recent years by several simulation studies. In a 2011 study by Wu et al.,\cite{Wu:2011fd} they examined the difference in binding between PIB and ThT with protofibrils of Abeta. Their simulation system consisted of the protofibrils Abeta40 and Abeta42 from SSNMR studies, and two dispersed dye molecules. Both dyes were observed to bind at the tunnel of the fibril. Charge-charge interactions between ThT and protofibrils did not appear to play an important role in binding. This was found to be the key reason explaining why the removal of charges from ThT made PIB binding more favorable than ThT binding. For Abeta40, in agreement with experimental observations of multiple binding sites and binding affinities, ThT and PIB bound to multiple aromatic or hydrophobic grooves, loops, and edges with different binding ratios and affinities.   Energetic analysis show that stabilizing forces are the van der Waals term and surface hydrophobic interaction term, whereas electrostatic interaction terms were unfavorable. Binding modes to Abeta42 were found to be similar to Abeta40, except dye molecules were able to enter the channel located at the loop of Abeta(17-42) cross-beta-subunit, but not the channel on Abeta40.
+
+
+% [Sketchy study] Another early study of 9,10-Anthraquinone suggests that intercalation and interactions between the backbone of peptides destabilize oligomer formation.\cite{Convertino:2009ce}
+
+
+\subsection{Polyphenols}
+
+Several MD simulation studies have studied the binding of EGCG with monomers and fibrillar forms of A$\beta$. 
+
+A combined MD and NMR study by Wang et al in 2010\cite{Wang:2010p5887} suggested that binding modes of EGCG with monomers (XXX) of \abeta42\ was modulated by ligand stoichiometry. The study concluded that both hydrogen bonding and hydrophobic (aromatic) interactions are important for binding of EGCG.
+
+A study by Sun et al in 2011,\cite{Liu:2011ka} later suggested that EGCG binds a monomer of Abeta42 XXX (this is repetitive ... how did this study differ from the Wang study?).  Using MM-PBSA analysis, nonpolar interactions contributed more than polar interactions to binding (what?). Hydrogen bonds were formed with the main chain (so?)  The transition from the initially helical conformation to $\beta$ was prevented by increasing the ligand:peptide molar ratio of ECGC from XXX to 10:1. [I find this study sketchy. Note that this group also performed the sketchy trehalose study.]
+
+% Binding of EGCG with monomers of Abeta42 were conducted at different concentration of EGCG molecules by Liu et. al.\cite{Liu,2011} 
+% Forcefield was GROMOS. They ran 3 repeats per system, each system were ran for 300 ns.  
+% The results were averaged over the trajectories. 
+% No unbinding / binding statistics were observed over the course of the simulation (why not? Perhaps EGCG has a much higher binding affinity than inositol) -- see figure where the number of monomer - EGCG contacts were increasing over time.  Claims that binding prevented the monomer from transitioning from alpha to beta, but if you look at the numbers in the table, the only significant difference is the number of residues in beta. And even then, its not that different between no EGCG and 0.04 mol/L system.  I guess if the molecules has a much higher binding affinity, one would need to simulate for much longer to get binding statistics.   Because there were no unbinding events, this was a nonequilibrium simulation.  Of course if one set had molecules bound all the time that it is likely the conformational equilibrium of the monomer is different from that of the set without anything bound.
+
+
+Lemkul et al. examined binding of morin molecules with the protofibril form of \abeta42. They observed that morin hydrogen bonds with ... based on one or two snapshots of binding. In a follow-up study, Lemkul et. al. performed simulations of dimers of \abeta42\ peptides. Morin was not observed to bind directly to the CHC sequence, but rather to residues flanking it, suggesting that Abeta aggregation inhibitors may act at indirect or allosteric sites to influence peptide structure. Their overall conclusion of morin's mechanism of action is that it binds abeta42 to alter its tertiary interactions as it aggregates, and thereby preventing \abeta42\ monomers from forming stable hydrophobic nuclei (I think these conclusions are far-fetched).\textbf{Politely make the following point - No statistics. No binding modes other than the anecdotal evidence of what it was bound.} 
+
+
+\subsection{NSAIDs}
+Ibuprofen and Naproxen are NSAIDs, typically used for pain relief, have also showed in vitro activity as an amyloid inhibitor. In a series of MD simulation studies, Klimov et. al. probed the binding mechanism of these compounds with the SSNMR model of the fibrillar aggregate of \abeta40\. Their results suggested that NSAIDs predominantly bind via hydrophobic interactions, and their binding sites are at grooves at edges of protofibrils.  They suggest that this a possible way by which these molecules may prevent fibril formation.
+% replica exchange was used to probe binding of both molecules with the protofibril of Abeta40 (the ssnmr structure).  
+
+% AQ -- Convertino et al. 2009
+% Aggregation of four peptides of Abeta(16-22) using implicit solvation.  AQ form of the ligand was found to disrupt the oligomer the most.  The AQ ligand has both hydrogen bonding groups and aromatic groups caused the most disruption. The authors found that it was predominantly hydrogen bonding interactions that was involved in the intercalation between peptides, and that aromatic interactions were secondary. However, it was not clear whether competition for peptide hydrogen bonding by AQ led to the disaggregation or did the peptides dissociated before the binding occurred.
+
+\subsection{Others}
+[Sketchy study] Explicit solvent simulation of trehalose molecules with 3 peptides of Abeta(16-22) using the GROMOS forcefield for the modelling of the peptides and trehalose.  The study observed in their simulation trajectories indicated that trehalose prevented the addition of monomers in the oligomeric formation. They claimed that preferential exclusion effect of trehalose prevents the nucleation and elgonation of Abeta16-22 oligomers. Furthermore, it decreases the hydrophobic effect, which leads to “weakened” hydrophobic effect and less interpeptide hydrogen bonding.  Could it be because of differences in force field that I am getting such different results from the trehalose study?  Or is it a lack of convergence?  Or both?  Is the OPLS-AA force field much stickier than the gromos force field?  Also GROMOS favors the formation of beta sheets … so its possible that, they were able to see beta sheet formation over the course of their simulations? In any case, trehalose DOES NOT WORK AS A AMYLOID INHIBITOR
+% REF: Liu, F.-F., Ji, L., Dong, X.-Y., and Sun, Y. (2009) Molecular insight into the inhibition effect of trehalose on the nucleation and elongation of amyloid à-peptide oligomers. J. Phys. Chem. B 113, 11320!11329
+
+% Garcia et al. studied
+% At the time of writing, recent studies of anti-amyloid agents in literature includes galantamine
+% Some docking studies were also done. For more detail on this, see the recent review by Lemkul et al. http://www.ncbi.nlm.nih.gov/pubmed/23200245
+
+% \subsection{Comparisons of literature studies}
+% In summary, simulation studies suggest that both hydrophobic interactions (involving aromatics) and hydrogen bonding interactions appear to be involved in the binding mechanism of known in vitro small molecule inhibitors.  Several studies (which one) observed that peptide - peptide intercalation by the small molecule ocurred via hydrogen bonding interactions.
+
+% Gaps ... However, there are a number of issues with the current studies. Studies are not comparative. Some studies use implicit solvent only.  Each of the studies reviewed above use a different force field. Concentration dependence rarely looked at. High concentrations were used for both peptides and ligands. All studies seem to “confirm” the in vitro studies for the ligand of interest.
+% No systematic comparisons of monomers, disordered oligomers and beta oligomers. So if a study is studying binding to beta oligomers, then it concludes that the ligand of interest binds at surfaces, and therefore works by preventing protofibril stacking. If binding to monomers, slight differences in conformational ensembles in monomers with and without ligands results in the study concluding that it affects monomers.
+
+% And then say bam our study is complete …  we need to be as complete as possible for our study. 
+% Thus far no enhanced sampling methods used with explicit solvent. Studies do not attempt to converge the monomeric peptide ensemble.
