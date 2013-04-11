@@ -54,6 +54,7 @@ Using molecular dynamics simulations, we exploit the weak binding affinities of 
 % The objective of my work is to predict PNAG binding sites at the surface of PgaB using unrestrained molecular dynamics simulations in the presence of GlcNac. This methodology was used in earlier inositol studies to predict inositol binding sites on amyloid peptides and aggregates.
 \textbf{The directionality of the polymer binding.  This is currently not experimentally determined.} 
 
+
 \section{Material and Methods}
 % Modelling details
 PgaB with a loop spanning residues 613 to 619 (numbered according to the chimeric PDB structure; check with Dustin again) in the N-terminal domain modelled into the truncated crystal structure, was used in our simulations. The initial crystal structure has Ni(II) bound at its enzymatic active site. Ni(II) is tetrahedrally coordinated with surrounding residues.  The acetate ion bound near the active site, an artifact of crystallization, was removed in the simulation. Crystal waters were removed from the initial PDB structure. Histidine protonation states were assigned based on predicted pKa values using the web software PROPKA (\url{http://propka.ki.ku.dk}), and histidine hydrogen-bonding geometries in the initial crystal structure.
@@ -129,7 +130,7 @@ Taken together, the morphology of the overall binding density map suggests that 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=6in]{figures/results4/glucosamine_binding_direction_suggestive.png}
-\caption[Polymer directionality]{A bound linear hydrogen-bonded chain of glucosamine in the putative carbohydrate-binding groove of the C-terminal domain.  The yellow arrows are drawn as a guide for the directionality of the chain.}
+\caption[Polymer directionality]{A bound linear hydrogen-bonded chain of glucosamine in the putative carbohydrate-binding groove of the C-terminal domain.  The yellow arrows are drawn as a guide for the directionality of the chain. The bottom panel shows a pentamer PNAG.}
 \label{fig:directionality}
 \end{figure}
 
@@ -145,13 +146,26 @@ Taken together, the morphology of the overall binding density map suggests that 
 % This paragraph can be part of the discussion.
 As part of future work, it may be interesting to employ a similar approach to investigate the binding of glucosamine (GlcNH$_3^+$) monosaccharides and polysaccharides to PgaB.  Various analyses (eg. time evolution of RMSD, RMSF of the protein, principle component analysis, etc.) can be done to quantify protein dynamics, especially the mobility of the two domains. Furthermore, it will be interesting to investigate how dynamics may be correlated to the function of PgaB.  Finally, it will be interesting to predict GlcNac and GlcNH$_3^+$ binding modes and binding constants from MD simulations so that they can be compared with corresponding future experimental results.
 
+
+\subsection{New written up results to incorporate}
+
+% These are results -- writing them here first 
+GlcNac binding. Moreover, GlcNac interacts with conserved hydrophobic residues X, Y, Z in CE4 (Figure S1 in Little, JBC, 2012). Figure caption (overlapped zoomed out densities): The magenta colored densities over PgaB-NT cover conserved residues in CE4.  These residues are highlighted in magenta in Little et. al. in Figure S1. 
+
+Comparisons of GlcNac and glucosamine binding. GlcNac predominantly binds near the active site, consistent with the de-acetylase activity of the protein. By contrast, glucosamine predominantly binds in the “charged groove”, suggesting that the polymer moves into this groove post-enzymatic activity.  Furthermore, the spatial distribution of bound glucosamine indicates that glucosamine can occupy the entire groove.  We speculate based on this result that the groove could accommodate a linear polymer of glucosamine (is this just the dPNAG?).
+
+Loop binding. In contrast to glucosamine binding (this may not be true as glucosamine could have boudn tehre too. Check the desnity maps again), GlcNac appears to have a high affinity binding site in the groove region directly below the loop.  GlcNac is bound to the Trp (Trp613 I think) which is underneath this loop cap. According to the spatial distributions, GlcNac is more likely than glucosamine to bind at this loop binding site because the the binding densities persist at higher isovalues (0.2) for GlcNac, but not glucosamine. (Note that I should redo these plots with the correct density maps where I’ve correctly trjcatted the PgaB trajectories) How does this observation play a role in the “clamping mechanism”?  Perhaps the loop may periodically open and clamp down (ie. bind particular sugars with higher affinity) on particular forms of the sugar on the PNAG.  It may clamp down for glucosamine or GlcNac.  Note that here Kd calculations might help with hypothesizing which glcnac or glucosamine that binds there with high Kds.
+
+Directionality. Notice that the hydrogen-bonded chain spanning the first three monomers in the groove mimics the linkage pattern of PNAG, except you would have to flip the schematic 180 degrees. See PNAG clipped from Little 2012, Figure S7.
+
+
 \section{Acknowledgements}
 This work was done in collaboration with Dustin Little, Dr. Lynne Howell and Dr. Mark Nitz.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=7in]{figures/results4/pnag_nag_sdf_zoomedout.png}
-\caption{Comparisons of the distributions of bound PNAG and NAG.}
+\caption{Comparisons of the distributions of bound PNAG and NAG. Note that the magenta colored densities over PgaB-NT cover conserved residues in CE4.  (These residues are highlighted in magenta in Little et. al. in Figure S1. Id the residues and list them in the text and in the caption.)}
 \label{fig:pnag_nag_overlapped_zoomedout}
 \end{figure}
 
