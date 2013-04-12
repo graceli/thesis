@@ -105,12 +105,10 @@ GlcNac molecules preferentially bind to residues in the N-terminal domain (Figur
 
 \textbf{The spatial distribution of bound glucosamine, as depicted in Figure~\ref{fig:pnag_nag_overlapped_zoomedout}, indicates that although glucosamine molecules are predominantly bound to the C-terminal domain. Specifically, clusters of glucosamine molecules are bound in the groove lined with acidic (Asp and Glu), and aromatic residues Trp613, Trp552 (Figure~\ref{fig:nag_cterminal_zoomedin})}.  The C-terminal domain of PgaB is found to be homologous with glucosidase hydrolases, where their enzymatic active sites are located in grooves with a similar geometry. Taken together,  our results suggest that this C-terminal groove of PgaB is a binding site for the de-acetylated PNAG (dPNAG).   Notably, the results from simulation indicates that both GlcNAc and glucosamine possess  binding sites at Trp613, and Trp552, consistent with the crystal structure of PgaB-CT with bound glucosamine (Figure~\ref{fig:nag_cterminal_zoomedin}).
 
-Furthermore, as depicted by the spatial distribution of bound glucosamine in Figure~\ref{fig:},  the entire length of the groove can bind glucosamine molecules, suggesting that this groove may accommodate a linear polymer of glucosamine.  In support of this result, glucosamine molecules were observed to bind in the putative binding groove of PgaB-CT by forming linear hydrogen-bonded chains (Figure~\ref{fig:directionality}).  Taken together, the morphology of the overall binding density suggests that PNAG may bind to PgaB by wrapping around the protein (Figure~\ref{fig:pgab_density}A and B).  
+Furthermore, as depicted by the spatial distribution of bound glucosamine in Figure~\ref{fig:},  the entire length of the groove can bind glucosamine molecules, suggesting that this groove may accommodate a linear polymer of glucosamine.  In support of this result, glucosamine molecules were observed to bind in the putative binding groove of PgaB-CT by forming linear hydrogen-bonded chains (Figure~\ref{fig:directionality}).  In contrast to the spatial distributions of glucosamine and GlcNac, salt ions do not significant bind the protein  (Figure~\ref{fig:salt_density_distribution}). Taken together, the morphology of the overall binding density suggests that PNAG may bind to PgaB by wrapping around the protein (Figure~\ref{fig:pgab_density}A and B).  
 % Based on our results, GlcNac may be more likely than glucosamine to bind at this loop binding site because the the binding densities for GlcNAc, but not for glucosamine persist at higher isovalues (0.2). -- Needs to be verified.
-In contrast to the spatial distributions of glucosamine and GlcNac, salt ions do not significant bind the protein, and are uniformly distributed over the surface of the protein at low occupancies (isovalue of approximately XXXX) (Figure~\ref{fig:salt_density_distribution}).   
+
 % This result further supports the ability of MD simulations and our methodology to identify carbohydrate-protein binding sites. 
-
-
 % with the fact that these residues are conserved across PgaB  homologues. \textbf{See Dustin's first pgab paper} REF
 % Notably, in our sim- ulations, glucosamine was found to adopt a binding mode consistent with the crystal structure
 % Save this for the discussion section? Moreover, our simulations identified carbohydrate binding to Trp613, a key conserved residue across PgaB homologues that is found in the C-terminal domain loop spanning residues 613 to 619.
@@ -119,9 +117,6 @@ In contrast to the spatial distributions of glucosamine and GlcNac, salt ions do
 % TODO: Note that here Kd calculations might help with hypothesizing which glcnac or glucosamine that binds there with high Kds.
 % Because of the mobility of this loop region, we hypothesize that this loop may be involved in the export process whereby the opening and closing of this loop over the binding groove facilitate the export and stabilize the polymer for binding at the enzymatic active site.
 % Loop clamping. Perhaps the loop may periodically open and clamp down (ie. bind particular sugars with higher affinity) on particular forms of the sugar on the PNAG.  It may clamp down for glucosamine or GlcNac. 
-
- 
-
 
 When a vector is drawn from the CX carbon to the nitrogen atom on the $NH_{3}^{+}$ group of glucosamine, we observe that these vectors point towards the N-terminal domain. Based on this result, we speculate that the (reducing or non-reducing end of the polymer?) to (reducing/non-reducing) end of the polymer extends from the N-terminal towards the C-terminal of PgaB.  This hypothesized polymer directionality is consistent with our proposed mechanism of synthesis and export whereby de-acetylation in PgaB-NT occurs prior to the binding of de-acetylated-PNAG by PgaB-CT.  Note that the hydrogen-bonded chain spanning the first three monomers in the groove shown in Figure~\ref{fig:} mimics the linkage pattern of PNAG, except you would have to rotate the schematic of PNAG by 180 degrees. See PNAG clipped from Little 2012, Figure S7.
 
@@ -176,7 +171,7 @@ This work was done in collaboration with Dustin Little, Dr. Lynne Howell and Dr.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=7in]{figures/results4/pnag_nag_sdf_zoomedout.png}
-\caption{Comparisons of the distributions of bound PNAG and NAG. Note that the magenta colored densities over PgaB-NT cover conserved residues in CE4.  (These residues are highlighted in magenta in Little et. al. in Figure S1. Id the residues and list them in the text and in the caption.)}
+\caption{Comparisons of the distributions of bound PNAG and NAG. Note that the magenta colored densities over PgaB-NT cover conserved residues in CE4.  (These residues are highlighted in magenta in Little et. al. in Figure S1. Id the residues and list them in the text and in the caption.) \textbf{Need to add the isovalues for the top and bottom two panels.}}
 \label{fig:pnag_nag_overlapped_zoomedout}
 \end{figure}
 
@@ -189,8 +184,8 @@ This work was done in collaboration with Dustin Little, Dr. Lynne Howell and Dr.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=7in]{figures/results4/salt_distribution_kitten.png}
-\caption[Ionic distribution]{\textbf{Not yet rendered}. Spatial probability distribution of salt ions around \pgab}
+\includegraphics[width=6.23in]{figures/results4/pgab_glucosamine_dt10_compact_res_fitted_salt.png}
+\caption[Ionic distribution]{Spatial probability distribution of salt ions around \pgab\ shown at an isovalue of 0.005 for both sodium (blue) and chloride (grey).}
 \label{fig:salt_density_distribution}
 \end{figure}
 
