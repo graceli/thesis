@@ -1,13 +1,13 @@
-pdflatex -interaction=nonstopmode my-thesis.tex
+pdflatex -interaction=nonstopmode thesis.tex
 bibtex introduction.aux
-bibtex introduction-MD-methods.aux
+bibtex methods.aux
 bibtex results1/results1.aux
 bibtex results2/results2.aux
 bibtex results3/results3.aux
 bibtex results4/results4.aux
 # make nomenclature
-makeindex my-thesis.nlo -s nomencl.ist -o my-thesis.nls
+makeindex thesis.nlo -s nomencl.ist -o thesis.nls
 
-pdflatex -interaction=nonstopmode my-thesis.tex
-pdflatex -interaction=nonstopmode my-thesis.tex
-open -a skim my-thesis.pdf
+pdflatex -interaction=nonstopmode thesis.tex
+pdflatex -interaction=nonstopmode thesis.tex
+open -a skim thesis.pdf
