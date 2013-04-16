@@ -639,9 +639,13 @@ In a series of studies, Shea et. al. also examined ThT binding to A$\beta$40 pro
 % Moreover, stoichiometric analysis demonstrated that ThT bound to the Tyr-Leu site as a single, discrete molecule, as opposed to a micelle or a dimer.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Thesis objectives}
+\section{Thesis objectives and organization}
+Alzheimer's Disease (AD) is a progressive neurodegenerative disease characterized pathologically by the presence of extracellular fibrillar deposits of $\beta$-amyloid (A$\beta$), a 38 to 42 residue protein that is produced normally as part of the cellular metabolism. Scyllo-inositol is a promising potential therapeutic compound for AD treatment, which is currently in phase two of clinical trials. Both scyllo-inositol and one of its stereoisomers, epi-inositol, have been shown to effectively block the accumulation of A$\beta$ oligomeric assemblies and reduce AD-like symptoms in a transgenic mouse model of AD. Furthermore, in vitro, scyllo-inositol and its stereoisomers myo-inositol, epi-inositol, and chiro-inositol, have been demonstrated to stabilize A$\beta$42 oligomers, disassemble preformed A$\beta$42 fibrils, and reduce A$\beta$42-induced neurotoxicity in a stereochemistry-dependent manner. However, the specific molecular interactions of inositol and its effect on A$\beta$ aggregation at the molecular level are not known. At present, experimental approaches lack the ability to determine the precise mechanistic mode(s) of action of inositol as the molecular structures of various intermediates in the amyloid aggregation pathway are not known. Moreover, observed intermediates morphologically distinct from fibrils are experimentally very difficult to detect and isolate.
 
-% How to tie this figure into this section?
+The primary objective of my research is to use molecular dynamics (MD) simulations to elucidate the molecular basis for the activity of inositol by determining its effect on the structure, thermodynamics, and kinetics of A? aggregation.  Our central hypothesis is that inositol acts by binding to one or more of the aggregated form of A?.  Determining the effect of inositol binding on the full-length A? protein is computationally challenging and requires the use of many cores on high performance computing systems. The formation of amyloid follows a complex aggregation pathway, where different intermediate A? aggregate species have been implicated in the disease. Therefore, a meaningful study requires examining inositol binding with different self-aggregated peptide states, from monomeric to fibrillar aggregates. 
+
+To this end, I have carried out systematic comparative studies of amyloidogenic peptides and their aggregates of increasing sequence and composition complexity and characterized the respective role of specific interactions of inositol with the backbone and sidechains (Figure~\ref{fig:rationale}).
+
 \begin{figure}
 \centering
 \includegraphics[width=6in]{figures/introduction/matrix.pdf}
@@ -649,14 +653,16 @@ In a series of studies, Shea et. al. also examined ThT binding to A$\beta$40 pro
 \label{fig:rationale}
 \end{figure}
 
-The central hypothesis of this research is that inositol exerts its effects through direct binding to one or more of the monomeric, aggregated, or fibrillar forms of amyloidogenic peptides and proteins.   
+Inositol molecules were shown to have stereochemistry-dependent activity in vitro and in vivo. Chiro-inositol is a stereoisomer that was shown to be inactive in inhibiting amyloid formation. Thus, in all of my studies, I have comparatively examined chiro- and scyllo-inositol with each of the aggregates in the pathway to determine the stereochemical basis of the activity of inositol. In addition, we also perform control simulations in the absence of inositol.   In order to achieve the sampling necessary to obtain meaningful statistics from our simulations, we perform thousands of independent MD simulations of  scyllo- and chiro-inositol with (1) single peptides; (2) small aggregates; (3) large ordered aggregates of various amyloidogenic sequences (Figure~\ref{fig:rationale}).
 
-Multiple sources of experimental evidence have demonstrated the existence of species that are morphologically distinct from fibrils in the amyloid aggregation pathway.6, 13, 29 At least two intermediates on pathway to fibril formation have been observed: oligomers and protofibrils. These species together with the monomer and fibrils, constitute a possible pathway by which A$\beta$ aggregates to form fibrils. 
+I first systematically examined the binding modes of inositol with simple models of amyloidogenic peptides (Chapter 3).
 
-In order to characterize the molecular mechanism of action of inositol, it is imperative that the interaction of inositol with various aggregate species be examined. To this end, I will carry out systematic comparative studies of amyloidogenic peptides and their aggregates of increasing sequence and composition complexity and characterize the respective role of specific interactions of inositol with the backbone and sidechains. Inositols have been shown to have stereochemistry-dependent activity in vitro and in vivo.18, 20 Chiro-inositol is a stereoisomer that was shown to be inactive in inhibiting amyloid formation. Thus, I will comparatively study chiro- and scyllo-inositol with each of the aggregates in the pathway to determine the stereochemical basis of the activity of inositol.
+Next, I characterized the binding of inositol with the peptide KLVFFAE or A?(16-22), a short fibril-forming fragment important for initiating amyloid formation in the full-length protein (Chapter 4).
 
-\section{Thesis Organization}
-Chapter 1 introduces the work presented in this thesis in the context of the field. Chapter 2 introduces the main methods used in the work in the thesis.   In chapter 3, we systematically examined the binding modes of inositol with simple models of amyloidogenic peptides. Next, we examined binding with KLVFFAE, .... Chapter 5 details studies with the protofibrils of the full-length A$\beta$42. In Chapter 6 we demonstrate the general applicability of our methodology developed in this thesis by applying similar MD simulation approaches to examine protein - carbohydrate binding. Chapter 7 provides discussion, suggestions for future work, and perspectives.
+Based on my results from Chapters 3 and 4, which indicated that inositol acts on protofibrils of A$\beta$, rather than monomeric or non-beta-sheet oligomeric states, in Chapter 5, the binding of inositol was exclusively examined with the protofibril of full-length A$\beta$42.
+
+Finally, in Chapter 6 I demonstrate the general applicability of the methodology developed in this thesis by applying similar MD simulation approaches to examine protein - carbohydrate binding. 
+
 
 \begin{singlespace}
 \addcontentsline{toc}{section}{Bibliography}
