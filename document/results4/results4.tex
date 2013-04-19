@@ -91,18 +91,18 @@ To compute spatial binding probability densities of GlcNac and glucosamine, fram
 
 \section{Results and Discussion}
 
-\subsection{Protein Dynamics}
-PgaB did not show any gross rearrangements or large perturbations during the simulations.
-RMSD of the entire protein
-RMSD of just the C-terminal domain
-Fluctuation of the loop region (Need a control simulation of just PgaB without any sugars).
+%\subsection{Protein Dynamics}
+%PgaB did not show any gross rearrangements or large perturbations during the simulations.
+%RMSD of the entire protein
+%RMSD of just the C-terminal domain
+%Fluctuation of the loop region (Need a control simulation of just PgaB without any sugars).
 
-\subsection{GlcNac and glucosamine binding}
+\subsection{Comparisons of binding modes of N-acetyl-glucosamine and glucosamine}
 % GlcNac molecules preferentially bind to residues in the N-terminal domain (Figure~\ref{fig:pgab_density}B and D). 
-
-The spatial binding probability density of GlcNac, depicted in Figure~\ref{fig:pgab_density}, suggests that GlcNAc binding sites are localized to residues on the N-terminal domain of PgaB.
 % three main sites on PgaB (Figure~\ref{fig:pgab_binding_sites}). 
-Notably, the binding densities for GlcNac (A, B in Figure~\ref{fig:pgab_binding_sites}A,B are predominantly located in proximity to the active site, consistent with the function of PgaB as a PNAG de-acetylase. In particular, the binding densities located in the crevice found beneath the loop spanning residue numbers 309 to 314 may be involved in substrate binding. \textbf{It is hypothesized that the binding of PNAG to PgaB may initiate in this region, prior to binding at the active site.}\cite{Little:2012dp} However the role of this region has not yet been determined experimentally.
+% Notably, the binding densities for GlcNac (A, B in Figure~\ref{fig:pgab_binding_sites}A,B
+
+The spatial binding probability density of GlcNac, depicted in Figure~\ref{fig:sdf}, suggests that GlcNAc binding sites are predominantly located in proximity to the active site (in the N-terminal domain), consistent with the function of PgaB as a PNAG de-acetylase. In particular, the densities located in the inter-domain crevice found beneath the loop spanning residue numbers 309 to 314 suggest that this region may be involved in substrate binding. \textbf{It has been previously hypothesized that the binding of PNAG to PgaB may initiate in this region, prior to binding at the active site.}\cite{Little:2012dp} However the role of this region has not yet been determined experimentally.
 
 % in the inter-domain groove found directly beneath a loop connecting the two domains (Figure~\ref{fig:pgab_density}), and on the surface directly below the active site, which contains surface exposed hydrophobic residues.
 
@@ -110,11 +110,13 @@ Notably, the binding densities for GlcNac (A, B in Figure~\ref{fig:pgab_binding_
 
 % When comparing the densities of PNAG and glucosamine (depicted in Figures \ref{fig:pgab_density} and XXX, respectively) it can be seen that whereas PNAG predominantly binds the N-terminal domain, but glucosamine instead bind to the C-terminal domain, predominantly in the groove capped by the loop spanning residues XXX to YYY.
 
-\textbf{The spatial distribution of bound glucosamine depicted in Figure~\ref{fig:sdf} indicates that glucosamine molecules predominantly bind to the C-terminal domain.} 
+\textbf{The spatial distribution of glucosamine molecules depicted in Figure~\ref{fig:sdf} indicates that they preferentially bind to the C-terminal domain, with a significant density in the groove lined with acidic, and aromatic residues (Figure~\ref{fig:groove}).}
 %Specifically, glucosamine molecules are found to cluster in the groove lined with acidic, and aromatic residues (Figure~\ref{fig:groove}).  
-Notably, consistent with the crystal structure of the C-terminal domain of PgaB (PgaB-CT) with bound glucosamine, our simulations indicate that both GlcNAc and glucosamine possess binding sites at conserved residues Trp613 and Trp552  (Figure~\ref{fig:groove}).
+Notably, consistent with the crystal structure of the C-terminal domain of PgaB (PgaB-CT) with bound glucosamine, our simulation results indicate that both GlcNAc and glucosamine possess binding sites at Trp613 and Trp552  (Figure~\ref{fig:groove}), conserved residues located in this groove.
 % Trp613, Trp552 are in this groove
-In support of this result, our previous study has shown that the C-terminal domain of PgaB is homologous tp glucosidase hydrolase, where the active site is located in analogous grooves with a similar geometry.\cite{Little:2012dp} Furthermore, our results indicate that the entire length of the groove can bind glucosamine molecules, suggesting that this groove is likely to accommodate a linear polymer of glucosamine. Accordingly, in our simulations, glucosamine molecules were observed to bind in this groove by forming linear hydrogen-bonded chains (Figure~\ref{fig:directionality}).  Taken together,  our results suggest that this C-terminal groove of PgaB is a binding site for the de-acetylated PNAG (dPNAG).   In contrast to the spatial distributions of GlcNac and GlcNH2, salt ions do not significantly bind the protein  (Figure~\ref{fig:salt_density_distribution}). 
+In support of this result, our previous study has shown that the C-terminal domain of PgaB is homologous tp glucosidase hydrolase, where the active site is located in analogous grooves with a similar geometry.\cite{Little:2012dp} 
+
+Furthermore, our results indicate that the entire length of the groove can bind glucosamine molecules, suggesting that this groove is likely to accommodate a linear polymer of glucosamine (. Accordingly, in our simulations, glucosamine molecules were observed to bind in this groove by forming linear hydrogen-bonded chains (Figure~\ref{fig:directionality}).  Taken together,  our results suggest that this C-terminal groove of PgaB is a binding site for the de-acetylated PNAG (dPNAG).   In contrast to the spatial distributions of GlcNac and GlcNH2, salt ions do not significantly bind the protein  (Figure~\ref{fig:salt_density_distribution}). 
 
 Taken together, the morphology of the overall binding density of both GlcNAc and GlcNH2 paint a picture  of the binding mechanism of PNAG, and its putative export. As PNAG is shuttled through PgaB, it initially binds at the cleft between the N- and C-terminal domains to undergo de-N-acetylation.  As it is converted to dPNAG, the binding affinity of the polymer is increased for the C-terminal domain and can accommodate the de-acetylated portion of the polymer as it is being exported  (Figure~\ref{fig:sdf}).
 
@@ -162,7 +164,7 @@ This work was done in collaboration with Dustin Little, Dr. Lynne Howell and Dr.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=4in]{figures/results4/sugar_structures.pdf}
-\caption[NAG]{Molecular structures of $\beta$-N-acetyl-glucosamine (GlcNac) and $\beta$-glucosamine (GlcNH$_2$).}
+\caption[Molecular structures of GlcNAc and GlcNH$_2$]{Molecular structures of $\beta$-N-acetyl-glucosamine (GlcNac) and $\beta$-glucosamine (GlcNH$_2$).}
 \label{fig:nag}
 \end{figure}
 
@@ -183,7 +185,7 @@ This work was done in collaboration with Dustin Little, Dr. Lynne Howell and Dr.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=6.25in]{figures/results4/glcnac_glucosamine_merged_sdf.pdf}
-\caption{Spatial probability densities of bound GlcNAc (purple) and GlcNH3+ (pink).  Binding densities overlapped with a cartoon representation of the energy minimized crystal structure of PgaB.  The protein is shown facing the active site in (A) and (C), and facing the C-terminal domain in (B) and (D). For each view, binding densities are shown at occupancies of 0.15 in (A) and (B) and 0.25 in (C) and (D). In our coloring scheme, residue numbers 43 to 310 and numbers 311 to 667 represent N- (green) and C-terminal (cyan) domains, respectively.}
+\caption[Spatial probability densities of bound GlcNAc (purple) and GlcNH3+]{Spatial probability densities of bound GlcNAc (purple) and GlcNH3+ (pink).  Binding densities overlapped with a cartoon representation of the energy minimized crystal structure of PgaB.  The protein is shown facing the active site in (A) and (C), and facing the C-terminal domain in (B) and (D). For each view, binding densities are shown at occupancies of 0.15 in (A) and (B) and 0.25 in (C) and (D). In our coloring scheme, residue numbers 43 to 310 and numbers 311 to 667 represent N- (green) and C-terminal (cyan) domains, respectively.}
 % Note that the magenta colored densities over PgaB-NT cover conserved residues in CE4.  (These residues are highlighted in magenta in Little et. al. in Figure S1. ) \textbf{Id the residues and list them in the text and in the caption. Need to add the isovalues for the top and bottom two panels.}
 \label{fig:sdf}
 \end{figure}
@@ -191,14 +193,14 @@ This work was done in collaboration with Dustin Little, Dr. Lynne Howell and Dr.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=6.25in]{figures/results4/cterm_groove_surf.pdf}
-\caption{Spatial probability distribution of (A) GlcNH2, and (B) GlcNAc in the binding groove in the C-terminal domain (shown at an occupancy of 0.15).}
+\caption[Spatial probability densities of GlcNAc and GlcNH3+ in the C-terminal groove]{Spatial probability distribution of (A) GlcNH2, and (B) GlcNAc in the binding groove in the C-terminal domain (shown at an occupancy of 0.15).}
 \label{fig:groove}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=6.25in]{figures/results4/pgab_glucosamine_salt_densities.pdf}
-\caption[Ionic distribution]{Spatial probability distribution of salt ions around \pgab\ shown at an isovalue of 0.005 for both sodium (blue) and chloride (grey). PgaB is depicted in a cartoon representation, where its N- and C-terminal domains are colored green and cyan, respectively.}
+\caption[Ionic distribution]{Spatial probability distribution of sodium and chloride ions around \pgab\ shown at an isovalue of 0.005 for both sodium (blue) and chloride (grey). PgaB is depicted in a cartoon representation, where its N- and C-terminal domains are colored green and cyan, respectively.}
 \label{fig:salt_density_distribution}
 \end{figure}
 
