@@ -1,0 +1,700 @@
+\chapter{Introduction}
+% My introduction - focus:
+% The emphasis should be put on the last 2 layers with cursory information for the top two as needed
+% Biology, biochemistry, biophysics, molecular details / simulations
+
+% Check out Misbehaving proteins the book.
+
+% Broad theme: Protein folding, self-assembly, and its modulation ???
+% Flow of information from DNA to protein, where proteins carry out core functions which enable life.
+% Importance of protein folding -- structure - function paradigm
+% Functions by binding with other proteins or ligands in the body. Protein interactions and how protein function may be modulated by these interactions -- particularly solvent interactions.
+% Ok, we also know about intrinsically disordered proteins that have well-defined functions in the human body.
+% But what about amyloid ... this common state that all proteins reach which results from protein aggregation .. involved in disease.
+
+One of the most remarkable phenomena in nature is the ability of proteins to fold from linear polypeptide chains into structures which impart their functions as molecular machines of life. \cite{Dill:2008et,Lappano:2011ve} Proteins play a key role in all aspects of life, from cell cycle regulation\cite{Klionsky:2000ty,Hetts:1998tr} to signal transduction.\cite{Birnbaumer:1990ux}
+% Small molecules that can affect the outcome of various biochemical pathways act by binding these protein receptors. Specific examples of the molecular basis underlying certain cellular mechanisms involving protein-ligand binding
+Much of the critical regulation of biological activity within a cell is mediated by binding interactions between a protein receptor and an inhibitory ligand.\cite{Overington:2006ub} For example, about 40\% of modern medicine targets G protein-coupled receptors,\cite{Overington:2006ub} a family of proteins found in eukaryotes that sense molecules outside of the cell and induce cellular responses by activating intracellular signal transduction pathways.\cite{Kroeze:2003ub} Hence, it is not surprising that the improper functioning of proteins due to mutations, denaturation, or misfolding (failure to adopt their native functional state) cause many diseases.\cite{Hanahan:2000wo,Lappano:2011ve}
+
+% REF http://en.wikipedia.org/wiki/G_protein-coupled_receptor#Ligand_binding}
+% Furthermore, cellular mechanisms that prevent unregulated cell division, such as apoptosis (3) and autophagy (4), are also dependent on well-orchestrated receptor-ligand interactions. REFs
+
+% When the regulation of these systems are perturbed, the consequences can be devastating to the organism: for example, disruptions to the cell-cycle progression and proliferation can lead to diseases such as cancer (1, 2). (Adapted from tummino and copeland 2008)
+% Can also cite this paper
+% Complement receptor ligand binding -- http://www.annualreviews.org/doi/abs/10.1146/annurev.iy.01.040183.001331?journalCode=immunol
+% The cell biology of receptor-mediated virus entry -- http://jcb.rupress.org/content/195/7/1071.full
+
+% Important to understand structure, but it is not enough. We also need to understand dynamics
+A seminal study performed by Anfinsen and colleagues demonstrated that the structure of a folded protein is encoded in its amino acid sequence and solvent environment.\cite{Anfinsen:1973vt} Since then, much progress has been made in understanding protein structure, function, and mechanism of folding.\cite{Dill:2012ce} Structure determination techniques have gained much attention in the fields of biochemistry and biophysics, and have provided valuable insights into macromolecular structure. However, protein structures determined from NMR, X-ray crystallography, and homology modeling only provide a static picture, whereas molecular recognition and drug binding are very dynamic processes. When a substrate approaches its receptor in solution, it encounters not a single, frozen structure, but rather a macromolecule in constant motion. Understanding both protein structure and dynamics enable us to elucidate the molecular basis of disease pathways, which will ultimately contribute to the discovery of novel therapeutics. 
+
+% Computer-aided drug design using MD
+Because ligand binding and the important macromolecular motions associated with it are microscopic events that take place on the scale of millionths of a second, a complete understanding of the atomistic energetics and mechanics of binding is unattainable using current experimental techniques. In recent years, molecular dynamics (MD) simulation of biomolecules, a physics-based computer simulation technique, became a tool of choice to investigate protein dynamics and function, and ligand-binding.\cite{Durrant:2011bm,Karplus:2002wt} Currently, MD simulation is the most accurate computational method for probing small-molecule binding, and is useful for filling in the details where experimental methods cannot.\cite{Durrant:2011bm} In the past few years, MD simulation studies have been routinely reaching 100s of nanoseconds or more in sampling time.\cite{Freddolino:2008dj,Chakrabarti:2010gf,Li:2012bx,Neale:2013wq} With the ever increasing availability of computing power and data storage, simulations are a promising technique for aiding in the structure-based drug discovery process.\cite{Durrant:2011bm}
+% With constant improvements in both computer algorithms and processing power, molecular dynamics simulations are likely to play an increasingly important role in the development of novel pharmacological therapeutics.\cite{Durrant:2011bm} % [There are examples already demonstrating MD's usefulness in drug ... cite some examples from that DE Shaw paper]
+
+% IDPs have function. Break down of folded structure, and aggregation leads to loss of function.
+% Protein misfolding and aggregation
+In recent years, a class of proteins without a uniquely folded state known as intrinsically disordered proteins (IDPs) have gained attention because of their involvement in a multitude of physiological pathways and diseases.\cite{Sigalov:2010p7619} For example, proteins associated with cell signalling and cancer in humans are predicted to be enriched in protein disorder.\cite{Dunker:2002ex}
+% In particular, 79\% of cancer-associated proteins (Dunker et al. 2008a) and 60\% of proteins associated with cardiovascular disease are predicted to contain contiguous regions of disorder longer than 30 residues (Uversky et al. 2009).
+A detailed review of disordered proteins and their roles in biology is beyond the scope of this thesis and is provided elsewhere.\cite{Rauscher:2010p5682,Uversky:2008gh} A number of IDPs are able to self-aggregate to form amyloid, and are associated with incurable diseases such as prion disorders, neurodegenerative diseases, Type II diabetes, and systemic amyloidosis.\cite{Chiti:2006fz}
+
+% Paragraphs for the end of the thesis?
+% Hence, IDPs is a class desirable drug targets. However, their intrinsic disordered nature presents new challenges for the drug discovery process, and impedes the use of traditional structural-based drug design techniques. MD is poised to revolutionize not only understanding of structure and dynamics of folded protein structures, but as systems involving disorder. Simulations are well-suited for understanding these highly-dynamic system, and predict small-molecules binding modes with an atomistic resolution.
+% Study up - Why can't we use solution state or solid-state NMR to study small molecule binding to oligomers?
+
+
+% \section{Computer Simulations and Drug discovery}
+% Talk about structure-based drug discovery, and link to computer simulations.
+% The paragraph below are duplicated from Durrant et al.
+
+\section{The amyloid state of proteins}
+\label{sec:amyloid}
+% A paragraph as a general introduction to amyloid.
+% What's the general interest behind amyloid science -- why is amyloid important
+% Role of amyloid in the human body -- functional amyloid?
+
+Amyloids were discovered 150 years ago when tissue deposits of extracellular filaments were observed.\cite{Haass:2007db,Sipe:2000fs} These microscopically visible deposits were found on various organs in many seemingly unrelated diseases. 
+%\textbf{Something should go here}
+Although numerous diseases involve amyloid formation of distinct aggregation-prone proteins or peptides, the ability to form amyloid is not only restricted to these disease-associated proteins. Amyloid fibrils may be formed from proteins with well-defined tertiary structures (eg. myoglobin and lysozyme), suggesting that the ability to form amyloid fibrils may be a generic property of polypeptides.\cite{Chiti:2006fz} However, the propensity for a given protein or peptide to form amyloid is highly dependent on the solution condition and peptide sequence. For example, for a globular protein to form amyloid, the protein must first be partly unfolded before conversion into amyloid fibrils is possible.\cite{Chiti:2006fz} 
+% TODO: Give a more specific example
+
+% Dobson 2006 -- The relative aggregation rates for a wide range of peptides and proteins correlates with the physicochemical features of the molecules such as charge, secondary-structure propensities and hydrophobicity. 
+
+% The mechanism of amyloid fibril formation in vivo is not understood.  However, in vitro studies of amyloid-forming peptides in recent years have made great strides in elucidating their structural properties and mechanism of formation.
+The formation pathway of amyloid fibrils in vivo is not understood. Much of what we know about amyloid formation currently comes from biochemical and biophysical analysis of synthetic amyloid-forming peptides in vitro, which is thought to be analogous to the in vivo pathway. Prior to the appearance of amyloid fibrils, a variety of intermediate species may be formed.\cite{Chiti:2006fz}  Monomers self-assemble into oligomers of different morphologies and sizes, which exist in equilibrium with amyloid fibrils, a visible endpoint of aggregation.\cite{Chiti:2006fz}
+
+% Amyloid formation -- models of the kinetics of aggregation
+Kinetically, the mechanism of amyloid formation is akin to those of nucleation-polymerization processes such as crystallization and micelle formation.\cite{Murphy:2002fe}
+% \textbf{SPECIFIC CRYSTALLIZATION; SPECIFIC FORMATION OF OTHER PROTEINS FOLLOWING THIS PROCESS eg micelle formation} 
+During nucleation, a lag phase occurs where the energetic barriers of aggregation must be overcome by the monomers to form the initial aggregation nucleus.\cite{Murphy:2002fe} Following this lag phase, free monomers may bind to the nucleated aggregates, which elongate into mature fibrils.\cite{Murphy:2002fe} Seeding, a process where preformed aggregates are introduced into the solution, eliminates the lag phase.\cite{Harper:1997ix,Jarrett:1993vm} In the sections below the current biophysical and structural data on the structure of amyloid fibrils and non-fibrillar oligomers is reviewed, and implications for amyloid disease are discussed.
+
+% Because much of the detailed biochemical and biophysical characterization of amyloid formation is centered upon the amyloid-beta peptide (implicated in Alzheimer's disease) and hence our discussion will be focused on this peptide. % REWORD
+
+% Focus mostly on biophysical data (it makes sense)
+\subsection{Fibrils}
+
+Fibrillar amyloid deposits have several physical properties in common. Fibrils are protease resistant, and insoluble in the presence of the detergent sodium dodecyl sulfate.\cite{Eisenberg:2012hm} Importantly, they exhibit specific optical behavior when bound to certain dye molecules. After staining with Congo red, fibrils exhibit bright green birefringence under polarized light.\cite{Frid:2007bo} However, the use of Congo red to detect the presence of amyloid formation is often a laborious process, and only provides a qualitative measurement of the amount of amyloid present.\cite{Frid:2007bo} Thioflavin-T (ThT), a benzathiole fluorescent dye, is more commonly used to detect the presence of amyloid fibrils in post-mortem brain tissue samples, and monitor fibril formation in vitro. Upon binding to fibrils, ThT exhibits a dramatic shift in the excitation spectrum maximum and an emission enhancement, making it a sensitive and efficient reporter for the presence of amyloid fibrils.\cite{Nilsson:2004iw}
+
+\begin{figure}
+ \centering
+ \includegraphics[width=5in]{figures/introduction/fibril_structure_diffraction.pdf}
+ \caption[Characteristic cross-$\beta$ spacings from X-ray fibre diffraction studies of amyloid fibrils]{A schematic of the \crossbs\ and the diffraction pattern of fibrils. Reprinted from Cell, 148, D. Eisenberg, M. Jucker, The Amyloid State of Proteins in Human Diseases, 1188 - 1203.,  Copyright 2012, with permission from Elsevier.}
+ \label{fig:fibril_diffraction}
+\end{figure}
+
+Amyloid fibrils formed from different polypeptides all share a similar morphology known as the \crossbs.\cite{Chiti:2006fz} To date, independent measurements of fibrillar structure from different instruments have all confirmed the cross-$\beta$ as the core structure of amyloid fibrils.  X-ray fiber diffraction studies showed that the diffraction pattern of fibrils is characterized by major orthogonal reflections along the meridional and equatorial directions, which correspond to a 4.8 \angstrom\ interpeptide separation, and a 10 \angstrom\ intersheet separation, respectively (Figure~\ref{fig:fibril_diffraction}).\cite{Sunde:1997cq,Makin:2005un,Sipe:2000fs} The inter-peptide, and inter-sheet separations are respectively parallel and perpendicular to the long-axis of the fibril. This diffraction pattern is now considered as indicative of the presence of \crossbs, and hence, of amyloid fibrils.\cite{Chiti:2006fz} When stained, the macromolecular morphology of fibrils can be determined using the transmission electron microscope (TEM): fibrillar structures are long, unbranched, and ribbon-like structures with diameters between 50 - 100 nm (Figure~\ref{fig:fibril_TEM_SSNMR}).\cite{Chiti:2006fz} 
+% Other measurements? - MPL Mass per unit length?
+
+% Although \crossb\ is widely known, due to the insolubility and inherent non-crystalline nature of amyloid fibrils, the molecular details of the fibril structure remained elusive until recent years. 
+% The ubiquitous presence of a \crossbs\ supports that the organization of the peptidic backbone, common to all proteins, in to \bsheets\ is a major determinant of the fibrillar structure. 
+
+\begin{figure}
+ \centering
+ \includegraphics[width=4in]{figures/introduction/fibril_TEM_SSNMR.pdf}
+ \caption[EM images of amyloid fibrils and oligomers]{(A) TEM image of negatively-stained mature amyloid fibrils.\cite{Petkova:2002p305} Copyright 2002 National Academy of Sciences, USA.  (B) SSNMR model proposed by Tycko et al. Reprinted (adapted) with permission from\cite{Petkova:2006gx}. Copyright 2006 American Chemical Society. EM images of oligomers of (C) \abeta42,\cite{Bitan:2003ut} and (D) \abeta40.  (C) Copyright 2003 National Academy of Sciences, USA. (D) This research was originally published in Journal of Biological Chemistry. D M Walsh, D M Hartley, Y Kusumoto, Y Fezoui, M M Condron, A Lomakin, G B Benedek, D J Selkoe, and D B Teplow. Amyloid $\beta$-Protein Fibrillogenesis. Journal of Biological Chemistry. 1999; 274:25945-25952. \copyright\ the American Society for Biochemistry and Molecular Biology.}
+ \label{fig:fibril_TEM_SSNMR}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \includegraphics[width=4in]{figures/introduction/fibril_xray_model.pdf}
+ \caption[X-ray crystal structure of an amyloid fibril]{A schematic of the X-ray crystal structure of fibrils formed from short amyloidogenic peptide fragments. Reprinted from Cell, 148, D. Eisenberg, M. Jucker, The Amyloid State of Proteins in Human Diseases, 1188 - 1203.,  Copyright 2012, with permission from Elsevier.}
+ \label{fig:fibril_xray_model}
+\end{figure}
+
+% Describe the molecular structure of \abeta\ amyloid fibrils. Briefly mention the techniques that can be used to obtain structural information of amyloid fibrils. 
+
+% SSNMR
+Advances in solid-state NMR (SSNMR) and X-ray crystallography in the last decade have elucidated the molecular details of amyloid fibrils. One of the first SSNMR model of an amyloid fibril was that of \abeta40, a peptide implicated in Alzheimer's Disease.\cite{Petkova:2006gx}
+%The study by Petkova et. al.\cite{Petkova:2006gx} indicated that the \bsheet\ core of \abeta40\ involves residues 10-22 and 30-40, and is linked by a loop formed by residues 23-29. 
+Its core fibril unit consisted of a parallel in-register \bsheet, where each strand is a \bhairpin\ with peptide-peptide backbone hydrogen bonds running in parallel to the long-axis of the fibril (Figure~\ref{fig:fibril_TEM_SSNMR}).  Moreover, smaller fragments of A$\beta$ have been shown to form fibrils that are morphologically similar to those of the full length peptide. For example, SSNMR studies of the fibrils of the peptide A$\beta$(16-22) or KLVFFAE, the central hydrophobic core of A$\beta$, indicated that its fibrils are composed of stacked antiparallel $\beta$-sheets.\cite{Balbach:2000vf} Fibrils of certain amyloid-forming peptide fragments formed crystals that were amenable to single crystal X-ray diffraction analysis.\cite{Eisenberg:2012hm}  In agreement with SSNMR, the crystal structures of these fibrils revealed a structure composed multiple layers of \bsheet\ with a dehydrated (``dry'') stacking interface (Figure~\ref{fig:fibril_xray_model}).\cite{Sawaya:2007p4363,Eisenberg:2012hm}
+%Taken together, these recently proposed structures demonstrate that the core region is composed of two to four sheets that interact closely with each other. % I don't think I will talk about the twisting of the sheets too much. Should I mention twisting?
+
+% Fibril polymorphism
+Depending on the experimental conditions under which they are formed, fibrils may exhibit polymorphism: the length of the $\beta$-strand involved, side chain orientations and inter-protofilament packing may vary.\cite{Kodali:2007cz} Fibril polymorphism may have important implications in amyloid diseases because, depending on which residues are exposed at the surface, different morphologies exhibit differing toxicities. For example, in vitro, quiescently formed fibrils of A$\beta$(1-40) have been shown to be more toxic than agitated fibrils.\cite{Petkova:2005p4688} 
+
+% A polymorphic structure introduced by a seed have been shown to be able to propagate in vitro.\cite{Paravastu:2006p4690} A recent study propagated a brain-derived fibril fragment in order to obtain structural information on fibrils that most closely resembles those formed in the AD brain.\cite{Paravastu:2009fi} -- These points aren't going anywhere.
+
+% http://onlinelibrary.wiley.com/doi/10.1111/j.1742-4658.2010.07888.x/abstract?systemMessage=Wiley+Online+Library+will+be+disrupted+on+15+December+from+10%3A00-12%3A00+GMT+%2805%3A00-07%3A00+EST%29+for+essential+maintenance
+
+\subsection{Non-fibrillar oligomers}
+
+Because of their structural disorder and transient nature, obtaining high resolution structural details of amyloid oligomers using traditional structural determination techniques have been impeded. EM and AFM experiments have shown that transient, unstable particles may appear prior to the formation of fibrils (``on-pathway'' oligomers).\cite{Chromy:2003p2575,Ahmed:2010p5694,Caughey:2003jq} Those that do not progress to form fibrils are considered as off-pathway.\cite{Kayed:2003en} However, off-pathway oligomers formed in the presence of detergents, lipids, and certain small molecules are typically not considered to be biologically-relevant.\cite{Yu:2009p2873,Laurents:2005ki}
+% Oligomers may either be on-pathway to fibril formation, that is, they serve only as intermediates, while others themselves may be the endpoints of aggregation.
+% Currently, the precise mechanism involved in the transition from oligomers to extended amyloid fibrils is not known.
+
+Unlike fibrils, amyloid oligomers do not possess a generic structural element and instead, adopt a wide spectrum of sizes and morphologies. Size exclusion chromatography (SEC) studies of \abeta40\ oligomers (isolated in vitro and from brains of deceased individuals with Alzheimer's Disease) showed dimers to large oligomers with hundreds of peptides.\cite{Haass:2007db,Walsh:2007fu} Oligomeric assemblies that are annular, spherical, or curvilinear in shape have been reported in literature.\cite{Haass:2007db,Kim:2009p2715,Lashuel:2002eg}
+
+% This was directly copied from Fandrich 2012
+Although there are large variations in morphologies, oligomers formed from different polypeptide sequences can display similar activities in cell metabolic assays.\cite{Bucciantini:2002un} Importantly, many oligomers share the ability to interact with an oligomer-specific antibody.\cite{Kayed:2003en,Glabe:2008p130} % Large spherical oligomers (3-10nm in diameter) formed from disparate sequences have been shown to binding to a single antibody, which suggests that they may share similar structural elements.
+Several studies have indicated that oligomers may possess high $\beta$-sheet content.\cite{Chimon:2007du,Ahmed:2010p5694,Campioni:2010hz} % also bind dyes Thioflavin T (ThT) and Congo Red (CR).\cite{Walsh:2007fu,Haass:2007db,Kodali:2007cz}
+Moreover, some non-fibrillar oligomers may contain common structural elements: high-resolution structural studies of non-fibrillar oligomers of \abeta42\ and prion-like peptides suggest that they may contain \crossb\ like fragments.\cite{Walsh:2010p4761,Stroud:2012dp,Chimon:2007du}
+ % Should briefly read up on the book chapter by Pat Walsh and cite him
+ 
+% Although oligomers particles may be \bsheet-rich, they are morphologically distinct from fibrils (Figure~\ref{fig:oligomers}).\cite{Walsh:2009p1235}.  
+% And may contain random-coil-like conformations\cite{Sandberg:2010ix}
+
+% References for the morphologies from Pat's thesis introd -- (Janson et al. 1999; Conway et al. 2000; Lashuel et al. 2002)
+%Conway, K. A., Harper, J. D. and Lansbury, P. T., Jr. (2000). Fibrils formed in vitro from alpha-synuclein and two mutant forms linked to Parkinson's disease are typical amyloid. Biochemistry, Vol. 39, No. 10, pp. 2552-63.
+%Conway, K. A., Lee, S. J., Rochet, J. C., Ding, T. T., Williamson, R. E. and Lansbury, P. T., Jr. (2000). Acceleration of oligomerization, not fibrillization, is a shared property of both alpha-synuclein mutations linked to early-onset Parkinson's disease: implications for pathogenesis and therapy. Proceedings of the National Academy of Sciences of the United States of America, Vol. 97, No. 2, pp. 571-6.
+%Janson, J., Ashley, R. H., Harrison, D., McIntyre, S. and Butler, P. C. (1999). The mechanism of islet amyloid polypeptide toxicity is membrane disruption by intermediate-sized toxic amyloid particles. Diabetes, Vol. 48, No. 3, pp. 491-8.
+
+%\begin{table}%\footnotesize
+% \begin{center}
+% \vspace{10pt}
+% \caption{Summary of proteins which form amyloids}
+% \label{tbl:amyloid_diseases}
+%  \begin{tabular}{| c | c | c | c |}
+% \hline
+% Peptide & Study & fibrils & oligomers \\
+% \hline
+% \abeta\ & REFs & yes & yes \\
+% alpha-synuclein & REFs & yes & yes \\
+% \hline
+%  \end{tabular}
+% \end{center}
+%\end{table}
+
+% Outline some of the ideas / hypothesis about the link between amyloid and disease, but don't go into what people speculate or data on toxicity. It is related, but this is out of the scope of your thesis.
+% Although not the focus of this thesis, understanding the mechanism of toxicity and elucidating the underlying toxic species will be important in the development of future drug candidates.
+%Papers talking about the links of oligomers to disease\cite{Lansbury:2006p928,Lashuel:2006co}
+\section{Amyloid involvement in diseases}
+
+Because numerous diseases shared the amyloid plaque pathology, fibrils were initially hypothesized to be the toxic species in these diseases.\cite{Hardy:2002dh} However, recent research has implicated non-fibrillar oligomers as the more likely toxic agent in the cause of several neurodegenerative diseases, and type II diabetes.\cite{Haass:2007db,Xue:2009da,Berthelot:2013fs} % (Baglioni 2006)
+Currently, the mechanism of toxicity of amyloid oligomers has not been determined, and is an area under intensive research.  Oligomers formed from a variety of peptides, including those not implicated in amyloid disorders (e.g. lysozyme, $\beta$2-microglobulin, transthyretin) all exhibited toxicity, suggesting that the toxicity of amyloid oligomers may be independent of the peptide sequence.\cite{Fandrich:2012kb,Kayed:2003en} Experimental evidence widely supports that this generic mechanism of toxicity is due to the ability of oligomers to interact with the cellular membrane.\cite{Martins:2008bz,Walsh:2007fu} It is hypothesized that oligomeric aggregates may ultimately induce cell death by interacting with and disrupting the integrity of the cellular membrane.\cite{Fandrich:2012kb} Moreover, the aggregation of amyloidogenic peptides was found to be enhanced on membrane surfaces,\cite{McLaurin:1997wm,Kayed:2004ul,Yip:2002vx} and that membrane-catalyzed fibril formation may induce cellular toxicity.\cite{Yip:2001tl}
+
+% Some studies have suggested that A$beta$ oligomers can increase membrane conductance without the formation of channels.
+% Exam question: How does inositol eliminate toxicity of oligomers?
+
+\section{Alzheimer's Disease}
+Alzheimer's Disease (AD) is a devastating neurodegenerative disease that is the most common cause of dementia in persons of age 65 or older. Upon examination, the post-mortem brains of AD patients show significant neuronal dystrophy. Pathologically, AD is characterized by the presence of extracellular deposits of senile plaques and neurofibrillary tangles (NFTs), both of which appear as lesions on stained neuronal tissue under light microscopy (Figure~\ref{fig:AD_tissue_pathology}).
+
+% Biochemistry of the A$beta$ peptide.
+In 1985, the amyloid-$\beta$ protein or \abeta\ was identified as the largest component of these plaques.\cite{Masters:1985wb}
+% Review paper on AD from science \cite{Hardy:2002dh}
+% C.L.Masters etal.,Proc.Natl.Acad.Sci.U.S.A.82,4245 (1985)
+% G.G.Glenner,C.W.Wong,Biochem.Biophys.Res. Commun. 120, 885 (1984).
+Monomeric \abeta\ is an approximately 4 kDa peptide produced by the intramembrane proteolytic cleavage of a larger protein, amyloid-$\beta$ precursor protein (APP).\cite{Hardy:2002dh}
+% \abeta\ is produced constitutively as part of the normal cellular metabolism.
+APP is sequentially processed by the aspartyl proteases $\beta$-secretase and $\gamma$-secretase, where depending on the position of the cleavage by $\gamma$-secretase, a pool of \abeta\ peptides of lengths varying from 38 to 43 residues are produced (Figure~\ref{fig:AD_abeta_app}).\cite{Gandy:2005dd} The peptides spanning residues 1-40 (\abetaforty) or 1-42 (\abetafortytwo) are predominantly found in AD-associated plaques.\cite{Golde:2000vg,Holtzman:2011gi} Although plaques contain different isoforms of the A$\beta$ peptide, \abetafortytwo\ is likely to be the more deleterious form of \abeta. In vitro, \abetafortytwo\ displays significantly higher propensity for aggregation than \abetaforty, despite differing by only two amino acids.\cite{Barrow:1992vz,Jarrett:1993ti,ElAgnaf:2000vr} Furthermore,  genetic mutations within presenilin 1 and 2 (genes encoding enzymes that cleave APP to produce A$\beta$ peptides) cause an aggressive early-onset form of AD which also lead to an increase in the ratio of \abetafortytwo\ to \abetaforty\ peptides produced.\cite{Hardy:1997tu,KumarSingh:2006kc,Bentahir:2006ih}
+
+% Pathological characterization
+\begin{figure}
+ \centering
+ \includegraphics[width=2.5in]{figures/introduction/AD_tissue_pathology.pdf}
+ \caption[AD tissue pathology]{Lesions formed from amyloid plaques and NFT tangles in the cerebral cortex tissue of an AD brain. Reprinted from The Lancet, Vol. 368, Kaj Blennow; Mony J de Leon; Henrik Zetterberg, Alzheimer's Disease, 387-403., Copyright 2006, with permission from Elsevier.}
+ \label{fig:AD_tissue_pathology}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=6in]{figures/introduction/AD_abeta_app.pdf}
+\caption[APP processing]{A schematic of the production of A$\beta$ via the proteolytic processing of amyloid precursor protein is depicted in (A). The peptide sequence of A$\beta$42 is shown in (B).}
+\label{fig:AD_abeta_app}
+\end{figure}
+
+% There must be tons of other things that happen in AD .... I‚Äôve made it seem like these oligomers are the only thing that matters.   Perhaps add sentences saying what initiates the disease .. the formation of toxic oligomers. Were the toxicity hypothesis of oligomers for AD have direct evidence from human brain? Look for this.  Or was it just pieced together from a bunch of separate animal and cell culture studies? Maybe all of the above.
+Although it has been more than one hundred years since Alois Alzheimer first associated the presence of neuronal plaques with the clinical symptoms of Alzheimer's disease (AD), the exact relationship between the two is still under much contention.\cite{Hardy:2002dh} The ubiquitous presence of amyloid plaque deposits found in the brains of deceased dementia patients led to the formulation of the long-standing amyloid cascade hypothesis: the amyloidogenesis of \abeta\ plays a key role in the initiation of AD, which ultimately leads to the clinical symptoms of dementia.\cite{Hardy:2002dh} Genetic evidence provided strong support for the amyloid hypothesis: in those with trisomy 21 (occurring in Down's syndrome), the chromosome responsible for encoding APP,  the overproduction of A$\beta$ leads to early-onset of dementia with AD-like plaque load.\cite{Goate:1991kc,LevyLahad:1995vga} Furthermore, in persons with early-onset familial AD, genetic mutations on the APP lead to the production of A$\beta$ peptides with increased aggregation propensities.\cite{Tam:2012vz}
+% TODO: Add which mutations -- should I?  I have them in a introduction of a chapter.
+
+% Tau protein - Keep discussion brief
+In addition to the presence of amyloid plaques, another hallmark of AD is the intracellular deposition of neurofibrillary tangles (NFTs) composed of aggregated hyperphosphorylated forms of the microtubule-associated protein tau.\cite{Ballatore:2007ir} % These tau aggregates have a high $\beta$-sheet content that ultra-structurally appears as paired helical filaments (PHFs) (28, 29).\cite{Holtzman:2011gi}
+The role of the tau protein and its interactions with amyloid in the pathogenesis of AD are still being established.\cite{Ittner:2010he} Studies with mouse models currently suggest that the role of NFTs in AD may be downstream to that of \abeta: A$\beta$ plaque pathology was not developed in a tau transgenic mouse model, whereas A$\beta$ formation in APP transgenic mice was found to induce hyperphosphorylation of tau.\cite{Gotz:2004dr} 
+
+% A$beta$ and tau review paper -- \cite{Ittner:2010he}
+ % More details on evidence which show that NFTs are not likely the causative species.
+% I think this detail about abeta aggregation in vivo is NICE TO KNOW but could be left out of the thesis.
+% The concentration of A$beta$ in the CSF is in the low nanomolar range, but in vitro data shows that the critical concentration for aggregation is in the micromolar range. How does it then aggregate in the brain - mechanism of raising the effective concentration.
+% In vitro models have been useful to screen compound libraries for inhibitors of agregation which may have therapeutic efficacy against AD.
+
+% This was a puzzling aspect of AD which did not fit with the amyloid cascade hypothesis which implicated fibrils as the key cause of toxicity.
+A puzzling aspect of AD is that the plaque load in the brain of dementia patients is often not correlated with their disease progression and severity.\cite{Hardy:2002dh,Naslund:2000wf} Instead, multiple lines of evidence indicate that synaptic loss and the severity of cognitive impairment are correlated with the concentration of soluble \abeta\ oligomers in the brain.\cite{Wang:1999fx,McLean:1999ud,Lue:1999vx} For example, oligomers extracted from AD brain can impair synapse structure and function.\cite{Shankar:2008bg}
+% Remember to edit this sentence a bit more as I lifted it .. \cite{Tam:2012vz} and references therein.
+ Moreover, when injected into the brains of animal models of AD, A$\beta$ oligomers decreased the number of synapses and impaired learning performance.\cite{Lesne:2006gx,Cleary:2005kt,Martins:2007bz,Tam:2012vz} Furthermore, cellullar models of toxicity displayed characteristic symptoms of neurotoxicity that lead to eventual apoptosis upon the addition of A$\beta$ oligomers prepared either in vitro or extracted from cell cultures.\cite{Cappai:2007bc,Lambert:1998ve,Walsh:2002p2566,Shankar:2008bg,Walsh:2007fu} Taken together, current experimental evidence indicates that preventing the formation of oligomeric forms of A$\beta$ may be a promising method of treatment for AD.
+% Don‚Äôt go into the structure here ... it was covered before... 
+%A variety of morphologically-different oligomers of \abeta\ have been isolated from the human brain, with the smallest of these oligomers dimeric in size (5).\cite{Roychaudhuri:2009iq}
+% Are referred to as ``diffuse'' plaques.\cite{Walsh:2007fu} 
+% For example, an oligomeric A? species, termed A??56, purified from the brains of mice in an AD mouse model, was found to disrupt memory functions when administered to young rats.
+% Lipids have been used to disassemble A? fibrils into smaller structures, which were seen to be highly active in mice.100 
+% Key studies which lead to the toxicity mechanisms. Pull some from\cite{Fandrich:2012kb}
+
+% Other review papers for abeta oligomers \cite{Roychaudhuri:2009iq,Sakono:2010kw}
+% SDS- stable low-n oligomers of Ab are the fundamental building blocks of insoluble amyloid deposits and could be the earliest mediators of neuronal dysfunction.\cite{Walsh:2007fu}
+% Evidence for the involvement of soluble, non-fibrillar Ab in AD has been gleaned through four distinct experimental approaches that utilize (i) synthetic Ab peptides; (ii) cell culture systems in which APP is over-expressed; (iii) APP transgenic mice; and (iv) human CSF and postmortem brain.
+% When Ab is deposited and aggregated in a non‚Äìb sheet (nonfibrillar) conformation, it is detected via immunohisto- chemical techniques as ‚Äúdiffuse‚Äù plaques (Fig. 1C). REF
+
+
+% Jarrett JT, Berger EP, Lansbury PT Jr. The carboxy terminus of the beta amyloid protein is critical for the seeding of amyloid formation: implications for the pathogenesis of Alzheimer‚Äôs disease. Biochemistry 1993; 32: 4693‚Äì97. 
+% Walsh DM, Selkoe DJ. Deciphering the molecular basis of memory failure in Alzheimer‚Äôs disease. Neuron 2004; 44: 181‚Äì93.
+
+% In addition, \abetaforty\ and \abetafortytwo\ also have distinct aggregation pathways in vitro: \abetafortytwo\ is found to form a morphologically more diverse population of intermediate oligomers than \abetaforty.\cite{Bitan:2003ut} 
+
+% What about mice studies? LOOK AT DAVIS THESIS FOR MORE REFERENCES THERE IN SUPPORT OF ABETA42
+
+% Soluble oligomers - structure? toxicity on cells? rats? mouse?
+% What kind of an effect do they have? Synaptic toxicity.
+
+% Take a look at how Lemkul covers this section and transitions to it.
+% In this section, I will provide an overview of some of the challenges to overcome when developing a small molecule therapeutic for Alzheimer's disease. Furthermore, using this information, I will motivate why inositol is an exciting avenue to explore.
+% Briefly mention non-small molecule putative therapies which also acts via amyloid inhibition. The focus of this thesis will be on small-molecule amyloid inhibition.
+% Amyloid inhibition as a treatment for Alzheimer's disease and related amyloid disorders. 
+% Talk about how important it is to develop drugs for these amyloid disorders 
+\section{Amyloid inhibition by small molecules: a promising method of treatment for AD} 
+
+With the longevity of our population, AD is approaching epidemic proportions with no cure or preventative therapy available.\cite{Blennow:2006wd} In 2010, it was estimated that 36 million people in the world were suffering from AD, and is projected to grow to 115 million people by the year 2050.\cite{alzreport:2012} Furthermore, there are no drugs which may target the underlying disease: approved treatments today such as donepezil (a cholinesterase inhibitor), and memantine (a N-methyl-D-aspartate antagonist) only mitigate cognitive symptoms.\cite{Mangialasche:2010eg}
+
+%\cite{(4) The 2012 PhRMA Report on Medicines in Development: Alzheimer‚Äö√Ñ√¥s disease. See www.phrma.org.} 
+
+% PhRMA reports in their 2012 Medicines in Development Report for AD4 that there are currently 93 medicines in various stages of development, both small molecule and biologic. In general, all 93 compounds fall into one of the following therapeutic strategies: (1) agents targeting neurotransmission, (2) agents targeting A≈í‚â§ production, (3) agents targeting A≈í‚â§ aggregation, (4) agents targeting A≈í‚â§ clearance, (5) agents increasing brain resistance to A≈í‚â§, (6) agents targeting tau protein, and (7) agents targeting neurotrophins and agents modulating synaptic plasticity and nerve growth.1‚Äö√†√≠4 \cite{From the ACS neurochem's editorial letter}
+
+% (1) Data from the Alzheimer‚Äö√Ñ√¥s association. See www.alz.org.
+% (2) Data from Alzheimer‚Äö√Ñ√¥s foundation. See www.alzfdn.org.
+% (3) Mangialasche, F. M., Solomon, A., Winblad, B., Mecocci, P., and Kivipelto, M. (2010) Alzheimer‚Äö√Ñ√¥s disease: clinical trials and drug devleopment‚Äö√Ñ√¥. Lancet Neurol. 9, 702‚Äö√†√≠716. Special Issue: Alzheimer's Disease Published: November 21, 2012
+% (4) The 2012 PhRMA Report on Medicines in Development: Alzheimer‚Äö√Ñ√¥s disease. See www.phrma.org. -- I should have a look at this report
+% (5) Sadeghi-Nejad, N. (2012) The Lessons of failure: what we can learn from bapineuzumab‚Äö√Ñ√¥s blowup. Forbes (Pharma & Healthcare), August 7, 2012.
+% (6) For information of the clinical trials with MK-8931, see www. merck.com.
+
+%\textbf{Need to funnel down to sm inhibition.} 
+Hence, it is imperative that efforts be made toward the development of therapeutics for AD. The vast number of structural and biochemical studies on amyloid structure have been crucial for the development of potential therapeutics for treating the underlying disease. A detailed review of treatment methods which target the underlying disease is provided elsewhere.\cite{Salomone:2012fh} In recent years, small-molecule compounds with the ability to reduce the formation, deposition and accumulation of A$\beta$ amyloid aggregates have emerged as a promising method of treatment of AD. 
+%Small molecules which prevent amyloid formation may be an effective method of treatment for amyloid disorders because of the potential to treat the underlying disease. 
+In vitro screenings led to the discovery of a large number of small molecules that may affect the amyloid aggregation pathway.\cite{Ryan:2012bh} Some of these inhibited amyloid fibrils, whereas others arrested or reduced non-fibrillar oligomer formation.\cite{Necula:2007p5049,LeVine:2007jd} % small molecules are thought to act by directly binding to amyloidogenic peptides and aggregates.\cite{Necula:2007p5049} Explain the desirable traits of a drug for AD, and the pharmacological challenges which finding a small-molecule inhibitor of AD presents. 
+
+A key pharmacological challenge of developing a drug for AD and other neurodegenerative diseases involves developing small molecules with the ability to penetrate the blood-brain barrier (BBB) in sufficient concentrations in the brain to achieve their therapeutic effects (ie. to inhibit amyloid formation).\cite{Hawkes:2009gu,Hubbard:2011fs} Although many small molecules appear to be effective in preventing amyloid formation in vitro, and attenuating their toxicity in cell cultures, many of them display poor BBB penetration and high toxicity to be immediately useful as therapeutics.
+% Concentration at which the small molecule acts. BBB penetration and bioavailability.
+Below we provide an overview of small-molecule inhibitors that are in vitro and in vivo inhibitors of amyloid fibrillation.  Clinical trial data is mentioned if it is available.
+% \cite{Necula:2007p5049,LeVine:2007jd}
+% review of small molecule inhibition \cite{LeVine:2007jd} \cite{Hard:2012gi}
+% Note that here I can take a cue from Justin Lemkul`'s recent review paper.
+
+\begin{figure}
+\centering
+\includegraphics[width=4.5in]{figures/introduction/dyes.pdf}
+\caption[Amyloid-binding dyes]{Chemical structure of amyloid-binding dyes Congo red and thioflavin T.}
+\label{fig:amyloid_dyes}
+\end{figure}
+
+% Questions to answer for the sections below on the various small molecule inhibitors.
+% Is it specific to A$beta$ amyloid inhibition? Or fibril structure or what? 
+% Any measured concentration of acitivity, IC/EC50, Kd of binding?
+% Biophysical data of binding and whether they've been adapted into a drug or were there attempts made to adapt into a drug.
+% Molecular mechanism of binding of dye molecules. Thought to bind flat on on the surface grooves of amyloid fibrils where they interact with hydrophobic groups exposed at the surface. 
+ % Doesn't explain why the dye molecules are also able to suppress fibril formation.
+ % What they are used for ... why one is used over the other. Contrast binding modes, and binding mechanisms, and binding constants. 
+ % Make this section tight. Lots of repeat information. Lots of confusing data. Lots of biophysical characterization but still no exact mechanism.
+ % Question: Can the birefringence be explained by these binding modes? -- this is out of the scope of my thesis. Don't put this in my thesis but I should be able to coherently explain this during my defense.
+
+% Congo Red (CR) -- DISCUSS ITS PUTATIVE BINDING MODES with amyloid fibrils. What are some binding measurements IC or EC50 values? micro molar? milimolar?
+
+\subsection{Dye-based molecules}
+
+Among the first compounds discovered to bind amyloid fibrils were the dyes molecules used to identify their presence (Figure~\ref{fig:amyloid_dyes}). Congo red (CR) was initially used in the histological detection of amyloid binding, where upon binding with CR, fibrils exhibit red-green birefringence when viewed with polarized light.\cite{Frid:2007bo} The binding affinity of CR with various fibrils is in the range of 0.1 - 1.5 \micromolar.\cite{Lendel:2009cg,Benditt:1970va,Klunk:1989vc}
+% Where was this number taken from?
+% \textbf{detailed studies}
+% \textbf{Putative binding modes of CR molecules with the amyloid fibril are most likely to be bound along the long axis of the fibril. Binding studies where chemical modifications to CR suggest that both ionic and hydrophobic interactions may be important for its binding as disruption of either can affect its binding affinity.  Although CR is typically used to detect the presence of fibrillar aggregates, CR may also interact with non-fibrillar conformations such as monomers of alpha-synuclein, and alpha-helical form of poly-L-lysine}.\cite{Maltsev:2012kw} 
+
+Early amyloid detection using CR revealed that CR not only binds to fibrils, but can also affect the amyloid aggregation pathway by interacting with one or more amyloidogenic species.\cite{Caspi:1998vt}
+% Add more refs here -- perhaps a general review of congo red binding.
+Fibril formation of amyloidogenic proteins A$\beta$,\cite{Esler:1997bq} prion,\cite{Rudyk:2000ta} and immunoglobulin light chain variable domain (SMA)\cite{Kim:2003hv} were found to be promoted by the presence of CR at low molar ratios, and inhibited at high molar ratios. 
+% \textbf{Not sure if this idea belongs here} Furthermore, it can also self-aggregate in solution to form complexes, which may play a role in its binding mechanism to amyloid peptides and aggregates.\cite{Maltsev:2012kw,Lendel:2009cg}
+% Study on CR which shows that it can interact with ThT to interfere with amyloid detection \cite{Buell:2010p9457}
+
+Although CR exhibits anti-amyloidogenic and anti-prion properties, its carcinogenic properties makes it a poor therapeutic candidate.\cite{Hawkes:2009gu} Therefore, efforts were applied to find CR-based analogues, which maintain their anti-fibrillar aggregation activities, but improved the toxicity profile and BBB bioavailability. Chrysamine G (CG) is one such analogue of CR. CG has higher lipophilicity and lowered toxicity, and is capable of inhibiting aggregation and amyloidogenic toxicity in vitro and in vivo.\cite{Klunk:1994um,Klunk:1998vm,Reinke:2007p155,Ishii:2002uf}
+% lipophilic - ``fat-loving''
+% Citations
+% A Chemical Analog of Curcumin as an Improved Inhibitor of Amyloid A$beta$ Oligomerization
+
+% Moved ThT binding to the molecular mechanism section.
+
+% Other dye-based inhibitors:
+% Methylene Blue is a histological dye molecule (which dye is it based on?) shown to promote the fibrillation of Abeta.
+% According to Joanne, it is coming back in clinical trials -- I don't think I need to include this here.
+% http://www.ncbi.nlm.nih.gov/pubmed/17595112
+
+% Imaging agents -- I think I should also leave this to good to know. I'm not writing a general review here of the uses of different compounds. I'm talking about what we know about the binding mechanism of various compounds for the inhibition of amyloid formation as a therapy for amyloid disorders.
+% In addition to the modification of dyes for the development of therapies, dye molecules have also been used as scaffolds to develop new imaging agents.  One such compound is Pittsburgh compound B (PiB), a derivative of ThT, where chemical modifications to ThT led to a much higher binding affinity (in the nanomolar) for amyloid fibrils, and improved BBB penetration.\cite{Raji:2008cv}
+
+% Kill this for now -- Crystallography study of orange-G, a dye-based ...., with amyloidogenic fibril fragments of Tau and Abeta, showed that Orange-G intercalated between sheets by making both nonpolar and electrostatic interactions.\cite{Landau:2011gu}
+
+%\begin{table}%\footnotesize
+% \begin{center}
+% \vspace{10pt}
+% \caption{Summary of small molecules known to affect amyloid formation}
+% \label{tbl:inhibitors}
+%  \begin{tabular}{| c | c | c |}
+% \hline
+% Molecule & Study & Mechanism of action \\
+% \hline
+% ThT & REFs & Binding to fibrils \\
+% EGCG & REFs & Binding to toxic oligomers \\
+%	 \hline
+%  \end{tabular}
+% \end{center}
+%\end{table}
+
+% Where are they found? Plants, animals, in food. What are they used for in nature?
+% Chemical features of polyphenols? Properties? Soluble?
+% What is known about their molecular mechanism?
+%\textbf{What other diseases can they treat?}
+% for AD
+% \textbf{summarize some in vitro studies}
+% \textbf{summarize some mouse studies}
+%\textbf{Their pharmacological properties ... toxicity in the context of treating brain diseases ... }
+%\textbf{Has there been any trials using them? Good to indicate here.}
+% Curcumin is a flavonoid, resveratrol is not.
+\subsection{Polyphenols}
+\begin{figure}
+\centering
+\includegraphics[width=5.5in]{figures/introduction/polyphenols.pdf}
+\caption[Polyphenol molecules]{Chemical structures of flavonoids curcumin, EGCG and resveratrol.}
+\label{fig:polyphenols}
+\end{figure}
+
+Polyphenols form a class of molecules found naturally in plants, and are composed of one or more aromatic phenolic rings, with multiple hydroxyl groups around these rings.  Because of their antioxidant properties, the consumption of polyphenols have been reported to be beneficial for health.  For example, \resve, a polyphenol found in red wine and  -epigallocatechin-3-gallate (EGCG), a major phenolic component of green tea, were found to have cancer-preventative properties.\cite{Baur:2006bx,Singh:2011ec} Currently, several clinical trials which examine their efficacy in cancer treatments are underway.\cite{Baur:2006bx,Singh:2011ec} In recent years, polyphenols have gained additional attention due to their potential for treating AD.\cite{Porat:2006fn} Here we provide an overview of the compounds resveratrol, EGCG and curcumin, which have been well-characterized for their ability to inhibit amyloid formation.
+
+In vitro, \resve\ inhibits the fibril formation of \abeta\ and the islet amyloid polypeptide (involved in type II diabetes), and attenuates amyloid-induced cellular toxicity.\cite{Ono:2008bl,Feng:2009p2240} Similarly, EGCG molecules promote self-assembly of amyloidogenic peptides \abeta\cite{Ehrnhoefer:2008fd} and \alphas\cite{Bieschke:2010ju} into ``off-pathway'' oligomers and inhibit the formation of mature fibrils by directly binding to monomeric forms of these peptides. Cell culture experiments indicate that micromolar concentrations of EGCG are protective against A$\beta$-induced cell death.\cite{Levites:2003wm,Bastianetto:2006du} Curcumin, the main constituent of the spice turmeric, was reported to inhibit A$\beta$ aggregation with IC$_{50}$ values between 0.1-1 \micromolar.\cite{Singh:2012df,Ono:2004td,Hamaguchi:2009p2874,Kim:2005wk} 
+
+
+% Resveratrol, a polyphenolic molecule found in grapes, red wine and berries, is well-known for its link to the cardioprotective benefits of drinking red wine. 
+% EGCG is the major polyphenolic component of green tea, and is well-known for its cancer-preventative effects, which are supported by multiple cell culture, animal, and clinical studies.  
+% Resveratrol is current under phase II of clinical trials to determine if resveratrol therapy is beneficial in improving the cognitive function in people with AD.
+% Experimental studies of several flavonoids, depicted in Figure~\ref{fig:polyphenols},  are able to modulate amyloid aggregation. Because of their favorable in vivo toxicity and high IC50 of inhibition, they have emerged as promising therapeutic candidates for Alzheimer's Disease and related neurodegenerative diseases.
+
+
+% Studies with AD mice models have suggested that \cur\  can penetrate the BBB in AD.REF
+% Although this is the case, \cur\ is likely to have poor bioavailability when administered orally:  in rats that were fed \cur\, negligible amounts of the compound were detected in their blood, and high doses were required to attain detectable doses in tissue levels. 
+
+Because of their anti-amyloidogenic activity, low toxicity, and ability to permeate across the BBB, polyphenols display therapeutic potential for the treatment of AD and related neurodegenerative diseases.  Although it is well-known that ECGC, curcumin and resveratrol inhibit amyloid aggregation in vitro, their mechanism of action is still unknown. A key disadvantage of these polyphenol molecules is their high metabolic activity in the gastrointestinal system, which leads to poor absorption when administered orally.\cite{Baur:2006bx,Smith:2011iq,Hamaguchi:2010wu} Clinical trials to measure their efficacy in the treatment of AD are currently underway.
+%Curcumin clinical trials --- Although no adverse events were reported, and the Because these trials only involved a small number of people (between 11 - 34),  the effects of \cur\  on cognitive function are inconclusive.\cite{Hamaguchi:2010wu}
+
+% Do they have all similar mechanism of action in vitro? 
+% \textbf{summarize some in vitro studies}
+% \textbf{summarize some mouse studies}
+
+
+%19. Porat Y, Abramowitz A, Gazit E (2006) Inhibition of amyloid fibril formation by polyphenols: Structural similarity and aromatic interactions as a common inhibition mechanism. Chem Biol Drug Des 67(1):27‚Äì37.
+%20. Ehrnhoefer DE, et al. (2008) EGCG redirects amyloidogenic polypeptides into un- structured, off-pathway oligomers. Nat Struct Mol Biol 15(6):558‚Äì566.
+%21. Bieschke J, et al. (2010) EGCG remodels mature ?-synuclein and amyloid-? fibrils and reduces cellular toxicity. Proc Natl Acad Sci USA 107(17):7710‚Äì7715.
+%22. Ladiwala ARA, Dordick JS, Tessier PM (2011) Aromatic small molecules remodel toxic soluble oligomers of amyloid ? through three independent pathways. J Biol Chem 286(5):3209‚Äì3218.
+%23. Lemkul JA, Bevan DR (2012) Morin inhibits the early stages of amyloid ?-peptide aggregation by altering tertiary and quaternary interactions to produce ‚Äúoff-pathway‚Äù structures. Biochemistry 51(30):5990‚Äì6009.
+%24. Sinha S, et al. (2012) Comparison of three amyloid assembly inhibitors: The sugar scyllo-inositol, the polyphenol epigallocatechin gallate, and the molecular tweezer CLR01. ACS Chem Neurosci 3(6):451‚Äì458.
+%25. Lopez del Amo JM, et al. (2012) Structural properties of EGCG-induced, nontoxic Alzheimer‚Äôs disease A? oligomers. J Mol Biol 421(4-5):517‚Äì524.
+%26. DeToma AS, Choi J-S, Braymer JJ, Lim MH (2011) Myricetin: A naturally occurring regulator of metal-induced amyloid-? aggregation and neurotoxicity. ChemBioChem 12(8):1198‚Äì1201.
+
+%\subsection{Non-steroidal Anti-inflammatory compounds (NSAIDs)}
+%% Naproxen and ibuprofen
+%% From \cite{Takeda:2010gx,Raman:2009jn}
+%CUT THIS SECTION DOWN
+%
+%% I don't think I need to include a whole paragraph summarizing ibuprofen. It's the same story as inositol.
+%One of the potential candidates is a nonsteroidal anti-inflammatory drug (NSAID) naproxen and ibuprofen (\ref{fig:nsaids}).\cite{XXX} Epidemi- ological studies have shown that chronic prophylactic intake of naproxen moderately reduces the risk of AD.12,13 Furthermore, reexamination of the results of large-scale clinical trials suggests that under certain conditions naproxen can reduce the AD risk by 67\%.11
+%
+%Biomedical studies suggest that treatment with ibuprofen reduces the amount of Ab deposits and alleviates memory deficits in mice models (17,18). Ibuprofen intake also correlates with a decrease in the amount of Ab oligomers in mice brain tissues (18). A prophylactic long-term use of ibuprofen appears to reduce the risk of AD (19), but the effectiveness of this drug against preexisting AD cases is unclear (20). 
+%
+%Several recent experimental studies have investigated the molecular aspects of interactions between Ab and ibuprofen. Binding of ibuprofen to Ab fibrils has been demonstrated when the ligand/peptide stoichiometric ratio approximates or exceeds 1 (21,22). 
+%
+%Experimental in vitro studies have shown that ibuprofen reduces accumulation of Ab fibrils by apparently interfering with fibril elongation (23). Furthermore, ibuprofen demon- strates an ability to at least partially dissociate preformed Ab fibrils (21,23).
+%
+%\begin{figure}
+%\centering
+%\includegraphics[width=4in]{figures/introduction/nsaids.png}
+%\caption[NSAIDs]{NSAIDs}
+%\label{fig:nsaids}
+%\end{figure}
+
+\subsection{Inositol}
+% Here we will review the physiological role of inositol in nature, and introduce inositol as a potential therapeutic for amyloid disorders. Here, use the physiological role of myo-inositol as a lead to transition into its role in amyloid inhibition.
+\begin{figure}
+	\centering
+	\includegraphics[width=5in]{figures/introduction/inositol.pdf}
+	\caption[Inositol stereoisomers]{The nine stereoisomers of inositol.}
+	\label{fig:inositols}
+\end{figure}
+
+Inositol which has the molecular formula of \ce{C_6H_{12}O_6}, is a class of simple polyols with nine naturally occurring stereoisomers (Figure~\ref{fig:inositols}).\cite{Fisher:2002tk} Out of these nine isomers, seven are optically inactive, and the remaining two (L- and D-\emph{chiro}-inositol) are chiral enantiomers (Figure~\ref{fig:inositols}).\cite{Fisher:2002tk} \emph{myo}-Inositol, the most abundant isomer, is ubiquitous in all eukaryotes and is a physiologically important osmolyte. \cite{Fisher:2002tk} Furthermore, \emph{myo}-inositol is a precursor for inositol lipid synthesis: it is a constituent of phosphatidylinositol, an important phospholipid in membranes and second messenger systems.\cite{Fisher:2002tk} Once phosphorylated, \emph{myo}-inositol phosphatides act as second messengers in intracellular signal transduction pathways.\cite{Fisher:2002tk} 
+% Add some specific pathways which involves inositol are XXX ... YYY.\cite{Michell:2008dh}
+
+Inositol is found in high concentrations in tissues of the human central nervous system (CNS): \myo\ and \scylloi\ have approximate concentrations of 5 and 0.1 - 0.5 mM in the CNS, respectively.\cite{Fisher:2002tk} Accordingly, inositols also function as osmolytes in the CNS, where alterations in their concentrations are known to be associated with neuropathological conditions.\cite{Michaelis:1993gf, Fisher:2002tk}
+
+% Role of inositol in amyloid inhibition. Here, include the background on how inositol was discovered as an \abeta\ amyloid fibril inhibitor. Should try to make it into a little story of how inositol was discovered. 
+In recent years, \scylloi\ have been identified as a promising therapeutic candidate for the treatment of Alzheimer's Disease. Inositol was discovered as a possible amyloid inhibitor in a study where lipid bilayers composed of acidic phospholipids were found to induce $\beta$ structure in monomeric \abeta42.\cite{McLaurin:1996p584} Upon closer examination, \emph{myo}-inositol, the headgroup of phosphatidylinositol, was found to be responsible for the induction of non-fibrillar $\beta$-sheet structure.\cite{McLaurin:1998p3976, McLaurin:1998p3149} This finding led to in vitro studies which demonstrated stereochemistry-specific effects of inositol on \abeta\ fibril inhibition and cytotoxicity: \scyllo, \myo, and \epi, but not \chiroi\ inhibit \abeta42 fibril assembly, stabilize an oligomeric complex of \abeta42, and attenuate A$\beta$-oligomer-induced neurotoxicity in vitro.\cite{McLaurin:2000bq} Studies with a transgenic mouse model of AD demonstrated that the decrease in their AD-like symptoms after \emph{scyllo}-inositol treatment was correlated with a decrease in the levels of soluble \abeta\ oligomers, suggesting that its beneficial effects are attributed to a reduction in the amount of high-order \abeta\ oligomers.\cite{McLaurin:2006eb}
+
+% I think this is an important paragraph, except I'm not entirely clear on An important therapeutic advantage of scyllo-inositol is its ability to readily crosses the blood brain barrier (BBB) (both actively and passively transported). Because it is not enzymatically broken down in the gut, it may be adapted into an orally-administered drug. Although scyllo-inositol is found naturally in certain plant organisms and ..., quantities needed for it to be an effective therapeutic is synthesized inside the body ... or can be obtained via nutrition?
+
+Presently, \scylloi\ has completed both phase I and II of human clinical trials for the treatment of AD.\cite{Salloway:2011im} In phase I trials, based on indicators such as brain plasma and CSF concentration, \scylloi\ was found to be non-toxic to healthy individuals at concentrations effective for amyloid inhibition. From 2007 to 2011, phase II studies of \scylloi\ were conducted with three dosage groups, where subjects in each group (comprised of 84 to 91 people) were administered 250 mg, 1000 mg or 2000 mg of \scylloi\ (ELN005) orally twice a day. However, because of greater incidences of serious adverse events at the two higher dosages, only the lower dose was continued. Due to the decrease in the statistical power of the study after the removal of the high dosage groups, the efficacy of \scylloi\ was not conclusive.\cite{Salloway:2011im} Taken together, these results suggest that \scylloi\ may be a promising therapeutic for the treatment of AD, but that further improvements to enhance their therapeutic properties are most likely needed.\cite{Nitz:2008jl,Sun:2008ko} % Should add something to the effect of ``but further improvements of inositol therapeutics are needed, particularly because they failed clinical trials...''
+
+%\subsection{Commonalities between small molecules}
+\section{Protein-ligand binding equilibria}
+% Note that I have yet to really find any study with measured Kd or IC50 for amyloid inhibiiton
+
+% These references will help me in part flesh this section out.\cite{Lu:2010jh,Kortagere:2010fc,Nunez:2012il,Copeland:2011dl,Prinz:2008kr,Sikazwe:2012gu,Copeland:2006bb}
+Binding kinetics is concerned with the rate constant of ligand association (\kon) and dissociation (\koff). The ratio of the dissociation to the association rate constants establishes the equilibrium dissociation metric of the ligand ($K_{d}$ = \koff/\kon), which determines the fraction of receptor occupancy at specific ligand concentrations. For the binding reaction given by
+\begin{equation}
+\left[ Protein\cdot Ligand \right] \rightleftharpoons \left[ Protein \right]+\left[ Ligand \right]
+\end{equation}
+ 
+  % \2 Absolute binding free energy
+  % \2 Relative binding free energy
+The associated equilibrium constant (or the dissociation constant) of the above reaction is,
+
+ \begin{equation}
+  K_{d} = \frac{\left[ Protein \right]\left[ Ligand \right]}{\left[Protein \cdot Ligand\right]},
+ \end{equation}
+
+$K_d$ is a measurement of the affinity of a ligand for its binding site on the host protein with a unit of concentration. Pharmacologically, it is interpreted as the concentration of ligand at which 50\% of the drug is bound to the protein. $K_d$ is often used as quantitative indication of drug potency when screening for potential lead compounds. $\Delta G$, the binding free energy of a ligand (with its receptor) is directly related to its $K_{d}$ by,
+ % Free energy equation
+%\begin{equation}
+%	K_{d} = e^{\frac{-\Delta G}{RT}}
+%\end{equation}
+\begin{equation}
+	\Delta G = -RT\ln K_{d}.
+\end{equation}
+
+
+% Binding strength of a ligand to a receptor is often quantitatively assessed by its equilibrium dissociation constants or the Gibbs free energy of binding.
+Hence, a small value of $K_{d}$ indicates that the ligand is tightly bound (i.e. it possesses high affinity binding) to its binding site on the protein, and inversely, a high value indicates weak binding. Enzymes and their putative inhibitors typically have high binding affinities (or inhibition constants) in the nano to micromolar range. For example, the NSAID ibuprofen, which inhibits the enzyme COX-2, has \KD\ of $\sim$10 \micromolar.\cite{Cryer:1998ti} 
+
+% Definition and description of binding avidity
+In some cases, a ligand may be capable of interacting with its receptor at multiple binding sites. Such ligands may possess weak interactions with several receptor sites, but are able to achieve binding specificity by forming many such weak interactions. An important example of this type of binding mechanism occurs in carbohydrate-protein binding, where multivalency plays an important role in their recognition. To characterize this type of interaction, a binding avidity constant that accounts for all possible binding modes of a ligand with its receptor is used.\cite{Krishnamurthy:2006vi}
+
+\section{Intermolecular forces in biomolecular interactions}
+
+% HBs involved in Binding.
+% - What are the energetic contribution of these hydrogen bonds? (How are they measured?)
+% osmolytes
+% solvent - solvent interactions
+% O-H ... O-H
+
+% There lots of different forces; so am I present them as the ones modelled in simulation?
+% then I need to mention computer simulation earlier
+% Note that I may end up introducing the forces up in the earlier section -- reorganize as needed
+% Here, it will benefit me to read Sarah's appendix C carefully.
+
+% Nonpolar
+Protein-ligand interactions predominantly involve an array of non-covalent interactions.  Van Der Waals forces are a weak intermolecular forces existing between molecules, which can be either attractive or repulsive. In particular, London dispersion forces is an weak attractive force between all molecules, which arises from the instantaneous dipole moment induced by electronic motions of nearby molecules. These forces predominantly account for the attraction between nonpolar molecules.  Electrostatic effects also play an essential role in biomolecular recognition and structural stability. Fundamental to biomolecular interactions are hydrogen bonding and charge-charge interactions.\cite{Nakamura:1996vm}
+
+A hydrogen bond is formed from electrostatic interactions arising between two dipoles: an acceptor and a donor.   The acceptor group is comprised of an electronegative heavy atom (e.g. F, Cl, O), with exposed lone pairs of electrons, and the donor group is an electropositive atom.  Furthermore, unlike dispersion forces, hydrogen bonds are directional, where the orientation of the hydrogen atom on the donor group is important to its formation. Hydrogen bonds formed between peptide groups involve N-H and O=C groups as the donor and acceptors, respectively.  In intermolecular hydrogens formed in water, the O-H group acts as both the donor and acceptor group.
+
+% [INSERT FIGURE OF GEOMETRY OF HYDROGEN BONDS]
+It has been estimated that the dissociation energies of hydrogen bonds range from weak (0.2 kcal/mol) to strong (40 kcal/mol).\cite{Steiner:2002tb} A single water-water hydrogen bond is estimated to have an dissociation energy of approximately -3.2 kcal/mol.\cite{Steiner:2002tb}  The N-H $\cdots$ C=O hydrogen bond is estimated to be 4 kcal/mol in the gas phase,\cite{Klotz:1993fk} and about -0.5 to -1.5 kcal/mol in solution.\cite{Williams:1993wk} %\cite{Sheu:2003jk}
+However, the binding free energy contribution of hydrogen bonding involved in the binding of a ligand and in protein folding is difficult to measure because the energetics of hydrogen bonds are sensitivity to the environment in which they are formed.\cite{Klotz:1993fk}
+% Note that gas phase measurements are enthalpy only.
+
+% Structure of the DNA ... not only proteins ... should mention this.
+Notably, hydrogen bonds are ubiquitous in water, a medium essential to living organisms. A single water molecule is able to tetrahedrally coordinate four other water molecules to form a hydrogen bonding network. This hydrogen-bonded network of water molecules is known to impart to water its uniquely high heat capacity.  Furthermore, hydrogen bonding plays a key role in stabilizing structures of several important biomolecules.  In the double-helix structure of DNA,  the complementary base pairing of DNA strands is held together via hydrogen bonding.
+
+In proteins, intra- and intermolecular hydrogen bonds can be formed between the peptidic backbone, and polar or charged amino acid side chains of polypeptides.  These hydrogen bonds define protein secondary structure (helices and \bsheets), and impart stability to their overall tertiary structures. For example, hydrogen bonding patterns determine the arrangement of peptide strands into either parallel or anti-parallel $\beta$-sheets. In addition, peptides with their peptidic backbone hydrogen-bonded to each other to form in-register $\beta$-sheets are at the core of the \crossbs\ of amyloid fibrils (see Section \ref{sec:amyloid}). 
+
+Salt bridges are considered to be the strongest type of hydrogen bonds in biomolecules.  In proteins, salt bridges are a type of hydrogen bond formed between two oppositely-charged amino acid side chains (e.g. arginine and aspartic acid), and are thought to contribute to the overall stability of the protein.\cite{Nakamura:1996vm,Pace:2000eg}
+
+\begin{figure}
+ \centering
+ \includegraphics[width=4in]{figures/introduction/sugar_protein_binding.pdf}
+ \caption[An example of sugar-lectin binding]{The structure depicts glucose bound to a galactose chemoreceptor protein (Ref: Vyas, N. et al, 1991; Rendered from PDB ID: 2GP). Hydrogen bonds between the protein and glucose are depicted in dotted yellow lines. }
+ \label{fig:sugar_protein}
+\end{figure}
+
+\section{Protein-carbohydrate interactions}
+% - Write this section without the cosmic connection
+Carbohydrates are the most abundant organic compounds in nature and are an important component of living cells.  They are sources of energy, building blocks, and recognition elements for both plants and animals.  Proteins capable of binding carbohydrates mediate processes such as antigen recognition by the host immune system,\cite{vanRozendaal:2000fi,Reid:1998tw} signal transduction,\cite{Rudd:2001te} bacterial infections,\cite{Karlsson:1999ta} and cell-cell adhesion.\cite{Rogers:1983wp} 
+% Furthermore, carbohydrate-modifying proteins such as glycosyl hydrolases and phosphorylases are of growing importance as potential drug targets. 
+Because protein-carbohydrate interactions are involved in many fundamental cellular processes, a great deal of research in the past three decades has been devoted to understanding the molecular basis of their binding mechanism. 
+% from \cite{Laederach:2005jh} -- a review of modelling carbo interactions
+% Currently, we have a limited understanding of the details of molecular recognition of carbohydrates by proteins, which is critical to a multitude of biological processes. Furthermore, carbohydrate-modifying proteins such as glycosyl hydrolases and phosphorylases are of growing importance as potential drug targets. 
+
+Monosaccharides, or simple sugars, are carbohydrates that cannot be hydrolyzed into simpler compounds, whereas polysaccharides are carbohydrates that can be hydrolyzed to form many monosaccharide units. Polysaccharides are naturally occurring polymers of carbohydrates. Smaller polysaccharides of about three to ten units long are sometimes called oligosaccharides.  Furthermore, sugars are chiral compounds: a sugar molecule can either be in the D or L configuration. Most naturally occurring sugars are of the D series.
+
+In the past 20 years, the structures of many sugar-binding proteins (or lectins) have been resolved by X-ray crystallography.\cite{Rini:1995p2497} Lectins may have monosaccharides or polysaccharides as substrates. An example of a bound glucose in the active site of its protein receptor is depicted in Figure~\ref{fig:sugar_protein}. Carbohydrate-protein interactions constitute a complex subject. Our discussion here will be focused on the general features of binding sites and modes of monosaccharides. 
+% Detailed description of various classes of carbohydrate-binding proteins and more complex binding mechanisms are out of the scope this thesis.
+% Structural Glycobiology
+
+% Weak binding of carbohydrates
+Protein-carbohydrate interactions are relatively weak compared to certain protein-protein interactions. For example, dissociation constants for most lectin-monosaccharide interactions are in the millimolar range, implying that lectins display low binding specificity for their ligands. Furthermore, although the affinity increases with oligosaccharides, the dissociation constants are still in the micromolar range.  However, the ability of carbohydrates to form multivalent interactions with their receptors, in part, helps lectins achieve their binding specificity.  This mechanism is more generally known as the avidity effect and has been well-documented for several protein-carbohydrate systems.\cite{Rini:1995p2497}
+
+Sugar binding sites are distinct from other ligand binding sites in that they mostly occur at the surface of proteins, and form cavities or grooves. Although any residue may be involved in binding carbohydrates, the most frequently occurring residues are aromatic (Trp, Tyr and Phe), polar and charged residues (Glu and Asp).\cite{Vyas:1991p6498} Carbohydrate binding sites have been generally classified into two groups: deep, solvent-inaccessible binding pockets and shallow grooves, displaying high and low sugar-binding affinities, respectively.\cite{Vyas:1991p6498,Rini:1995p2497}
+
+\begin{figure}
+ \centering
+ \includegraphics[width=5in]{figures/introduction/sugar_protein_schematic.pdf}
+ \caption[A schematic of monosaccharide-protein binding mode]{A schematic of a monosaccharide simultaneously forming Van der Waals interactions with an aromatic moiety (Trp) and bidentate hydrogen bonds with carboxylate group of an acidic residue.}
+ \label{fig:sugar_protein_schematic}
+\end{figure}
+
+Atomic features of protein-carbohydrate interactions are generally characterized by the formation of hydrogen bonds and nonpolar interactions with aromatic moieties.\cite{Vyas:1991p6498} Often, a delicate balance between hydrophobic and hydrogen bonding interactions is required for in protein-carbohydrate binding, where sometimes a slight change in the stereochemistry of the carbohydrate substrate can alter its binding specificity.\cite{Munske:1984ug} % Not sure if this reference is entirely appropriate here.
+
+Because sugars have numerous hydroxyl groups (-OH), hydrogen bonds are ubiquitous in sugar-protein interactions. The hydroxyl groups can interact with both polar and charge groups of amino acids, and the peptidic backbone.  A monosaccharide is often found to form planar bidentate hydrogen bonds with the carboxylate groups of aspartic and glutamic acids (Figure~\ref{fig:sugar_protein_schematic}).  
+ 
+Another characteristic binding mode is the nonpolar stacking between hydrophobic faces of the sugar ring and the side chains of aromatic residues (Figure~\ref{fig:sugar_protein_schematic}).  This stacking mode, often referred to as CH-$\pi$ interactions, is thought to arise from the entropically favorable packing of the hydrophobic faces of sugar with aromatic rings, and the enthalpically favorable CH-$\pi$ orbital interactions.\cite{Laughrey:2008p6566} % This paper has binding free energies of sugar-aromatic stacking interactions
+
+\section{Structure-based rational drug design}
+% The purpose of this paragraph is to connect the pharmacological stuff above? So what? what is next? How do we make new drugs or develop better drugs? 
+% In order to find new drugs it is imperative to understand the mechanism of action of compounds at the molecular level. 
+Structure-based rational drug design has yielded success in the discovery of drug candidates.\cite{Wlodawer:2002tt,Hubbard:2011fs}
+%(Figure~\ref{fig:rational_drug_design})
+Moreover, rational drug design is often applied to optimize ligand binding specificity in an effort to increase the efficacy of the putative drug, and decrease adverse side effects (toxicity) in the human body.
+A target is first identified and its role in the relevant disease pathway characterized. Then, the molecular structure of the target protein is determined using techniques such as NMR or X-ray crystallography.  By having the molecular structure of target proteins, putative enzymatic active sites or binding sites may be identified.  If the structure of the target is determined in its bound state, protein-ligand interactions can be characterized at the molecular-level. At this stage of the pipeline, high-throughput screening using a chemical compound library can be performed to find compounds (e.g. inhibitors) with high binding affinities (low $K_d$) to the binding site. In vitro experiments may be conducted to assess the structure-activity relationship of these compounds.  The information obtained from these experiments can either feedback into the design cycle to find better inhibitors, or be used to guide in vivo experiments.
+
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=6in]{figures/introduction/drug_discovery_flowchart.png}
+%	\caption[Schematic diagram of rational drug design]{Schematic diagram of rational drug design. Adapted from\cite{Gohlke:2002in}}
+%	\label{fig:rational_drug_design}
+%\end{figure}
+
+\section{Molecular dynamics simulations}
+% Describe what MD is, then go on to say what one can get from it
+% Say at very high level what MD is. Refer to the section for the detailed methods. 
+In general, MD simulations are a useful tool to study the structure, dynamics, and interaction of biomolecules (see Chapter 2 for methodological details).  MD simulation studies have been useful in studying many existing fundamental problems of biology and biochemistry, including protein folding, biomolecular self-aggregation, and protein-ligand binding.  MD simulations employ an empirical mathematical function to describe the atomic interactions in a molecular system, and together with classical laws of Newtonian mechanics, atomic trajectories of motion are generated.  Thermodynamic and kinetic properties can then be extracted as time averages from these trajectories and used to make a number of predictions that are often experimentally challenging to observe or measure.  
+
+With increasingly faster and cheaper computer hardware, structure-based computer modelling and simulations of protein-ligand interactions are becoming a key component of the modern drug discovery process. For example, computer simulation techniques such as molecular dynamics (MD) simulations may be used to predict protein-ligand binding free energies,  a quantity often used to evaluate how well a ligand binds in a high-throughput screening.
+
+Alternative in silico methods such as computational docking, where the energetics of binding is typically estimated without accounting for either ligand or protein flexibility may be used to obtain a crude estimate of the binding affinity.  Although docking is fast, its inaccuracy often leads to many false positives.  Current state-of-the-art computational binding studies use molecular dynamics (MD) simulations, which is a much more accurate, but computationally expensive method to predict binding free energies.   In MD simulations, the protein and its putative ligand is allowed to relax and freely move about in the system, allowing a realistic estimate of the binding free energy to be made. Simulation trajectories of protein-ligand binding can be used to quantitatively assess whether a chemical change to a compound will produce a more potent drug candidate (e.g.  residues may be ``mutated'' in silico).
+
+
+\subsection{Challenges and limitations of MD simulations}
+% For that to happen we either have to sample the necessary timescales or find a way to bypass the energetic barriers which separates 
+
+For molecular simulations to reliably predict and guide experiments, they need to be sufficiently accurate,  possess a correct representation of the experimental conditions, and adequately sample the relevant biomolecular motions.\cite{Mobley:2011ks} Ideally, a simulation should be at least 10 times longer than the slowest important timescale in a system.\cite{Zuckerman:2011dz} However, sampling relevant events on this timescale are intractable for many important biologically-relevant phenomena (eg. protein folding, amyloid formation, ligand binding and conformational isomerization) because they occur on timescales (greater than 1 ms) typically not reachable via MD simulations using current available computing resources.  Although modern simulations studies routinely approach microseconds in sampling, only a few studies to date were able to reach timescales of milliseconds.\cite{Dror:2012cs,Shan:2011bo,LindorffLarsen:2011gl}
+
+Consequently, running a single continuous molecular dynamics (MD) simulation alone is unlikely to achieve sufficient sampling of the important states of many biologically relevant systems. For this reason, computational algorithms which enhance sampling of the energy landscape of biomolecular systems are often employed to overcome some of the limitations of conventional MD simulations.
+
+% However, in the case of understanding a specific binding reaction often needed when developing an enzyme inhibitor, the ability to observe the relevant binding events is a low probability event on the timescale achievable by simulations. Therefore, a few enhanced techniques have been developed to accelerate this process.  They are briefly introduced below.
+
+% MD simulations can also be used to rapidly prototype experimental ideas -- for example, one can perform computational alchemy, that is, ``mutate'' residues to test various hypotheses. 
+
+\section{Recent progress in elucidating the molecular mechanism of small-molecule binders and inhibitors of amyloidogenic species}
+
+% How is small molecule binding different from the classical ligand-enzyme binding paradigm? 
+% Why is finding small-molecule inhibitors for amyloid is different from finding enzymatic inhibitors. 
+
+Although the structure-based rational drug discovery paradigm is well-suited to finding inhibitors of globular proteins such as enzymes, designing small-molecules which may inhibit amyloid formation present additional challenges. Amyloid fibrillation is a multi-stage process involving different species at each stage.  Due to the heterogeneous and non-crystalline nature of prefibrillar species, experimental determination of the molecular structures of these amyloid species remains a challenge.  Further compounding experimental challenges, these small molecules can interact with amyloidogenic species at different stages of aggregation. 
+
+Moreover, the binding mechanism of small-molecule inhibitors of amyloid aggregation is not described completely by the classical enzyme-inhibition model.   An inhibitor concentration in the micromolar to millimolar range is often required to observe amyloid inhibition, suggesting that these \smis\ are non-specific binders. By contrast, substrates of enzymes typically exhibit high binding specificity with binding affinities in the nanomolar range.  Taken together, the above challenges have significantly impeded the determination of the molecular basis of amyloid inhibition by \smis\ using existing experimental methods.  
+
+By contrast, computer simulations are not limited by these experimental challenges and can provide the atomistic level of detail needed to elucidate the action of small-molecules on the inhibition of amyloid formation.
+% Don't make it seem like its just easily done using MD. Challenges of small molecule simulations ....
+As a result, MD simulations have played a key role in advancing the understanding of the binding mechanism of these small-molecule inhibitors. However, elucidating the molecular basis of these \smis\ poses a number of difficulties for simulation studies. The structural disorder of amyloid-forming peptides impedes obtaining statistically-meaning properties from MD simulations.  Furthermore, because it is not known whether \smis\ may interact with amyloidogenic monomers or aggregates, it is often necessary to examining their binding with several amyloidogenic species in order to gain a complete understanding of their mechanism of action.
+
+% \textbf{Lemkul: Targeting A? aggregation presents a considerable challenge. That is, how can the ability of a compound to bind A? be assessed when the target peptide undergoes large and continual conformational changes? This type of information is difficult to gather using traditional experimental techniques and thus represents an area well suited to theoretical methods (21). Information obtained from molecular dynamics (MD) simulations will likely accelerate the process of novel Alzheimer’s drug development and has recently been successfully employed in designing A? aggregation inhibitors (22). Here, we summarize and evaluate current progress in application of docking and MD studies and give perspective on the future of these techniques in the development of compounds that may inhibit A? aggregation and thus serve as potential therapeutic agents against Alzheimer’s disease.}
+% Although many \smi\ were found to have activity in affecting amyloid formation, only a limited number of them had their binding mechanism examined by MD simulations. 
+
+In recent years, a large number of MD simulation studies were published between the years of 2007 to 2013 (the time of writing of this thesis). Below I will provide a review of the recent progress in elucidating the binding mechanism of small molecule inhibitors of amyloid formation.  While the central focus of the review is on MD simulation studies, experimental results are discussed if they are available.
+
+% Lemkul et al.
+% \textbf{This review will begin with a discussion of studies utilizing docking to characterize interactions of anti-aggregation compounds with A?. We follow with an analysis of studies that have utilized MD simulations as the primary technique. Though some studies utilize both docking and MD, studies that rely primarily on docking will be discussed first, with their MD results incorporated into the later discussion.  We conclude by analyzing the current state of the field and provide an outlook for how investigators might apply docking and MD in more advantageous and sophisticated ways to improve our understanding of the molecular mechanisms of anti-aggregation compounds.}
+
+% Understanding the small molecule inhibitor mechanism of action is different from classical enzymatic binding because you can't just take an amyloid inhibitor crystallize it with its target and infer how that ligand binds. Because of the dynamic and disordered nature of amyloid determining the molecular details of the binding mechanism not amenable to standard structural determination. Hence, their binding mechanism is not described completely by the classical enzyme inhibition models.
+% Unlike globular proteins, these \smi\ are known to binding to amyloidogenic species without a well-defined morphology
+% They are able to be active at much lower affinities. Their binding site on amyloids are often not know. Amyloid aggregates present a binding surface, so it is not unexpected that these small molecules do not bind in one specific binding pocket.
+%Some may inhibit fibril formation, whereas other may prevent only oligomerization, but not fibrillation.   Furthermore, a single small molecule may exhibit activity with different amyloidogenic peptides. -- Note this is repetitive because I mentioned this at the beginning when I reviewed the pharmacological aspect of the small molecules.
+
+% Why is molecular dynamics particularly useful here? Then connect to the review of MD studies of small-molecule amyloid binders/inhibitors below. 
+
+% Splice out some of the stuff on dyes from the earlier sections to move to here?
+
+% The mechanism of action of inositol is not known at the molecular level. 
+
+% What is the evidence for direct binding? NMR studies indicate direct binding activity for several small molecules.\cite{XXX EGCG paper nature 2007}. EGCG was found to directly bind to alpha-s and Abeta.
+
+% \section{Computational studies of amyloid inhibition by small molecules}
+
+% Notes: 
+% What exactly should I cover in my reviews?
+% Explicit solvent? Is this too much detail?
+% Extensive simulations? Simulation times?
+% Conventional MD? Special tricks were used?
+% Force field?
+% Concentration / molar ratio
+% statistics?
+
+% TODO: For now I cut out the scrappy literature review section that I wrote, and put it in a Google Doc.
+
+\section{Thesis objectives and organization}
+Alzheimer's Disease (AD) is a progressive neurodegenerative disease characterized pathologically by the presence of extracellular fibrillar deposits of $\beta$-amyloid (A$\beta$), a 38 to 42 residue protein that is produced normally as part of the cellular metabolism. Scyllo-inositol is a promising potential therapeutic compound for AD treatment, which has currently completed phase two of clinical trials. Scyllo-inositol has been shown to effectively block the accumulation of A$\beta$ oligomeric assemblies and reduce AD-like symptoms in a transgenic mouse model of AD. Furthermore, in vitro, scyllo-inositol and its stereoisomers myo-inositol, epi-inositol, and chiro-inositol, have been demonstrated to stabilize A$\beta$42 oligomers, disassemble preformed A$\beta$42 fibrils, and reduce A$\beta$42-induced neurotoxicity in a stereochemistry-dependent manner. However, the specific molecular interactions of inositol and its effect on A$\beta$ aggregation at the molecular level are not known. At present, experimental approaches lack the ability to determine the precise mechanistic mode(s) of action of inositol as the molecular structures of various intermediates in the amyloid aggregation pathway are not known. Moreover, observed intermediates morphologically distinct from fibrils are experimentally very difficult to detect and isolate.
+
+The primary objective of my research is to use molecular dynamics (MD) simulations to elucidate the molecular basis for the activity of inositol by determining its effect on the structure, thermodynamics, and kinetics of A$\beta$ aggregation.  Our central hypothesis is that inositol acts by binding to one or more of the aggregated form of A$\beta$.  The formation of amyloid follows a complex aggregation pathway, where different intermediate A$\beta$ aggregate species have been implicated in the disease. Therefore, a meaningful study requires examining inositol binding with different self-aggregated peptide states, from monomeric to fibrillar aggregates. 
+
+To this end, I have carried out systematic comparative studies of amyloidogenic peptides and their aggregates of increasing sequence and composition complexity and characterized the respective role of specific interactions of inositol with the backbone and sidechains (Figure~\ref{fig:rationale}).
+
+\begin{figure}
+\centering
+\includegraphics[width=6in]{figures/introduction/matrix.pdf}
+\caption[Thesis Rationale]{Using a reductionist approach, we progress from examining model amyloidogenic peptides and aggregates to more complex systems involving the full-length A$\beta$42 peptide.}
+\label{fig:rationale}
+\end{figure}
+
+Inositol molecules were shown to have stereochemistry-dependent activity in vitro and in vivo. Chiro-inositol is a stereoisomer that was shown to be inactive in inhibiting amyloid formation. Thus, in all of my studies, I have comparatively examined chiro- and scyllo-inositol with each of the aggregates in the pathway to determine the stereochemical basis of the activity of inositol. In addition, we also perform control simulations in the absence of inositol.   Determining the effect of inositol binding on the full-length A$\beta$ protein is computationally challenging and requires the use of many cores on high performance computing systems.  In order to achieve the sampling necessary to obtain meaningful statistics from our simulations, we perform thousands of independent MD simulations of  scyllo- and chiro-inositol with (1) single peptides; (2) small aggregates; (3) large ordered aggregates of various amyloidogenic sequences (Figure~\ref{fig:rationale}).
+
+In Chapter 3, I first systematically examined the binding modes of inositol with simple models of amyloidogenic peptides.
+
+In Chapter 4, I characterized the binding of inositol with the peptide KLVFFAE or A$\beta$(16-22), a short fibril-forming fragment important for initiating amyloid formation in the full-length protein.
+
+Based on my results from Chapters 3 and 4, which indicated that inositol acts on protofibrils of A$\beta$ rather than monomeric or non-beta-sheet oligomeric states, in Chapter 5, the binding of inositol was examined with the protofibril of full-length A$\beta$42 exclusively.
+
+Finally, in Chapter 6, I demonstrate the general applicability of the methodology developed in this thesis by applying similar MD simulation approaches to examine protein - carbohydrate binding. 
+
+
+\begin{singlespace}
+\addcontentsline{toc}{section}{Bibliography}
+\bibliographystyle{elsart-num}
+\bibliography{introduction}
+\end{singlespace}
+
+%\bibliographystyle{plain}
+
+% To determine the effect of inositol on the structure and thermodynamics of the self-aggregation of different amyloidogenic peptides.
+
+%\subsection{Study Design}
+%
+%Simulation challenge - The structural disorder of the peptides involved poses a challenge for obtaining converged properties from MD simulations. To date, few studies have attempted to provide statistically meaningful results pertaining to general mechanisms of protein self-aggregation and amyloid formation. Furthermore, despite the abundance of MD studies of A$\beta$, few studies have systematically examined the mechanism of action of small molecule inhibitors of amyloids
+%
+%% If you mention brute force ... most scientist in the audience won't understand
+%For sampling, we exploit conventional MD simulation techniques because simulation approaches used for understanding enzyme-ligand binding is not applicable. Conventional MD simulations were combined with many repeated independent replicas to obtain statistics on the binding equilibria. We use many repeat simulations - why ? We can observe binding and unbinding events within several nanoseconds. This is an approach that is typically used to trivially parallelizing simulations to speed up sampling. Because inositol acts at higher than normal (what do you mean by this) concentrations (in vitro), we were able to approach this problem using a ``bulk" approach, by examining binding between multiple molecules of inositol with different amyloid aggregates. Inositol's interactions are weak (but I shouldn't be stating this as an assumption.. because 90\% of inositol's interactions may be weak, but the 10\% which are not may be the ones that induce its activity).
+
+% Instead, we use conventional MD simulations and repeats of independent simulations to determine the binding modes, and binding equilibria of inositol with amyloidogenic peptides and aggregates of A$\beta$.
+%of both increasing sequence and structural complexity.
+
+% Two important lines of evidence support the above hypotheses. First, preliminary experimental data from the McLaurin lab are showing that in addition to \abeta42, inositol can also inhibit superoxide dismutase (an amyloidogenic protein involved in amyotrophic lateral sclerosis), $\alpha$¬±-synuclein (Parkinson's disease), and poly-Q (Huntington's disease) amyloid assemblies in a similar manner to \abeta42\ (J. McLaurin unpublished data). Since all amyloid structures have the cross $\beta$-sheet structure in common, their findings suggest that inositol is capable of binding the polypeptide backbone. Secondly, our own systematic MD study of inositol with alanine dipeptide, a model of the peptidic backbone, has demonstrated that inositol binds to the peptidic backbone through hydrogen bonding interactions (See Section 5.1 below). 
+
+
+% Defense Q: Amyloid have also been known to play beneficial roles in certain living systems.
+% Defense Q - What kind of drugs cross the BBB? Typically hydrophobic drugs.
+
+% Understanding amyloid inhibition in the context of the framework of traditional enzyme inhibition mechanism
+%[Challenges of developing small molecule for amyloid inhibition] Structure-based drug discovery approach developed to target folded proteins such as enzymes cannot be directly applied to discovery of small molecules which targets amyloid formation.  A$\beta$ peptides are completely disordered. Because the A$\beta$ amyloid aggregate pathway encompasses a variety of species, some of which are disordered, a single conformation cannot be assumed for binding. Furthermore, structural information of amyloidogenic species lags behind those of enzymes, which tends to be globular proteins amenable for X-ray crystallography. This means that the putative binding sites are not known. 
+
+% We don't know if a small-molecule like inositol acts by binding. Do the ligands bind? If they bind, we do not know where they bind. It is experimentally challenging to identify the binding sites using available techniques such as SSNMR, NMR, and X-ray. 
+% Although there are some data other there with experimental data, we cannot yet obtain fully atomistic detail on the interactions between the ligands and proteins.
+
+% Because amyloid is a group of different species, where the structures of which are largely unknown, we don't know (and we cannot assume) which aggregate species along the amyloid aggregation pathway that inositol may interact with. We want to examine representative species within the aggregation pathway, that is, monomers, disordered oligomers, and fibril like aggregates. Furthermore, we cannot assume putative binding sites - that is these binding sites are not known a priori. Unlike the case with enzymatic inhibition, a single bound molecule is unlikely to inhibit fibrillation. Instead, amyloid aggregates such as fibrils present surfaces for binding. We also do not know what the binding site looks like, where it is located on these structures.
+
+% Furthermore, amyloid inhibitors are found to be very weak binders.  A key question is how do non-specific inhibitors act as a drug? 
+
+% How do we approach this with MD simulations?
+%We took a reductionist approach to solve this problem. Beginning with the simplest model of an amyloidogenic peptide, we systematically examine binding of inositol with systems of both increasing sequence and structural complexity.
+
+%% However, most of these studies were focused on A$\beta$ and large A$\beta$ aggregates,\{Fawzi, 2008 \#553;Esposito, 2008 \#567;Sgourakis, 2007 \#609;Wei, 2006 \#656;Tarus, 2006 \#628 Karsai, 2006 \#658\} and thus, were computationally limited by the complexity of the molecular systems.
+%
+%% Here describe in detail how I designed my study to circumvent the challenges presented by the amyloid inhibition problem, and the limitations of MD simulations. At this point, clearly explain and discuss my study design and rationale. 
+
+
+%
+%% First started with the simplest peptide of relevance, the alanine dipeptide. We started with the alanine dipeptide to look at backbone interactions. 
+%We wanted to isolate the problem to something simple to examine the backbone binding mechanism of inositol. Because inositol had many hydrogen bonding groups, and it is shaped like it is geometrically suited to bind the peptidic backbone. Why did we first choose to look at the backbone? Because it is the common element in all polypeptides, and the common cross-beta where the backbone of polypeptide chains are organized in the same manner in the structure of amyloid fibrils suggests that backbone plays an important role in amyloid formation. We examine aggregates of varying sequence and structural complexity. By examining a simple beta-sheet forming peptide, (GA)4, an amyloid inhibitor may bind to a simple amyloidogenic peptide. An illustration of this approach is shown in Figure~\ref{fig:rationale}.
+
+
+%\subsection{Choice of Model Systems}
+%Following the approach of studying systems of increasing complexity, we have chosen the following peptides and sequences: (1) Alanine Dipeptide; (2) (GA)4; (3) KLVFFAE; (4) SNNFGAIL; (5) A≈í‚â§40/42. Amyloid-forming proteins involved in disease, such as A≈í‚â§, Tau (Alzheimer's) or hIAPP (diabetes), are often many residues in length and high in sequence complexity, which renders the collection of meaningful statistics from large-scale computer simulations of these protein aggregates difficult. However, many of these longer sequences have been found to have shorter segments that preserve the amyloidogenicity and cytotoxicity of the longer parent protein.30, 31 These shorter peptides not only have been shown to retain the physiochemical properties for studying general mechanisms of amyloid formation experimentally, but also are much simpler systems suitable for detailed computational studies.
+%
+%4.4	Alanine Dipeptide
+%	Alanine dipeptide (N-acetyl-L-alanine-N'-methylamide or AcAlaNHMe) is a minimalist model of the peptidic backbone with its two backbone dihedral angles (≈ì√ú,≈ì√†) as its significant degrees of freedom. The dominant conformations of its conformational equilibrium span all possible dihedral angles representative of ≈í¬±-helices and ≈í‚â§-sheets in (Figure 1A). Due to the simplicity of alanine dipeptide, all relevant local peptidic backbone binding modes of inositol can be explored efficiently computationally.
+%
+%4.5	GAGAGAGA
+%	An octamer with repetitive sequence involving only nonpolar side-chains, (GA)4 is the simplest amyloidogenic peptide32 of relevance to study the interaction of inositol with the peptidic backbone. GA is a commonly occurring sequence motif in the ≈í‚â§-sheet forming (crystalline) domains of a variety of spider silks.33 The tetramer GAGA is a part of the B. Mori silk fibroin, which is found to contain ≈í‚â§-sheet structure.34 The repetitive nature of (GA)4 and its low sequence complexity allow simulations to be computational tractable and thus, permits timescales needed to determine the effects of inositol on amyloid aggregation in a statistically meaningful way. Finally, the simplicity of (GA)4 allows the detailed examination and dissection of the different possible types of inositol-peptide interactions. 
+
+%4.6	KLVFFAE
+%	The peptide KLVFFAE, a segment spanning residues 16 to 22 of A≈í‚â§1-40 and A≈í‚â§1-42, has been well studied both experimentally and computationally.35-38 KLVFFAE is the central hydrophobic core thought to be important in full-length A≈í‚â§ assembly and is affected by four AD causing mutations: A31G (Flemish), E22Q (Dutch), E22K (Italian), and E22G (Arctic). This peptide not only contains side chains with more bulk, but also those capable of forming charged and aromatic interactions. The protofibrillar structure has been shown by SSNMR to have anti-parallel ≈í‚â§-sheet organization with possible parallel stacking of the ≈í‚â§-sheets.36 
+
+% 4.7	SNNFGAIL
+%	hIAPP(20‚Äö√Ñ√¨27) (SNNFGAIL) is an octameric segment of the 37-amino acid residue hIAPP polypeptide and is both amyloidogenic and cytotoxic.39 Pancreatic amyloid in humans forms through the aggregation of islet amyloid polypeptide (hIAPP). hIAPP-derived amyloid is found in more than 95% of type II diabetes patients and is believed to be directly involved in the pathogenesis of the disease. The peptide SNNFGAIL is different from KLVFFAE in that it is an amphipathic peptide where SNN is polar and FGAIL is nonpolar.39 Thus, the protofibrillar structure formed will likely have different surface properties despite sharing similar backbone secondary structure.
+
+%4.8	Full length A≈í‚â§40 or A≈í‚â§42
+%	Inositol does not necessarily act on the shorter peptide models and their aggregates. To address this possibility, I will study inositol with the A≈í‚â§ peptide and aggregates. The monomeric, oligomeric, and fibrillar structures of A≈í‚â§40 and A≈í‚â§42 have been studied both experimentally and computationally.4, 16, 40-45 Thus, I will utilize the structural data available to construct oligomeric and fibrillar species and comparatively analyze the interaction of chiro- and scyllo-inositol with these species.
