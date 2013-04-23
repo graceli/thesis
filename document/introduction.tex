@@ -578,25 +578,7 @@ As a result, MD simulations have played a key role in advancing the understandin
 % Although many \smi\ were found to have activity in affecting amyloid formation, only a limited number of them had their binding mechanism examined by MD simulations. 
 
 % CN commented this out because you don't do this.. at least not "below".... Perhaps GL wants to add this back but clarify where the reader will find this information.
-% In recent years, a large number of MD simulation studies were published between the years of 2007 to 2013 (the time of writing of this thesis). Below I will provide a review of the recent progress in elucidating the binding mechanism of small molecule inhibitors of amyloid formation. While the central focus of the review is on MD simulation studies, experimental results are discussed if they are available.
-
-% Lemkul et al.
-% \textbf{This review will begin with a discussion of studies utilizing docking to characterize interactions of anti-aggregation compounds with A?. We follow with an analysis of studies that have utilized MD simulations as the primary technique. Though some studies utilize both docking and MD, studies that rely primarily on docking will be discussed first, with their MD results incorporated into the later discussion. We conclude by analyzing the current state of the field and provide an outlook for how investigators might apply docking and MD in more advantageous and sophisticated ways to improve our understanding of the molecular mechanisms of anti-aggregation compounds.}
-
-% Understanding the small molecule inhibitor mechanism of action is different from classical enzymatic binding because you can't just take an amyloid inhibitor crystallize it with its target and infer how that ligand binds. Because of the dynamic and disordered nature of amyloid determining the molecular details of the binding mechanism not amenable to standard structural determination. Hence, their binding mechanism is not described completely by the classical enzyme inhibition models.
-% Unlike globular proteins, these \smi\ are known to binding to amyloidogenic species without a well-defined morphology
-% They are able to be active at much lower affinities. Their binding site on amyloids are often not know. Amyloid aggregates present a binding surface, so it is not unexpected that these small molecules do not bind in one specific binding pocket.
-%Some may inhibit fibril formation, whereas other may prevent only oligomerization, but not fibrillation.  Furthermore, a single small molecule may exhibit activity with different amyloidogenic peptides. -- Note this is repetitive because I mentioned this at the beginning when I reviewed the pharmacological aspect of the small molecules.
-
-% Why is molecular dynamics particularly useful here? Then connect to the review of MD studies of small-molecule amyloid binders/inhibitors below. 
-
-% Splice out some of the stuff on dyes from the earlier sections to move to here?
-
-% The mechanism of action of inositol is not known at the molecular level. 
-
-% What is the evidence for direct binding? NMR studies indicate direct binding activity for several small molecules.\cite{XXX EGCG paper nature 2007}. EGCG was found to directly bind to alpha-s and Abeta.
-
-% \section{Computational studies of amyloid inhibition by small molecules}
+In recent years, a large number of MD simulation studies were published between the years of 2007 to 2013 (the time of writing of this thesis). Below I will provide a review of the recent progress in elucidating the binding mechanism of small molecule inhibitors of amyloid formation. While the central focus of the review is on MD simulation studies, experimental results are discussed if they are available.
 
 % Notes: 
 % What exactly should I cover in my reviews?
@@ -607,7 +589,58 @@ As a result, MD simulations have played a key role in advancing the understandin
 % Concentration / molar ratio
 % statistics?
 
-% TODO: For now I cut out the scrappy literature review section that I wrote, and put it in a Google Doc.
+% [Should these be concluding paragraphs or opening? I feel like they read as concluding because now that you�ve gone through the studies.  But from another angle, it would make reading the detailed reviews easier for readers because now they are guided rather than getting lost in the details of the studies. Furthermore, it is easier to justify not providing an exhaustive review. This is quite similar to how David structured his review section in his thesis.]
+Simulation studies suggest that both hydrophobic and hydrogen bonding interactions are involved in the binding mechanism of known in vitro small molecule inhibitors. In summary, several mechanistic hypotheses have been put forth based on results from MD simulations. Many of them hypothesize that binding to surfaces of $\beta$-sheet aggregates may be involved in the molecular mechanism of amyloid inhibition by small molecules.
+
+Provide studies of fibril binding by dyes ... and other SMIs.
+
+Small molecules inhibitors may have the ability to interact with different species,  simulation studies were conducted to examine their binding with non-fibrillar oligomer species. MD simulations of these systems have suggested that small molecule inhibitors, by binding to these amyloidogenic aggregates, may displace the beta-sheet-forming propensity of these peptides. 
+
+Provide studies of fibril binding by [insert random SMIs here].
+
+Thus far, studies of these dye molecules have provided significant insight into the binding modes of small molecules with amyloid fibrillar aggregates. The application of in silico techniques and smaller, more experimentally tractable self-assembly model systems have been employed to investigate the atomic details of Congo red (CR) and thioflavin T (ThT) binding.
+MD simulation studies examined the binding of CR with the protofibril of the amyloidogenic fragment GNNQQNYof the yeast prion Sup35,\cite{Wu:2007p361} and most recently with protofibrils of full-length \abeta40.\cite{Shea:2012eh} From these studies, CR molecules were found to adopt two main binding modes: in the grooves of the fibril, parallel to the long-axis, or between two peptide strands, perpendicular to the long-axis. Based on these observed binding modes, it was hypothesized that $\beta$-sheet surface binding disrupts $\beta$-sheet stacking, whereas fibril edge binding blocks strand-to-sheet extension.  Moreover, based on these binding modes, a model for explaining the birefringence displayed by Abeta fibrils upon binding CR was proposed.\cite{Shea:2012eh}
+
+The molecular mechanism of ThT binding with fibrils was examined in detail in recent years by a number of biophysical and simulation studies.  In contrast to CR, ThT binding has not been observed to affect amyloid aggregation.  ThT displays \KD's  in the low \micromolar\ range, with values ranging from 0.033 to 23 \micromolar\ reported in literature.\cite{Groenning:2009p2723} The binding affinity of ThT is modulated by physiochemical surface properties of the amyloid fibril: ThT does not appreciably bind fibrils with highly-charged residues such as those of poly-Lysine peptides.\cite{Sabate:2008hb,Khurana:2003dk} 
+
+To define the minimal requirements for ThT binding, Biancalana et al. designed a set of novel ThT-binding proteins to create a minimalist ThT binding site which recapitulated all of its fibril binding properties (i.e. emission of fluorescence upon binding).\cite{Biancalana:2009p5056} The X-ray crystal structure of the protein with a high-affinity binding site for ThT showed that the binding site contained adjacent (side-by-side) ladders (This needs to be defined) formed from Tyr and Leu,\cite{Biancalana:2010p5053} which led the authors to hypothesized that ThT preferentially bind to aromatic grooves at fibrillar surfaces. A complementary MD simulation study was later conducted and the results of which corroborated this hypothesis.\cite{Wu:2009p1954}
+
+In several MD simulation studies, Wu et. al. examined ThT binding to protofibrils of the A$\beta$ peptide fragment Abeta(16-22), full-length A$\beta$40,\cite{Wu:2011fd} and a crystal structure of a model ThT-binding protein.\cite{Wu:2009p1954}  These studies revealed that similar to the binding modes of CR, ThT was bound to several binding sites located at the grooves on the surface of fibrils.  Furthermore, although CR and ThT may share similar binding site motifs, their simulations support that it is unlikely that they share similar binding sites because of differences in their chemical structure and surface properties of fibrils.
+
+Taken together, the above studies suggest a consensus for the molecular mechanism of dye binding to amyloid fibrils, where dye molecules are likely to bind in the grooves at the surface of amyloid fibrils. However, it is still not understood why CR, but not ThT binding, leads to fibril inhibition. Further investigation of differences in their binding mechanism will be required.
+% Although their binding predominantly depends on the amyloid fibrillar structure, it can depend on factors such as physicochemical surface property of fibrils.
+
+\textbf{Polyphenols}. In a MD and NMR study, the binding of EGCG with monomeric of \abeta42\ were examined by Wang et. al.\cite{Wang:2010p5887} Using ITC and NMR, the authors examined the influences of temperature, pH, salt concentration, and ligand:protein molar ratios on A$\beta$-EGCG interactions. MD simulations of the A$\beta$ monomer were performed in the presence of EGCG at increasing molar ratios.  Results of their study suggested that both hydrogen bonding and hydrophobic (aromatic) interactions are important for binding of EGCG, and are modulated by experimental solution conditions and ligand:protein stoichiometry.
+
+The molecular details of EGCG binding to Abeta monomers were more extensively examined in a follow-up MD simulation study at two ligand concentrations.\cite{Liu:2011ka} Using MM-PBSA, a technique used to estimate binding free energies employing an implicit solvation model, the authors found that nonpolar interactions contributed more than hydrogen bonding to the binding modes of EGCG. Furthermore, based on analysis of the secondary structure of the peptides, EGCG, when bound, was found to prevent beta-strand formation at the ligand:peptide molar ratio of 10:1.
+
+Morin is a polyphenol molecule with the ability to inhibit amyloid formation by Abeta and IAPP peptides.\cite{Noor:2012fc} Binding of morin molecules was first examined with the protofibril form of \abeta42\ was examined by Lemkul et. al.\cite{Lemkul:2010bf} Based on snapshots from their simulation trajectories, Morin was observed to hydrogen-bond with .... and intercalate between residues which form salt-bridges within the fibril.
+
+In a follow-up study, an MD study of dimers of \abeta42\ peptides with morin was performed by the same authors.\cite{Lemkul:2012jn} Morin was not observed to bind directly to the central hydrophobic core of the Abeta peptide (residues 16 to 21), but instead to residues flanking it.  
+They hypothesized that the binding of morin to \abeta42\ peptides alters the tertiary interactions formed as the peptides aggregate, thereby preventing \abeta42\ monomers from forming a stable hydrophobic nuclei.
+
+\textbf{NSAIDs}. The non-steroidal anti-inflammatory drugs (NSAIDs), ibuprofen and naproxen, which are typically taken for pain relief, were also found to inhibit Abeta amyloid formation in vitro.\cite{lift some refs from Klimov}  In a series of MD simulation studies, their binding mechanism with amyloid oligomers of \abeta40\ were investigated by Klimov et. al.\cite{Raman:2009jn,Takeda:2010gx,Kim:2011fn}
+In the first study, simulations of ibuprofen molecules were conducted with a tetramer unit of the \abeta40\ fibril derived from an SSNMR study.\cite{Raman:2009jn}  \textbf{Replica exchange MD simulations were conducted to enhance the sampling of binding events of ligands with the protofibril}. However, an implicit solvent model was used in place of explicit solvent representation to reduce the computational time required for their simulations. Ibuprofen were predominantly bound to hydrophobic grooves at the edges of protofibrils.   Based on this result, the authors hypothesized that this protofibrillar binding mode of NSAIDs prevents fibril formation.
+A comparative study of naproxen and ibuprofen binding using similar simulation conditions and methodology were carried out to identify the molecular basis of naproxen's stronger inhibition effects.\cite{Takeda:2010gx} The authors found that naproxen ... [Insert results here] Based on the results of that study, simulations of dimers of Abeta40 were conducted with naproxen to further examine its binding modes with disordered forms of amyloid aggregates.\cite{Kim:2011fn}
+[Insert description of results here]
+A total of XX seconds were devoted to studies of NSAID binding.  Although the total sampling time is long by modern standards, the author's use of implicit solvation pose several issues. Because the lack of explicit water in these simulations, the binding mode of ligands may be biased because of hydrophobic interactions may be favored. 
+% Discuss after Klimov's study descriptions. Discuss other possible issues with implicit solvation models. Some studies use implicit solvation only.  Note I know nothing about this and I don�t think I�ll have enough time today to write this up. -- Need citations.
+
+\textbf{In summary}, there is an emerging picture of small molecule binding from simulation studies when pieced together with the in vitro data.
+
+Despite the continued increase in computational power, modern MD simulations of disordered proteins and peptides remain computationally challenging.  For this reason, the conclusions drawn from these simulations may suffer from systematic or statistical sampling errors that are difficult to identify. Thus far, studies of small molecule binding lack statistically significant number of binding events. due to limitations in the simulation methodology and the sampling time of these studies. Hence, dissociation constants (Kd) were not determined.  Without this quantity, comparisons with in vitro data cannot be made, making it more difficult to assess the relevance of the binding sites identified the simulations with regards to amyloid inhibition.
+
+Few studies conducted currently are systematic comparative studies of monomers, disordered oligomers and protofibrillar aggregates. Because it is often not known which amyloidogenic species these small molecules may act on, the lack of adequate comparisons may leave a study susceptible to biased conclusions.
+
+Moreover, experimental studies have suggested that the activity of these small molecules may be modulated by their concentration and molar ratio. For example, the self-aggregation of small-molecule binders such as EGCG, CR, and ThT have been observed in both experimental and simulation studies. However,  the molecular basis of the dependence of the mechanism of inhibition of small molecules on these experimental variables have not been thoroughly characterized.
+
+% Many studies do not address reversible binding.
+Amyloidogenic monomers and oligomers are highly dynamic species, and may require a large amount of computational sampling in order to obtain statistical convergence in their secondary structures in order to determine the effect of presence of small molecules on their conformational equilibria. Hence, several MD studies have utilized smaller fragments of the A$\beta$ peptide.\cite{Convertino:2011epa,Convertino:2009ce,Chebaro:2012ba}
+
+Although, a few recent studies have employed MD simulations in combination with enhanced sampling methods to probe binding of small molecules with full-length peptide monomer of A$\beta$, existing studies have drawn conclusions based on data from only a few short simulations likely to contain conformationally unconverged ensembles of peptide in both the presence and absence of ligands.  The lack of convergence could mislead researchers to draw conclusions based on differences due to systematic and statistical biases. 
+% I think I�ll skip this point for now to because I don�t really review too many of these
+% (I think there was a study by Derremaux that recently used RE and measured convergence. -- I�m not sure if I�ll include this point.)
+% Punchline: Then *bam* say my study is complete �  Segue into Thesis objectives.
 
 \section{Thesis objectives and organization}
 Alzheimer's Disease (AD) is a progressive neurodegenerative disease characterized pathologically by the presence of extracellular fibrillar deposits of $\beta$-amyloid (A$\beta$), a 38 to 42 residue protein that is produced normally as part of the cellular metabolism. Scyllo-inositol is a promising potential therapeutic compound for AD treatment, which has currently completed phase two of clinical trials. Scyllo-inositol has been shown to effectively block the accumulation of A$\beta$ oligomeric assemblies and reduce AD-like symptoms in a transgenic mouse model of AD. Furthermore, \textit{in vitro}, scyllo-inositol and its stereoisomers myo-inositol, epi-inositol, and chiro-inositol, have been demonstrated to stabilize A$\beta$42 oligomers, disassemble preformed A$\beta$42 fibrils, and reduce A$\beta$42-induced neurotoxicity in a stereochemistry-dependent manner. However, the specific molecular interactions of inositol and its effect on A$\beta$ aggregation at the molecular level are not known. At present, experimental approaches lack the ability to determine the precise mechanistic mode(s) of action of inositol because the molecular structures of various intermediates in the amyloid aggregation pathway are not known. Moreover, intermediate states in the fibrillization process are very difficult to detect and isolate by experimental methods.
@@ -633,70 +666,10 @@ Because my results from Chapters 3 and 4 indicated that inositol acts on protofi
 
 Finally, in Chapter 6, I demonstrate the general applicability of the methodology developed in this thesis by applying similar MD simulation approaches to examine protein - carbohydrate binding. 
 
-
 \begin{singlespace}
 \addcontentsline{toc}{section}{Bibliography}
 \bibliographystyle{elsart-num}
 \bibliography{introduction}
 \end{singlespace}
 
-%\bibliographystyle{plain}
 
-% To determine the effect of inositol on the structure and thermodynamics of the self-aggregation of different amyloidogenic peptides.
-
-%\subsection{Study Design}
-%
-%Simulation challenge - The structural disorder of the peptides involved poses a challenge for obtaining converged properties from MD simulations. To date, few studies have attempted to provide statistically meaningful results pertaining to general mechanisms of protein self-aggregation and amyloid formation. Furthermore, despite the abundance of MD studies of A$\beta$, few studies have systematically examined the mechanism of action of small molecule inhibitors of amyloids
-%
-%% If you mention brute force ... most scientist in the audience won't understand
-%For sampling, we exploit conventional MD simulation techniques because simulation approaches used for understanding enzyme-ligand binding is not applicable. Conventional MD simulations were combined with many repeated independent replicas to obtain statistics on the binding equilibria. We use many repeat simulations - why ? We can observe binding and unbinding events within several nanoseconds. This is an approach that is typically used to trivially parallelizing simulations to speed up sampling. Because inositol acts at higher than normal (what do you mean by this) concentrations (\textit{in vitro}), we were able to approach this problem using a ``bulk" approach, by examining binding between multiple molecules of inositol with different amyloid aggregates. Inositol's interactions are weak (but I shouldn't be stating this as an assumption.. because 90\% of inositol's interactions may be weak, but the 10\% which are not may be the ones that induce its activity).
-
-% Instead, we use conventional MD simulations and repeats of independent simulations to determine the binding modes, and binding equilibria of inositol with amyloidogenic peptides and aggregates of A$\beta$.
-%of both increasing sequence and structural complexity.
-
-% Two important lines of evidence support the above hypotheses. First, preliminary experimental data from the McLaurin lab are showing that in addition to \abeta42, inositol can also inhibit superoxide dismutase (an amyloidogenic protein involved in amyotrophic lateral sclerosis), $\alpha$¬±-synuclein (Parkinson's disease), and poly-Q (Huntington's disease) amyloid assemblies in a similar manner to \abeta42\ (J. McLaurin unpublished data). Since all amyloid structures have the cross $\beta$-sheet structure in common, their findings suggest that inositol is capable of binding the polypeptide backbone. Secondly, our own systematic MD study of inositol with alanine dipeptide, a model of the peptidic backbone, has demonstrated that inositol binds to the peptidic backbone through hydrogen bonding interactions (See Section 5.1 below). 
-
-
-% Defense Q: Amyloid have also been known to play beneficial roles in certain living systems.
-% Defense Q - What kind of drugs cross the BBB? Typically hydrophobic drugs.
-
-% Understanding amyloid inhibition in the context of the framework of traditional enzyme inhibition mechanism
-%[Challenges of developing small molecule for amyloid inhibition] Structure-based drug discovery approach developed to target folded proteins such as enzymes cannot be directly applied to discovery of small molecules which targets amyloid formation. A$\beta$ peptides are completely disordered. Because the A$\beta$ amyloid aggregate pathway encompasses a variety of species, some of which are disordered, a single conformation cannot be assumed for binding. Furthermore, structural information of amyloidogenic species lags behind those of enzymes, which tends to be globular proteins amenable for X-ray crystallography. This means that the putative binding sites are not known. 
-
-% We don't know if a small-molecule like inositol acts by binding. Do the ligands bind? If they bind, we do not know where they bind. It is experimentally challenging to identify the binding sites using available techniques such as SSNMR, NMR, and X-ray. 
-% Although there are some data other there with experimental data, we cannot yet obtain fully atomistic detail on the interactions between the ligands and proteins.
-
-% Because amyloid is a group of different species, where the structures of which are largely unknown, we don't know (and we cannot assume) which aggregate species along the amyloid aggregation pathway that inositol may interact with. We want to examine representative species within the aggregation pathway, that is, monomers, disordered oligomers, and fibril like aggregates. Furthermore, we cannot assume putative binding sites - that is these binding sites are not known \textit{a priori}. Unlike the case with enzymatic inhibition, a single bound molecule is unlikely to inhibit fibrillation. Instead, amyloid aggregates such as fibrils present surfaces for binding. We also do not know what the binding site looks like, where it is located on these structures.
-
-% Furthermore, amyloid inhibitors are found to be very weak binders. A key question is how do non-specific inhibitors act as a drug? 
-
-% How do we approach this with MD simulations?
-%We took a reductionist approach to solve this problem. Beginning with the simplest model of an amyloidogenic peptide, we systematically examine binding of inositol with systems of both increasing sequence and structural complexity.
-
-%% However, most of these studies were focused on A$\beta$ and large A$\beta$ aggregates,\{Fawzi, 2008 \#553;Esposito, 2008 \#567;Sgourakis, 2007 \#609;Wei, 2006 \#656;Tarus, 2006 \#628 Karsai, 2006 \#658\} and thus, were computationally limited by the complexity of the molecular systems.
-%
-%% Here describe in detail how I designed my study to circumvent the challenges presented by the amyloid inhibition problem, and the limitations of MD simulations. At this point, clearly explain and discuss my study design and rationale. 
-
-
-%
-%% First started with the simplest peptide of relevance, the alanine dipeptide. We started with the alanine dipeptide to look at backbone interactions. 
-%We wanted to isolate the problem to something simple to examine the backbone binding mechanism of inositol. Because inositol had many hydrogen bonding groups, and it is shaped like it is geometrically suited to bind the peptidic backbone. Why did we first choose to look at the backbone? Because it is the common element in all polypeptides, and the common cross-beta where the backbone of polypeptide chains are organized in the same manner in the structure of amyloid fibrils suggests that backbone plays an important role in amyloid formation. We examine aggregates of varying sequence and structural complexity. By examining a simple beta-sheet forming peptide, (GA)4, an amyloid inhibitor may bind to a simple amyloidogenic peptide. An illustration of this approach is shown in Figure~\ref{fig:rationale}.
-
-
-%\subsection{Choice of Model Systems}
-%Following the approach of studying systems of increasing complexity, we have chosen the following peptides and sequences: (1) Alanine Dipeptide; (2) (GA)4; (3) KLVFFAE; (4) SNNFGAIL; (5) A≈í‚â§40/42. Amyloid-forming proteins involved in disease, such as A≈í‚â§, Tau (Alzheimer's) or hIAPP (diabetes), are often many residues in length and high in sequence complexity, which renders the collection of meaningful statistics from large-scale computer simulations of these protein aggregates difficult. However, many of these longer sequences have been found to have shorter segments that preserve the amyloidogenicity and cytotoxicity of the longer parent protein.30, 31 These shorter peptides not only have been shown to retain the physiochemical properties for studying general mechanisms of amyloid formation experimentally, but also are much simpler systems suitable for detailed computational studies.
-%
-%4.4	Alanine Dipeptide
-%	Alanine dipeptide (N-acetyl-L-alanine-N'-methylamide or AcAlaNHMe) is a minimalist model of the peptidic backbone with its two backbone dihedral angles (≈ì√ú,≈ì√†) as its significant degrees of freedom. The dominant conformations of its conformational equilibrium span all possible dihedral angles representative of ≈í¬±-helices and ≈í‚â§-sheets in (Figure 1A). Due to the simplicity of alanine dipeptide, all relevant local peptidic backbone binding modes of inositol can be explored efficiently computationally.
-%
-%4.5	GAGAGAGA
-%	An octamer with repetitive sequence involving only nonpolar side-chains, (GA)4 is the simplest amyloidogenic peptide32 of relevance to study the interaction of inositol with the peptidic backbone. GA is a commonly occurring sequence motif in the ≈í‚â§-sheet forming (crystalline) domains of a variety of spider silks.33 The tetramer GAGA is a part of the B. Mori silk fibroin, which is found to contain ≈í‚â§-sheet structure.34 The repetitive nature of (GA)4 and its low sequence complexity allow simulations to be computational tractable and thus, permits timescales needed to determine the effects of inositol on amyloid aggregation in a statistically meaningful way. Finally, the simplicity of (GA)4 allows the detailed examination and dissection of the different possible types of inositol-peptide interactions. 
-
-%4.6	KLVFFAE
-%	The peptide KLVFFAE, a segment spanning residues 16 to 22 of A≈í‚â§1-40 and A≈í‚â§1-42, has been well studied both experimentally and computationally.35-38 KLVFFAE is the central hydrophobic core thought to be important in full-length A≈í‚â§ assembly and is affected by four AD causing mutations: A31G (Flemish), E22Q (Dutch), E22K (Italian), and E22G (Arctic). This peptide not only contains side chains with more bulk, but also those capable of forming charged and aromatic interactions. The protofibrillar structure has been shown by SSNMR to have anti-parallel ≈í‚â§-sheet organization with possible parallel stacking of the ≈í‚â§-sheets.36 
-
-% 4.7	SNNFGAIL
-%	hIAPP(20‚Äö√Ñ√¨27) (SNNFGAIL) is an octameric segment of the 37-amino acid residue hIAPP polypeptide and is both amyloidogenic and cytotoxic.39 Pancreatic amyloid in humans forms through the aggregation of islet amyloid polypeptide (hIAPP). hIAPP-derived amyloid is found in more than 95% of type II diabetes patients and is believed to be directly involved in the pathogenesis of the disease. The peptide SNNFGAIL is different from KLVFFAE in that it is an amphipathic peptide where SNN is polar and FGAIL is nonpolar.39 Thus, the protofibrillar structure formed will likely have different surface properties despite sharing similar backbone secondary structure.
-
-%4.8	Full length A≈í‚â§40 or A≈í‚â§42
-%	Inositol does not necessarily act on the shorter peptide models and their aggregates. To address this possibility, I will study inositol with the A≈í‚â§ peptide and aggregates. The monomeric, oligomeric, and fibrillar structures of A≈í‚â§40 and A≈í‚â§42 have been studied both experimentally and computationally.4, 16, 40-45 Thus, I will utilize the structural data available to construct oligomeric and fibrillar species and comparatively analyze the interaction of chiro- and scyllo-inositol with these species.
