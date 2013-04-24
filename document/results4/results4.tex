@@ -60,18 +60,17 @@ In this study, we perform atomistic MD simulations of PgaB with $\beta$-N-acetyl
 % PgaB is hypothesized to bind sugar polymers (most likely a 15-mer) across its two domains on its surface. The polymer is hypothesized to extend out from the catalytic binding site (N-terminal domain) onto the charged grooves of the C-terminal domain.
 % Experimentally it is known that shallow binding pockets exist at the surface of the proteins. REF?
 % To our knowledge, this is the only study thus far in literature which employs large-scale MD simulations to predict carbohydrate-protein interactions. -- this is just not true.
-% The objective of my work is to predict PNAG binding sites at the surface of PgaB using unrestrained molecular dynamics simulations in the presence of GlcNac. This methodology was used in earlier inositol studies to predict inositol binding sites on amyloid peptides and aggregates.
+% The objective of my work is to predict PNAG binding sites at the surface of PgaB using unrestrained molecular dynamics simulations in the presence of GlcNAc. This methodology was used in earlier inositol studies to predict inositol binding sites on amyloid peptides and aggregates.
 % \textbf{The directionality of the polymer binding.  This is currently not experimentally determined.} 
-
 
 \section{Material and Methods}
 % Modelling details
-PgaB with a loop spanning residues 613 to 619 (numbered according to the chimeric PDB structure; check with Dustin again) in the N-terminal domain modelled into the truncated crystal structure, was used in our simulations. The initial crystal structure has Ni(II) bound at its enzymatic active site. Ni(II) is tetrahedrally coordinated with surrounding residues.  The acetate ion bound near the active site, an artifact of crystallization, was removed in the simulation. Crystal waters were removed from the initial PDB structure. Histidine protonation states were assigned based on predicted pKa values using the web software PROPKA (\url{http://propka.ki.ku.dk}), and histidine hydrogen-bonding geometries in the initial crystal structure.
+PgaB with a loop spanning residues 613 to 619 (numbered according to the chimeric PDB structure; check with Dustin again) in the N-terminal domain modelled into the truncated crystal structure, was used in our simulations. The initial crystal structure has Ni(II) bound at its enzymatic active site. Ni(II) is tetrahedrally coordinated with surrounding residues.  The acetate ion bound near the active site, an artifact of crystallization, was removed in the simulation. Crystal waters were removed from the initial PDB structure. Histidine protonation states were assigned based on predicted pKa values using the web software PROPKA,\cite{Bas:2008ul,Olsson:2011vi,Sondergaard:2011ug} and histidine hydrogen-bonding geometries in the initial crystal structure.
 
-Protein and ions were modelled using the AMBER99 force field.\cite{Cornell:1995td} Parameters for Ni(II) was approximated using the parameters for the magnesium ion (Mg$^{2+}$). After assigning protonation states of histidines, the net charge of the protein was -10e. The final simulation system comprised of 11 sodium (Na$^{+}$) counterions, and either 45 molecules of free $\beta$-N-acetyl-glucosamine (GlcNac) or glucosamine, at a concentration of 100 mM (Figure~\ref{fig:nag}). 19533 and 19991 water molecules were present in the GlcNac and glucosamine simulations, respectively. The initial volume of the simulation box is 713.6 nm$^{3}$.  To mimic experimental conditions, 100 mM of salt was added to the aqueous solution in glucosamine simulation systems.
+Protein and ions were modelled using the AMBER99 force field.\cite{Cornell:1995td} Parameters for Ni(II) was approximated using the parameters for the magnesium ion (Mg$^{2+}$). After assigning protonation states of histidines, the net charge of the protein was -10e. The final simulation system comprised of 11 sodium (Na$^{+}$) counterions, and either 45 molecules of free GlcNAc or \glucosamine, at a concentration of 100 mM (Figure~\ref{fig:nag}). 19533 and 19991 water molecules were present in the GlcNAc and \glucosamine\ simulations, respectively. The initial volume of the simulation box is 713.6 nm$^{3}$.  To mimic experimental conditions, 100 mM of salt was added to the aqueous solution in the \glucosamine\ simulation systems.
 
 % Note: To generate this structure from Glycam builder, choose the beta-pyranose ring and then acetyl-glucosamine
-GlcNac molecules were generated using the web-based Glycam Biomolecule Builder (\url{http://glycam.ccrc.uga.edu/ccrc/biombuilder/biomb_index.jsp}). The GLYCAM06 force field for carbohydrates\cite{Kirschner:2008ii} was used to model GlcNac and glucosamine. A PDB of glucosamine-$\textrm{NH}_{3}^{+}$ was obtained from the ZINC database.\cite{Irwin:2005kx} Energy minimization was performed using the software GAUSSIAN-09.\cite{g09} The minimized glucosamine structure was consistent with the GLYCAM force field, and new RESP-derived partial atomic charges were computed for glucosamine (a net charge of -1e) by fitting to a single HF/6-31G* molecular electrostatic potential (MEP) with a restraint weight of 0.01. MEPs were computed using the CHELPG methodology\cite{Breneman:1990ue} with the R.E.D. III software package.\cite{Dupradeau:2010bb} The partial charges were assigned so that the HCNH$_{3}$ group summed to a net charge of +1.164e, and the rest of the molecule summed to a net charge of -0.164e. Aliphatic hydrogen atoms were fitted with a zero partial charge in order to be compatible with GLYCAM06.
+GlcNAc molecules were generated using the web-based Glycam Biomolecule Builder.\cite{Woods:glycambuilder} The GLYCAM06 force field for carbohydrates\cite{Kirschner:2008ii} was used to model GlcNAc and \glucosamine. A PDB of \glucosamine\ was obtained from the ZINC database.\cite{Irwin:2005kx} Energy minimization was performed using the software GAUSSIAN-09.\cite{g09} The minimized \glucosamine\ structure was consistent with the GLYCAM force field, and new RESP-derived partial atomic charges were computed for \glucosamine\ (a net charge of -1e) by fitting to a single HF/6-31G* molecular electrostatic potential (MEP) with a restraint weight of 0.01. MEPs were computed using the CHELPG methodology\cite{Breneman:1990ue} with the R.E.D. III software package.\cite{Dupradeau:2010bb} The partial charges were assigned so that the HCNH$_{3}$ group summed to a net charge of +1.164e, and the rest of the molecule summed to a net charge of -0.164e. Aliphatic hydrogen atoms were fitted with a zero partial charge in order to be compatible with GLYCAM06.
 % How to cite the web builder - Carbohydrate Builder Woods Group. (2005-XXXX) GLYCAM Web. Complex Carbohydrate Research Center, University of Georgia, Athens, GA. (http://www.glycam.com) XXXX = current year
 
 % Note put the partial charges used for glucosamine in an appendix. Ask Chris Ing to add to this methods description.
@@ -85,10 +84,10 @@ Electrostatic interactions were calculated using Particle Mesh Ewald (PME) summa
 A second equilibration was performed for 1 ns in the NpT ensemble with isotropic pressure coupling. Temperature and pressure for equilibration were controlled at 300 K and at 1 atm, respectively, using Berendsen thermostat and pressure coupling schemes. Production simulations were performed using the stochastic dynamics (sd) integrator and the Parrinello-Rahman barostat for pressure coupling.
 % Look at /mnt/scratch_mp2/pomes/ligrace1/pgab/protein_sugar/params for fill in the blank parameters here
 
-13 independent MD simulations were performed for each of GlcNac and glucosamine, respectively. In total, \textbf{XXX} $\mu$s of sampling was performed.
+For each of GlcNAc and \glucosamine, 13 independent MD simulations at 130 ns per replica were performed, respectively, yielding a total of 3.38 $\mu$s of sampling time.
 
 \subsection*{Analysis Protocol}
-To compute spatial binding probability densities of GlcNac and glucosamine, frames from our simulations were first fitted via RMSD alignment of the protein backbone atoms to a crystal structure that was energy minimized and equilibrated. The density map corresponds to the fractional atomic occupancy of GlcNac or glucosamine molecules binned using a grid with a resolution of 1 \angstrom.  The density maps involving carbohydrates were computed using $\sim$165,000 time frames in the presence of GlcNAc and glucosamine. The Visual Molecular Dynamics (VMD) software package\cite{Humphrey:1996to} was used to calculate and graphically render the densities depicted in Figures~\ref{fig:sdf}, \ref{fig:groove}, and \ref{fig:salt_density_distribution}.
+To compute spatial binding probability densities of GlcNAc and \glucosamine, frames from our simulations were first fitted via RMSD alignment of the protein backbone atoms to a crystal structure that was energy minimized and equilibrated. The density map corresponds to the fractional atomic occupancy of GlcNAc or \glucosamine molecules binned using a grid with a resolution of 1 \angstrom.  The density maps involving carbohydrates were computed using $\sim$165,000 time frames in the presence of GlcNAc and \glucosamine. The Visual Molecular Dynamics (VMD) software package\cite{Humphrey:1996to} was used to calculate and graphically render the densities depicted in Figures~\ref{fig:sdf}, \ref{fig:groove}, and \ref{fig:salt_density_distribution}.
 % By examining the structure - does the sugars arrange into predicted binding site (s)?
 
 \section{Results and Discussion}
@@ -99,31 +98,32 @@ To compute spatial binding probability densities of GlcNac and glucosamine, fram
 %RMSD of just the C-terminal domain
 %Fluctuation of the loop region (Need a control simulation of just PgaB without any sugars).
 
-\subsection{Comparisons of the binding modes of GlcNAc and glucosamine}
-% GlcNac molecules preferentially bind to residues in the N-terminal domain (Figure~\ref{fig:pgab_density}B and D). 
+\subsection{Comparisons of the binding modes of GlcNAc and \glucosamine}
+% GlcNAc molecules preferentially bind to residues in the N-terminal domain (Figure~\ref{fig:pgab_density}B and D). 
 % three main sites on PgaB (Figure~\ref{fig:pgab_binding_sites}). 
-% Notably, the binding densities for GlcNac (A, B in Figure~\ref{fig:pgab_binding_sites}A,B
+% Notably, the binding densities for GlcNAc (A, B in Figure~\ref{fig:pgab_binding_sites}A,B
 
-The spatial binding probability density of GlcNac, depicted in Figure~\ref{fig:sdf}, suggests that binding sites for GlcNAc are predominantly located in proximity to the active site (in the N-terminal domain), consistent with the function of PgaB as a PNAG de-acetylase. In particular, the densities in the inter-domain crevice beneath the loop spanning residue numbers 309 to 314 suggest that this region may be involved in substrate binding.  This result corroborates the hypothesis that the binding of PNAG to PgaB may initiate in this region, prior to binding at the active site.\cite{Little:2012dp} 
+The spatial binding probability density of GlcNAc, depicted in Figure~\ref{fig:sdf}, suggests that binding sites for GlcNAc are predominantly located in proximity to the active site (in the N-terminal domain), consistent with the function of PgaB as a PNAG de-acetylase. In particular, the densities in the inter-domain crevice beneath the loop spanning residue numbers 309 to 314 suggest that this region may be involved in substrate binding.  This result corroborates the hypothesis that the binding of PNAG to PgaB may initiate in this region, prior to binding at the active site.\cite{Little:2012dp} 
 
 % Although the role of this region has not yet been determined experimentally
 % in the inter-domain groove found directly beneath a loop connecting the two domains (Figure~\ref{fig:pgab_density}), and on the surface directly below the active site, which contains surface exposed hydrophobic residues.
 
-% Moreover, our simulations have identified binding sites of GlcNac that were not predicted from solely examining the static crystal structure. 
+% Moreover, our simulations have identified binding sites of GlcNAc that were not predicted from solely examining the static crystal structure. 
 
 % When comparing the densities of PNAG and glucosamine (depicted in Figures \ref{fig:pgab_density} and XXX, respectively) it can be seen that whereas PNAG predominantly binds the N-terminal domain, but glucosamine instead bind to the C-terminal domain, predominantly in the groove capped by the loop spanning residues XXX to YYY.
 
-By contrast, the spatial distribution of glucosamine molecules depicted in Figure~\ref{fig:sdf} indicates that they preferentially bind to the C-terminal domain, with a significant density in the groove lined with acidic, and aromatic residues (Figure~\ref{fig:groove}). \textbf{Add this to the figure caption: the residues in this groove are ...}
+By contrast, the spatial distribution of \glucosamine\ molecules depicted in Figure~\ref{fig:sdf} indicates that they preferentially bind to the C-terminal domain, with a significant density in the groove lined with acidic, and aromatic residues (Figure~\ref{fig:groove}).
 %Specifically, glucosamine molecules are found to cluster in the groove lined with acidic, and aromatic residues (Figure~\ref{fig:groove}).  
-Notably, consistent with the crystal structure of the C-terminal domain of PgaB (PgaB-CT) with bound glucosamine, our simulation results indicate that both GlcNAc and glucosamine possess binding sites at Trp613 and Trp552  (Figure~\ref{fig:groove}), which are conserved residues located in this groove. REF
+Notably, consistent with the crystal structure of the C-terminal domain of PgaB (PgaB-CT) with bound \glucosamine, our simulation results indicate that both GlcNAc and \glucosamine\ possess binding sites at Trp613 and Trp552  (Figure~\ref{fig:groove}), which are conserved residues located in this groove.\cite{Little:2012dp}
+%TODO get the correct reference for this.
 % Trp613, Trp552 are in this groove
 In support of this result, our previous study has shown that PgaB-CT is homologous to glycoside hydrolases, where the active site for these enzymes is also located in analogous grooves with a similar geometry.\cite{Little:2012dp} 
 
-Furthermore, our results indicate that the entire length of the groove can bind glucosamine molecules, suggesting that this groove is likely to accommodate a linear polymer of glucosamine (Figure~\ref{fig:groove}). Accordingly, in our simulations, glucosamine molecules were observed to bind in this groove by forming linear hydrogen-bonded chains (Figure~\ref{fig:directionality}).  Taken together,  our results suggest that this C-terminal groove of PgaB is a binding site for the de-acetylated PNAG (dPNAG).   In contrast to the spatial distributions of GlcNac and GlcNH2, salt ions do not significantly bind the protein  (Figure~\ref{fig:salt_density_distribution}). 
+Furthermore, our results indicate that the entire length of the groove can bind \glucosamine\ molecules, suggesting that this groove is likely to accommodate a linear polymer of \glucosamine\ (Figure~\ref{fig:groove}). Accordingly, in our simulations, \glucosamine\ molecules were observed to bind in this groove by forming linear hydrogen-bonded chains (Figure~\ref{fig:directionality}).  Taken together,  our results suggest that this C-terminal groove of PgaB is a binding site for the de-acetylated PNAG (dPNAG).   In contrast to the spatial distributions of GlcNAc and GlcNH2, salt ions do not significantly bind the protein  (Figure~\ref{fig:salt_density_distribution}). 
 
-Together, the morphology of the overall binding density of both GlcNAc and glucosamine paints a molecular picture of the putative binding mechanism and export of PNAG. As PNAG is shuttled through PgaB on to the next protein in the system, it initially binds at the cleft between the N- and C-terminal domains to undergo de-N-acetylation.  As it is converted to dPNAG, the binding affinity of the polymer is increased for the C-terminal domain and can accommodate the de-acetylated portion of the polymer as it is being exported away from PgaB (Figure~\ref{fig:sdf}).
+Together, the morphology of the overall binding density of both GlcNAc and \glucosamine\ paints a molecular picture of the putative binding mechanism and export of PNAG. As PNAG is shuttled through PgaB on to the next protein in the system, it initially binds at the cleft between the N- and C-terminal domains to undergo de-N-acetylation.  As it is converted to dPNAG, the binding affinity of the polymer is increased for the C-terminal domain and can accommodate the de-acetylated portion of the polymer as it is being exported away from PgaB (Figure~\ref{fig:sdf}).
 
-% Based on our results, GlcNac may be more likely than glucosamine to bind at this loop binding site because the the binding densities for GlcNAc, but not for glucosamine persist at higher isovalues (0.2). -- Needs to be verified.
+% Based on our results, GlcNAc may be more likely than glucosamine to bind at this loop binding site because the the binding densities for GlcNAc, but not for glucosamine persist at higher isovalues (0.2). -- Needs to be verified.
 
 % This result further supports the ability of MD simulations and our methodology to identify carbohydrate-protein binding sites. 
 % with the fact that these residues are conserved across PgaB  homologues. \textbf{See Dustin's first pgab paper} REF
@@ -133,7 +133,7 @@ Together, the morphology of the overall binding density of both GlcNAc and gluco
 % TODO: Note that I should redo these plots with the correct density maps where I‚Äôve correctly trjcatted the PgaB trajectories
 % TODO: Note that here Kd calculations might help with hypothesizing which glcnac or glucosamine that binds there with high Kds.
 % Because of the mobility of this loop region, we hypothesize that this loop may be involved in the export process whereby the opening and closing of this loop over the binding groove facilitate the export and stabilize the polymer for binding at the enzymatic active site.
-% Loop clamping. Perhaps the loop may periodically open and clamp down (ie. bind particular sugars with higher affinity) on particular forms of the sugar on the PNAG.  It may clamp down for glucosamine or GlcNac. 
+% Loop clamping. Perhaps the loop may periodically open and clamp down (ie. bind particular sugars with higher affinity) on particular forms of the sugar on the PNAG.  It may clamp down for glucosamine or GlcNAc. 
 
 % \textbf{I feel like this is really speculative, because its based on one snapshot - When a vector is drawn from the CX carbon to the nitrogen atom on the $NH_{3}^{+}$ group of glucosamine, we observe that these vectors point towards the N-terminal domain. Based on this result, we speculate that the (reducing or non-reducing end of the polymer?) to (reducing/non-reducing) end of the polymer extends from the N-terminal towards the C-terminal of PgaB.  This hypothesized polymer directionality is consistent with our proposed mechanism of synthesis and export whereby de-acetylation in PgaB-NT occurs prior to the binding of de-acetylated-PNAG by PgaB-CT.  Note that the hydrogen-bonded chain spanning the first three monomers in the groove shown in Figure~\ref{fig:} mimics the linkage pattern of PNAG, except you would have to rotate the schematic of PNAG by 180 degrees. See PNAG clipped from Little 2012, Figure S7.}
 
@@ -143,17 +143,17 @@ Together, the morphology of the overall binding density of both GlcNAc and gluco
 % directionality paper
 % http://www.jbc.org/content/274/37/26557.full
 
-This study demonstrates the utility of large-scale MD simulations in predicting carbohydrate-protein binding modes when combined with a force field that can reproduce sugar-protein interactions with relative accuracy (for example, GLYCAM\cite{glycam}). Force fields for molecular simulations of carbohydrates have been recently reviewed here.\cite{Fadda:2010p5889}  Furthermore, we demonstrated the utility of computing spatial probability binding densities using monosaccharides to map carbohydrate binding sites. A recent study suggests that by building 3D density binding maps of carbohydrates and using this data with additional computational algorithms can increase the accuracy of identifying putative carbohydrate binding sites.\cite{Tsai:2012bj} As part of future work, it may be interesting to employ a similar approach to investigate the binding of oligosaccharides to PgaB.  
+This study demonstrates the utility of large-scale MD simulations in predicting carbohydrate-protein binding modes when combined with a force field that can reproduce sugar-protein interactions with relative accuracy (for example, GLYCAM\cite{Kirschner:2008ii}). Force fields for molecular simulations of carbohydrates have been recently reviewed here.\cite{Fadda:2010p5889}  Furthermore, we demonstrated the utility of computing spatial probability binding densities using monosaccharides to map carbohydrate binding sites. A recent study suggests that by building 3D density binding maps of carbohydrates and using this data with additional computational algorithms can increase the accuracy of identifying putative carbohydrate binding sites.\cite{Tsai:2012bj} As part of future work, it may be interesting to employ a similar approach to investigate the binding of oligosaccharides to PgaB.  
 
 %%%%%%%%%%%%%%%%%%%%%% Future work %%%%%%%%%%%%%%%%%%%%%%
 % What is the name for positively charged glucosamine molecules? Is there a 3-letter abbrev. for it?
 % This paragraph can be part of the discussion.
 
-% Various analyses (eg. time evolution of RMSD, RMSF of the protein, principle component analysis, etc.) can be done to quantify protein dynamics, especially the mobility of the two domains. Furthermore, it will be interesting to investigate how dynamics may be correlated to the function of PgaB.  Finally, it will be interesting to predict GlcNac and GlcNH$_3^+$ binding modes and binding constants from MD simulations so that they can be compared with corresponding future experimental results.
+% Various analyses (eg. time evolution of RMSD, RMSF of the protein, principle component analysis, etc.) can be done to quantify protein dynamics, especially the mobility of the two domains. Furthermore, it will be interesting to investigate how dynamics may be correlated to the function of PgaB.  Finally, it will be interesting to predict GlcNAc and GlcNH$_3^+$ binding modes and binding constants from MD simulations so that they can be compared with corresponding future experimental results.
 
 % \subsection{New written up results to incorporate}
 % These are results -- writing them here first 
-% GlcNac binding. Moreover, GlcNac interacts with conserved hydrophobic residues X, Y, Z in CE4 (Figure S1 in Little, JBC, 2012). Figure caption (overlapped zoomed out densities): The magenta colored densities over PgaB-NT cover conserved residues in CE4.  These residues are highlighted in magenta in Little et. al. in Figure S1. 
+% GlcNAc binding. Moreover, GlcNAc interacts with conserved hydrophobic residues X, Y, Z in CE4 (Figure S1 in Little, JBC, 2012). Figure caption (overlapped zoomed out densities): The magenta colored densities over PgaB-NT cover conserved residues in CE4.  These residues are highlighted in magenta in Little et. al. in Figure S1. 
 
 % \subsection{From dustin's committee report (Jan 2013)}
 % Significant efforts to obtain a co-crystal structure of PgaB (or PgaB-CT) in complex with a PNAG oligomer have failed.
@@ -167,28 +167,28 @@ This work was done in collaboration with Dustin Little, Dr. Lynne Howell and Dr.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=4in]{figures/results4/sugar_structures.pdf}
-\caption[Molecular structures of GlcNAc and GlcNH$_2$]{Molecular structures of $\beta$-N-acetyl-glucosamine (GlcNac) and $\beta$-glucosamine (GlcNH$_2$).}
+\caption[Molecular structures of GlcNAc and GlcNH$_2$]{Molecular structures of $\beta$-N-acetyl-glucosamine (GlcNAc) and $\beta$-glucosamine (GlcNH$_2$).}
 \label{fig:nag}
 \end{figure}
 
 %\begin{figure}[htbp]
 %\centering
 %\includegraphics[height=4.25in, width=6in]{figures/results4/figure_pgab_density.png}
-%\caption[NAG binding density]{Spatial binding probability density map of bound GlcNac around PgaB.  (A) An example snapshot of PgaB (grey) shown using a surface representation with bound GlcNac binding density depicted in purple at 10\% occupancy (iso-contour of 0.1). Binding densities of GlcNac overlapped with a cartoon representation of PgaB at iso-contour levels of (B) 0.1 (C) 0.2 (D) 0.25. In our coloring scheme, residue numbers 43 to 310 and numbers 311 to 667 represent N- (green) and C-terminal (cyan) domains, respectively.}
+%\caption[NAG binding density]{Spatial binding probability density map of bound GlcNAc around PgaB.  (A) An example snapshot of PgaB (grey) shown using a surface representation with bound GlcNAc binding density depicted in purple at 10\% occupancy (iso-contour of 0.1). Binding densities of GlcNAc overlapped with a cartoon representation of PgaB at iso-contour levels of (B) 0.1 (C) 0.2 (D) 0.25. In our coloring scheme, residue numbers 43 to 310 and numbers 311 to 667 represent N- (green) and C-terminal (cyan) domains, respectively.}
 %\label{fig:pgab_density}
 %\end{figure}
 
 %\begin{figure}[htbp]
 %\centering
 %\includegraphics[height=6.29in, width=6.12in]{figures/results4/figure_pgab_binding_sites.png}
-%\caption[GlcNac binding sites]{High probability GlcNac binding sites at an iso-contour value of 0.25 (D). Insets (A to C) show detailed views of the binding sites and the residues involved in binding. \textbf{This figure probably isn't that useful}}
+%\caption[GlcNAc binding sites]{High probability GlcNAc binding sites at an iso-contour value of 0.25 (D). Insets (A to C) show detailed views of the binding sites and the residues involved in binding. \textbf{This figure probably isn't that useful}}
 %\label{fig:pgab_binding_sites}
 %\end{figure}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=6.25in]{figures/results4/glcnac_glucosamine_merged_sdf.pdf}
-\caption[Spatial probability densities of bound GlcNAc (purple) and GlcNH3+]{Spatial probability densities of bound GlcNAc (purple) and GlcNH3+ (pink).  Binding densities overlapped with a cartoon representation of the energy minimized crystal structure of PgaB.  The protein is shown facing the active site in (A) and (C), and facing the C-terminal domain in (B) and (D). For each view, binding densities are shown at occupancies of 0.15 in (A) and (B) and 0.25 in (C) and (D). In our coloring scheme, residue numbers 43 to 310 and numbers 311 to 667 represent N- (green) and C-terminal (cyan) domains, respectively.}
+\caption[Spatial probability densities of bound GlcNAc (purple) and \glucosamine]{Spatial probability densities of bound GlcNAc (purple) and \glucosamine\ (pink).  Binding densities overlapped with a cartoon representation of the energy minimized crystal structure of PgaB.  The protein is shown facing the active site in (A) and (C), and facing the C-terminal domain in (B) and (D). For each view, binding densities are shown at occupancies of 0.15 in (A) and (B) and 0.25 in (C) and (D). In our coloring scheme, residue numbers 43 to 310 and numbers 311 to 667 represent N- (green) and C-terminal (cyan) domains, respectively.}
 % Note that the magenta colored densities over PgaB-NT cover conserved residues in CE4.  (These residues are highlighted in magenta in Little et. al. in Figure S1. ) \textbf{Id the residues and list them in the text and in the caption. Need to add the isovalues for the top and bottom two panels.}
 \label{fig:sdf}
 \end{figure}
@@ -196,7 +196,7 @@ This work was done in collaboration with Dustin Little, Dr. Lynne Howell and Dr.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=6.25in]{figures/results4/cterm_groove_surf.pdf}
-\caption[Spatial probability densities of GlcNAc and GlcNH3+ in the C-terminal groove]{Spatial probability distribution of (A) GlcNH2, and (B) GlcNAc in the binding groove in the C-terminal domain (shown at an occupancy of 0.15).}
+\caption[Spatial probability densities of GlcNAc and GlcNH3+ in the C-terminal groove]{Spatial probability distribution of (A) \glucosamine, and (B) GlcNAc in the binding groove in the C-terminal domain (shown at an occupancy of 0.15).  \textbf{the residues in this groove are ...}}
 \label{fig:groove}
 \end{figure}
 
@@ -210,7 +210,7 @@ This work was done in collaboration with Dustin Little, Dr. Lynne Howell and Dr.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=6.25in]{figures/results4/glucosamine_binding_direction_suggestive.pdf}
-\caption[Polymer directionality]{A linear chain of hydrogen-bonded glucosamine molecules bound in the putative carbohydrate-binding groove of the C-terminal domain.  The yellow arrows are drawn as a guide to highlight a putative chain directionality.}
+\caption[Polymer directionality]{A linear chain of hydrogen-bonded \glucosamine\ molecules in the putative carbohydrate-binding groove of the C-terminal domain.  The yellow arrows are drawn as a guide to highlight a putative chain directionality.}
 \label{fig:directionality}
 \end{figure}
 
