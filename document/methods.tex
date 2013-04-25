@@ -6,29 +6,61 @@ MD simulations have been used in recent years to gain insight into many fundamen
 % I like these analogies and I think it will help make my methods sections less dry
 In many respects, Molecular Dynamics simulations are very similar to real experiments. When we perform a real experiment, we first prepare a sample of the material that we wish to study. This sample is then connected to a measuring instrument from which we can measure the property of interest during a certain time interval. If our measurements are subject to statistical noise (as most measurements are), then the longer we average, the more accurate our measurement becomes. 
 
-The same approach is applied when performing a Molecular Dynamics simulation. First, a model system consisting of N particles is selected and we record the dynamics of this system (via solving Newton's equation of motion) until the properties of the system no longer change with time (we equilibrate the system). 
-
-After equilibration, we perform the actual measurement. In fact, some of the most common mistakes that can be made when performing a computer experiment are very similar to the mistakes that can be made in real experiments (e.g., the sample is not prepared correctly, the measurement is too short, the system undergoes an irreversible change during the experiment, or we do not measure what we think).
-(Copied and adapted from Molecular Simulations book)
+The same approach is applied when performing a Molecular Dynamics simulation. First, a model system consisting of N particles is selected and we record the dynamics of this system (via solving Newton's equation of motion) until the properties of the system no longer change with time (we equilibrate the system).  After equilibration, we perform the actual measurement. In fact, some of the most common mistakes that can be made when performing a computer experiment are very similar to the mistakes that can be made in real experiments (e.g., the sample is not prepared correctly, the measurement is too short, the system undergoes an irreversible change during the experiment, or we do not measure what we think). (Copied and adapted from Molecular Simulations book)
 
 MD simulations employ an empirical mathematical function to describe the atomic interactions in a molecular system, and together with classical laws of Newtonian mechanics, to simulate systems undergoing thermal motion from which atomic trajectories are generated. 
 
 Thermodynamic and kinetic properties can then be extracted as time averages from these trajectories and used to make a number of predictions that are often experimentally challenging to observe or measure.
 
-\section{Approximations in MD}
+
 % Approximations made in MD.
 % Note the audience of your thesis.  It is good to cover basic ground.  I think I should also brief talk about enhanced techniques.
 
-MD is a molecular mechanics simulation technique.  Molecular mechanics is the model of interactions in the system. There are many assumptions made in MD.  In MD, classical mechanics is used to describe the motion of atoms.  In a biomolecular system, covalent bond stretching and angle-bending motions are treated as harmonic.
+MD is a molecular mechanics simulation technique.  
 
-The potential energy function (or force field) is a function of the positions of atoms only.  Under the Born-Oppenheimer approximation, electronic and nuclear motions are uncoupled, and can therefore be treated separately.  
-% M. Born and R. Oppenheimer, “Quantum Theory of Molecules,” Ann. Physics, vol. 84, pp. 457–484, 1927.
-In MD, the movements of all atomic nuclei are treated as classical particles (that is, an atom is a point charge in space), where the movement of electrons are not accounted for. Instead, the effects of electronic motion is implicitly accounted for in the force field (described in more detail below). Because electronically excited states are not treated, no chemical reactions occur in the system. 
-This classical mechanics provide a valid approximation of many biological systems % XXX 
+Under the Born-Oppenheimer approximation, electronic and nuclear motions are uncoupled and therefore can be treated separately.
+% \cite{M. Born and R. Oppenheimer, Quantum Theory of Molecules, Ann. Physics, vol. 84, pp. 457�484, 1927.} -- can't find this article.
 
-Force fields do not account for polarizability of molecules.  because of its prohibitive computational cost.
-Polarizability is a property of matter, and is the measure of the change in a molecule's electron distribution in response to an applied electric field, which can also be induced by electric interactions with solvents or ionic reagents. 
+For this reason, the movements of all atomic nuclei can be treated as classical particles (that is, an atom is a point charge in space), where the movement of electrons are not accounted for. Instead, the effects of electronic motion is implicitly accounted for in the force field (described in more detail below). Because electronically excited states are not treated, no chemical reactions occur in the system. 
 
+The outcome of MD simulations is controlled by an expression for the total potential energy of the system collectively referred to as the force field. This potential energy function only depends on the positions of atoms.
+
+
+% In molecular mechanics uses a model of interactions in the system that 
+In biomolecular systems, covalent bond stretching and angle-bending motions are treated as harmonic.
+
+\section{Force field}
+
+An empirical force field is applied in MD to approximate atomic interactions in the system, which has many parameters to be determined. One approach to do this is to fit to quantum mechanical calculations.  orce fields are iteratively improved by predicting experimentally observable quantities for small compounds, and adjusting the fit based on comparisons of these computationally predicted quantities with experimental measurements.
+  
+Many different force fields have been developed for the purpose of simulating biomolecular systems. Existing force fields such as AMBER, GROMOS, CHARMM, OPLS-AA, all differ slightly in the functional form and parameterization of the potential energy function. In this thesis, the OPLS-AA/L force field was use throughout (results in chapters 3 to 5) and AMBER99 force fields (chapter 6) in this thesis. OPLS models atomic connectivity based on AMBER, but was developed to reproduce liquid state properties (water, and 40 other organic liquids) such as XXX and YYY.\cite{jay ponder, the opls 1986 paper, and the 1996 all atom paper} 
+% Note that if I say this .. I might have to justifiy this in my defense.
+
+The general form of the force field potential energy function used in OPLS-AA is
+  % \[ V(R) = bonds + angles + impropers + dihedrals + pair interactions \]
+  \begin{equation}
+    \begin{split}
+          E = \sum_{bonds} k_b(b-b_0)^2 
+          + \sum_{angles} k_{\theta}(\theta - \theta_{0})^2 \\
+          + \sum_{dihedrals} k_{\chi}(1 + cos(n\chi - \delta)) 
+          + \sum_{impropers} k_{\gamma}(\phi - \phi_{0})^2 \\
+          + \sum_{nonbonded} \frac{q_1q_2}{er} \\
+          + \sum_{nonbonded} \epsilon [(\frac{r_{min}}{r})^{12} - 2(\frac{r_{min}}{r})^6]
+    \end{split}
+  \end{equation}
+
+% Initial conditions -- initial positions of the atoms in the system
+Simulation systems are usually in the canonical ensemble (NVT), and isothermo-isobaric (NPT) ensembles.
+
+Inclusion of temperature in MD allows for the account of entropy in our systems.  This is especially important for the determination of free energies, G. 
+
+\section{Application of MD}
+This classical mechanics approach has been shown to be able to provide a valid approximation of many biological systems thus far. REFs
+
+\section{Polarizability}
+Polarizability is the measure of the change in a molecule's electron distribution in response to an applied electric field, and is a property of matter which can be induced by electrostatic interactions with solvents or ionic reagents. Because of its prohibitive computational cost and for the reasons listed above, classical mechanics force fields also do not explicitly account for polarizability of molecules.
+
+\section{Periodic boundary conditions}
 To treat a bulk system and avoid phase boundaries, periodic boundary conditions are used.  Although this is unnatural, for sufficiently large systems, the errors induced by periodic boundaries are negligible. REFS
 
 \section{Core Algorithm}
@@ -90,32 +122,6 @@ To simulate a system under an ensemble which matches most experimental settings,
 Using the same idea, we can couple the system to a pressure bath.  This method is called the Parrinello-Rahman pressure coupling, and the theory has been shown to correctly produce the NpT ensemble.
 % \cite{Parrinello, M., Rahman, A. Polymorphic transitions in single crystals: A new molecular dynamics method. J. Appl. Phys. 52:7182–7190, 1981. [35] Nose ́, S., Klein, M. L. Constant pressure molecular dynamics for molecular systems. Mol. Phys. 50:1055–1076, 1983.}
 % Should I include the equations? I haven't seen this in other thesis, perhaps its too much detail.
-
-\section{Force field}
-The outcome of the simulations are controlled by an expression for the total potential energy of the system collectively referred to as the force field.
-
-Application of an empirical force field is used in MD to approximate atomic interactions in the system. A force field typically has many parameters which need to be calculated. One approach to do this is to fit to quantum mechanical calculations.  Often, force fields are iteratively improved by predicting experimentally observable quantities for small compounds, and adjusting the fit based on comparisons of these computationally predicted quantities with experimental measurements.
-  
-Many different force fields have been developed for the purpose of simulating biomolecular systems. Existing force fields such as AMBER, GROMOS, CHARMM, OPLS-AA, all differ slightly in the functional form and parameterization of the potential energy function. We have chosen to use the OPLS-AA/L (results in chapters 3 to 5) and AMBER99 force fields (chapter 6) in this thesis. OPLS models atomic connectivity based on AMBER, but was developed to reproduce liquid state properties (water, and 40 other organic liquids) such as XXX and YYY.\cite{jay ponder, the opls 1986 paper, and the 1996 all atom paper} 
-% Note that if I say this .. I might have to justifiy this in my defense.
-
-The general form of the force field potential energy function used in OPLS-AA is
-  % \[ V(R) = bonds + angles + impropers + dihedrals + pair interactions \]
-  \begin{equation}
-    \begin{split}
-          E = \sum_{bonds} k_b(b-b_0)^2 
-          + \sum_{angles} k_{\theta}(\theta - \theta_{0})^2 \\
-          + \sum_{dihedrals} k_{\chi}(1 + cos(n\chi - \delta)) 
-          + \sum_{impropers} k_{\gamma}(\phi - \phi_{0})^2 \\
-          + \sum_{nonbonded} \frac{q_1q_2}{er} \\
-          + \sum_{nonbonded} \epsilon [(\frac{r_{min}}{r})^{12} - 2(\frac{r_{min}}{r})^6]
-    \end{split}
-  \end{equation}
-
-% Initial conditions -- initial positions of the atoms in the system
-Simulation systems are usually in the canonical ensemble (NVT), and isothermo-isobaric (NPT) ensembles.
-
-Inclusion of temperature in MD allows for the account of entropy in our systems.  This is especially important for the determination of free energies, G. 
 
 
 % Note that because I talk a lot about binding ... this discussion within my methods section may be quite important for examing members that understands the physics but do not understand how MD simulations in particular is rigoroous enough to make any of those predictions.  Having those details here means that I understand how that link is established and that I'm not just making up stories based on pretty pictures.
