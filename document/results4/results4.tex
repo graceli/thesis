@@ -29,7 +29,7 @@
 \\
 \\
 \emph{Contributions}:
-Grace Li conducted the MD simulation part of the research and wrote the section. Dustin Little conducted and interpreted the experimental results. Chris Ing parameterized the partial charges for glucosamine, a key part of the MD simulation study. Rgis Poms, Lynne Howell, Mark Nitz provided editorial input and guidance.
+Grace Li conducted the MD simulation part of the research and wrote the section. Dustin Little conducted and interpreted the experimental results. Chris Ing parameterized the partial charges for glucosamine. Rgis Poms, Lynne Howell, Mark Nitz provided editorial input and guidance.
 
 \newpage
 
@@ -50,11 +50,11 @@ PgaB is a key protein responsible for the transport of the functionally relevant
 
 Although it is known that PgaB carries its function by binding to PNAG, the molecular basis of the mechanism of export of PNAG by PgaB is not currently not determined.  Moreover, the binding mode and the length of its substrate polymer are not known.
 %PgaB binds PNAG or its de-N-acetylated end products, and what the  are. 
-Efforts to crystallize PgaB with oligosaccharides of varying lengths have been impeded by the weak binding of short sugar polymers (eg. di- and tri-saccharides), and the insolubility of long sugar polymer chains (eg. those longer than a pentamer). However, molecular dynamics (MD) simulations are not impeded by these challenges and are well-suited for characterizing carbohydrate-protein interactions.\cite{REFs elisa}
+Efforts to crystallize PgaB with oligosaccharides of varying lengths have been impeded by the weak binding of short sugar polymers (eg. di- and tri-saccharides), and the insolubility of long sugar polymer chains (eg. those longer than a pentamer). However, molecular dynamics (MD) simulations are not impeded by these challenges and are well-suited for characterizing carbohydrate-protein interactions.\cite{Fadda:2010p5889}
 
 % we examine putative binding site and modes of PNAG by examining the binding of GlcNAc and GlcNH2 monosaccharides with PgaB.
-In this study, we perform atomistic MD simulations of PgaB with $\beta$-N-acetyl-glucosamine (GlcNAc) and protonated $\beta$-glucosamine (GlcNH$_{3}^{+}$), the monosaccharide components of PNAG and dPNAG, to examine the putative binding site and binding modes of PNAG/dPNAG.  The weak binding affinity of these monosaccharides allows us to use a fragment-based methodology to probe for carbohydrate binding sites.  This method has been employed successfully in our previous studies to examine the binding mechanism of inositol, a carbohydrate-like amyloid inhibitor, with amyloidogenic peptides and their aggregates.\cite{Li:2012bx,Li:2013Abreview}
-
+In this study, we perform atomistic MD simulations of PgaB with $\beta$-N-acetyl-glucosamine (GlcNAc) and protonated $\beta$-glucosamine (GlcNH$_{3}^{+}$), the monosaccharide components of PNAG and dPNAG, to examine the putative binding site and binding modes of PNAG/dPNAG.  The weak binding affinity of these monosaccharides allows us to use a fragment-based methodology to probe for carbohydrate binding sites.  This method has been employed successfully in our previous studies to examine the binding mechanism of inositol, a carbohydrate-like amyloid inhibitor, with amyloidogenic peptides and their aggregates.\cite{Li:2012bx}
+% Manuscript in preparation -- Li:2013Abreview
 % \textbf{The objectives of this study are to (1) identify preferred binding sites of GlcNAc and glucosamine, (2) gain insight into the polymer directionality and (3) identify protein structural motions which may be correlated with ligand binding.}
 
 % PgaB is hypothesized to bind sugar polymers (most likely a 15-mer) across its two domains on its surface. The polymer is hypothesized to extend out from the catalytic binding site (N-terminal domain) onto the charged grooves of the C-terminal domain.
@@ -188,22 +188,22 @@ This work was done in collaboration with Dustin Little, Dr. Lynne Howell and Dr.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=6.25in]{figures/results4/glcnac_glucosamine_merged_sdf.pdf}
-\caption[Spatial probability densities of bound GlcNAc (purple) and \glucosamine]{Spatial probability densities of bound GlcNAc (purple) and \glucosamine\ (pink).  Binding densities overlapped with a cartoon representation of the energy minimized crystal structure of PgaB.  The protein is shown facing the active site in (A) and (C), and facing the C-terminal domain in (B) and (D). For each view, binding densities are shown at occupancies of 0.15 in (A) and (B) and 0.25 in (C) and (D). In our coloring scheme, residue numbers 43 to 310 and numbers 311 to 667 represent N- (green) and C-terminal (cyan) domains, respectively.}
+\caption[Spatial probability densities of bound GlcNAc (purple) and \glucosamine]{Spatial probability densities of bound GlcNAc (purple) and \glucosamine\ (pink).  Binding densities overlapped with a cartoon representation of the energy minimized crystal structure of PgaB.  The protein is shown facing the active site in (A) and (C), and shown facing the C-terminal domain in (B) and (D). In each view, binding densities are depicted at occupancies of 0.15 in (A)-(B), and 0.25 in (C) - (D). In our coloring scheme, residue numbers 43 to 310 and numbers 311 to 667 represent N- (green) and C-terminal (cyan) domains, respectively.}
 % Note that the magenta colored densities over PgaB-NT cover conserved residues in CE4.  (These residues are highlighted in magenta in Little et. al. in Figure S1. ) \textbf{Id the residues and list them in the text and in the caption. Need to add the isovalues for the top and bottom two panels.}
 \label{fig:sdf}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=6.25in]{figures/results4/cterm_groove_surf.pdf}
-\caption[Spatial probability densities of GlcNAc and GlcNH3+ in the C-terminal groove]{Spatial probability distribution of (A) \glucosamine, and (B) GlcNAc in the binding groove in the C-terminal domain (shown at an occupancy of 0.15).  \textbf{the residues in this groove are ...}}
+\includegraphics[width=6.25in]{figures/results4/cterm_groove_surf2.pdf}
+\caption[Spatial probability densities of GlcNAc and GlcNH3+ in the C-terminal groove]{Spatial probability distribution shown at an occupancy of 0.15 for (A) \glucosamine\ and (B) GlcNAc in the binding groove of the C-terminal domain.  The residues in the groove are shown in stick representations.}
 \label{fig:groove}
 \end{figure}
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=6.25in]{figures/results4/pgab_glucosamine_salt_densities.pdf}
-\caption[Ionic distribution]{Spatial probability distribution of sodium and chloride ions around \pgab\ shown at an isovalue of 0.005 for both sodium (blue) and chloride (grey). PgaB is depicted in a cartoon representation, where its N- and C-terminal domains are colored green and cyan, respectively.}
+\caption[Ionic distribution]{Spatial probability distribution of sodium (blue) and chloride (grey) ions depicted at an isovalue of 0.005. The protein, PgaB, is depicted in a cartoon representation, with N- and C-terminal domains are colored in green and cyan, respectively.}
 \label{fig:salt_density_distribution}
 \end{figure}
 
