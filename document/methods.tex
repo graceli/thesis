@@ -31,9 +31,9 @@ In biomolecular systems, covalent bond stretching and angle-bending motions are 
 
 \section{Force field}
 
-An empirical force field is applied in MD to approximate atomic interactions in the system, which has many parameters to be determined. One approach to do this is to fit to quantum mechanical calculations.  orce fields are iteratively improved by predicting experimentally observable quantities for small compounds, and adjusting the fit based on comparisons of these computationally predicted quantities with experimental measurements.
+An empirical force field is applied in MD to approximate atomic interactions in the system, which has many parameters to be determined. One approach is to fit these parameters to quantum mechanical calculations.  Once the initial parameters are determined, force fields are iteratively improved by predicting experimentally observable quantities for small compounds, and adjusting the fit based on comparisons of these computationally predicted quantities with experimental measurements.
   
-Many different force fields have been developed for the purpose of simulating biomolecular systems. Existing force fields such as AMBER, GROMOS, CHARMM, OPLS-AA, all differ slightly in the functional form and parameterization of the potential energy function. In this thesis, the OPLS-AA/L force field was use throughout (results in chapters 3 to 5) and AMBER99 force fields (chapter 6) in this thesis. OPLS models atomic connectivity based on AMBER, but was developed to reproduce liquid state properties (water, and 40 other organic liquids) such as XXX and YYY.\cite{jay ponder, the opls 1986 paper, and the 1996 all atom paper} 
+Many different force fields have been developed for the purpose of simulating biomolecular systems. Existing force fields such as AMBER, GROMOS, CHARMM, OPLS-AA, all differ slightly in the functional form and parameterization of the potential energy function. In this thesis, the OPLS-AA/L force field was use throughout (results in chapters 3 to 5) and AMBER99 force fields (chapter 6) in this thesis. OPLS models atomic connectivity based on AMBER, but was developed to reproduce liquid state properties of water and 40 other organic liquids.\cite{Ponder:2003uw,Kaminski:2001eq,Jorgensen:1996vx,Jorgensen:1993vx}
 % Note that if I say this .. I might have to justifiy this in my defense.
 
 The general form of the force field potential energy function used in OPLS-AA is
@@ -50,25 +50,26 @@ The general form of the force field potential energy function used in OPLS-AA is
   \end{equation}
 
 % Initial conditions -- initial positions of the atoms in the system
-Simulation systems are usually in the canonical ensemble (NVT), and isothermo-isobaric (NPT) ensembles.
+Simulation systems are usually in the canonical ensemble (NVT) or  isothermo-isobaric (NPT) ensembles.
 
-Inclusion of temperature in MD allows for the account of entropy in our systems.  This is especially important for the determination of free energies, G. 
+The inclusion of temperature in MD allows for the account of entropy in our systems, which is especially important for free energy determination. 
 
 \section{Application of MD}
 This classical mechanics approach has been shown to be able to provide a valid approximation of many biological systems thus far. REFs
 
-\section{Polarizability}
-Polarizability is the measure of the change in a molecule's electron distribution in response to an applied electric field, and is a property of matter which can be induced by electrostatic interactions with solvents or ionic reagents. Because of its prohibitive computational cost and for the reasons listed above, classical mechanics force fields also do not explicitly account for polarizability of molecules.
+%\section{Polarizability}
+%Polarizability is the measure of the change in a molecule's electron distribution in response to an applied electric field, and is a property of matter which can be induced by electrostatic interactions with solvents or ionic reagents. Because of its prohibitive computational cost and for the reasons listed above, classical mechanics force fields also do not explicitly account for polarizability of molecules.
 
 \section{Periodic boundary conditions}
+
 To treat a bulk system and avoid phase boundaries, periodic boundary conditions are used.  Although this is unnatural, for sufficiently large systems, the errors induced by periodic boundaries are negligible. REFS
 
 \section{Core Algorithm}
-For a system of N interacting atoms, the force for each atom pair in the system is determined by the spatial derivative of the potential energy of the atom pair in the system,
-% Not exactly ... according to Chris Madill's thesis, U is the potential energy between an atom pair
+
+For a system of $N$ interacting atoms, the force on each atom pair in the system is determined by the spatial derivative of the potential energy of the atom pair.  % Not exactly ... according to Chris Madill's thesis, U is the potential energy between an atom pair
 \begin{equation}
 % F_i = - \nabla U
-  F_i = - \frac{\delta V}{\delta r_i}, i = 1,2,3,..., N
+  F_i = - \frac{\delta V}{\delta r_i}, $i = 1, 2, 3 ,..., N$
 \end{equation}
 
 where $V$ is the potential energy of the system. The calculated force vectors are summed together, yielding the net force vector acting on every atom in the system. 
