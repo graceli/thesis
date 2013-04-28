@@ -1,36 +1,34 @@
-\chapter{Molecular Dynamics Simulations}
-% This isn't all methods.  The last section is a review of MD simulations of small molecule binding to amyloids.
-% But I'm hesitant to call this MD simulations chapter because it isn't all about MD simulations ... or is it?
+% Note that because I talk a lot about binding ... this discussion within my methods section may be quite important for examing members that understands the physics but do not understand how MD simulations in particular is rigoroous enough to make any of those predictions.  Having those details here means that I understand how that link is established and that I'm not just making up stories based on pretty pictures.  These are some of the goals that I want to acheive for the benefit of the reader of this chapter.
 
-MD simulations have been used in recent years to gain insight into many fundamental problems in biology and biochemistry, including protein dynamics and function, protein folding,self-aggregation, and protein-ligand binding.
-% I like these analogies and I think it will help make my methods sections less dry
-In many respects, Molecular Dynamics simulations are very similar to real experiments. When we perform a real experiment, we first prepare a sample of the material that we wish to study. This sample is then connected to a measuring instrument from which we can measure the property of interest during a certain time interval. If our measurements are subject to statistical noise (as most measurements are), then the longer we average, the more accurate our measurement becomes. 
+\chapter{Methods: Molecular Modelling and Simulation}
 
-The same approach is applied when performing a Molecular Dynamics simulation. First, a model system consisting of N particles is selected and we record the dynamics of this system (via solving Newton's equation of motion) until the properties of the system no longer change with time (we equilibrate the system).  After equilibration, we perform the actual measurement. In fact, some of the most common mistakes that can be made when performing a computer experiment are very similar to the mistakes that can be made in real experiments (e.g., the sample is not prepared correctly, the measurement is too short, the system undergoes an irreversible change during the experiment, or we do not measure what we think). (Copied and adapted from Molecular Simulations book)
+\section{Molecular Mechanics}
 
-MD simulations employ an empirical mathematical function to describe the atomic interactions in a molecular system, and together with classical laws of Newtonian mechanics, to simulate systems undergoing thermal motion from which atomic trajectories are generated. 
+\subsection{Assumptions and Limitations}
 
-Thermodynamic and kinetic properties can then be extracted as time averages from these trajectories and used to make a number of predictions that are often experimentally challenging to observe or measure.
+\textbf{
+Under the Born-Oppenheimer approximation, electronic and nuclear motions are considered to be uncoupled, and therefore are treated separately, where the system's total energy (the Hamiltonian $H$) only depends on the electronic motions, where as the nuclear positions are assumed to be fixed. The basis for this approximation is that the nuclei, which are much heavier than electrons, are typically fixed on the timescales of electronic vibration.
 
-
-% Approximations made in MD.
-% Note the audience of your thesis.  It is good to cover basic ground.  I think I should also brief talk about enhanced techniques.
-
-MD is a molecular mechanics simulation technique.  
-
-Under the Born-Oppenheimer approximation, electronic and nuclear motions are uncoupled and therefore can be treated separately.
 % \cite{M. Born and R. Oppenheimer, Quantum Theory of Molecules, Ann. Physics, vol. 84, pp. 457‚484, 1927.} -- can't find this article.
 
-For this reason, the movements of all atomic nuclei can be treated as classical particles (that is, an atom is a point charge in space), where the movement of electrons are not accounted for. Instead, the effects of electronic motion is implicitly accounted for in the force field (described in more detail below). Because electronically excited states are not treated, no chemical reactions occur in the system. 
+% For this reason, the movements of all atomic nuclei can be treated as classical particles (that is, an atom is a point charge in space), where the movement of electrons are not accounted for. Instead, the effects of electronic motion is implicitly accounted for in the force field (described in more detail below). 
 
-The outcome of MD simulations is controlled by an expression for the total potential energy of the system collectively referred to as the force field. This potential energy function only depends on the positions of atoms.
+% Because electronically excited states are not treated, no chemical reactions occur in the system.
 
+In molecular mechanics, an empirical potential energy function is employed to describe the molecular energies of molecules.  
 
-% In molecular mechanics uses a model of interactions in the system that 
-In biomolecular systems, covalent bond stretching and angle-bending motions are treated as harmonic.
+This potential energy function is based on the Born-Oppenheimer energy surface of the molecule in its electronic ground-state.  
 
-\section{Force field}
+Electrons can then be considered as implicit variables of this potential function. 
 
+describing the connectivity of atoms masses being connected by springs.
+
+MD is a molecular mechanics simulation technique.
+
+MM: In biomolecular systems, covalent bond stretching and angle-bending motions are treated as harmonic.
+}
+
+\subsection{Force field}
 An empirical force field is applied in MD to approximate atomic interactions in the system, which has many parameters to be determined. One approach is to fit these parameters to quantum mechanical calculations.  Once the initial parameters are determined, force fields are iteratively improved by predicting experimentally observable quantities for small compounds, and adjusting the fit based on comparisons of these computationally predicted quantities with experimental measurements.
   
 Many different force fields have been developed for the purpose of simulating biomolecular systems. Existing force fields such as AMBER, GROMOS, CHARMM, OPLS-AA, all differ slightly in the functional form and parameterization of the potential energy function. In this thesis, the OPLS-AA/L force field was use throughout (results in chapters 3 to 5) and AMBER99 force fields (chapter 6) in this thesis. OPLS models atomic connectivity based on AMBER, but was developed to reproduce liquid state properties of water and 40 other organic liquids.\cite{Ponder:2003uw,Kaminski:2001eq,Jorgensen:1996vx,Jorgensen:1993vx}
@@ -49,22 +47,36 @@ The general form of the force field potential energy function used in OPLS-AA is
     \end{split}
   \end{equation}
 
-% Initial conditions -- initial positions of the atoms in the system
-Simulation systems are usually in the canonical ensemble (NVT) or  isothermo-isobaric (NPT) ensembles.
 
-The inclusion of temperature in MD allows for the account of entropy in our systems, which is especially important for free energy determination. 
+\subsubsection{Bonded interactions}
+Here, describe the functional terms which is used to describe bonded interactions
 
-\section{Application of MD}
-This classical mechanics approach has been shown to be able to provide a valid approximation of many biological systems thus far. REFs
+\subsubsection{Non-bonded interactions}
 
-%\section{Polarizability}
-%Polarizability is the measure of the change in a molecule's electron distribution in response to an applied electric field, and is a property of matter which can be induced by electrostatic interactions with solvents or ionic reagents. Because of its prohibitive computational cost and for the reasons listed above, classical mechanics force fields also do not explicitly account for polarizability of molecules.
 
-\section{Periodic boundary conditions}
+\subsection{Electronic Polarizability}
+Polarizability is the measure of the change in a molecule's electron distribution in response to an applied electric field, and is a property of matter which can be induced by electrostatic interactions with solvents or ionic reagents. Because of its prohibitive computational cost and for the reasons listed above, classical mechanics force fields also do not explicitly account for polarizability of molecules.
 
-To treat a bulk system and avoid phase boundaries, periodic boundary conditions are used.  Although this is unnatural, for sufficiently large systems, the errors induced by periodic boundaries are negligible. REFS
 
-\section{Core Algorithm}
+\section{Molecular Dynamics Simulation}
+% I like these analogies and I think it will help make my methods sections less dry
+In many respects, Molecular Dynamics simulations are very similar to real experiments. When we perform a real experiment, we first prepare a sample of the material that we wish to study. This sample is then connected to a measuring instrument from which we can measure the property of interest during a certain time interval. If our measurements are subject to statistical noise (as most measurements are), then the longer we average, the more accurate our measurement becomes. 
+
+The same approach is applied when performing a Molecular Dynamics simulation. First, a model system consisting of N particles is selected and we record the dynamics of this system (via solving Newton's equation of motion) until the properties of the system no longer change with time (we equilibrate the system).  After equilibration, we perform the actual measurement. In fact, some of the most common mistakes that can be made when performing a computer experiment are very similar to the mistakes that can be made in real experiments (e.g., the sample is not prepared correctly, the measurement is too short, the system undergoes an irreversible change during the experiment, or we do not measure what we think). (Copied and adapted from Molecular Simulations book)
+
+MD simulations employ an empirical mathematical function to describe the atomic interactions in a molecular system, and together with classical laws of Newtonian mechanics, to simulate systems undergoing thermal motion from which atomic trajectories are generated. 
+
+Thermodynamic and kinetic properties can then be extracted as time averages from these trajectories and used to make a number of predictions that are often experimentally challenging to observe or measure.
+
+MD simulations have been used in recent years to gain insight into many fundamental problems in biology and biochemistry, including protein dynamics and function, protein folding, self-aggregation, and protein-ligand binding. This classical mechanics approach has been shown to be able to provide a valid approximation of many biological systems thus far. REFs
+
+% Approximations made in MD.
+% Note the audience of your thesis.  It is good to cover basic ground.  I think I should also brief talk about enhanced techniques.
+
+\subsection{Core Algorithm}
+% This is the part with the time propagation using the Equations of motion
+
+The outcome of MD simulations is controlled by a force field, which as discussed above, is a potential energy function describing both intra and intermolecular interactions, which only depends on the positions of the atoms in the system.
 
 For a system of $N$ interacting atoms, the force on each atom pair in the system is determined by the spatial derivative of the potential energy of the atom pair.  % Not exactly ... according to Chris Madill's thesis, U is the potential energy between an atom pair
 \begin{equation}
@@ -84,7 +96,7 @@ where $m_i$ is the mass of the atom $i$.
 
 The next position of the atom at time $ t + \delta t$
 \begin{equation}
-x_i(t + \delta t) = x_i(t) + v_i(t)\delta t + \frac{a_i(t)\delta t^2}{2}	
+x_i(t + \delta t) = x_i(t) + v_i(t)\delta t + \frac{a_i(t)\delta t^2}{2}  
 \end{equation}
 
 The above equations are solved numerically using a time integration algorithm using a small timestep. For numerical stability reasons, a small integration step in the range of 1 - 4 femtoseconds is employed. Typically, a timestep of 2 fs is used, which is twice the time period for the fastest vibrational motion (for bonds involving hydrogen), is used in MD simulations of biomolecular systems. % [Ref: Chris Madill's and Tom's thesis]
@@ -98,8 +110,16 @@ There are many different forms of integration algorithms, with the most common b
 A simulation proceeds iteratively: once all of the new positions for all atoms are predicted, interatomic forces are updated based on these new coordinates, and this entire process is repeated.
 
 % Marty's thesis included a little bit on the verlet algorithm.  CN did not.
-\section{Temperature}
-I copied this from ``Molecular simulations the book''
+
+\subsection{Solvent Representation}
+% Talk about how solvent is accounted for
+How solvents are parameterized.  Can mention a few details about TIP3P water model. Solvents are often chosen with the force field that it is parameterized with to avoid inconsistencies.
+Details about implicit solvation, However, with implicit solvation water, which can also be considered as a ligand, is not represented. This can introduce force field inconsistencies which would decrease the accuracy of representing ligand-protein binding.
+
+\subsection{Temperature and Pressure}
+Here describe how temperature and pressure coupling is handled in MD at a high-level without going into the details of the math.
+
+The inclusion of temperature in MD allows for the account of entropy in our systems, which is especially important for free energy determination.  I copied below from ``Molecular simulations the book''
 
 For instance, a convenient definition of the temperature in a (classical) many-body system makes use of the equipartition of energy over all degrees of freedom that enter quadratically in the Hamiltonian of the system. In particular for the average kinetic energy per degree of freedom, we have
 \begin{equation}
@@ -112,8 +132,7 @@ In a simulation, we use this equation as an operational definition of the tem- p
   T(t) = \sum_{i=1}^{N} \frac{m_iv_i^2(t)}{k_BN_f}
 \end{equation}
 
-\section{Temperature and pressure-coupling}
-Copied from the GROMACS manual
+Below is from the GROMACS manual:
 
 While direct use of molecular dynamics gives rise to the NVE (constant number, constant volume, constant energy ensemble), most quantities that we wish to calculate are actually from a constant temperature (NVT) ensemble. 
 
@@ -125,57 +144,36 @@ Using the same idea, we can couple the system to a pressure bath.  This method i
 % Should I include the equations? I haven't seen this in other thesis, perhaps its too much detail.
 
 
-% Note that because I talk a lot about binding ... this discussion within my methods section may be quite important for examing members that understands the physics but do not understand how MD simulations in particular is rigoroous enough to make any of those predictions.  Having those details here means that I understand how that link is established and that I'm not just making up stories based on pretty pictures.
 
-% \subsection{Setting up a MD simulation: practical aspects} - Here are some details to run a MD simulation of a biomolecular system.  Should I omit this from my introduction? This is not really essential in understanding the rest of my thesis, or is it? Perhaps this should go into an appendix instead -- this isn't interesting. The following steps are often used to setup and start a MD simulation system of a protein. First, a pre-determined structure, typically a coordinate structure from X-ray crystallography or NMR, or homology-modelling data. Then a force field and solvent is chosen.
+\subsection{Ensembles}
+Simulation systems are usually in the canonical ensemble (NVT) or  isothermo-isobaric (NPT) ensembles.
 
-
-%\section{Limitations of MD simulations}
-% Rauscher:2010p5682,Rauscher:2009wr}  % Ref: DE Shaw and CN
-% Schlick T (2010) Molecular modeling and simulation: an inter- disciplinary guide, interdisciplinary applied mathematics, vol 21, 2nd edn. Springer, New York
+\subsection{Periodic boundary conditions}
+To treat a bulk system and avoid phase boundaries, periodic boundary conditions are used.  Although this is unnatural, for sufficiently large systems, the errors induced by periodic boundaries are negligible. REFS
 
 
-% Given the approximations of MD, MD is well-suited for probing the dynamics of complex systems on the timescale of picoseconds to seconds. ???
 
-%Roughly speaking, one would like to run a simulation at least 10 times longer than the slowest important timescale in a system. Unfortunately, many biomolecular timescales exceed 1 ms, and in some cases by orders of magnitude (44).\cite{Zuckerman:2011dz} For molecular simulations to reliably predict, guide, and help explain experiment, these simulations require force fields of sufficient accuracy, adequate sampling of the relevant biomolecular motions (convergence) and a correct representation of the experimental conditions. Failures in any of these areas yield results which disagree with experiment.Until sampling is adequate, equilibrium properties computed from a simulation remain biased by the system’s starting state and no meaningful comparison with experiment is possible [6]. 
+\section{Speeding up Molecular Dynamics Simulation}
 
-%% copied from Zukerman\cite{Zuckerman:2011dz}
-%\textbf{Although routine explicit-solvent MD simula- tions are now four or five orders of magnitude longer (i.e., 100-103 ns currently), modern MD studies still appear to fall significantly short of what is needed for statistically valid equi- librium simulation (36, 38). Roughly speak- ing, one would like to run a simulation at least 10 times longer than the slowest impor- tant timescale in a system. Unfortunately, many biomolecular timescales exceed 1 ms, and in some cases by orders of magnitude (44).}
-%% Other references that are relevant for sampling \cite{Grossfield:2009bn}
-%
-%% Copied from \cite{Mobley:2011ks}
-%\textbf{For molecular simulations to reliably predict, guide, and help explain experiment, these simulations require force fields of sufficient accuracy, adequate sampling of the rel- evant biomolecular motions (convergence) and a correct representation of the experimental conditions. Failures in any of these areas yield results which disagree with experiment. 
-%
-%We may be tempted to blame disagreement with experiment on just one of these areas—force fields are perhaps the most common scapegoat, sometimes with good reason [1–5]—but any or all of the three may be a weak point. And, in some sense, adequate sampling is the weakest link. 
-%
-%Until sampling is adequate, equilibrium properties computed from a simulation remain biased by the system’s starting state and no meaningful comparison with experiment is possible [6]. 
-%
-%With an inadequate force field or a poor representation of the experimental conditions, results will disagree with experiment, but will be robust and improvement is relatively easy, but not so with inadequate sampling.}
-%
-%% copied from Sarah's thesis
-%\textbf{Achieving complete (or even adequate) conformational sampling is one of the key challenges in biomolecular simulations.\cite{Gnanakaran:2003vh} The energy landscape of most biomolecules is “rugged” and the source of this ruggedness is two-fold. The energetic barriers separating accessible states are often larger than the available thermal energy, and there are typically a large number of states to be sampled. The timescales of many biomolecular processes, such as protein folding, are still far beyond the reach of our current computational capability, which is generally limited to the 10-8-10-7 s timescale for continuous simulations. For example, even the folding of small domains or secondary structure elements, such as ?-hairpins and mini-proteins, occur on the 1-10 ?s timescale.1 
-%
-%Consequently, conventional or “brute force” molecular dynamics (MD) alone is often insufficient to achieve complete Boltzmann sampling of the important states of many biologically relevant systems. For this reason, generalized-ensemble algorithms have become popular tools for conformational sampling.}
+\subsection{Better algorithms: Enhanced Sampling Techniques}
 
-% Topics that I'm not going to discuss
-%Evaluating the convergence of simulations is still a challenge - I don't want to  go into this as this is out of the scope of my thesis.
-%Limitations in the accuracy of current force fields - Don't talk about this .. but this will probably come up during the defense regardless.
-
-\section{Solvent representation}
-How solvents are parameterized.  Can mention a few details about TIP3P water model. Solvents are often chosen with the force field that it is parameterized with to avoid inconsistencies.
-Details about implicit solvation, However, with implicit solvation water, which can also be considered as a ligand, is not represented. This can introduce force field inconsistencies which would decrease the accuracy of representing ligand-protein binding.
-
-\section{Enhanced sampling approaches}
+\subsubsection{Approaches for Determining Protein Conformational Ensembles}
 It was mentioned in Chapter 1 that enhanced sampling may be used to speed up simulations.  Here we provide a high level overview of the approaches that were developed that have been useful in rational drug design.  These approaches were also widely used through out the thesis.
 
-\subsection{Temperature}
-Here I can talk about what enhanced sampling is, and how they can be applied to understanding the properties of disordered peptides 
-I can cite Sarah.  I should read both Sarah's and Chris's thesis chapters relating to sampling.  Chris's is all about sampling.
-Since I refer extensively to enhanced sampling, I should make a mention of it.
+The use of temperature to overcome energetic barriers in the system. Here I can talk about what enhanced sampling is, and how they can be applied to understanding the properties of disordered peptides. Cite Sarah.  
+I should read both Sarah's and Chris's thesis chapters relating to sampling.  Chris's is all about sampling. Since I refer extensively to enhanced sampling, I should make a mention of it.
 
-\subsection{Enhanced approaches for calculating binding affinities using MD simulations}
-Note: this section could be in the introduction...
-I can show a thermodynamic cycle.  Describe why this can be used to determine free energies.  And then mention the techniques that were invented in the past to do so. These approaches are not applicable to the problem of this thesis, but this background is provided to give the reader perspective. Point to another review article and say this is discussed in detail. I can discuss how to determine enthalpic and entropic contributions.
+\subsubsection{Approaches for Calculating Protein-Ligand Binding Affinities}
+Note: This section could actually be put in the introduction.  As this may not require understanding the details of simulations.  Leave this hear for now and can move it as a section to the introduction ... maybe after Regis has seen both chapters together.
+
+I can show the thermodynamic cycle for getting Delta G, like the one that I had in my transfer proposal.  Describe why this can be used to determine free energies.  And then mention the techniques that were invented in the past to do so. These approaches are not applicable to the problem of this thesis, but this background is provided to give the reader perspective. Point to another review article and say this is discussed in detail. I can discuss how to determine enthalpic and entropic contributions.
+
+
+\subsection{Better Hardware}
+Here can describe how better hardware - bigger and better machines have led to improvements and advancements in this field.
+
+% Initial conditions -- initial positions of the atoms in the system
+
 
 \addcontentsline{toc}{section}{Bibliography}
 \bibliographystyle{plain}
@@ -242,3 +240,42 @@ I can show a thermodynamic cycle.  Describe why this can be used to determine fr
 % - Relationship between momentum and velocity 
 % - Why numerical approach must be used (no analytical solution for N > 2)
 % - How is the force field plugged into the general algorithm.
+
+
+
+
+
+
+% \subsection{Setting up a MD simulation: practical aspects} - Here are some details to run a MD simulation of a biomolecular system.  Should I omit this from my introduction? This is not really essential in understanding the rest of my thesis, or is it? Perhaps this should go into an appendix instead -- this isn't interesting. The following steps are often used to setup and start a MD simulation system of a protein. First, a pre-determined structure, typically a coordinate structure from X-ray crystallography or NMR, or homology-modelling data. Then a force field and solvent is chosen.
+
+
+%\section{Limitations of MD simulations}
+% Rauscher:2010p5682,Rauscher:2009wr}  % Ref: DE Shaw and CN
+% Schlick T (2010) Molecular modeling and simulation: an inter- disciplinary guide, interdisciplinary applied mathematics, vol 21, 2nd edn. Springer, New York
+
+
+% Given the approximations of MD, MD is well-suited for probing the dynamics of complex systems on the timescale of picoseconds to seconds. ???
+
+%Roughly speaking, one would like to run a simulation at least 10 times longer than the slowest important timescale in a system. Unfortunately, many biomolecular timescales exceed 1 ms, and in some cases by orders of magnitude (44).\cite{Zuckerman:2011dz} For molecular simulations to reliably predict, guide, and help explain experiment, these simulations require force fields of sufficient accuracy, adequate sampling of the relevant biomolecular motions (convergence) and a correct representation of the experimental conditions. Failures in any of these areas yield results which disagree with experiment.Until sampling is adequate, equilibrium properties computed from a simulation remain biased by the system’s starting state and no meaningful comparison with experiment is possible [6]. 
+
+%% copied from Zukerman\cite{Zuckerman:2011dz}
+%\textbf{Although routine explicit-solvent MD simula- tions are now four or five orders of magnitude longer (i.e., 100-103 ns currently), modern MD studies still appear to fall significantly short of what is needed for statistically valid equi- librium simulation (36, 38). Roughly speak- ing, one would like to run a simulation at least 10 times longer than the slowest impor- tant timescale in a system. Unfortunately, many biomolecular timescales exceed 1 ms, and in some cases by orders of magnitude (44).}
+%% Other references that are relevant for sampling \cite{Grossfield:2009bn}
+%
+%% Copied from \cite{Mobley:2011ks}
+%\textbf{For molecular simulations to reliably predict, guide, and help explain experiment, these simulations require force fields of sufficient accuracy, adequate sampling of the rel- evant biomolecular motions (convergence) and a correct representation of the experimental conditions. Failures in any of these areas yield results which disagree with experiment. 
+%
+%We may be tempted to blame disagreement with experiment on just one of these areas—force fields are perhaps the most common scapegoat, sometimes with good reason [1–5]—but any or all of the three may be a weak point. And, in some sense, adequate sampling is the weakest link. 
+%
+%Until sampling is adequate, equilibrium properties computed from a simulation remain biased by the system’s starting state and no meaningful comparison with experiment is possible [6]. 
+%
+%With an inadequate force field or a poor representation of the experimental conditions, results will disagree with experiment, but will be robust and improvement is relatively easy, but not so with inadequate sampling.}
+%
+%% copied from Sarah's thesis
+%\textbf{Achieving complete (or even adequate) conformational sampling is one of the key challenges in biomolecular simulations.\cite{Gnanakaran:2003vh} The energy landscape of most biomolecules is “rugged” and the source of this ruggedness is two-fold. The energetic barriers separating accessible states are often larger than the available thermal energy, and there are typically a large number of states to be sampled. The timescales of many biomolecular processes, such as protein folding, are still far beyond the reach of our current computational capability, which is generally limited to the 10-8-10-7 s timescale for continuous simulations. For example, even the folding of small domains or secondary structure elements, such as ?-hairpins and mini-proteins, occur on the 1-10 ?s timescale.1 
+%
+%Consequently, conventional or “brute force” molecular dynamics (MD) alone is often insufficient to achieve complete Boltzmann sampling of the important states of many biologically relevant systems. For this reason, generalized-ensemble algorithms have become popular tools for conformational sampling.}
+
+% Topics that I'm not going to discuss
+%Evaluating the convergence of simulations is still a challenge - I don't want to  go into this as this is out of the scope of my thesis.
+%Limitations in the accuracy of current force fields - Don't talk about this .. but this will probably come up during the defense regardless.
