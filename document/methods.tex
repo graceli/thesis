@@ -1,41 +1,78 @@
 % Note that because I talk a lot about binding ... this discussion within my methods section may be quite important for examing members that understands the physics but do not understand how MD simulations in particular is rigoroous enough to make any of those predictions.  Having those details here means that I understand how that link is established and that I'm not just making up stories based on pretty pictures.  These are some of the goals that I want to acheive for the benefit of the reader of this chapter.
 
-\chapter{Methods: Molecular Modelling and Simulation}
+
+% From D. Caplan's thesis - Molecular mechanics (MM) is the empirical mathematical representation of atomic inter- actions in the classical limit. MM was developed over 50 years ago and has been applied to organic chemistry as a tool to estimate specific energetic properties of small molecules. Since then it has evolved into various functional forms (known as “force fields”) used to describe the potential energy of a system by computing atomic interactions. Force fields may vary in the way that they represent atomic particles to balance experimental accu- racy with computational efficiency. Molecular dynamics (MD) is a MM-based method in which force fields are used to calculate the position, velocity, and acceleration of atoms over time to produce a trajectory.
+
+\chapter[Methods]{Methods: Molecular Modelling and Simulation}
 
 \section{Molecular Mechanics}
+% Start by describing quantum mechanics 
+% Assumptions and limitations of molecular mechanics
+In an ideal world, one would be able to predict the evolution of a molecular system by solving the Schrodinger's equation, which predicts the t-evolution of all the atomic-nuclei and electronic motion.  However, to do so for a biomolecular system is extremely computationally-prohibitive, even for a very small molecule. REF
 
-\subsection{Assumptions and Limitations}
+In the past decades, molecular mechanics, a classical mechanics approach, was developed to model and simulate a large system possible. In molecular mechanics, an empirical potential energy function which depends only on the positions of atoms, is employed to describe the molecular energies of molecules. Simply put, molecules are treated as a set of masses connected by springs.
 
-\textbf{
-Under the Born-Oppenheimer approximation, electronic and nuclear motions are considered to be uncoupled, and therefore are treated separately, where the system's total energy (the Hamiltonian $H$) only depends on the electronic motions, where as the nuclear positions are assumed to be fixed. The basis for this approximation is that the nuclei, which are much heavier than electrons, are typically fixed on the timescales of electronic vibration.
+The underlying theoretical basis for molecular mechanics is rooted in the Born-Oppenheimer approximation. Under this approximation, electronic and nuclear motions are considered to be uncoupled, and therefore are treated separately. For this reason, the system's total energy (the Hamiltonian, $H$) only depends on the electronic motion, and the nuclei are assumed to be in fixed positions. 
+% This is because the nuclei, which are much heavier than electrons, are typically fixed on the time scales of electronic vibration.
 
+This potential energy function employed in molecular mechanics corresponds to the Born-Oppenheimer energy surface of the molecular system in its electronic ground-state. The movements of all atomic nuclei can be treated as a point charge in space, where the movement of electrons is implicitly accounted for in the specific form of the PEF and its associated parameter set, or force field.  Because electronically excited states are not treated, no chemical reactions occur in the system. However, although MM tells us nothing about electronic characteristics, its computational speed and its ability to deal with large systems makes it very attractive.
 % \cite{M. Born and R. Oppenheimer, Quantum Theory of Molecules, Ann. Physics, vol. 84, pp. 457â484, 1927.} -- can't find this article.
 
-% For this reason, the movements of all atomic nuclei can be treated as classical particles (that is, an atom is a point charge in space), where the movement of electrons are not accounted for. Instead, the effects of electronic motion is implicitly accounted for in the force field (described in more detail below). 
+\section{Force field}
 
-% Because electronically excited states are not treated, no chemical reactions occur in the system.
+In the past four decades, a variety of functional forms have been developed, where each is optimized for a specific purpose have been developed for the purpose of modelling and simulating biomolecular systems. The functional form together with its associated parameters defines a \emph{force field}.
 
-In molecular mechanics, an empirical potential energy function is employed to describe the molecular energies of molecules.  
+A typical empirical force field has many parameters to be determined. 
 
-This potential energy function is based on the Born-Oppenheimer energy surface of the molecule in its electronic ground-state.  
+To fit these parameters, one approach is to perform quantum mechanical calculations ...  
 
-Electrons can then be considered as implicit variables of this potential function. 
+Once the initial parameters are determined, force fields are iteratively improved by predicting experimentally observable quantities for small compounds, and adjusting the fit based on comparisons of these computationally predicted quantities with experimental measurements.
 
-describing the connectivity of atoms masses being connected by springs.
+Currently many force fields for the purposes of simulating biomolecules exist. Examples are AMBER (and related versions and modifications), CHARMM, GROMOS, OPLS.  Although each force field have their variation of the PEF form, force fields in general adopt the following form:
 
-MD is a molecular mechanics simulation technique.
+  \begin{equation}
+    \label{eq:ff_general}
+    V = V(bonds) + V(angles) + V(impropers) + V(dihedrals) + V(non-bonded pair interactions)
+  \end{equation}
 
-MM: In biomolecular systems, covalent bond stretching and angle-bending motions are treated as harmonic.
-}
 
-\subsection{Force field}
-An empirical force field is applied in MD to approximate atomic interactions in the system, which has many parameters to be determined. One approach is to fit these parameters to quantum mechanical calculations.  Once the initial parameters are determined, force fields are iteratively improved by predicting experimentally observable quantities for small compounds, and adjusting the fit based on comparisons of these computationally predicted quantities with experimental measurements.
-  
-Many different force fields have been developed for the purpose of simulating biomolecular systems. Existing force fields such as AMBER, GROMOS, CHARMM, OPLS-AA, all differ slightly in the functional form and parameterization of the potential energy function. In this thesis, the OPLS-AA/L force field was use throughout (results in chapters 3 to 5) and AMBER99 force fields (chapter 6) in this thesis. OPLS models atomic connectivity based on AMBER, but was developed to reproduce liquid state properties of water and 40 other organic liquids.\cite{Ponder:2003uw,Kaminski:2001eq,Jorgensen:1996vx,Jorgensen:1993vx}
-% Note that if I say this .. I might have to justifiy this in my defense.
+\subsection{Bonded interactions}
+The first 4 terms in \ref{eq:ff_general} are the functional terms used to describe bonded interactions within a molecule.
+Covalent bond stretching and angle-bending motions are both treated as harmonic.
 
+\subsection{Non-bonded interactions}
+
+van der Waals forces is represented by the Lennard-Jones potential
+
+\begin{equation}
+  \label{eq:lj_function}
+  V_{LJ} = (\frac{r_{min}}{r})^{12} - 2(\frac{r_{min}}{r})^6
+\end{equation}
+
+The first term of \ref{eq:lj_function} is an attractive term and the second term represents a repulsive force at  atomic distances where atomic shells overlap.
+
+Electrostatics. The reproduction of electrostatics is paramount for the molecular interaction of polar and charged molecules. To do so the Coulombic potential
+
+\begin{equation}
+  \label{eq:electrostatic}
+  V_{coulomb} = \frac{q_1q_2}{er}
+\end{equation}
+
+is applied between atoms at their nuclear centres.
+
+Hydrogen bonding
+
+Other things that I will not be discussing
+
+\subsection{Electronic Polarizability}
+
+Polarizability is the measure of the change in a molecule's electron distribution in response to an applied electric field, and is a property of matter which can be induced by electrostatic interactions with solvents or ionic reagents. Because of its prohibitive computational cost and for the reasons listed above, classical mechanics force fields also do not explicitly account for polarizability of molecules.
+
+\section{The OPLS Force Field}
+
+% Need to learn more about the OPLS-AA force field !!!
 The general form of the force field potential energy function used in OPLS-AA is
-  % \[ V(R) = bonds + angles + impropers + dihedrals + pair interactions \]
+  
   \begin{equation}
     \begin{split}
           E = \sum_{bonds} k_b(b-b_0)^2 
@@ -48,17 +85,13 @@ The general form of the force field potential energy function used in OPLS-AA is
   \end{equation}
 
 
-\subsubsection{Bonded interactions}
-Here, describe the functional terms which is used to describe bonded interactions
 
-\subsubsection{Non-bonded interactions}
-
-
-\subsection{Electronic Polarizability}
-Polarizability is the measure of the change in a molecule's electron distribution in response to an applied electric field, and is a property of matter which can be induced by electrostatic interactions with solvents or ionic reagents. Because of its prohibitive computational cost and for the reasons listed above, classical mechanics force fields also do not explicitly account for polarizability of molecules.
 
 
 \section{Molecular Dynamics Simulation}
+
+MD is a molecular mechanics simulation technique.
+
 % I like these analogies and I think it will help make my methods sections less dry
 In many respects, Molecular Dynamics simulations are very similar to real experiments. When we perform a real experiment, we first prepare a sample of the material that we wish to study. This sample is then connected to a measuring instrument from which we can measure the property of interest during a certain time interval. If our measurements are subject to statistical noise (as most measurements are), then the longer we average, the more accurate our measurement becomes. 
 
@@ -81,7 +114,7 @@ The outcome of MD simulations is controlled by a force field, which as discussed
 For a system of $N$ interacting atoms, the force on each atom pair in the system is determined by the spatial derivative of the potential energy of the atom pair.  % Not exactly ... according to Chris Madill's thesis, U is the potential energy between an atom pair
 \begin{equation}
 % F_i = - \nabla U
-  F_i = - \frac{\delta V}{\delta r_i}, $i = 1, 2, 3 ,..., N$
+  F_i = - \frac{\delta V}{\delta r_i}, i = 1, 2, 3 ,..., N
 \end{equation}
 
 where $V$ is the potential energy of the system. The calculated force vectors are summed together, yielding the net force vector acting on every atom in the system. 
