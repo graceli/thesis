@@ -18,49 +18,50 @@ The underlying theoretical basis for molecular mechanics is rooted in the Born-O
 This potential energy function employed in molecular mechanics corresponds to the Born-Oppenheimer energy surface of the molecular system in its electronic ground-state. The movements of all atomic nuclei can be treated as a point charge in space, where the movement of electrons is implicitly accounted for in the specific form of the PEF and its associated parameter set, or force field.  Because electronically excited states are not treated, no chemical reactions occur in the system. However, although MM tells us nothing about electronic characteristics, its computational speed and its ability to deal with large systems makes it very attractive.
 % \cite{M. Born and R. Oppenheimer, Quantum Theory of Molecules, Ann. Physics, vol. 84, pp. 457â484, 1927.} -- can't find this article.
 
-\section{Force field}
+\section{Force Fields}
 
 In the past four decades, a variety of functional forms have been developed, where each is optimized for a specific purpose have been developed for the purpose of modelling and simulating biomolecular systems. The functional form together with its associated parameters defines a \emph{force field}.
 
-A typical empirical force field has many parameters to be determined. 
+A typical empirical force field has many parameters to be determined.  These parameters are typically determined by fitting to quantum mechanical calculations, and to physical measurements (e.g., using data from X-ray crystallography, neutron diffracton) of small organic compounds or building blocks of peptides and nucleic acids.  Force fields are iteratively improved and extended by predicting experimentally observable quantities for small compounds, and adjusting parameters by comparing predicted quantities with experimental measurements.
 
-To fit these parameters, one approach is to perform quantum mechanical calculations ...  
-
-Once the initial parameters are determined, force fields are iteratively improved by predicting experimentally observable quantities for small compounds, and adjusting the fit based on comparisons of these computationally predicted quantities with experimental measurements.
-
-Currently many force fields for the purposes of simulating biomolecules exist. Examples are AMBER (and related versions and modifications), CHARMM, GROMOS, OPLS.  Although each force field have their variation of the PEF form, force fields in general adopt the following form:
+Currently, many force fields for biopolymers such as peptides, proteins, nucleic acids and carbohydrates have been developed. Examples of these are the force fields AMBER, CHARMM, GROMOS, and OPLS.  Although each force field have their variation of the PEF form, these force fields in general adopt the following general form:
 
   \begin{equation}
     \label{eq:ff_general}
     V = V(bonds) + V(angles) + V(impropers) + V(dihedrals) + V(non-bonded pair interactions)
   \end{equation}
 
+The first four terms of \ref{eq:ff_general}, V(bonds), V(angles), and V(improper)  are the functional terms used to describe bonded interactions and dynamics within a molecule.
+These motions consists of covalent bond stretching, angle-bending, and torsional rotations. Covalent bond stretching can be described using Hooke's Law for harmonic motion,
+\begin{equation}
+ V(bonds) = \sum_{bonds} k_b(b - b_0)^2.
+\end{equation}
 
-\subsection{Bonded interactions}
-The first 4 terms in \ref{eq:ff_general} are the functional terms used to describe bonded interactions within a molecule.
-Covalent bond stretching and angle-bending motions are both treated as harmonic.
+Similarly, angle-bending motions can be describing using a similar potential function,
+\begin{equation}
+V(angles) = \sum_{angles} k_{\theta}(\theta - \theta_{0})^2, \\
+\end{equation}
+where the constants $k_{b}$ and $k_{\theta}$ are the equilibrium force constants for bonds and angles, respectively, and $b_{0}$ and $\theta_{0}$ are the reference bond length and angle, respectively. Note that total energetic contribution from bond stretching and angle bending motions are computed by summing over all bonds and angles in the system.
 
-\subsection{Non-bonded interactions}
-
-van der Waals forces is represented by the Lennard-Jones potential
+Non-bonded interaction potentials predominantly account for van der Waals and electrostatic forces.  These are important for the transferability of a force field, that is, the ability to reuse parameters created based on one molecule to predict properties of other molecules.  Van der Waals forces are represented by the Lennard-Jones potential,
 
 \begin{equation}
   \label{eq:lj_function}
   V_{LJ} = (\frac{r_{min}}{r})^{12} - 2(\frac{r_{min}}{r})^6
 \end{equation}
 
-The first term of \ref{eq:lj_function} is an attractive term and the second term represents a repulsive force at  atomic distances where atomic shells overlap.
+The first term of \ref{eq:lj_function} is an attractive force, and the second term is a repulsive force at atomic distances where atomic shells overlap.  Parameterization of van der Waals potential to accurately reproduce these types of intermolecular interactions are typically challenging to determine because of the need for accurate reproduction of atomic radii, weak atomic attraction, and repulsive forces.
+% Transferability (i.e., the ability to reuse parameters created based on one molecule to predict properties of another molecule 
 
-Electrostatics. The reproduction of electrostatics is paramount for the molecular interaction of polar and charged molecules. To do so the Coulombic potential
+Furthermore, the reproduction of electrostatics is paramount for describing interactions of polar and charged groups in biomolecules. To do so, an additive pairwise Coulombic potential is applied between all atom pairs which carry partial charges or charges at their nuclear centres.  The Coulombic potential, which depends on $r$, the distance between the pair of atoms, is given by
 
 \begin{equation}
   \label{eq:electrostatic}
-  V_{coulomb} = \frac{q_1q_2}{er}
+  V_{coulombic}(r) = \frac{q_1q_2}{\epsilon r}, 
 \end{equation}
+where q1 and q1 are charges on each of the atoms, and $\epsilon$ is the dielectric constant of the environment(?).
 
-is applied between atoms at their nuclear centres.
-
-Hydrogen bonding
+As discussed in Chapter 1 \ref{chap:introduction}, hydrogen bonding is an important type of electrostatic interaction
 
 Other things that I will not be discussing
 
@@ -68,7 +69,7 @@ Other things that I will not be discussing
 
 Polarizability is the measure of the change in a molecule's electron distribution in response to an applied electric field, and is a property of matter which can be induced by electrostatic interactions with solvents or ionic reagents. Because of its prohibitive computational cost and for the reasons listed above, classical mechanics force fields also do not explicitly account for polarizability of molecules.
 
-\section{The OPLS Force Field}
+\subsection{The OPLS Force Field}
 
 % Need to learn more about the OPLS-AA force field !!!
 The general form of the force field potential energy function used in OPLS-AA is
