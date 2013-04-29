@@ -22,16 +22,16 @@ This potential energy function employed in molecular mechanics corresponds to th
 
 In the past four decades, a variety of functional forms have been developed, where each is optimized for a specific purpose have been developed for the purpose of modelling and simulating biomolecular systems. The functional form together with its associated parameters defines a \emph{force field}.
 
-A typical empirical force field has many parameters to be determined.  These parameters are typically determined by fitting to quantum mechanical calculations, and to physical measurements (e.g., using data from X-ray crystallography, neutron diffracton) of small organic compounds or building blocks of peptides and nucleic acids.  Force fields are iteratively improved and extended by predicting experimentally observable quantities for small compounds, and adjusting parameters by comparing predicted quantities with experimental measurements.
+A typical empirical force field has many parameters to be determined.  These parameters are typically determined by fitting to quantum mechanical calculations, and to physical measurements (e.g., using data from X-ray crystallography, neutron diffraction, vibrational raman spectroscopy) of small organic compounds or building blocks of peptides and nucleic acids.  Force fields are iteratively improved and extended by predicting experimentally observable quantities for small compounds, and adjusting parameters by comparing predicted quantities with experimental measurements.
 
-Currently, many force fields for biopolymers such as peptides, proteins, nucleic acids and carbohydrates have been developed. Examples of these are the force fields AMBER, CHARMM, GROMOS, and OPLS.  Although each force field have their variation of the PEF form, these force fields in general adopt the following general form:
+Currently, many force fields for biopolymers such as peptides, proteins, nucleic acids and carbohydrates have been developed. Examples of these are the force fields AMBER, CHARMM, GROMOS, and OPLS. REFs  Although each force field have their variation of the PEF form, these force fields in general adopt the following general form:
 
   \begin{equation}
     \label{eq:ff_general}
     V = V(bonds) + V(angles) + V(impropers) + V(dihedrals) + V(non-bonded pair interactions)
   \end{equation}
 
-The first four terms of \ref{eq:ff_general}, V(bonds), V(angles), and V(improper)  are the functional terms used to describe bonded interactions and dynamics within a molecule.
+The first four terms of \ref{eq:ff_general}, $V(bonds)$, $V(angles)$, and $V(improper)$  are the functional terms used to describe bonded interactions and dynamics within a molecule.
 These motions consists of covalent bond stretching, angle-bending, and torsional rotations. Covalent bond stretching can be described using Hooke's Law for harmonic motion,
 \begin{equation}
  V(bonds) = \sum_{bonds} k_b(b - b_0)^2.
@@ -47,10 +47,10 @@ Non-bonded interaction potentials predominantly account for van der Waals and el
 
 \begin{equation}
   \label{eq:lj_function}
-  V_{LJ} = (\frac{r_{min}}{r})^{12} - 2(\frac{r_{min}}{r})^6
+  V_{LJ}(r) = (\frac{r_{min}}{r})^{12} - 2(\frac{r_{min}}{r})^6
 \end{equation}
 
-The first term of \ref{eq:lj_function} is an attractive force, and the second term is a repulsive force at atomic distances where atomic shells overlap.  Parameterization of van der Waals potential to accurately reproduce these types of intermolecular interactions are typically challenging to determine because of the need for accurate reproduction of atomic radii, weak atomic attraction, and repulsive forces.
+The first term of \ref{eq:lj_function} is a repulsive force, and the second term is an attractive force at atomic distances where atomic shells overlap.  Here the constant $r_{min}$ is the preferred interaction distance for the atom pair or the van der Waals radii of atoms. Together these constitute a rapidly decaying function which represents a short-range attractive interaction that is characteristic of van der Waals forces. Parameterization of van der Waals potential to accurately reproduce these types of intermolecular interactions are typically challenging to determine because of the need for accurate reproduction of atomic radii, weak atomic attraction, and repulsive forces.
 % Transferability (i.e., the ability to reuse parameters created based on one molecule to predict properties of another molecule 
 
 Furthermore, the reproduction of electrostatics is paramount for describing interactions of polar and charged groups in biomolecules. To do so, an additive pairwise Coulombic potential is applied between all atom pairs which carry partial charges or charges at their nuclear centres.  The Coulombic potential, which depends on $r$, the distance between the pair of atoms, is given by
@@ -59,11 +59,19 @@ Furthermore, the reproduction of electrostatics is paramount for describing inte
   \label{eq:electrostatic}
   V_{coulombic}(r) = \frac{q_1q_2}{\epsilon r}, 
 \end{equation}
-where q1 and q1 are charges on each of the atoms, and $\epsilon$ is the dielectric constant of the environment(?).
+where $q_{1}$ and $q_{2}$ are charges on each of the atoms, and $\epsilon$ is the dielectric constant of the environment(?).  In contrast to van der Waals interactions,  electrostatic interactions are long-range interactions. Accordingly depicted in Figure XXX,  in comparisons to the Lennard-Jones potential, the Coulombic potential is a much slower decaying function, indicating that electrostatic effects are significant even up to distances of 1 - 1.5 nm.
 
-As discussed in Chapter 1 \ref{chap:introduction}, hydrogen bonding is an important type of electrostatic interaction
+\begin{figure}
+ \centering
+ \includegraphics[width=5in]{figures/methods/LJ_Coulumb_potentials.pdf}
+ \caption[Lennard-Jones and Coulombic Potentials]{Lennard-Jones and Coulombic Potentials.}
+ \label{fig:nonbonded_potentials}
+\end{figure}
 
-Other things that I will not be discussing
+As discussed in Chapter 1 \ref{chap:introduction}, hydrogen bonding is an important type of electrostatic interaction and hence their proper representation must be captured by a force field.
+Hydrogen bonding interactions are generally account for as a combination of van der Waals and electrostatic interactions.  However, certain force fields (e.g., XXX) employ an explicit term solely for hydrogen bonding.
+
+% Other things that I will not be discussing -- what were they again?
 
 \subsection{Electronic Polarizability}
 
@@ -71,7 +79,7 @@ Polarizability is the measure of the change in a molecule's electron distributio
 
 \subsection{The OPLS Force Field}
 
-% Need to learn more about the OPLS-AA force field !!!
+I need to read a crap load about the OPLS-AA force field !!!
 The general form of the force field potential energy function used in OPLS-AA is
   
   \begin{equation}
@@ -84,9 +92,6 @@ The general form of the force field potential energy function used in OPLS-AA is
           + \sum_{nonbonded} \epsilon [(\frac{r_{min}}{r})^{12} - 2(\frac{r_{min}}{r})^6]
     \end{split}
   \end{equation}
-
-
-
 
 
 \section{Molecular Dynamics Simulation}
@@ -185,7 +190,30 @@ Simulation systems are usually in the canonical ensemble (NVT) or  isothermo-iso
 \subsection{Periodic boundary conditions}
 To treat a bulk system and avoid phase boundaries, periodic boundary conditions are used.  Although this is unnatural, for sufficiently large systems, the errors induced by periodic boundaries are negligible. REFS
 
+\section{Practical Aspects of Preparing a Biomolecular System for MD Simulation}
 
+Coordinates for the initial input into a simulation software need some care to be prepared.  First the structure of protein or peptide to simulated need to be generated.  The starting structure of the target protein is usually X-ray crystal or NMR structure, which can be taken from the Protein Data Bank.  Then the simulation environment is prepared to closely mimic the experimental conditions (usually experimental crystallization conditions). For example, the pKa of a protein is typically predicted so that residues such as histidine are appropriately protonated.
+
+For a simulation of a globular protein, after the protein structure has been prepared, cosolutes, salt and water molecules are added to create the final simulation box. However, for more complex simulation systems, such as those in the presence of a lipid bilayer, additional steps
+% Also make sure that at this point everyone in my committee understands that there is no ionization in the simulations and no chemical reactions.  
+ 
+At this stage,  an energy minimization algorithm is usually performed on the system to correct any bad steric contacts that might have been introduced when solvent was added. An example of a completed starting structure of a simulation is shown in Figure~\ref{fig:simulation_box}.
+
+\begin{figure}
+ \centering
+ \includegraphics[width=5in]{figures/methods/simulation_box.pdf}
+ \caption[An example of a MD simulation system]{An example of a MD simulation system.}
+ \label{fig:simulation_box}
+\end{figure}
+
+Prior to performing production dynamics, which is what most of the results from a simulation will be based on, a short simulation to equilibrate the system is performed.  Equilibration is performed to allow the pressure and temperature of the system to stabilize. Here the stability of the protein is also validated to ensure that the protein structure has not grossly deviated (or unfolded) from the starting model.  
+
+\begin{figure}
+ \centering
+ \includegraphics[width=5in]{figures/methods/equilibration.pdf}
+ \caption[RMSD from the initial crystal structure calculated from an equilibriation]{Equilibration of the simulation system.}
+ \label{fig:simulation_equilibration}
+\end{figure}
 
 \section{Speeding up Molecular Dynamics Simulation}
 
