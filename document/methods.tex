@@ -10,7 +10,7 @@
 % Assumptions and limitations of molecular mechanics
 In an ideal world, one would be able to predict the evolution of a molecular system by solving the Schrodinger's equation, which predicts the t-evolution of all the atomic-nuclei and electronic motion.  However, to do so for a biomolecular system is extremely computationally-prohibitive, even for a very small molecule. REF
 
-In the past decades, molecular mechanics, a classical mechanics approach, was developed to model and simulate a large system possible. In molecular mechanics, an empirical potential energy function which depends only on the positions of atoms, is employed to describe the molecular energies of molecules. Simply put, molecules are treated as a set of masses connected by springs.
+In the past decades, molecular mechanics, a classical mechanics approach, was developed to model and simulate a large system possible. In molecular mechanics, an empirical potential energy function (PEF) which depends only on the positions of atoms, is employed to describe the molecular energies of molecules. Simply put, molecules are treated as a set of masses connected by springs.
 
 The underlying theoretical basis for molecular mechanics is rooted in the Born-Oppenheimer approximation. Under this approximation, electronic and nuclear motions are considered to be uncoupled, and therefore are treated separately. For this reason, the system's total energy (the Hamiltonian, $H$) only depends on the electronic motion, and the nuclei are assumed to be in fixed positions. 
 % This is because the nuclei, which are much heavier than electrons, are typically fixed on the time scales of electronic vibration.
@@ -28,9 +28,10 @@ Currently, many force fields for biopolymers such as peptides, proteins, nucleic
 
   \begin{equation}
     \label{eq:ff_general}
-    V = V(bonds) + V(angles) + V(impropers) + V(dihedrals) + V(non-bonded pair interactions)
+    V = V(bonds) + V(angles) + V(impropers) + V(dihedrals) + V(non-bonded)
   \end{equation}
 
+\subsection{Bonded Interactions}
 The first four terms of \ref{eq:ff_general}, $V(bonds)$, $V(angles)$, and $V(improper)$  are the functional terms used to describe bonded interactions and dynamics within a molecule.
 These motions consists of covalent bond stretching, angle-bending, and torsional rotations.  It is important to note that bonds cannot be formed nor broken. 
 
@@ -45,6 +46,7 @@ V(angles) = \sum_{angles} k_{\theta}(\theta - \theta_{0})^2, \\
 \end{equation}
 where the constants $k_{b}$ and $k_{\theta}$ are the equilibrium force constants for bonds and angles, respectively, and $b_{0}$ and $\theta_{0}$ are the reference bond length and angle, respectively. Note that total energetic contribution from bond stretching and angle bending motions are computed by summing over all bonds and angles in the system.
 
+\subsection{Non-bonded Interactions}
 Non-bonded interaction potentials predominantly account for van der Waals and electrostatic forces.  These are important for the transferability of a force field, that is, the ability to reuse parameters created based on one molecule to predict properties of other molecules.  The non-bonded forces are only applied to atom pairs separated by at least three bonds. Van der Waals forces are represented by the Lennard-Jones potential,
 
 \begin{equation}
@@ -71,7 +73,7 @@ where $q_{i}$ and $q_{j}$ are the point charges on atoms $i$ and $j$, respective
 \end{figure}
 
 As previously discussed in Chapter 1 \ref{chap:introduction}, hydrogen bonding is an important type of electrostatic interaction and hence their proper representation must be captured by a force field.
-Hydrogen bonding interactions are generally considered to be accounted for by the combination of van der Waals and electrostatic potentials.  However, an explicit term solely for describing hydrogen bonding may be employed by some force fields.  For example, the original AMBER force field introduced in 1984 added a function of the form $\sum_{hbonds} C_{ij}/R_{ij}^{12} - D_{ij}/R_{ij}^{10}$ to account for hydrogen bonds.\cite{Weiner:1984uw}
+Hydrogen bonding interactions are generally considered to be accounted for by the combination of van der Waals and electrostatic potentials.  However, an explicit term solely for describing hydrogen bonding may be employed by some force fields.  For example, the original AMBER force field introduced in 1984 added a function of the form $\sum_{hbonds} C_{ij}/R_{ij}^{12} - D_{ij}/R_{ij}^{10}$ to account for hydrogen bonds.\cite{Weiner:1984uw}  However, modern AMBER force fields do not utilize this explicit hydrogen bonding term.
 
 
 % Other things that I will not be discussing -- what were they again?
@@ -116,84 +118,75 @@ MD simulations employ an empirical mathematical function to describe the atomic 
 Thermodynamic and kinetic properties can then be extracted as time averages from these trajectories and used to make a number of predictions that are often experimentally challenging to observe or measure.
 
 MD simulations have been used in recent years to gain insight into many fundamental problems in biology and biochemistry, including protein dynamics and function, protein folding, self-aggregation, and protein-ligand binding. This classical mechanics approach has been shown to be able to provide a valid approximation of many biological systems thus far. REFs
-
+The outcome of MD simulations is controlled by a force field.
 % Approximations made in MD.
 % Note the audience of your thesis.  It is good to cover basic ground.  I think I should also brief talk about enhanced techniques.
 
+MD is simply an algorithm to simulate motion of a system under the influece of a specific force field by following molecular configurations in time according to Newton's equation of motion. 
 \subsection{Core Algorithm}
 % This is the part with the time propagation using the Equations of motion
-
-The outcome of MD simulations is controlled by a force field, which as discussed above, is a potential energy function describing both intra and intermolecular interactions, which only depends on the positions of the atoms in the system.
-
-For a system of $N$ interacting atoms, the force on each atom pair in the system is determined by the spatial derivative of the potential energy of the atom pair.  % Not exactly ... according to Chris Madill's thesis, U is the potential energy between an atom pair
+In a system of $N$ interacting particles, the force on each particle in the system is determined by taking the spatial derivative of the potential energy of the system, $V(r_{1}, r_{2}, ... , r_{N})$.  In MD simulations, this potential energy is approximated using a molecular mechanics force field as described above.  The force on each particle $i$ is given by
+% Not exactly ... according to Chris Madill's thesis, U is the potential energy between an atom pair?  Clear up the core algorithm!
 \begin{equation}
 % F_i = - \nabla U
-  F_i = - \frac{\delta V}{\delta r_i}, i = 1, 2, 3 ,..., N
+  F_i = - \frac{\partial V}{\partial r_i}, i = 1, 2, 3, ... , N
 \end{equation}
-
-where $V$ is the potential energy of the system. The calculated force vectors are summed together, yielding the net force vector acting on every atom in the system. 
-
-In MD simulations, $V$ is approximated using a molecular mechanics force field, a set of parameters which describes the interaction energies of the atoms in the system.
-
-The acceleration $a_i$ of each atom is given by,
+Here, the variable $r_{i}$ represents the spatial coordinates of the particle $i$. The calculated force vectors are summed together to yield the net force vector acting on every atom in the system. By Newton's second law of motion, the acceleration $a_i$ of each atom is given by 
 \begin{equation}
-a_i = \frac{F_i}{m_i}
+a_i = \frac{F_i}{m_i},
 \end{equation}
-where $m_i$ is the mass of the atom $i$.
-
-The next position of the atom at time $ t + \delta t$
+where $m_i$ is the mass of the $i$th particle. The position of $i$ at time $ t + \delta t$ is then
 \begin{equation}
 x_i(t + \delta t) = x_i(t) + v_i(t)\delta t + \frac{a_i(t)\delta t^2}{2}  
 \end{equation}
 
-The above equations are solved numerically using a time integration algorithm using a small timestep. For numerical stability reasons, a small integration step in the range of 1 - 4 femtoseconds is employed. Typically, a timestep of 2 fs is used, which is twice the time period for the fastest vibrational motion (for bonds involving hydrogen), is used in MD simulations of biomolecular systems. % [Ref: Chris Madill's and Tom's thesis]
+To determine the positions of each of the N particles requires solving a system of 3N differential equations.  These equations are solved numerically by using a time-integration algorithm.  Once the positions for each particle are predicted, interatomic forces are updated based on these new coordinates, and the entire process is repeated again to obtain the coordinates of the system for subsequent time steps. To ensure numerical stability, a small integration time step in the range of 1 - 4 femtoseconds (fs) is chosen. REF Typically, in a MD simulation of a biomolecular system, a 2 fs timestep is used as it is twice the time period for the fastest vibrational motion (existing in bonds involving hydrogen). REF % [Ref: Chris Madill's and Tom's thesis]
 
-There are many different forms of integration algorithms, with the most common being the Verlet and leap-frog algorithms. 
+% There are many different forms of integration algorithms, with the most common being the Verlet and leap-frog algorithms. 
 % According to gromacs manual:
 % md - is a leap-frog algorithm for integrating Newton's equation.
 % Note that in absence of pressure and temperature coupling, verlet and leap-frog is equivalent ... and generates identical trajectories of motion.
 
-% How much detail? Talk about the velocity verlet integration algorithm ?
-A simulation proceeds iteratively: once all of the new positions for all atoms are predicted, interatomic forces are updated based on these new coordinates, and this entire process is repeated.
+% How much detail? Talk about the velocity verlet integration algorithm ? -- I'm going to study up on this but will eliminate this from my thesis ...
+
 
 % Marty's thesis included a little bit on the verlet algorithm.  CN did not.
 
 \subsection{Temperature and Pressure}
-Here describe how temperature and pressure coupling is handled in MD at a high-level without going into the details of the math.
-
-The inclusion of temperature in MD allows for the account of entropy in our systems, which is especially important for free energy determination.  I copied below from ``Molecular simulations the book''
-
-For instance, a convenient definition of the temperature in a (classical) many-body system makes use of the equipartition of energy over all degrees of freedom that enter quadratically in the Hamiltonian of the system. In particular for the average kinetic energy per degree of freedom, we have
+% My goal is to describe how temperature and pressure coupling is handled in MD at a high-level without going into the details of the math.
+% Ref: Understanding Molecular Simulations by Frenkel Daan.
+The inclusion of temperature in MD allows for the account of entropy in our systems, which is especially important for free energy determination. The equipartition of energy states that in a (classical) many-body system at thermal equilibrium, the average kinetic energy per degree of freedom is related to the temperature via 
 \begin{equation}
   \langle \frac{1}{2} mv_{\alpha}^2 \rangle =   \frac{1}{2} k_BT
 \end{equation}
 
-In a simulation, we use this equation as an operational definition of the temperature. In practice, we would measure the total kinetic energy of the system and divide this by the number of degrees of freedom Nr (= 3N - 3 for a system of N particles with fixed total momentum1). As the total kinetic energy of a system fluctuates, so does the instantaneous temperature:
+In a simulation, we use this equation as an operational definition of the temperature.  In practice, we would measure the total kinetic energy of the system and divide this by the number of degrees of freedom, $N_{r}$ in a system.  As the total kinetic energy of a system fluctuates, the instantaneous temperature of a simulation system is then
 
 \begin{equation}
   T(t) = \sum_{i=1}^{N} \frac{m_iv_i^2(t)}{k_BN_f}
 \end{equation}
-
-Below is from the GROMACS manual:
-
-While direct use of molecular dynamics gives rise to the NVE (constant number, constant volume, constant energy ensemble), most quantities that we wish to calculate are actually from a constant temperature (NVT) ensemble. 
-
-To simulate a system under an ensemble which matches most experimental settings, where temperature and pressure is often held constant, we can modify the above introduced equations by adding additional terms which introduces a thermal heat bath (Nose-Hoover temperature coupling scheme) to which we couple our simulation to.
+ 
+In an experimental setting, temperature and pressure are often held constant.  To simulate a system under comparable conditions,  algorithms which implements a thermostat and a barostat (a virtual pressure piston) are used to hold temperature and pressure constant, respectively, in a simulation.  Several of these temperature- and pressure-coupling schemes have been developed and implemented. REF They are reviewed in detail elsewhere. REF 
+% These algorithms have been validated to produce the correct statistical mechanical ensemble averages.  
 %\cite{[25] Nose ́, S. A molecular dynamics method for simulations in the canonical ensemble. Mol. Phys. 52:255–268, 1984.[26] Hoover, W. G. Canonical dynamics: equilibrium phase-space distributions. Phys. Rev. A 31:1695–1697, 1985.}
 
-Using the same idea, we can couple the system to a pressure bath.  This method is called the Parrinello-Rahman pressure coupling, and the theory has been shown to correctly produce the NpT ensemble.
+%Below is from the GROMACS manual:
+% While direct use of molecular dynamics gives rise to the NVE (constant number, constant volume, constant energy ensemble), most quantities that we wish to calculate are actually from a constant temperature (NVT) ensemble. 
+% Using the same idea, we can couple the system to a pressure bath.  This method is called the Parrinello-Rahman pressure coupling, and the theory has been shown to correctly produce the NpT ensemble.
 % \cite{Parrinello, M., Rahman, A. Polymorphic transitions in single crystals: A new molecular dynamics method. J. Appl. Phys. 52:7182–7190, 1981. [35] Nose ́, S., Klein, M. L. Constant pressure molecular dynamics for molecular systems. Mol. Phys. 50:1055–1076, 1983.}
-% Should I include the equations? I haven't seen this in other thesis, perhaps its too much detail.
+% Should I include the equations? I haven't seen this in other thesis, perhaps its too much detail. -- Yes this is too much detail.
 
-\subsection{Solvent Representation}
-% Talk about how solvent is accounted for
-The most realistic simulations treat the solvent environment by explicitly including the water molecules.  \textbf{How solvents are parameterized.  Can mention a few details about TIP3P water model. I actually don't know much about TIP3P} Solvent models are chosen to be consistent with the force field used for modelling the protein.  Although using explicit solvent leads to the most realistic simulations, these simulations are computationally expensive.  In some cases, instead of using explicit solvent molecules, implicit solvation can be used, that is the presence of solvent is approximated by using a potential. However, the implicit solvation suffers from several key weaknesses including a poor description of water-mediated interactions, directionality of water hydrogen bonds and only an approximate treatment of the nonpolar contribution to solvation.
-Hence,  is much less accurate and can introduce force field inconsistencies leading to inaccurate results.\cite{Yang:2013ff}
+%\subsection{Solvent Representation}
+%% Talk about how solvent is accounted for
+%The most realistic simulations treat the solvent environment by explicitly including the water molecules.  \textbf{How solvents are parameterized.  Can mention a few details about TIP3P water model. I actually don't know much about TIP3P} Solvent models are chosen to be consistent with the force field used for modelling the protein.  Although using explicit solvent leads to the most realistic simulations, these simulations are computationally expensive.  In some cases, instead of using explicit solvent molecules, implicit solvation can be used, that is the presence of solvent is approximated by using a potential. However, the implicit solvation suffers from several key weaknesses including a poor description of water-mediated interactions, directionality of water hydrogen bonds and only an approximate treatment of the nonpolar contribution to solvation.
+%Hence,  is much less accurate and can introduce force field inconsistencies leading to inaccurate results.\cite{Yang:2013ff}
 
 \subsection{Periodic boundary conditions}
 To treat a bulk system and avoid phase boundaries, periodic boundary conditions are used, where the the central simulation ``cell'' or ``box'' is replicated along each of it's X, Y and Z axis. Although this is unnatural, for sufficiently large systems, the errors induced by periodic boundaries are negligible. \textbf{Note I need a better explanation of PBC in my thesis as this was a topic of confusion in a couple of my committee meetings. Shouldn't be taken for granted. Also this could be a question during my defense as well.} REFS
 
-\subsection{Ensembles}
+\subsection{Theoretical underpinnings of MD}
+\textbf{This discussion is important ... but is not fitted well into the chapter.  Write what these ensembles are and link them to the simulations that is the pressure and temperature coupling schemes used }
+
 Simulation systems are usually in the canonical ensemble (NVT) or  isothermo-isobaric (NPT) ensembles. These are statistical-mechanics ensembles used to relate the microscopic arrangements of the system to their thermodynamic properties such as the free energy. NVT is fixed number of particles and fixed volume and temperature.  NPT is fixed number of particles, constant pressure and temperature. This ensemble is the closest to experimental laboratory conditions, and hence simulations are often carried out in this fashion.
 
 \section{Speeding up Molecular Dynamics Simulation}
@@ -212,8 +205,8 @@ Note: This section could actually be put in the introduction.  As this may not r
 I can show the thermodynamic cycle for getting Delta G, like the one that I had in my transfer proposal.  Describe why this can be used to determine free energies.  And then mention the techniques that were invented in the past to do so. These approaches are not applicable to the problem of this thesis, but this background is provided to give the reader perspective. Point to another review article and say this is discussed in detail. I can discuss how to determine enthalpic and entropic contributions.
 
 
-\subsection{Better Hardware}
-Here can describe how better hardware - bigger and better machines have led to improvements and advancements in this field.
+%\subsection{Better Hardware}
+% Here can describe how better hardware - bigger and better machines have led to improvements and advancements in this field.
 
 % Initial conditions -- initial positions of the atoms in the system
 
