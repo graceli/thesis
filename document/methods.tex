@@ -32,7 +32,9 @@ Currently, many force fields for biopolymers such as peptides, proteins, nucleic
   \end{equation}
 
 The first four terms of \ref{eq:ff_general}, $V(bonds)$, $V(angles)$, and $V(improper)$  are the functional terms used to describe bonded interactions and dynamics within a molecule.
-These motions consists of covalent bond stretching, angle-bending, and torsional rotations. Covalent bond stretching can be described using Hooke's Law for harmonic motion,
+These motions consists of covalent bond stretching, angle-bending, and torsional rotations.  It is important to note that bonds cannot be formed nor broken. 
+
+Covalent bond stretching can be described using Hooke's Law for harmonic motion,
 \begin{equation}
  V(bonds) = \sum_{bonds} k_b(b - b_0)^2.
 \end{equation}
@@ -43,7 +45,7 @@ V(angles) = \sum_{angles} k_{\theta}(\theta - \theta_{0})^2, \\
 \end{equation}
 where the constants $k_{b}$ and $k_{\theta}$ are the equilibrium force constants for bonds and angles, respectively, and $b_{0}$ and $\theta_{0}$ are the reference bond length and angle, respectively. Note that total energetic contribution from bond stretching and angle bending motions are computed by summing over all bonds and angles in the system.
 
-Non-bonded interaction potentials predominantly account for van der Waals and electrostatic forces.  These are important for the transferability of a force field, that is, the ability to reuse parameters created based on one molecule to predict properties of other molecules.  Van der Waals forces are represented by the Lennard-Jones potential,
+Non-bonded interaction potentials predominantly account for van der Waals and electrostatic forces.  These are important for the transferability of a force field, that is, the ability to reuse parameters created based on one molecule to predict properties of other molecules.  The non-bonded forces are only applied to atom pairs separated by at least three bonds. Van der Waals forces are represented by the Lennard-Jones potential,
 
 \begin{equation}
   \label{eq:lj_function}
@@ -57,9 +59,9 @@ Furthermore, the reproduction of electrostatics is paramount for describing inte
 
 \begin{equation}
   \label{eq:electrostatic}
-  V_{coulombic}(r) = \frac{q_1q_2}{\epsilon r}, 
+  V_{coulombic}(r) = \frac{q_iq_j}{\epsilon r}, 
 \end{equation}
-where $q_{1}$ and $q_{2}$ are charges on each of the atoms, and $\epsilon$ is the dielectric constant of the environment(?).  In contrast to van der Waals interactions,  electrostatic interactions are long-range interactions. Accordingly depicted in Figure XXX,  in comparisons to the Lennard-Jones potential, the Coulombic potential is a much slower decaying function, indicating that electrostatic effects are significant even up to distances of 1 - 1.5 nm.
+where $q_{i}$ and $q_{j}$ are the point charges on atoms $i$ and $j$, respectively, and $\epsilon$ is the the permittivity of vacuum.  In contrast to van der Waals interactions,  electrostatic interactions are long-range interactions. Accordingly depicted in Figure XXX,  in comparisons to the Lennard-Jones potential, the Coulombic potential is a much slower decaying function, indicating that electrostatic effects are significant even up to distances of 1 - 1.5 nm.
 
 \begin{figure}
  \centering
@@ -68,14 +70,20 @@ where $q_{1}$ and $q_{2}$ are charges on each of the atoms, and $\epsilon$ is th
  \label{fig:nonbonded_potentials}
 \end{figure}
 
-As discussed in Chapter 1 \ref{chap:introduction}, hydrogen bonding is an important type of electrostatic interaction and hence their proper representation must be captured by a force field.
-Hydrogen bonding interactions are generally account for as a combination of van der Waals and electrostatic interactions.  However, certain force fields (e.g., XXX) employ an explicit term solely for hydrogen bonding.
+As previously discussed in Chapter 1 \ref{chap:introduction}, hydrogen bonding is an important type of electrostatic interaction and hence their proper representation must be captured by a force field.
+Hydrogen bonding interactions are generally considered to be accounted for by the combination of van der Waals and electrostatic potentials.  However, an explicit term solely for describing hydrogen bonding may be employed by some force fields.  For example, the original AMBER force field introduced in 1984 added a function of the form $\sum_{hbonds} C_{ij}/R_{ij}^{12} - D_{ij}/R_{ij}^{10}$ to account for hydrogen bonds.\cite{Weiner:1984uw}
+
 
 % Other things that I will not be discussing -- what were they again?
 
 \subsection{Electronic Polarizability}
+Polarizability is the measure of the change in a molecule's electron distribution in response to an applied electric field, and is a property of matter which can be induced by electrostatic interactions with solvents or ionic reagents. 
 
-Polarizability is the measure of the change in a molecule's electron distribution in response to an applied electric field, and is a property of matter which can be induced by electrostatic interactions with solvents or ionic reagents. Because of its prohibitive computational cost and for the reasons listed above, classical mechanics force fields also do not explicitly account for polarizability of molecules.
+As discussed above, most current force fields use a fixed-charge model where each atom in the system is assigned a single value for the atomic charge.  This charge remains independent of changes in its local electrostatic environment. Next-generation force fields have been proposed to  incorporate models for electronic polarizability. REF However, because of the prohibitive computational cost associated with the use of these force fields, they have not been widely adopted by modern simulations.
+
+
+% The introduction of polarizable force fields into common use has been inhibited by the high computational cost associated with solving this problem self-consistently.
+
 
 \subsection{The OPLS Force Field}
 
@@ -150,11 +158,6 @@ A simulation proceeds iteratively: once all of the new positions for all atoms a
 
 % Marty's thesis included a little bit on the verlet algorithm.  CN did not.
 
-\subsection{Solvent Representation}
-% Talk about how solvent is accounted for
-How solvents are parameterized.  Can mention a few details about TIP3P water model. Solvents are often chosen with the force field that it is parameterized with to avoid inconsistencies.
-Details about implicit solvation, However, with implicit solvation water, which can also be considered as a ligand, is not represented. This can introduce force field inconsistencies which would decrease the accuracy of representing ligand-protein binding.
-
 \subsection{Temperature and Pressure}
 Here describe how temperature and pressure coupling is handled in MD at a high-level without going into the details of the math.
 
@@ -165,7 +168,7 @@ For instance, a convenient definition of the temperature in a (classical) many-b
   \langle \frac{1}{2} mv_{\alpha}^2 \rangle =   \frac{1}{2} k_BT
 \end{equation}
 
-In a simulation, we use this equation as an operational definition of the tem- perature. In practice, we would measure the total kinetic energy of the sys- tem and divide this by the number of degrees of freedom Nr (= 3N - 3 for a system of N particles with fixed total momentum1). As the total kinetic energy of a system fluctuates, so does the instantaneous temperature:
+In a simulation, we use this equation as an operational definition of the temperature. In practice, we would measure the total kinetic energy of the system and divide this by the number of degrees of freedom Nr (= 3N - 3 for a system of N particles with fixed total momentum1). As the total kinetic energy of a system fluctuates, so does the instantaneous temperature:
 
 \begin{equation}
   T(t) = \sum_{i=1}^{N} \frac{m_iv_i^2(t)}{k_BN_f}
@@ -182,13 +185,37 @@ Using the same idea, we can couple the system to a pressure bath.  This method i
 % \cite{Parrinello, M., Rahman, A. Polymorphic transitions in single crystals: A new molecular dynamics method. J. Appl. Phys. 52:7182–7190, 1981. [35] Nose ́, S., Klein, M. L. Constant pressure molecular dynamics for molecular systems. Mol. Phys. 50:1055–1076, 1983.}
 % Should I include the equations? I haven't seen this in other thesis, perhaps its too much detail.
 
-
-
-\subsection{Ensembles}
-Simulation systems are usually in the canonical ensemble (NVT) or  isothermo-isobaric (NPT) ensembles.
+\subsection{Solvent Representation}
+% Talk about how solvent is accounted for
+The most realistic simulations treat the solvent environment by explicitly including the water molecules.  \textbf{How solvents are parameterized.  Can mention a few details about TIP3P water model. I actually don't know much about TIP3P} Solvent models are chosen to be consistent with the force field used for modelling the protein.  Although using explicit solvent leads to the most realistic simulations, these simulations are computationally expensive.  In some cases, instead of using explicit solvent molecules, implicit solvation can be used, that is the presence of solvent is approximated by using a potential. However, the implicit solvation suffers from several key weaknesses including a poor description of water-mediated interactions, directionality of water hydrogen bonds and only an approximate treatment of the nonpolar contribution to solvation.
+Hence,  is much less accurate and can introduce force field inconsistencies leading to inaccurate results.\cite{Yang:2013ff}
 
 \subsection{Periodic boundary conditions}
-To treat a bulk system and avoid phase boundaries, periodic boundary conditions are used.  Although this is unnatural, for sufficiently large systems, the errors induced by periodic boundaries are negligible. REFS
+To treat a bulk system and avoid phase boundaries, periodic boundary conditions are used, where the the central simulation ``cell'' or ``box'' is replicated along each of it's X, Y and Z axis. Although this is unnatural, for sufficiently large systems, the errors induced by periodic boundaries are negligible. \textbf{Note I need a better explanation of PBC in my thesis as this was a topic of confusion in a couple of my committee meetings. Shouldn't be taken for granted. Also this could be a question during my defense as well.} REFS
+
+\subsection{Ensembles}
+Simulation systems are usually in the canonical ensemble (NVT) or  isothermo-isobaric (NPT) ensembles. These are statistical-mechanics ensembles used to relate the microscopic arrangements of the system to their thermodynamic properties such as the free energy. NVT is fixed number of particles and fixed volume and temperature.  NPT is fixed number of particles, constant pressure and temperature. This ensemble is the closest to experimental laboratory conditions, and hence simulations are often carried out in this fashion.
+
+\section{Speeding up Molecular Dynamics Simulation}
+
+\subsection{Better algorithms: Enhanced Sampling Techniques}
+
+\subsubsection{Approaches for Determining Protein Conformational Ensembles}
+It was mentioned in Chapter 1 that enhanced sampling may be used to speed up simulations.  Here we provide a high level overview of the approaches that were developed that have been useful in rational drug design.  These approaches were also widely used through out the thesis.
+
+The use of temperature to overcome energetic barriers in the system. Here I can talk about what enhanced sampling is, and how they can be applied to understanding the properties of disordered peptides. Cite Sarah.  
+I should read both Sarah's and Chris's thesis chapters relating to sampling.  Chris's is all about sampling. Since I refer extensively to enhanced sampling, I should make a mention of it.
+
+\subsubsection{Approaches for Calculating Protein-Ligand Binding Affinities}
+Note: This section could actually be put in the introduction.  As this may not require understanding the details of simulations.  Leave this hear for now and can move it as a section to the introduction ... maybe after Regis has seen both chapters together.
+
+I can show the thermodynamic cycle for getting Delta G, like the one that I had in my transfer proposal.  Describe why this can be used to determine free energies.  And then mention the techniques that were invented in the past to do so. These approaches are not applicable to the problem of this thesis, but this background is provided to give the reader perspective. Point to another review article and say this is discussed in detail. I can discuss how to determine enthalpic and entropic contributions.
+
+
+\subsection{Better Hardware}
+Here can describe how better hardware - bigger and better machines have led to improvements and advancements in this field.
+
+% Initial conditions -- initial positions of the atoms in the system
 
 \section{Practical Aspects of Preparing a Biomolecular System for MD Simulation}
 
@@ -214,28 +241,6 @@ Prior to performing production dynamics, which is what most of the results from 
  \caption[RMSD from the initial crystal structure calculated from an equilibriation]{Equilibration of the simulation system.}
  \label{fig:simulation_equilibration}
 \end{figure}
-
-\section{Speeding up Molecular Dynamics Simulation}
-
-\subsection{Better algorithms: Enhanced Sampling Techniques}
-
-\subsubsection{Approaches for Determining Protein Conformational Ensembles}
-It was mentioned in Chapter 1 that enhanced sampling may be used to speed up simulations.  Here we provide a high level overview of the approaches that were developed that have been useful in rational drug design.  These approaches were also widely used through out the thesis.
-
-The use of temperature to overcome energetic barriers in the system. Here I can talk about what enhanced sampling is, and how they can be applied to understanding the properties of disordered peptides. Cite Sarah.  
-I should read both Sarah's and Chris's thesis chapters relating to sampling.  Chris's is all about sampling. Since I refer extensively to enhanced sampling, I should make a mention of it.
-
-\subsubsection{Approaches for Calculating Protein-Ligand Binding Affinities}
-Note: This section could actually be put in the introduction.  As this may not require understanding the details of simulations.  Leave this hear for now and can move it as a section to the introduction ... maybe after Regis has seen both chapters together.
-
-I can show the thermodynamic cycle for getting Delta G, like the one that I had in my transfer proposal.  Describe why this can be used to determine free energies.  And then mention the techniques that were invented in the past to do so. These approaches are not applicable to the problem of this thesis, but this background is provided to give the reader perspective. Point to another review article and say this is discussed in detail. I can discuss how to determine enthalpic and entropic contributions.
-
-
-\subsection{Better Hardware}
-Here can describe how better hardware - bigger and better machines have led to improvements and advancements in this field.
-
-% Initial conditions -- initial positions of the atoms in the system
-
 
 \addcontentsline{toc}{section}{Bibliography}
 \bibliographystyle{plain}
