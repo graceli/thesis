@@ -46,6 +46,8 @@ V(angles) = \sum_{angles} k_{\theta}(\theta - \theta_{0})^2, \\
 \end{equation}
 where the constants $k_{b}$ and $k_{\theta}$ are the equilibrium force constants for bonds and angles, respectively, and $b_{0}$ and $\theta_{0}$ are the reference bond length and angle, respectively. Note that total energetic contribution from bond stretching and angle bending motions are computed by summing over all bonds and angles in the system.
 
+\textbf{dihedrals!!!!}
+
 \subsection{Non-bonded Interactions}
 Non-bonded interaction potentials predominantly account for van der Waals and electrostatic forces.  These are important for the transferability of a force field, that is, the ability to reuse parameters created based on one molecule to predict properties of other molecules.  The non-bonded forces are only applied to atom pairs separated by at least three bonds. Van der Waals forces are represented by the Lennard-Jones potential,
 
@@ -72,8 +74,7 @@ where $q_{i}$ and $q_{j}$ are the point charges on atoms $i$ and $j$, respective
  \label{fig:nonbonded_potentials}
 \end{figure}
 
-As previously discussed in Chapter 1 \ref{chap:introduction}, hydrogen bonding is an important type of electrostatic interaction and hence their proper representation must be captured by a force field.
-Hydrogen bonding interactions are generally considered to be accounted for by the combination of van der Waals and electrostatic potentials.  However, an explicit term solely for describing hydrogen bonding may be employed by some force fields.  For example, the original AMBER force field introduced in 1984 added a function of the form $\sum_{hbonds} C_{ij}/R_{ij}^{12} - D_{ij}/R_{ij}^{10}$ to account for hydrogen bonds.\cite{Weiner:1984uw}  However, modern AMBER force fields do not utilize this explicit hydrogen bonding term.
+As previously discussed in Chapter 1, hydrogen bonding is an important type of electrostatic interaction and hence their proper representation must be captured by a force field. An explicit term solely for describing hydrogen bonding have been employed by some force fields. For example, the original AMBER force field introduced in 1984 added a function of the form $\sum_{hbonds} C_{ij}/R_{ij}^{12} - D_{ij}/R_{ij}^{10}$ to account for hydrogen bonds.\cite{Weiner:1984uw}  However, it was later demonstrated that hydrogen bonding interactions are accurately accounted for via the combination of van der Waals and electrostatic potential terms. Hence, most modern force fields for protein simulations, including the latest AMBER force fields, do not utilize an explicit hydrogen bonding term.
 
 
 % Other things that I will not be discussing -- what were they again?
@@ -85,16 +86,16 @@ Polarizability is the measure of the change in a molecule's electron distributio
 % The introduction of polarizable force fields into common use has been inhibited by the high computational cost associated with solving this problem self-consistently.
 
 \subsection{AMBER and OPLS Force Fields}
-Here in this section, I will briefly discuss the AMBER and OPLS force fields in the context of protein simulations. The OPLS-AA and AMBER99 force fields were used to generate the results of this thesis presented in Chapters 3 to 5, and Chapter 6, respectively.  Detailed and extensive reviews of empirical force fields for protein simulations have been provided elsewhere.\cite{Ponder:2003uw,MackerellJr:2004p5558}
+In this section, I briefly describe two of the most popular force fields that are used for protein simulations, AMBER and OPLS force fields. OPLS-AA and AMBER99 were used to generate the results of this thesis presented in Chapters 3 to 5, and Chapter 6, respectively.  Detailed and extensive reviews of empirical force fields for protein simulations have been provided elsewhere.\cite{Ponder:2003uw,MackerellJr:2004p5558}
 
 One of the first force fields developed for the simulations of proteins was the ... (AMBER) by XXX et al.
- 
-OPLS, short for optimized potentials for liquid simulations, was originally developed to simulate and reproduce liquid state properties with accuracy. These potential functions were first developed for ions and hydrocarbons,\cite{Jorgensen:1984vy} and then was later extended to amides and peptides.\cite{Jorgensen:1985wx} The non-bonded interactions in OPLS were derived by comparisons to liquid-state thermodynamics. In early OPLS development, a partial united-atom model was used whereby nonbonded interaction sites were placed only on non-hydrogen atoms and polar hydrogens.\cite{Jorgensen:1988vg,Jorgensen:1985wx,Jorgensen:1984vy}
 
-A new all-atom OPLS force field (OPLS-AA) was developed for organic molecules and peptide simulations in 1996.\cite{Jorgensen:1996vx} Although XXX was performed for charge fitting and XXX calculation which were unique to t parameterization, the atom types and parameters for bonded interactions (bonds, angles, and dihedrals) were taken from the AMBER force field.
+OPLS, short for optimized potentials for liquid simulations, was originally developed to simulate and reproduce liquid state properties with accuracy. These potential functions were first developed for water, ions and hydrocarbons,\cite{Jorgensen:1984vy} and then was later extended to amides and peptides.\cite{Jorgensen:1985wx} The non-bonded interactions in OPLS were derived by comparisons to liquid-state thermodynamics. In early OPLS development, a partial united-atom model was used whereby nonbonded interaction sites were placed only on non-hydrogen atoms and polar hydrogens.\cite{Jorgensen:1988vg,Jorgensen:1985wx,Jorgensen:1984vy}
 
-The general form of the force field potential energy function used in OPLS-AA is
-  
+An all-atom OPLS force field (OPLS-AA) was developed for organic molecules and peptide simulations in 1996.\cite{Jorgensen:1996vx} Although the charge and van der Waals parameters were developed from simulations of pure liquids, which is unique to the parameterization of OPLS, the atom types and parameters for bonded interactions (bonds, angles, and dihedrals) were largely adopted from the AMBER all-atom force field.\cite{Jorgensen:1996vx}
+
+The OPLS-AA potential energy function is
+
   \begin{equation}
     \begin{split}
           V = \sum_{bonds} k_b(b-b_0)^2 
