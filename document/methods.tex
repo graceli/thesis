@@ -46,7 +46,13 @@ V(angles) = \sum_{angles} k_{\theta}(\theta - \theta_{0})^2, \\
 \end{equation}
 where the constants $k_{b}$ and $k_{\theta}$ are the equilibrium force constants for bonds and angles, respectively, and $b_{0}$ and $\theta_{0}$ are the reference bond length and angle, respectively. Note that total energetic contribution from bond stretching and angle bending motions are computed by summing over all bonds and angles in the system.
 
-\textbf{dihedrals!!!!}
+Bond torsions are typically accounted for using a periodic function,
+\begin{equation}
+  \label{eq:torsion}
+   V_{dihedral} = \sum_{dihedrals} k_{\chi}(1 + cos(n\chi - \delta)),
+\end{equation}
+where $V_{dihedral}$ is the first term of a Fourier expansion, $n$ denotes the periodicity of the function and $\delta$ is the phase. Moreover, dihedrals of this form (improper dihedrals) may be added to the PEF as a way of ensuring the planarity of molecules such as those with rings.
+
 
 \subsection{Non-bonded Interactions}
 Non-bonded interaction potentials predominantly account for van der Waals and electrostatic forces.  These are important for the transferability of a force field, that is, the ability to reuse parameters created based on one molecule to predict properties of other molecules.  The non-bonded forces are only applied to atom pairs separated by at least three bonds. Van der Waals forces are represented by the Lennard-Jones potential,
@@ -56,7 +62,7 @@ Non-bonded interaction potentials predominantly account for van der Waals and el
   V_{LJ}(r) = (\frac{r_{min}}{r})^{12} - 2(\frac{r_{min}}{r})^6
 \end{equation}
 
-The first term of \ref{eq:lj_function} is a repulsive force, and the second term is an attractive force at atomic distances where atomic shells overlap.  Here the constant $r_{min}$ is the preferred interaction distance for the atom pair or the van der Waals radii of atoms. Together these constitute a rapidly decaying function which represents a short-range attractive interaction that is characteristic of van der Waals forces. Parameterization of van der Waals potential to accurately reproduce these types of intermolecular interactions are typically challenging to determine because of the need for accurate reproduction of atomic radii, weak atomic attraction, and repulsive forces.
+The first term of \ref{eq:lj_function} is a repulsive force, and the second term is an attractive force at atomic distances where atomic shells overlap.  Here the constant $r_{min}$ is the preferred interaction distance for the atom pair or the van der Waals radii of atoms. Together these constitute a rapidly decaying function which represents a short-range attractive interaction that is characteristic of van der Waals forces. Parameterization of van der Waals potential functions are typically challenging because of the need for accurate reproduction of atomic radii, weak atomic attraction, and repulsive forces.
 % Transferability (i.e., the ability to reuse parameters created based on one molecule to predict properties of another molecule 
 
 Furthermore, the reproduction of electrostatics is paramount for describing interactions of polar and charged groups in biomolecules. To do so, an additive pairwise Coulombic potential is applied between all atom pairs which carry partial charges or charges at their nuclear centres.  The Coulombic potential, which depends on $r$, the distance between the pair of atoms, is given by
@@ -88,9 +94,10 @@ Polarizability is the measure of the change in a molecule's electron distributio
 \subsection{AMBER and OPLS Force Fields}
 In this section, I briefly describe two of the most popular force fields that are used for protein simulations, AMBER and OPLS force fields. OPLS-AA and AMBER99 were used to generate the results of this thesis presented in Chapters 3 to 5, and Chapter 6, respectively.  Detailed and extensive reviews of empirical force fields for protein simulations have been provided elsewhere.\cite{Ponder:2003uw,MackerellJr:2004p5558}
 
-One of the first force fields developed for the simulations of proteins was the ... (AMBER) by XXX et al.
+One of the first generation of force fields developed for the simulations of proteins was the AMBER force field, which was developed along with the Amber molecular mechanics software package in the Kollman group.  The central ideas for parameterization in Amber was using quantum mechanical calculations to fit partial charges to the quantum electrostatic potential (ESP).   The parameters for the van der Waals potential terms were fit to amide crystal data and liquid-state simulations.  \textbf{Force constants and idealized bond lengths and angles were taken from crystal structures and adapted to match normal mode frequencies for a number of peptide fragments. Finally, torsion force constants were adjusted to match torsional barriers extracted from experiment or from quantum chemistry calculations.}  Later, an all-atom version of Amber was developed due to problems with the polar-hydrogen only force fields. 
 
-OPLS, short for optimized potentials for liquid simulations, was originally developed to simulate and reproduce liquid state properties with accuracy. These potential functions were first developed for water, ions and hydrocarbons,\cite{Jorgensen:1984vy} and then was later extended to amides and peptides.\cite{Jorgensen:1985wx} The non-bonded interactions in OPLS were derived by comparisons to liquid-state thermodynamics. In early OPLS development, a partial united-atom model was used whereby nonbonded interaction sites were placed only on non-hydrogen atoms and polar hydrogens.\cite{Jorgensen:1988vg,Jorgensen:1985wx,Jorgensen:1984vy}
+OPLS, short for optimized potentials for liquid simulations, was originally developed to simulate and reproduce liquid state properties, such as the densities and heats of vaporization of neat organic liquids.
+ These potential functions were first developed for water, ions and hydrocarbons,\cite{Jorgensen:1984vy} and then was later extended to amides and peptides.\cite{Jorgensen:1985wx} The non-bonded interactions in OPLS were derived by comparisons to liquid-state thermodynamics. In early OPLS development, a partial united-atom model was used whereby nonbonded interaction sites were placed only on non-hydrogen atoms and polar hydrogens.\cite{Jorgensen:1988vg,Jorgensen:1985wx,Jorgensen:1984vy}
 
 An all-atom OPLS force field (OPLS-AA) was developed for organic molecules and peptide simulations in 1996.\cite{Jorgensen:1996vx} Although the charge and van der Waals parameters were developed from simulations of pure liquids, which is unique to the parameterization of OPLS, the atom types and parameters for bonded interactions (bonds, angles, and dihedrals) were largely adopted from the AMBER all-atom force field.\cite{Jorgensen:1996vx}
 
