@@ -79,22 +79,25 @@ Hydrogen bonding interactions are generally considered to be accounted for by th
 % Other things that I will not be discussing -- what were they again?
 
 \subsection{Electronic Polarizability}
-Polarizability is the measure of the change in a molecule's electron distribution in response to an applied electric field, and is a property of matter which can be induced by electrostatic interactions with solvents or ionic reagents. 
-
-As discussed above, most current force fields use a fixed-charge model where each atom in the system is assigned a single value for the atomic charge.  This charge remains independent of changes in its local electrostatic environment. Next-generation force fields have been proposed to  incorporate models for electronic polarizability. REF However, because of the prohibitive computational cost associated with the use of these force fields, they have not been widely adopted by modern simulations.
+Polarizability is the measure of the change in a molecule's electron distribution in response to an applied electric field, and is a property of matter which can be induced by electrostatic interactions with solvents or ionic reagents.  As discussed above, most current force fields use a fixed-charge model where each atom in the system is assigned a single value for the atomic charge.  This charge remains independent of changes in its local electrostatic environment. Next-generation force fields have been proposed to  incorporate models for electronic polarizability. REF However, because of the prohibitive computational cost associated with the use of these force fields, they have not been widely adopted by modern simulations.
 
 
 % The introduction of polarizable force fields into common use has been inhibited by the high computational cost associated with solving this problem self-consistently.
 
+\subsection{AMBER and OPLS Force Fields}
+Here in this section, I will briefly discuss the AMBER and OPLS force fields in the context of protein simulations. The OPLS-AA and AMBER99 force fields were used to generate the results of this thesis presented in Chapters 3 to 5, and Chapter 6, respectively.  Detailed and extensive reviews of empirical force fields for protein simulations have been provided elsewhere.\cite{Ponder:2003uw,MackerellJr:2004p5558}
 
-\subsection{The OPLS Force Field}
+One of the first force fields developed for the simulations of proteins was the ... (AMBER) by XXX et al.
+ 
+OPLS, short for optimized potentials for liquid simulations, was originally developed to simulate and reproduce liquid state properties with accuracy. These potential functions were first developed for ions and hydrocarbons,\cite{Jorgensen:1984vy} and then was later extended to amides and peptides.\cite{Jorgensen:1985wx} The non-bonded interactions in OPLS were derived by comparisons to liquid-state thermodynamics. In early OPLS development, a partial united-atom model was used whereby nonbonded interaction sites were placed only on non-hydrogen atoms and polar hydrogens.\cite{Jorgensen:1988vg,Jorgensen:1985wx,Jorgensen:1984vy}
 
-I need to read a crap load about the OPLS-AA force field !!!
+A new all-atom OPLS force field (OPLS-AA) was developed for organic molecules and peptide simulations in 1996.\cite{Jorgensen:1996vx} Although XXX was performed for charge fitting and XXX calculation which were unique to t parameterization, the atom types and parameters for bonded interactions (bonds, angles, and dihedrals) were taken from the AMBER force field.
+
 The general form of the force field potential energy function used in OPLS-AA is
   
   \begin{equation}
     \begin{split}
-          E = \sum_{bonds} k_b(b-b_0)^2 
+          V = \sum_{bonds} k_b(b-b_0)^2 
           + \sum_{angles} k_{\theta}(\theta - \theta_{0})^2 \\
           + \sum_{dihedrals} k_{\chi}(1 + cos(n\chi - \delta)) 
           + \sum_{impropers} k_{\gamma}(\phi - \phi_{0})^2 \\
@@ -167,9 +170,9 @@ In an experimental setting, temperature and pressure are often held constant.  T
 %Hence,  is much less accurate and can introduce force field inconsistencies leading to inaccurate results.\cite{Yang:2013ff}
 
 \subsection{Periodic boundary conditions}
-To treat a bulk system and avoid phase boundaries, periodic boundary conditions are used, where the the central simulation ``cell'' or ``box'' is replicated along each of it's X, Y and Z axis. Although this is unnatural, for sufficiently large systems, the errors induced by periodic boundaries are negligible. \textbf{Note I need a better explanation of PBC in my thesis as this was a topic of confusion in a couple of my committee meetings. Shouldn't be taken for granted. Also this could be a question during my defense as well.} REFS
+Periodic boundary conditions (PBC) is a technique by which the central simulation cell (or ``box'') is replicated along each of its dimensions to form a system with infinite number of images.  PBC is used in MD simulations to alleviate artificial phase boundaries which are imposed by a finite simulation cell.  Furthermore, PBC allows the system to be treated as a bulk system, akin to that of an \textit{in vitro} experimental system.  To avoid counting duplicate interactions from multiple adjacent cells, an atom $i$ interacts with only another atom $j$, provided that $j$ is in $i$'s closest periodic images. Because of this constraint, care must be taken to chose a central box size large enough to avoid artificial interactions induced by periodic boundaries. REFS
 
-\subsection{Theoretical underpinnings of MD}
+\subsection{Theoretical underpinnings of MD simulations}
 MD simulations yields information about the microscopic states of a macroscopic system characterized by thermodynamic variables such as the temperature, pressure, the number of particles, free energy, etc.   Thermodynamic variables are what is typically observed and measured experimentally.  Statistical mechanics is a body of theory that underpins the connection between the microscopic arrangements of a system to its thermodynamic properties.
  
 Simulation systems are usually carried out in either canonical (NVT) or  isothermo-isobaric (NPT) ensembles. 
@@ -180,7 +183,7 @@ p_{i} = \frac{1}{Z}e ^{\frac{-E_{i}}{kT}}
 \end{equation}
 where $Z$ is the normalization factor (or the partition function), $Z = \sum_{i} e ^{\frac{-E_{i}}{kT}}$, so that $\sum_{i} p_{i} = 1$.
 
-NPT is fixed number of particles, constant pressure and temperature. This ensemble is the closest to experimental laboratory conditions, and hence simulations are often carried out in this fashion.
+\textbf{Link this to the free energy. Then link this to NPT} NPT is fixed number of particles, constant pressure and temperature. This ensemble is the closest to experimental laboratory conditions, and hence simulations are often carried out in this fashion.
 
 In the context of a biomolecular simulation, running an MD simulation yields a time-trajectory of motion of the molecules in the system, from which we can obtain time-averaged properties of the system.  However, in an experiment, the macromolecular observables measured are due to an average of all possible system configurations, or an \emph{ensemble average}.  This apparent conundrum is reconciled by one of the fundamental axioms of statistical mechanics, the ergodic hypothesis, which states that if a system is given long enough time to evolve, the time average of its macromolecular properties is equivalent to their ensemble averages.  In practice, this means that if a MD simulation sufficiently sampled the  phase space of a system, then experimentally-relevant properties may be calculated from such simulation.
 
@@ -188,20 +191,20 @@ In the context of a biomolecular simulation, running an MD simulation yields a t
 
 
 
-\section{Speeding up Molecular Dynamics Simulation}
-
-\subsection{Better algorithms: Enhanced Sampling Techniques}
-
-\subsubsection{Approaches for Determining Protein Conformational Ensembles}
-It was mentioned in Chapter 1 that enhanced sampling may be used to speed up simulations.  Here we provide a high level overview of the approaches that were developed that have been useful in rational drug design.  These approaches were also widely used through out the thesis.
-
-The use of temperature to overcome energetic barriers in the system. Here I can talk about what enhanced sampling is, and how they can be applied to understanding the properties of disordered peptides. Cite Sarah.  
-I should read both Sarah's and Chris's thesis chapters relating to sampling.  Chris's is all about sampling. Since I refer extensively to enhanced sampling, I should make a mention of it.
-
-\subsubsection{Approaches for Calculating Protein-Ligand Binding Affinities}
-Note: This section could actually be put in the introduction.  As this may not require understanding the details of simulations.  Leave this hear for now and can move it as a section to the introduction ... maybe after Regis has seen both chapters together.
-
-I can show the thermodynamic cycle for getting Delta G, like the one that I had in my transfer proposal.  Describe why this can be used to determine free energies.  And then mention the techniques that were invented in the past to do so. These approaches are not applicable to the problem of this thesis, but this background is provided to give the reader perspective. Point to another review article and say this is discussed in detail. I can discuss how to determine enthalpic and entropic contributions.
+%\section{Speeding up Molecular Dynamics Simulation}
+%
+%\subsection{Better algorithms: Enhanced Sampling Techniques}
+%
+%\subsubsection{Approaches for Determining Protein Conformational Ensembles}
+%It was mentioned in Chapter 1 that enhanced sampling may be used to speed up simulations.  Here we provide a high level overview of the approaches that were developed that have been useful in rational drug design.  These approaches were also widely used through out the thesis.
+%
+%The use of temperature to overcome energetic barriers in the system. Here I can talk about what enhanced sampling is, and how they can be applied to understanding the properties of disordered peptides. Cite Sarah.  
+%I should read both Sarah's and Chris's thesis chapters relating to sampling.  Chris's is all about sampling. Since I refer extensively to enhanced sampling, I should make a mention of it.
+%
+%\subsubsection{Approaches for Calculating Protein-Ligand Binding Affinities}
+%Note: This section could actually be put in the introduction.  As this may not require understanding the details of simulations.  Leave this hear for now and can move it as a section to the introduction ... maybe after Regis has seen both chapters together.
+%
+%I can show the thermodynamic cycle for getting Delta G, like the one that I had in my transfer proposal.  Describe why this can be used to determine free energies.  And then mention the techniques that were invented in the past to do so. These approaches are not applicable to the problem of this thesis, but this background is provided to give the reader perspective. Point to another review article and say this is discussed in detail. I can discuss how to determine enthalpic and entropic contributions.
 
 
 %\subsection{Better Hardware}
