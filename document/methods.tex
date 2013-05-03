@@ -114,22 +114,23 @@ An all-atom OPLS force field (OPLS-AA) for organic molecules and peptide simulat
 At a very high level, MD simulation is an algorithm to simulate motion of a system under the influence of a specific force field by following molecular configurations in time according to Newton's equation of motion. 
 
 % This is the part with the time propagation using the Equations of motion
-In a system of $N$ interacting particles, the force on each particle in the system is determined by taking the spatial derivative of the potential energy of the system, $V(r_{1}, r_{2}, ... , r_{N})$.  In MD simulations, this potential energy is approximated using a molecular mechanics force field as described above.  The force on each particle $i$ is given by
+In a system of $N$ interacting particles, the force on each particle in the system is determined by taking the spatial derivative of the potential energy of the system, $V(r_{1}, r_{2}, ... , r_{N})$.  In MD simulations, this potential energy is approximated by a molecular mechanics force field as described above.  The force on each particle $i$ is given by
 % Not exactly ... according to Chris Madill's thesis, U is the potential energy between an atom pair?  Clear up the core algorithm!
 \begin{equation}
 % F_i = - \nabla U
-  F_i = - \frac{\partial V}{\partial r_i}, i = 1, 2, 3, ... , N
+  F_i = - \frac{\partial V}{\partial r_i}, i = 1, 2, 3, ... , N.
 \end{equation}
-Here, the variable $r_{i}$ represents the spatial coordinates of the particle $i$. The calculated force vectors are summed together to yield the net force vector acting on every atom in the system. By Newton's second law of motion, the acceleration $a_i$ of each atom is given by 
+
+The variable $r_{i}$ represents the spatial coordinates of the particle $i$. The calculated force vectors are summed together to yield the net force vector acting on every atom in the system. By Newton's second law of motion, the acceleration, $a_i$, of each atom is given by 
 \begin{equation}
 a_i = \frac{F_i}{m_i},
 \end{equation}
-where $m_i$ is the mass of the $i$th particle. The position of $i$ at time $ t + \delta t$ is then
+where $m_i$ is the mass of the $i$th particle. Hence, the position of atom $i$ at time $ t + \delta t$ is then
 \begin{equation}
 x_i(t + \delta t) = x_i(t) + v_i(t)\delta t + \frac{a_i(t)\delta t^2}{2}  
 \end{equation}
 
-To determine the positions of each of the N particles requires solving a system of 3N differential equations.  These equations are solved numerically by using a time-integration algorithm.  Once the positions for each particle are predicted, interatomic forces are updated based on these new coordinates, and the entire process is repeated again to obtain the coordinates of the system for subsequent time steps. To ensure numerical stability, a small integration time step in the range of 1 - 4 femtoseconds (fs) is chosen. REF Typically, in a MD simulation of a biomolecular system, a 2 fs timestep is used as it is twice the time period for the fastest vibrational motion (existing in bonds involving hydrogen). REF % [Ref: Chris Madill's and Tom's thesis]
+To determine the positions of each of the $N$ particles requires solving a system of 3$N$ differential equations.  Such a system of differential equations can only be solved numerically, and in MD simulations, a time-integration algorithm is typically employed. REF Once the position of each particle is computed, interatomic forces are updated based on these new coordinates, and the entire process is repeated to obtain the coordinates of the system for subsequent time steps. To ensure numerical stability, a small integration time step in the range of 1 - 4 femtoseconds (fs) is chosen. REF Typically, in a MD simulation of a biomolecular system, a 2 fs timestep is used as it is twice the time period for the fastest vibrational motion (existing in bonds involving hydrogen). REF % [Ref: Chris Madill's and Tom's thesis]
 
 % There are many different forms of integration algorithms, with the most common being the Verlet and leap-frog algorithms. 
 % According to gromacs manual:
@@ -144,18 +145,16 @@ To determine the positions of each of the N particles requires solving a system 
 \subsection{Temperature and Pressure}
 % My goal is to describe how temperature and pressure coupling is handled in MD at a high-level without going into the details of the math.
 % Ref: Understanding Molecular Simulations by Frenkel Daan.
-The inclusion of temperature in MD allows for the account of entropy in our systems, which is especially important for free energy determination. The equipartition of energy states that in a (classical) many-body system at thermal equilibrium, the average kinetic energy per degree of freedom is related to the temperature via 
+The inclusion of temperature in MD allows for the account of entropy in our systems, which is especially important for free energy determination. The theorem of equipartition of energy states that in a (classical) many-body system at thermal equilibrium, the average kinetic energy (KE) per degree of freedom is related to the thermodynamic temperature, $T$, via 
 \begin{equation}
-  \langle \frac{1}{2} mv_{\alpha}^2 \rangle =   \frac{1}{2} k_BT
+  KE_{avg} =   \frac{1}{2} k_BT,
 \end{equation}
-
-In a simulation, we use this equation as an operational definition of the temperature.  In practice, we would measure the total kinetic energy of the system and divide this by the number of degrees of freedom, $N_{r}$ in a system.  As the total kinetic energy of a system fluctuates, the instantaneous temperature of a simulation system is then
+where $k_{B}$ is the Boltzmann constant. In MD simulations, the temperature of the system is determined by calculating the total kinetic energy of the system and normalizing by the number of degrees of freedom in the system, $N_{r}$.  The instantaneous temperature of the system is 
 
 \begin{equation}
-  T(t) = \sum_{i=1}^{N} \frac{m_iv_i^2(t)}{k_BN_f}
+  T(t) = \sum_{i=1}^{N} \frac{m_iv_i^2(t)}{k_BN_f}.
 \end{equation}
- 
-In an experimental setting, temperature and pressure are often held constant.  To simulate a system under comparable conditions,  algorithms which implements a thermostat and a barostat (a virtual pressure piston) are used to hold temperature and pressure constant, respectively, in a simulation.  Several of these temperature- and pressure-coupling schemes have been developed and implemented. REF They are reviewed in detail elsewhere. REF 
+where $N$ is the number of atoms in the system. To simulate a system under comparable laboratory conditions,  a thermostat and a barostat (a virtual pressure piston) are employed in simulations to control both temperature and pressure, respectively.  Several of these temperature- and pressure-coupling algorithms exist, and they are reviewed in detail elsewhere. REF 
 % These algorithms have been validated to produce the correct statistical mechanical ensemble averages.  
 %\cite{[25] Nose ́, S. A molecular dynamics method for simulations in the canonical ensemble. Mol. Phys. 52:255–268, 1984.[26] Hoover, W. G. Canonical dynamics: equilibrium phase-space distributions. Phys. Rev. A 31:1695–1697, 1985.}
 
@@ -173,20 +172,25 @@ In an experimental setting, temperature and pressure are often held constant.  T
 \subsection{Periodic boundary conditions}
 Periodic boundary conditions (PBC) is a technique by which the central simulation cell (or ``box'') is replicated along each of its dimensions to form a system with infinite number of images.  PBC is used in MD simulations to alleviate artificial phase boundaries which are imposed by a finite simulation cell.  Furthermore, PBC allows the system to be treated as a bulk system, akin to that of an \textit{in vitro} experimental system.  To avoid counting duplicate interactions from multiple adjacent cells, an atom $i$ interacts with only another atom $j$, provided that $j$ is in $i$'s closest periodic images. Because of this constraint, care must be taken to chose a central box size large enough to avoid artificial interactions induced by periodic boundaries. REFS
 
-\subsection{Theoretical underpinnings of MD simulations}
-MD simulations yields information about the microscopic states of a macroscopic system characterized by thermodynamic variables such as the temperature, pressure, the number of particles, free energy, etc.   Thermodynamic variables are what is typically observed and measured experimentally.  Statistical mechanics is a body of theory that underpins the connection between the microscopic arrangements of a system to its thermodynamic properties.
+\subsection{Theoretical Basis of MD Simulations}
+MD simulations yield information about the microscopic states of a macroscopic system characterized by thermodynamic variables such as temperature, pressure, the number of particles, free energy, etc.   Thermodynamic variables are what is typically observed and measured experimentally.  Statistical mechanics is a body of theory that provides a rigorous connection between the microscopic arrangements of a system (determined by MD simulations) to its thermodynamic properties.
  
-Simulation systems are usually carried out in either canonical (NVT) or  isothermo-isobaric (NPT) ensembles. 
-In an ensemble of microstates with constant number of particles, volume, and temperature, the NVT ensemble, the probability of finding a system in the microstate $i$, with an energy $E_{i}$ is given by 
+For an ensemble of microstates, the probability of finding a system in the microstate $i$, with an energy $E_{i}$ is given by the Boltzmann distribution,
 \begin{equation}
-p_{i} = \frac{1}{Z}e ^{\frac{-E_{i}}{kT}}
+p_{i} = \frac{1}{Z}e ^{\frac{-E_{i}}{kT}}.
 % Z = e ^{\frac{-A}{k_{B}T}}
 \end{equation}
-where $Z$ is the normalization factor (or the partition function), $Z = \sum_{i} e ^{\frac{-E_{i}}{kT}}$, so that $\sum_{i} p_{i} = 1$.
+$Z = \sum_{i} e ^{\frac{-E_{i}}{kT}}$ is the normalization factor (or the \emph{partition function}) so that $\sum_{i} p_{i} = 1$.
 
-\textbf{Link this to the free energy. Then link this to NPT} NPT is fixed number of particles, constant pressure and temperature. This ensemble is the closest to experimental laboratory conditions, and hence simulations are often carried out in this fashion.
+MD simulations can be carried out in the canonical (NVT) or  isothermo-isobaric (NPT) ensembles, where the average pressure of the system is held constant and the volume of the simulation is allowed to fluctuate. Because the NPT ensemble is the closest to experimental conditions, production simulations are often carried out in this ensemble.
 
-In the context of a biomolecular simulation, running an MD simulation yields a time-trajectory of motion of the molecules in the system, from which we can obtain time-averaged properties of the system.  However, in an experiment, the macromolecular observables measured are due to an average of all possible system configurations, or an \emph{ensemble average}.  This apparent conundrum is reconciled by one of the fundamental axioms of statistical mechanics, the ergodic hypothesis, which states that if a system is given long enough time to evolve, the time average of its macromolecular properties is equivalent to their ensemble averages.  In practice, this means that if a MD simulation sufficiently sampled the  phase space of a system, then experimentally-relevant properties may be calculated from such simulation.
+Given the partition function, one can then determine any thermodynamic variable. For example, free energy is an important thermodynamic quantity which measures the useful work obtainable from a system under a certain set of condition.  This quantity is called Gibbs free energy (G) and Helmholtz free energy (A) for a system in the NPT and NVT ensembles, respectively. In biochemistry, a central quantity is the change in free energy between two states, which measures whether a reversible biochemical process will occur spontaneously.  $\Delta G$ for any two states, 0 and 1, is related to their respective probabilities $p_{0}$ and $p_{1}$ by
+
+\begin{equation}
+\Delta G = - k_{B}Tln(\frac{p_{0}}{p_{1}}).
+\end{equation}
+
+Performing an MD simulation yields a time-trajectory of motion of the molecules in the system from which we can obtain time-averaged properties of the system.  However, in an experiment, the macromolecular observables measured are a result of an average of all possible system configurations, or an \emph{ensemble average}.  This apparent conundrum is reconciled by one of the fundamental axioms of statistical mechanics, the ergodic hypothesis, which states that if a system is given long enough time to evolve, the time average of its macromolecular properties is equivalent to their ensemble averages.  In practice, this means that if a MD simulation sufficiently samples the relevant regions of the phase space of the system of interest, then experimentally-relevant properties may be calculated from such a simulation.
 
 % \textbf{This discussion is important ... but is not fitted well into the chapter.  Write what these ensembles are and link them to the simulations that is the pressure and temperature coupling schemes used }
 
