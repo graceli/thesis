@@ -8,111 +8,104 @@
 \section{Molecular Mechanics}
 % Start by describing quantum mechanics 
 % Assumptions and limitations of molecular mechanics
-In an ideal world, one would be able to predict the evolution of a molecular system by solving the Schrodinger's equation, which predicts the t-evolution of all the atomic-nuclei and electronic motion.  However, to do so for a biomolecular system is extremely computationally-prohibitive, even for a very small molecule. REF
+Using quantum mechanical theory, the time-evolution of a molecular system can be predicted by solving the time-dependent Schrodinger's equation, which provides a complete description of the motion of atomic-nuclei and electronic from first-principles.  However,  such an equation can only be solved analytically for a single hydrogen atom, and numerically using computational algorithms for very small systems. Many quantum-mechanics-based methods to probe biomolecular systems have been developed, but they are computationally too prohibitive to structures as big as proteins (which typically possess on the order of 10$^{3}$ number of atoms) on a biologically-meaningful timescale. REF
 
-In the past decades, molecular mechanics, a classical mechanics approach, was developed to model and simulate a large system possible. In molecular mechanics, an empirical potential energy function (PEF) which depends only on the positions of atoms, is employed to describe the molecular energies of molecules. Simply put, molecules are treated as a set of masses connected by springs.
+In the past decades, molecular mechanics, an approach which treats a molecular system using classical mechanics was developed, which made modelling and simulating the molecular dynamics of much larger biomolecular systems possible. In molecular mechanics, a molecule is essentially represented a set of masses (atoms) connected by springs (bonds). An empirical potential energy function (PEF) that depends only on the positions of the atoms in the system, is employed to describe the internal energy and interactions of molecules.
 
-The underlying theoretical basis for molecular mechanics is rooted in the Born-Oppenheimer approximation. Under this approximation, electronic and nuclear motions are considered to be uncoupled, and therefore are treated separately. For this reason, the system's total energy (the Hamiltonian, $H$) only depends on the electronic motion, and the nuclei are assumed to be in fixed positions. 
-% This is because the nuclei, which are much heavier than electrons, are typically fixed on the time scales of electronic vibration.
+The theoretical basis for molecular mechanics is rooted in quantum mechanics via the Born-Oppenheimer approximation. 
+Under this approximation, electronic and nuclear motion of atoms are considered to be uncoupled, and therefore can be treated separately. For this reason, a system's total energy, or its Hamiltonian, $H$, only depends on the electronic motion. This is because the nuclei, which are much heavier than electrons, are typically fixed on the time scales of electronic vibration.
 
-This potential energy function employed in molecular mechanics corresponds to the Born-Oppenheimer energy surface of the molecular system in its electronic ground-state. The movements of all atomic nuclei can be treated as a point charge in space, where the movement of electrons is implicitly accounted for in the specific form of the PEF and its associated parameter set, or force field.  Because electronically excited states are not treated, no chemical reactions occur in the system. However, although MM tells us nothing about electronic characteristics, its computational speed and its ability to deal with large systems makes it very attractive.
+The potential energy function employed in molecular mechanics corresponds to the Born-Oppenheimer energy surface of the molecular system in its electronic ground-state. The movements of all atomic nuclei are treated as a point charge in space, where electronic motion is implicitly accounted for in the specific form of the PEF and its associated parameter set.  Because electronically excited states are not treated, no chemical reactions occur in the system.
 % \cite{M. Born and R. Oppenheimer, Quantum Theory of Molecules, Ann. Physics, vol. 84, pp. 457â484, 1927.} -- can't find this article.
-
+% \textbf{Say something good about MM approach}
 \section{Force Fields}
 
-In the past four decades, a variety of functional forms have been developed, where each is optimized for a specific purpose have been developed for the purpose of modelling and simulating biomolecular systems. The functional form together with its associated parameters defines a \emph{force field}.
+The functional form of the potential energy function together with its associated parameters define a \emph{force field}.  A typical empirical force field has many parameters to be determined.  These parameters are typically determined by fitting to quantum mechanical calculations, and to physical measurements (e.g., using data from X-ray crystallography, neutron diffraction, vibrational raman spectroscopy) of small organic compounds or building blocks of peptides and nucleic acids.  Force fields are iteratively improved and extended by predicting experimentally observable quantities for small compounds, and adjusting parameters by comparing predicted quantities with experimental measurements.
 
-A typical empirical force field has many parameters to be determined.  These parameters are typically determined by fitting to quantum mechanical calculations, and to physical measurements (e.g., using data from X-ray crystallography, neutron diffraction, vibrational raman spectroscopy) of small organic compounds or building blocks of peptides and nucleic acids.  Force fields are iteratively improved and extended by predicting experimentally observable quantities for small compounds, and adjusting parameters by comparing predicted quantities with experimental measurements.
-
-Currently, many force fields for biopolymers such as peptides, proteins, nucleic acids and carbohydrates have been developed. Examples of these are the force fields AMBER, CHARMM, GROMOS, and OPLS. REFs  Although each force field have their variation of the PEF form, these force fields in general adopt the following general form:
-
-  \begin{equation}
-    \label{eq:ff_general}
-    V = V(bonds) + V(angles) + V(impropers) + V(dihedrals) + V(non-bonded)
-  \end{equation}
+In the past four decades, a variety of force fields have been developed for the purpose of modelling and simulating biomolecular systems involving peptides, proteins, nucleic acids and carbohydrates. Examples of the most widely adopted force fields include AMBER, CHARMM, GROMOS, and OPLS. REFs  Although each force field may vary slightly in the form of the PEF, most force fields utilize the general form:
+\begin{equation}
+\label{eq:ff_general}
+	V = V(bonds) + V(angles) + V(dihedrals) + V(impropers) + V(non-bonded)
+\end{equation}
 
 \subsection{Bonded Interactions}
-The first four terms of \ref{eq:ff_general}, $V(bonds)$, $V(angles)$, and $V(improper)$  are the functional terms used to describe bonded interactions and dynamics within a molecule.
-These motions consists of covalent bond stretching, angle-bending, and torsional rotations.  It is important to note that bonds cannot be formed nor broken. 
-
-Covalent bond stretching can be described using Hooke's Law for harmonic motion,
+The first four functional terms of Equation~\ref{eq:ff_general}, $V(bonds)$, $V(angles)$, and $V(improper)$, describe the through-bond interactions covalent bond stretching, angle-bending, and bond rotations, respectively.  It is important to note that in molecular mechanics chemical bonds cannot be formed nor broken.  Covalent bond stretching can be described using Hooke's Law for harmonic motion,
 \begin{equation}
- V(bonds) = \sum_{bonds} k_b(b - b_0)^2.
+\label{eq:bonds}
+	V(bonds) = \sum_{bonds} k_b(b - b_0)^2.
 \end{equation}
 
-Similarly, angle-bending motions can be describing using a similar potential function,
+Likewise, angle-bending motions can be described harmonically as
 \begin{equation}
-V(angles) = \sum_{angles} k_{\theta}(\theta - \theta_{0})^2, \\
+\label{eq:angles}
+	V(angles) = \sum_{angles} k_{\theta}(\theta - \theta_{0})^2. \\
 \end{equation}
-where the constants $k_{b}$ and $k_{\theta}$ are the equilibrium force constants for bonds and angles, respectively, and $b_{0}$ and $\theta_{0}$ are the reference bond length and angle, respectively. Note that total energetic contribution from bond stretching and angle bending motions are computed by summing over all bonds and angles in the system.
 
-Bond torsions are typically accounted for using a periodic function,
+In Equations~\ref{eq:bonds} and \ref{eq:angles}, the constants $k_{b}$ and $k_{\theta}$ are the equilibrium force constants for bonds and angles, respectively, and the constants $b_{0}$ and $\theta_{0}$ are the reference bond length and angle, respectively. The total energetic contribution from bond stretching and angle bending are computed by summing over all bonds and angles in the system. In addition, the torsion (or dihedral) angle of bonds are also an important parameter in describing molecular conformations.  These energetic terms are commonly accounted for using a periodic function of the form,
 \begin{equation}
-  \label{eq:torsion}
-   V_{dihedral} = \sum_{dihedrals} k_{\chi}(1 + cos(n\chi - \delta)),
+\label{eq:torsion}
+	V(dihedrals) = \sum_{dihedrals} \sum_{n} k_{\chi}(1 + cos(n\chi - \delta)),
 \end{equation}
-where $V_{dihedral}$ is the first term of a Fourier expansion, $n$ denotes the periodicity of the function and $\delta$ is the phase. Moreover, dihedrals of this form (improper dihedrals) may be added to the PEF as a way of ensuring the planarity of molecules such as those with rings.
+where $n$ denotes the periodicity of the rotational barrier, and $\delta$ is the reference angle.  Functions of this form (the so-called improper dihedrals) may be added to the PEF as a way of ensuring the planarity of planar chemical groups.
 
 
 \subsection{Non-bonded Interactions}
-Non-bonded interaction potentials predominantly account for van der Waals and electrostatic forces.  These are important for the transferability of a force field, that is, the ability to reuse parameters created based on one molecule to predict properties of other molecules.  The non-bonded forces are only applied to atom pairs separated by at least three bonds. Van der Waals forces are represented by the Lennard-Jones potential,
+Non-bonded interaction potentials predominantly account for van der Waals and electrostatic interactions.  Accurate reproduction of these interactions are particularly important for the transferability of a force field, that is, the ability to reuse a force field developed based on a set of molecule to predict properties of other molecules.  The non-bonded forces are only applied to atom pairs separated by at least three bonds. Van der Waals interactions are represented by the Lennard-Jones potential,
 
 \begin{equation}
   \label{eq:lj_function}
-  V_{LJ}(r) = (\frac{r_{min}}{r})^{12} - 2(\frac{r_{min}}{r})^6
+  V_{LJ}(r) = \sum_{pairs} (\frac{r_{min}}{r})^{12} - 2(\frac{r_{min}}{r})^6.
 \end{equation}
 
-The first term of \ref{eq:lj_function} is a repulsive force, and the second term is an attractive force at atomic distances where atomic shells overlap.  Here the constant $r_{min}$ is the preferred interaction distance for the atom pair or the van der Waals radii of atoms. Together these constitute a rapidly decaying function which represents a short-range attractive interaction that is characteristic of van der Waals forces. Parameterization of van der Waals potential functions are typically challenging because of the need for accurate reproduction of atomic radii, weak atomic attraction, and repulsive forces.
-% Transferability (i.e., the ability to reuse parameters created based on one molecule to predict properties of another molecule 
+$V_{LJ}$ is a distance-dependent function that rapidly decays to 0 and represents a short-range attractive force. The first term of Equation~\ref{eq:lj_function} represents a repulsive force at distances where atomic shells overlap. The second term represents the attractive force between atoms which is most favorable at a distance of $r_{min}$, the preferred interaction distance for a pair of atoms.
 
-Furthermore, the reproduction of electrostatics is paramount for describing interactions of polar and charged groups in biomolecules. To do so, an additive pairwise Coulombic potential is applied between all atom pairs which carry partial charges or charges at their nuclear centres.  The Coulombic potential, which depends on $r$, the distance between the pair of atoms, is given by
+The reproduction of electrostatics is paramount for describing interactions of polar and charged groups in biomolecules. To do so, an additive pairwise Coulombic potential is applied between all atom pairs which carry partial charges or charges at their nuclear centres.  This potential term, which depends on $r$, the distance between the pair of atoms, is given by
 
 \begin{equation}
   \label{eq:electrostatic}
   V_{coulombic}(r) = \frac{q_iq_j}{\epsilon r}, 
 \end{equation}
-where $q_{i}$ and $q_{j}$ are the point charges on atoms $i$ and $j$, respectively, and $\epsilon$ is the the permittivity of vacuum.  In contrast to van der Waals interactions,  electrostatic interactions are long-range interactions. Accordingly depicted in Figure XXX,  in comparisons to the Lennard-Jones potential, the Coulombic potential is a much slower decaying function, indicating that electrostatic effects are significant even up to distances of 1 - 1.5 nm.
+where $q_{i}$ and $q_{j}$ are the point charges on atoms $i$ and $j$, respectively, and $\epsilon$ is the the permittivity of vacuum.  In contrast to van der Waals interactions,  electrostatic interactions can be significant for charged pairs that are separated at longer distances. Accordingly, in comparisons to the Lennard-Jones potential, the Coulombic potential decays to zero at a much slower rate.
 
-\begin{figure}
- \centering
- \includegraphics[width=5in]{figures/methods/LJ_Coulumb_potentials.pdf}
- \caption[Lennard-Jones and Coulombic Potentials]{Lennard-Jones and Coulombic Potentials.}
- \label{fig:nonbonded_potentials}
-\end{figure}
+%\begin{figure}
+% \centering
+% \includegraphics[width=5in]{figures/methods/LJ_Coulumb_potentials.pdf}
+% \caption[Lennard-Jones and Coulombic Potentials]{Lennard-Jones and Coulombic Potentials.}
+% \label{fig:nonbonded_potentials}
+%\end{figure}
 
-As previously discussed in Chapter 1, hydrogen bonding is an important type of electrostatic interaction and hence their proper representation must be captured by a force field. An explicit term solely for describing hydrogen bonding have been employed by some force fields. For example, the original AMBER force field introduced in 1984 added a function of the form $\sum_{hbonds} C_{ij}/R_{ij}^{12} - D_{ij}/R_{ij}^{10}$ to account for hydrogen bonds.\cite{Weiner:1984uw}  However, it was later demonstrated that hydrogen bonding interactions are accurately accounted for via the combination of van der Waals and electrostatic potential terms. Hence, most modern force fields for protein simulations, including the latest AMBER force fields, do not utilize an explicit hydrogen bonding term.
+As previously discussed in Chapter 1, hydrogen bonding is an important type of electrostatic interaction in biomolecular systems.  For this reason, a proper representation of hydrogen bonds should be captured by a force field. Some force fields have employed an explicit term solely for describing hydrogen bonding. For example, the original AMBER force field introduced in 1984 added a function of the form $\sum_{hbonds} C_{ij}/R_{ij}^{12} - D_{ij}/R_{ij}^{10}$ to account for hydrogen bonds.\cite{Weiner:1984uw}  However, it was later demonstrated that hydrogen bonding interactions are most accurately accounted for by appropriate parameterization of van der Waals and electrostatic potential terms. Hence, most modern force fields for protein simulations, including the latest AMBER force fields, no longer utilize an explicit hydrogen bonding term.
 
 
 % Other things that I will not be discussing -- what were they again?
 
 \subsection{Electronic Polarizability}
-Polarizability is the measure of the change in a molecule's electron distribution in response to an applied electric field, and is a property of matter which can be induced by electrostatic interactions with solvents or ionic reagents.  As discussed above, most current force fields use a fixed-charge model where each atom in the system is assigned a single value for the atomic charge.  This charge remains independent of changes in its local electrostatic environment. Next-generation force fields have been proposed to  incorporate models for electronic polarizability. REF However, because of the prohibitive computational cost associated with the use of these force fields, they have not been widely adopted by modern simulations.
+Polarizability is the measure of the change in a molecule's electron distribution in response to an applied electric field, and is a property of matter which can be induced by electrostatic interactions with solvents or ionic reagents.  As mentioned above, most current force fields use a fixed-charge model where each atom in the system is assigned a single value, which remains independent of changes in its local electrostatic environment. Next-generation force fields have been proposed to  incorporate models for electronic polarizability. REF However, because of the associated prohibitive computational cost with the use of these force fields, they are not currently widely used for biomolecular simulations.
 
 
 % The introduction of polarizable force fields into common use has been inhibited by the high computational cost associated with solving this problem self-consistently.
 
-\subsection{AMBER and OPLS Force Fields}
-In this section, I briefly describe two of the most popular force fields that are used for protein simulations, AMBER and OPLS force fields. OPLS-AA and AMBER99 were used to generate the results of this thesis presented in Chapters 3 to 5, and Chapter 6, respectively.  Detailed and extensive reviews of empirical force fields for protein simulations have been provided elsewhere.\cite{Ponder:2003uw,MackerellJr:2004p5558}
+\subsection{The AMBER and OPLS Force Fields}
+In this section, I briefly describe two widely used popular force fields for protein simulations, AMBER and OPLS. The OPLS-AA and AMBER99 versions of these force fields were employed in the studies presented in Chapters 3 to 5, and 6, respectively.  More extensive and detailed reviews of empirical force fields for biomolecular simulations have been provided elsewhere.\cite{Ponder:2003uw,MackerellJr:2004p5558}
 
-One of the first generation of force fields developed for the simulations of proteins was the AMBER force field, which was developed along with the Amber molecular mechanics software package in the Kollman group.  The central ideas for parameterization in Amber was using quantum mechanical calculations to fit partial charges to the quantum electrostatic potential (ESP).   The parameters for the van der Waals potential terms were fit to amide crystal data and liquid-state simulations.  \textbf{Force constants and idealized bond lengths and angles were taken from crystal structures and adapted to match normal mode frequencies for a number of peptide fragments. Finally, torsion force constants were adjusted to match torsional barriers extracted from experiment or from quantum chemistry calculations.}  Later, an all-atom version of Amber was developed due to problems with the polar-hydrogen only force fields. 
+One of the first force fields for the simulations of proteins was the AMBER force field, which was developed in the Kollman group.\cite{Weiner:1984uw}  The central ideas for parameterization was to fit atomic point charges to the quantum electrostatic potential (ESP) using \emph{ab initio} quantum mechanical calculations, and develop parameters for the bonded and  van der Waals potential terms using experimental structural data and liquid-state simulations. The initial parameters were improved upon via the reproduction of experimental measurements for model compounds. The AMBER force field was initially develop by only accounting for non-aliphatic hydrogen atoms.\cite{Weiner:1984uw}  An all-atom version of AMBER was developed in 1995.\cite{Cornell:1995td} Since then, many iterations of improvements upon the original all-atom AMBER force field have been developed. In particular, AMBER99 (or ff99) is one such revision with newly developed parameters to improve the reproduction of protein secondary structure.\cite{Wang:2000uu}
+
+%The potential energy function for AMBER is as follows: 
+%\begin{equation}
+%\begin{split}
+%V = \sum_{bonds} k_b(b-b_0)^2 
+%   + \sum_{angles} k_{\theta}(\theta - \theta_{0})^2 \\
+%   + \sum_{dihedrals} k_{\chi}(1 + cos(n\chi - \delta)) 
+%   + \sum_{impropers} k_{\gamma}(\phi - \phi_{0})^2 \\
+%   + \sum_{nonbonded} \frac{q_1q_2}{er} \\
+%   + \sum_{nonbonded} \epsilon [(\frac{r_{min}}{r})^{12} - 2(\frac{r_{min}}{r})^6]
+%\end{split}
+%\end{equation}
 
 OPLS, short for optimized potentials for liquid simulations, was originally developed to simulate and reproduce liquid state properties, such as the densities and heats of vaporization of neat organic liquids.
- These potential functions were first developed for water, ions and hydrocarbons,\cite{Jorgensen:1984vy} and then was later extended to amides and peptides.\cite{Jorgensen:1985wx} The non-bonded interactions in OPLS were derived by comparisons to liquid-state thermodynamics. In early OPLS development, a partial united-atom model was used whereby nonbonded interaction sites were placed only on non-hydrogen atoms and polar hydrogens.\cite{Jorgensen:1988vg,Jorgensen:1985wx,Jorgensen:1984vy}
+ These potential functions were first developed for water, ions and hydrocarbons,\cite{Jorgensen:1984vy} and then was later extended to amides and peptides.\cite{Jorgensen:1985wx} The non-bonded interactions in OPLS were derived by comparisons to liquid-state thermodynamics. Like AMBER, in early OPLS development, a partial united-atom model was used whereby nonbonded interaction sites were placed only on non-hydrogen atoms and polar hydrogens.\cite{Jorgensen:1988vg,Jorgensen:1985wx,Jorgensen:1984vy}
 
-An all-atom OPLS force field (OPLS-AA) was developed for organic molecules and peptide simulations in 1996.\cite{Jorgensen:1996vx} Although the charge and van der Waals parameters were developed from simulations of pure liquids, which is unique to the parameterization of OPLS, the atom types and parameters for bonded interactions (bonds, angles, and dihedrals) were largely adopted from the AMBER all-atom force field.\cite{Jorgensen:1996vx}
-
-The OPLS-AA potential energy function is
-
-  \begin{equation}
-    \begin{split}
-          V = \sum_{bonds} k_b(b-b_0)^2 
-          + \sum_{angles} k_{\theta}(\theta - \theta_{0})^2 \\
-          + \sum_{dihedrals} k_{\chi}(1 + cos(n\chi - \delta)) 
-          + \sum_{impropers} k_{\gamma}(\phi - \phi_{0})^2 \\
-          + \sum_{nonbonded} \frac{q_1q_2}{er} \\
-          + \sum_{nonbonded} \epsilon [(\frac{r_{min}}{r})^{12} - 2(\frac{r_{min}}{r})^6]
-    \end{split}
-  \end{equation}
+An all-atom OPLS force field (OPLS-AA) for organic molecules and peptide simulations was developed in 1996.\cite{Jorgensen:1996vx} Although the parameters for charges and van der Waals interactions were developed from simulations of pure liquids, which is unique to the parameterization methodology of OPLS, the atom types and parameters for bonded interactions (bonds, angles, and dihedrals) were largely adopted from the AMBER all-atom force field.\cite{Jorgensen:1996vx}
 
 
 \section{Molecular Dynamics Simulation}
