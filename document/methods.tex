@@ -192,16 +192,16 @@ Given the partition function, one can then determine any thermodynamic variable.
 
 Performing an MD simulation yields a time-trajectory of motion of the molecules in the system from which we can obtain time-averaged properties of the system.  However, in an experiment, the macromolecular observables measured are a result of an average of all possible system configurations, or an \emph{ensemble average}.  This apparent conundrum is reconciled by one of the fundamental axioms of statistical mechanics, the ergodic hypothesis, which states that if a system is given long enough time to evolve, the time average of its macromolecular properties is equivalent to their ensemble averages.  In practice, this means that if a MD simulation sufficiently samples the relevant regions of the phase space of the system of interest, then experimentally-relevant properties may be calculated from such a simulation.
 
-% \textbf{This discussion is important ... but is not fitted well into the chapter.  Write what these ensembles are and link them to the simulations that is the pressure and temperature coupling schemes used }
+\subsection{Enhancing Sampling of Biomolecular Simulations}
+As described above, in an MD simulation, atomic motion is dictated by a potential energy function, and states are sampled with probabilities dictated by the Boltzmann distribution. Given an infinite amount of time, a simulation will sample all thermally-accessible states of a system's potential energy landscape. However, such infinitely long simulations are not possible to achieve computationally feasible, and due to the rugged energy landscapes common to biomolecular systems, many important states may not be sampled on the timescales of a typical simulation.
+Furthermore, it is even more challenging to adequately sample the complex conformational landscape of disordered proteins because potentially many thousands of conformational states must be sampled in order to fully characterize their structural ensemble [4].
 
+Generalized-ensemble algorithms are a class of algorithms that can be used with molecular simulations to enhance conformational sampling.  Simulated tempering (ST) and replica exchange (RE) are two well-known generalized-ensemble algorithms that can be used to enhance sampling by allowing simulations to diffuse in temperature-space, while obeying Boltzmann statistics. These algorithms rely on the underlying assumption that at higher temperatures the free energy landscape of a biomolecular system becomes less rugged, and, hence, the crossing of energetic barriers are facilitated.  A temperature range is typically chosen to include temperatures lower and higher than the room temperature (300 K), and is dependent on the size and composition of the system.  Although generalized-ensemble methods can greatly enhance sampling, they can be computationally very expensive to carry out, and can, in some cases, require hundreds of compute nodes to run simultaneously for many months to complete a single study.  
 
+In Chapters 3 and 4 of this thesis, the ST algorithm was used to generate the structural ensembles of (GA)$_{4}$ and A$\beta$(16-22) peptides.
 
-%\section{Speeding up Molecular Dynamics Simulation}
-%
-%\subsection{Better algorithms: Enhanced Sampling Techniques}
-%
 %\subsubsection{Approaches for Determining Protein Conformational Ensembles}
-%It was mentioned in Chapter 1 that enhanced sampling may be used to speed up simulations.  Here we provide a high level overview of the approaches that were developed that have been useful in rational drug design.  These approaches were also widely used through out the thesis.
+%It was mentioned in Chapter 1 that enhanced sampling may be used to speed up simulations.  Here we provide a high level overview of the approaches that were developed that have been useful in sampling of peptide and protein conformations in molecular simulations. 
 %
 %The use of temperature to overcome energetic barriers in the system. Here I can talk about what enhanced sampling is, and how they can be applied to understanding the properties of disordered peptides. Cite Sarah.  
 %I should read both Sarah's and Chris's thesis chapters relating to sampling.  Chris's is all about sampling. Since I refer extensively to enhanced sampling, I should make a mention of it.
