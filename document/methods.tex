@@ -28,6 +28,13 @@ In the past four decades, a variety of force fields have been developed for the 
 	V = V(bonds) + V(angles) + V(dihedrals) + V(impropers) + V(non-bonded)
 \end{equation}
 
+\begin{figure}
+ \centering
+ \includegraphics[width=5in]{figures/methods/mm_schematic.pdf}
+ \caption[A schematic of the representation of a molecule using molecular mechanics.]{A schematic of the representation of a molecule using molecular mechanics.}
+ \label{fig:mm_schematic}
+\end{figure}
+
 \subsection{Bonded Interactions}
 The first four functional terms of Equation~\ref{eq:ff_general}, $V(bonds)$, $V(angles)$, and $V(improper)$, describe the through-bond interactions covalent bond stretching, angle-bending, and bond rotations, respectively.  It is important to note that in molecular mechanics chemical bonds cannot be formed nor broken.  Covalent bond stretching can be described using Hooke's Law for harmonic motion,
 \begin{equation}
@@ -75,14 +82,10 @@ where $q_{i}$ and $q_{j}$ are the point charges on atoms $i$ and $j$, respective
 %\end{figure}
 
 As previously discussed in Chapter 1, hydrogen bonding is an important type of electrostatic interaction in biomolecular systems.  For this reason, a proper representation of hydrogen bonds should be captured by a force field. Some force fields have employed an explicit term solely for describing hydrogen bonding. For example, the original AMBER force field introduced in 1984 added a function of the form $\sum_{hbonds} C_{ij}/R_{ij}^{12} - D_{ij}/R_{ij}^{10}$ to account for hydrogen bonds.\cite{Weiner:1984uw}  However, it was later demonstrated that hydrogen bonding interactions are most accurately accounted for by appropriate parameterization of van der Waals and electrostatic potential terms. Hence, most modern force fields for protein simulations, including the latest AMBER force fields, no longer utilize an explicit hydrogen bonding term.
-
-
 % Other things that I will not be discussing -- what were they again?
 
 \subsection{Electronic Polarizability}
 Polarizability is the measure of the change in a molecule's electron distribution in response to an applied electric field, and is a property of matter which can be induced by electrostatic interactions with solvents or ionic reagents.  As mentioned above, most current force fields use a fixed-charge model where each atom in the system is assigned a single value, which remains independent of changes in its local electrostatic environment. Next-generation force fields have been proposed to  incorporate models for electronic polarizability. REF However, because of the associated prohibitive computational cost with the use of these force fields, they are not currently widely used for biomolecular simulations.
-
-
 % The introduction of polarizable force fields into common use has been inhibited by the high computational cost associated with solving this problem self-consistently.
 
 \subsection{The AMBER and OPLS Force Fields}
