@@ -3,7 +3,7 @@
 
 % From D. Caplan's thesis - Molecular mechanics (MM) is the empirical mathematical representation of atomic inter- actions in the classical limit. MM was developed over 50 years ago and has been applied to organic chemistry as a tool to estimate specific energetic properties of small molecules. Since then it has evolved into various functional forms (known as “force fields”) used to describe the potential energy of a system by computing atomic interactions. Force fields may vary in the way that they represent atomic particles to balance experimental accu- racy with computational efficiency. Molecular dynamics (MD) is a MM-based method in which force fields are used to calculate the position, velocity, and acceleration of atoms over time to produce a trajectory.
 
-\chapter[Methods]{Methods: Molecular Modelling and Simulation}
+\chapter[Methods]{Molecular Modelling and Simulation}
 
 \section{Molecular Mechanics}
 % Start by describing quantum mechanics 
@@ -19,7 +19,7 @@ The potential energy function employed in molecular mechanics corresponds to the
 In molecular mechanics, atomic nuclei are treated as point charges, where the motion of their electrons is implicitly accounted for in the PEF.  Because electronically excited states are not treated, no chemical reactions (i.e., bond formation) can occur.
 % \cite{M. Born and R. Oppenheimer, Quantum Theory of Molecules, Ann. Physics, vol. 84, pp. 457â484, 1927.} -- can't find this article.
 % \textbf{Say something good about MM approach}
-\section{Force Fields}
+\section{Force Fields for Biomolecules}
 
 The functional form of the potential energy function together with its associated parameters define a \emph{force field}.  A typical empirical force field has many parameters to be determined.  These parameters are determined by fitting to quantum mechanical calculations, and to physical measurements (e.g., using data from X-ray crystallography, neutron diffraction, vibrational raman spectroscopy) of small organic compounds or building blocks of peptides and nucleic acids. Force field parameters are adjusted to improve the agreement of predicted quantities with \emph{ab initio} quantum mechanical calculations, and experimental data. In the past four decades, a variety of force fields have been developed and applied towards the modelling of biomolecular systems involving proteins, nucleic acids and carbohydrates. The widely adopted force fields include AMBER,\cite{Cornell:1995td} CHARMM,\cite{Brooks:1983uc} GROMOS,\cite{Christen:2005fp} and OPLS.\cite{Jorgensen:1985wx,Jorgensen:1996vx,Kony:2002ji} Reviews and comparisons of these force fields are provided elsewhere.\cite{Beauchamp:2012eq,MackerellJr:2004p5558,Ponder:2003uw}  Although each of these force fields have different parameters, they share a similar general form of the PEF:
 \begin{equation}
@@ -30,7 +30,7 @@ The functional form of the potential energy function together with its associate
 \begin{figure}
  \centering
  \includegraphics[width=5in]{figures/methods/mm_schematic.pdf}
- \caption[A schematic of the representation of a molecule using molecular mechanics.]{A schematic of the representation of a molecule using molecular mechanics.}
+ \caption[Schematic diagram of illustrating the energetic terms of the potential energy function.]{Schematic diagram of illustrating the energetic terms of the potential energy function.}
  \label{fig:mm_schematic}
 \end{figure}
 
@@ -133,7 +133,7 @@ The position of atom $i$ at time $ t + \delta t$ is then,
 \begin{equation}
 x_i(t + \delta t) = x_i(t) + v_i(t)\delta t + \frac{a_i(t)\delta t^2}{2}.
 \end{equation}
-The positions of each of the $N$ particles for $N \geq 3$ are approximated numerically in MD simulations using a time-integration algorithm. For example, the leap-frog and velocity-verlet algorithms are commonly used in MD simulations.\cite{Hockney:1974tu,Swope:1982tq} Once the position of each particle is computed, subsequent interatomic forces are updated based on these new coordinates, and the entire process is repeated to obtain the coordinates of the system at future time steps. To ensure numerical stability, a small integration time step in the range of 1 - 4 femtoseconds (fs) is chosen. In MD simulations of biomolecular systems, a 2 fs timestep is commonly chosen because it is twice the time period for the fastest vibrational motion (existing in bonds involving hydrogen). % [Ref: Chris Madill's and Tom's thesis]
+The positions of each of the $N$ particles are approximated numerically in MD simulations using a time-integration algorithm. For example, the leap-frog and velocity-verlet algorithms are commonly used in MD simulations.\cite{Hockney:1974tu,Swope:1982tq} Once the position of each particle is computed, subsequent interatomic forces are updated based on these new coordinates, and the entire process is repeated to obtain the coordinates of the system at future time steps. To ensure numerical stability, a small integration time step in the range of 1 - 4 femtoseconds (fs) is chosen. In MD simulations of biomolecular systems, a 2 fs timestep is commonly chosen because it is twice the time period for the fastest vibrational motion (existing in bonds involving hydrogen). % [Ref: Chris Madill's and Tom's thesis]
 
 % There are many different forms of integration algorithms, with the most common being the Verlet and leap-frog algorithms. 
 % According to gromacs manual:
@@ -175,7 +175,7 @@ where $N$ is the number of atoms, and $v_{i}(t)$ is the velocity of atom $i$. To
 \subsection{Periodic boundary conditions}
 Periodic boundary conditions (PBC) is a technique by which the central simulation cell (or ``box'') is replicated along each of its dimensions to form a system with infinite number of images, and is used to alleviate artificial phase boundaries imposed by a finite simulation cell.  Furthermore, PBC allows the simulation system to be treated as a bulk system, akin to \textit{in vitro} experimental conditions.  To avoid counting duplicate interactions from multiple adjacent cells, a minimum image convention is applied -- an atom $i$ interacts with only another atom $j$, provided that $j$ is in $i$'s closest periodic image.
 
-\subsection{Theoretical Basis of MD Simulations}
+\subsection{Connection to Statistical Mechanics}
 MD simulations yield information about the microscopic states of a macroscopic system characterized by thermodynamic variables such as temperature, pressure, and the number of particles.   These variables are what is typically observed and measured experimentally.  Statistical mechanics is a body of theory that provides a rigorous connection between the microscopic arrangements of a system (determined by MD simulations) to its thermodynamic properties.
 
 MD simulations can be carried out in the canonical (NVT) ensemble, where the number of particles (N), volume (V) and temperature (T) are constants, or alternatively in the isothermo-isobaric (NPT) ensemble, where the system has fixed number of particles and temperature, but its average pressure is held constant by allowing the volume of the simulation box to fluctuate. Because the NPT ensemble is the closest to experimental conditions, production simulations are often carried out in this ensemble.
@@ -194,7 +194,7 @@ Any thermodynamic variable can then be derived from the partition function. For 
 
 Performing an MD simulation yields a time-trajectory of the positions of atoms in the system from which we can obtain time-averaged thermodynamic properties of the system.  However, in an experiment, the macromolecular observables measured are a result of an average over all possible microstates of a system, or an \emph{ensemble average}.  This apparent conundrum is reconciled by one of the fundamental axioms of statistical mechanics, the ergodic hypothesis, which states that if a system is given long enough time to evolve, the time average of its macromolecular properties is equivalent to their ensemble averages.  In practice, this means that if a MD simulation sufficiently samples the relevant regions of the phase space (i.e., the collection of all possible configurations of a given system), then statistically-meaningful properties can be extrapolated from such a simulation.
 
-\subsection{Enhancing Sampling of Biomolecular Simulations}
+\subsection{Enhanced Sampling Techniques}
 As described above, in an MD simulation, atomic motion is dictated by a potential energy function, and states are sampled with probabilities dictated by the Boltzmann distribution. Given an infinite amount of time, a simulation will sample all thermally-accessible states of a system's potential energy landscape. However, infinitely long simulations are not possible to achieve computationally.  Thus, because of the rugged energy landscapes common to biomolecular systems, many important states may not be sampled on the timescales of a typical simulation.
 Furthermore, it is even more challenging to adequately sample the complex conformational landscape of disordered proteins because of the large number of conformational states that may need to be sampled in order to fully characterize their structural ensembles.\cite{Rauscher:2010p5682}
 
@@ -219,7 +219,7 @@ In Chapters 3 and 4 of this thesis, the ST algorithm was used to generate the st
 
 % Initial conditions -- initial positions of the atoms in the system
 
-\section{Practical Aspects of Preparing a Biomolecular System for MD Simulation}
+\section{Preparing a Biomolecular System for MD Simulation}
 
 Coordinates for the initial input into a simulation software need to be prepared appropriately before the MD simulation is performed.  First, the initial structure of the protein of interest need to be generated. If the target protein is an X-ray crystal or NMR structure, its structure can be downloaded from the Protein Databank (PDB). Next, the simulation environment is prepared to closely mimic the \emph{in vitro} experimental conditions. For example, because a crystal structure does not contain information about hydrogen atoms, one may need to manually assign protonation states for the basic and acidic residues in the protein. This can be done by predicting the pKa for each residue, and visually examining the structure for the presence of hydrogen bonds.
 
@@ -230,7 +230,7 @@ Energy minimization is usually performed on the system to remove any bad contact
 \begin{figure}
  \centering
  \includegraphics[width=4.5in]{figures/methods/simulation_box.pdf}
- \caption[An example of a MD simulation system]{An example of a MD simulation system.}
+ \caption[An example snapshot of a MD simulation system.]{An example snapshot of a MD simulation system. The protein (yellow) is shown in a cartoon representation. Cosolute molecules (\emph{scyllo}-inositol) are rendered in a space-filling representation.  Water molecules are shown as blue lines.}
  \label{fig:simulation_box}
 \end{figure}
 
