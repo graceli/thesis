@@ -8,25 +8,23 @@
 \section{Molecular Mechanics}
 % Start by describing quantum mechanics 
 % Assumptions and limitations of molecular mechanics
-In principle, using quantum mechanics, the time-evolution of a molecular system can be predicted by solving the time-dependent Schr\"odinger's equation, which provides a complete description of the motion of atomic nuclei and electrons from first-principles.  REF However, the solution for this equation can only be obtained analytically for a hydrogen atom, and numerically using computational algorithms for very small systems. REF Many quantum-mechanics-based computational methods have been developed, but they are computationally prohibitive for probing biomolecular systems on a biologically-meaningful timescale because these systems typically possess on the order of 10$^{3}$ to 10$^{4}$ number of atoms. REF
+In principle, using quantum mechanics, the time-evolution of a molecular system can be predicted by solving the time-dependent Schr\"odinger's equation, which provides a complete description of the motion of atomic nuclei and electrons from first-principles.\cite{Schrodinger:1926ka} Notably, the solution for this equation can only be obtained analytically for a hydrogen atom, and must be solved numerically for more complex systems. Although many quantum-mechanics-based computational methods have been developed in recent years,\cite{Gogonea:2001us} they are still computationally prohibitive for probing the dynamics of entire protein systems on a biologically-meaningful timescale because these systems, with solvent molecules included, typically possess on the order of 10$^{4}$ to 10$^{5}$ number of atoms.
 
-\textbf{Molecular mechanics is an approach in which a molecular system is treated using the principles of classical mechanics.} In molecular mechanics, a molecule is modelled by a set of masses (atoms) connected by springs (bonds). REF An empirical potential energy function (PEF) that only depends on the positions of the atoms in the system is employed to describe the internal energy and interactions of molecules. REF The theoretical basis for molecular mechanics is rooted in quantum mechanics via the Born-Oppenheimer approximation. REF Under this approximation, the electronic and nuclear motion of atoms are considered to be uncoupled, \textbf{and therefore can be treated separately.} REF 
+Molecular mechanics is an approach in which a molecular system is treated using the principles of classical mechanics. In molecular mechanics, a molecule is modelled by a set of masses (atoms) connected by springs (bonds).  An empirical potential energy function (PEF) that only depends on the positions of the atoms in the system is employed to describe the internal energy and interactions of molecules.\cite{Cornell:1995td,Brooks:1983uc,Christen:2005fp,Jorgensen:1985wx} The theoretical basis for molecular mechanics is rooted in quantum mechanics via the Born-Oppenheimer approximation.\cite{Born:1927tb} Under this approximation, the electronic and nuclear motion of atoms are considered to be uncoupled, and therefore can be treated separately.
 % Note that the previous sentence is a little vague -- what does it mean to be ``treated separately''
-% This is because the nuclei, which are much heavier than electrons, are typically fixed on the time scales of electronic vibration. -- this sentence should be here because I need to make this logical connection before saying the next sentence
-For this reason, the total energy (or the Hamiltonian, $H$) of a system can be considered to depend only on the electronic motion. 
+Because nuclei are much heavier than electrons, they are typical fixed on the time scales of electronic vibration. For this reason, the total energy (or the Hamiltonian, $H$) of a system can be considered to depend only on the electronic motion. 
 % Although molecular mechanics is a very simplified model of molecular system, that made modelling of much larger biomolecular systems possible. 
 
-The potential energy function employed in molecular mechanics corresponds to the Born-Oppenheimer energy surface of the molecular system in its electronic ground-state. REF In molecular mechanics, atomic nuclei are treated as point charges, where the motion of their electrons is implicitly accounted for in the PEF.  Because electronically excited states are not treated, no chemical reactions (i.e., bond formation) can occur.
+The potential energy function employed in molecular mechanics corresponds to the Born-Oppenheimer energy surface of the molecular system in its electronic ground-state.  % can't find a ref for this and all the places where I see this reference, I don't see a corresponding reference. 
+In molecular mechanics, atomic nuclei are treated as point charges, where the motion of their electrons is implicitly accounted for in the PEF.  Because electronically excited states are not treated, no chemical reactions (i.e., bond formation) can occur.
 % \cite{M. Born and R. Oppenheimer, Quantum Theory of Molecules, Ann. Physics, vol. 84, pp. 457�484, 1927.} -- can't find this article.
 % \textbf{Say something good about MM approach}
 \section{Force Fields}
 
-The functional form of the potential energy function together with its associated parameters define a \emph{force field}.  A typical empirical force field has many parameters to be determined.  These parameters are typically determined by fitting to quantum mechanical calculations, and to physical measurements (e.g., using data from X-ray crystallography, neutron diffraction, vibrational raman spectroscopy) of small organic compounds or building blocks of peptides and nucleic acids.  Force fields are iteratively improved and extended by predicting experimentally observable quantities for small compounds, and adjusting parameters by comparing predicted quantities with experimental measurements.
-
-In the past four decades, a variety of force fields have been developed for the purpose of modelling and simulating biomolecular systems involving peptides, proteins, nucleic acids and carbohydrates. Examples of the most widely adopted force fields include AMBER, CHARMM, GROMOS, and OPLS. REFs  Although each force field may vary slightly in the form of the PEF, most force fields utilize the general form:
+The functional form of the potential energy function together with its associated parameters define a \emph{force field}.  A typical empirical force field has many parameters to be determined.  These parameters are determined by fitting to quantum mechanical calculations, and to physical measurements (e.g., using data from X-ray crystallography, neutron diffraction, vibrational raman spectroscopy) of small organic compounds or building blocks of peptides and nucleic acids. Force field parameters are adjusted to improve the agreement of predicted quantities with \emph{ab initio} quantum mechanical calculations, and experimental data. In the past four decades, a variety of force fields have been developed and applied towards the modelling of biomolecular systems involving proteins, nucleic acids and carbohydrates. The widely adopted force fields include AMBER,\cite{Cornell:1995td} CHARMM,\cite{Brooks:1983uc} GROMOS,\cite{Christen:2005fp} and OPLS.\cite{Jorgensen:1985wx,Jorgensen:1996vx,Kony:2002ji} Reviews and comparisons of these force fields are provided elsewhere.\cite{Beauchamp:2012eq,MackerellJr:2004p5558,Ponder:2003uw}  Although each of these force fields have different parameters, they share a similar general form of the PEF:
 \begin{equation}
 \label{eq:ff_general}
-	V = V(bonds) + V(angles) + V(dihedrals) + V(impropers) + V(non-bonded)
+	V = V(bonds) + V(angles) + V(dihedrals) + V(impropers) + V(non-bonded).
 \end{equation}
 
 \begin{figure}
@@ -37,44 +35,42 @@ In the past four decades, a variety of force fields have been developed for the 
 \end{figure}
 
 \subsection{Bonded Interactions}
-The first four functional terms of Equation~\ref{eq:ff_general}, $V(bonds)$, $V(angles)$, and $V(improper)$, describe the through-bond interactions covalent bond stretching, angle-bending, and bond rotations, respectively.  It is important to note that in molecular mechanics chemical bonds cannot be formed nor broken.  Covalent bond stretching can be described using Hooke's Law for harmonic motion,
+The first four functional terms of Equation~\ref{eq:ff_general}, $V(bonds)$, $V(angles)$,  $V(dihedral)$, and $V(improper)$, define the through-bond interactions, covalent bond stretching, angle-bending, and bond torsion angles, and planar dihedral angles, respectively. Covalent bond stretching can be described using Hooke's Law for harmonic motion,
 \begin{equation}
 \label{eq:bonds}
 	V(bonds) = \sum_{bonds} k_b(b - b_0)^2.
 \end{equation}
 
-Likewise, angle-bending motions can be described harmonically as
+Likewise, angle-bending motions can also be described harmonically as
 \begin{equation}
 \label{eq:angles}
 	V(angles) = \sum_{angles} k_{\theta}(\theta - \theta_{0})^2. \\
 \end{equation}
 
-In Equations~\ref{eq:bonds} and \ref{eq:angles}, the constants $k_{b}$ and $k_{\theta}$ are the equilibrium force constants for bonds and angles, respectively, and the constants $b_{0}$ and $\theta_{0}$ are the reference bond length and angle, respectively. The total energetic contribution from bond stretching and angle bending are computed by summing over all bonds and angles in the system. In addition, the torsion (or dihedral) angle of bonds are also an important parameter in describing molecular conformations.  These energetic terms are commonly accounted for using a periodic function of the form,
+In Equations~\ref{eq:bonds} and \ref{eq:angles}, the constants $k_{b}$ and $k_{\theta}$ are the equilibrium force constants for bonds and angles, respectively, and the constants $b_{0}$ and $\theta_{0}$ are the reference bond length and angle, respectively. The total energetic contribution from bond stretching and angle bending are computed by summing over all bonds and angles in the system. In addition, the torsion (or dihedral) angle of bonds are also important for describing molecular conformations.  These energetic terms are commonly accounted for using a periodic function of the form,
 \begin{equation}
 \label{eq:torsion}
 	V(dihedrals) = \sum_{dihedrals} \sum_{n} k_{\chi}(1 + cos(n\chi - \delta)),
 \end{equation}
-where $n$ denotes the periodicity of the rotational barrier, and $\delta$ is the reference angle.  Functions of this form (the so-called improper dihedrals) may be added to the PEF as a way of ensuring the planarity of planar chemical groups.
+where $k_{\chi}$ and $n$ is the height and the periodicity of the rotational barrier, respectively.  $\delta$ is the reference angle (or phase).  The value of $n$ is usually between 1 and 4, and depends on the specific force field parameterization procedure. Functions of this form (the so-called improper dihedrals) are also included the PEF to ensure the planarity of planar chemical groups.
 
 
 \subsection{Non-bonded Interactions}
-Non-bonded interaction potentials predominantly account for van der Waals and electrostatic interactions.  Accurate reproduction of these interactions are particularly important for the transferability of a force field, that is, the ability to reuse a force field developed based on a set of molecule to predict properties of other molecules.  The non-bonded forces are only applied to atom pairs separated by at least three bonds. Van der Waals interactions are represented by the Lennard-Jones potential,
+Non-bonded interaction potentials predominantly account for van der Waals and electrostatic interactions.  Accurate reproduction of these interactions are particularly important for the transferability of a force field, which is the assumption that a force field developed based on a small set of molecules can predict properties of a broader set of molecules composed of similar chemical groups. The non-bonded forces are only applied to atom pairs separated by at least three bonds, and are pair-wise additive, that is, the total contribution to the potential energy from the non-bonded forces is the sum total over all interacting atomic pairs in a system. Van der Waals interactions, are represented by the Lennard-Jones potential,
 
 \begin{equation}
   \label{eq:lj_function}
-  V_{LJ}(r) = \sum_{pairs} (\frac{r_{min}}{r})^{12} - 2(\frac{r_{min}}{r})^6.
+  V_{LJ}(r) = (\frac{r_{min}}{r})^{12} - 2(\frac{r_{min}}{r})^6.
 \end{equation}
 
-$V_{LJ}$ is a distance-dependent function that rapidly decays to 0 and represents a short-range attractive force. The first term of Equation~\ref{eq:lj_function} represents a repulsive force at distances where atomic shells overlap. The second term represents the attractive force between atoms which is most favorable at a distance of $r_{min}$, the preferred interaction distance for a pair of atoms.
+The first term of Equation~\ref{eq:lj_function} represents a repulsive force at distances where atomic shells overlap. The second term represents the attractive force between atoms which is most favorable at a distance of $r_{min}$, the preferred interaction distance for a pair of atoms. $V_{LJ}$ is a dependent on the distance between atoms, $r$, and decays rapidly to 0 at short ranges.
 
-The reproduction of electrostatics is paramount for describing interactions of polar and charged groups in biomolecules. To do so, an additive pairwise Coulombic potential is applied between all atom pairs which carry partial charges or charges at their nuclear centres.  This potential term, which depends on $r$, the distance between the pair of atoms, is given by
-
+The reproduction of electrostatics is paramount for describing interactions of polar and charged groups in biomolecules. To do so, the Coulombic potential,
 \begin{equation}
   \label{eq:electrostatic}
   V_{coulombic}(r) = \frac{q_iq_j}{\epsilon r}, 
 \end{equation}
-where $q_{i}$ and $q_{j}$ are the point charges on atoms $i$ and $j$, respectively, and $\epsilon$ is the the permittivity of vacuum.  In contrast to van der Waals interactions,  electrostatic interactions can be significant for charged pairs that are separated at longer distances. Accordingly, in comparisons to the Lennard-Jones potential, the Coulombic potential decays to zero at a much slower rate.
-
+is calculated for all atom pairs which carry partial charges or charges at their nuclear centers.  In Equation~\ref{eq:electrostatic}, $q_{i}$ and $q_{j}$ are the point charges assigned to atoms $i$ and $j$, respectively, and $\epsilon$ is the dielectric constant.  In contrast to van der Waals interactions,  electrostatic interactions can be significant for charged pairs that are separated by longer distances. Accordingly, in comparisons to the Lennard-Jones potential, the Coulombic potential decays to zero at a much slower rate. 
 %\begin{figure}
 % \centering
 % \includegraphics[width=5in]{figures/methods/LJ_Coulumb_potentials.pdf}
@@ -86,13 +82,15 @@ As previously discussed in Chapter 1, hydrogen bonding is an important type of e
 % Other things that I will not be discussing -- what were they again?
 
 \subsection{Electronic Polarizability}
-Polarizability is the measure of the change in a molecule's electron distribution in response to an applied electric field, and is a property of matter which can be induced by electrostatic interactions with solvents or ionic reagents.  As mentioned above, most current force fields use a fixed-charge model where each atom in the system is assigned a single value, which remains independent of changes in its local electrostatic environment. Next-generation force fields have been proposed to  incorporate models for electronic polarizability. REF However, because of the associated prohibitive computational cost with the use of these force fields, they are not currently widely used for biomolecular simulations.
+Polarizability is the measure of the change in a molecule's electron distribution in response to an applied electric field, and is a property of matter which can be induced by electrostatic interactions with solvents or ionic reagents.  As mentioned above, most current empirical force fields use a fixed-charge model where each atom in the system is assigned a single value that remains unchanged.  Polarizable force fields which account for variations in charge distribution with dielectric environment, have been introduced.\cite{Halgren:2001waa,Warshel:2007p5320} However, because of the associated high computational cost of using these force fields, they are not routinely used for biomolecular simulations.
 % The introduction of polarizable force fields into common use has been inhibited by the high computational cost associated with solving this problem self-consistently.
 
 \subsection{The AMBER and OPLS Force Fields}
-In this section, I briefly describe two widely used popular force fields for protein simulations, AMBER and OPLS. The OPLS-AA and AMBER99 versions of these force fields were employed in the studies presented in Chapters 3 to 5, and 6, respectively.  More extensive and detailed reviews of empirical force fields for biomolecular simulations have been provided elsewhere.\cite{Ponder:2003uw,MackerellJr:2004p5558}
+In this section, I briefly describe two widely used force fields for protein simulations, AMBER and OPLS.  OPLS-AA/L\cite{Kaminski:2001eq} and AMBER99\cite{Wang:2000uu} were employed in the studies presented in Chapters 3 to 5, and 6, respectively.  More extensive and detailed reviews of empirical force fields for biomolecular simulations have been provided elsewhere.\cite{Ponder:2003uw,MackerellJr:2004p5558}
 
-One of the first force fields for the simulations of proteins was the AMBER force field, which was developed in the Kollman group.\cite{Weiner:1984uw}  The central ideas for parameterization was to fit atomic point charges to the quantum electrostatic potential (ESP) using \emph{ab initio} quantum mechanical calculations, and develop parameters for the bonded and  van der Waals potential terms using experimental structural data and liquid-state simulations. The initial parameters were improved upon via the reproduction of experimental measurements for model compounds. The AMBER force field was initially develop by only accounting for non-aliphatic hydrogen atoms.\cite{Weiner:1984uw}  An all-atom version of AMBER was developed in 1995.\cite{Cornell:1995td} Since then, many iterations of improvements upon the original all-atom AMBER force field have been developed. In particular, AMBER99 (or ff99) is one such revision with newly developed parameters to improve the reproduction of protein secondary structure.\cite{Wang:2000uu}
+The AMBER force field and the associated molecular mechanics simulation package for the simulation of biomolecules was developed by the Kollman group.\cite{Weiner:1984uw}  The central ideas for parameterization was to fit atomic point charges to the quantum electrostatic potential (ESP) using \emph{ab initio} quantum mechanical calculations, and develop parameters for the bonded and  van der Waals potential terms using experimental structural data and liquid-state simulations. The initial parameters were improved upon via the reproduction of experimental measurements for model compounds. The early versions of the AMBER force field accounted for only non-aliphatic hydrogen atoms,\cite{Weiner:1984uw}  An all-atom version of AMBER was later introduced in 1995.\cite{Cornell:1995td} Since then, many iterations of improvements upon the original all-atom AMBER force field have been developed.\cite{Garcia:2002gu,Sorin:2005iz,Hornak:2006gx,Duan:2003ws}
+% Note that I lifted the above references from Zhuyi's thesis methods draft and I didn't check if they were appropriate.
+In particular, AMBER99 (or ff99) is one such revision with the peptide group dihedral angles re-parameterized to improve the reproduction of peptide secondary structure.\cite{Wang:2000uu}
 
 %The potential energy function for AMBER is as follows: 
 %\begin{equation}
@@ -106,35 +104,36 @@ One of the first force fields for the simulations of proteins was the AMBER forc
 %\end{split}
 %\end{equation}
 
-OPLS, short for optimized potentials for liquid simulations, was originally developed to simulate and reproduce liquid state properties, such as the densities and heats of vaporization of neat organic liquids.
- These potential functions were first developed for water, ions and hydrocarbons,\cite{Jorgensen:1984vy} and then was later extended to amides and peptides.\cite{Jorgensen:1985wx} The non-bonded interactions in OPLS were derived by comparisons to liquid-state thermodynamics. Like AMBER, in early OPLS development, a partial united-atom model was used whereby nonbonded interaction sites were placed only on non-hydrogen atoms and polar hydrogens.\cite{Jorgensen:1988vg,Jorgensen:1985wx,Jorgensen:1984vy}
-
-An all-atom OPLS force field (OPLS-AA) for organic molecules and peptide simulations was developed in 1996.\cite{Jorgensen:1996vx} Although the parameters for charges and van der Waals interactions were developed from simulations of pure liquids, which is unique to the parameterization methodology of OPLS, the atom types and parameters for bonded interactions (bonds, angles, and dihedrals) were largely adopted from the AMBER all-atom force field.\cite{Jorgensen:1996vx}
+The OPLS (optimized potentials for liquid simulations) force field, as its name suggests, was originally developed to reproduce the liquid-state properties (e.g., densities and heats of vaporization) of compounds. Parameters were first developed for water, ions, hydrocarbons,\cite{Jorgensen:1984vy} and was later extended to amides,\cite{Jorgensen:1985wx} peptides,\cite{Jorgensen:1985wx} and carbohydrates.\cite{Damm:1997tla}  Like AMBER, in early OPLS development, a partial united-atom model was used whereby nonbonded interaction sites were placed only on non-hydrogen atoms and polar hydrogens.\cite{Jorgensen:1988vg,Jorgensen:1985wx,Jorgensen:1984vy} All-atom versions of the OPLS force field (OPLS-AA) for organic molecules and peptide simulations were subsequently developed.\cite{Jorgensen:1996vx,Kaminski:2001eq} In OPLS, the parameters for non-bonded interactions were derived by comparisons to liquid-state thermodynamics, and the atom types and parameters for bonded interactions (bonds, angles, and dihedrals) were largely adopted from the AMBER all-atom force field.\cite{Jorgensen:1996vx}
 
 
 \section{Molecular Dynamics Simulation}
 % Approximations made in MD.
 % Note the audience of your thesis.  It is good to cover basic ground.  I think I should also brief talk about enhanced techniques.
-At a very high level, MD simulation is an algorithm to simulate motion of a system under the influence of a specific force field by following molecular configurations in time according to Newton's equation of motion. 
+At a very high level, MD simulation is an algorithm that simulates motion of a system under the influence of a specific force field by following molecular configurations in time according to Newton's equation of motion. 
 
 % This is the part with the time propagation using the Equations of motion
-In a system of $N$ interacting particles, the force on each particle in the system is determined by taking the spatial derivative of the potential energy of the system, $V(r_{1}, r_{2}, ... , r_{N})$.  In MD simulations, this potential energy is approximated by a molecular mechanics force field as described above.  The force on each particle $i$ is given by
+In a system composed of $N$ interacting particles, the force on each particle is determined by taking the spatial derivative of the potential energy of the system, $V(r_{1}, r_{2}, ... , r_{N})$.  In MD simulations, this potential energy is approximated by a molecular mechanics force field as described above.  The force on each particle $i$ is given by
 % Not exactly ... according to Chris Madill's thesis, U is the potential energy between an atom pair?  Clear up the core algorithm!
 \begin{equation}
 % F_i = - \nabla U
   F_i = - \frac{\partial V}{\partial r_i}, i = 1, 2, 3, ... , N.
 \end{equation}
 
-The variable $r_{i}$ represents the spatial coordinates of the particle $i$. The calculated force vectors are summed together to yield the net force vector acting on every atom in the system. By Newton's second law of motion, the acceleration, $a_i$, of each atom is given by 
+The variable $r_{i}$ represents the spatial coordinates of the particle $i$. The calculated force vectors are summed together to yield the net force vector for each atom in the system. By Newton's second law of motion, the acceleration, $a_i$, of each atom is given by 
 \begin{equation}
 a_i = \frac{F_i}{m_i},
 \end{equation}
-where $m_i$ is the mass of the $i$th particle. Hence, the position of atom $i$ at time $ t + \delta t$ is then
+where $m_i$ is the mass of the $i$th particle. 
+The velocity of atom $i$, $v_{i}(t)$, is then given by,
 \begin{equation}
-x_i(t + \delta t) = x_i(t) + v_i(t)\delta t + \frac{a_i(t)\delta t^2}{2}  
+v_i(t+\delta t) = v_i(t) + \int_{t}^{t+\delta t} a_{i}(t) dt = v_i(t) + a_{i}\cdot \delta t.
 \end{equation}
-
-To determine the positions of each of the $N$ particles requires solving a system of 3$N$ differential equations.  Such a system of differential equations can only be solved numerically, and in MD simulations, a time-integration algorithm is typically employed. REF Once the position of each particle is computed, interatomic forces are updated based on these new coordinates, and the entire process is repeated to obtain the coordinates of the system for subsequent time steps. To ensure numerical stability, a small integration time step in the range of 1 - 4 femtoseconds (fs) is chosen. REF Typically, in a MD simulation of a biomolecular system, a 2 fs timestep is used as it is twice the time period for the fastest vibrational motion (existing in bonds involving hydrogen). REF % [Ref: Chris Madill's and Tom's thesis]
+The position of atom $i$ at time $ t + \delta t$ is then,
+\begin{equation}
+x_i(t + \delta t) = x_i(t) + v_i(t)\delta t + \frac{a_i(t)\delta t^2}{2}.
+\end{equation}
+The positions of each of the $N$ particles for $N \geq 3$ are approximated numerically in MD simulations using a time-integration algorithm. For example, the leap-frog and velocity-verlet algorithms are commonly used in MD simulations.\cite{Hockney:1974tu,Swope:1982tq} Once the position of each particle is computed, subsequent interatomic forces are updated based on these new coordinates, and the entire process is repeated to obtain the coordinates of the system at future time steps. To ensure numerical stability, a small integration time step in the range of 1 - 4 femtoseconds (fs) is chosen. In MD simulations of biomolecular systems, a 2 fs timestep is commonly chosen because it is twice the time period for the fastest vibrational motion (existing in bonds involving hydrogen). % [Ref: Chris Madill's and Tom's thesis]
 
 % There are many different forms of integration algorithms, with the most common being the Verlet and leap-frog algorithms. 
 % According to gromacs manual:
@@ -149,16 +148,16 @@ To determine the positions of each of the $N$ particles requires solving a syste
 \subsection{Temperature and Pressure}
 % My goal is to describe how temperature and pressure coupling is handled in MD at a high-level without going into the details of the math.
 % Ref: Understanding Molecular Simulations by Frenkel Daan.
-The inclusion of temperature in MD allows for the account of entropy in our systems, which is especially important for free energy determination. The theorem of equipartition of energy states that in a (classical) many-body system at thermal equilibrium, the average kinetic energy (KE) per degree of freedom is related to the thermodynamic temperature, $T$, via 
+Temperature is a measure of the kinetic energy of the system, and the instantaneous temperature of a macroscopic system can be determined from the kinetic energy of every atom.  The theorem of equipartition of energy states that in a (classical) many-body system at thermal equilibrium, the average kinetic energy (KE) per degree of freedom is related to the thermodynamic temperature, $T$, via
 \begin{equation}
   KE_{avg} =   \frac{1}{2} k_BT,
 \end{equation}
-where $k_{B}$ is the Boltzmann constant. In MD simulations, the temperature of the system is determined by calculating the total kinetic energy of the system and normalizing by the number of degrees of freedom in the system, $N_{r}$.  The instantaneous temperature of the system is 
-
+where $k_{B}$ is the Boltzmann constant. In MD simulations, the temperature of the system is the total kinetic energy of the system normalized by the number of degrees of freedom in the system, $N_{f}$, that is,
 \begin{equation}
-  T(t) = \sum_{i=1}^{N} \frac{m_iv_i^2(t)}{k_BN_f}.
+  T(t) = \sum_{i=1}^{N} \frac{m_iv_i^2(t)}{k_BN_f},
 \end{equation}
-where $N$ is the number of atoms in the system. To simulate a system under comparable laboratory conditions,  a thermostat and a barostat (a virtual pressure piston) are employed in simulations to control both temperature and pressure, respectively.  Several of these temperature- and pressure-coupling algorithms exist, and they are reviewed in detail elsewhere. REF 
+where $N$ is the number of atoms, and $v_{i}(t)$ is the velocity of atom $i$. To simulate a system close to laboratory conditions,  a thermostat and a barostat (a virtual pressure piston) are employed to control both the temperature and pressure of a simulation system, respectively.  Several different temperature-\cite{Berendsen:1984p9257,Nose:1984em,Hoover:1985wf} and pressure-coupling algorithms\cite{Nose:1983vt,Parrinello:1981vy} exist and are widely implemented across modern molecular dynamics simulation software packages.
+
 % These algorithms have been validated to produce the correct statistical mechanical ensemble averages.  
 %\cite{[25] Nose ́, S. A molecular dynamics method for simulations in the canonical ensemble. Mol. Phys. 52:255–268, 1984.[26] Hoover, W. G. Canonical dynamics: equilibrium phase-space distributions. Phys. Rev. A 31:1695–1697, 1985.}
 
@@ -174,33 +173,32 @@ where $N$ is the number of atoms in the system. To simulate a system under compa
 %Hence,  is much less accurate and can introduce force field inconsistencies leading to inaccurate results.\cite{Yang:2013ff}
 
 \subsection{Periodic boundary conditions}
-Periodic boundary conditions (PBC) is a technique by which the central simulation cell (or ``box'') is replicated along each of its dimensions to form a system with infinite number of images.  PBC is used in MD simulations to alleviate artificial phase boundaries which are imposed by a finite simulation cell.  Furthermore, PBC allows the system to be treated as a bulk system, akin to that of an \textit{in vitro} experimental system.  To avoid counting duplicate interactions from multiple adjacent cells, an atom $i$ interacts with only another atom $j$, provided that $j$ is in $i$'s closest periodic images. Because of this constraint, care must be taken to chose a central box size large enough to avoid artificial interactions induced by periodic boundaries. REFS
+Periodic boundary conditions (PBC) is a technique by which the central simulation cell (or ``box'') is replicated along each of its dimensions to form a system with infinite number of images, and is used to alleviate artificial phase boundaries imposed by a finite simulation cell.  Furthermore, PBC allows the simulation system to be treated as a bulk system, akin to \textit{in vitro} experimental conditions.  To avoid counting duplicate interactions from multiple adjacent cells, a minimum image convention is applied -- an atom $i$ interacts with only another atom $j$, provided that $j$ is in $i$'s closest periodic image.
 
 \subsection{Theoretical Basis of MD Simulations}
-MD simulations yield information about the microscopic states of a macroscopic system characterized by thermodynamic variables such as temperature, pressure, the number of particles, free energy, etc.   Thermodynamic variables are what is typically observed and measured experimentally.  Statistical mechanics is a body of theory that provides a rigorous connection between the microscopic arrangements of a system (determined by MD simulations) to its thermodynamic properties.
- 
+MD simulations yield information about the microscopic states of a macroscopic system characterized by thermodynamic variables such as temperature, pressure, and the number of particles.   These variables are what is typically observed and measured experimentally.  Statistical mechanics is a body of theory that provides a rigorous connection between the microscopic arrangements of a system (determined by MD simulations) to its thermodynamic properties.
+
+MD simulations can be carried out in the canonical (NVT) ensemble, where the number of particles (N), volume (V) and temperature (T) are constants, or alternatively in the isothermo-isobaric (NPT) ensemble, where the system has fixed number of particles and temperature, but its average pressure is held constant by allowing the volume of the simulation box to fluctuate. Because the NPT ensemble is the closest to experimental conditions, production simulations are often carried out in this ensemble.
+
 For an ensemble of microstates, the probability of finding a system in the microstate $i$, with an energy $E_{i}$ is given by the Boltzmann distribution,
 \begin{equation}
+\label{eq:boltzmann}
 p_{i} = \frac{1}{Z}e ^{\frac{-E_{i}}{kT}}.
 % Z = e ^{\frac{-A}{k_{B}T}}
 \end{equation}
-$Z = \sum_{i} e ^{\frac{-E_{i}}{kT}}$ is the normalization factor (or the \emph{partition function}) so that $\sum_{i} p_{i} = 1$.
-
-MD simulations can be carried out in the canonical (NVT) or  isothermo-isobaric (NPT) ensembles, where the average pressure of the system is held constant and the volume of the simulation is allowed to fluctuate. Because the NPT ensemble is the closest to experimental conditions, production simulations are often carried out in this ensemble.
-
-Given the partition function, one can then determine any thermodynamic variable. For example, free energy is an important thermodynamic quantity which measures the useful work obtainable from a system under a certain set of condition.  This quantity is called Gibbs free energy (G) and Helmholtz free energy (A) for a system in the NPT and NVT ensembles, respectively. In biochemistry, a central quantity is the change in free energy between two states, which measures whether a reversible biochemical process will occur spontaneously.  $\Delta G$ for any two states, 0 and 1, is related to their respective probabilities $p_{0}$ and $p_{1}$ by
-
+$Z = \sum_{i} e ^{\frac{-E_{i}}{kT}}$ is the normalization factor (or the \emph{partition function}) such that $\sum_{i} p_{i} = 1$.
+Any thermodynamic variable can then be derived from the partition function. For example, free energy, an important thermodynamic quantity, measures the useful work obtainable from a system under a certain set of conditions.  It is called the Gibbs free energy (G) and Helmholtz free energy (A) for a system in the NPT and NVT ensemble, respectively. In biochemistry, a central quantity of interest is the change in free energy between two states of interest, which measures whether a reversible biochemical process will occur spontaneously.  $\Delta G$ for any two states, 0 and 1, is related to their respective probabilities $p_{0}$ and $p_{1}$ via
 \begin{equation}
-\Delta G = - k_{B}Tln(\frac{p_{0}}{p_{1}}).
+\Delta G = - k_{B}Tln \frac{p_{0}}{p_{1}}.
 \end{equation}
 
-Performing an MD simulation yields a time-trajectory of motion of the molecules in the system from which we can obtain time-averaged properties of the system.  However, in an experiment, the macromolecular observables measured are a result of an average of all possible system configurations, or an \emph{ensemble average}.  This apparent conundrum is reconciled by one of the fundamental axioms of statistical mechanics, the ergodic hypothesis, which states that if a system is given long enough time to evolve, the time average of its macromolecular properties is equivalent to their ensemble averages.  In practice, this means that if a MD simulation sufficiently samples the relevant regions of the phase space of the system of interest, then experimentally-relevant properties may be calculated from such a simulation.
+Performing an MD simulation yields a time-trajectory of the positions of atoms in the system from which we can obtain time-averaged thermodynamic properties of the system.  However, in an experiment, the macromolecular observables measured are a result of an average over all possible microstates of a system, or an \emph{ensemble average}.  This apparent conundrum is reconciled by one of the fundamental axioms of statistical mechanics, the ergodic hypothesis, which states that if a system is given long enough time to evolve, the time average of its macromolecular properties is equivalent to their ensemble averages.  In practice, this means that if a MD simulation sufficiently samples the relevant regions of the phase space (i.e., the collection of all possible configurations of a given system), then statistically-meaningful properties can be extrapolated from such a simulation.
 
 \subsection{Enhancing Sampling of Biomolecular Simulations}
-As described above, in an MD simulation, atomic motion is dictated by a potential energy function, and states are sampled with probabilities dictated by the Boltzmann distribution. Given an infinite amount of time, a simulation will sample all thermally-accessible states of a system's potential energy landscape. However, such infinitely long simulations are not possible to achieve computationally feasible, and due to the rugged energy landscapes common to biomolecular systems, many important states may not be sampled on the timescales of a typical simulation.
-Furthermore, it is even more challenging to adequately sample the complex conformational landscape of disordered proteins because potentially many thousands of conformational states must be sampled in order to fully characterize their structural ensemble [4].
+As described above, in an MD simulation, atomic motion is dictated by a potential energy function, and states are sampled with probabilities dictated by the Boltzmann distribution. Given an infinite amount of time, a simulation will sample all thermally-accessible states of a system's potential energy landscape. However, infinitely long simulations are not possible to achieve computationally.  Thus, because of the rugged energy landscapes common to biomolecular systems, many important states may not be sampled on the timescales of a typical simulation.
+Furthermore, it is even more challenging to adequately sample the complex conformational landscape of disordered proteins because of the large number of conformational states that may need to be sampled in order to fully characterize their structural ensembles.\cite{Rauscher:2010p5682}
 
-Generalized-ensemble algorithms are a class of algorithms that can be used with molecular simulations to enhance conformational sampling.  Simulated tempering (ST) and replica exchange (RE) are two well-known generalized-ensemble algorithms that can be used to enhance sampling by allowing simulations to diffuse in temperature-space, while obeying Boltzmann statistics. These algorithms rely on the underlying assumption that at higher temperatures the free energy landscape of a biomolecular system becomes less rugged, and, hence, the crossing of energetic barriers are facilitated.  A temperature range is typically chosen to include temperatures lower and higher than the room temperature (300 K), and is dependent on the size and composition of the system.  Although generalized-ensemble methods can greatly enhance sampling, they can be computationally very expensive to carry out, and can, in some cases, require hundreds of compute nodes to run simultaneously for many months to complete a single study.  
+Generalized-ensemble algorithms are a class of algorithms that can be used with molecular simulations to enhance conformational sampling.  Simulated tempering (ST) and replica exchange (RE) are two well-known generalized-ensemble algorithms that can be used to enhance sampling by allowing simulations to diffuse in temperature-space, while obeying Boltzmann statistics (Equation~\ref{eq:boltzmann}).\cite{Marinari:1992p5428,Mitsutake:2001p5380} These algorithms rely on the underlying assumption that at higher temperatures the free energy landscape of a biomolecular system becomes less rugged, and, hence, the crossing of energetic barriers are facilitated.  A temperature range is typically chosen to include temperatures that are lower and higher than the room temperature (300 K), and is dependent on the size and composition of the system.\cite{Rauscher:2009wr,Rauscher:2010p5682} Although generalized-ensemble methods, when combined with MD simulations can greatly enhance conformational sampling of peptides, they are computationally expensive, and often require a parallel supercomputing platform to carry out a single study in a feasible time frame.  
 
 In Chapters 3 and 4 of this thesis, the ST algorithm was used to generate the structural ensembles of (GA)$_{4}$ and A$\beta$(16-22) peptides.
 
