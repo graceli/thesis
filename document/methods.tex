@@ -221,28 +221,27 @@ In Chapters 3 and 4 of this thesis, the ST algorithm was used to generate the st
 
 \section{Practical Aspects of Preparing a Biomolecular System for MD Simulation}
 
-Coordinates for the initial input into a simulation software need some care to be prepared.  First the structure of protein or peptide to simulated need to be generated.  The starting structure of the target protein is usually X-ray crystal or NMR structure, which can be taken from the Protein Data Bank.  Then the simulation environment is prepared to closely mimic the experimental conditions (usually experimental crystallization conditions). For example, the pKa of a protein is typically predicted so that residues such as histidine are appropriately protonated.
+Coordinates for the initial input into a simulation software need to be prepared appropriately before the MD simulation is performed.  First, the initial structure of the protein of interest need to be generated. If the target protein is an X-ray crystal or NMR structure, its structure can be downloaded from the Protein Databank (PDB). Next, the simulation environment is prepared to closely mimic the \emph{in vitro} experimental conditions. For example, because a crystal structure does not contain information about hydrogen atoms, one may need to manually assign protonation states for the basic and acidic residues in the protein. This can be done by predicting the pKa for each residue, and visually examining the structure for the presence of hydrogen bonds.
 
-For a simulation of a globular protein, after the protein structure has been prepared, cosolutes, salt and water molecules are added to create the final simulation box. However, for more complex simulation systems, such as those in the presence of a lipid bilayer, additional steps
-% Also make sure that at this point everyone in my committee understands that there is no ionization in the simulations and no chemical reactions.  
- 
-At this stage,  an energy minimization algorithm is usually performed on the system to correct any bad steric contacts that might have been introduced when solvent was added. An example of a completed starting structure of a simulation is shown in Figure~\ref{fig:simulation_box}.
+After the protein structure is prepared, the protein is usually solvated, with other molecules such as cosolutes, salt added to the simulation box. For more complex simulation systems, such as those of membrane proteins which require the presence of a lipid bilayer, additional steps need to be taken before the system is ready for simulating.
+% Also make sure that at this point everyone in my committee understands that there is no ionization in the simulations and no chemical reactions.
+Energy minimization is usually performed on the system to remove any bad contacts that could have been introduced during system preparation. An example of a completed starting state of a simulation is shown in Figure~\ref{fig:simulation_box}.
 
 \begin{figure}
  \centering
- \includegraphics[width=5in]{figures/methods/simulation_box.pdf}
+ \includegraphics[width=4.5in]{figures/methods/simulation_box.pdf}
  \caption[An example of a MD simulation system]{An example of a MD simulation system.}
  \label{fig:simulation_box}
 \end{figure}
 
-Prior to performing production dynamics, which is what most of the results from a simulation will be based on, a short simulation to equilibrate the system is performed.  Equilibration is performed to allow the pressure and temperature of the system to stabilize. Here the stability of the protein is also validated to ensure that the protein structure has not grossly deviated (or unfolded) from the starting model.  
+Prior to performing production dynamics, the system is first equilibrated.  This equilibration step is usually a short simulation that is performed to allow the system to relax, and reach thermal equilibrium.  During this period, the system's temperature, pressure, and volume are closely monitored to ensure that they converge to their intended values. The length of the equilibration simulation is highly dependent on the system of interest.  A straightforward method for delineating the equilibration period for a simulation of a globular protein is to measure the time-evolution of the root-mean-square deviation (RMSD) of protein structure with respect to the crystal structure. Typically, only the data beyond the first time point at which the RMSD is observed to plateau is included in the final data analysis. 
 
-\begin{figure}
- \centering
- \includegraphics[width=5in]{figures/methods/equilibration.pdf}
- \caption[RMSD from the initial crystal structure calculated from an equilibriation]{Equilibration of the simulation system.}
- \label{fig:simulation_equilibration}
-\end{figure}
+%\begin{figure}
+% \centering
+% \includegraphics[width=5in]{figures/methods/equilibration.pdf}
+% \caption[RMSD from the initial crystal structure calculated from an equilibriation]{Equilibration of the simulation system.}
+% \label{fig:simulation_equilibration}
+%\end{figure}
 
 \addcontentsline{toc}{section}{Bibliography}
 \bibliographystyle{plain}
