@@ -48,7 +48,7 @@ Several osmolytes such as glucose, trehalose and glycerol \textbf{there are more
 
 In recent years, scyllo-inositol is a small-molecule that have demonstrated promise as a potential therapeutic of Alzheimer's Disease. scyllo-inositol displays stereochemistry-dependent activity of amyloid inhibition of \abeta42. In studies with a mouse model of AD, scyllo-inositol was shown to prevent and reverse the on-set of AD.REF 
 
-In our previous study, we examined the sequence-independent binding mechanism of inositol with model peptides alanine dipeptide, and the $\beta$-sheet-forming peptide, (GA)$_4$. Weak binding was found, with \KD\s in the range of XX to YY mM. In a follow-up study, we performed MD simulation inositol with monomers and aggregates of A$\beta$42. In that study, our results indicated that inositol preferentially binds to surfaces of $\beta$-sheet oligomers, and not to disordered or monomeric forms of \abeta (16-22). Furthermore, by contrast, inositol adopts significantly higher affinity binding modes, with \KD of 0.1 - 100 mM, commensurate with \emph{in vitro} concentration of inhibition.
+In our previous study, we examined the sequence-independent binding mechanism of inositol with model peptides alanine dipeptide, and the $\beta$-sheet-forming peptide, (GA)$_4$. Weak binding was found, with binding constants in the range of 0.1 - 1 M. In a follow-up study, we performed MD simulation inositol with monomers and aggregates of A$\beta$42. In that study, our results indicated that inositol preferentially binds to surfaces of $\beta$-sheet oligomers, and not to disordered or monomeric forms of \abeta (16-22). Furthermore, by contrast, inositol adopts significantly higher affinity binding modes, with \KD of 0.1 - 100 mM, commensurate with \emph{in vitro} concentration of inhibition.
 
 
 In this study, we examine the binding mechanism of inositol stereoisomers, scyllo- and chiro-inositol, along with glucose and glycerol, with the SSNMR model protofibril of the full-length \abeta42. Both glucose and glycerol are known to be inactive in preventing the fibrillation of A$\beta$42\ below osmolar concentrations. Our results provide insight into the structure-activity relationship of inositol in the inhibition of A$\beta$ amyloid formation, which will ultimately lead to forming a pharmcophore for treating AD and related neurodegenerative disorders.
@@ -58,19 +58,13 @@ In this study, we examine the binding mechanism of inositol stereoisomers, scyll
 \section{Material and Methods} % (fold)
 \label{sec:material_and_methods}
 
-The pentameric solid-state NMR model of A$\beta$(17-42) from Luhrs et al. (PDB code: 2BEG) was used as the starting structure in our simulations.\cite{Luhrs:2005p4900} In the SSNMR PDB structure, residues 1 to 16 were truncated. Acetyl groups were added to the N-terminal ends of the peptides in the fibril using PyMol. Titratable amino acids were assigned charged states at the physiological pH. 0.15 M of salt, and 10 sodium counter ions to neutralize the remaining charges in the system were added.
+The pentameric solid-state NMR model of A$\beta$(17-42) from Luhrs et al. (PDB code: 2BEG) was used as the starting structure in our simulations.\cite{Luhrs:2005p4900} In the PDB structure, residues 1 to 16 were truncated in the model because they are disordered.\cite{Luhrs:2005p4900} \textbf{Acetyl groups} were added to the N-terminal ends of the peptides in the fibril using PyMol. Titratable amino acids were assigned charged states at the physiological pH. 0.15 M of salt, and 10 sodium counter ions to neutralize the remaining charges in the system were added. Protein and solvent were represented by the OPLS-AA/L force field\cite{Jorgensen:1996vx} and the TIP3P water model,\cite{Jorgensen:1983p8768} respectively.  The  extended OPLS-AA force field for carbohydrates was used to model inositol stereoisomers and glucose.\cite{Damm:1997tla}
 
-Protein and water were represented by the OPLS-AA/L force field REF and TIP3P water model, respectively.  The force-field parameters for the partial charges, bond, dihedral and angles of inositol and glucose were taken from the extended OPLS-AA parameters for carbohydrates. REF
+All MD simulations were performed in the NpT ensemble using the GROMACS simulation package version 4.0.x.\cite{Hess:2008p5353} The leapfrog Verlet integration algorithm was used with an integration timestep of 2 femtoseconds. Long-range electrostatic interactions were calculated using Particle Mesh Ewald (PME) summation with a Fourier grid spacing of 0.15 nm and a real-space cutoff of 1.3 nm.\cite{Darden:1993p8963} The short-range nonbonded van der Waals interactions were switched to zero from 1.1 nm to 1.2 nm. The temperature was controlled at 300 K using the Nose-Hoover thermostat. Pressure was controlled by the Parrinello-Rahman barostat at 1 atm with a coupling constant of 4.0 ps. The SHAKE algorithm was used to constrain covalent bonds containing hydrogens.\cite{Ryckaert:1977p9357}
 
-All of the simulations were performed using the GROMACS MD simulation package version 4.0.x. REF The leapfrog integration algorithm was used with an integration timestep of 2 femtoseconds. Long-range electrostatic interactions were calculated using Particle Mesh Ewald (PME) summation with a fourier grid spacing of 0.15 nm and a real-space cutoff of 0.13 nm. The short-range nonbonded van der Waals interactions was switched to zero from 0.11 nm to 0.12 nm. The temperature was controlled at 300K using the Nose-Hoover thermostat in the NPT ensemble. Pressure was controlled by the Parrinello-Rahman barostat at 1 atm with a coupling constant of 4.0 ps. The SHAKE algorithm was used to constrain all covalent bonds including those that contain hydrogens.
+In all simulations, a cubic box was used and periodic boundary conditions. Prior to data collection, 500 steps of energy minimization using the conjugate gradient algorithm was first performed, followed by a 200 ps long equilibration in the NVT ensemble and a 2 ns long equilibration with isotropic pressure coupling (NPT ensemble). The center of mass (COM) rotation and translation were removed at every step.
 
-Cubic boxes were used and periodic boundary conditions were applied in all directions. Prior to data collection, 500 steps of energy minimization using the conjugate gradient algorithm was first performed and then followed by a 200 ps long equilibration in the NVT ensemble and a 2 ns long equilibration in the NPT ensemble. The center of mass (COM) rotation and translation were removed at every step.
-	
-A set of ten 0.250 $\mu$s simulations of the protofibril of \abeta42 were performed,  successively, in pure water and in the presence of scyllo-inositol, chiro-inositol, glycerol and glucose at solute:peptide molar ratios of 3:1 and 13:1, yielding a total sampling time of 12.5 $\mu$s.
-
-% In total, $\mu$s of sampling was collected for each stereoisomer with the fibril. See Table 1 for a summary of all simulations performed in this study. 
-% TODO Table for simulation times, number of molecules of solute, volume, size of the box
-% System Npeptides  Ninositol Vbox concentration_peptide concentration_inositol inositol:peptide Nreplicas total_simulation_time
+A set of ten 0.250 $\mu$s simulations of the protofibril of \abeta42 were performed,  successively, in pure water and in the presence of scyllo-inositol, chiro-inositol, glycerol and glucose. The ligands were present at either a ligand:peptide molar ratio of  15:5 or 64:5, yielding a total sampling time of 12.5 $\mu$s.
 
 \subsection{Analysis Protocol}
 GROMACS analysis tools g\_rmsd and g\_rmsf were used to calculate the root mean square deviation in the fibril backbone and root mean squared fluctuation, respectively.  Spatial probability density of bound inositol were calculated using the volmap tool in Visual Molecular Dynamics software package (VMD). 
@@ -96,12 +90,29 @@ Where,
 \section{Results}
 
 \subsection{Protofibrillar morphology}
+Here I can show the RMSF and RMSD and the secondary structure information.  The point is to show that the protofibril stays in tact or not.  If intact, then say that it did not break up the protofibril on the timescale of our simulations.
+
+The technical details involve getting all this data into a columnar form.  First plot the curves separately to identity outliers if any and see why they've deviated by looking at the trajectories for making further hypothesis.
 
 \subsection{Comparisons of scyllo, chiro, glycerol and glucose binding modes}
+Which residues most frequently bound \\
+
+Over all binding modes.  Use the spatial probability maps to demonstrate this \\
+Are there binding hot spots? If so where and what are they? [in the discussion relate these findings to the mechanism of amyloid formation]
+
+Mostly nonpolar or polar? \\
+
+Do the molecules Cluster? If so, do cluster sizes differ? For example do glycerol and glucose  cluster a lot less? If there are differences in this mechanism could have implications in the mechanism of amyloid formation. \\
+
+How do the results compare with my previous results [discussion?] \\
+
+Does any of these molecules target the fibril core? [discussion?] \\
+Is targeting the fibril core a plausible mechanism for breaking up amyloid fibrils? Address this. Previous studies don't really address them.  
+In the discussion, I think it will also help to have a comparisons with previous studies, and experimental studies, if applicable. Again, look into literature for updates.
 
 \begin{figure}
   \centering
-  \includegraphics[width=6in]{figures/abeta42_volmaps.png}
+  \includegraphics[width=6in]{figures/results3/abeta42_volmaps.png}
   \caption[Abeta42 binding]{Comparisons of global binding for scyllo-, chiro-, glycerol, and glucose}
   \label{fig:spatial_binding}
 \end{figure}
@@ -189,7 +200,7 @@ Where,
 
 \section{Conclusions}
 
-\acknowledgement
+\section{Acknowledgements}
 % We thank Drs. JoAnne McLaurin, Mark Nitz and Chris Neale for reading the manuscript and for providing insightful comments. 
 This work was made possible by the GPC supercomputer at the SciNet HPC Consortium and Compute/Calcul Canada (Colosse CLUMEQ). This work was supported in parts by the Canadian Institutes of Health Research (Grant No. MOP84496). R.P. is a CRCP chairholder.
 
