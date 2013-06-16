@@ -67,6 +67,11 @@ In two previous studies, using MD simulations, we successively examined the bind
 
 \textbf{Need a lot more detail here} In this study, we examine the binding mechanism of inositol stereoisomers, scyllo- and chiro-inositol, along with glucose and glycerol, with the SSNMR model protofibril of the full-length \abeta42.  Both glucose and glycerol affect fibrillation of A$\beta$42\ at concentrations of more than 1 M. Our results provide insight into the structure-activity relationship of inositol in the inhibition of A$\beta$ amyloid formation, which will ultimately lead to forming a pharmcophore for treating AD and related neurodegenerative disorders.
 
+
+\textbf{The rationale of my study:} Thus far, cosolute binding to amyloid fibrils have not been examined. It is known that several cosolutes do not inhibit amyloid formation.  It is informative to compare their binding with known inhibitors of amyloid formation in that differences in their binding could further explain the mechanism of inhibition.
+
+Because our previous studies suggest that inositol is unlikely to interact with the monomer and disordered oligomers, and that the likely interaction partner of inositol are beta-sheet-aggregates of Abeta42, in this study we examine the binding of inositol, and cosolutes glycerol and glucose with the protofibrillar oligomer of full-length Abeta42.
+
 % For now, I removed the table of simulations.  There is no variation in the system run times or molar ratio. Can just mention this or put this table in supplementary information.
   
 \section{Material and Methods} % (fold)
@@ -104,27 +109,86 @@ Where,
 \section{Results}
 
 \subsection{Protofibrillar morphology}
-Here I can show the RMSF and RMSD and the secondary structure information.  The point is to show that the protofibril stays in tact or not.  If intact, then say that it did not break up the protofibril on the timescale of our simulations.
+%Here I can show the RMSF and RMSD and the secondary structure information.  The point is to show that the protofibril stays in tact or not.  If intact, then say that it did not break up the protofibril on the timescale of our simulations.
+%
+%The technical details involve getting all this data into a columnar form.  First plot the curves separately to identity outliers if any and see why they've deviated by looking at the trajectories for making further hypothesis.
 
-The technical details involve getting all this data into a columnar form.  First plot the curves separately to identity outliers if any and see why they've deviated by looking at the trajectories for making further hypothesis.
+\subsubsection{Protofibrillar morphology}
+We first examine the global structural properties of the fibril fragment by looking at the fibril RMSD and RMSF using the NMR model as a reference.  In the absence of inositol, the RMSD from the fibril NMR model for most, but not all of the replicas plateau to a value of about 0.5 nm beginning at about 120 ns (Figure RSMD). The fibril remained aggregated in the simulations.  Note that there could be rare events (but I haven't looked into this too much).
+Figure RSMD: RMSD of the fibril backbone showing the stability of the SSNMR A$\beta$ fibril in solution.
 
-\subsection{Comparisons of scyllo, chiro, glycerol and glucose binding modes}
-Which residues most frequently bound \\
+RSMF (root mean squared fluctuations) of the residues along each chain in the protofibrils show that the protofibrillar aggregate is dynamic in the simulation [Still vague be more specific, why is this significant?] (Figure: RMSF)
 
-Over all binding modes.  Use the spatial probability maps to demonstrate this \\
-Are there binding hot spots? If so where and what are they? [in the discussion relate these findings to the mechanism of amyloid formation]
+\textbf{Figure RSMF}: RMSF of the fibril backbone showing the stability of the SSNMR A$\beta$ fibril in solution.
 
-Mostly nonpolar or polar? \\
-
-Do the molecules Cluster? If so, do cluster sizes differ? For example do glycerol and glucose  cluster a lot less? If there are differences in this mechanism could have implications in the mechanism of amyloid formation. \\
-
-How do the results compare with my previous results [discussion?] \\
-
-Does any of these molecules target the fibril core? [discussion?] \\
-Is targeting the fibril core a plausible mechanism for breaking up amyloid fibrils? Address this. Previous studies don't really address them.  
-In the discussion, I think it will also help to have a comparisons with previous studies, and experimental studies, if applicable. Again, look into literature for updates.
+The dynamics of the protofibril in the presence of cosolutes (ligands)
+RMSD vs time of the protofibril measured with rest to the initial starting structure shows that over the course of 250 ns the protofibril stabilizes at 5 Angstroms, indicating that the "arrangement" of the protofibril are all similar in the presence and absence of ligands.  The similarity in the average RMSD of the fibril measured in the presence and absence of ligands, suggesting that the solutes do not significantly perturb the structure of the protofibril. RMSF versus time shows the deviation of each residue away from its average position in the protofibril these fluctuations are all quite similar in the presence of cosolutes. Taken together, our results suggest that fibril morphology is not perturbed in the presence of inositol and cosolutes.
 
 
+% Hypothesis: The chains at the ends of the fibril are more â€˜mobileâ€™ than the chains in the middle. Are the middle strands more likely to be fully hydrogen bonded? Are the side strands more likely to have their backbone hydrogen bonds broken?  Do any of the strands come off / lose all backbone hydrogen bonds ?
+	
+In some of our replicas, the edge strands are more mobile than the inner strands, and can unwind and partially detach from the rest of the protofibril over the course of the simulation.  The strands at the end of the fibrils show a significant decrease in their interchain hydrogen bonding. (Note need to be careful here because the end chains have less HBs because they don't have flanking peptides) (Figure: interchain hbonding). 
+
+Stability of the fibril in the presence of ligand. Does glycerol stabilize the aggregate? Does glucose stabilize the fibril? Ab42 is stable at both ligand:peptide ratios of 3:1 and 13:1, suggesting that fibrillar aggregate is not disaggregated by ligands over the time scale of the simulation. Note that these observations of the fibril dynamics such as chain unwinding are not correlated with disruption caused by ligand binding as they occur in the control simulations as well.
+
+\textbf{Secondary structure analysis by DSSP}. Inositol does not appear to affect the secondary structure of the residues in the protofibril.  By eye, looks like there is no major differences in water, glycerol, glucose and inositol (NEED more quantitative description)
+Figure: Number of residues in secondary structure versus time.  Y-axis is number of residues in a particular SS conformation. 	
+
+% More advanced structural analysis?
+% Any large scale motions?
+% Worthwhile doing PCA?
+% Most likely not meaningful? (probably too noisy)
+
+%Which residues most frequently bound \\
+%
+%Over all binding modes.  Use the spatial probability maps to demonstrate this \\
+%Are there binding hot spots? If so where and what are they? [in the discussion relate these findings to the mechanism of amyloid formation]
+%
+%Mostly nonpolar or polar? \\
+%
+%Do the molecules Cluster? If so, do cluster sizes differ? For example do glycerol and glucose  cluster a lot less? If there are differences in this mechanism could have implications in the mechanism of amyloid formation. \\
+%
+%How do the results compare with my previous results [discussion?] \\
+%
+%Does any of these molecules target the fibril core? [discussion?] \\
+%Is targeting the fibril core a plausible mechanism for breaking up amyloid fibrils? Address this. Previous studies don't really address them.  
+%In the discussion, I think it will also help to have a comparisons with previous studies, and experimental studies, if applicable. Again, look into literature for updates.
+
+%%% Google docs %%%
+\subsection{Comparison of scyllo, chiro, glycerol and glucose binding}
+
+Spatial distribution of bound inositol. From a single spatial distribution density for scyllo and chiro-inositol, chiro-inositol bound and passed through the intersheet channel in the fibril, whereas scyllo appears to be trapped at the entrance and does not move through the \"channel\". Note that a recent paper by Shea et al. also demonstrated that dye molecules PiB and ThT are able to penetrate into this tunnel.\cite{Wu:2011fd}
+% Contact map -- needed? Yes I think I should further quantitate their binding mode differences. Just by looking at the spatial maps, the differences are minor and need a trained eye.  Having a contact map by residue will be more rigorous. Also quantitate binding affinity per binding pocket. This helps define binding sites on the fibril more precisely. Overall I have more binding statistics than all of the other relevant studies out there, I should take advantage of this.
+
+\textbf{Key result}. Does inositol, glucose and glycerol, preferentially partition to different binding sites on the protofibrillar surface? Based on the global binding mode as shown in the spatial distribution suggest that this is the case. The global binding modes suggests that the active ligand, scyllo-inositol is able to bind the KLVFFAE face better. This can be related to fibril inhibition because this region is known for the initiation of aggregation. Furthermore, all of my models are converging on similar answers (that is binding to protofibrils, and binding to KLVFFAE segment), which is reassuring!
+Different binding modes between scyllo- and chiro-inositol.  Perhaps this is a reason why scyllo works better is that it adopts more inhibition-productive binding modes. It makes more specific interactions as indicated by our previous work on KLVFFAE. Chiro binding in the tunnel is an example just gets trapped in ``non-productive'' binding modes.
+
+TODO: Calculate the nonpolar and polar binding modes for each of these (that is the pie charts in the KLVFFAE study). If there is a difference, I can then extrapolate and correlate these differences to the SAR of inositol.
+Todo: Binding constants - How do I calculate this?  Inositol never fully dissociates (when saturated) so, in this case, it is more of a residence time in the binding pocket(s). Yes calculate the residence time!  Hmm how do I calculate the residence time? This would link up with the binding kinetics.
+Differences in the spatial binding probabilities of inositol, glucose, and glycerol. 
+Scyllo-inositol preferentially bind the face containing the residues LVFFA, which are residues at the central hydrophobic core of Abeta. [Elaborate]
+By contrast, chiro-inositol and glucose molecules predominantly bind to the beta2 face. [Elaborate] As depicted in Figure XXX, there is no binding densities of glycerol at the surfaces of the protofibril at an occupancy of YYY, suggesting that glycerol does not significantly bind the solvent-exposed surface of the protofibril.
+
+\subsubsection{What are the major binding modes}
+
+\textbf{Faces}. The protofibril of Abeta has two beta-sheet faces. The beta1 face contains the residues LVFFA, and a mostly hydrophobic beta2 face containing the residues IIGLMVGGVVIA.  The spatial binding probability distributions depicted in Figure XXX show that scyllo-inositol has the largest binding density on the beta1 face, whereas chiro-inositol, glucose, glycerol has little or none, suggesting that the beta1 face represents a favorable binding site for scyllo-inositol. 
+  
+\textbf{Binding at the edges}. Both scyllo and chiro-inositol were found to bind at the edge parallel to a beta-strand and perpendicular to the long-axis of the fibril.  Binding modes at these edges may prevent strand elongation. [ elaborate - which residues? Look at the contact map.  The SDF indicates that binding to the edges are not even, that is on one side, there is more binding than the other. Why? ] Furthermore, inositol binds to the edge formed by the termini of the peptides and by the residues in the turn region of the protofibril.  However, it is unlikely that these regions lead to amyloid inhibition.
+
+Binding in the tunnel which is formed by the residues in the turn region of the protofibril (what should I call this region?). Shea called this a channel.
+
+Interestingly, a significant density of binding in the "tunnel" of Abeta42 was found for glycerol, glucose, and chiro-inositol, but not for scyllo-inositol.  Both chiro-inositol and glucose can bind inside the tunnel by forming a linearly-hydrogen bonded chain, while simultaneously forming hydrogen bonding and nonpolar contacts with the protein (Figure XXX -- snapshot of chiro and glucose binding). In corroboration with our results, several previous simulation studies of dye molecules ThT and PiB, and the polyphenol molecule morin binding have also observed similar binding modes in the same region. REF By contrast, scyllo-inositol does not significantly inside the tunnel, although it can sometimes intercalate between the sheets near the opening of the tunnel (Figure XXX - snapshot of scyllo binding at this region). 
+[Discussion - Although small molecules can bind inside the protofibril, these binding modes do not disrupt the integrity of the protofibril. We hypothesize that binding in this region may be an unproductive binding mode, which may decrease the activity of small molecules. We speculate that because scyllo-inositol is not trapped by unproductive binding modes, this may explain why scyllo-, but not chiro-inositol, is active in the inhibition of Abeta42.]
+
+Summary and discussion of how the binding modes observed in our simulation studies here relates to the Abeta amyloid inhibition. Our results suggest that the most likely mechanism of action of scyllo-inositol is to bind the faces of the protofibril formed from the CHC residues.
+
+\textbf{Binding in clusters}
+
+DATA NOT AVAILABLE YET - BUT I EXPECT THAT INOSITOL SHOULD ALSO CLUSTER IN THIS CASE. BUT NOT SURE ABOUT GLUCOSE OR GLYCEROL.  I DONÕT EXPECT THEM TO CLUSTER AS MUCH.
+At higher concentrations, we find that both scyllo and chiro-inositol bind the surface of the Abeta protofibril in clusters.  Inositol form self-interactions by making nonpolar and polar
+Our results are consistent with our previous binding simulations which indicated that inositol binds to amyloid fibrils in a supramolecular form, suggesting that supramolecular binding modes of small molecule inhibitors may play a role in amyloid inhibition.  Furthermore, our results are supported by simulation studies by Shea and co-workers, and experimental observation of CR binding (37) by Kr—l and co- workers. might bind to [ Note that I took this sentence from SheaÕs paper. They had intended to say that they saw that CR can bind as dimers and that this observation is not an artifact of smulation but rather observed in other studies as well.  They did not really say thatÕs how it inhibits amyloid formation]
+
+TODO: In addition to stereochemistry-dependent activity, inositol was found to be inactive for inhibiting the amyloid formation of Abeta40 - put forth a few speculations based on the data of my current study to explain 
 
 
 %\begin{itemize*}
@@ -205,8 +269,46 @@ In the discussion, I think it will also help to have a comparisons with previous
 %% More quantitatively I probably _need_ to quantify affinity to the KLVFFAE face of the Abeta fibril for scyllo chiro, glucose
 %% Also should do epi.  But what if epi does not bind to KLVFFAE face? How would I then explain that epi is also active but does not go to KLVFFAE? This could disprove my entire hypothesis ... though its not likely because chiro goes to the KLVFFAE face.
 %% I think a Shea paper talks about the importance of preventing stacking
+
+%%% Google Docs Discussion %%%
+
+%The high affinity binding sites shows that É. what was this again?
 %
+%Binding mechanism of inositol
+%
+%Implications the mechanism of amyloid inhibition
+%
+%Comparison with other small-molecule amyloid inhibitors
+%
+%Structural differences between Abeta40 and Abeta42 protofibrillar models?
+
+Discussion - The core of the abeta42 fibril solved by Luhrs et al. protofibril of the Abeta42 can be thought of as an early beta-sheet oligomer of Abeta42. In contrast to the surface of the beta-oligomer of Abeta(16-22), the grooves on the surface of the oligomer are largely hydrophobic.
+
+Comparisons to earlier simulation studies of inhibitor binding to A$\beta$42 and A$\beta$40 
+Binding mechanism of inositol with abeta42. Inositol interestingly also seem to binding similarly to guanidinium ions around a hydrophobic surface. (Personal communication with Shekhar - Said to me during CBP that they see similar results from their guanidinium ion studies ... what does this really mean?)
+
+Relevance of the NMR models. I can say something about the suggested accuracy of the NMR models based on my sim. results?  Radius of gyration? The model falls apart? Does this mean that the NMR model is not ``right'' ? Is the pentamer a stable unit of the fibril ? ``accuracy'' of the NMR models -- how good are these models?  It is unlikely I'm going to be able to say much here, we have no idea what the actual experimental stability of this species is.  This pentamer fragment may not be stable on its own, but could be just a building block in a stable extended fibrillar structure of A$\beta$42.
+
+Comment on how good are these model peptides for understanding inhibitor binding interactions. Do I really want to discuss this? Depending on the model (the protofibril), the binding modes can be different depending on the aggregate morphology as we've shown in our earlier studies. 
+
+In our previous study, we examined binding with KLVFFAE. Binding modes with aggregates of model abeta peptides may have modes that differ from the full length amyloid. Because KLVFFAE has identical faces, the preferential binding to KLVFFAE was not identified.  For this reason, we observed that both scyllo and chiro were bound with similar Keq to the protofibril of KLVFFAE.  However, with differing faces, we were able to observe preferential binding of scyllo- to the KLVFFAE face.  Our result is consistent with other studies (experimental studies?) suggesting that targeting this segment of the Abeta may be effective in Abeta fibrillation.
+
+% Comment on MD simulations as a technique as a whole for understanding these types of interactions -- should this be a discussion point?
+ 
+Selectively targeting the KLVFFAE face may have implications for Abeta amyloid inhibition. Many lines of evidence show that KLVFFAE is responsible for fibril formation. (REF: de groot). Targeting the KLVFFAE for inhibition is a promising approach for amyloid inhibition. We hypothesize that binding to the A$\beta$(16-22) face may be a productive small-molecule binding mode for inhibition of lateral stacking of fibrils.  Scyllo- binds this face better than chiro-, glucose, and glycerol inactive solutes in fibril inhibition.  We hypothesize that the difference in their binding affinities to KLVFFAE face explains why scyllo- is active and not chiro-.  Abeta fibrils are less likely to grow as a single layer indefinitely without stacking together.  ie. require stacking to grow into the long unbranched morphology seen in EM. Because KLVFFAE is responsible for stack in fibrils, binding to this face prevents lateral association of fibrillar aggregates and can lead to inhibition of amyloid formation.
+
+% Both Joanne and Mark said tonnes of literature supporting this face is relevant for inhibition!!!
+Thus far, our results suggest that  scyllo best (or rather more specifically) to this face. This is an interesting conclusion / difference that thus only could tell from from the abeta42 model because it has two different faces which brought out the preferential binding of scyllo to the KLVFFAE face. 
+
+% Whole idea:  binding at the surface and preventing stacking, rather than insertion.  Insertion is not likely to be a productive binding mode for inhibition. Why? because I don't observe disruptive insertion (I need to define this) - scyllo doesn't really insert, chiro- does, but no disruption to the aggregate ...
+% More quantitatively I probably _need_ to quantify affinity to the KLVFFAE face of the Abeta fibril for scyllo chiro, glucose
+% Also should do epi.  But what if epi does not bind to KLVFFAE face? How would I then explain that epi is also active but does not go to KLVFFAE? This could disprove my entire hypothesis ... though its not likely because chiro goes to the KLVFFAE face.
+% I think a Shea paper talks about the importance of preventing stacking
+%%% Google Docs Discussion %%%
+
+
 \section{Conclusions}
+No difference in the fibril conformations with and without inositol in either the low or high molar ratio simulations. Does glucose bind more or less? If it does bind less, then it tells us that we might be onto something with scyllo-inositol even though the structure is subtly different.  Glucose does not necessarily bind ``less", but it does not bind on the right face ie. the KLVFFAE face Scyllo-inositol appears to preferentially bind the KLVFFAE face, more than glucose and chiro-inositol.  Furthermore scyllo does not bind in a hydrated tunnel formed in the protofibrillar aggregate.  Binding mode differences between active and inactive inhibitors of  Abeta suggest a mechanism of inhibition.
 
 \section{Acknowledgements}
 % We thank Drs. JoAnne McLaurin, Mark Nitz and Chris Neale for reading the manuscript and for providing insightful comments. 
