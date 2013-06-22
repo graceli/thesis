@@ -114,49 +114,42 @@ Where,
 %
 %The technical details involve getting all this data into a columnar form.  First plot the curves separately to identity outliers if any and see why they've deviated by looking at the trajectories for making further hypothesis.
 
-\subsubsection{Protofibrillar morphology}
-We first examine the global structural properties of the fibril fragment by looking at the fibril RMSD and RMSF. The NMR model starting structure was used as a reference.  In the absence of inositol, the RMSD from the fibril NMR model for most, but not all of the replicas plateau to a value of about 0.5 nm beginning at about 120 ns (Figure RSMD). The fibril remained aggregated in the simulations.  Note that there could be rare events (but I haven't looked into this too much) - Note that I need to discuss the unravelling in more detail.
+% Figure RSMD: RMSD of the fibril backbone showing the stability of the SSNMR A$\beta$ fibril in solution.
+% \textbf{Figure RSMF}: RMSF of the fibril backbone showing the stability of the SSNMR A$\beta$ fibril in solution.
 
-Figure RSMD: RMSD of the fibril backbone showing the stability of the SSNMR A$\beta$ fibril in solution.
+% Are the middle strands more likely to be fully hydrogen bonded? Are the side strands more likely to have their backbone hydrogen bonds broken?  Do any of the strands come off / lose all backbone hydrogen bonds ?
+% Stability of the fibril in the presence of ligand. Does glycerol stabilize the aggregate? Does glucose stabilize the fibril? 
 
-RSMF (root mean squared fluctuations) of the residues along each chain in the protofibrils show that the protofibrillar aggregate is dynamic in the simulation [Still vague be more specific, why is this significant?]. However, the $\beta$-sheet core of the protofibril stays in tact throughout the simulation. (Figure: RMSF)
+We first examine the global structural properties of the fibril fragment by examining the time evolution of the RMSD and RMSF of the protofibril in the presence and absence of the ligands scyllo-, chiro-inositol, glucose, and glycerol.  In the absence of inositol, starting from the fibril NMR model, the RMSD of the protofibril plateau to value of about 0.5 nm beginning at 120 ns (Figure~\ref{fig:protofibril_dynamics}A). 
+In the presence of ligands, the RMSD vs time of the protofibril over the course of 250 ns stabilized at 0.5 nm, indicating that the arrangement of the protofibril is similar in the presence and absence of the ligands.  
 
-\textbf{Figure RSMF}: RMSF of the fibril backbone showing the stability of the SSNMR A$\beta$ fibril in solution.
+The similarity in the average RMSD of the fibril suggests that the protofibrillar structure is not significantly perturbed in the presence of the ligands. RMSF versus time shows the deviation of each residue away from its average position in the protofibril. RSMF (root mean squared fluctuations) of the residues vary between X and Y along each chain in the protofibrils, suggesting that the protofibrillar aggregate is dynamic (I mean to say that the protofibril flops around, rather than remaining as a rock solid beta-sheet) in the simulation % [Still vaguely written; need to be more specific;  why is this observation significant? ]. 
+There is no difference in the time evolution of RSMF of the protofibril in the presence of ligands.
 
-The dynamics of the protofibril in the presence of cosolutes (ligands)
-RMSD vs time of the protofibril measured with rest to the initial starting structure shows that over the course of 250 ns the protofibril stabilizes at 5 Angstroms, indicating that the "arrangement" of the protofibril are all similar in the presence and absence of ligands.  The similarity in the average RMSD of the fibril measured in the presence and absence of ligands, suggesting that the solutes do not significantly perturb the structure of the protofibril. RMSF versus time shows the deviation of each residue away from its average position in the protofibril these fluctuations are all quite similar in the presence of cosolutes. Taken together, our results suggest that fibril morphology is not perturbed in the presence of inositol and cosolutes.
+Edge strands of the fibril show a significant decrease in their interchain hydrogen bonding, when compared to the inner peptide strands, suggesting that peptides at the edges of the protofibril are more mobile than non-edge peptides. These peptides were observed to unwind and partially detach from the protofibril core in some of our trajectories (Figure: interchain hbonding - \textbf{I don't have this data yet}). However, the $\beta$-sheet core of the protofibril stays intact throughout the simulation (Figure~\ref{fig:protofibril_dynamics}). (Note need to be careful here because the end chains have less HBs also because they don't have flanking peptides; The fibril remained aggregated in the simulations.  Note that there could be other rare events, which I haven't looked into too much.  Need to describe and discuss the unravelling in more detail.)
 
+Taken together, our results suggest that the presence of inositol and cosolutes do not significantly affect fibril morphology. Furthermore, the protofibril of \ab42 has similar stability at ligand:peptide ratios of 3:1 and 13:1, suggesting that fibrillar aggregate is not disaggregated by ligands over the time scale of the simulation. Fibril dynamics such as chain unwinding does not appear to be correlated with ligand binding as these events similar occur in the control simulations.
 
-% Hypothesis: The chains at the ends of the fibril are more ‘mobile’ than the chains in the middle. Are the middle strands more likely to be fully hydrogen bonded? Are the side strands more likely to have their backbone hydrogen bonds broken?  Do any of the strands come off / lose all backbone hydrogen bonds ?
-	
-In some of our replicas, the edge strands are more mobile than the inner strands, and can unwind and partially detach from the rest of the protofibril over the course of the simulation.  The strands at the end of the fibrils show a significant decrease in their interchain hydrogen bonding. (Note need to be careful here because the end chains have less HBs because they don't have flanking peptides) (Figure: interchain hbonding). 
-
-Stability of the fibril in the presence of ligand. Does glycerol stabilize the aggregate? Does glucose stabilize the fibril? Ab42 is stable at both ligand:peptide ratios of 3:1 and 13:1, suggesting that fibrillar aggregate is not disaggregated by ligands over the time scale of the simulation. Note that these observations of the fibril dynamics such as chain unwinding are not correlated with disruption caused by ligand binding as they occur in the control simulations as well.
-
+% Note that if the aggregate doesn't get messed up ... it is unlikely that the secondary structure is messed up as well.
 \textbf{Secondary structure analysis by DSSP}. Inositol does not appear to affect the secondary structure of the residues in the protofibril.  By eye, looks like there is no major differences in water, glycerol, glucose and inositol (NEED more quantitative description)
-Figure: Number of residues in secondary structure versus time.  Y-axis is number of residues in a particular SS conformation. 	
+Figure: Number of residues in secondary structure versus time.  Y-axis is number of residues in a particular SS conformation.
 
-% More advanced structural analysis?
-% Any large scale motions?
-% Worthwhile doing PCA?
-% Most likely not meaningful? (probably too noisy)
+% Which residues are most frequently bound by each of the ligands?
+% Mostly nonpolar or hydrogen bonding?
 
-%Which residues most frequently bound \\
-%
-%Over all binding modes.  Use the spatial probability maps to demonstrate this \\
-%Are there binding hot spots? If so where and what are they? [in the discussion relate these findings to the mechanism of amyloid formation]
-%
-%Mostly nonpolar or polar? \\
-%
-%Do the molecules Cluster? If so, do cluster sizes differ? For example do glycerol and glucose  cluster a lot less? If there are differences in this mechanism could have implications in the mechanism of amyloid formation. \\
-%
-%How do the results compare with my previous results [discussion?] \\
-%
-%Does any of these molecules target the fibril core? [discussion?] \\
-%Is targeting the fibril core a plausible mechanism for breaking up amyloid fibrils? Address this. Previous studies don't really address them.  
-%In the discussion, I think it will also help to have a comparisons with previous studies, and experimental studies, if applicable. Again, look into literature for updates.
+% Over all binding modes.  Use the spatial probability maps to demonstrate this
 
-%%% Google docs %%%
+% Are there binding hot spots? If so where and what are they? [in the discussion relate these findings to the mechanism of amyloid formation]
+
+% Do the molecules Cluster? If so, do cluster sizes differ? For example do glycerol and glucose  cluster a lot less? If there are differences in this mechanism could have implications in the mechanism of amyloid formation.
+
+% How do the results compare with my previous results [discussion?] \\
+
+% Does any of these molecules target the fibril core? [discussion?] \\
+% Is targeting the fibril core a plausible mechanism for breaking up amyloid fibrils? Address this. Previous studies don't really address them.  
+% In the discussion, I think it will also help to have a comparisons with previous studies, and experimental studies, if applicable. Again, look into literature for updates.
+
+
 \subsection{Comparison of scyllo, chiro, glycerol and glucose binding}
 
 Spatial distribution of bound inositol. From a single spatial distribution density for scyllo and chiro-inositol, chiro-inositol bound and passed through the intersheet channel in the fibril, whereas scyllo appears to be trapped at the entrance and does not move through the channel (is channel the right term for this?). In corroboration with our results, a MD study by Shea et al. indicated that dye molecules, PiB and ThT,  can penetrate into the same channel for the same protofibrillar model.\cite{Wu:2011fd} (This sentence is better for discussion).
