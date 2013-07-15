@@ -23,7 +23,6 @@
 %{Molecular Structure and Function, The Hospital for Sick Children, 555 University Avenue, Toronto, Ontario, Canada M5G 1X8}
 
 \chapter[MD simulations of PgaB-glucosamine binding]{Molecular Dynamics simulations of PgaB and monosaccharides of N-acetyl-glucosamine}
-% The contents of this section were adapted from an article published in the \emph{Journal of Physical Chemistry}.
 
 \emph{Reference}: Part of this work is published in ``PgaB Contains a Carbohydrate Binding Domain Required for Modification and Export of Poly-$\beta$-1,6-N-acetyl-D-glucosamine"
 \\
@@ -53,7 +52,7 @@ Although it is known that PgaB functions by binding to PNAG, the molecular basis
 Efforts to crystallize PgaB with oligosaccharides of varying lengths have been impeded by the weak binding of short sugar polymers (eg. di- and tri-saccharides), and the insolubility of long sugar polymer chains (eg. those longer than a hexamer). However, molecular dynamics (MD) simulations are not impeded by these challenges and are well-suited for characterizing carbohydrate-protein interactions.\cite{Fadda:2010p5889}
 
 % we examine putative binding site and modes of PNAG by examining the binding of GlcNAc and GlcNH2 monosaccharides with PgaB.
-In this study, we perform atomistic MD simulations of PgaB with the monosaccharide components of the functionally-relevant polymer dPNAG, $\beta$-N-acetyl-glucosamine (GlcNAc) and protonated $\beta$-glucosamine (GlcNH$_{3}^{+}$), to examine the putative polymeric binding site and binding mode.  The weak binding affinity of these monosaccharides allows us to use a fragment-based methodology to probe for carbohydrate binding sites.  This method has been employed successfully in our previous studies to examine the binding mechanism of inositol, a carbohydrate-like amyloid inhibitor, with amyloidogenic peptides and their aggregates.\cite{Li:2012bx}
+In this study, we perform atomistic MD simulations of PgaB with the monosaccharide components of the functionally-relevant polymer dPNAG, $\beta$-N-acetyl-glucosamine (GlcNAc) and protonated $\beta$-glucosamine (GlcNH$_{3}^{+}$), to examine the putative polymeric binding site and binding mode.  The weak binding affinity of these monosaccharides allows us to use a fragment-based methodology to probe for carbohydrate binding sites by employing large-scale brute force sampling.  This approach has been employed successfully in our previous studies to examine the binding mechanism of inositol, a carbohydrate-like amyloid inhibitor, with amyloidogenic peptides and their aggregates.\cite{Li:2012bx,New KLVFFAE paper}
 % Manuscript in preparation -- Li:2013Abreview
 % \textbf{The objectives of this study are to (1) identify preferred binding sites of GlcNAc and glucosamine, (2) gain insight into the polymer directionality and (3) identify protein structural motions which may be correlated with ligand binding.}
 
@@ -87,16 +86,21 @@ A second equilibration was performed for 1 ns in the NpT ensemble with isotropic
 For each of GlcNAc and \glucosamine, 13 independent MD simulations at 130 ns per replica were performed, respectively, yielding a total of 3.38 $\mu$s of sampling time.
 
 \subsection*{Analysis Protocol}
-To compute spatial binding probability densities of GlcNAc and \glucosamine, frames from our simulations were first fitted via RMSD alignment of the protein backbone atoms to an energy minimized and MD-equilibrated crystal structure. The density map corresponds to the fractional atomic occupancy of GlcNAc or \glucosamine molecules binned using a grid with 1 \angstrom\ resolution.  The density map for each of GlcNAc and \glucosamine\ was computed using $\sim$165,000 time frames. The Visual Molecular Dynamics (VMD) software package\cite{Humphrey:1996to} was used to calculate and graphically render the densities depicted in Figures~\ref{fig:sdf}, \ref{fig:groove}, and \ref{fig:salt_density_distribution}.
+To compute spatial binding probability densities of GlcNAc and \glucosamine, frames from our simulations were first fitted via RMSD alignment of the protein backbone atoms to an energy-minimized and MD-equilibrated crystal structure. The density map corresponds to the fractional atomic occupancy of GlcNAc or \glucosamine molecules binned using a grid with 1 \angstrom\ resolution.  The density map for each of GlcNAc and \glucosamine\ was computed using $\sim$165,000 time frames. The Visual Molecular Dynamics (VMD) software package\cite{Humphrey:1996to} was used to calculate and graphically render the densities depicted in Figures~\ref{fig:sdf}, \ref{fig:groove}, and \ref{fig:salt_density_distribution}.
 % By examining the structure - does the sugars arrange into predicted binding site (s)?
 
 \section{Results and Discussion}
+Regis: Need general comments on results: number binding and non-binding events, nature and distribution of binding sites, how typical of sugar binding to proteins?  Did my sampling strategy work? (It worked, just have to point it out in the paper)
 
-%\subsection{Protein Dynamics}
-%PgaB did not show any gross rearrangements or large perturbations during the simulations.
-%RMSD of the entire protein
-%RMSD of just the C-terminal domain
-%Fluctuation of the loop region (Need a control simulation of just PgaB without any sugars).
+\subsection{Protein Dynamics}
+% Need to add in equilibration RMSD of the entire protein
+The average root mean squared deviation of the protein from the X-ray crystal structure is about 0.2 nm.
+
+An important region is the loop spanning residues 610 to 623, which is located atop of the C-terminal domain groove. This loop is mobile and the residues in this region has a larger RMSF than other residues in the protein (Figure~\ref{fig:rmsf}).  Furthermore, this loop was found to fluctuate between open and closed conformations (Figure~\ref{fig:loop_histogram}). % I still need to make this figure.  This is just extracting the distance between two atoms which I can do fast if I can visualize the atoms and make the index files. 
+
+The $\beta$-hairpin loop secondary structure consists of residues in the $\beta$-sheet and turn conformations.  Overall, this loop on average has 51\% of its residues with structure 44\% in the coil,  28\% in the $\beta$-sheet and 18\% in turn conformations.
+% 0.51  0.44  0.28  0.05  0.05  0.18
+% (Need a control simulation of just PgaB without any sugars).
 
 \subsection{Comparisons of the binding modes of GlcNAc and \glucosamine}
 % GlcNAc molecules preferentially bind to residues in the N-terminal domain (Figure~\ref{fig:pgab_density}B and D). 
@@ -112,16 +116,16 @@ The spatial binding probability density of GlcNAc, depicted in Figure~\ref{fig:s
 
 % When comparing the densities of PNAG and glucosamine (depicted in Figures \ref{fig:pgab_density} and XXX, respectively) it can be seen that whereas PNAG predominantly binds the N-terminal domain, but glucosamine instead bind to the C-terminal domain, predominantly in the groove capped by the loop spanning residues XXX to YYY.
 
-By contrast, the spatial distribution of \glucosamine\ molecules depicted in Figure~\ref{fig:sdf} indicates that they preferentially bind to the C-terminal domain, with a significant density in the groove heavily lined with acidic and aromatic residues (Figure~\ref{fig:groove}).
-%Specifically, glucosamine molecules are found to cluster in the groove lined with acidic, and aromatic residues (Figure~\ref{fig:groove}).  
-Notably, consistent with the crystal structure of the C-terminal domain of PgaB (PgaB-CT) with bound \glucosamine, our simulation results indicate that both GlcNAc and \glucosamine\ possess binding sites at Trp613 and Trp552  (Figure~\ref{fig:groove}), which are conserved residues located in this groove.\cite{Little:2012dp}
+By contrast, the spatial distribution of \glucosamine\ molecules depicted in Figure~\ref{fig:sdf} indicates that they preferentially bind to the C-terminal domain. A significant binding density was found in the groove heavily lined with acidic and aromatic residues, which are often found in carbohydrate-binding sites (Figure~\ref{fig:groove}).  \textbf{What's special about this groove -- I should elaborate on this groove.  Could take some of the text from the paper.} 
+
+\textbf{Binding modes -- which groups are the sugars in contact with. How does that compare to X-ray densities} Notably, consistent with the crystal structure of the C-terminal domain of PgaB (PgaB-CT) with bound \glucosamine, our simulation results indicate that both GlcNAc and \glucosamine\ possess binding sites at Trp613 and Trp552  (Figure~\ref{fig:groove}), which are conserved residues located in this groove.\cite{Little:2012dp}
 %TODO get the correct reference for this.
 % Trp613, Trp552 are in this groove
 In support of this result, our previous study has shown that PgaB-CT is structurally similar to glycoside hydrolases,\cite{Little:2012dp} where the active site for these enzymes is also located in analogous grooves with a similar geometry. 
 
-Furthermore, our results indicate that the entire length of the groove can bind \glucosamine\ molecules, suggesting that this groove is likely to accommodate a linear polymer of \glucosamine\ (Figure~\ref{fig:groove}). Accordingly, in our simulations, \glucosamine\ molecules were observed to bind in this groove by forming linear hydrogen-bonded chains (Figure~\ref{fig:directionality}).  Taken together,  our results suggest that this C-terminal groove of PgaB is a binding site for the de-acetylated PNAG (dPNAG).   In contrast to the spatial distributions of GlcNAc and \glucosamine, salt ions do not significantly bind the protein  (Figure~\ref{fig:salt_density_distribution}). 
+Furthermore, our results indicate that the entire length of the groove can bind \glucosamine\ molecules, suggesting that this groove is likely to accommodate a linear polymer of \glucosamine\ (Figure~\ref{fig:groove}). Accordingly, in our simulations, \glucosamine\ molecules were observed to bind in this groove by forming linear hydrogen-bonded chains (Figure~\ref{fig:directionality}).  Taken together,  our results suggest that this C-terminal groove of PgaB is a binding site for the de-acetylated PNAG (dPNAG).   In contrast to the spatial distributions of GlcNAc and \glucosamine, salt ions do not significantly bind the protein  (Figure~\ref{fig:salt_density_distribution}).  Regis: Why not? (salt I think) Point out what's missing ...
 
-Together, the morphology of the overall binding density of both GlcNAc and \glucosamine\ paints a molecular picture of the putative binding mechanism and export of PNAG. As PNAG is being shuttled through PgaB on to the next protein in the system, it initially binds at the cleft between the N- and C-terminal domains to reach the active site in order to undergo de-N-acetylation.  Our simulations suggest that as the polymer is de-acetylated, the binding affinity of the resulting dPNAG to the C-terminal domain is increased. This hypothesis is currently being validated experimentally. We propose that PgaB-CT facilitates the export of  the substrate by favorably binding its de-acetylated region.  
+Together, the morphology of the overall binding density of both GlcNAc and \glucosamine\ paints a molecular picture of the putative binding mechanism and export of PNAG. As PNAG is being shuttled through PgaB on to the next protein in the system, it initially binds at the cleft between the N- and C-terminal domains to reach the active site in order to undergo de-N-acetylation.  Our simulations suggest that as the polymer is de-acetylated, the binding affinity of the resulting dPNAG to the C-terminal domain is increased. \textbf{Precedence of the simulations ... I think what Regis means here is that I should mentioned that simulations are important for hypothesis generation} This hypothesis is currently being validated experimentally. We propose that PgaB-CT facilitates the export of  the substrate by favorably binding its de-acetylated region.  
 
 % Based on our results, GlcNAc may be more likely than glucosamine to bind at this loop binding site because the the binding densities for GlcNAc, but not for glucosamine persist at higher isovalues (0.2). -- Needs to be verified.
 
@@ -143,7 +147,7 @@ Together, the morphology of the overall binding density of both GlcNAc and \gluc
 % directionality paper
 % http://www.jbc.org/content/274/37/26557.full
 
-This study demonstrates the utility of large-scale MD simulations in predicting carbohydrate-protein binding modes when combined with a force field that can reproduce sugar-protein interactions with relative accuracy (for example, GLYCAM\cite{Kirschner:2008ii}). Force fields for molecular simulations of carbohydrates have been recently reviewed here.\cite{Fadda:2010p5889}  Furthermore, we demonstrated the utility of computing spatial probability binding densities using monosaccharides to map carbohydrate binding sites. A recent study suggests that by building 3D density binding maps of carbohydrates and using this data with additional computational algorithms can increase the accuracy of identifying putative carbohydrate binding sites.\cite{Tsai:2012bj} As part of future work, it may be interesting to employ a similar approach to investigate the binding of oligosaccharides to PgaB.  
+This study demonstrates the utility of large-scale MD simulations in predicting carbohydrate-protein binding modes. \textbf{[Explain the success of BF massive sampling]  - On the basis of the weak binding affinities of monosaccharrides,  we were able to achieve statistically significant binding events of mono by performing simulations of many repeats of the same system using conventional MD simulations, which leading to the discovery of binding modes consisting of multiple sugars.}   Furthermore, our study indicates that when combined with a force field that can reproduce sugar-protein interactions with relative accuracy \textbf{Suggests previous failure if so, explain - I think I can resolve this part by saying using a force field which can reproduce binding modes of sugars} (for example, GLYCAM\cite{Kirschner:2008ii}). Force fields for molecular simulations of carbohydrates have been recently reviewed here.\cite{Fadda:2010p5889}  Furthermore, we demonstrated the utility of computing spatial probability binding densities using monosaccharides to map carbohydrate binding sites. A recent study suggests that by building 3D density binding maps of carbohydrates and using this data with additional computational algorithms can increase the accuracy of identifying putative carbohydrate binding sites.\cite{Tsai:2012bj} As part of future work, it may be interesting to employ a similar approach to investigate the binding of oligosaccharides to PgaB.  
 
 %%%%%%%%%%%%%%%%%%%%%% Future work %%%%%%%%%%%%%%%%%%%%%%
 % What is the name for positively charged glucosamine molecules? Is there a 3-letter abbrev. for it?
