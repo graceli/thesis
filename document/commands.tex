@@ -3,6 +3,41 @@
 %% In particular, you should put all of your \newcommand's,
 %% \newenvironment's, \newtheorem's, etc. (in other words, all the
 %% global definitions that you will need throughout your thesis)
+\makeatletter
+\newcommand*{\rightharpoonupfill@}{%
+  \arrowfill@\relbar\relbar\rightharpoonup
+}
+
+\newcommand*{\leftharpoondownfill@}{%
+  \arrowfill@\leftharpoondown\relbar\relbar
+}
+
+\newcommand{\xrightleftharpoons}[2][]{%
+  \ensuremath{%
+    \mathrel{%
+      \settoheight{\dimen@}{\raise 2pt\hbox{$\rightharpoonup$}}%
+      \setlength{\dimen@}{-\dimen@}%
+      \edef\CA@temp{\the\dimen@}%
+      \settoheight\dimen@{$\rightleftharpoons$}%
+      \addtolength{\dimen@}{\CA@temp}%
+      \raisebox{\dimen@}{%
+        \rlap{%
+          \raisebox{2pt}{%
+            $%
+            \ext@arrow 0359\rightharpoonupfill@{\hphantom{#1}}{#2}%
+            $%
+          }%
+        }%
+        \hbox{%
+          $%
+          \ext@arrow 3095\leftharpoondownfill@{#1}{\hphantom{#2}}%
+          $%
+        }%
+      }%
+    }%
+  }%
+}
+\makeatother
 
 \renewcommand{\nomname}{List of Symbols and Acronyms}
 
