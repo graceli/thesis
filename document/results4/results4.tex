@@ -85,17 +85,19 @@ To compute spatial binding probability densities of GlcNAc and \glucosamine, sim
 % By examining the structure - does the sugars arrange into predicted binding site (s)?
 
 \section{Results and Discussion}
-Regis: Need general comments on results: number binding and non-binding events, nature and distribution of binding sites, how typical of sugar binding to proteins?  Did my sampling strategy work? (It worked, just have to point it out in the paper)
+Regis: Need general comments on results: number binding and non-binding events - do I really need this? Nature and distribution of binding sites, how typical of sugar binding to proteins?  
 
 \subsection{Protein Dynamics}
+Extensive molecular dynamics simulations were performed on a composite structure of PgaB in the presence of $\beta$-D-GlcNAc and $\beta$-D-GlcNH$_{3}^{+}$. In all of the simulations, PgaB did not show any gross rearrangements or large domain perturbations. The average root mean squared deviation of the backbone atoms of PgaB (by excluding the loop regions) from the X-ray crystal structure is ~0.2 nm.\ref{fig:rmsd}
+
 % Need to add in equilibration RMSD of the entire protein
-The average root mean squared deviation of the protein from the X-ray crystal structure is about 0.2 nm.
-
-An important region is the loop spanning residues 610 to 623, which is located atop of the C-terminal domain groove. This loop is mobile and the residues in this region has a larger RMSF than other residues in the protein (Figure~\ref{fig:rmsf}).  Furthermore, this loop was found to fluctuate between open and closed conformations (Figure~\ref{fig:loop_histogram}). % I still need to make this figure.  This is just extracting the distance between two atoms which I can do fast if I can visualize the atoms and make the index files. 
-
-The $\beta$-hairpin loop secondary structure consists of residues in the $\beta$-sheet and turn conformations.  Overall, this loop on average has 51\% of its residues with structure 44\% in the coil,  28\% in the $\beta$-sheet and 18\% in turn conformations.
+An important structural feature of PgaB is the presence of a $\beta$-hairpin loop, spanning residues 610 to 623, which is located on top of the C-terminal domain groove and pinches off the groove in the crystal structure (Figure~\ref{fig:XXX} - A figure which just shows the structure of the protein).  The loop retains its secondary structure in all of our simulations: On average,  51\% of the residues are structured.  \textbf{44\%,  28\% and 18\% of the residues are in the coil, $\beta$-sheet and turn conformations, respectively -- this is not very useful.  More useful to have a barplot of the fraction of time in SS for each residue.}
 % 0.51  0.44  0.28  0.05  0.05  0.18
 % (Need a control simulation of just PgaB without any sugars).
+
+Furthermore, these residues possess the highest root-mean-square fluctuations (Figure~\ref{fig:rmsf}), indicating that the loop is highly mobile. The distribution of atomic distances between the C$_\alpha$ atoms of residues ASN616 (a residue in the loop) and GLY361 of the loop spanning residues X to Y depicted in (Figure ~\ref{fig:rmsf}) shows that the loop adopts a range of positions, from about 0.7 to 2.3 nm in distance, with respect to the position of the C-terminal groove.  \textbf{We hypothesize that the loop (and its flexibility) is involved in the export process whereby its movement over the binding groove facilitates the binding of the substrate polymer in the C-terminal domain.}
+% Loop clamping. Perhaps the loop may periodically open and clamp down (ie. bind particular sugars with higher affinity) on particular forms of the sugar on the PNAG.  It may clamp down for glucosamine or GlcNAc - we don't have any data that suggests this. 
+% Not sure how this will relate to the overall mechanism - Based on our results, GlcNAc may be more likely than glucosamine to bind at this loop binding site because the the binding densities for GlcNAc, but not for glucosamine persist at higher isovalues (0.2). -- Needs to be verified.
 
 \subsection{Comparisons of the binding modes of GlcNAc and \glucosamine}
 % GlcNAc molecules preferentially bind to residues in the N-terminal domain (Figure~\ref{fig:pgab_density}B and D). 
@@ -122,27 +124,18 @@ Furthermore, our results indicate that the entire length of the groove can bind 
 
 Together, the morphology of the overall binding density of both GlcNAc and \glucosamine\ paints a molecular picture of the putative binding mechanism and export of PNAG. As PNAG is being shuttled through PgaB on to the next protein in the system, it initially binds at the cleft between the N- and C-terminal domains to reach the active site in order to undergo de-N-acetylation.  Our simulations suggest that as the polymer is de-acetylated, the binding affinity of the resulting dPNAG to the C-terminal domain is increased. \textbf{Precedence of the simulations ... I think what Regis means here is that I should mentioned that simulations are important for hypothesis generation} This hypothesis is currently being validated experimentally. We propose that PgaB-CT facilitates the export of  the substrate by favorably binding its de-acetylated region.  
 
-% Based on our results, GlcNAc may be more likely than glucosamine to bind at this loop binding site because the the binding densities for GlcNAc, but not for glucosamine persist at higher isovalues (0.2). -- Needs to be verified.
-
 % This result further supports the ability of MD simulations and our methodology to identify carbohydrate-protein binding sites. 
 % with the fact that these residues are conserved across PgaB  homologues. \textbf{See Dustin's first pgab paper} REF
 % Notably, in our sim- ulations, glucosamine was found to adopt a binding mode consistent with the crystal structure
 % Save this for the discussion section? Moreover, our simulations identified carbohydrate binding to Trp613, a key conserved residue across PgaB homologues that is found in the C-terminal domain loop spanning residues 613 to 619.
-% TODO: Make a figure from MD showing glucosamine binding to compare to X-ray.
-% TODO: Note that I should redo these plots with the correct density maps where I‚Äôve correctly trjcatted the PgaB trajectories
-% TODO: Note that here Kd calculations might help with hypothesizing which glcnac or glucosamine that binds there with high Kds.
-% Because of the mobility of this loop region, we hypothesize that this loop may be involved in the export process whereby the opening and closing of this loop over the binding groove facilitate the export and stabilize the polymer for binding at the enzymatic active site.
-% Loop clamping. Perhaps the loop may periodically open and clamp down (ie. bind particular sugars with higher affinity) on particular forms of the sugar on the PNAG.  It may clamp down for glucosamine or GlcNAc. 
-
+ 
 % \textbf{I feel like this is really speculative, because its based on one snapshot - When a vector is drawn from the CX carbon to the nitrogen atom on the $NH_{3}^{+}$ group of glucosamine, we observe that these vectors point towards the N-terminal domain. Based on this result, we speculate that the (reducing or non-reducing end of the polymer?) to (reducing/non-reducing) end of the polymer extends from the N-terminal towards the C-terminal of PgaB.  This hypothesized polymer directionality is consistent with our proposed mechanism of synthesis and export whereby de-acetylation in PgaB-NT occurs prior to the binding of de-acetylated-PNAG by PgaB-CT.  Note that the hydrogen-bonded chain spanning the first three monomers in the groove shown in Figure~\ref{fig:} mimics the linkage pattern of PNAG, except you would have to rotate the schematic of PNAG by 180 degrees. See PNAG clipped from Little 2012, Figure S7.}
-
 % I don't fully understand the directionality business.  Here is a hack job at summarizing what it is from readings.
 % From wikipedia -- An oligosaccharide has both a reducing and a non-reducing end. The reducing end of an oligosaccharide is the monosaccharide residue with hemiacetal functionality, thereby capable of reducing the Tollens‚Äô reagent, while the non-reducing end is the monosaccharide residue in acetal form, thus incapable of reducing the Tollens‚Äô reagent.[2] The reducing and non-reducing ends of an oligosaccharide are conventionally drawn with the reducing-end monosaccharide residue furthest to the right and the non-reducing (or terminal) end furthest to the left.[2]
-
 % directionality paper
 % http://www.jbc.org/content/274/37/26557.full
 
-This study demonstrates the utility of large-scale MD simulations in predicting carbohydrate-protein binding modes.  On the basis of the weak binding affinities of monosaccharides,  we were able to accurately predict binding modes and binding sites of GlcNac and glucosamine for PgaB by performing independent MD simulations of PgaB in the presence of high concentrations of monosaccharides.  Our study indicates that when combined with a force field that can reproduce sugar-protein interactions with accuracy (for example, GLYCAM\cite{Kirschner:2008ii}). Force fields for molecular simulations of carbohydrates have been recently reviewed here.\cite{Fadda:2010p5889}  Furthermore, we demonstrated the utility of computing spatial probability binding densities using monosaccharides to map carbohydrate binding sites. A recent study suggests that by building 3D density binding maps of carbohydrates and using this data with additional computational algorithms can increase the accuracy of identifying putative carbohydrate binding sites.\cite{Tsai:2012bj} As part of future work, it may be interesting to employ a similar approach to investigate the binding of oligosaccharides to PgaB.  
+This study demonstrates the utility of large-scale MD simulations in predicting carbohydrate-protein binding modes. \textbf{The results of this study provided insight for refining the mechanistic hypothesis for the role of PgaB in the export of PNAG.}  \textbf{Did my sampling strategy work? (It worked, just have to point it out in the paper)} On the basis of the weak binding affinities of monosaccharides,  we were able to accurately predict binding modes and binding sites of GlcNac and glucosamine for PgaB by performing independent MD simulations of PgaB in the presence of high concentrations of monosaccharides.  Our study indicates that when combined with a force field that can reproduce sugar-protein interactions with accuracy (for example, GLYCAM\cite{Kirschner:2008ii}). Force fields for molecular simulations of carbohydrates have been recently reviewed here.\cite{Fadda:2010p5889}  Furthermore, we demonstrated the utility of computing spatial probability binding densities using monosaccharides to map carbohydrate binding sites. A recent study suggests that by building 3D density binding maps of carbohydrates and using this data with additional computational algorithms can increase the accuracy of identifying putative carbohydrate binding sites.\cite{Tsai:2012bj} As part of future work, it may be interesting to employ a similar approach to investigate the binding of oligosaccharides to PgaB.  
 
 %%%%%%%%%%%%%%%%%%%%%% Future work %%%%%%%%%%%%%%%%%%%%%%
 % What is the name for positively charged glucosamine molecules? Is there a 3-letter abbrev. for it?
@@ -168,6 +161,20 @@ This work was done in collaboration with Dustin Little, Dr. Lynne Howell and Dr.
 \includegraphics[width=4in]{figures/results4/sugar_structures.pdf}
 \caption[Molecular structures of GlcNAc and GlcNH$_2$]{Molecular structures of $\beta$-N-acetyl-glucosamine (GlcNAc) and $\beta$-glucosamine (GlcNH$_2$).}
 \label{fig:nag}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=4in]{figures/results4/rmsd.pdf}
+\caption[RMSD vs. time of PgaB]{Average RMSD of the protein from the crystal structure, in the presence of GlcNAc, with the loop region spanning residues 610-623 removed. Error in the mean is represented by the pink shaded region.}
+\label{fig:rmsd}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=4in]{figures/results4/rmsf.pdf}
+\caption[RMSF of residues in PgaB]{Average root-mean-square fluctuation of residues in PgaB. \textbf{(1) I need to make sure that the green plot is actually the RMSF for the glucosamine system. There could have been a mix up with the data. Also, read off the RMSF numbers for the residues 610 - 623 (the loop residues) (2) I need to make sure that the trajectory that was used for the calculation was aligned properly. (3) Ask Chris for help in coloring by rmsf using vmd}}
+\label{fig:rmsf}
 \end{figure}
 
 %\begin{figure}[htbp]
