@@ -4,8 +4,8 @@ bibtex introduction.aux
 bibtex methods.aux
 bibtex results1/results1.aux
 bibtex results2/results2.aux
-bibtex results3/results2.aux
-bibtex results4/results2.aux
+bibtex results3/results3.aux
+bibtex results4/results4.aux
 bibtex conclusions/conclusions.aux
 
 # make nomenclature
