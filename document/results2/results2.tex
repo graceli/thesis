@@ -5,7 +5,7 @@ The contents of this section were adapted from an article published in the \emph
 \\
 \\
 \emph{Reference}:
-Li, G., Rauscher, S., Baud, S., & Pom\`{e}s, R. (2012). Binding of Inositol Stereoisomers To Model Amyloidogenic Peptides. Journal of Physical Chemistry B, 116(3), 1111–1119.
+Li, G., Pomès, R. (2013). Binding Mechanism of Inositol Stereoisomers to Monomers and Aggregates of A$\beta$(16-22). Journal of Physical Chemistry B, 117(22), 6603–6613. doi:10.1021/jp311350r
 \\
 \\
 \emph{Contributions}:
@@ -15,15 +15,11 @@ Grace Li conducted the research and wrote the section. R\'{e}gis Pom\`{e}s provi
 
 \section{Summary}
 Alzheimer's disease (AD) is a severe neurodegenerative disease with no cure. A potential therapeutic approach is to prevent or reverse the amyloid formation of A$\beta$42, a key pathological hallmark of AD. We examine the molecular basis for stereochemistry-dependent inhibition of the formation of A$\beta$ fibrils \emph{in vitro} by a polyol,  \emph{scyllo}-inositol. We present molecular dynamics simulations of the monomeric, disordered aggregate, and protofibrillar states of A$\beta$(16-22), an amyloid-forming peptide fragment of full-length A$\beta$, successively with and without \emph{scyllo}-inositol and its inactive stereoisomer \emph{chiro}-inositol. Both stereoisomers bind monomers and disordered aggregates with similar affinities of 10--120 mM, whereas binding to $\beta$-sheet-containing protofibrils yields affinities of 0.2--0.5 mM commensurate with \emph{in vitro} inhibitory concentrations of \emph{scyllo}-inositol. Moreover,  \emph{scyllo}-inositol displays a higher binding specificity for phenylalanine-lined grooves on the protofibril surface, suggesting that  \emph{scyllo}-inositol coats the surface of A$\beta$ protofibrils and disrupts their lateral stacking into amyloid fibrils.\\
-% Refine -- is this statement important?  Carbohydrate is coming out of the blue ..
-% Also confusing to say that inositol modulates nonpolar interactions with glutamate ...
-% Furthermore, inositol adopts carbohydrate-like binding modes, where stereochemistry modulates the nonpolar binding specificity of inositol to glutamate and phenylalanine side chains. 
 
 \section{Introduction}
 One in eight people over the age of 65 has Alzheimer's Disease (AD), a progressive neurodegenerative disease that currently has no cure.\cite{Citron:2010p214} The amyloid cascade hypothesis states that the extracellular neuronal deposition of A$\beta$ amyloid plaque plays a central role in the pathogensis of AD.\cite{Solomon:2010p177} A$\beta$ is a peptide proteolytically cleaved from the amyloid precursor protein and is produced as two common alloforms, A$\beta$40 or A$\beta$42, which are 40 and 42 residues in length, respectively. In the diseased state, A$\beta$42 levels are elevated and the peptides deposit as extracellular A$\beta$ plaques.\cite{Haass:2007p226,Westaway:1997p4185}
 
 A$\beta$40 and A$\beta$42 are intrinsically-disordered peptides that self-aggregate \emph{in vitro} to form amyloid fibrils. Amyloid fibrils are protein aggregates with a characteristic cross-$\beta$ structure, which consists of in-register $\beta$-sheets with backbone hydrogen bonds running parallel to the long axis of the fibril.\cite{Petkova:2002p192} Moreover, smaller fragments of the full-length A$\beta$ sequence are also found to form amyloid \emph{in vitro}.\cite{Balbach:2000p49,Sawaya:2007p11} In particular, one of the shortest amyloid-forming peptides structurally characterized using solid-state NMR is KLVFFAE or A$\beta$(16-22).\cite{Balbach:2000p49} The residues LVFFA are believed to form the central hydrophobic core critical for the initiation of aggregation and fibril formation in the full-length A$\beta$ peptide.\cite{Wood:1995p190} Furthermore, single-point mutations in this region greatly affect the aggregation propensity of A$\beta$: familial mutations E22Q, E22K, and E22G, known as ``Dutch'', ``Italian'', and ``Arctic'' mutations, respectively, significantly accelerate fibril formation,\cite{Kim:2008ef} whereas the mutation F19T abolishes the formation of fibrils \emph{in vitro}.\cite{Esler:1996p288}
-% check the different mutations, might be missing one
 
 Amyloid fibril formation follows a complex pathway: prior to the appearance of fibrils \emph{in vitro}, amyloidogenic monomers self-aggregate into a variety of pre-fibrillar intermediate morphologies. While the fibril is an important state implicated in AD, recent research has shown that soluble oligomers as small as dimers and tetramers play a role in neurotoxicity.\cite{Bernstein:2009p165} In recent years, drug development and research efforts have been directed toward the development of therapeutic agents to prevent the self-aggregation and amyloid formation of A$\beta$, a promising treatment approach to target the underlying disease.\cite{Masters:2006p183,Citron:2010p214,Dasilva:2010p25} As a result, many different types of \emph{in vitro} amyloid inhibitors have been discovered, including peptides,\cite{EsterasChopo:2008p219,Sciarretta:2006p181,Chalifour:2003p161,Scrocchi:2002p178,Soto:2007dm} immunotherapies,\cite{Janus:2000p198,Solomon:2010p177} polyphenolic molecules,\cite{Masuda:2009p205,Berhanu:2010p230,Ehrnhoefer:2008p8} and other small molecules.\cite{Hawkes:2009p189,Masuda:2009p205,Necula:2007p227,Nitz:2008p13} These approaches have been reviewed in detail elsewhere.\cite{Citron:2010p214,Dasilva:2010p25}
 
@@ -39,39 +35,47 @@ In a previous study,\cite{Li:2012p853} we investigated the stereochemistry-depen
 
 In this paper, we consider the role of sequence-specific interactions of inositol by examining its binding to A$\beta$(16-22), an amyloidogenic peptide that is part of the central hydrophobic core of fibrillar A$\beta$42.  Because the amyloidogenic species with which inositol may interact are not known, we successively examine its binding to three different morphologies: monomer, disordered oligomer, and protofibrillar-like aggregate ($\beta$-oligomer).  Using a systematic comparative approach, MD simulation studies of each of the aforementioned states are successively carried out in the presence and absence of \emph{scyllo}-inositol and its inactive stereoisomer, \emph{chiro}-inositol.  Moreover, we examine the effect of varying inositol:peptide molar ratios on the binding equilibria of inositol to monomers and aggregates of A$\beta$(16-22). From a total of 24.5 $\mu$s of simulation, we compute binding constants ($K_{eq}$) and characterize the binding modes of inositol to the different peptide aggregation states considered. The results of our study have implications for the mechanism of amyloid inhibition by small molecules and for the rational design of more efficacious putative therapeutics for AD and related amyloid disorders.
 
-%\begin{table}\footnotesize\centering
-%    \begin{center}
-%    \vspace{10pt}
-%    \caption{Summary of simulation systems}
-%    \label{tbl:simulations}
-%      \begin{tabular}{|>{\centering}p{3cm} | >{\centering}*{7}{p{1cm}<{\centering}|}}
-%        \hline
-%        System & $N_{peptides}$ & $N_{inositol}$ & $c_{peptide}$ (mM) & $c_{Inositol}$ (mM) & molar ratio & $N_{replicas}$ & Total time ($\mu$s) \\
-%        \hline
-%        \hline
-%        monomer (STDR)		 & 1 & 0   & 61.5     &  0      & -       & 33   & 3.56 \\
-%        monomer 				 & 1 & 0   & 4.5       &  0      & -       & 1117   & 5.59 \\
-%        \hline
-%        \multirow{2}{*}{\parbox{2.5cm}{with \emph{chiro}- or \emph{scyllo}-inositol}}  & 1 & 2   & 61.5   & 123   & 2:1    & 1117  & 5.59 \\
-%         						 & 1 & 15   & 4.5   & 70     & 15:1  & 1117  & 8.25 \\
-%        \hline
-%        \hline
-%        disordered aggregate 		 & 4 & 0   & 104 & 0     & -       & 8 & 1.44 \\
-%        \hline
-%        \multirow{2}{*}{\parbox{2.5cm}{with \emph{chiro}- or \emph{scyllo}-inositol}} & 4 & 2   & 104 & 52   & -       & 5 & 1.00 \\
-%                        			 	 & 4 & 15 & 18   & 70   & 15:4   & 8 & 1.44\\
-%                                			 %& 4 & 45 & 18   & 209 & 45:4 & 5 & 1.00 \\
-%        \hline
-%        \hline
-%       $\beta$-oligomer & 16 & 0 & 148 & 0     & -     & 1   & 0.13 \\
-%        \hline
-%        \multirow{3}{*}{\parbox{2.5cm}{with \emph{chiro}- or \emph{scyllo}-inositol}} & 16 & 4 & 148 & 37   & 4:16 & 18  & 0.54 \\
-%						 & 16 & 64 & 15 & 62   & 64:16 & \hl{6}   & \hl{0.60} \\
-%						 & 16 & 64 & 52 & 208 & 64:16 & \hl{6}   & \hl{0.60} \\
-%        \hline
-%      \end{tabular}
-%    \end{center}
-%  \end{table}
+\begin{table}\footnotesize\centering
+    % \begin{center}
+    \vspace{10pt}
+    \caption{Summary of simulation systems}
+    \label{tbl:simulations}
+      \begin{tabular}{|>{\centering}p{3cm} | >{\centering}*{7}{p{1cm}<{\centering}|}}
+        \hline
+        System & $N_{peptides}$ & $N_{inositol}$ & $c_{peptide}$ (mM) & $c_{Inositol}$ (mM) & molar ratio & $N_{replicas}$ & Total time ($\mu$s) \\
+        \hline
+        \hline
+	Glu dipeptide & 1 & 0   & -   & 0   & -  & 5  & 0.5 \\
+	with \emph{chiro}- or \emph{scyllo}-inositol & 1 & 4  & -  & 246   & 4:1    & 5  & 0.5 \\
+        \hline
+        	Phe dipeptide & 1 & 0   & -   & 0   & -  & 5  & 0.5 \\
+	with \emph{chiro}- or \emph{scyllo}-inositol & 1 & 4  & -  & 246   & 4:1    & 5  & 0.5 \\
+        \hline
+        A$\beta$(16-22) monomer (STDR)		 & 1 & 0   & -     &  0      & -       & 33   & 3.56 \\
+        A$\beta$(16-22) monomer 				 & 1 & 0   & -       &  0      & -       & 1117   & 5.59 \\
+        \hline
+        \multirow{2}{*}{\parbox{2.5cm}{with \emph{chiro}- or \emph{scyllo}-inositol}}  
+        						& 1 & 2   & -   & 123   & 2:1    & 1117  & 5.59 \\
+         						 & 1 & 15   & -   & 70     & 15:1  & 1117  & 8.25 \\
+        \hline
+        \hline
+        disordered aggregate 		 & 4 & 0   & 104 & 0     & -       & 8 & 1.44 \\
+        \hline
+        \multirow{2}{*}{\parbox{2.5cm}{with \emph{chiro}- or \emph{scyllo}-inositol}} 
+        						 & 4 & 2   & 104 & 52   & 2:4     & 5 & 1.00 \\
+                        			 	 & 4 & 15 & 18   & 70   & 15:4   & 8 & 1.44 \\
+                                			 & 4 & 45 & 18   & 209 & 45:4 & 5 & 1.00 \\
+        \hline
+        \hline
+       $\beta$-oligomer & 16 & 0 & 148 & 0     & -     & 1   & 0.13 \\
+        \hline
+        \multirow{3}{*}{\parbox{2.5cm}{with \emph{chiro}- or \emph{scyllo}-inositol}} & 16 & 4 & 148 & 37   & 4:16 & 18  & 0.54 \\
+						 & 16 & 64 & 15 & 62   & 64:16 & 6   & 0.60 \\
+						 & 16 & 64 & 52 & 208 & 64:16 & 6   & 0.60 \\
+        \hline
+      \end{tabular}
+    % \end{center}
+  \end{table}
 
 \section{Materials and Methods}
 
@@ -112,11 +116,11 @@ In the sections below, we successively characterize the binding equilibrium of i
 
 We performed simulations of an A$\beta$(16-22) monomer successively in pure water and in the presence of \emph{scyllo}- and \emph{chiro}-inositol at inositol:peptide molar ratios of 2:1 and 15:1.  These molar ratios were chosen such that the corresponding inositol:residue ratios are above (2:1) and below (<1:1) the inositol:residue molar ratio at which inhibition of A$\beta$42 fibrils was observed \emph{in vitro}.\cite{McLaurin:2000p64}
 
-%\begin{figure}
-%\includegraphics[width=14.6cm]{figures/inos2_figures_monomers_revised.pdf}
-%\caption{Binding of inositol to an A$\beta$(16-22) monomer.  End-to-end probability distribution of A$\beta$(16-22) successively in pure water and in presence of \emph{scyllo}- and \emph{chiro}-inositol at inositol:peptide molar ratios of (A) 2:1 and (B) 15:1.  (C) Representative snapshots of the different binding modes of \emph{scyllo}- (left) and \emph{chiro}-inositol (right)  to the peptide monomer. Hydrogen bonds between inositol and backbone NH (blue) and CO (red) groups are shown as solid lines. (D) Percent of bound inositol molecules in contact with nonpolar and polar groups at an inositol:peptide molar ratio of 15:1. (E) Time-averaged number of nonpolar contacts (top), and hydrogen bonds (bottom) made by inositol  (\hl{at a molar ratio of 15:1}) to each residue.}
-%\label{fig:monomers}
-%\end{figure}
+\begin{figure}
+\includegraphics[width=14.6cm]{figures/inos2_figures_monomers_revised.pdf}
+\caption{Binding of inositol to an A$\beta$(16-22) monomer.  End-to-end probability distribution of A$\beta$(16-22) successively in pure water and in presence of \emph{scyllo}- and \emph{chiro}-inositol at inositol:peptide molar ratios of (A) 2:1 and (B) 15:1.  (C) Representative snapshots of the different binding modes of \emph{scyllo}- (left) and \emph{chiro}-inositol (right)  to the peptide monomer. Hydrogen bonds between inositol and backbone NH (blue) and CO (red) groups are shown as solid lines. (D) Percent of bound inositol molecules in contact with nonpolar and polar groups at an inositol:peptide molar ratio of 15:1. (E) Time-averaged number of nonpolar contacts (top), and hydrogen bonds (bottom) made by inositol  (at a molar ratio of 15:1) to each residue.}
+\label{fig:monomers}
+\end{figure}
 
 Independent of the presence of inositol, A$\beta$(16-22) is a disordered peptide in solution (Figure~\ref{fig:monomers}A,B) and is able to adopt both collapsed and extended states over the time scales of our simulation. The conformational equilibrium of A$\beta$(16-22), as measured by peptide end-to-end distance distributions, was unaffected by the presence of inositol at both inositol:peptide molar ratios considered (Figure~\ref{fig:monomers}A,B). The three peaks correspond to different intramolecular hydrogen-bonding arrangements (see Figures~\ref{fig:SI-monomersEedByHbonds} and \ref{fig:SI-monomersConformations} in the Supporting Information).\sethlcolor{yellow}
 
@@ -134,11 +138,11 @@ To characterize the binding geometry of inositol to Phe in detail, we performed 
 \emph{scyllo}-Inositol is more likely than \emph{chiro}-inositol to bind via hydrogen-bonding interactions: $\sim$28\% of bound \emph{scyllo}-inositol versus $\sim$21\% of bound \emph{chiro}-inositol molecules formed at least one hydrogen bond with the monomer. Inositol bound not only to the peptidic backbone of A$\beta$(16-22) but also to the charged side chains of glutamic acid (Glu) and lysine (Lys) residues. Both stereoisomers of inositol display similar hydrogen-bonding propensities to each of the residues in the peptide. % Does it make sense that scyllo and chiro have similar binding propensities, but that there is a smaller population of hbonds-bound-only chiro-inositols?
 Inositol molecules bound most favorably to Glu, where their interaction was dominated by hydrogen bonding to the carboxylate group (Figure~\ref{fig:monomers}E). Both nonpolar and hydrogen bonding propensities were independent of molar ratio (Figure~{\ref{fig:monomers}} and Figure~{\ref{fig:SI-monomersBinding}} in the Supporting Information). Furthermore, we found an equal fraction of monodentate and bidentate binding (Figure~\ref{fig:monomers_glu_phe}A) to the carboxylate group of Glu (Figure~\ref{fig:monomers_glu_phe}B). In contrast, less than 1\% of inositol molecules bound to Lys involved multiple hydrogen bonds to the ammonium group (Figure~\ref{fig:monomers_glu_phe}B).
 
-%\begin{figure}
-%\includegraphics[width=3.185in]{figures/inos2_figures_monomer_residues_pmf_color.pdf}
-%\caption{Binding of inositol to Glu and Phe dipeptides. Data for \emph{scyllo}- and \emph{chiro}-inositol are shown on the left and right panels, respectively. (A) Examples of snapshots of inositol bound to the carboxylate group of Glu. (B) Comparisons of the probability of inositol hydrogen bonding to the side chains of Lys and Glu. (C) Examples of nonpolar association between Phe and inositol. (D) Potential of mean force (PMF) of inositol with the phenyl ring of Phe relating $r$, the distance between the centers of geometry of the phenyl and inositol rings, to $\theta$, the planar angle between the rings. Contours are drawn at 0.2 kcal$\cdot$mol$^{-1}$ intervals. Face-to-face stacking for \emph{scyllo}-inositol appears on the PMF at $r=0.45$ nm and $\theta=12\degree$.}
-%\label{fig:monomers_glu_phe}
-%\end{figure}
+\begin{figure}
+\includegraphics[width=3.185in]{figures/inos2_figures_monomer_residues_pmf_color.pdf}
+\caption{Binding of inositol to Glu and Phe dipeptides. Data for \emph{scyllo}- and \emph{chiro}-inositol are shown on the left and right panels, respectively. (A) Examples of snapshots of inositol bound to the carboxylate group of Glu. (B) Comparisons of the probability of inositol hydrogen bonding to the side chains of Lys and Glu. (C) Examples of nonpolar association between Phe and inositol. (D) Potential of mean force (PMF) of inositol with the phenyl ring of Phe relating $r$, the distance between the centers of geometry of the phenyl and inositol rings, to $\theta$, the planar angle between the rings. Contours are drawn at 0.1 kcal$\cdot$mol$^{-1}$ intervals. Face-to-face stacking for \emph{scyllo}-inositol appears on the PMF at $r=0.45$ nm and $\theta=12\degree$.}
+\label{fig:monomers_glu_phe}
+\end{figure}
 
 %Furthermore, consistent with our previous study of (GA)$_4$, stereochemistry appears to modulate nonpolar binding, but not hydrogen bonding: \emph{scyllo}-inositol was found to bind preferentially to nonpolar groups on phenylalanine and glutamate over the other aliphatic nonpolar residues (Leu, Val and Ala) (Figure~\ref{fig:monomers}E). By contrast, \emph{chiro}-inositol made nonpolar contacts to Phe18, Phe19 and Glu22 with the same probability as with Ala21 (Figure~\ref{fig:monomers}E).
 
@@ -154,45 +158,44 @@ Inositol molecules bound most favorably to Glu, where their interaction was domi
 
 To probe the effect of inositol on the early aggregation stages of A$\beta$(16-22), we performed multiple sets of independent MD simulations with four initially disperse A$\beta$(16-22) monomers with inositol:peptide molar ratios of 2:4, 15:4, and 45:4, corresponding to inositol concentrations of 52 mM, 70 mM, and 209 mM, respectively (see Table~\ref{tbl:simulations}). In each of our simulation studies, the peptides spontaneously aggregated with one another over the course of approximately 40 ns, through both hydrogen bonding and nonpolar contacts, to form a disordered oligomer (Figure~\ref{fig:disordered}A). A significant fraction of the residues in the aggregate was in the coil conformation, with only a small fraction of $\beta$-sheet residues occurring in some of the 180-ns simulations (Figure~\ref{fig:disordered}B). Importantly, the distribution of the overall secondary structure of the oligomer was not affected by the presence of inositol, regardless of inositol:peptide molar ratio and inositol concentration (Figure~\ref{fig:disordered}B).
 
-%\begin{figure}
-%\includegraphics[width=7.96cm]{figures/inos2_figures_disordered_revised.pdf}
-%\caption{Binding of inositol to a disordered oligomer of A$\beta$(16-22).  (A) Example snapshots of \emph{scyllo}- (left) and \emph{chiro}-inositol (right) involving both nonpolar contacts and hydrogen bonding. (B) Fraction of residues in the coil, $\beta$-sheet/bridge, bend, and turn as classified by the DSSP algorithm. (C) Time-averaged number of nonpolar contacts (top) and hydrogen bonds (bottom) made by inositol to each residue (per peptide). Inset: Percent of inositol molecules bound to nonpolar and polar groups of the peptide oligomer at an inositol:peptide molar ratio of 45:4 (inositol concentration of 209 mM).}
-%\label{fig:disordered}
-%\end{figure}
+\begin{figure}
+\includegraphics[width=7.96cm]{figures/inos2_figures_disordered_revised.pdf}
+\caption{Binding of inositol to a disordered oligomer of A$\beta$(16-22).  (A) Example snapshots of \emph{scyllo}- (left) and \emph{chiro}-inositol (right) involving both nonpolar contacts and hydrogen bonding. (B) Fraction of residues in coil, $\beta$-sheet/bridge, bend, and turn conformations as classified by the DSSP algorithm. (C) Time-averaged number of nonpolar contacts (top) and hydrogen bonds (bottom) made by inositol to each residue (per peptide). Inset: Percent of inositol molecules bound to nonpolar and polar groups of the peptide oligomer at an inositol:peptide molar ratio of 45:4 (inositol concentration of 209 mM).}
+\label{fig:disordered}
+\end{figure}
 
 We further characterized the molecular organization of the aggregate by quantifying peptide inter- and intramolecular hydrogen-bonding and nonpolar contacts as measures of the extent of aggregation.  Hydrophobic packing was not affected by the presence of inositol: the equilibrium number of inter-peptide hydrophobic contacts formed per peptide remained approximately 15 regardless of the molar ratio (Figure~\ref{fig:SI-disorderedNumContacts} in the Supporting Information). The average number of intermolecular peptide-peptide hydrogen bonds per chain was approximately the same as the number of intramolecular hydrogen bonds (1.5 vs 1) (Figure~\ref{fig:SI-disorderedNumContacts} in the Supporting Information). Overall, the presence of inositol had no significant effect on the aggregation kinetics or on the morphology of A$\beta$(16-22) oligomers as measured by intermolecular and intramolecular contacts (Figures~\ref{fig:SI-disorderedContactsTS} and \ref{fig:SI-disorderedCluster} in the Supporting Information).
 
-%\begin{table}\footnotesize
-%  \vspace{10pt}
-%  \caption{Summary of equilibrium constants ($K_{eq}$) for each system in the study.}
-%  \label{tbl:bindingConstants}
-%  \begin{minipage}{15cm}
-%    \renewcommand{\thefootnote}{\thempfootnote}
-%    \renewcommand{\footnoterule}{}
-%    % \centering
-%      \begin{center}
-%    \begin{tabular}{| l | *{6}{ c |}}
-%       \hline
-%         System & Molar ratio\footnote{Inositol:peptide molar ratios} & $scyllo$\footnote{$K_{eq}$ is in units of mM. The standard error is shown within parentheses.} & $chiro$\footnotemark[\value{mpfootnote}] & $1 / N_{peptides}$ & $scyllo$\footnote{Constants in units of mM, estimated by multiplying $K_{eq}$ of monomeric A$\beta$(16-22) (inositol is present at a molar ratio of 15:1) with $1/N_{peptides}$.} & $chiro$\footnotemark[\value{mpfootnote}] \\
-%         \hline
-%         \hline
-%         Monomer & 2:1 & 127 (3) & 104 (1) & 1 & 127 & 104 \\ 
-%          	       & 15:1 & 120 (2) & 90 (2) & 1 & 120 & 90 \\ 
-%	\hline
-%         Disordered oligomer & 2:4 & 28 (4) & 16 (2) & 0.25 & 30 & 23 \\ 
-%          			       & 15:4 & 18 (2) & 11(1) & 0.25 & - & - \\ 
-%			       	       % For now, comment this out because this wasn't in the previous manuscript
-%				       % and I'm not sure how to address this for now. 
-%				       & 45:4 & 1.6 (0.4) & 1.9 (0.9) & 0.25 & - & - \\ 
-%	\hline
-%         $\beta$-oligomer & 4:16 & 15 (2) & 11 (2) & 0.0625 & 8 & 6\\
-%         				  & 64:16 &  0.5 (0.3) & 0.18 (0.11) & 0.0625 & - & -\\
-%         \hline
-%     \end{tabular}   
-%  \end{center}
-%  \end{minipage}
-%  \centering
-%  \end{table}
+\begin{table}\footnotesize
+  \vspace{10pt}
+  \caption{Summary of equilibrium constants (K$_{eq}$) and number of reversible binding events (N$_{binding}$)}
+
+  \label{tbl:bindingConstants}
+  \begin{minipage}{15cm}
+    \renewcommand{\thefootnote}{\thempfootnote}
+    \renewcommand{\footnoterule}{}
+    % \centering
+      \begin{center}
+    \begin{tabular}{| l | *{6}{ c |}}
+       \hline
+         System & Molar ratio\footnote{Inositol:peptide molar ratios} & K$_{eq,scyllo}$\footnote{K$_{eq}$ is in units of mM. The standard error is shown within parentheses.} & K$_{eq,chiro}$\footnotemark[\value{mpfootnote}]  & N$_{binding,scyllo}$\footnote{N$_{binding}$ is the total number of reversible inositol binding events.} & N$_{binding,chiro}$\footnotemark[\value{mpfootnote}] \\
+         \hline
+         \hline
+         Monomer & 2:1 & 127 (3) & 104 (1)  &  150991 & 185454 \\ % & 104 \\ 
+          	       & 15:1 & 120 (2) & 90 (2)  & 186948 & 250922  \\ % & 90 \\ 
+	\hline
+         Disordered oligomer & 2:4 & 28 (4) & 16 (2) &  21882 & 24584 \\ % & 23 \\ 
+          			       & 15:4 & 18 (2) & 11(1) & 78483 & 102351 \\ % & - \\ 
+				       % & 45:4 & 1.6 (0.4) & 1.9 (0.9) & 15501 & 18101 \\ 
+	\hline
+         $\beta$-oligomer & 4:16 & 15 (2) & 11 (2) & 20381 & 24616 \\ % & 6\\
+         				  & 64:16 &  0.5 (0.3) & 0.18 (0.11) & 50135 & 56842 \\ % & -\\
+         \hline
+     \end{tabular}   
+  \end{center}
+  \end{minipage}
+  \centering
+  \end{table}
 
 The equilibrium constant ($K_{eq}$) of inositol with the disordered oligomer at molar ratios 2:4 and 15:4 ranged from 10 to 30 mM (see Table~\ref{tbl:bindingConstants}).
 % Although these numbers are much smaller than $K_{eq}$ of the monomer, they become comparable when normalized by the number of peptides in the system, $K_{eq}$ (oligomer) $\times$ 4 = 170 mM = $K_{eq}$(monomer), indicating that inositol does not bind small oligomeric aggregates cooperatively. 
@@ -204,13 +207,13 @@ Inversely, \emph{scyllo}-inositol was more likely to bind by hydrogen bonding on
 
 \subsection{$\beta$-oligomer}
 
-%\begin{figure}
-%\includegraphics[width=8.1cm]{figures/inos2_figures_beta.pdf}
-%\end{figure}
-%\begin{figure}[t!]
-%\caption{Inositol binding to a $\beta$-oligomer of A$\beta$16-22 (inositol present at a concentration of 208 mM). Schematic depiction of $\beta$-oligomer twisting: (A) the initial rectangular dual-stacked $\beta$-sheet, evolved into (B) a twisted morphology. Spatial probability density maps of (C) \emph{scyllo}-inositol and (D) \emph{chiro}-inositol are shown in yellow and orange, respectively. Surfaces shown correspond to 7\% inositol occupancy. (E) An example of cooperatively-bound \emph{scyllo}-inositol molecules (yellow) at the surface of the $\beta$-oligomer (grey). \hl{Size distribution of bound and unbound clusters of \emph{scyllo}-inositol with the $\beta$-oligomer at inositol concentrations of (F) 62 mM and (G) 208 mM.}}
-%\label{fig:beta}
-%\end{figure}
+\begin{figure}
+\includegraphics[width=8.1cm]{figures/inos2_figures_beta.pdf}
+\end{figure}
+\begin{figure}[t!]
+\caption{Inositol binding to a $\beta$-oligomer of A$\beta$16-22. Schematic depiction of $\beta$-oligomer twisting: (A) the initial rectangular dual-stacked $\beta$-sheet, evolved into (B) a twisted morphology. Spatial probability density maps of (C) \emph{scyllo}-inositol and (D) \emph{chiro}-inositol are shown in yellow and orange, respectively.  Concentration of inositol is 208 mM and surfaces shown correspond to 7\% inositol occupancy. (E) An example of cooperatively-bound \emph{scyllo}-inositol molecules (yellow) at the surface of the $\beta$-oligomer (grey). Size distribution of bound and unbound clusters of \emph{scyllo}-inositol with the $\beta$-oligomer at inositol concentrations of (F) 62 mM and (G) 208 mM.}
+\label{fig:beta}
+\end{figure}
 
 Finally, we examine the binding of inositol to an ordered protofibrillar-like aggregate henceforth referred to as the $\beta$-oligomer. In the absence of inositol, rectangularly-stacked sheets (Figures~\ref{fig:SI-betaInitialModel}A-B) spontaneously evolved into a twisted $\beta$-sheet structure with significant inter-strand twisting along the long-axis of the fibril and an inter-sheet twist (Figures~\ref{fig:beta}A-B). The resulting structure has an average inter-strand twist angle of approximately 25$\degree$ for the top sheet and 15$\degree$ for the bottom sheet. Furthermore, the $\beta$-oligomer is comprised of two faces and four edges (Figure~\ref{fig:SI-betaInitialModel}), each of which contains a shallow hydrophobic groove surrounded by polar or charged groups.  In particular, the grooves on the faces are formed by solvent-exposed Phe, Val, and Ala residues and are surrounded on either side by charged side chains of Lys and Glu (Figure~\ref{fig:SI-betaInitialModel}C).
 
@@ -221,11 +224,11 @@ The spatial probability densities of bound inositol depicted in Figures~\ref{fig
 % Also note that I'm stating the results without qualifying the molar ratio or concentration ... I should have a statement either saying they are the same at first, then stating the specifics.
 Consistent with the binding densities depicted in Figure~\ref{fig:beta}, inositol molecules display the highest binding propensity to the nonpolar groups of Phe and Lys and the charged groups of Lys and Glu, all of which are located on the faces of the $\beta$-oligomer (Figure~\ref{fig:SI-betaInitialModel}C). Inositol molecules did not penetrate the $\beta$-sheet core of the oligomer: the fraction of hydrogen bonds to each residue depicted in Figure~\ref{fig:beta_residue_binding} (bottom panel) show that, relative to side chains, little or no hydrogen bonds were made with the backbone of residues Leu, Val, Phe, and Ala. Although inositol molecules sometimes intercalated between $\beta$-strands, these rare events did not lead to the disaggregation of the preformed $\beta$-oligomer in any of our simulations.
 
-%\begin{figure}
-%\includegraphics[width=15cm]{figures/inos2_figures_beta_residues_revised.pdf}
-%\caption{Binding propensity of inositol to nonpolar and polar groups on the $\beta$-oligomer. Time-averaged number of nonpolar (top) and hydrogen bonds (bottom), per peptide, made by inositol to each residue of the $\beta$-oligomer. Inset: Percent of \emph{scyllo}- and \emph{chiro}-inositol molecules bound to nonpolar and polar groups of the $\beta$-oligomer.  Inositol is present at a concentration of 62 mM in (A) and 208 mM in (B).}
-%\label{fig:beta_residue_binding}
-%\end{figure}
+\begin{figure}
+\includegraphics[width=15cm]{figures/inos2_figures_beta_residues_revised.pdf}
+\caption{Binding propensity of inositol to nonpolar and polar groups of the $\beta$-oligomer. Average number of nonpolar contacts (top) and hydrogen bonds (bottom), per peptide, made by inositol to each residue of the $\beta$-oligomer. Inset: Percent of \emph{scyllo}- and \emph{chiro}-inositol molecules bound to nonpolar and polar groups of the $\beta$-oligomer.  Inositol is present at a concentration of 62 mM in part A and 208 mM in part B.}
+\label{fig:beta_residue_binding}
+\end{figure}
 
 Independently of inositol concentration, a higher fraction of \emph{scyllo}-inositol than \emph{chiro}-inositol formed hydrogen bonds with the $\beta$-oligomer (inset of Figure~\ref{fig:beta_residue_binding} and Table~\ref{tbl:SI-betaBindingMode}):  $\sim$23\% versus $\sim$15\%, respectively. Concomitantly, the fraction of \emph{chiro}-inositol molecules forming nonpolar contacts ($\sim$29\%) was higher than that of \emph{scyllo}-inositol ($\sim$19\%) (inset of Figure~\ref{fig:beta_residue_binding} and Table~\ref{tbl:SI-betaBindingMode}).
 
@@ -276,8 +279,12 @@ Furthermore, binding modes of inositol involving nonpolar groups are modulated b
 
 The binding avidity of both \emph{scyllo-} and \emph{chiro}-inositol decreased significantly (corresponding to an increase in binding) with an increase of inositol:peptide molar ratio: $K_{eq}=$ 10 - 15 mM and 0.1 - 0.5 mM at 4:16 and 64:16 molar ratios, respectively.  This finding is consistent with the existence of cooperative binding involving clusters of multiple inositol molecules at higher molar ratios (Figure~{\ref{fig:beta}}E). Here we refer to cooperative binding as the propensity of ligand binding at one or more sites to increase the affinity for the binding of additional ligands at other sites. Furthermore, the size of these clusters is modulated by inositol concentration (Figure~{\ref{fig:beta}}F-G). Taken together, our results suggest that inositol binding is cooperative at sufficiently high molar ratios and concentrations. In support of our findings, a recent combined simulation and biophysical study on the polyphenolic inhibitor EGCG indicated that binding modes of other small-molecule inhibitors may be modulated by ligand:peptide molar ratio:  an increase of EGCG:A$\beta$42 molar ratio shifted the predominant binding interaction of EGCG from hydrogen-bonding to hydrophobic interactions.\cite{Wang:2010p204}
 
-% By binding to the surface of the $\beta$-oligomer, inositol molecules may alter its characteristics to promote the binding of additional inositol molecules, which may bind at adjacent sites by forming hydrogen bonds and nonpolar contacts with pre-existing inositols and the protein.
-% The increase in the binding affinity of additional inositols, despite a decrease in the number of possible binding sites, is likely due to pre-existing bound inositols, which by exposing hydrogen bonding groups in proximity to nonpolar groups of the protein may form binding sites that favorable for binding. 
+% By binding to the surface of the $\beta$-oligomer, inositol molecules may alter its characteristics to promote the
+% binding of additional inositol molecules, which may bind at adjacent sites by forming hydrogen bonds and nonpolar
+% contacts with pre-existing inositols and the protein. The increase in the binding affinity of additional inositols,
+% despite a decrease in the number of possible binding sites, is likely due to pre-existing bound inositols, which by
+% exposing hydrogen bonding groups in proximity to nonpolar groups of the protein may form binding sites that favorable
+% for binding.
 
 Our results suggest that the binding cooperativity of inositol results from a combination of favorable intermolecular interactions with peptide and inositol groups: by exposing multiple hydrogen bonding groups in proximity to nonpolar groups of the protein, bound inositol molecules promote the binding of additional inositol molecules at adjacent binding sites.
 % Accordingly, inositol predominantly binds with the $\beta$-oligomer by forming both nonpolar contacts and hydrogen bonds, suggesting that inositol molecules preferentially bind at sites where both types of interactions may be satisfied} (Figure~{\ref{fig:beta_residue_binding}}).
@@ -288,34 +295,21 @@ The increase in the binding avidity of inositol for the $\beta$-oligomer of A$\b
 
 Taken together, these findings suggest that the clustering of inositol molecules may be important for increasing the local concentration of inositol in the vicinity of the peptide, and could play a role in overcoming the weak binding affinity of individual inositol molecules in order to achieve drug-like activity. Similarly, recent simulation studies of A$\beta$40 fibrillar fragments and non-steroidal anti-inflammatory drugs, ibuprofen and naproxen, suggested that their inhibitory activities may be related to their ability to bind cooperatively and to form clusters on the surface of A$\beta$40 fibrillar aggregates.\cite{Takeda:2010p34,Raman:2009p47}
 
-% Interestingly, although the binding avidity of inositol increased with molar ratio, the binding modes and propensities of inositol remained the same, suggesting that inositol adopts high avidity binding modes in sites where nonpolar and charged residues are in close proximity to each other.  [Note that I think I should remove the above sentence ... as it is neither informative nor ``true'' (because propensities don't remain the same with increased molar ratio. Nor do binding modes -- with increased molar ratio (more of inositol), you get clustering ... which is a different binding mode.) ... and turn the sentences  below to support my results ... that at higher molar ratio / concentration .. binding modes may change -- as in our case, there was clustering.]
-% Note that NP binding propensity also increases for the disordered oligomers, but I haven't really addressed that here.
-
-% What is the increase in molar ratio, what is the relative increase in nonpolar binding propensities? -- look at the supplementary information (The relative increase in nonpolar contacts is much less than in the increase in molar ratio) -- why does this matter?
-
 
 \subsection{Proposed mechanism of A$\beta$ amyloid inhibition}
-
 Mature amyloid fibrils are thought to form either by $\beta$-strand addition along the long axis of the fiber (elongation) or by lateral face-to-face association with other protofibrils.\cite{Straub:2011p174} It follows that small molecules that can disrupt either of these interactions may inhibit fibrillation. In addition, multiple experimental studies have shown that A$\beta$(16-22) is part of the $\beta$-sheet core of fibrils of A$\beta$42\cite{Hilbich:1992vy,Gordon:2001tj,Watanabe:2002ti,Inouye:1993ku,Paravastu:2009fi} and is central to the fibrillation of A$\beta$40/42.\cite{Cukalevski:2012ks, deGroot:2006p4453} 
 Furthermore, the structures of several fibril polymorphs suggest that residues 16-22 mediate the stacking of constituent protofilaments in mature fibrils.\cite{Petkova:2002p192,Luhrs:2005p229,Paravastu:2009fi,Wu:2010p3553} Consistent with these observations, the fibrillar structure of full-length A$\beta$42 from a solid-state NMR study shows that the protofibril has two different $\beta$-sheet faces, one of which is formed by the A$\beta$(17-22) peptide segment.\cite{Luhrs:2005p229}
-
-% This is another reference I might add in support of KLVFFAE \cite{Senguen:2011hz}
-% Note need to tie together the last three pieces together a bit more. The drive home point is that the affinity + cooperativity + binding in grooves to glutamate & F => binding is exactly carbohydrate like, and this is the most likely binding site for inositol.
-% Stereochemistry modulate binding specificities of sugar molecules - need examples
 
 Our results suggest that A$\beta$(16-22), the peptide sequence forming the fibrillar core of full-length A$\beta$42, is a likely binding site for inositol. Furthermore, our results indicate that \emph{scyllo}-inositol binds to this region more specifically than \emph{chiro}-inositol. We hypothesize that \emph{scyllo}-inositol, by binding to and coating the $\beta$-sheet surfaces of protofibrils involving A$\beta$(16-22), disrupts the lateral stacking of these oligomers, which ultimately leads to the inhibition of fibril formation. Consistent with this hypothesis, the amyloid dye Congo red has been suggested by previous studies to disrupt amyloid formation in a similar manner - i.e. by binding to grooves on the surface of extended $\beta$-sheets.\cite{Shea:2012eh,Wu:2007p361}
 
 Furthermore, based on our results, we hypothesize that planar nonpolar faces with multiple hydroxyl groups in equatorial positions around the ring confer binding specificity to small molecules for the amyloidogenic core of A$\beta$, and thus are key features for their activity. Consistent with this hypothesis, \emph{in vitro} studies of small-molecule derivatives of \emph{scyllo}-inositol showed that the substitution of a single hydroxyl by a ketone group resulted in loss of activity (i.e., fibrils were formed).\cite{Nitz:2008p13,Sun:2008p208,McLaurin:2000p64} Moreover, polyphenols, many of which are strong \emph{in vitro} inhibitors of amyloid formation, all possess planar nonpolar faces with hydroxyl groups arranged equatorially. A similar hypothesis was recently put forth based on structure-activity relationships of polyphenols as a possible explanation for their effectiveness in inhibiting amyloid formation. \cite{Porat:2006p33}
-% Add or refine the above? Speculation - perhaps hydrogen bonding interactions are equally important as hydrophobic interactions in small molecule amyloid inhibition. Perhaps need a balance of both? Interestingly, a change in 2 equatorial hydroxyl groups to 2 axial groups (when going from scyllo form to the chiro form) led to a significant decrease in the likelihood to form hydrogen bonding interactions in chiro-inositol.
 
-Many differences exist between the $\beta$-oligomer of A$\beta$(16-22) and protofibrils of the full-length A$\beta$ peptides. Our results indicate that inositol binding depends on both the fibrillar morphology and the surface physico-chemical properties of the peptide aggregate. % Is this still true?  Binding propensities are the same for all systems.  Only the binding avidities are different.  Binding modes are somewhat different between monomers and oligomers, but they are fairly similar between disordered and beta, with the exception of a decrease in the nonpolar population and an increase in the nonpolar & polar population - this means that there is a binding mode different modulated by morphology -- so this statement is still true.  Question: What fraction of the nonpolar and polar binding mode consists of nonpolar stacking + hbonding?
-Thus, alternative binding modes and binding sites of inositol may exist on aggregate forms of the full-length A$\beta$42 peptide, which cannot be deduced from the results of this study. As part of our future directions, we will perform comparative simulation studies of \emph{scyllo}- and \emph{chiro}-inositol binding to aggregates of full-length A$\beta$.
+Many differences exist between the $\beta$-oligomer of A$\beta$(16-22) and protofibrils of the full-length A$\beta$ peptides. Our results indicate that inositol binding depends on both the fibrillar morphology and the surface physico-chemical properties of the peptide aggregate. Thus, alternative binding modes and binding sites of inositol may exist on aggregate forms of the full-length A$\beta$42 peptide, which cannot be deduced from the results of this study. As part of our future directions, we will perform comparative simulation studies of \emph{scyllo}- and \emph{chiro}-inositol binding to aggregates of full-length A$\beta$.
 
 \subsection{Similarity to Carbohydrate Binding}
+A striking result of our study is the characteristic sugar-like\cite{Taroni:2000uh} binding affinities and binding modes of inositol. Similar to inositol, monosaccharides exhibit millimolar binding affinities for lectins, a class of sugar-binding proteins.\cite{Schnupf:2010p6654,Geisler:2010p188} Furthermore, sugar binding usually involves a combination of hydrogen bonds between hydroxyl groups and charged side chains (Asp or Glu) and nonpolar stacking of aromatic moieties, which are important for the recognition and selectivity of sugar enantiomers by lectins.\cite{Sharon:2001p215} Consistent with these observations, our results indicate that inositol displays higher binding propensities to Phe and Glu compared to Lys, Leu, Val, and Ala. Moreover, from our simulations, the binding free energy of stacking to the phenyl ring of Phe is approximately -0.5 kcal/mol,  in agreement with that of glucose binding to the indole group of tryptophan obtained from recent MD simulation\cite{Schnupf:2010p6654} and NMR studies.\cite{Kiehna:2007p163}
 
-	A striking result of our study is the characteristic sugar-like\cite{Taroni:2000uh} binding affinities and binding modes of inositol. Similar to inositol, monosaccharides exhibit millimolar binding affinities for lectins, a class of sugar-binding proteins.\cite{Schnupf:2010p6654,Geisler:2010p188} Furthermore, sugar binding usually involves a combination of hydrogen bonds between hydroxyl groups and charged side chains (Asp or Glu) and nonpolar stacking of aromatic moieties, which are important for the recognition and selectivity of sugar enantiomers by lectins.\cite{Sharon:2001p215}. Consistent with these observations, our results indicate that inositol displays higher binding propensities to Phe and Glu compared to Lys, Leu, Val, and Ala. Moreover, from our simulations, the binding free energy of stacking to the phenyl ring of Phe is approximately -0.5 kcal/mol,  in agreement with that of glucose binding to the indole group of tryptophan obtained from recent MD simulation\cite{Schnupf:2010p6654} and NMR studies\cite{Kiehna:2007p163}. 
-	Finally, the shallow amphiphilic grooves found at the surface of $\beta$-oligomers (Figure~\ref{fig:beta}E) are analogous to binding sites located at the surface of carbohydrate-binding domains.\cite{Taroni:2000uh,Kulharia:2009p212,Weis:1996p225} Akin to the multivalency in binding often exhibited by carbohydrates,\mbox{\cite{Lee:1995ul}} by forming multiple weak affinity interactions, inositol molecules cluster in these shallow grooves, which results in a higher overall binding avidity for the $\beta$-oligomer. These cooperative binding modes suggest that linearly-linked inositol stereoisomers (e.g. dimers, trimers, or tetramers using \emph{scyllo}-inositol subunits) may be one possibility for designing putative inhibitors with higher affinities.\mbox{\cite{Krishnamurthy:2006vi}} An improvement in drug affinity is advantageous because patients may be administered smaller dosages so that the risk of side effects is lowered while drug efficacy is retained. Taken together, the above results suggest that inositol binds in carbohydrate-like binding sites on $\beta$-sheet surfaces involving A$\beta$(16-22), and that carbohydrates may be used as a template for the design of AD inhibitors.
-% Cite Mark & JoAnne here.
+Finally, the shallow amphiphilic grooves found at the surface of $\beta$-oligomers (Figure~\ref{fig:beta}E) are analogous to binding sites located at the surface of carbohydrate-binding domains.\cite{Taroni:2000uh,Kulharia:2009p212,Weis:1996p225} Akin to the multivalency in binding often exhibited by carbohydrates,\mbox{\cite{Lee:1995ul}} by forming multiple weak affinity interactions, inositol molecules cluster in these shallow grooves, which results in a higher overall binding avidity for the $\beta$-oligomer. These cooperative binding modes suggest that linearly-linked inositol stereoisomers (e.g. dimers, trimers, or tetramers using \emph{scyllo}-inositol subunits) may be one possibility for designing putative inhibitors with higher affinities.\mbox{\cite{Krishnamurthy:2006vi}} An improvement in drug affinity is advantageous because patients may be administered smaller dosages so that the risk of side effects is lowered while drug efficacy is retained. Taken together, the above results suggest that inositol binds in carbohydrate-like binding sites on $\beta$-sheet surfaces involving A$\beta$(16-22), and that carbohydrates may be used as a template for the design of AD inhibitors.
 
 \section{Conclusions}
 In this study, we have examined the binding of a small molecule inhibitor \emph{scyllo}-inositol, and its inactive stereoisomer, \emph{chiro}-inositol, successively to monomers, disordered oligomers, and $\beta$-sheet aggregates of A$\beta$(16-22), whose sequence is thought to be the core aggregation region in the A$\beta$42 peptide. Notably, the $K_{eq}$ of inositol ($\sim$0.2 - 0.5 mM) for the $\beta$-oligomer is commensurate with the concentration at which inhibition of amyloid formation by A$\beta$42 is observed \emph{in vitro}. Although both \emph{scyllo}- and \emph{chiro}-inositol exhibit similar binding affinities with all peptide states considered, we have uncovered a stereospecific face-to-face stacking stacking mode of \emph{scyllo}-inositol with the Phe side chains and a higher propensity for hydrogen bonding, which together suggests a molecular basis for measured differences in activity.  Cooperative binding modes of inositol at grooves on the surface of the $\beta$-oligomer of A$\beta$(16-22) suggest a possible mechanism of fibril inhibition whereby inositol prevents the lateral association or stacking of protofibrillar $\beta$-sheet oligomers. Furthermore, our results suggest that the fibril core of A$\beta$ amyloid aggregates contains carbohydrate-like binding sites. As such, carbohydrate-based small-molecule derivatives may be a promising avenue to explore for the rational design of novel therapeutics for AD.
@@ -336,116 +330,3 @@ Binding mode analyses of inositol with monomeric and aggregate systems at inosit
 
 % The entropic argument (which I've decided not to include here) -- which may be explained by the multivalent binding\mbox{\cite{Krishnamurthy:2006vi}} of clustered inositol molecules, where the binding of one molecule in the cluster decreases the configurational entropy for the binding of additional molecules at the surface. 
 
-\newpage
-
-\begin{table}\footnotesize\centering
-    \begin{center}
-    \vspace{10pt}
-    \caption{Summary of simulation systems}
-    \label{tbl:simulations}
-      \begin{tabular}{|>{\centering}p{5cm} | >{\centering}*{7}{p{1cm}<{\centering}|}}
-        \hline
-        System & $N_{peptides}$ & $N_{inositol}$ & $c_{peptide}$ (mM) & $c_{Inositol}$ (mM) & molar ratio & $N_{replicas}$ & Total time ($\mu$s) \\
-        \hline
-        \hline
-	Glu dipeptide & 1 & 0   & -   & 0   & -  & 5  & 0.5 \\
-	with \emph{chiro}- or \emph{scyllo}-inositol & 1 & 4  & -  & 246   & 4:1    & 5  & 0.5 \\
-        \hline
-        	Phe dipeptide & 1 & 0   & -   & 0   & -  & 5  & 0.5 \\
-	with \emph{chiro}- or \emph{scyllo}-inositol & 1 & 4  & -  & 246   & 4:1    & 5  & 0.5 \\
-        \hline
-        A$\beta$(16-22) monomer (STDR)		 & 1 & 0   & -     &  0      & -       & 33   & 3.56 \\
-        A$\beta$(16-22) monomer 				 & 1 & 0   & -       &  0      & -       & 1117   & 5.59 \\
-        \hline
-        \multirow{2}{*}{\parbox{2.5cm}{with \emph{chiro}- or \emph{scyllo}-inositol}}  
-        						& 1 & 2   & -   & 123   & 2:1    & 1117  & 5.59 \\
-         						 & 1 & 15   & -   & 70     & 15:1  & 1117  & 8.25 \\
-        \hline
-        \hline
-        disordered aggregate 		 & 4 & 0   & 104 & 0     & -       & 8 & 1.44 \\
-        \hline
-        \multirow{2}{*}{\parbox{2.5cm}{with \emph{chiro}- or \emph{scyllo}-inositol}} 
-        						 & 4 & 2   & 104 & 52   & 2:4     & 5 & 1.00 \\
-                        			 	 & 4 & 15 & 18   & 70   & 15:4   & 8 & 1.44 \\
-                                			 & 4 & 45 & 18   & 209 & 45:4 & 5 & 1.00 \\
-        \hline
-        \hline
-       $\beta$-oligomer & 16 & 0 & 148 & 0     & -     & 1   & 0.13 \\
-        \hline
-        \multirow{3}{*}{\parbox{2.5cm}{with \emph{chiro}- or \emph{scyllo}-inositol}} & 16 & 4 & 148 & 37   & 4:16 & 18  & 0.54 \\
-						 & 16 & 64 & 15 & 62   & 64:16 & 6   & 0.60 \\
-						 & 16 & 64 & 52 & 208 & 64:16 & 6   & 0.60 \\
-        \hline
-      \end{tabular}
-    \end{center}
-  \end{table}
-
-\newpage
-
-\begin{table}\footnotesize
-  \vspace{10pt}
-  \caption{Summary of equilibrium constants (K$_{eq}$) and number of reversible binding events (N$_{binding}$)}
-
-  \label{tbl:bindingConstants}
-  \begin{minipage}{15cm}
-    \renewcommand{\thefootnote}{\thempfootnote}
-    \renewcommand{\footnoterule}{}
-    % \centering
-      \begin{center}
-    \begin{tabular}{| l | *{6}{ c |}}
-       \hline
-         System & Molar ratio\footnote{Inositol:peptide molar ratios} & K$_{eq,scyllo}$\footnote{K$_{eq}$ is in units of mM. The standard error is shown within parentheses.} & K$_{eq,chiro}$\footnotemark[\value{mpfootnote}]  & N$_{binding,scyllo}$\footnote{N$_{binding}$ is the total number of reversible inositol binding events.} & N$_{binding,chiro}$\footnotemark[\value{mpfootnote}] \\
-         \hline
-         \hline
-         Monomer & 2:1 & 127 (3) & 104 (1)  &  150991 & 185454 \\ % & 104 \\ 
-          	       & 15:1 & 120 (2) & 90 (2)  & 186948 & 250922  \\ % & 90 \\ 
-	\hline
-         Disordered oligomer & 2:4 & 28 (4) & 16 (2) &  21882 & 24584 \\ % & 23 \\ 
-          			       & 15:4 & 18 (2) & 11(1) & 78483 & 102351 \\ % & - \\ 
-				       % & 45:4 & 1.6 (0.4) & 1.9 (0.9) & 15501 & 18101 \\ 
-	\hline
-         $\beta$-oligomer & 4:16 & 15 (2) & 11 (2) & 20381 & 24616 \\ % & 6\\
-         				  & 64:16 &  0.5 (0.3) & 0.18 (0.11) & 50135 & 56842 \\ % & -\\
-         \hline
-     \end{tabular}   
-  \end{center}
-  \end{minipage}
-  \centering
-  \end{table}
-
-\begin{figure}
-\includegraphics[width=14.6cm]{figures/inos2_figures_monomers_revised.pdf}
-\caption{Binding of inositol to an A$\beta$(16-22) monomer.  End-to-end probability distribution of A$\beta$(16-22) successively in pure water and in presence of \emph{scyllo}- and \emph{chiro}-inositol at inositol:peptide molar ratios of (A) 2:1 and (B) 15:1.  (C) Representative snapshots of the different binding modes of \emph{scyllo}- (left) and \emph{chiro}-inositol (right)  to the peptide monomer. Hydrogen bonds between inositol and backbone NH (blue) and CO (red) groups are shown as solid lines. (D) Percent of bound inositol molecules in contact with nonpolar and polar groups at an inositol:peptide molar ratio of 15:1. (E) Time-averaged number of nonpolar contacts (top), and hydrogen bonds (bottom) made by inositol  (at a molar ratio of 15:1) to each residue.}
-\label{fig:monomers}
-\end{figure}
-
-\begin{figure}
-\includegraphics[width=3.185in]{figures/inos2_figures_monomer_residues_pmf_color.pdf}
-\caption{Binding of inositol to Glu and Phe dipeptides. Data for \emph{scyllo}- and \emph{chiro}-inositol are shown on the left and right panels, respectively. (A) Examples of snapshots of inositol bound to the carboxylate group of Glu. (B) Comparisons of the probability of inositol hydrogen bonding to the side chains of Lys and Glu. (C) Examples of nonpolar association between Phe and inositol. (D) Potential of mean force (PMF) of inositol with the phenyl ring of Phe relating $r$, the distance between the centers of geometry of the phenyl and inositol rings, to $\theta$, the planar angle between the rings. Contours are drawn at 0.1 kcal$\cdot$mol$^{-1}$ intervals. Face-to-face stacking for \emph{scyllo}-inositol appears on the PMF at $r=0.45$ nm and $\theta=12\degree$.}
-\label{fig:monomers_glu_phe}
-\end{figure}
-
-\begin{figure}
-\includegraphics[width=7.96cm]{figures/inos2_figures_disordered_revised.pdf}
-\caption{Binding of inositol to a disordered oligomer of A$\beta$(16-22).  (A) Example snapshots of \emph{scyllo}- (left) and \emph{chiro}-inositol (right) involving both nonpolar contacts and hydrogen bonding. (B) Fraction of residues in coil, $\beta$-sheet/bridge, bend, and turn conformations as classified by the DSSP algorithm. (C) Time-averaged number of nonpolar contacts (top) and hydrogen bonds (bottom) made by inositol to each residue (per peptide). Inset: Percent of inositol molecules bound to nonpolar and polar groups of the peptide oligomer at an inositol:peptide molar ratio of 45:4 (inositol concentration of 209 mM).}
-\label{fig:disordered}
-\end{figure}
-
-\begin{figure}
-\includegraphics[width=8.1cm]{figures/inos2_figures_beta.pdf}
-\end{figure}
-\begin{figure}[t!]
-\caption{Inositol binding to a $\beta$-oligomer of A$\beta$16-22. Schematic depiction of $\beta$-oligomer twisting: (A) the initial rectangular dual-stacked $\beta$-sheet, evolved into (B) a twisted morphology. Spatial probability density maps of (C) \emph{scyllo}-inositol and (D) \emph{chiro}-inositol are shown in yellow and orange, respectively.  Concentration of inositol is 208 mM and surfaces shown correspond to 7\% inositol occupancy. (E) An example of cooperatively-bound \emph{scyllo}-inositol molecules (yellow) at the surface of the $\beta$-oligomer (grey). Size distribution of bound and unbound clusters of \emph{scyllo}-inositol with the $\beta$-oligomer at inositol concentrations of (F) 62 mM and (G) 208 mM.}
-\label{fig:beta}
-\end{figure}
-
-\begin{figure}
-\includegraphics[width=15cm]{figures/inos2_figures_beta_residues_revised.pdf}
-\caption{Binding propensity of inositol to nonpolar and polar groups of the $\beta$-oligomer. Average number of nonpolar contacts (top) and hydrogen bonds (bottom), per peptide, made by inositol to each residue of the $\beta$-oligomer. Inset: Percent of \emph{scyllo}- and \emph{chiro}-inositol molecules bound to nonpolar and polar groups of the $\beta$-oligomer.  Inositol is present at a concentration of 62 mM in part A and 208 mM in part B.}
-\label{fig:beta_residue_binding}
-\end{figure}
-
-\begin{figure}
-\includegraphics[width=2.78in]{figures/inos2_toc.pdf}
-\caption*{Table of Contents image}
-\end{figure}
