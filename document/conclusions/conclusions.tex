@@ -1,18 +1,4 @@
-% Funnel out!
-
-% AD What's next for this project
-% If I had to go big and scale up my project, what would I reasonably do? 
-% Simulating different small molecules with different peptide aggregation states -- see Caflish's recent paper ... he might have done this already.
-% Going longer - move to longer timescales - why ... and is this needed?
-
-% What new thing have I learned in all this?
-
-% Speculate on the future of AD
-
-% Reconciling with the classical understanding of enzyme inhibitor binding
-% Is inositol a kinetic or thermodynamic inhibitor?
-
-\chapter{Conclusions and Future Directions}
+\chapter{Perspectives, Conclusions and Future Directions}
 % Example sentences found in teh conclusions and summary chapters of people's thesis 
 % The work presented in this thesis has ...
 
@@ -20,33 +6,21 @@
 
 % Everyone's conclusions all had a significant amount of Future directions. (~3 pages worth)
 
+\section{Significance for drug development for AD}
+%[Thesis significance - part of the summary of what I make of my thesis ] 
+This thesis demonstrates the applicability of MD simulations in providing insight into how drugs might bind to amyloidogenic species and intrinsically disordered peptides.  The results in this thesis can be used to map out a pharmacophore for developing a drug for the treatment of Alzheimer's Disease, opening the way to computer-aided design of improved diagnostics and therapeutics. A pharmacophore is an abstract description of molecular features which are necessary for molecular recognition of a ligand by a biological macromolecule - If I have to define this here, then it should have been in the introduction. \textbf{Definition is taken from the wiki.}
 
-\subsection{Drug development for AD}
+% Speculate on the future of drug development for AD in regards to the significance of thesis wrt curing AD. Will blocking aggregation work for AD? - May be this should in the introduction instead.
+% (WRITE SOME CONCLUSIONS HERE … RELATING TO HOW A SINGLE SMALL MOLECULE BINDS SPECIFIC MORPHOLOGICAL STRUCTURES -- clearly a key result of my works demonstrate that there is sequence specificity) 
 
-The results of our simulation here start to define a pharmacophore for treating AD, opening the way to computer-aided design of improved diagnostics and therapeutics.
-According to wiki: A pharmacophore is an abstract description of molecular features which are necessary for molecular recognition of a ligand by a biological macromolecule.
+Because AD may be caused by a multitude of pathological changes in the brain, it is likely that a cocktail of compounds, each targeting a different disease pathway, may be required for treating AD. % (Adapted from pharmacophore for AD 2011)
 
-Speculate on the future of drug development for AD in regards to the significance of thesis wrt curing AD.
+% \section{MD simulations and Rational drug design}
+\section{Contribution to sugar-protein binding}
+% MD simulation as a tool for probing weak interactions
+This thesis has demonstrated that MD simulations, and the current force fields can effectively probe weak and transient molecular interactions, which are often not readily detectable using experimental techniques. One prominent example where weak interactions are prominent in protein-ligand binding is protein-carbohydrate interactions.\cite{weak binding review paper}
 
-Will blocking aggregation work for AD? - May be this should in the introduction instead.
-
-(WRITE SOME CONCLUSIONS HERE … RELATING TO HOW A SINGLE SMALL MOLECULE BINDS SPECIFIC MORPHOLOGICAL STRUCTURES -- clearly a key result of my works demonstrate that there is sequence specificity) Because different amyloid polymorphs may bind different small molecules, it is likely that in the future, a cocktail of compounds may be required for treating Alzheimer’s disease and other amyloid therapies. (Adapted from pharmacophore for AD 2011) rather than one  miracle drug. Because AD has many pathways of damage, it is possible that, like cancer, that it is many disorders rolled into one. % JoAnne thinks it will be a combination of drugs as well.
-
-\section{Significance for disordered binding}
-
-[Thesis significance - part of the summary of what I make of my thesis ] This thesis demonstrates the applicability of MD simulations for this purposes in understanding how drugs might bind to amyloidogenic species and intrinsically disordered peptides. 
-
-[Conclusions - A general interest in the specific work that I have done here ]   Our results also are feasible for understanding small molecule binding to disordered peptides (IDPs) in general. This thesis sheds light on the mechanism of binding disordered peptides, and represents a step forward in understanding how small molecules may prevent protein - protein interactions, which involves identifying the binding interfaces, and understanding how to target these interfaces using small molecules.REFs.
-
-
-\section{MD simulations and Rational drug design}
-
-Understanding how small molecules may interact with intrinsically disordered proteins goes beyond amyloid-related disorders.  As IDPs are involved in many signalling pathways, they are also viable drug targets for many diseases.   Hence, targeting these disordered peptides using small molecules may be a possible therapeutic approach. For example, c-Myc is frequently involved in many cancers, … FILL IN THE GAP ABOUT HOW IT WORKS … and thus disruption of the c-Myc-Max interaction is a possible anticancer strategy.\cite{  Iakoucheva, L.M., Brown, C.J., Lawson, J.D., Obradovic, Z. and Dunker, A.K. (2002) Intrinsic disorder in cell-signaling and cancer-associated proteins. J. Mol. Biol. 323, 573–584 .}\cite{Metallo:2010p6822,Cuchillo:2012bm}
-
-\section{MD simulation as a tool for probing weak interactions}
-This thesis has demonstrated that MD simulations, and the current force fields can effectively probe weak and transient interactions, which are often not readily detectable using experimental techniques. One prominent example where weak interactions are prominent in protein-ligand binding is protein-carbohydrate interactions.\cite{weak binding review paper}
-
-Understanding Protein-sugar interactions is an important endeavor because of antibody binding to proteins.  Viruses often express carbohydrates on their coats.  Inhibiting bacterial action involves knowing how polysaccharrides are expressed, which involves binding proteins.  The use of all of these studies is to eventually develop antibacterial therapeutics. % sounds like this belongs in the introduction.
+Understanding protein-sugar interactions is an important endeavor because of antibody binding to proteins.  Viruses often express carbohydrates on their coats.  Inhibiting bacterial action involves knowing how polysaccharrides are expressed, which involves binding proteins.  The results of this thesis presents methods that may be useful for developing antibiotics. \textbf{Rewrite this part to reflect and tie into how my work, methods, and how they are related to solving these problems} 
 
 % The role of simulations in drug discovery to effectively predict binding modes and binding sites
 
@@ -54,8 +28,15 @@ Understanding Protein-sugar interactions is an important endeavor because of ant
 
 % Shan, 2011 (the DE shaw letter) An emerging challenge in drug discovery concerns the identification of allosteric ligand-binding sites (I’m not entirely convinced yet that this is important -- because I can’t think of any situations where this might be important -- convince myself or just drop this idea), through which drugs can modulate the effects of ligands that bind at the primary site.  More generally, an important limitation of traditional virtual drug screening is that it must start with a well-defined binding site (look into limitations of current drug discovery processes … may give some clue for constructing an argument for how MD is helping …), despite promising recent developments.\cite{Hetenyi, C.; van der Spoel, D. FEBS Lett. 2006, 580, 1447. (11) Davis,I.W.;Raha,K.;Head,M.S.;Baker,D.ProteinSci.2009, 18, 1998. }
 
+\section{Significance for disordered binding}
+% [Conclusions - A general interest in the specific work that I have done here ] 
+Aside from contributing to the design of future AD therapeutics, our results have also contributed to the understanding of small molecule binding to disordered peptides (IDPs) in general. This is important because disordered binding are ubiquitous in biology, and disordered peptides and proteins and involved in many diseases such as X, Y, Z.  
 
-\subsection{Osmolyte effects, denaturation, and macromolecular crowding}
+Understanding how small molecules may interact with intrinsically disordered proteins goes beyond amyloid-related disorders. As IDPs are involved in many signalling pathways, they are also viable drug targets for many diseases.   Hence, targeting these disordered peptides using small molecules may be a possible therapeutic approach. For example, c-Myc is frequently involved in many cancers, \textbf{FILL IN THE GAP ABOUT HOW IT WORKS} and thus disruption of the c-Myc-Max interaction is a possible anticancer strategy.\cite{Iakoucheva:2002uv,Metallo:2010p6822,Cuchillo:2012bm}
+
+The work presented in chapters in this thesis sheds light on the mechanism of binding disordered peptides, and represents a step forward in understanding how small molecules may prevent protein - protein interactions, which involves identifying the binding interfaces, and understanding how to target these interfaces using small molecules.REFs.
+
+\section{Osmolyte effects, denaturation, and macromolecular crowding}
 % Note this is another hairy field … and you might want to stay the hell away from it, despite the fact that your thesis is loosely connected to this field
 
 Another field of interest where weak interactions dominates is understanding cosolvent effects on peptide folding. Simulations are a good use for probing that.  For example, MD simulations have been useful in gaining insight into protein denaturation mechanisms by urea or guanidinium, and the activity of osmolytes. Many of these are still open questions.\cite{http://pubs.acs.org/doi/abs/10.1021/jp200625k -- crowding and protein association.} Where am I going with this?
