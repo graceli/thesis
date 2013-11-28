@@ -49,228 +49,16 @@ In the rest of this chapter, I first define the amyloid state from a biophysical
 % Talk about structure-based drug discovery, and link to computer simulations.
 % The paragraph below are duplicated from Durrant et al.
 
-\section{The amyloid state of proteins}
-\label{sec:amyloid}
-% A paragraph as a general introduction to amyloid.
-% What's the general interest behind amyloid science -- why is amyloid important
-% Role of amyloid in the human body -- functional amyloid?
+\section{Alzheimer's disease}
+\input{introduction_ad_section}
 
-Amyloids were discovered 150 years ago when tissue deposits of extracellular filaments were observed.\cite{Haass:2007db,Sipe:2000fs} These microscopically visible deposits were found on various organs in many seemingly unrelated diseases. 
-%\textbf{Something should go here}
-Although numerous diseases involve amyloid formation of distinct aggregation-prone proteins or peptides, the ability to form amyloid is not only restricted to these disease-associated proteins. Amyloid fibrils may be formed from proteins that can also fold into well-defined tertiary structures (e.g. myoglobin and lysozyme), suggesting that the ability to form amyloid fibrils may be a generic property of polypeptides.\cite{Chiti:2006fz} However, the propensity for a given protein or peptide to form amyloid fibrils is highly dependent on the combination of solution conditions and peptide sequence. This is because, for a globular protein to adopt amyloid states, the protein must first be partly unfolded before conversion into amyloid fibrils is possible.\cite{Chiti:2006fz} 
-% TODO: Give a more specific example
-
-% Dobson 2006 -- The relative aggregation rates for a wide range of peptides and proteins correlates with the physicochemical features of the molecules such as charge, secondary-structure propensities and hydrophobicity. 
-
-% The mechanism of amyloid fibril formation \textit{in vivo} is not understood. However, \textit{in vitro} studies of amyloid-forming peptides in recent years have made great strides in elucidating their structural properties and mechanism of formation.
-The pathway by which amyloid fibrils are formed \textit{in vivo} is not understood. Much of what we know about amyloid formation currently comes from biochemical and biophysical analysis of synthetic amyloid-forming peptides \textit{in vitro}, which is thought to be analogous to the \textit{in vivo} pathway. Prior to the appearance of amyloid fibrils, a variety of intermediate species may be formed.\cite{Chiti:2006fz} Monomers self-assemble into oligomers of different morphologies and sizes, which exist in equilibrium with amyloid fibrils, a visible endpoint of aggregation.\cite{Chiti:2006fz}
-
-% Amyloid formation -- models of the kinetics of aggregation
-Kinetically, the mechanism of amyloid formation is akin to those of nucleation-polymerization processes such as crystallization and micelle formation.\cite{Murphy:2002fe}
-% \textbf{SPECIFIC CRYSTALLIZATION; SPECIFIC FORMATION OF OTHER PROTEINS FOLLOWING THIS PROCESS eg micelle formation} 
-During nucleation, a lag phase occurs in which the energetic barriers of aggregation must be overcome by the monomers to form the initial aggregation nucleus.\cite{Murphy:2002fe} Following this lag phase, free monomers may bind to the nucleated aggregates, which elongate into mature fibrils.\cite{Murphy:2002fe} Seeding, a process where preformed aggregates are introduced into the solution, eliminates the lag phase.\cite{Harper:1997ix,Jarrett:1993vm} In the following sections, the current biophysical and structural data on amyloid fibrils and non-fibrillar oligomers is reviewed, and implications for amyloid disease are discussed.
-
-% Because much of the detailed biochemical and biophysical characterization of amyloid formation is centered upon the amyloid-beta peptide (implicated in Alzheimer's disease) and hence our discussion will be focused on this peptide. % REWORD
-
-% Focus mostly on biophysical data (it makes sense)
-\subsection{Fibrils}
-
-Fibrillar amyloid deposits have several physical properties in common. Fibrils are protease resistant, and insoluble in the presence of the detergent sodium dodecyl sulfate.\cite{Eisenberg:2012hm} Importantly, they exhibit specific optical behavior when bound to certain dye molecules. After staining with Congo red, fibrils exhibit bright green birefringence under polarized light.\cite{Frid:2007bo} However, the use of Congo red to detect the presence of amyloid formation is often a laborious process, and only provides a qualitative measurement of the amount of amyloid present.\cite{Frid:2007bo} Thioflavin-T (ThT), a benzathiole fluorescent dye, is more commonly used to detect the presence of amyloid fibrils in post-mortem brain tissue samples, and to monitor fibril formation \textit{in vitro}. Upon binding to fibrils, ThT exhibits both a dramatic enhancement of its emission and a shift in the maximum of its excitation spectrum, making it a sensitive and efficient reporter for the presence of amyloid fibrils.\cite{Nilsson:2004iw}
-
-\begin{figure}
- \centering
- \includegraphics[width=5in]{figures/introduction/fibril_structure_diffraction.pdf}
- \caption[Characteristic cross-$\beta$ spacings from X-ray fibre diffraction studies of amyloid fibrils]{A schematic of the \crossbs\ and the diffraction pattern of fibrils. Reprinted from Cell, 148, D. Eisenberg, M. Jucker, The Amyloid State of Proteins in Human Diseases, 1188 - 1203., Copyright 2012, with permission from Elsevier.}
- \label{fig:fibril_diffraction}
-\end{figure}
-
-Amyloid fibrils formed from different polypeptides are thought to share a similar morphology known as the \crossbs.\cite{Chiti:2006fz} To date, independent measurements of fibrillar structure from different instruments have all confirmed the cross-$\beta$ structural core of amyloid fibrils. X-ray fiber diffraction studies showed that the diffraction pattern of fibrils is characterized by major orthogonal reflections along the meridional and equatorial directions, which correspond to a 4.8 \angstrom\ interpeptide separation, and a 10 \angstrom\ intersheet separation, respectively (Figure~\ref{fig:fibril_diffraction}).\cite{Sunde:1997cq,Makin:2005un,Sipe:2000fs} The inter-peptide and inter-sheet separations are respectively parallel and perpendicular to the long-axis of the fibril. This diffraction pattern is now considered as indicative of the presence of \crossbs, and hence, of amyloid fibrils.\cite{Chiti:2006fz} When the fibrils are stained the macromolecular morphology of fibrils can be determined using the transmission electron microscope (TEM): fibrillar structures are long, unbranched, and ribbon-like structures with diameters between 50 - 100 nm (Figure~\ref{fig:fibril_TEM_SSNMR}).\cite{Chiti:2006fz} 
-% Other measurements? - MPL Mass per unit length?
-
-% Although \crossb\ is widely known, due to the insolubility and inherent non-crystalline nature of amyloid fibrils, the molecular details of the fibril structure remained elusive until recent years. 
-% The ubiquitous presence of a \crossbs\ supports that the organization of the peptidic backbone, common to all proteins, in to \bsheets\ is a major determinant of the fibrillar structure. 
-
-\begin{figure}
- \centering
- \includegraphics[width=4in]{figures/introduction/fibril_TEM_SSNMR.pdf}
- \caption[EM images of amyloid fibrils and oligomers]{(A) TEM image of negatively-stained mature amyloid fibrils.\cite{Petkova:2002p305} Copyright 2002 National Academy of Sciences, USA. (B) SSNMR model proposed by Tycko et al. Reprinted (adapted) with permission from\cite{Petkova:2006gx}. Copyright 2006 American Chemical Society. EM images of oligomers of (C) \abeta42,\cite{Bitan:2003ut} and (D) \abeta40. (C) Copyright 2003 National Academy of Sciences, USA. (D) This research was originally published in Journal of Biological Chemistry. D M Walsh, D M Hartley, Y Kusumoto, Y Fezoui, M M Condron, A Lomakin, G B Benedek, D J Selkoe, and D B Teplow. Amyloid $\beta$-Protein Fibrillogenesis. Journal of Biological Chemistry. 1999; 274:25945-25952. \copyright\ the American Society for Biochemistry and Molecular Biology.}
- \label{fig:fibril_TEM_SSNMR}
-\end{figure}
-
-\begin{figure}
- \centering
- \includegraphics[width=4in]{figures/introduction/fibril_xray_model.pdf}
- \caption[X-ray crystal structure of an amyloid fibril]{A schematic of the X-ray crystal structure of fibrils formed from short amyloidogenic peptide fragments. Reprinted from Cell, 148, D. Eisenberg, M. Jucker, The Amyloid State of Proteins in Human Diseases, 1188 - 1203., Copyright 2012, with permission from Elsevier.}
- \label{fig:fibril_xray_model}
-\end{figure}
-
-% Describe the molecular structure of \abeta\ amyloid fibrils. Briefly mention the techniques that can be used to obtain structural information of amyloid fibrils. 
-
-% SSNMR
-Advances in solid-state NMR (SSNMR) and X-ray crystallography in the last decade have elucidated the molecular details of amyloid fibrils. One of the first SSNMR models of an amyloid fibril was that of \textbf{\abeta40}, a peptide implicated in Alzheimer's Disease.\cite{Petkova:2006gx}
-%The study by Petkova et. al.\cite{Petkova:2006gx} indicated that the \bsheet\ core of \abeta40\ involves residues 10-22 and 30-40, and is linked by a loop formed by residues 23-29. 
-Its core fibril unit consists of a parallel in-register \bsheet, where each strand is a \bhairpin\ with peptide-peptide backbone hydrogen bonds running parallel to the long-axis of the fibril (Figure~\ref{fig:fibril_TEM_SSNMR}). Moreover, smaller fragments of A$\beta$ have been shown to form fibrils that are morphologically similar to those of the full length peptide. For example, SSNMR studies of the fibrils of the peptide A$\beta$(16-22), the central hydrophobic core of A$\beta$, with sequence KLVFFAE, indicated that its fibrils are composed of stacked antiparallel $\beta$-sheets.\cite{Balbach:2000vf} Furthermore, fibrils of certain amyloid-forming peptide fragments formed crystals that were amenable to single crystal X-ray diffraction analysis.\cite{Eisenberg:2012hm} In agreement with SSNMR, the crystal structures of these fibrils revealed a structure composed of multiple layers of \bsheet\ with a dehydrated (``dry'') stacking interface (Figure~\ref{fig:fibril_xray_model}).\cite{Sawaya:2007p4363,Eisenberg:2012hm}
-%Taken together, these recently proposed structures demonstrate that the core region is composed of two to four sheets that interact closely with each other. % I don't think I will talk about the twisting of the sheets too much. Should I mention twisting?
-
-% Fibril polymorphism
-The particular packing arrangement of polypeptides in amyloid fibrils can vary with changes in the experimental conditions under which the fibrils are formed. Specific structural polymorphisms include the length of the $\beta$-strands, side chain orientations and inter-protofilament packing.\cite{Kodali:2007cz} Fibril polymorphism may have important implications in amyloid diseases because different morphologies exhibit differing toxicities that depend on which residues are exposed at the surface. For example, \textit{in vitro}, quiescently formed fibrils of A$\beta$(1-40) have been shown to be more toxic than agitated fibrils.\cite{Petkova:2005p4688} 
-
-% A polymorphic structure introduced by a seed have been shown to be able to propagate \textit{in vitro}.\cite{Paravastu:2006p4690} A recent study propagated a brain-derived fibril fragment in order to obtain structural information on fibrils that most closely resembles those formed in the AD brain.\cite{Paravastu:2009fi} -- These points aren't going anywhere.
-
-% http://onlinelibrary.wiley.com/doi/10.1111/j.1742-4658.2010.07888.x/abstract?systemMessage=Wiley+Online+Library+will+be+disrupted+on+15+December+from+10%3A00-12%3A00+GMT+%2805%3A00-07%3A00+EST%29+for+essential+maintenance
-
-\subsection{Non-fibrillar oligomers}
-
-Because of their structural disorder and transient nature, it is difficult to obtain high-resolution structural details of amyloid oligomers using traditional structural determination techniques. Studies using low-resolution techniques transmission electron microscopy (TEM) and atomic force microscopy (AFM) have shown that transient, unstable particles may appear prior to the formation of fibrils (``on-pathway'' oligomers).\cite{Chromy:2003p2575,Ahmed:2010p5694,Caughey:2003jq} These protein aggregates are referred to in literature as amyloid protofibrils.\cite{Chiti:2006fz} Those that do not progress to form fibrils are considered off-pathway.\cite{Kayed:2003en} However, off-pathway oligomers formed in the presence of detergents, lipids, and certain small molecules are typically not considered to be biologically-relevant.\cite{Yu:2009p2873,Laurents:2005ki}
-% Oligomers may either be on-pathway to fibril formation, that is, they serve only as intermediates, while others themselves may be the endpoints of aggregation.
-% Currently, the precise mechanism involved in the transition from oligomers to extended amyloid fibrils is not known.
-
-Unlike fibrils, amyloid oligomers do not possess a generic structural element and instead, adopt a wide spectrum of sizes and morphologies. Size exclusion chromatography (SEC) studies of \abeta40\ oligomers (isolated \textit{in vitro} and from the brains of deceased individuals with Alzheimer's Disease) revealed the existence of oligomers that ranged in size from dimers to large oligomers of hundreds of peptides.\cite{Haass:2007db,Walsh:2007fu} Oligomeric assemblies that are annular, spherical, or curvilinear in shape have been reported in literature.\cite{Haass:2007db,Kim:2009p2715,Lashuel:2002eg}
-
-% This was directly copied from Fandrich 2012
-Although there are large variations in morphologies, oligomers formed from different polypeptide sequences can display similar activities in cell metabolic assays.\cite{Bucciantini:2002un} Importantly, many oligomers of different sizes share the ability to interact with a single oligomer-specific antibody.\cite{Kayed:2003en,Glabe:2008p130} % Large spherical oligomers (3-10nm in diameter) formed from disparate sequences have been shown to binding to a single antibody, which suggests that they may share similar structural elements.
-Several studies have indicated that oligomers may possess high $\beta$-sheet content.\cite{Walsh:1999up,Chimon:2007du,Ahmed:2010p5694,Campioni:2010hz} % also bind dyes Thioflavin T (ThT) and Congo Red (CR).\cite{Walsh:2007fu,Haass:2007db,Kodali:2007cz}
-Moreover, some non-fibrillar oligomers may contain common structural elements: high-resolution structural studies of non-fibrillar oligomers of \abeta42\ and prion-like peptides suggest that they may contain \crossb\ like fragments.\cite{Walsh:2010p4761,Stroud:2012dp,Chimon:2007du}
- % Should briefly read up on the book chapter by Pat Walsh and cite him
- 
-% Although oligomers particles may be \bsheet-rich, they are morphologically distinct from fibrils (Figure~\ref{fig:oligomers}).\cite{Walsh:2009p1235}. 
-% And may contain random-coil-like conformations\cite{Sandberg:2010ix}
-
-% References for the morphologies from Pat's thesis introd -- (Janson et al. 1999; Conway et al. 2000; Lashuel et al. 2002)
-%Conway, K. A., Harper, J. D. and Lansbury, P. T., Jr. (2000). Fibrils formed \textit{in vitro} from alpha-synuclein and two mutant forms linked to Parkinson's disease are typical amyloid. Biochemistry, Vol. 39, No. 10, pp. 2552-63.
-%Conway, K. A., Lee, S. J., Rochet, J. C., Ding, T. T., Williamson, R. E. and Lansbury, P. T., Jr. (2000). Acceleration of oligomerization, not fibrillization, is a shared property of both alpha-synuclein mutations linked to early-onset Parkinson's disease: implications for pathogenesis and therapy. Proceedings of the National Academy of Sciences of the United States of America, Vol. 97, No. 2, pp. 571-6.
-%Janson, J., Ashley, R. H., Harrison, D., McIntyre, S. and Butler, P. C. (1999). The mechanism of islet amyloid polypeptide toxicity is membrane disruption by intermediate-sized toxic amyloid particles. Diabetes, Vol. 48, No. 3, pp. 491-8.
-
-%\begin{table}%\footnotesize
-% \begin{center}
-% \vspace{10pt}
-% \caption{Summary of proteins which form amyloids}
-% \label{tbl:amyloid_diseases}
-% \begin{tabular}{| c | c | c | c |}
-% \hline
-% Peptide & Study & fibrils & oligomers \\
-% \hline
-% \abeta\ & REFs & yes & yes \\
-% alpha-synuclein & REFs & yes & yes \\
-% \hline
-% \end{tabular}
-% \end{center}
-%\end{table}
-
-% Outline some of the ideas / hypothesis about the link between amyloid and disease, but don't go into what people speculate or data on toxicity. It is related, but this is out of the scope of your thesis.
-% Although not the focus of this thesis, understanding the mechanism of toxicity and elucidating the underlying toxic species will be important in the development of future drug candidates.
-%Papers talking about the links of oligomers to disease\cite{Lansbury:2006p928,Lashuel:2006co}
 \section{Amyloid involvement in diseases}
+\input{introduction_amyloid_diseases_section}
 
-Because numerous diseases share the amyloid plaque pathology, fibrils were initially hypothesized to be the toxic species in these diseases.\cite{Hardy:2002dh} However, recent research has implicated non-fibrillar oligomers as the more likely toxic agent in the cause of several neurodegenerative diseases such as Parkinson's, Alzheimer's and Huntington's diseases, and type II diabetes.\cite{Haass:2007db,Xue:2009da,Berthelot:2013fs} % (Baglioni 2006)
-Currently, the mechanism of toxicity of amyloid oligomers has not been determined, and is an area under intensive research. Oligomers formed from a variety of peptides, including those not implicated in amyloid disorders (e.g. lysozyme, $\beta$2-microglobulin, transthyretin) all exhibited toxicity, suggesting that the toxicity of amyloid oligomers may be independent of the peptide sequence.\cite{Fandrich:2012kb,Kayed:2003en} Experimental evidence widely supports the hypothesis that amyloid toxicity is based on a generic mechanism that involves the interactions of oligomers with cellular membranes.\cite{Martins:2008bz,Walsh:2007fu} Specifically, it is hypothesized that oligomeric aggregates may ultimately induce cell death by interacting with and disrupting the integrity of the cellular membrane.\cite{Fandrich:2012kb} Moreover, the aggregation of amyloidogenic peptides was found to occur more rapidly in the presence of membrane surfaces,\cite{McLaurin:1997wm,Kayed:2004ul,Yip:2002vx} leading to the claim that membrane-catalyzed fibril formation may induce cellular toxicity.\cite{Yip:2001tl}
+\section{The amyloid state of proteins}
+\input{introduction_amyloid_state_section}
 
-% Some studies have suggested that A$beta$ oligomers can increase membrane conductance without the formation of channels.
-% Exam question: How does inositol eliminate toxicity of oligomers?
-
-% Table of amyloid diseases 
-\begin{table}\footnotesize\centering
-    % \begin{center}
-    \vspace{10pt}
-    \caption{Amyloid-forming peptides and proteins and their associated diseases}
-    \label{tbl:amyloid_peptides}
-      \begin{tabular}{| c | c |}
-        \hline
-        Disease & Peptide \\
-        \hline
-        \hline
-	Alzheimer's & A$\beta$40 and A$\beta$42 \\   
-        \hline
-	Parkinson's & $\alpha$-synuclein \\
-        \hline
-        Huntington's & poly-glutamine \\
-        \hline
-        Amyotrophic lateral sclerosis & Superoxide dismutase 1 \\
-        \hline
-        Spongiform encephalopathies & Prion protein or fragments thereof \\
-        \hline
-        Type II Diabetes & islet amyloid polypeptide (or Amylin) \\
-        \hline
-      \end{tabular}
-    % \end{center}
-  \end{table}
-
-
-\section{Alzheimer's Disease}
-Alzheimer's Disease (AD) is a devastating neurodegenerative disease that is the most common cause of dementia in persons of age 65 or older. Upon examination, the post-mortem brains of AD patients show significant neuronal dystrophy. Pathologically, AD is characterized by the presence of extracellular deposits of senile plaques and neurofibrillary tangles (NFTs), both of which appear as lesions on stained neuronal tissue under visible-light microscopy (Figure~\ref{fig:AD_tissue_pathology}).
-
-% Biochemistry of the A$beta$ peptide.
-In 1985, the amyloid-$\beta$ protein or \abeta\ was identified as the largest component of these plaques.\cite{Masters:1985wb}
-% Review paper on AD from science \cite{Hardy:2002dh}
-% C.L.Masters etal.,Proc.Natl.Acad.Sci.U.S.A.82,4245 (1985)
-% G.G.Glenner,C.W.Wong,Biochem.Biophys.Res. Commun. 120, 885 (1984).
-Monomeric \abeta\ is an approximately 4 kDa peptide produced by the intramembrane proteolytic cleavage of a larger protein, the amyloid-$\beta$ precursor protein (APP).\cite{Hardy:2002dh}
-% \abeta\ is produced constitutively as part of the normal cellular metabolism.
-APP is sequentially processed by the aspartyl proteases $\beta$-secretase and $\gamma$-secretase, producing a pool of \abeta\ peptides of lengths varying from 38 to 43 residues depending on the position of the cleavage by $\gamma$-secretase (Figure~\ref{fig:AD_abeta_app}).\cite{Gandy:2005dd} The peptides spanning residues 1-40 (\abetaforty) or 1-42 (\abetafortytwo) are predominantly found in AD-associated plaques.\cite{Golde:2000vg,Holtzman:2011gi} Although plaques contain different isoforms of the A$\beta$ peptide, \abetafortytwo\ is likely to be the more deleterious form of \abeta. \textit{In vitro}, \abetafortytwo\ displays significantly higher propensity for aggregation than \abetaforty, despite differing by only two amino acids.\cite{Barrow:1992vz,Jarrett:1993ti,ElAgnaf:2000vr} Furthermore, genetic mutations within presenilin 1 and 2 (genes encoding enzymes that cleave APP to produce A$\beta$ peptides) cause an aggressive early-onset form of AD which also lead to an increase in the ratio of \abetafortytwo\ to \abetaforty\ peptides produced.\cite{Hardy:1997tu,KumarSingh:2006kc,Bentahir:2006ih}
-
-% Pathological characterization
-\begin{figure}
- \centering
- \includegraphics[width=2.5in]{figures/introduction/AD_tissue_pathology.pdf}
- \caption[AD tissue pathology]{Lesions formed from amyloid plaques and NFT tangles in the cerebral cortex tissue of an AD brain. Reprinted from The Lancet, Vol. 368, Kaj Blennow; Mony J de Leon; Henrik Zetterberg, Alzheimer's Disease, 387-403., Copyright 2006, with permission from Elsevier.}
- \label{fig:AD_tissue_pathology}
-\end{figure}
-
-\begin{figure}
-\centering
-\includegraphics[width=6in]{figures/introduction/AD_abeta_app.pdf}
-\caption[APP processing]{A schematic of the production of A$\beta$ via the proteolytic processing of amyloid precursor protein is depicted in (A). The peptide sequence of A$\beta$42 is shown in (B).}
-\label{fig:AD_abeta_app}
-\end{figure}
-
-% There must be tons of other things that happen in AD .... I‚Äôve made it seem like these oligomers are the only thing that matters.  Perhaps add sentences saying what initiates the disease .. the formation of toxic oligomers. Were the toxicity hypothesis of oligomers for AD have direct evidence from human brain? Look for this. Or was it just pieced together from a bunch of separate animal and cell culture studies? Maybe all of the above.
-Although it has been more than one hundred years since Alois Alzheimer first associated the presence of neuronal plaques with the clinical symptoms of Alzheimer's disease, the exact relationship between the two is still under much contention.\cite{Hardy:2002dh} The ubiquitous presence of amyloid plaque deposits found in the brains of deceased dementia patients led to the formulation of the long-standing amyloid cascade hypothesis: the amyloidogenesis of \abeta\ plays a key role in the initiation of AD, which ultimately leads to the clinical symptoms of dementia.\cite{Hardy:2002dh} Genetic evidence provided strong support for the amyloid hypothesis: in those with trisomy 21 (occurring in Down's syndrome), the chromosome responsible for encoding APP, the overproduction of A$\beta$ leads to early-onset of dementia with AD-like plaque load.\cite{Goate:1991kc,LevyLahad:1995vga} Furthermore, in persons with early-onset familial AD, genetic mutations on the APP lead to the production of A$\beta$ peptides with increased aggregation propensities.\cite{Tam:2012vz}
-% TODO: Add which mutations -- should I? I have them in a introduction of a chapter.
-
-% Tau protein - Keep discussion brief
-In addition to the presence of amyloid plaques, another hallmark of AD is the intracellular deposition of neurofibrillary tangles (NFTs) composed of aggregated hyperphosphorylated forms of the microtubule-associated protein tau.\cite{Ballatore:2007ir} % These tau aggregates have a high $\beta$-sheet content that ultra-structurally appears as paired helical filaments (PHFs) (28, 29).\cite{Holtzman:2011gi}
-The role of the tau protein and its interactions with amyloid in the pathogenesis of AD are still being established.\cite{Ittner:2010he} Studies with mouse models currently suggest that the role of NFTs in AD may be downstream to that of \abeta\  because A$\beta$ plaque pathology was not developed in a tau transgenic mouse model, whereas A$\beta$ formation in APP transgenic mice was found to induce hyperphosphorylation of tau, which led to the formation of NFTs.\cite{Gotz:2004dr} 
-
-% A$beta$ and tau review paper -- \cite{Ittner:2010he}
- % More details on evidence which show that NFTs are not likely the causative species.
-% I think this detail about abeta aggregation \textit{in vivo} is NICE TO KNOW but could be left out of the thesis.
-% The concentration of A$beta$ in the CSF is in the low nanomolar range, but \textit{in vitro} data shows that the critical concentration for aggregation is in the micromolar range. How does it then aggregate in the brain - mechanism of raising the effective concentration.
-% \textit{in vitro} models have been useful to screen compound libraries for inhibitors of agregation which may have therapeutic efficacy against AD.
-
-% This was a puzzling aspect of AD which did not fit with the amyloid cascade hypothesis which implicated fibrils as the key cause of toxicity.
-A puzzling aspect of AD is that the plaque load in the brain of dementia patients is often not correlated with their disease progression and severity.\cite{Hardy:2002dh,Naslund:2000wf} Instead, multiple lines of evidence indicate that synaptic loss and the severity of cognitive impairment are correlated with the concentration of soluble \abeta\ oligomers in the brain.\cite{Wang:1999fx,McLean:1999ud,Lue:1999vx} For example, oligomers extracted from AD brain can impair synapse structure and function.\cite{Shankar:2008bg}
-% Remember to edit this sentence a bit more as I lifted it .. \cite{Tam:2012vz} and references therein.
- Moreover, when injected into the brains of animal models of AD, A$\beta$ oligomers decreased the number of synapses and impaired learning performance.\cite{Lesne:2006gx,Cleary:2005kt,Martins:2007bz,Tam:2012vz} Furthermore, cellullar models of toxicity displayed characteristic symptoms of neurotoxicity that lead to eventual apoptosis upon the addition of A$\beta$ oligomers prepared either \textit{in vitro} or extracted from cell cultures.\cite{Cappai:2007bc,Lambert:1998ve,Walsh:2002p2566,Shankar:2008bg,Walsh:2007fu} Taken together, current experimental evidence indicates that preventing the formation of oligomeric forms of A$\beta$ may be a promising method of treatment for AD.
-% Don‚Äôt go into the structure here ... it was covered before... 
-%A variety of morphologically-different oligomers of \abeta\ have been isolated from the human brain, with the smallest of these oligomers dimeric in size (5).\cite{Roychaudhuri:2009iq}
-% Are referred to as ``diffuse'' plaques.\cite{Walsh:2007fu} 
-% For example, an oligomeric A? species, termed A??56, purified from the brains of mice in an AD mouse model, was found to disrupt memory functions when administered to young rats.
-% Lipids have been used to disassemble A? fibrils into smaller structures, which were seen to be highly active in mice.100 
-% Key studies which lead to the toxicity mechanisms. Pull some from\cite{Fandrich:2012kb}
-
-% Other review papers for abeta oligomers \cite{Roychaudhuri:2009iq,Sakono:2010kw}
-% SDS- stable low-n oligomers of Ab are the fundamental building blocks of insoluble amyloid deposits and could be the earliest mediators of neuronal dysfunction.\cite{Walsh:2007fu}
-% Evidence for the involvement of soluble, non-fibrillar Ab in AD has been gleaned through four distinct experimental approaches that utilize (i) synthetic Ab peptides; (ii) cell culture systems in which APP is over-expressed; (iii) APP transgenic mice; and (iv) human CSF and postmortem brain.
-% When Ab is deposited and aggregated in a non‚Äìb sheet (nonfibrillar) conformation, it is detected via immunohisto- chemical techniques as ‚Äúdiffuse‚Äù plaques (Fig. 1C). REF
-
-
-% Jarrett JT, Berger EP, Lansbury PT Jr. The carboxy terminus of the beta amyloid protein is critical for the seeding of amyloid formation: implications for the pathogenesis of Alzheimer‚Äôs disease. Biochemistry 1993; 32: 4693‚Äì97. 
-% Walsh DM, Selkoe DJ. Deciphering the molecular basis of memory failure in Alzheimer‚Äôs disease. Neuron 2004; 44: 181‚Äì93.
-
-% In addition, \abetaforty\ and \abetafortytwo\ also have distinct aggregation pathways \textit{in vitro}: \abetafortytwo\ is found to form a morphologically more diverse population of intermediate oligomers than \abetaforty.\cite{Bitan:2003ut} 
-
-% What about mice studies? LOOK AT DAVIS THESIS FOR MORE REFERENCES THERE IN SUPPORT OF ABETA42
-
-% Soluble oligomers - structure? toxicity on cells? rats? mouse?
-% What kind of an effect do they have? Synaptic toxicity.
-
-% Take a look at how Lemkul covers this section and transitions to it.
-% In this section, I will provide an overview of some of the challenges to overcome when developing a small molecule therapeutic for Alzheimer's disease. Furthermore, using this information, I will motivate why inositol is an exciting avenue to explore.
-% Briefly mention non-small molecule putative therapies which also acts via amyloid inhibition. The focus of this thesis will be on small-molecule amyloid inhibition.
-% Amyloid inhibition as a treatment for Alzheimer's disease and related amyloid disorders. 
-% Talk about how important it is to develop drugs for these amyloid disorders 
-\section{Amyloid inhibition by small molecules: a promising method of treatment for AD} 
-
+\section{Amyloid inhibition by small molecules: a promising method of treatment for AD}
 With the increasing longevity of our population, AD is approaching epidemic proportions and no cure or preventative therapy is available.\cite{Blennow:2006wd} In 2010, it was estimated that 36 million people in the world were suffering from AD, and this number is projected to grow to 115 million people by the year 2050.\cite{alzreport:2012} Furthermore, there are no drugs which may target the underlying disease: approved treatments today such as donepezil (a cholinesterase inhibitor), and memantine (a N-methyl-D-aspartate antagonist) only mitigate cognitive symptoms.\cite{Mangialasche:2010eg}
 
 %\cite{(4) The 2012 PhRMA Report on Medicines in Development: Alzheimer‚Äö√Ñ√¥s disease. See www.phrma.org.} 
@@ -693,11 +481,9 @@ In Chapter 2, I review the details of molecular dynamics simulations, the centra
 
 In Chapter 3, as a first step to investigate the stereochemistry-dependent effect on amyloidogenic peptide aggregation and morphology, I examined the effect of backbone interactions in polypeptide self-aggregation by systematically characterizing the binding equilibria of inositol with model peptides, alanine dipeptide (ADP), an amyloid-forming peptide (Gly-Ala)$_4$. 
 
-In Chapter 4, I continue my investigation by characterizing the binding mechanism of inositol with peptide and aggregates of the amyloid-forming peptide fragment A$\beta$(16-22) (or KLVFFAE), a fibril-forming fragment thought to initiate amyloid formation in the full-length A$\beta$ peptide. Binding to grooves at the surface of $\beta$-sheet aggregates is found to play a central role in the activity of inositol. Taken together, the results presented in these chapters suggest that inositol is likely to act as a drug on protofibrillar-like aggregates. Accordingly, in Chapter 5, I characterize the binding mechanism of inositol with protofibrils of A$\beta$42. \textit{I found that the binding modes of inositol with KLVFFAE adopt characteristic protein-carbohydrate binding modes.}
+In Chapter 4, I continue my investigation by characterizing the binding mechanism of inositol with peptide and aggregates of the amyloid-forming peptide fragment A$\beta$(16-22) (or KLVFFAE), a fibril-forming fragment thought to initiate amyloid formation in the full-length A$\beta$ peptide. Binding to grooves at the surface of $\beta$-sheet aggregates is found to play a central role in the activity of inositol. Taken together, the results presented in these chapters suggest that inositol is likely to act as a drug on protofibrillar-like aggregates. Accordingly, in Chapter 5, I characterize the binding mechanism of inositol with protofibrils of A$\beta$42. \textbf{Need more written for this results chapter} \textbf{I found that the binding modes of inositol with KLVFFAE adopt characteristic protein-carbohydrate-like binding modes.}
 
-On the basis of my work involving inositol, a notable result is that the methodology utilized in these studies may be useful for investigating protein-carbohydrate binding mechanism in general. 
-% Is there anything else?
-In Chapter 6, applying the general methodology developed in this thesis, I characterize the binding modes and sites of monosaccharides glucosamine and GlcNac with  PgaB, a key protein responsible for the export of polysaccharides important for the formation of biofilms.  Using conventional sampling methods, I was able to map out a binding surface which predicts a possible binding mode for the biologically relevant polymer substrate, which has been elusive to crystallize. The study presented in this chapter demonstrates that the methodology I have developed and utilized throughout the thesis may be successfully applied and adapted to characterize other carbohydrate-binding proteins.  
+On the basis of my results involving inositol, a notable result is that the methodology utilized in these studies may be useful for investigating protein-carbohydrate binding mechanism in general. Hence, applying the general methodology I've developed throughout Chapters 3-5, in Chapter 6, I characterize the binding modes and sites of monosaccharides glucosamine and GlcNac with PgaB, a key protein responsible for the export of polysaccharides important for the formation of biofilms.  Using conventional sampling methods, I was able to map out a binding surface which predicts a possible binding mode for the biologically relevant polymer substrate, which has been elusive to crystallize. The study presented in this chapter demonstrates that the methodology I have developed and utilized throughout the thesis may be successfully applied and adapted to characterize other carbohydrate-binding proteins.  
 
 %  Some where in here, maybe mention weak binding and how this relates to why I was able to use this methodology?
 
