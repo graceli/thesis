@@ -18,9 +18,24 @@
 % Summary of the core technique that is used in this thesis
 
 \section{Conclusions and perspectives}
-Alzheimer's Disease (AD) is a devastating neurodegenerative disease that is the most common cause of dementia in persons of age 65 or older. Currently there is no cure or method of treatment that targets the underlying disease.  As the world's population is living ages, AD will reach epidemic levels and will pose a tremendous medical burden for society. The overall goal of this thesis was to investigate the molecular basis of amyloid inhibition by inositol, a small-molecule putative therapeutic for the treatment of Alzheimer's disease. 
+% Tense
+% What's unclear right now, what I should add
+% What do I think is the most important thing to come out of this work ??
 
-By utilizing molecular dynamics simulations, a computational technique based on classical physics which allows us to simulate the motions of biomolecular systems at the atomistic-level, I have systematically examined model amyloidogenic peptides and aggregates to more complex systems involving the full-length A$\beta$42 peptide. 
+%%%%%%%% From my last committee report %%%%%%
+The primary objective of my research is to use molecular dynamics simulations to elucidate the molecular basis of the structure-activity relationship of inositol by determining its effect on the structure, thermodynamics, and kinetics of the amyloid aggregation pathway. This thesis represents the most complete computational study done to date on any known amyloid inhibitor.
+
+In order to characterize the molecular mechanism of action of inositol, we have examined the interaction of inositol with various aggregate species known to be found in the amyloid aggregation pathway. Systematic comparative studies of amyloidogenic peptides and their aggregates of increasing sequence and composition complexity were carried out in the presence and absence of \emph{scyllo}-inositol, and its inactive isomer, \emph{chiro}-inositol.
+
+The completed work provides insight into designing novel, higher-efficacy derivatives of putative drugs which may prevent the onset and progression of amyloid disorders such as Alzheimer's Disease.  In addition, the results are relevant for understanding the binding mechanism of small-molecule to intrinsically disordered proteins in general. Finally, we demonstrate the applicability of our methodology to examine mechanisms of weak protein-ligand interactions such as protein-carbohydrate binding.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+Alzheimer's Disease (AD) is a devastating neurodegenerative disease that is the most common cause of dementia in persons of age 65 or older. Currently there is no cure or method of treatment that targets the underlying disease.  As the population of the world is living longer, AD will eventually become an epidemic that pose a tremendous medical burden for society. 
+
+\textbf{The overall goal of this thesis was to investigate the molecular basis of amyloid inhibition by inositol, a small-molecule putative therapeutic for the treatment of Alzheimer's disease.}
+
+By utilizing molecular dynamics simulations, a computational technique based on classical physics which allows us to simulate the motions of biomolecular systems at the atomistic-level, \textbf{I have systematically examined model amyloidogenic peptides and aggregates to more complex systems involving the full-length A$\beta$42 peptide. -- unclear I need to summarize the study design and rationale a bit better here} 
 
 The work presented in this thesis contributed to two peer-reviewed articles and two manuscripts in preparation all of which are presented in Chapters 3 to 6.  The key conclusions from each of these chapters are summarized below.
 
@@ -29,7 +44,7 @@ Beginning in chapter 2, I performed systematic simulations of simple amyloidogen
 
 To further investigate the role of sequence-specific interactions between inositol and aggregates of pathogenic peptides, I examined the binding of  inositol stereoisomers, successively to monomers, disordered oligomers, and $\beta$-sheet aggregates of A$\beta$(16-22), whose sequence is thought to be the core aggregation region in the A$\beta$42 peptide (chapter 4). A key finding of this study was that the $K_{eq}$ of inositol ($\sim$0.2 - 0.5 mM) for the $\beta$-oligomer is commensurate with the concentration at which inhibition of amyloid formation by A$\beta$42 is observed \emph{in vitro}. Although both \emph{scyllo}- and \emph{chiro}-inositol exhibit similar binding affinities with all peptide states considered, my simulations have uncovered a stereospecific face-to-face stacking stacking mode of \emph{scyllo}-inositol with the Phe side chains and a higher propensity for hydrogen bonding, which together suggests a molecular basis for measured differences in activity. \textbf{Cooperative binding modes of inositol at grooves on the surface of the $\beta$-oligomer of A$\beta$(16-22) suggest a possible mechanism of fibril inhibition whereby inositol prevents the lateral association or stacking of protofibrillar $\beta$-sheet oligomers.} Furthermore, my results suggest that the fibril core of A$\beta$ amyloid aggregates contains carbohydrate-like binding sites.  \textbf{As such, carbohydrate-based small-molecule derivatives may be a promising avenue to explore for the rational design of novel therapeutics for AD.}
 
-In chapter 4, I investigate the binding of inositol to the protofibrillar form of A$\beta$42, the full-length peptide. I found that there were no differences in the fibril conformations with and without inositol in either low or high molar ratio.
+In chapter 4, I investigated the binding of inositol to the protofibrillar form of A$\beta$42, the full-length peptide. I found that there were no differences in the fibril conformations with and without inositol in either low or high molar ratio.
 % Does glucose bind more or less? If it does bind less, then it tells us that we might be onto something with scyllo-inositol even though the structure is subtly different.  
 % Not sure what I meant here
 Glucose does not necessarily bind ``less", but it does not bind on the right face ie. the KLVFFAE face Scyllo-inositol appears to preferentially bind the KLVFFAE face, more than glucose and chiro-inositol.  Furthermore, scyllo-inositol does not bind in a hydrated tunnel formed in the protofibrillar aggregate, where as both chiro-inositol and glucose Binding mode differences between active and inactive inhibitors of Abeta suggest a mechanism of inhibition.
@@ -48,11 +63,29 @@ In chapter 5, I demonstrated the generality of the methodology that was develope
 % \textbf{Lack of experimental data.} 
 
 One limitation of this study is that the monomeric peptides examined in this study were either model peptides or shorter fragments of longer amyloidogenic peptides. The effect of small molecule inhibitors on the peptide conformation and aggregation may differ for longer amyloidogenic peptides such the full-length A$\beta$40 or A$\beta$42. To address this possibility, it will be useful to perform simulations to comparatively examine the interaction of chiro- and scyllo-inositol with monomers of the A$\beta$ peptide.
+\textbf{Our work presently has led to new testable hypothesis regarding amyloid inhibition. Ongoing collaborative experimental work is being carried out in the laboratory of Dr. Simon Sharpe to test the effect of binding F on amyloid formation. -- Did Pat mention any of this stuff in his thesis?}
 
 Molecular dynamics simulations of amyloid-inhibitor interactions provide insight at the atomistic level which is not feasible to obtain using experimental approaches.  Ultimately, it will be beneficial to cross-validate the results obtained in this thesis experimentally by using solid-state NMR and other biophysical techniques. In the future, synergistic studies combining simulations and experimental characterization will accelerate the progress towards an understanding of the mechanism of amyloid inhibition.   
 %Several studies are beginning to do that to understand the molecular mechanism of small molecule inhibitors ECGC.  In recent years several studies have begun to do this with some successes.
 
 \section{Future directions}
+
+\subsection{Application of enhanced sampling methods to probe amyloid inhibition by small molecule}
+Extend simulations. The goal is to be able to simulate the entire aggregating process.  But this is not feasible because the timescale of fibril formation can take up to days. But can simulate the early stages of amyloid formation.  Use of enhanced sampling methods for aggregates in the presence of the drug.  These methods can enhanced Replica-exchange.  These methods enhance sampling and can speed up beta-sheet formation. With longer simulation times, can reach beta-sheet formation for shorter peptides such as KLVFFAE, we can add inositol (or some other drug) to understand their activity in early amyloid formation.
+
+\subsection{Preventing the growth of amyloid formation by Seeding simulations}
+Currently running seeding simulations of a protofibril with bound inositol and dispersed monomers in solution. Here, the idea is to test whether the presence of bound inositol on the protofibril alters the binding equilibrium of monomers to the protofibril. Preliminary analysis shows that monomers can form disordered oligomers, which then goes on to bind the protofibril, in the presence of inositol.  Further analyses, such as computing the spatial distribution of the bound monomers around the protofibril will suggest how peptides partition around a protofibril and whether the presence of inositol alters the binding equilibrium of monomers to pre-existing $\beta$-sheets. Moreover, it will be useful to compute the secondary structure of the peptides bound to the protofibril.  This will indicate whether the dispersed peptides are able to form $\beta$-strands after binding to the protofibril.
+
+\subsection{Effect of inositol in the presence of lipid membranes}
+% Effect of the drug in the presence of lipid membranes => Does it prevent peptides from binding to the membrane?
+As discussed in the introduction (chapter 1), it is currently hypothesized that amyloid may disrupt the integrity of cellular membranes by interacting with them. An interesting question is whether amyloid inhibitors such as inositol affect the aggregation of A$\beta$ peptides in the presence of lipid membranes. Inositol was shown to neutralize the toxicity of A$\beta$ oligomers.\cite{McLaurin:2000bq}  Hence, it is possible that inositol may prevent the partitioning of KLVFFAE monomers and aggregates onto surfaces or alternatively prevent the formation of $\beta$-sheets at the surfaces of membranes.\cite{references}
+
+Using a similar systematic approach that was carried out in this thesis, the effect of inositol on the binding of KLVFFAE peptide aggregates in the presence of (1) the membrane-mimetic, octane slab, and (2) lipid bilayers of differing composition. Previous simulation study in our lab have shown that $\beta$-sheet formation of amyloidogenic peptides is catalyzed by the presence of a hydrophobic surface.\cite{Nikolic:2010go} Furthermore, simulations of lipid bilayers and amyloid-forming peptide fragments have been performed by Dr. Loan Huynh to ascertain how the bilayer affects peptide structure and aggregation and, concurrently, how the peptides perturb the lipid bilayer. With the addition of inositol, molecular simulations of these systems will provide insight into the  molecular basis of inhibition of amyloid toxicity. These studies can be combined with enhanced sampling methods,\cite{TVREX, STDR} which are computationally expensive but will be necessary to obtain statistically converged properties of interest.
+
+\subsection{Simulations for other peptides involved in amyloid disorders}
+Hard disk space and cpu power can be easily secured.  It would be a minor point to get that done.  Since there are many amyloid-associated disorders. In the future, simulations can be performed with these peptides while using a similar methodology. 
+
+
 % Some of the things that i can do to alleviate these limitations.
 \section{Significance for disordered binding}
 % [Conclusions - A general interest in the specific work that I have done here ] 
@@ -69,17 +102,7 @@ Another field of interest where weak interactions dominate is cosolvent effects 
 % Better methods? Longer simulation times? Better force fields to detect hydrophobic effect?
 % Better understanding of the amyloid aggregation mechanism will lead to a better understanding of the inhibition mechanism.
 These are significance points.  Tie them better Studying different aggregate forms is useful.  One major conclusion of this thesis is that doing comparative systematic simulations is needed and useful for understanding the molecular basis of amyloid inhibitors how work.
-[sketchy and would require a fast compute cycle -- look into more literature to formulate this idea better] This thesis shows that MD may be useful in the rational design of amyloid inhibitors from a template inhibitor. Molecular information obtained from simulations can be used to help design new derivatives, and simulations can be run for these chemically-modified forms of derivatives. 
-
-\subsection{Simulations for other peptides involved in amyloid disorders}
-Hard disk space and cpu power can be easily secured.  It would be a minor point to get that done.  Since there are many amyloid-associated disorders. In the future, simulations can be performed with these peptides while using a similar methodology. 
-
-\subsection{Effect of inositol in the presence of lipid membranes}
-Effect of the drug in the presence of lipid membranes => How does it affect aggregation in the presence of membranes. Does it prevent peptides from binding to the membrane?
-
-\subsection{Apply enhanced sampling methods to study amyloid inhibition}
-Extend simulations. The goal is to be able to simulate the entire aggregating process.  But this is not feasible because the timescale of fibril formation can take up to days. But can simulate the early stages of amyloid formation.  Use of enhanced sampling methods for aggregates in the presence of the drug.  These methods can enhanced Replica-exchange.  These methods enhance sampling and can speed up beta-sheet formation. With longer simulation times, can reach beta-sheet formation for shorter peptides such as KLVFFAE, we can add inositol (or some other drug) to understand their activity in early amyloid formation.
-
+[sketchy and would require a fast compute cycle -- look into more literature to formulate this idea better] This thesis shows that MD may be useful in the rational design of amyloid inhibitors from a template inhibitor. Molecular information obtained from simulations can be used to help design new derivatives, and simulations can be run for these chemically-modified forms of derivatives.
 
 % Not sure if this is polished enough to go into the conclusions chapter -- Understanding protein-sugar interactions is an important endeavor because of antibody binding to proteins.  Viruses often express carbohydrates on their coats.  Inhibiting bacterial action involves knowing how polysaccharrides are expressed, which involves binding proteins.  The results of this thesis presents methods that may be useful for developing antibiotics. \textbf{Rewrite this part to reflect and tie into how my work, methods, and how they are related to solving these problems} 
 
