@@ -12,14 +12,12 @@ In principle, the time-evolution of a molecular system can be predicted using qu
 
 Molecular mechanics is an approach in which a molecular system is treated using the principles of classical mechanics. In molecular mechanics, a molecule is modelled by a set of masses (atoms) connected by springs (bonds).  An empirical potential energy function (PEF) that only depends on the positions of the atoms is employed to describe the internal energy and interactions of molecules within a system.\cite{Cornell:1995td,Brooks:1983uc,Christen:2005fp,Jorgensen:1985wx} The theoretical basis for molecular mechanics is rooted in quantum mechanics via the Born-Oppenheimer approximation.\cite{Born:1927tb} Under this approximation, the electronic and nuclear motion of atoms are considered to be uncoupled, and therefore can be treated separately.
 % Note that the previous sentence is a little vague -- what does it mean to be ``treated separately''
-Because nuclei are much heavier than electrons, they are practically stationary on the time scales of electronic vibration. 
-
-\textbf{For this reason, the total energy (or Hamiltonian, $H$) of a system can be considered to depend only on the electronic motion. As a consequence, the nuclear motion of a system is then governed by a potential energy function under the influence of a single electronic state. -- unclear, why?}
+Because nuclei are much heavier than electrons, they are practically stationary on the time scales of electronic vibration. For this reason, the total energy (or stationary Hamiltonian, $H$) of a system can be considered to depend only on the electronic motion. As a consequence, the nuclear motion of a system is then governed by a potential energy function under the influence of a single electronic state. % Note: Regis said it was unclear.
 
 % Although molecular mechanics is a very simplified model of molecular system, that made modelling of much larger biomolecular systems possible. 
 
 The PEF employed in molecular mechanics corresponds to the potential energy surface of the molecular system in its electronic ground state.  % can't find a ref for this and all the places where I see this reference, I don't see a corresponding reference. 
-In molecular mechanics, atomic nuclei are treated as point charges, and the motion of their electrons is implicitly accounted for in the PEF.  \textbf{Because electronically excited states are not treated, no chemical reactions (i.e., bond formation) can occur.}
+In molecular mechanics, atomic nuclei are treated as point charges, and their electronic distribution is implicitly accounted for in the PEF.  \textbf{Because electronically excited states are not treated, no chemical reactions (i.e., bond formation) can occur.}
 % \cite{M. Born and R. Oppenheimer, Quantum Theory of Molecules, Ann. Physics, vol. 84, pp. 457â484, 1927.} -- can't find this article.
 % \textbf{Say something good about MM approach}
 
@@ -60,7 +58,7 @@ where $k_{\chi}$ and $n$ is the height and the periodicity of the rotational bar
 
 
 \subsection{Non-bonded Interactions}
-Non-bonded interaction potentials predominantly account for van der Waals and electrostatic interactions.  Accurate modeling of these interactions in particularly important for the transferability of a force field, which is the assumption that a force field developed based on a small set of molecules can predict properties of a broader set of molecules composed of similar chemical groups. The non-bonded forces are only applied to atom pairs from different molecules or separated by at least three bonds, and are pair-wise additive, that is, the total contribution to the potential energy from the non-bonded forces is the sum total over all interacting atomic pairs in a system. Van der Waals interactions are represented by the Lennard-Jones potential,
+Non-bonded interaction potentials predominantly account for van der Waals and electrostatic interactions.  Accurate modeling of these interactions is particularly important for the transferability of a force field, which is the assumption that a force field developed based on a small set of molecules can predict properties of a broader set of molecules composed of similar chemical groups. The non-bonded forces are only applied to atom pairs from different molecules or separated by at least three bonds, and are pair-wise additive, that is, the total contribution to the potential energy from the non-bonded forces is the sum total over all interacting atomic pairs in a system. Van der Waals interactions are represented by the Lennard-Jones potential,
 
 \begin{equation}
   \label{eq:lj_function}
@@ -90,9 +88,9 @@ Electronic polarizability is the measure of the change in a molecule's electron 
 % The introduction of polarizable force fields into common use has been inhibited by the high computational cost associated with solving this problem self-consistently.
 
 \subsection{The AMBER and OPLS Force Fields}
-In this section, I briefly describe two widely used force fields for protein simulations, AMBER and OPLS.  OPLS-AA/L\cite{Kaminski:2001eq} was employed in the studies presented in Chapters 3 to 5, and AMBER99\cite{Wang:2000uu} was employed in the studies in Chapter 6.  More extensive and detailed reviews of empirical force fields for biomolecular simulations have been provided elsewhere.\cite{Ponder:2003uw,MackerellJr:2004p5558}
+In this section, I briefly describe two widely used force fields for protein simulations, AMBER and OPLS.  OPLS-AA/L\cite{Kaminski:2001eq} was employed in the studies presented in Chapters 3 to 5, and AMBER99\cite{Wang:2000uu} was employed in the study in Chapter 6.  More extensive and detailed reviews of empirical force fields for biomolecular simulations have been provided elsewhere.\cite{Ponder:2003uw,MackerellJr:2004p5558}
 
-The AMBER force field and the associated molecular mechanics simulation package for the simulation of biomolecules were developed by the Kollman group.\cite{Weiner:1984uw}  The central ideas for parameterization were to fit atomic point charges to the quantum electrostatic potential (ESP) using \emph{ab initio} quantum mechanical calculations, and develop parameters for the bonded and van der Waals potential terms using experimental structural data and liquid-state simulations.\cite{Weiner:1984uw,Cornell:1995td} The initial parameters were improved upon via the reproduction of experimental measurements for model compounds. The early versions of the AMBER force field accounted for only non-aliphatic hydrogen atoms,\cite{Weiner:1984uw}  and an all-atom version of AMBER was later introduced in 1995.\cite{Cornell:1995td} Since then, many iterations of improvements upon the original all-atom AMBER force field have been developed.\cite{Garcia:2002gu,Sorin:2005iz,Hornak:2006gx,Duan:2003ws}
+The AMBER force field and the associated molecular mechanics simulation package for the simulation of biomolecules were developed by the Kollman group.\cite{Weiner:1984uw}  The central ideas for parameterization were to fit atomic point charges to the quantum electrostatic potential (ESP) using \emph{ab initio} quantum mechanical calculations, and develop parameters for the bonded and van der Waals potential terms using experimental structural data and liquid-state simulations.\cite{Weiner:1984uw,Cornell:1995td} The initial parameters were improved upon via the reproduction of experimental measurements for model compounds. The early versions of the 1983 AMBER force field accounted for only non-aliphatic hydrogen atoms,\cite{Weiner:1984uw}  and an all-atom version of AMBER was later introduced in 1995.\cite{Cornell:1995td} Since then, many iterations of improvements upon the original all-atom AMBER force field have been developed.\cite{Garcia:2002gu,Sorin:2005iz,Hornak:2006gx,Duan:2003ws}
 % Note that I lifted the above references from Zhuyi's thesis methods draft and I didn't check if they were appropriate.
 In particular, AMBER99 (or ff99) is one such revision with the peptide group dihedral angles re-parameterized to improve the reproduction of peptide secondary structure.\cite{Wang:2000uu}
 
@@ -121,21 +119,21 @@ In a system composed of $N$ interacting particles, the force acting on each part
 % Not exactly ... according to Chris Madill's thesis, U is the potential energy between an atom pair?  Clear up the core algorithm!
 \begin{equation}
 % F_i = - \nabla U
-  F_i = - \frac{\partial V}{\partial r_i}, i = 1, 2, 3, ... , N.
+ \vec{ F_i} = - \frac{\partial V}{\partial r_i}, i = 1, 2, 3, ... , N.
 \end{equation}
 
 The variable $r_{i}$ represents the spatial coordinates of the particle $i$. The calculated force vectors are summed together to yield the net force vector for each atom in the system. By Newton's second law of motion, the acceleration, $a_i$, of each atom is given by 
 \begin{equation}
-a_i(t) = \frac{F_i}{m_i},
+\vec{a_i}(t) = \frac{\vec{F_i}}{m_i},
 \end{equation}
 where $m_i$ is the mass of the $i$th particle. 
-Hence, the velocity at a subsequent time step, $v_{i}(t + \delta t)$, is then given by,
+Hence, the velocity at a subsequent time step, $\vec{v_{i}}(t + \delta t)$, is then given by,
 \begin{equation}
-v_i(t+\delta t) = v_i(t) + \int_{t}^{t+\delta t} a_{i}(t) dt = v_i(t) + a_{i}\cdot \delta t.
+\vec{v_i}(t+\delta t) = \vec{v_i}(t) + \int_{t}^{t+\delta t} \vec{a_{i}}(t) dt = \vec{v_i}(t) + \vec{a_{i}}\cdot \delta t.
 \end{equation}
 The position of atom $i$ at time $ t + \delta t$ is then,
 \begin{equation}
-x_i(t + \delta t) = x_i(t) + v_i(t)\delta t + \frac{a_i(t)\delta t^2}{2}.
+\vec{x_i}(t + \delta t) = \vec{x_i}(t) + \vec{v_i}(t)\delta t + \frac{\vec{a_i}(t)\delta t^2}{2}.
 \end{equation}
 As shown in Equations~\ref{2.9 2.10}, the predicted positions of each of the $N$ particles are approximated numerically by finite difference in MD simulations using a time-integration algorithm. For example, the leap-frog and velocity-verlet algorithms are commonly used in MD simulations.\cite{Hockney:1974tu,Swope:1982tq} To ensure numerical stability, a small integration time step $\delta$t in the range of 1 - 4 femtoseconds (fs) is chosen. In MD simulations of biomolecular systems, when the bond lengths involving hydrogens are frozen, a 2 fs timestep is commonly chosen because it is twice the time period for the fastest vibrational motion (existing in bonds involving hydrogen). Once the position of each particle is computed, subsequent interatomic forces are updated based on these new coordinates, and the entire process is repeated to obtain the coordinates of the system at future time steps. 
 
@@ -156,9 +154,9 @@ As shown in Equations~\ref{2.9 2.10}, the predicted positions of each of the $N$
 % Ref: Understanding Molecular Simulations by Frenkel Daan.
 Temperature is a measure of the kinetic energy of the system, and the instantaneous temperature of a macroscopic system can be determined from the kinetic energy of every atom.  The theorem of equipartition of energy states that in a (classical) many-body system at thermal equilibrium, the average kinetic energy (K) per degree of freedom is related to the thermodynamic temperature, $T$, via
 \begin{equation}
-  K =   \frac{1}{2} k_BT,
+  K =  \frac{1}{N} \sum_{i=1}^{N} \frac{1}{2} m_{i}v_{i} = \frac{1}{2} k_BT,
 \end{equation}
-where $k_{B}$ is the Boltzmann constant. In MD simulations, the temperature of the system is the total kinetic energy of the system normalized by the number of degrees of freedom in the system, $N_{f}$, that is,
+where $m_{i}$ is the mass of the atom, $v_{i}$ is the velocity along a single dimension, and $k_{B}$ is the Boltzmann constant. In MD simulations, the temperature of the system is the total kinetic energy of the system normalized by the number of degrees of freedom in the system, $N_{f}$, that is,
 \begin{equation}
   T(t) = \sum_{i=1}^{N} \frac{m_iv_i^2(t)}{k_BN_f},
 \end{equation}
@@ -194,7 +192,7 @@ p_{i} = \frac{1}{Z}e ^{\frac{-E_{i}}{kT}}.
 % Z = e ^{\frac{-A}{k_{B}T}}
 \end{equation}
 $Z = \sum_{i} e ^{\frac{-E_{i}}{kT}}$ is the normalization factor (or the \emph{partition function} of a system) such that $\sum_{i} p_{i} = 1$.
-Any thermodynamic variable can then be derived from the partition function. For example, free energy, an important thermodynamic quantity, measures the useful work obtainable from a system under a certain set of conditions.  It is called the Gibbs free energy (G) for a system in the NPT ensemble, and the Helmholtz free energy (A) for a system in the NVT ensemble. In biochemistry, a central quantity of interest is the change in free energy between two states of interest, which measures whether a reversible biochemical process will occur spontaneously.  The relative free energy $\DeltaG$ of any two states, 0 and 1, is related to their respective probabilities $p_{0}$ and $p_{1}$ via
+Any thermodynamic variable can then be derived from the partition function. For example, free energy, an important thermodynamic quantity, measures the useful work obtainable from a system under a certain set of conditions.  It is called the Gibbs free energy (G) for a system in the NPT ensemble, and the Helmholtz free energy (A) for a system in the NVT ensemble. In biochemistry, a central quantity of interest is the change in free energy between two states of interest, which measures whether a reversible biochemical process will occur spontaneously.  The relative free energy $\Delta$G of any two states, 0 and 1, is related to their respective probabilities $p_{0}$ and $p_{1}$ via
 \begin{equation}
 \Delta G = - k_{B}Tln \frac{p_{0}}{p_{1}}.
 \end{equation}
