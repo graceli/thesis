@@ -17,7 +17,7 @@ Because nuclei are much heavier than electrons, they are practically stationary 
 % Although molecular mechanics is a very simplified model of molecular system, that made modelling of much larger biomolecular systems possible. 
 
 The PEF employed in molecular mechanics corresponds to the potential energy surface of the molecular system in its electronic ground state.  % can't find a ref for this and all the places where I see this reference, I don't see a corresponding reference. 
-In molecular mechanics, atomic nuclei are treated as point charges, and their electronic distribution is implicitly accounted for in the PEF.  \textbf{Because electronically excited states are not treated, no chemical reactions (i.e., bond formation) can occur.}
+In molecular mechanics, atomic nuclei are treated as point charges, and their electronic distribution is implicitly accounted for in the PEF.  Because electronics are not treated, no chemical reactions (i.e., bond formation) can occur.
 % \cite{M. Born and R. Oppenheimer, Quantum Theory of Molecules, Ann. Physics, vol. 84, pp. 457â484, 1927.} -- can't find this article.
 % \textbf{Say something good about MM approach}
 
@@ -49,12 +49,12 @@ Likewise, angle-bending motions can also be described harmonically as
 	V(angles) = \sum_{angles} k_{\theta}(\theta - \theta_{0})^2. \\
 \end{equation}
 
-In Equations~\ref{eq:bonds} and \ref{eq:angles}, the constants $k_{b}$ and $k_{\theta}$ are the equilibrium force constants for bonds and angles, respectively, and the constants $b_{0}$ and $\theta_{0}$ are the reference bond length and angle, respectively. The total energetic contribution from bond stretching and angle bending are computed by summing over all bonds and angles in the system. In addition, the torsion (or dihedral) angle of bonds is also important for describing molecular conformations.  These energetic terms are commonly accounted for by using a periodic function of the form,
+In Equations~\ref{eq:bonds} and \ref{eq:angles}, $b$ and $\theta$ are variables representing the bond length and bond angle. The constants $k_{b}$ and $k_{\theta}$ are the equilibrium force constants for bonds and angles, respectively, and the constants $b_{0}$ and $\theta_{0}$ are the reference bond length and angle, respectively. The total energetic contribution from bond stretching and angle bending are computed by summing over all bonds and angles in the system. In addition, the torsion (or dihedral) angle of bonds is also important for describing molecular conformations.  These energetic terms are commonly accounted for by using a periodic function of the form,
 \begin{equation}
 \label{eq:torsion}
 	V(dihedrals) = \sum_{dihedrals} \sum_{n} k_{\chi}(1 + cos(n\chi - \delta)),
 \end{equation}
-where $k_{\chi}$ and $n$ is the height and the periodicity of the rotational barrier, respectively.  $\delta$ is the reference angle (or phase).  The value of $n$ is usually between 1 and 4, and depends on the specific force field parameterization procedure. Functions of this form are also included the PEF to ensure the planarity of planar chemical groups, in which case $\chi$ corresponds to a so-called improper dihedral angle.
+where $\chi$ is the dihedral angle, $k_{\chi}$ and $n$ is the height and the periodicity of the rotational barrier, respectively.  $\delta$ is the reference angle (or phase).  The value of $n$ is usually between 1 and 4, and depends on the specific force field parameterization procedure. Functions of this form are also included the PEF to ensure the planarity of planar chemical groups, in which case $\chi$ corresponds to a so-called improper dihedral angle.
 
 
 \subsection{Non-bonded Interactions}
@@ -124,18 +124,21 @@ In a system composed of $N$ interacting particles, the force acting on each part
 
 The variable $r_{i}$ represents the spatial coordinates of the particle $i$. The calculated force vectors are summed together to yield the net force vector for each atom in the system. By Newton's second law of motion, the acceleration, $a_i$, of each atom is given by 
 \begin{equation}
+\label{eq:fma}
 \vec{a_i}(t) = \frac{\vec{F_i}}{m_i},
 \end{equation}
 where $m_i$ is the mass of the $i$th particle. 
 Hence, the velocity at a subsequent time step, $\vec{v_{i}}(t + \delta t)$, is then given by,
 \begin{equation}
+\label{eq:velocity}
 \vec{v_i}(t+\delta t) = \vec{v_i}(t) + \int_{t}^{t+\delta t} \vec{a_{i}}(t) dt = \vec{v_i}(t) + \vec{a_{i}}\cdot \delta t.
 \end{equation}
 The position of atom $i$ at time $ t + \delta t$ is then,
 \begin{equation}
+\label{eq:displacement}
 \vec{x_i}(t + \delta t) = \vec{x_i}(t) + \vec{v_i}(t)\delta t + \frac{\vec{a_i}(t)\delta t^2}{2}.
 \end{equation}
-As shown in Equations~\ref{2.9 2.10}, the predicted positions of each of the $N$ particles are approximated numerically by finite difference in MD simulations using a time-integration algorithm. For example, the leap-frog and velocity-verlet algorithms are commonly used in MD simulations.\cite{Hockney:1974tu,Swope:1982tq} To ensure numerical stability, a small integration time step $\delta$t in the range of 1 - 4 femtoseconds (fs) is chosen. In MD simulations of biomolecular systems, when the bond lengths involving hydrogens are frozen, a 2 fs timestep is commonly chosen because it is twice the time period for the fastest vibrational motion (existing in bonds involving hydrogen). Once the position of each particle is computed, subsequent interatomic forces are updated based on these new coordinates, and the entire process is repeated to obtain the coordinates of the system at future time steps. 
+As shown in Equations~\ref{eq:velocity} and \ref{eq:displacement}, the predicted positions of each of the $N$ particles are approximated numerically by finite difference in MD simulations using a time-integration algorithm. For example, the leap-frog and velocity-verlet algorithms are commonly used in MD simulations.\cite{Hockney:1974tu,Swope:1982tq} To ensure numerical stability, a small integration time step $\delta$t in the range of 1 - 4 femtoseconds (fs) is chosen. In MD simulations of biomolecular systems, when the bond lengths involving hydrogens are frozen, a 2 fs timestep is commonly chosen because it is twice the time period for the fastest vibrational motion (existing in bonds involving hydrogen). Once the position of each particle is computed, subsequent interatomic forces are updated based on these new coordinates, and the entire process is repeated to obtain the coordinates of the system at future time steps. 
 
 % [Ref: Chris Madill's and Tom's thesis]
 
