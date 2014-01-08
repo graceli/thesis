@@ -61,26 +61,10 @@ In all simulations, a cubic box was used and periodic boundary conditions. Prior
 A set of ten 0.250 $\mu$s simulations of the protofibril of \abeta42 were performed,  successively, in pure water and in the presence of scyllo-inositol, chiro-inositol, glycerol and glucose. The ligands were present at either a ligand:peptide molar ratio of  15:5 or 64:5, yielding a total sampling time of 12.5 $\mu$s.
 
 \subsection{Analysis Protocol}
-GROMACS analysis tools g\_rmsd and g\_rmsf were used to calculate the root mean square deviation in the fibril backbone and root mean squared fluctuation, respectively.  Spatial probability density of bound inositol were calculated using the volmap tool in Visual Molecular Dynamics software package (VMD). 
+GROMACS analysis tools g\_rmsd and g\_rmsf were used to calculate the root mean square deviation (RMSD) in the fibril backbone and root mean squared fluctuation (RMSF), respectively.  Spatial probability density of bound solutes were computed using the volmap tool in Visual Molecular Dynamics software package (VMD).
 
-Nonpolar contacts between inositol and fibril were defined by a carbon to carbon cutoff of 0.X nm. The DSSP hydrogen bonding criteria were used to determine the existence of a hydrogen bond.  Secondary structure analysis was performed using do\_dssp using the DSSP algorithm.
-
-Interchain hydrogen bonds (s1 - s2, s2 - s3, s3 - s4, s4 - s5) were computed between adjacent strands in the fibril using g\_hbond.  Hydrogen bonding criteria used acceptor-donor heavy atoms with distance less than 0.35 nm and hydrogen-donor-acceptor angle of less than 30 degrees (CHECK THIS).
+Nonpolar contacts between inositol and fibril were defined by a carbon to carbon cutoff of 0.X nm. The DSSP hydrogen bonding criteria was used to determine the existence of a hydrogen bond.  Secondary structure analysis was performed using the DSSP algorithm by employing the GROMACS tool, do\_dssp. Interchain hydrogen bonds were computed for each adjacent pairs of strands in the fibril using the GROMACS analysis tool g\_hbond using a hydrogen bonding criteria with acceptor-donor heavy atoms with distance less than 0.35 nm and hydrogen-donor-acceptor angle of less than 30 degrees (CHECK THIS).
 	
-% Contact map of inositol to A$\beta$42
-Binding constants are calculated by assuming the reaction,
-
-% Equations used in the KLVFFAE paper
-\[ \left[ Protein\cdot Inositol \right] \rightleftharpoons \left[ Protein \right] +\left[ Inositol \right] \]
-
-Where,
-
-\[ K_{d} = f_{ub}\frac{\left[ Protein \right]\left[ Inositol \right]}{\left[Protein \cdot Inositol\right]} \]
-
-% Equation converting population to free energy
-% $\mathit{W}=-RT\ln\rho\left(r,\theta\right)$
-% $\rho\left(r,\theta\right)$
-
 \section{Results and Discussion}
 % Outline
 % Which residues are most frequently bound by each of the ligands?
@@ -125,6 +109,13 @@ Furthermore, the ligands examined in our study were found to differ in their bin
 In our study with A$\beta$(16-22), our results have indicated that the balance of nonpolar and hydrogen bonding interactions is important in inositol binding to monomer and aggregates of the peptide.  Here our results indicate that the ability of scyllo-inositol may lie in it's favorably to form hydrogen bonds. \textbf{What I don't really know -- isn't hydrophobic more important? Every other study emphasized this ... how would I argue that hydrogen bonding is more important?} \textbf{Figure: The nonpolar and polar binding modes for each ligand (that is the pie charts in the KLVFFAE study).}
 
 % Solutes were also found to bind to the residues located in the turn region (on the surface). This and binding inside the tunnel are binding modes that are unlikely to be involved in amyloid inhibition. 
+
+Our study is consistent with recent findings from a MD simulation study on the binding modes of amyloid imaging agents.\cite{recent paper sent to me by regis}
+
+\textbf{Emphasize and mention how the results of this study is consistent with results from KLVFFAE study presented in Chapter 2.}
+We previously hypothesized that small-molecules that possess planar nonpolar faces with multiple hydroxyl groups in equatorial positions around the ring confer binding specificity to small molecules for the amyloidogenic core of A? and thus are key features for their activity.  This study confirms this hypothesis in that scyllo-inositol targets the amyloidgenic core with the most specificity.  
+
+% \textbf{What about carbohydrate binding?} --- I don't think I'll need to mention this for now.
 
 
 \textbf{Binding in clusters - TODO: need to plot the cluster histograms}
