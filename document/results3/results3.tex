@@ -70,46 +70,62 @@ The GROMACS analysis utilites g\_rmsd and g\_rmsf were used to calculate the roo
 The number of hydrogen bonds between each pair of peptides in the protofibril were computed using g\_hbond.  The following geometry criteria used to determine a hydrogen bond:  (1) the distance between acceptor (A) and donor (D) heavy atoms is less than 0.35 nm, and (2) the angle formed by H-D-A is less than 30$\degreesymb$. Nonpolar contacts between inositol and fibril were defined by a carbon to carbon cutoff of 0.X nm. The DSSP algorithm was used to perform the secondary structure analysis of the protofibril.\cite{DSSP}
 
 \section{Results and Discussion}
-% Outline
-% Which residues are most frequently bound by each of the ligands?
-% Mostly nonpolar or hydrogen bonding?
-% Over all binding modes.  Use the spatial probability maps to demonstrate this
-% Are there binding hot spots? If so where and what are they? [in the discussion relate these findings to the mechanism of amyloid formation]
-% Do the molecules Cluster? If so, do cluster sizes differ? For example do glycerol and glucose cluster a lot less? If there are differences in this mechanism could have implications in the mechanism of amyloid formation.
-% How do the results compare with my previous results [discussion?] \\
-% Does any of these molecules target the fibril core? [discussion?] \\
-% Is targeting the fibril core a plausible mechanism for breaking up amyloid fibrils? Address this. Previous studies don't really address them.  
-% In the discussion, I think it will also help to have a comparisons with previous studies, and experimental studies, if applicable. Again, look into literature for updates.
+
+In the following sections below, we comparatively examine the binding of inositol stereoisomers, \textit{scyllo}-inositol and \textit{chiro}-inositol, glucose and glycerol (Figure~\ref{fig:ligands}) with the protofibril of A$\beta$42.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=2.5in]{figures/results3/ligands.pdf}
+  \caption[Ligands]{Molecular structures of (A) glycerol, (B) glucose, (C) chiro-inositol and (D) scyllo-inositol}
+  \label{fig:ligands}
+\end{figure}
 
 \subsection{Protofibrillar morphology}
-We first examine the global structural properties of the fibril fragment by examining the time evolution of the RMSD and RMSF of the protofibril. In both the absence and presence of solutes (\textit{scyllo}-, \textit{chiro}-inositol, glucose and glycerol) the RMSD of the protofibril over the course of 250 ns plateaued at ~0.5 nm  (Figure~\ref{fig:protofibril_dynamics}A),  indicating that the arrangement of the protofibril is similar in the presence and absence of the ligands.   This similarity in the average RMSD of the fibril suggests that the protofibrillar structure is not significantly perturbed in the presence of these solutes. RMSF vs. t shows the deviation of each residue away from its average position in the protofibril. RSMF (root mean squared fluctuations) of the residues in the protofibril vary approximately between X nm and Y nm along each chain, suggesting that the $\beta$-sheet has a significant amount of mobility.  Similar to the effect of the presence of solutes on the RMSD of the protofibril, no differences were found in the RSMF vs. t of protofibril in the presence and absence of the solutes.
-% (I mean to say that the protofibril flops around, rather than remaining as a rock solid beta-sheet) in the simulation % [Still vaguely written; need to be more specific;  why is this observation significant? ]. 
 
-Edge strands of the fibril show a significant decrease in their interchain hydrogen bonding, when compared to the inner peptide strands, suggesting that peptides at the edges of the protofibril are more mobile than non-edge peptides. These peptides were observed to unwind and partially detach from the protofibril core in some of our trajectories (Figure: interchain hbonding - \textbf{I don't have this data yet}). However, the $\beta$-sheet core of the protofibril stays intact throughout the simulation % (Figure~\ref{fig:protofibril_dynamics}). -- this is not really the right figure for this statement.
-% (Note need to be careful here because the end chains have less HBs also because they don't have flanking peptides; The fibril remained aggregated in the simulations.  Note that there could be other rare events, which I haven't looked into too much.  Need to describe and discuss the unravelling in more detail.)
-Taken together, our results suggest that the presence of inositol and cosolutes do not significantly affect fibril morphology. Furthermore, the protofibril of \abetafortytwo\ has similar stability at ligand:peptide ratios of 3:1 and 13:1, suggesting that fibrillar aggregate is not disaggregated by ligands over the time scale of the simulation. Fibril dynamics such as chain unwinding does not appear to be correlated with ligand binding as these events similar occur in the control simulations.
+We first examine the global structural properties of the fibril fragment by examining the time evolution of the RMSD and RMSF (root mean squared fluctuations) of the protofibril. In the absence and presence of the ligands (\textit{scyllo}-, \textit{chiro}-inositol, glucose and glycerol, the RMSD of the protofibril over the course of 250 ns plateaued at ~0.5 nm  (Figure~\ref{fig:protofibril_dynamics}A).  RMSF vs. t depicted in Figure~\ref{fig:protofibril_dynamics}B shows the deviation of the position of each residue from its average position. RSMF of the residues in the protofibril vary approximately between X nm and Y nm along each chain, suggesting that the protofibrillar structure is dynamic.  Both RMSD and RSMF vs. t of the protofibril were independent of the presence of ligands. Although chains at the edges of the fibril were observed to detach partially from the core of the protofibril in some of our trajectories, the $\beta$-sheet core of the protofibril stays intact throughout the simulation. The secondary structure of the protofibril was predominantly $\beta$-sheet in conformation in both the presence and absence of the ligands. Taken together, our results suggest that the fibril morphology is not affected by the presence of the ligands on the time scale of our simulations. 
 
-% Note that if the aggregate doesn't get messed up ... it is unlikely that the secondary structure is messed up as well.
-\textbf{Secondary structure analysis by DSSP}. Inositol does not appear to affect the secondary structure of the residues in the protofibril.  By eye, looks like there is no major differences in water, glycerol, glucose and inositol (NEED more quantitative description)
-Figure: Number of residues in secondary structure versus time.  Y-axis is number of residues in a particular SS conformation.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=5in]{figures/results3/protofibril_dynamics.pdf}
+  \caption[RMSD and RMSF vs. time]{Fibril structure dynamics in pure water (A) and (C), and in the presence of scyllo-inositol (B) and (D).}
+  \label{fig:protofibril_dynamics}
+\end{figure}
 
 \subsection{Comparison of binding modes}
-% Contact map -- needed? Yes I think I should further quantitate their binding mode differences. Just by looking at the spatial maps, the differences are minor and need a trained eye.  Having a contact map by residue will be more rigorous. Also quantitate binding affinity per binding pocket. This helps define binding sites on the fibril more precisely. Overall I have more binding statistics than all of the other relevant studies out there, I should take advantage of this.
-
 % Qualitative description of the major binding modes
-The protofibril presents two chemically different $\beta$-sheet faces: the $\beta$1 face containing the residues in the central hydrophobic core of A$\beta$, LVFFA, and a largely hydrophobic $\beta$2 face containing the residues IIGLMVGGVVIA.  The solutes bind to the surface of the protofibril. Inositol stereoisomers, glucose and glycerol molecules partition to different binding sites on the protofibrillar surface. As depicted in Figure~\ref{fig:spatial_binding}, \textit{scyllo}-Inositol predominantly bound to the $\beta$1 face rather than the $\beta$2 face. By contrast, both \textit{chiro}-inositol and glucose possessed little or no density on the $\beta$1 face, but instead were predominantly bound to the $\beta$2 face.  In contrast to the binding exhibited by inositol stereoisomers and glucose, glycerol did not possess significant binding density on either faces, suggesting that glycerol does not bind the solvent-exposed surface of the protofibril (Figure~\ref{fig:spatial_binding}C).
+The protofibril presents two chemically different $\beta$-sheet faces: the $\beta$1 face which contains residues in the central hydrophobic core of A$\beta$, LVFFA, and the $\beta$2 face which has a predominantly hydrophobic surface containing the residues IIGLMVGGVVIA (Figure~\ref{protofibril_dynamics}E).  Scyllo-, chiro-inositol and glucose molecules all bound to the surface of the protofibril (Figure~\ref{fig:spatial_binding}). However,  they each partitioned to different binding sites on the protofibrillar surface. Depicted in Figure~\ref{fig:spatial_binding}, \textit{scyllo}-Inositol predominantly bound to the $\beta$1 face rather than the $\beta$2 face. By contrast, both \textit{chiro}-inositol and glucose possessed little or no density on the $\beta$1 face, but instead possess significant binding densities on the $\beta$2 face.  In contrast to inositol stereoisomers and glucose, glycerol did not possess significant binding density on either faces (Figure~\ref{fig:spatial_binding}C). Because glycerol does not bind the solvent-exposed surface of the protofibril, in the sections below the term ligands will be used to collectively refer to scyllo-, chiro-inositol and glucose for purposes of clarity.
 
-Moreover, the solutes, except glycerol, displayed binding densities in the grooves located at the edges of the protofibril which run parallel to a $\beta$-strand.  The solute-protofibril contact map depicted in Figure~\ref{fig:}[ elaborate - which residues? Look at the contact map ]. We speculate that binding at the edges may slow elongation or strand addition, but is unlikely to arrest growth of a protofibril into amyloid fibrils.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=6in]{figures/results3/binding_sdf_pie_chart.pdf}
+  \caption[Spatial probability distribution of bound solutes]{Comparisons of the spatial binding probability densities and binding modes for (A) scyllo-inositol, (B) chiro-inositol, (C) glycerol and (D) glucose.}
+  \label{fig:spatial_binding}
+\end{figure}
 
-% TODO: create a tracker story
-% The SDF indicates that binding to the edges are not even, that is on one side, there is more binding than the other. This is a convergence issue.  May need a section in the discussion discussing the convergence of the results.
-% Furthermore, inositol (is it only inositol?) binds to the charged termini of the peptides. 
+Furthermore, the ligands displayed binding densities in the grooves located at the edges which run parallel to the $\beta$-strands of the protofibril (Figure~\ref{fig:spatial_binding}).  \textbf{The ligand-protofibril contact maps shown in Figure~\ref{fig:} indicate that ...[ elaborate - which residues? Look at the contact map ].}
+
+We speculate that binding at the edges may slow elongation or strand addition, but is unlikely to arrest growth of a protofibril into amyloid fibrils.
 
 % Binding in the channel
-Interestingly, solutes were found to bind within a channel-like region inside the protofibril (Figure~\ref{???}).  A  significant binding density in this cavity was found for chiro-inositol, glucose, and glycerol, but not for scyllo-inositol.  Both chiro-inositol and glucose can bind inside of the tunnel by forming linearly-hydrogen-bonded chains, while simultaneously forming hydrogen bonds and nonpolar contacts with the side chains of the residues which form the channel (Figure~\ref{XXX}). This result was previously observed for dye binding by Shea et al.,\cite{Shea} and Lemkul et al. with Morin\cite{lemkul_2010} in simulations with the Luhrs et al model of A$\beta$42.  Although chiro-inositol and glucose were able to penetrate the intersheet tunnel, scyllo-inositol was found to be trapped near the channel entrance (Figure~\ref{fig:show a figure or figure inset focused on this binding mode}). Although scyllo-inositol can intercalate between the sheets near the opening of this tunnel, a significant binding density for scyllo-inositol was not found on the inside (Figure~\ref{snapshot of scyllo binding at this region}). We speculate that these binding modes are unlikely to lead to amyloid inhibition as these binding sites are not located at area where fibril growth may occur. In corroboration with our results, several previous simulation studies of dye molecules ThT and PiB, and the polyphenol molecule morin binding have also observed similar binding modes in the same region. AND what??? REF %In corroboration with our results, a MD study by Shea et al. indicated that dye molecules, PiB and ThT,  can penetrate into the same channel for the same protofibrillar model.\cite{Wu:2011fd} (This sentence is better for discussion).
+The protofibril exhibits a channel-like cavity surrounded by residues XX ... .  In this cavity,  a significant binding density was found for chiro-inositol, glucose, and glycerol, but not for scyllo-inositol (Figure~\ref{fig:spatial_binding}).  Both chiro-inositol and glucose molecules were found to bind to the inside of the channel by forming linearly-hydrogen-bonded chains, while simultaneously forming hydrogen bonds and nonpolar contacts with the side chains of residues (Figure~\ref{fig:detailed_binding_modes}). 
 
+Although chiro-inositol and glucose were able to penetrate into the intersheet tunnel, scyllo-inositol was found to be mostly trapped near the channel entrance (Figure~\ref{fig:spatial_binding},\ref{fig:detailed_binding_modes}).
+% Although scyllo-inositol can intercalate between the sheets near the opening of this tunnel, a significant binding density for scyllo-inositol was not found on the inside (Figure~\ref{snapshot of scyllo binding at this region}). 
+In support of our results, several previous simulation studies utilizing the same model of the A$\beta$42 protofibril 
+have observed similar binding modes for amyloid dye molecules (ThT and PiB),\cite{Shea} and a polyphenol morin.\cite{Lemkul et al.} in the same region.
+% TODO AND what???
+%In corroboration with our results, a MD study by Shea et al. indicated that dye molecules, PiB and ThT,  can penetrate into the same channel for the same protofibrillar model.\cite{Wu:2011fd} (This sentence is better for discussion). -- SO WHAT?
 
-Furthermore, ligand binding modes and binding propensity was modulated by their stereochemistry. In particular, scyllo-inositol has the highest percentage of molecules bound exclusively via hydrogen bonding.  Furthermore, bound scyllo-inositol molecules form nonpolar and hydrogen bonds in equal fractions (Figure~\ref{fig:pie charts with intersection data}). By contrast, a higher fraction of chiro-inositol, glucose and glycerol molecules was found to bind by forming nonpolar contacts instead of hydrogen bonds. 
+We speculate that these binding modes are unlikely to lead to amyloid inhibition as these binding sites are not located at area where fibril growth may occur.
+
+\begin{figure}[htbp]
+ \centering
+ \includegraphics[width=6.5in]{figures/results3/detailed_binding_modes.pdf}
+ \caption[Example binding modes of scyllo-inositol, chiro-inositol, and glucose to the protofibril]{Binding modes of scyllo-inositol, chiro-inositol and glucose to the $\beta$1 face (top row) and channel-like groove (bottom row). Residues that are within 4 \angstrom\ of a bound solute are represented in stick form. Protein is represented as a cartoon in gray.  Residues Phe, Glu, Asp, Lys and Ile are shown in colors purple, pink, red, green, and light green, respectively.}
+ \label{fig:detailed_binding_modes}
+\end{figure}
+
+Ligand binding modes and binding propensity was modulated by their stereochemistry. In particular, scyllo-inositol has the highest percentage of molecules bound exclusively via hydrogen bonding.  Furthermore, bound scyllo-inositol molecules form nonpolar and hydrogen bonds in equal fractions (Figure~\ref{fig:binding_sdf_pie_chart}). By contrast, a higher fraction of chiro-inositol, glucose and glycerol molecules was found to bind by forming nonpolar contacts instead of hydrogen bonds. 
 
 The fraction of molecules bound by nonpolar contacts increases concomitantly with a decrease in the fraction bound by hydrogen bonds for the solute according to the following order: scyllo- (lowest), chiro-inositol, glucose and glycerol (highest) Figure~\ref{fig:spatial_binding}. Consistent with the results of our previous study on KLVFFAE, our results here suggest that possessing the ability to form both hydrogen bonds and nonpolar contacts equally favorably may be an important property of small molecules (to target the CHC) and therefore, ultimately, for the inhibition of amyloid formation.
 % Elaborate -- what are the implications of this finding?  Are there current papers which suggests this?  In my inos2 paper, I mentioned this and RP mentioned that this is really what is coming out of this study. Maybe discuss this in more detail than what was covered in inos2 ...
@@ -193,64 +209,65 @@ This work was made possible by the GPC supercomputer at the SciNet HPC Consortiu
 %29. Balbach J.J., Ishii Y., Tycko R. Amyloid fibril formation by A β 16-22, a seven-residue fragment of the Alzheimer's β-amyloid peptide, and structural characterization by solid state NMR. Biochemistry. 2000;39:13748–13759. [PubMed]
 %30. Lowe T.L., Strzelec A., Murphy R.M. Structure-function relationships for inhibitors of β-amyloid toxicity containing the recognition sequence KLVFF. Biochemistry. 2001;40:7882–7889. [PubMed]
 %31. Lashuel H.A., Hartley D.M., Callaway D.J. New class of inhibitors of amyloid-β fibril formation. Implications for the mechanism of pathogenesis in Alzheimer's disease. J. Biol. Chem. 2002;277:42881–42890. [PubMed]
-\section*{Figures}
+% \section*{Figures}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=2.5in]{figures/results3/ligands.pdf}
-  \caption[Ligands]{Molecular structures of (A) glycerol, (B) glucose, (C) chiro-inositol and (D) scyllo-inositol}
-  \label{fig:ligands}
-\end{figure}
+%\begin{figure}[htbp]
+%  \centering
+%  \includegraphics[width=2.5in]{figures/results3/ligands.pdf}
+%  \caption[Ligands]{Molecular structures of (A) glycerol, (B) glucose, (C) chiro-inositol and (D) scyllo-inositol}
+%  \label{fig:ligands}
+%\end{figure}
+%
+%\begin{figure}[htbp]
+%  \centering
+%  \includegraphics[width=5in]{figures/results3/protofibril_dynamics.pdf}
+%  \caption[RMSD and RMSF vs. time]{Fibril structure dynamics in pure water (A) and (C), and in the presence of scyllo-inositol (B) and (D).}
+%  \label{fig:protofibril_dynamics}
+%\end{figure}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=5in]{figures/results3/protofibril_dynamics.pdf}
-  \caption[RMSD and RMSF vs. time]{Fibril structure dynamics in pure water (A) and (C), and in the presence of scyllo-inositol (B) and (D).}
-  \label{fig:protofibril_dynamics}
-\end{figure}
+%\begin{figure}[htbp]
+% \centering
+ % \includegraphics[width=5in]{figures/results3/protofibril_dynamics2.pdf}
+% \caption[Secondary structure of protofibril]{(A) chain-chain (B) Secondary structure of fibril}
+% \label{fig:protofibril_dynamics}
+%\end{figure}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=5in]{figures/results3/protofibril_dynamics2.pdf}
-  \caption[Secondary structure of protofibril]{(A) chain-chain (B) Secondary structure of fibril}
-  \label{fig:protofibril_dynamics}
-\end{figure}
+%\begin{figure}[htbp]
+%  \centering
+%  \includegraphics[width=6in]{figures/results3/binding_sdf_pie_chart.pdf}
+%  \caption[Spatial probability distribution of bound solutes]{Comparisons of the spatial probability densities for (A) scyllo-inositol, (B) chiro-inositol (C) glycerol and (D) glucose.}
+%  \label{fig:spatial_binding}
+%\end{figure}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=6in]{figures/results3/binding_sdf_pie_chart.pdf}
-  \caption[Spatial probability distribution of bound solutes]{Comparisons of the spatial probability densities for (A) scyllo-inositol, (B) chiro-inositol (C) glycerol and (D) glucose.}
-  \label{fig:spatial_binding}
-\end{figure}
+%\begin{figure}[htbp]
+% \centering
+% \includegraphics[width=6.5in]{figures/results3/detailed_binding_modes.pdf}
+% \caption[Example binding modes of scyllo-inositol, chiro-inositol, and glucose to the protofibril]{Binding modes of scyllo-inositol, chiro-inositol and glucose to the $\beta$1 face (top row) and channel-like groove (bottom row). Residues that are within 4 \angstrom\ of a bound solute are represented in stick form. Protein is represented as a cartoon in gray.  Residues Phe, Glu, Asp, Lys and Ile are shown in colors purple, pink, red, green, and light green, respectively.}
+% \label{fig:detailed_binding_modes}
+%\end{figure}
 
-\begin{figure}[htbp]
- \centering
- \includegraphics[width=6.5in]{figures/results3/detailed_binding_modes.pdf}
- \caption[Example binding modes of scyllo-inositol, chiro-inositol, and glucose to the protofibril]{Binding modes of scyllo-inositol, chiro-inositol and glucose to the $\beta$1 face (top row) and channel-like groove (bottom row). Residues that are within 4 \angstrom\ of a bound solute are represented in stick form. Protein is represented as a cartoon in gray.  Residues Phe, Glu, Asp, Lys and Ile are shown in colors purple, pink, red, green, and light green, respectively.}
- \label{fig:detailed_binding_modes}
-\end{figure}
+%\begin{figure}[htbp]
+%  \centering
+%  \includegraphics[width=6in]{figures/results3/clustered_binding.pdf}
+%  \caption[Clustered binding of solutes at the surface of the protofibril]{Bound versus unbound cluster histograms for each solute.}
+%  \label{fig:cluster_binding}
+%\end{figure}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=6in]{clustered_binding.pdf}
-  \caption[Clustered binding of solutes at the surface of the protofibril]{Bound versus unbound cluster histograms for each solute.}
-  \label{fig:cluster_binding}
-\end{figure}
+% Remove -- all of this information is already contained and is more clearly captured in the contact map
+%\begin{figure}[htbp]
+%  \centering
+%  \includegraphics[width=6in]{figures/results3/binding_propensity_per_residue.pdf}
+%  \caption[Binding propensity]{Binding propensity per residue of scyllo-inositol, chiro-inositol, glycerol and glucose. Nonpolar binding propensities are depicted in (A) and (B), and hydrogen bonding propensities in (C) and (D).}
+%% Try to put nonpolar and hydrogen bonding for each ligand on separate panels. When put together it�s a little difficult to emphasize the differences
+%  \label{fig:binding_propensity}
+%\end{figure}
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=6in]{figures/results3/binding_propensity_per_residue.pdf}
-  \caption[Binding propensity]{Binding propensity per residue of scyllo-inositol, chiro-inositol, glycerol and glucose. Nonpolar binding propensities are depicted in (A) and (B), and hydrogen bonding propensities in (C) and (D).}
-% Try to put nonpolar and hydrogen bonding for each ligand on separate panels. When put together it�s a little difficult to emphasize the differences
-  \label{fig:binding_propensity}
-\end{figure}
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=6in]{figures/results3/binding_contact_map.pdf}
-  \caption[Binding contact map]{Nonpolar and hydrogen bonding contact maps for the protofibril with (A) scyllo-inositol (B) chiro-inositol (C) glucose and (D) glycerol. The contact map for nonpolar and hydrogen bonding are shown on the top and bottom panels, respectively, for each solute.}
-  \label{fig:binding_map}
-\end{figure}
+%\begin{figure}[htbp]
+%  \centering
+%  \includegraphics[width=6in]{figures/results3/binding_contact_map.pdf}
+%  \caption[Binding contact map]{Nonpolar and hydrogen bonding contact maps for the protofibril with (A) scyllo-inositol (B) chiro-inositol (C) glucose and (D) glycerol. The contact map for nonpolar and hydrogen bonding are shown on the top and bottom panels, respectively, for each solute.}
+%  \label{fig:binding_map}
+%\end{figure}
 
 \begin{singlespace}
 \addcontentsline{toc}{section}{Bibliography}
