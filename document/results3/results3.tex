@@ -71,7 +71,7 @@ The number of hydrogen bonds between each pair of peptides in the protofibril we
 
 \section{Results and Discussion}
 
-In the following sections below, we comparatively examine the binding of inositol stereoisomers, \textit{scyllo}-inositol and \textit{chiro}-inositol, glucose and glycerol (Figure~\ref{fig:ligands}) with the protofibril of A$\beta$42.
+We successively performed simulations of Abeta in the presence of  inositol stereoisomers, \textit{scyllo}-inositol and \textit{chiro}-inositol, and osmolytes glucose and glycerol (Figure~\ref{fig:ligands}) at molar ratios of 15:5 and 64:5.  Because the results were independent of molar ratio, in the sections below, we comparatively examine the binding of the ligands (Figure~\ref{fig:ligands}) in the context of the results from the higher molar ratio.
 
 \begin{figure}[htbp]
   \centering
@@ -82,7 +82,7 @@ In the following sections below, we comparatively examine the binding of inosito
 
 \subsection{Protofibrillar morphology}
 
-We first examine the global structural properties of the fibril fragment by examining the time evolution of the RMSD and RMSF (root mean squared fluctuations) of the protofibril. In the absence and presence of the ligands (\textit{scyllo}-, \textit{chiro}-inositol, glucose and glycerol, the RMSD of the protofibril over the course of 250 ns plateaued at ~0.5 nm  (Figure~\ref{fig:protofibril_dynamics}A).  RMSF vs. t depicted in Figure~\ref{fig:protofibril_dynamics}B shows the deviation of the position of each residue from its average position. RSMF of the residues in the protofibril vary approximately between X nm and Y nm along each chain, suggesting that the protofibrillar structure is dynamic.  Both RMSD and RSMF vs. t of the protofibril were independent of the presence of ligands. Although chains at the edges of the fibril were observed to detach partially from the core of the protofibril in some of our trajectories, the $\beta$-sheet core of the protofibril stays intact throughout the simulation. The secondary structure of the protofibril was predominantly $\beta$-sheet in conformation in both the presence and absence of the ligands. Taken together, our results suggest that the fibril morphology is not affected by the presence of the ligands on the time scale of our simulations. 
+We first examine the global structural properties of the fibril fragment by examining the time evolution of the RMSD and RMSF (root mean squared fluctuations) of the protofibril. In the absence and presence of the ligands (\textit{scyllo}-, \textit{chiro}-inositol, glucose and glycerol, the RMSD of the protofibril over the course of 250 ns plateaued at ~0.5 nm  (Figure~\ref{fig:protofibril_dynamics}A).  RMSF vs. t depicted in Figure~\ref{fig:protofibril_dynamics}B shows the deviation of the position of each residue from its average position. The average RSMF of a residues in the protofibril vary approximately between 0.1 nm and 0.5 nm, suggesting that the protofibrillar structure is dynamic.  Both RMSD and RSMF vs. t of the protofibril were independent of the presence of ligands. Although chains at the edges of the fibril were observed to detach partially from the core of the protofibril in some of our trajectories, the $\beta$-sheet core of the protofibril stays intact throughout the simulation. The secondary structure of the protofibril was predominantly $\beta$-sheet in conformation in both the presence and absence of the ligands. Taken together, our results suggest that the fibril morphology is not affected by the presence of the ligands on the time scale of our simulations. 
 
 \begin{figure}[htbp]
   \centering
@@ -93,14 +93,19 @@ We first examine the global structural properties of the fibril fragment by exam
 
 \subsection{Comparison of the binding mechanism of \textit{scyllo}-inositol and \textit{chiro}-inositol}
 % Qualitative description of the major binding modes
-The protofibril presents two chemically different $\beta$-sheet faces. The $\beta$1 face contains residues in the central hydrophobic core of A$\beta$, LVFFA and possesses a negative-charged region formed by a row of solvent-exposed Glu22. In contrast, the second face of the protofibril ($\beta$2) presents a predominantly hydrophobic surface containing the residues IIGLMVGGVVIA (Figure~\ref{protofibril_dynamics}E).  
+The protofibril presents two chemically different $\beta$-sheet faces. The $\beta$1 face contains residues in the central hydrophobic core of A$\beta$, LVFFA and possesses a negative-charged region formed by a row of solvent-exposed Glu22. In contrast, the $\beta$2 face presents a predominantly hydrophobic surface containing the residues IIGLMVGGVVIA (Figure~\ref{fig:protofibril_cartoon}E).  Scyllo-, chiro-inositol and glucose molecules all bound to the surface of the protofibril (Figure~\ref{fig:spatial_binding}) and were found to partitioned to four main binding sites on the protofibril: (1) $\beta$1 face, (2) $\beta$2 face, (3) edges, and (4) a channel-like cavity formed between the two $\beta$-sheets (Figure~\ref{fig:protofibril_cartoon}).  \textbf{These binding modes of each ligand in these binding sites and their implications for amyloid inhibition are discussed below.}
 
-Scyllo-, chiro-inositol and glucose molecules all bound to the surface of the protofibril (Figure~\ref{fig:spatial_binding}) and were found to partitioned to four main binding sites on the protofibril: (1) $\beta$1 face, (2) $\beta$2 face,  (3) edges,  and (4) a channel-like crevice formed between the two $\beta$-sheets.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=4in]{figures/results3/protofibril_cartoon.pdf}
+  \caption[Initial structure of the A$\beta$42]{The NMR model of the A$\beta$42 protofibril labeled with its major ligand binding sites.}
+  \label{fig:protofibril_cartoon}
+\end{figure}
+ 
+\textit{Scyllo}-inositol predominantly bound to the $\beta$1 face rather than the $\beta$2 face (Figure~\ref{fig:spatial_binding}A). By contrast, however, both \textit{chiro}-inositol and glucose possessed significantly less density on the $\beta$1 face, and instead were bound predominantly to the $\beta$2 face.  
+Binding contact maps indicate that binding to the $\beta$1 face is localized to residues Phe20 and Glu22 (Figure~\ref{fig:binding_map}).  As shown in Figure~\ref{fig:detailed_binding_modes}, all three molecules adopt binding modes to the $\beta$1 face via a combination of forming hydrogen bonding to Glu22 and nonpolar contacts with Phe20. 
 
-Depicted in Figure~\ref{fig:spatial_binding}, \textit{scyllo}-inositol predominantly bound to the $\beta$1 face rather than the $\beta$2 face. By contrast, both \textit{chiro}-inositol and glucose possessed significantly less density on the $\beta$1 face, and instead displayed significant binding densities on the $\beta$2 face.  
-Binding contact maps indicate that binding to this face is localized to the residues Phe20 and Glu22 (Figure~\ref{fig:binding_map}).  As shown in Figure~\ref{fig:detailed_binding_modes}, all three molecules adopt binding modes to the $\beta$1 face via a combination of hydrogen bonding to Glu22 and forming nonpolar contacts with Phe20. 
-
-In contrast to both inositol and glucose, glycerol did not possess significant binding density on either faces (Figure~\ref{fig:spatial_binding}C). Because glycerol did not bind to the solvent-exposed surface of the protofibril, in the sections below the term ligands will be used to collectively refer to scyllo-, chiro-inositol and glucose for clarity.
+In contrast to both inositol and glucose, glycerol did not possess significant binding density on either faces (Figure~\ref{fig:spatial_binding}C). Because glycerol did not bind to the solvent-exposed surface of the protofibril, unless otherwise specified, the term ligands will be used to collectively refer to scyllo-, chiro-inositol and glucose for clarity in the sections below.
 
 \begin{figure}[htbp]
   \centering
