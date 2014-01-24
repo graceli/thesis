@@ -34,7 +34,7 @@
 
 \degree{Doctor of Philosophy}
 \department{Biochemistry}
-\gradyear{2013}
+\gradyear{2014}
 \author{Grace Li}
 \title{Molecular Mechanism of Amyloid Inhibition By Inositol}
 % Title refinement - Regis has a problem with the title below because he feels that it doesn't reflect my entire thesis
@@ -55,45 +55,45 @@
 \begin{preliminary}
 
 %% This generates the title page from the information given above.
-% \maketitle
+\maketitle
 
 %% There should be NOTHING between the title page and abstract.
 %% However, if your document is two-sided and you want the abstract
 %% _not_ to appear on the back of the title page, then uncomment the
 %% following line.
-% \cleardoublepage
+\cleardoublepage
 
 %% This generates the abstract page, with the line spacing adjusted
 %% according to SGS guidelines.
-% \begin{abstract}
+\begin{abstract}
 % (At most 150 words for M.Sc. or 350 words for Ph.D.)
-% \input{my-abstract}
-% \end{abstract}
+\input{abstract}
+\end{abstract}
 
 %% Anything placed between the abstract and table of contents will
 %% appear on a separate page since the abstract ends with \newpage and
 %% the table of contents starts with \clearpage.  Use \cleardoublepage
 %% for anything that you want to appear on a right-hand page.
 
-% \begin{dedication}
+\begin{dedication}
 % % *** Put your Dedication here. ***
-% \input{my-dedication}
-% \end{dedication}
+\input{dedication}
+\end{dedication}
 
-% \newpage
+\newpage
 
-% \begin{acknowledgements}
-% \input{ack}
-% \end{acknowledgements}
+\begin{acknowledgements}
+\input{ack}
+\end{acknowledgements}
 
 % Leave this to the end so that I don't have to scroll past the contents all the time
 \tableofcontents
-% \listoftables
+\listoftables
 \listoffigures
 
 %% Generate any other material that belongs in the head matter 
 %% (for example, List of Plates, Index of Symbols, or List of Appendices).
-% \printnomenclature
+ \printnomenclature
 \end{preliminary}
 
 % A Doctoral thesis is generally organized into the following sections:
@@ -106,11 +106,11 @@
 % Appendices: Appendices may be included to cover such topics as additional details pertaining to Methods; speculative ideas; projects-in-progress; and/or negative results, particularly if the second format is chosen.
 
 \include{symbols}
-% \include{introduction}
-% \include{methods}
-%\include{results1/results1}
-%\include{results2/results2}
-%\include{results3/results3}
+\include{introduction}
+\include{methods}
+\include{results1/results1}
+\include{results2/results2}
+\include{results3/results3}
 \include{results4/results4}
-%\include{conclusions/conclusions}
+\include{conclusions/conclusions}
 \end{document}
