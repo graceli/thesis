@@ -14,7 +14,7 @@
 \usepackage{graphicx}
 \usepackage[intoc]{nomencl}
 \usepackage{multirow}
-\usepackage[toc,page]{appendix}
+\usepackage[toc,page,titletoc]{appendix}
 \usepackage{xr}
 %\usepackage{zref-xr}
 \externaldocument{appendixA}
@@ -70,7 +70,7 @@
 %% according to SGS guidelines.
 \begin{abstract}
 % (At most 150 words for M.Sc. or 350 words for Ph.D.)
-\input{abstract}
+\input{abstract2}
 \end{abstract}
 
 %% Anything placed between the abstract and table of contents will
@@ -79,7 +79,6 @@
 %% for anything that you want to appear on a right-hand page.
 
 \begin{dedication}
-% % *** Put your Dedication here. ***
 \input{dedication}
 \end{dedication}
 
@@ -96,7 +95,7 @@
 
 %% Generate any other material that belongs in the head matter 
 %% (for example, List of Plates, Index of Symbols, or List of Appendices).
- \printnomenclature
+\printnomenclature
 \end{preliminary}
 
 % A Doctoral thesis is generally organized into the following sections:
@@ -116,4 +115,7 @@
 \include{results3/results3}
 \include{results4/results4}
 \include{conclusions/conclusions}
+\begin{appendices}
+\include{appendixA}
+\end{appendices}
 \end{document}
