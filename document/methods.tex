@@ -8,7 +8,7 @@
 \section{Molecular Mechanics}
 % Start by describing quantum mechanics 
 % Assumptions and limitations of molecular mechanics
-In principle, the time-evolution of a molecular system can be predicted using quantum mechanics by solving the time-dependent Schr\"odinger's equation, which provides a complete description of the motion of atomic nuclei and electrons from first principles.\cite{Schrodinger:1926ka} Notably, this equation can only be solved analytically for a hydrogen atom, and must be solved numerically for more complex systems. Although many quantum-mechanics-based computational methods have been developed in recent years,\cite{Gogonea:2001us} they are still computationally prohibitive for probing the dynamics of most protein systems on a biologically-meaningful timescale because these systems, with solvent molecules included, typically possess on the order of 10$^{4}$ to 10$^{5}$ number of atoms.
+In principle, the time-evolution of a molecular system can be predicted using quantum mechanics by solving the time-dependent Schr\"odinger's equation, which provides a complete description of the motion of atomic nuclei and electrons from first principles.\cite{Schrodinger:1926ka} Notably, this equation can only be solved analytically for a hydrogen atom, and must be solved numerically for more complex systems. Although many quantum-mechanics-based computational methods have been developed in recent years,\cite{Gogonea:2001us} they are still computationally prohibitive for probing the dynamics of most protein systems on a biologically-meaningful timescale because these systems, with solvent molecules included, typically possess on the order of 10$^{4}$ to 10$^{5}$ atoms.
 
 Molecular mechanics is an approach in which a molecular system is treated using the principles of classical mechanics. In molecular mechanics, a molecule is modelled by a set of masses (atoms) connected by springs (bonds).  An empirical potential energy function (PEF) that only depends on the positions of the atoms is employed to describe the internal energy and interactions of molecules within a system.\cite{Cornell:1995td,Brooks:1983uc,Christen:2005fp,Jorgensen:1985wx} The theoretical basis for molecular mechanics is rooted in quantum mechanics via the Born-Oppenheimer approximation.\cite{Born:1927tb} Under this approximation, the electronic and nuclear motion of atoms are considered to be uncoupled, and therefore can be treated separately.
 % Note that the previous sentence is a little vague -- what does it mean to be ``treated separately''
@@ -54,7 +54,7 @@ In Equations~\ref{eq:bonds} and \ref{eq:angles}, $b$ and $\theta$ are variables 
 \label{eq:torsion}
 	V(dihedrals) = \sum_{dihedrals} \sum_{n} k_{\chi}(1 + cos(n\chi - \delta)),
 \end{equation}
-where $\chi$ is the dihedral angle, $k_{\chi}$ and $n$ is the height and the periodicity of the rotational barrier, respectively.  $\delta$ is the reference angle (or phase).  The value of $n$ is usually between 1 and 4, and depends on the specific force field parameterization procedure. Functions of this form are also included the PEF to ensure the planarity of planar chemical groups, in which case $\chi$ corresponds to a so-called improper dihedral angle.
+where $\chi$ is the dihedral angle, $k_{\chi}$ and $n$ are the height and the periodicity of the rotational barrier, respectively.  $\delta$ is the reference angle (or phase).  The value of $n$ is usually between 1 and 4, and depends on the specific force field parameterization procedure. Functions of this form are also included the PEF to ensure the planarity of planar chemical groups, in which case $\chi$ corresponds to a so-called improper dihedral angle.
 
 
 \subsection{Non-bonded Interactions}
@@ -119,7 +119,7 @@ In a system composed of $N$ interacting particles, the force acting on each part
 % Not exactly ... according to Chris Madill's thesis, U is the potential energy between an atom pair?  Clear up the core algorithm!
 \begin{equation}
 % F_i = - \nabla U
- \vec{ F_i} = - \frac{\partial V}{\partial r_i}, i = 1, 2, 3, ... , N.
+ \vec{ F_i} = - \frac{\partial V}{\partial \vec{r_i}}, i = 1, 2, 3, ... , N.
 \end{equation}
 
 The variable $r_{i}$ represents the spatial coordinates of the particle $i$. The calculated force vectors are summed together to yield the net force vector for each atom in the system. By Newton's second law of motion, the acceleration, $a_i$, of each atom is given by 
@@ -157,11 +157,11 @@ As shown in Equations~\ref{eq:velocity} and \ref{eq:displacement}, the predicted
 % Ref: Understanding Molecular Simulations by Frenkel Daan.
 Temperature is a measure of the kinetic energy of the system, and the instantaneous temperature of a macroscopic system can be determined from the kinetic energy of every atom.  The theorem of equipartition of energy states that in a (classical) many-body system at thermal equilibrium, the average kinetic energy (K) per degree of freedom is related to the thermodynamic temperature, $T$, via
 \begin{equation}
-  K =  \frac{1}{N} \sum_{i=1}^{N} \frac{1}{2} m_{i}v_{i} = \frac{1}{2} k_BT,
+  K =  \frac{1}{N} \sum_{i=1}^{N} \frac{1}{2} m_{i}v_{i}^{2} = \frac{3}{2} k_BT,
 \end{equation}
-where $m_{i}$ is the mass of the atom $i$, $v_{i}$ is the velocity of $i$ along a single dimension, and $k_{B}$ is the Boltzmann constant. In MD simulations, the temperature of the system is the total kinetic energy of the system normalized by the number of degrees of freedom in the system, $N_{f}$, that is,
+where $m_{i}$ is the mass of the atom $i$, $v_{i}$ is the velocity of $i$ along a single dimension, and $k_{B}$ is the Boltzmann constant. In MD simulations, the temperature of the system is the total kinetic energy of the system normalized by the number of degrees of freedom in the system, that is,
 \begin{equation}
-  T(t) = \sum_{i=1}^{N} \frac{m_iv_i^2(t)}{k_BN_f},
+  T(t) = \frac{1}{3N} \sum_{i=1}^{N} \frac{m_iv_i^2(t)}{k_B},
 \end{equation}
 where $N$ is the number of atoms and $v_{i}(t)$ is the velocity of atom $i$. To simulate a system close to laboratory conditions,  a thermostat and a barostat are employed to control both the temperature and pressure of a simulation system, respectively.  Many algorithms exist for the implementation of thermostats and barostats, and are available in modern molecular dynamics simulation software packages.\cite{Brooks:2009ew,Hess:2008p5353}   In this thesis, the Berendsen\cite{Berendsen:1984p9257} and Nos\'e-Hoover algorithms,\cite{Nose:1984em,Hoover:1985wf} and the Parrinello-Rahman\cite{Nose:1983vt,Parrinello:1981vy} algorithm were employed for temperature- and pressure-coupling, respectively.
 
@@ -186,7 +186,7 @@ Periodic boundary conditions (PBC) are a technique by which the central simulati
 \subsection{Connection to Statistical Mechanics}
 MD simulations yield information about the microscopic states of a macroscopic system characterized by thermodynamic variables such as the temperature, pressure, and number of particles.  Statistical mechanics is a body of theory that provides a rigorous connection between the microscopic arrangements of a system (determined by MD simulations) to its thermodynamic properties.
 
-MD simulations can be carried out in the canonical (NVT) ensemble, where the number of particles (N), volume (V) and temperature (T) are held constant, or, alternatively, in the isothermo-isobaric (NPT) ensemble, where number of particles and temperature are held constant, but the average pressure, instead of the volume, is held constant by allowing the volume of the simulation box to fluctuate. Because the NPT ensemble is the closest to typical experimental conditions, simulations are often carried out in this ensemble.
+MD simulations can be carried out in the canonical (NVT) ensemble, where the number of particles (N), volume (V) and temperature (T) are held constant, or, alternatively, in the isothermal-isobaric (NPT) ensemble, where number of particles and temperature are held constant, but the average pressure, instead of the volume, is held constant by allowing the volume of the simulation box to fluctuate. Because the NPT ensemble is the closest to typical experimental conditions, simulations are often carried out in this ensemble.
 
 For a canonical ensemble of microstates, the probability of finding a system in the microstate $i$, with an energy $E_{i}$ is given by the Boltzmann distribution,
 \begin{equation}
@@ -206,9 +206,127 @@ Performing a MD simulation yields a time-trajectory of the positions of atoms in
 As described above, in an MD simulation, atomic motion at a given temperature is dictated by a potential energy function, and states are sampled with probabilities dictated by the Boltzmann distribution. Given an infinite amount of time, a simulation will sample all states of a system's potential energy landscape. However, infinitely long simulations are not possible to achieve computationally.  Thus, because of the rugged energy landscapes common to biomolecular systems, many important states may not be sampled on the timescales of a typical simulation.
 Furthermore, it is even more challenging to adequately sample the complex conformational landscape of disordered proteins because of the large number of conformational states that may need to be sampled in order to fully characterize their structural ensemble.\cite{Rauscher:2010p5682}
 
-Generalized-ensemble algorithms are a class of algorithms that can be used with molecular simulations to enhance conformational sampling.  Simulated tempering (ST) and replica exchange (RE) are two well-known such algorithms that can be used to enhance sampling by allowing simulations to diffuse in temperature-space, while obeying Boltzmann statistics at any of the temperatures visited (Equation~\ref{eq:boltzmann}).\cite{Marinari:1992p5428,Mitsutake:2001p5380} These algorithms rely on the fact that at higher temperatures the free energy landscape of a biomolecular system becomes less rugged, and, hence, the crossing of energetic barriers are facilitated.  Simulations are carried out at different temperatures using a temperature range that encompasses the temperature of interest (typically, room temperature). The optimal temperature range depends on the size and composition of the system.\cite{Rauscher:2009wr,Rauscher:2010p5682} Although generalized-ensemble methods, when combined with MD simulations, can significantly enhance conformational sampling of biomolecular systems,\cite{Zuckerman:2006tk,Rauscher:2009wr} they are computationally expensive, and often require a parallel supercomputing platform to carry out a single study in a feasible time frame.\cite{Rauscher:2010ja}
+Generalized-ensemble algorithms are a class of algorithms that can be used with molecular simulations to enhance conformational sampling.  Simulated tempering (ST) and replica exchange (RE) are two well-known such algorithms that can be used to enhance sampling by allowing simulations to diffuse in temperature-space, while obeying Boltzmann statistics at any of the temperatures visited (Equation~\ref{eq:boltzmann}).\cite{Marinari:1992p5428,Mitsutake:2001p5380} These algorithms rely on the fact that at higher temperatures the free energy landscape of a biomolecular system becomes less rugged, and, hence, the crossing of energetic barriers is facilitated.  Simulations are carried out at different temperatures using a temperature range that encompasses the temperature of interest (typically, room temperature). The optimal temperature range depends on the size and composition of the system.\cite{Rauscher:2009wr,Rauscher:2010p5682} Although generalized-ensemble methods, when combined with MD simulations, can significantly enhance conformational sampling of biomolecular systems,\cite{Zuckerman:2006tk,Rauscher:2009wr} they are computationally expensive, and often require a parallel supercomputing platform to carry out a single study in a feasible time frame.\cite{Rauscher:2010ja}
 
-In Chapters 3 and 4 of this thesis, the ST algorithm was used to generate the structural ensembles of monomeric (GA)$_{4}$ and A$\beta$(16-22) peptides.
+\subsubsection{Simulated Tempering (ST)}
+The ST algorithm utilizes a generalized Hamiltonian that depends on all configurational degrees of freedom and temperature\cite{Marinari:1992p5428}:
+
+\begin{equation}
+H(X,m) = \beta_{m}H(X) - a_m,
+\end{equation}
+
+where $X$ is the configuration of the system, $\beta_m$ is the inverse temperature, $H(X)$ is the system's original Hamiltonian, and $a_{m}$ is a constant which depends on temperature.  Hence, the probability of sampling a given temperature, $T_m$ is 
+
+\begin{equation}
+P(T_m) = e^{a_m(T)}e^{-\beta_m H(X)}.
+\end{equation}
+
+The weight factors, $a_m(T)$, are dimensionless Helmholtz free energies as follows 
+$a_m(T) = \beta_m A_m$,
+
+where $A_m$ is the free energy of the system at temperature $T_m$.  $a_m(T)$ must be chosen such that an uniform probability distribution in temperature space is achieved. Allowing a uniform sampling of temperature in turn induces a random walk in PE space which allows a system to escape from local minima.   
+
+In a typical ST simulation, a short canonical MD simulation is performed at temperature $T_i$ followed by an exchange attempt to a neighbouring temperature, $T_j$. An exchange attempt has the probability 
+
+\begin{equation}
+% exchange equation
+p(T_i \longrightarrow T_j) = min
+\begin{cases} 
+1 &  \\ 
+e^{-(\beta_j - \beta_i)E + (a_j - a_i)}. &  
+\end{cases}
+\end{equation}
+
+The weight factors ($a_m$) are  \textit{a priori} unknown and must be determined by a iterative procedure.  A main disadvantage of ST is that determining an accurate set of weight factors for complex biomolecular systems can be very challenging to obtain.\cite{Rauscher:2009wr}
+
+% This disadvantage lead to the development of a class of methods called replica exchange.
+
+\subsubsection{Replica Exchange (RE)}
+Replica exchange (RE) bypasses the problem of determining unknown weight factors while still allowing random walks in temperature space.\cite{Hansmann:1997p5405,Mitsutake:2001p5380} RE molecular dynamics simulation is briefly review below. Detailed description and derivation for the algorithm can be found elsewhere.\cite{Mitsutake:2001p5380}
+
+In RE, a system of multiple non-interacting copies or replicas of a system where each replica has a different temperature are considered. 
+
+Let $X=\{x_i^{T_i}\}_{i=1}^{M}$, where $x_i^{T_i}$ is a replica at temperature $T_i$, with coordinates $q_i$ and momenta $p_i$.  Recall that the Boltzmann weight factor of $x$ in the generalized ensemble is $W(x;T)=e^{-\beta H(q)}$.  Because the replicas are assumed to be independent, the weight factor for $X$ is 
+%%% RE weight factor for X |X| = M
+\begin{equation} \label{RE_weight}
+W_{REM}(X) = \Pi_{i=1}^{M} e^{-\beta_{T_i} H(q_i^{T_i})}
+\end{equation}
+Periodically, a pair of replicas $i$ and $j$ in $X$ exchange their temperatures, 
+%%% exchange X->X'
+\begin{equation}
+X=(\ldots,x_{T_i}^i,\ldots,x_{T_j}^j,\ldots) \longrightarrow X'=(\ldots,x_{T_j}^i, \ldots,x_{T_i}^j,\ldots)
+\end{equation}
+
+%Under the MC framework, momenta is not present in the system. However, to have RE work with MD, momenta of the two replicas must be scaled accordingly after the temperature exchange as follows in order to preserve the correct average kinetic energy,
+%%% X-> X' in detail
+%\begin{eqnarray}
+%	x_{T_i}^i &=& (q^i,p^i)_{T_i} \longrightarrow x_{T_j}^i = (q^i,p^{i'})_{T_j}\\
+%	x_{T_j}^j &=& (q^j,p^j)_{T_j} \longrightarrow x_{T_i}^j = (q^j,p^{j'})_{T_i}
+%\end{eqnarray}
+%Where the new momenta $p^{i'}$, $p^{j'}$ are rescaled as 
+%%%% scaling of momenta for MD
+%\begin{eqnarray}
+%	p^{i'} &=& \sqrt{\dfrac{T_{new}}{T_{old}}} = \sqrt{\dfrac{T_j}{T_i}}p^i\\
+%	p^{j'} &=& \sqrt{\dfrac{T_{new}}{T_{old}}} = \sqrt{\dfrac{T_i}{T_j}}p^j
+%\end{eqnarray}
+
+% detailed balance
+In order to have the $M$-replica system under a set of exchanges to converge to the equilibrium (Boltzmann) distribution, the detailed balance condition should hold. That is,
+\begin{equation}
+W_{REM}(X)w(X\rightarrow X') = W_{REM}(X')w(X'\rightarrow X),
+\end{equation}
+where $w(X\rightarrow X')$ is the transition probability to go from state $X$ to state $X'$.  This directly leads to, 
+\begin{equation}
+\frac{w(X\rightarrow X')}{w(X'\rightarrow X)} = \frac{W_{REM}(X')}{W_{REM}(X)} = e^{-(\beta_{T_j}-\beta_{T_i})(E(q^i)-E(q^j))}
+\end{equation}
+% => the acceptance criterion
+Let $\Delta = (\beta_{T_j}-\beta_{T_i})(E(q^i)-E(q^j))$, then the Metropolis acceptance criterion which allows the exchanges to take place is given by, 
+\begin{equation}
+	w(X\rightarrow X') = w(x_{T_i}^i | x_{T_j}^j) = min\{1, e^{-\Delta}\}.
+\end{equation}
+
+In summary, a replica exchange MD simulation is implemented as follows: \\
+Without loss of generality, assume that $T_1 > T_2 > \ldots > T_M$ so that $\beta_1 < \beta_2 <  \ldots < \beta_M$, then
+\begin{enumerate}
+\item Simulate each replica $i$ at fixed $T_i$ in parallel and independently for some number of steps using MC or MD
+\item A pair of replicas $i$, $j$ with neighboring temperatures $T_i$, $T_j$ are exchanged with probability $w(x_{T_i}^i | x_{T_j}^j)$
+\end{enumerate}
+
+% PROBLEM with RE: exchange schedule => need to increase replicas with DOF of system simulated
+In the RE scheme, through exchange of replicas, states trapped at local minima are allowed to cross barriers by jumping to higher temperatures. Therefore, a random walk in the temperature space (and thus, PE space) is realized for each replica.
+
+An advantage of RE over ST\cite{Marinari:1992p5428} is that there is no need for weight factor determination.\cite{Mitsutake:2001p5380} Furthermore, RE is suited for implementation on a parallel computing system. Each replica can be assigned to run on a node since the amount of information exchanged between replica (nodes) is minimal. It should be noted here that, unlike conventional MD,  dynamic information is lost upon using generalized ensemble sampling methods due to unphysical transitions and exchanges that occur in each simulation.
+
+% In recent years RE have gained immense popularity as the algorithm to use for protein folding studies, especially due to the exponential increases in computing power. However, RE is not devoid of problems.  It was shown that the number of replicas required is $O(\sqrt{f})$, where $f$ is the number of degrees of freedom (DOF) of a system.\cite{fukun} For large, complex systems with many DOFs such as proteins solvated in explicit solvent, sampling using RE can become computationally prohibitive even if running on powerful, homogeneous parallel computing clusters. 
+
+% \textbf{Replica exchange has been the most widely used of the methods we discuss in this chapter to enhance sampling of biomolecular simulations.  ST-based algorithms have the advantage over RE-based algorithm in that ... STDR is a ST-based algorithm which ....}
+
+\subsubsection{Simulated Tempering Distributed Replica (STDR)}
+STDR is a generalized-ensemble simulation method based on ST.  We briefly review the methodology below. An in-depth derivation of the algorithm is out of the scope this thesis and is provided elsewhere.\cite{Rodinger:2006dl,Rauscher:2009wr}
+
+In STDR, individual replicas are coupled through a generalized Hamiltonian containing a potential energy term, the distributed replica potential energy (DRPE), which depends on the distribution of all replicas in the following form:
+
+\begin{equation}
+DRPE = c_1 \sum_{m=1}^{M}\sum_{n=1}^{M} [\lambda_{m,linear} - \lambda_{n,linear} - \omega (m-n)^2] + c_2 [ \sum_{n=1}^{M} 
+\lambda_{m,linear} - \omega \sum_{n=1}^{M} m ] ^ 2
+\end{equation}
+
+The DRPE enforces a desired sampling distribution of the reaction coordinate. $M$ is the total number of replicas. $m$ and $n$ are the indices representing replicas. The values denoted by $\lambda$ represent a linearly-spaced temperature coordinate. The constant $\omega$ is the ratio of the number of temperatures to the number of replicas.  $c_1$ and $c_2$ are constants and are used to modulate the influence of the DRPE, which enforces the homogeneous temperature sampling of replicas.
+
+The probability of accepting a move from a temperature $T_i$ to a neighbouring temperature $T_j$ is
+ 
+ \begin{equation}
+% exchange equation
+p(T_i \longrightarrow T_j) = min
+\begin{cases} 
+1 &  \\ 
+e^{-(\beta_j - \beta_i)E + (a_j - a_i) - (DRPE_j - DRPE_i) } &  
+\end{cases}
+\end{equation}
+
+If the weight factors are inaccurate, ST results in uneven sampling of the temperature coordinate. However, a key advantage of STDR over ST is that the introduction of the DRPE recovers homogenous sampling and greatly reduces the requirement for accuracy in the dimensionless Helmholtz free energies.\cite{Rauscher:2009wr}  Furthermore, due to limitations in the implementations of RE, STDR has been demonstrated to be more computationally-efficient than REMD for sampling the conformational landscape of shorter peptides such as octapeptides.\cite{Rauscher:2009wr}
+
+In Chapters 3 and 4 of this thesis, ST and STDR algorithms were utilized, respectively, to generate the structural ensembles of monomeric (GA)$_{4}$ and A$\beta$(16-22) peptides.
 
 %\subsubsection{Approaches for Determining Protein Conformational Ensembles}
 %It was mentioned in Chapter 1 that enhanced sampling may be used to speed up simulations.  Here we provide a high level overview of the approaches that were developed that have been useful in sampling of peptide and protein conformations in molecular simulations. 
