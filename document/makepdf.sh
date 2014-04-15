@@ -13,5 +13,5 @@ makeindex thesis.nlo -s nomencl.ist -o thesis.nls
 
 pdflatex -interaction=nonstopmode thesis.tex
 pdflatex -interaction=nonstopmode thesis.tex
-open -a skim thesis.pdf
-cp thesis.pdf ~/Document/Dropbox
+
+cp thesis.pdf Li_Grace_201406_PhD_thesis.pdf
