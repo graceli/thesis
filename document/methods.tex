@@ -221,9 +221,10 @@ where $X$ is the configuration of the system, $\beta_m$ is the inverse temperatu
 P(T_m) = e^{a_m(T)}e^{-\beta_m H(X)}.
 \end{equation}
 
-The weight factors, $a_m(T)$, are dimensionless Helmholtz free energies as follows 
-$a_m(T) = \beta_m A_m$,
-
+The weight factors, $a_m(T)$, are dimensionless Helmholtz free energies given by 
+\begin{equation}
+a_m(T) = \beta_m A_m,
+\end{equation}
 where $A_m$ is the free energy of the system at temperature $T_m$.  $a_m(T)$ must be chosen such that an uniform probability distribution in temperature space is achieved. Allowing a uniform sampling of temperature in turn induces a random walk in PE space which allows a system to escape from local minima.   
 
 In a typical ST simulation, a short canonical MD simulation is performed at temperature $T_i$ followed by an exchange attempt to a neighbouring temperature, $T_j$. An exchange attempt has the probability 

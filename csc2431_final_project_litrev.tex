@@ -1,0 +1,280 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{verbatim}   % useful for program listings
+\usepackage{color}      % use if color is used in text
+\usepackage{subfigure}  % use for side-by-side figures
+\usepackage{amsmath, amsthm, amssymb}    % need for subequations, theorem etc
+\usepackage{setspace}
+ \numberwithin{equation}{subsection}
+%opening
+\title{Recent Advancements in Molecular Simulation Sampling Algorithms and their application to Protein-Folding Studies}
+\author{Grace Li, 992025848}
+
+\begin{document}
+
+\maketitle
+
+\begin{spacing}{1}
+% Aim for 7 pages, not including appendix, and references
+% Keep in mind, what do you want people to get out of reading your review
+	% What are the most recent advances of sampling techniques for molecular simulation
+	% Which techniques have demonstrated promise for studying a realistic protein system -- what my lab is doing??
+	% what kinds of techniques are out there? 
+	% what kinds of problems that still remain and what needs to happen for the future?
+
+\section{Introduction}
+One of the most important and challenging problem in biochemistry and structural biology is the elucidation of dynamics and mechanisms of protein
+folding.  Molecular simulation algorithms such as Monte Carlo (MC) and Molecular Dynamics (MD) are valuable tools to study protein folding \textit{in silico}, because one can obtain thermodynamic, dynamic information atomistic detail and high resolution timescales generally not easily accessible with experimental techniques.
+
+However, the large degree of freedom and complexity inherent in these protein systems greatly limits the sufficient sampling of these systems.  The challenge that lies in the way of molecular mechanisms of complex biomolecular systems, such as proteins, is due to the largeness and ruggedness of their energy landscapes.  Computational studies of protein systems are conducted along two axis. First, a choice in modeling the system, which involves balancing the tradeoff of accuracy and efficiency of computation must be made. There are a spectrum of technqiues ranging from highly accurate, and detailed quantum mechanical simulations to coarse-grained simulations where interactions among multiple atoms are shoved under a rug.  Orthogonal to modeling is the choice of sampling methods to used to deal with the ruggedness of the landscapes.
+
+The recent years, in tandem with the surge in computing power, there has been an enormous increase in the number of enhanced sampling techniques developed for both MC and MD that have the potential to be applied to studying folding of different proteins under a variety of conditions.  Thus, it is imperative that literature reviews of this field must keep up to date with such explosive progress. The main purpose of this review is to highlight the progress made in recent years and issues that still remain in the field. However, my purpose is not to give an exhaustive review of all different available techniques. Descriptions of the techniques to enhance sampling will be classified into three main frameworks based on their underlying methodological differences and is not meant to be mutually exclusive:  potential deformation, coarse-grained, and generalized ensemble methods.  Note that the techniques covered in this review places emphasis on methods developed that are specially suited to protein folding studies.  However, it is important to note that many sampling algorithms discuss can also be used for other types of studies, e.g. protein ligand binding studies, etc. The interested reader is referred to more general and exhaustive reviews \cite{impsamp07,kai, scher07,gunst06,voth,deem}. Finally, various applications of these algorithms that have recently been made to folding studies of relatively complex protein systems will be surveyed \cite{trpcage,villin}.
+
+\section{Generalized ensemble methods}
+There are three well known generalized ensemble algorithms: multicanonical(MUCA), simulated tempering (ST), and replica exchange (RE). Each of these algorithms have related formulations founded upon the principles of statistical thermodynamics and have been applied towards protein systems\cite{oka2001,oka99,wenzel}. Although MUCA, ST, RE were initially formulated under the MC framework, they were each later adapted to work with MD \cite{oka2001}. In this section, the physical basis of MUCA, and ST is reviewed and from which RE will follow naturally.
+
+\subsection{MUCA, and ST}
+Consider a system of $N$ atoms at temperature $T$, with masses $\{m_k\}_{i=1}^{N}$, coordinate vectors $q = \{\overrightarrow{q}_i\}_{i=1}^N$, and momentum vectors of $p=\{\overrightarrow{p}_i\}_{i=1}^N$.
+The total energy or the Hamiltonian of the system is 
+\begin{equation}
+ H(q,p) = K(p)+E(q)
+\end{equation}
+where, $K(p) = \sum_{i=1}^N \frac{p_k^2}{2m_k}$ is the kinetic energy and $E(q)$ is the potential energy of the system.
+The average KE at $T$ is $\langle K(p)\rangle = \frac{3}{2}Nk_BT$.
+
+In the canonical ensemble with temperature $T$, state $x =(q,p)$ has a Boltzmann weight factor of $W_B(x;T) = e^{-\beta H(q,p)}$
+Since $q$ and $p$ are not coupled in the Hamiltonian, we can rewrite the weight factor as a function of $E(q)$ only
+\begin{equation}
+W_B(x;T) = W_B(E;T) = e^{-\beta E}
+\end{equation}
+Let $n(E)$ be the density of states, then the probability distribution function of PE is 
+\begin{equation}
+P(E) \propto n(E)e^{-\beta E}
+\end{equation}
+The idea of MUCA is to assign weight factors for each state so that an uniform probability distribution of potential energy is achieved. In this way, the simulation is allowed to perform a random walk and thus to move out of any local minima energy state. Let $x$ be weighted with \textit{a priori} unknown non-boltzmann factor $W_{mu}(E)$ so that $P_{mu}(E) \propto n(E)W_{mu}(E)$. In order to obtain a uniform distribution, we require that $W_{mu}(E)$ to be chosen such that  
+\begin{equation}\label{pmuconst}
+P_{mu}(E) \equiv C
+\end{equation}
+where $C$ is any constant. Let $C=1$, it follows from \ref{pmuconst} that 
+\begin{equation}
+P_{mu}(E) \equiv \frac{1}{n(E)}
+\end{equation}
+Since the density of states for a system is usually unknown, the MUCA weight factors must be derived by iterations of simulations runs \cite{oka2001}.
+
+% ST
+Simulated tempering is similar to MUCA in that a uniform probability in temperature space is required.  Each state $x$ in ST has a non-Boltzmann weight factor with temperature $T$ as the variable
+\begin{equation}
+W_{ST}(E;T) = e^{a(T)}e^{-\beta E}
+\end{equation}
+The function $a(T)$ must be choosen such that, the temperature probability distribution function is a constant
+\begin{eqnarray}
+	P_{ST}(T) &=& \int n(E)W_{ST}(E;T) dE \\
+	       &=&\int n(E)e^{-\beta E}e^{a(T)} dE\\
+		&=& C
+\end{eqnarray} 
+Here, allowing a uniform sampling of temperature, in turn induces a random walk in PE space and thus for a system to escape from local minima.  Like MUCA, ST has $a(T)$ that is \textit{a priori} unknown and must be determined by a iterative procedure.  This is the main disadvantage of both MUCA and ST because determining these weight factors because for complex systems such as proteins can be tedious and even impossible to obtain.
+This disadvantage lead to the development of a class of methods called replica exchange.
+
+\subsection{Replica Exchange (RE)}
+% lead into why we have RE
+Replica exchange (RE), also called multiple markov chain, parallel tempering is a spin-off of simulated tempering that by passes the problem of determining unknown weight factors, while still allowing random walks in temperature space. The molecular dynamics version (REMD) is presented below.  
+
+Let $x_0$ be the original system, at a temperature $T$ in the generalized ensemble formulation described earlier.  In RE, a system of multiple \textit{non-interacting} copies or replicas of $x_0$, where each replica has a different temperature, are considered. 
+
+Let $X=\{x_i^{T_i}\}_{i=1}^{M}$, where $x_i^{T_i}=(q_i^{T_i},p_i^{T_i})$ is a replica at temperature $T_i$, with coordinates $q_i$ and momenta $p_i$.  Recall that the Boltzmann weight factor of $x$ in the generalized ensemble is $W(x;T)=e^{-\beta H(q,p)}$.  By assumption, the replicas are independent, and so the weight factor for $X$ is 
+%%% RE weight factor for X |X| = M
+\begin{equation} \label{RE_weight}
+W_{REM}(X) = \Pi_{i=1}^{M} e^{-\beta_{T_i} H(q_i^{T_i}, p_i^{T_i})}
+\end{equation}
+Periodically, a pair of replica $i$ and $j$ in $X$ exchange their temperatures, 
+%%% exchange X->X'
+\begin{equation}
+X=(\ldots,x_{T_i}^i,\ldots,x_{T_j}^j,\ldots) \longrightarrow X'=(\ldots,x_{T_j}^i, \ldots,x_{T_i}^j,\ldots)
+\end{equation}
+Under the MC framework, momenta is not present in the system. However, to have RE work with MD, momenta of the two replicas must be scaled accordingly after the temperature exchange as follows in order to preserve the correct average kinetic energy,
+%% X-> X' in detail
+\begin{eqnarray}
+	x_{T_i}^i &=& (q^i,p^i)_{T_i} \longrightarrow x_{T_j}^i = (q^i,p^{i'})_{T_j}\\
+	x_{T_j}^j &=& (q^j,p^j)_{T_j} \longrightarrow x_{T_i}^j = (q^j,p^{j'})_{T_i}
+\end{eqnarray}
+Where the new momenta $p^{i'}$, $p^{j'}$ are rescaled as 
+%%% scaling of momenta for MD
+\begin{eqnarray}
+	p^{i'} &=& \sqrt{\dfrac{T_{new}}{T_{old}}} = \sqrt{\dfrac{T_j}{T_i}}p^i\\
+	p^{j'} &=& \sqrt{\dfrac{T_{new}}{T_{old}}} = \sqrt{\dfrac{T_i}{T_j}}p^j
+\end{eqnarray}
+% detailed balance
+In order to have the $M$-replica system under a set of exchanges to converge to the equilibrium (boltzmann) distribution, the detailed balance condition should hold. That is,
+\begin{equation}
+W_{REM}(X)w(X\rightarrow X') = W_{REM}(X')w(X'\rightarrow X)
+\end{equation}
+Where, $w(X\rightarrow X')$ is the transition probability to go from state $X$ to state $X'$  This directly leads to, 
+\begin{equation}
+\frac{w(X\rightarrow X')}{w(X'\rightarrow X)} = \frac{W_{REM}(X')}{W_{REM}(X)} = e^{-(B_{T_j}-B_{T_i})(E(q^i)-E(q^j))}
+\end{equation}
+% => the acceptance criterion
+Let $\Delta = (B_{T_j}-B_{T_i})(E(q^i)-E(q^j))$, then the metropolis acceptance criterion is used to allow the exchanges to take place 
+\begin{equation}
+	w(X\rightarrow X') = w(x_{T_i}^i | x_{T_j}^j) = min\{1, e^{-\Delta}\}
+\end{equation}
+
+In summary, a replica exchange simulation is implemented as follows: \\
+WLOG, assume that $T_1 > T_2 > \ldots > T_M$ so that $\beta_1 < \beta_2 <  \ldots < \beta_M$, then
+\begin{enumerate}
+\item Simulate each replica $i$ at fixed $T_i$ in parallel and independently for some number of steps using MC or MD
+\item A pair of replicas $i$, $j$ with neighboring temperatures $T_i$, $T_j$ are exchanged with probability $w(x_{T_i}^i | x_{T_j}^j)$
+\end{enumerate}
+
+% PROBLEM with RE: exchange schedule => need to increase replicas with DOF of system simulated
+
+In the RE scheme, through exchange of replicas, states trapped at local-minima are allowed to cross barriers by jumping to higher temperatures. Therefore, a random walk in the temperature space (and thus, PE space) is realized for each replica.
+
+One of the major advantages of RE over MUCA and ST is that weight factors for states are \textit{a priori} known and is given by eqn (\ref{RE_weight}).
+Another advantage is that RE is suited for implementation on a parallel computing system. Each replica can be assigned to run on a node since the amount of information exchanged between replica (nodes) is minimal. It should be noted here that, unlike conventional MD,  dynamic information is lost upon using generalized ensemble sampling methods due to unphysical transitions and exchanges that occur in each simulation.
+
+In recent years RE have gained immense popularity as the algorithm to use for protein folding studies, especially due to the exponential increases in computing power. However, RE is not devoid of problems.  It was shown that the number of replicas required is $O(\sqrt{f})$, where $f$ is the number of degrees of freedom (DOF) of a system \cite{fukun}. For large, complex systems with many DOFs such as proteins solvated in explicit solvent, sampling using RE can become computationally prohibitive even if running on powerful, homogeneous parallel computing clusters. 
+
+Many methods, based on the Hamiltonian RE method (HREM), have been developed in an attempt to decrease the number of replicas neccessary and have shown promise for applications for protein folding \cite{rest,kannan}. However, it must be noted that temperature dependency is lost when using HREM methods. Below, the frame work for HREM is described first, followed by the discussions of variations of RE, based on HREM.
+
+% To overcome this problem HREM developed
+\subsection{Hamiltonian RE}
+% many variants of RE has been based on this formulation
+Hamiltonian RE has been presented to be a different, but equivalent formulation of standard temperature RE (from here on will be referred to as TRE) \cite{fukun}. Each replica is set to have different set of interactions, but have the same temperature. The $i$th replica $x^i$ has Hamiltonian $E_i(x^i)$ so that it's weight factor is now given by 
+\begin{equation}
+P_i(x^i) = e^{\beta E_i(x^i)}
+\end{equation}
+Note that the subscript $\beta$ has been dropped from the notation of the replicas since each replica have the same temperatures now. The weight factor for the entire $M$ replica system stays the same as eqn (\ref{RE_weight}). The Metropolis criteria for the transition probability for the exchange of the $i$th replica with the $j$th replica is now
+\begin{equation}
+w(x^i | x^j) = min\{1, exp(-\beta\{[E_i(x^j) + E_j(x^i)]-[E_i(x^i)+E_j(x^j)]\})\}
+\end{equation}
+This Hamiltonian version of RE can be transformed into the TRE, by defining the Hamiltonian of the $i$th replica as $E_i(x^i) = s_iE(x^i)$, which corresponds to the replica in TRE, with $\beta_i = s_i\beta$.
+
+\subsection{Variants of RE}
+Many of the variations of replica exchange method are based on the Hamiltonian REM. These variants were developed in an attempt to adapt RE to work with complex systems such as proteins. RE with solute tempering (REST) developed by Berne et al \cite{rest} is aimed at efficient sampling of protein solvated in explict solvent systems using MD.  The trick they use is to subdivide the potential energy of the system into contributions from solute (p), solute-solvent (pw), and solvent-solvent (ww) interactions.  Replica $0$ with temperature $T_0$ is set with the potential energy
+\begin{equation}
+E(x) = E_p(x) + E_{pw}(x) + E_{ww}(x)
+\end{equation}
+% solute tempering
+A replica in REST has not only differing temperatures but also differing energies. As temperature (or rather the replica index) increases, the parts of the PE, $E_{pw}$ and $E_{ww}$ are scaled down with temperature. The transition probabilities are adjusted accordingly using the modified potential. The correct equilibrium sampling distribution is can only be obtained from replica 0, as all other replicas contained deformed potentials, where as all data from a TRE run can be utilized.  This may seem like a disadvantage on REST's part but, the authors argue that due to the scaling of energies, REST allow replica exchanges to occur at a faster rate than TRE.  Despite the author's claims for REST's applicability to complex systems such as those with proteins embedded in membranes solvated in salt solutions, efficiency of REST compared to TRE has only been shown on the alanine dipeptide system. 
+
+%backbone biasing
+Another alternative HREM method designed to minimize the number of replicas is the BP-REXMD \cite{kannan}.  Here, an extra biasing potential term was added to the forcefield to allow fast backbone dihedral angle barrier crossings.  Each replica runs at a different scaling of the added biasing potential using MD.  BP-REXMD was tested on a few small test systems as well as on a $\beta$-hairpin forming peptide, the chignolin peptide. Results show that BP-REXMD were able to observe the peptide to be within 1.5 Angstroms of the experimental NMR structure in a much shorter time ($\sim$ 15 ns) and using half the number of replics when compared with standard RE ($\sim$ 100 ns, 16 replicas). 
+
+%finite reservoir
+Other recent, inventive variants on HREM includes finite reservoir methods. These sampling approaches are based on the observation that the conformational search improvement of RE is due to the presence of high temperature replicas. So, comformational sampling is first done by running simulates at a single high temperature and then reweighting is done on generated ensemble by running REMD and allowing exchanges between the high temperature replicas and the reservoir set \cite{finite,csimmer}. In \cite{csimmer}, it is also demonstrated that a reservoir with non-Boltzmann distribution can be used to converge REMD simulations. Their reservoir method is tested on a $\beta$-hairpin folding peptide, trpzip2, and successfully showed that RE using a modified exchange probability criteria to account for a non-Boltzmann distributed reservoir set were able to preserve equilibrium properties.
+
+Other research groups have focused on adapting RE to work with hetergeneous distributed computing systems.  One such technique of is distributed replica sampling method (DR) that can be coupled to either MC or MD \cite{DR}.  DR is a general scheme that allows stochastic moves to be made in $\lambda$-space, where $\lambda$ is any reaction coordinate of interest (e.g. temperature). Periodically, a single replica undergoes random perturbations along $\lambda$. Unlike RE, DR does not require replicas to finish simultaneously to allow exchanges to occur. Because of this, DR is inherently suitable to run on a hetergeneous platform similar to that of folding@home. A more recent method that is very similar in nature to DR is serial replica exchange. Serial RE was also adapted to work with REST. \cite{serial}
+
+\section{Deformed Potentials}
+%% applications applications!!!
+Many enhancements made for sampling molecular systems are based on a modification or addition of a bias to the potential energy function to give the system a ``boost" to get over high energy barriers.  The methods covered under this class are modifications to the conventional molecular dynamics or monte carlo algorithms.  
+
+The accelerated molecular dynamics method formulated by Hamelberg et al \cite{amd} is one such technique. The potential energy function of a system is altered by adding a biasing potential $\Delta V(\overrightarrow{r})$, when the true potential $V(\overrightarrow{r})$ of a system is below a certain energy $E$. Conventional MD is then ran using the biased potential,
+\begin{equation}
+V^*(\overrightarrow{r})= 
+\begin{cases} V(\overrightarrow{r}) & \text{if $V(\overrightarrow{r}) \geq E$,}
+\\
+V(\overrightarrow{r})+\Delta V(\overrightarrow{r}) &\text{if $V(\overrightarrow{r}) < E$.}
+\end{cases}
+\end{equation}
+To obtain the correct canonical ensemble averages of a thermodynamic quantity, each configuration obtained through the biased potential is then reweighted by using the Boltzmann factor of the bias energy $e^{\beta\Delta V}$.  Significant improvements in sampling was demonstrated for the alanine dipeptide system.
+
+More recently in 2006, an improvement to the technique described above by Hamelberg et al is developed by Yang, et al \cite{yang,yang_app}. In \cite{yang_app}, it was noted that Hamelberg et al's technique may lead to undersampling of low but important energy regions. However, in \cite{yang}, the potential energy landscape of the system is scaled so that sampling is decreased in the region that is most heavily sampled at the given temperature $T$. This means that the energy landscape is ``flatten out" by a biasing potential in a given energy range of interest, instead of just for lower energy states as in Hamelberg et al.  This technique has been applied towards folding of the Trp-CAGE protein in \cite{yang_app} starting from it's extended state built from the Trp-cage amino acid sequence. Implicit solvent effects were used to model solvation effects of the protein. The authors tested folding of this protein using 3 different biasing potentials and have found that each biasing potential were able to quickly and successfully fold the protein close to it's native structure (approx. 2.0 A in RMSD deviate from backbone of native structure) in less than 10 ns. Their technique is found to be significantly faster than previous attempts to fold the Trp-cage protein using conventional MD, which too $\sim$ 100 ns time simulations.  It is important to to note that Yang et al used implicit solvent as opposed to explicit solvents used in the previous MD runs. Thus, a direct conclusion of increased efficiency in sampling cannot be made because it is well known that protein folding properties converge abnormally faster under implicit solvent conditions [REFS].
+
+\section{Coarse Graining}
+% ED methods, Go models?, what are some recent (2007,2006) coarse grain methods that have been developed? 
+%% applications applications!!!
+In simplified protein models, amino acids are represented by effective particles (beads) that correspond to atoms or groups to atoms \cite{tozz}.  The interactions of these beads are simulated using simple force-fields describing interbead interactions. 
+
+Coarse-graining a simulation enhances the sampling by 1) reducing the ruggedness of PE so that transitions from one minima to another is made more likely. 2) This smoother PE landscape can now all the integration time step of simulations to be increase by a factor of approximately 20 times for a typical coarse-grain simulation of molecular systems \cite{tozz,gunst06}.
+
+At the expense of atomic detail and some accuracy, these models can aid in gaining insight to structural and dynamic properties of large protein complexes whose motions are not accessible on the timescales of all-atom simulations. 
+
+In recent years, techniques where a coarse-grain model is combined with a fine-grain (all-atom) model, have also been developed and integrated with the replica-exchange to deal with both energetic and entropic barriers of protein energy landscapes. The Multigraining technique developed by van Gunsteren et al, \cite{multigrain} is based on a ``multigrained" potential, where the fine grain (atomistic) and coarse grained potentials are combined using parameter $\lambda$. At $\lambda=0$,  and at $\lambda=1$ the simulations are entirely atomistic and coarse-grained respectively. 
+Variation of $0 \leq \lambda \leq 1$ is to allow a continous transition from fine to coarse grained simulations.  Although their multigraining technique can be used stand-alone, the real power comes when it is combined with RE. Each replica when using RE is set to run with a different value of $\lambda$. This method was shown to be able to achieve fast equilibration at the fine-grained level gauged by monitoring the mixing of a 2 layered 128 octane molecule system.
+
+Another method using the idea of combining coarse and atomistic simulations into one is dual-resolution replica-exchange method (d-REM)\cite{drem}.  The difference between d-REM and multigraining is that d-REM is built on top of RE.  d-REM distinguishes the replicas into two groups, one at atomic resolution  ($H$ group) and one at low-resolution($L$ group, coarse-grained).  Then, exchanges between replicas from each of these two groups are allowed to occur. The idea of this setup is to allow $H$ replicas to move to find lower energy states faster with the help of $L$ replicas.  The theoretical foundation of d-REM is the same as temperature RE, but has the modified exchange probability of replica $i$, $j$:
+\begin{equation}
+p_{i\leftrightarrow j} = min\{1, exp(-\beta_i\Delta E_H - \beta_j\Delta E_L)\}
+\end{equation}
+where, $\Delta E_H = E_H(x_j^L) - E_H(x_i^H)$, $\Delta E_L = E_L(x_i^H) - E_L(x_j^L)$, where $E_H$, and $E_L$ are the energy functions at high and low resolutions respectively, and $x_j^L$ is replica $j$ at low resolution and $x_i^H$ is replica $i$ at high resolution. d-REM has been tested by performing folding simulation on a $\beta$-hairpin peptide. Using measures of fluctuations in RMSD vs simulation time and analysis of probability distribution of RMSDs of structures obtained, it was shon that d-REM was able to reach the native state as obtained by NMR within a short time of 1.5 ns, where as standard TRE could not.
+
+Recently, Tozzini et al have utilized a simple one-bead coarse-grained model to study the dynamics of HIV-1 protease flap opening \cite{hiv1}. NMR experiments have shown that for an unbound HIV-1 protease, the flap region of the enzyme shows significant conformational change and that this motion occurs on a micro to millisecond time scale. Thus, coarse-grained models are suitable in this case to elucidate the dynamics at long time scales. In their study, their model were able to find good agreements with experiments many features of the dynamics, and thermodynamics of the HIV-1-PR flap opening mechanisms. In particular, the predicted flap opening mechanism were found to produce structures in agreement with experimently crystalized structure in an opened state.  The behavior of the flap opening kinetics in the presence of of solvent (modelled using stochastic dynamics) was also found in good agreement with NMR data.  Thus, this paper illustrates promises of coarse-grained modeling in terms of bridging the gap between all atom simulations and experimental results and importance of utilizing coarse-grain models to obtain information at long time scales.
+
+Methods and results discussed in this section only reflect very recent techniques developed in the last 2 years to show the regaining of coarse-grain popularity in recent times. Many other coarse-grained and other multi-resolution scale techniques exists and have been used for decades to study protein structure. The interested reader is to referred to \cite{dok06, voth} for more detailed coverage of these methods.
+
+\section{Conclusions and Outlook}
+In the past five years, the theoretical and computational advances made in various molecular simulation modeling and sampling techniques have allow larger and more complex protein systems to be studied \textit{in silico}.  The decrease in cost of computing power and the abundance of these inherently parallel RE based algorithms have allow great increase in the efficiency of statistical sampling of systems with large, and rugged landscapes.
+
+Several issues needs attention currently:
+\begin{enumerate}
+\item Many of these enhanced sampling algorithms have only been tested on extremely simplified systems such as alanine dipeptide. Applications to more realistic protein systems need to be explored before jumping to the conclusion that a certain method is more or less efficient than existing convential methods. Currently, many authors have already begun to address this need. Some of the recent applications to larger protein systems are: \cite{oka_app}
+ Okamoto et al, have applied the multicanonical REM method to study the folding and stability of G-peptide with explicit solvent; In \cite{trpcage} Pascheck et al. employed REMD to simulate the folding and unfolding equilibrium of the miniprotein trp-cage.; In \cite{villin}, Lei et al have applied both conventional MD and REMD to study the folding landscape of the villin headpiece HP35.
+\item The first issue, leads into this one. With the advent of all these different techniques, some sort of benchmarking would be useful to provide a clearer picture of the actual inefficiency gain of different sampling methods. Some authors have already begun to question the real gain in using replica exchange. Dagget et al in \cite{dagget} shows that conventional MD is superior to REMD for protein folding studies, thus raising the question of the real efficiency gain to using REMD. As well, \cite{zucker06} points six concerns for the effectiveness of RE simulation method for single temperature canonical ensemble sampling of biomolecules.
+\item And lastly, continued improvements in current forcefields for proteins will need to take place. Ultimately, the accuracy in the results obtained from simulation will be limited in the accuracy of a system's parameterization. 
+\item The development of better reduced models of proteins such as coarse-grained models are the only practical method to access biological timescales. Thus, more focus should be put on developing better forcefields for coarse-grained MD simulations and finding ways to build models containing only the DOFs of interest.
+\end{enumerate}
+
+The driving force behind the field of molecular simulation in the future, I believe,  will be ever increasing computing power. In particular, implementation of simulation algorithms on a distributed computing platform like that was done at folding@home holds promise as an approach to harness CPU time as more and more people will be owning computers in the future. In the future, we will likely reach an algorithmic limit in the field of molecular simulations, and so another promising path to progress is building customized hardware dedicated to performing molecular simulations (e.g. FPGA project in progress between biochemistry and electrical engineering at U of T).  Thus, I believe that the state of the art in molecular simulation will be being able to use more power and more dedicated hardware to run the current parallelizable RE algorithms that we have now to achieve the neccessary sampling we need to further understand the molecular details of protein folding/unfolding.
+
+\end{spacing}
+
+% introduce some basic ideas behind these algorithms
+% \section{Appendix: Background theory}
+
+\begin{thebibliography}{1}
+% key reviews - protein folding
+\bibitem{impsamp07} Lei, H., Yong, D., 2007. Improved sampling methods for molecular simulation. Curr. Opin. Struct. Biol. 17:187-191.
+\bibitem{dok06} Dokholyan, N., 2006. Studies of folding and misfolding using simplified models. Curr. Opin. Struct. Biol. 16:79-85.
+\bibitem{kai} Tai, K., 2004. Conformational sampling for the impatient. Biophysical Chemistry. 107:213-220.
+\bibitem{pepgar} Garcia, A., 2003. Peptide folding simulations. Curr. Opin. Struct. Biol. 13:168-174.
+\bibitem{shea01}  Shea, J., et al., 2001. From folding theories to folding proteins: A review and assessment of simulation studies of protein folding and unfolding. Annu. Rev. Phys. Chem. 52: 499-535.
+
+% reviews - general simulation 
+\bibitem{scher07} Scheraga, H., et al. 2007. Protein-Folding Dynamics: Overview of molecular simulation techniques. Annu. Rev. Phys. Chem. 58:57-83.
+\bibitem{gunst06} van Gunsteren, Wilfred, et al., 2006. Biomolecular Modeling: Goals, Problems, Persepectives. Angew. Chem. Int. E. 45:4064-4092.
+\bibitem{voth} Ayton, G., Voth, G., 2007. Multiscale modeling of biomolecular systems: in serial and in parallel. Curr. Opin. Struct. Biol. 17:192-198.
+\bibitem{tozz} Tozzini, V., 2005. Coarse-grained models for proteins. Curr. Opin. Struct. Biol. 15:144-150.
+
+%deformed PE
+\bibitem{amd} Hamelberg, D., et al., 2004. Accelerated Molecular Dynamics:  A promising and efficient simulation method for biomolecules. J. Chem. Phys. 120:11919
+\bibitem{yang} Gao, Y. Q., and Yang, L., 2006. On the enhanced sampling over energy barriers in molecular dynamics simulations. J. Chem. Phys. 125:114103
+\bibitem{yang_app} Yang, L., et al., 2007. Application of the accelerated molecular dynamics simulations to the folding of a small protein. J. Chem. Phys. 126: 125102
+
+%coarse-grained
+\bibitem{multigrain} Christen, M., et al., 2006. Multigraining: An algorithm for simultaneous fine-grained and coarse-grained simulation of molecular systems. J. Chem. Phys. 126:154106-13
+\bibitem{drem} Lwin, T. Z., Luo, R., 2005. Overcoming entropic barrier with coupled sampling at dual resolutions. J. Chem. Phys. 123:194904.
+\bibitem{hiv1} Tozzini, V., et al., 2007. Flap opening dynamics in HIV-1 protease explored with a coarse-grained model. J. Struct. Biol. 157:606-615.
+
+%generalize ensemble
+\bibitem{deem} Deem, M. et al., 2005. Parallel Tempering: Theory, applications, and new perspectives. Arxiv preprint physics/0508111
+\bibitem{wenzel} Wenzel et. al.,2005. Investigation of the parallel tempering method for protein folding. J. Phys.: Condens. Matter. 17:S1641-S1650.
+\bibitem{oka2001} Misutake, A., Sugita, Y., Okamoto, Y., 2001. Generalized-Ensemble Algorithms for Molecular Simulations of Biopolymers. 60:96-123.
+\bibitem{oka99} Sugita, Y., Okamoto Y., 1999. Replica-exchange molecular dynamics method for protein folding. Chem. Phys. Lett. 314:141-151.
+
+%variants of RE
+%hamiltonian RE & variants
+\bibitem{fukun} Fukunishi, H., et al., 2002. On the Hamiltonian replica exchange method for efficient sampling of biomolecular systems: application to protein structure prediction. J. Chem. Phys. 116:9058-9067.
+%\bibitem{teerex} Kubitzki, M., de Groot, B., 2007. Molecular Dynamics Simulations using Temperature Enhanced Essential dynamics Replica Exchange (TEE-REX).
+\bibitem{kannan} Kannan, S., Zacharias, M., 2007. Enhanced Sampling of Peptide and Protein Conformations Using Replica Exchange simulations with a peptide backbone biasing-potential. Proteins. 66:697-706.
+\bibitem{finite}  Li, H., et al., 2006. Finite Reservoir replica exchange to enhace canonical sampling in rugged energy surfaces.J. Chem. Phys. 125: 144902.
+\bibitem{csimmer} Roitberg, A., et al. 2007. Coupling of Replica Exchange Simulations to a Non-Boltzmann Structure Reservoir. J. Phys. Chem. B. 111:2415.
+\bibitem{rest} Liu, P., et al., 2005.  Replica exchange with solute tempering: A method for sampling biological systems in explicit water. PNAS. 102:13749-13754.
+\bibitem{DR} Rodinger, T., et al., 2005. Distributed Replica Sampling. J. Chem. Theory Comput., 2: 725 -731.
+\bibitem{serial} Hagen, M., et al., 2007. Serial Replica Exchange. J. Phys. Chem. B. 111:1416-1423.
+
+%convergence RE
+\bibitem{zucker06}  Zuckerman, D., Lyman, E., 2006.  A second look at canonical sampling of biomolecules using replica exchange simulation. J. Chem. Theory Comput.2:1200-1202.
+%\bibitem{cvrgREMD} Zhang, Wei et al., 2005. Convergence of replica exchange molecular dynamics.
+\bibitem{dagget} Beck, D., Dagget, V., 2006. Exploring the energy landscape of protein folding using replica-exchange and conventional molecular dynamics simulations. J. Struct. Biol. 157:514-523.
+%applications
+\bibitem{trpcage} Paschek, D., Garcia, A., 2007. Replica exchange simulation of reversible folding/unfolding of the Trp-cage miniprotein in explicit solvent: On the structure and possible role of internal water. J. Struct. Biol. 157:524-533.
+\bibitem{villin} Lei, H. et al., 2007. Folding Free-energy landscape of villin headpiece subdomain from molecular dynamics simulations. PNAS. 104: 4925-4930.
+\bibitem{oka_app} Yuda, T., Sugita, Y., and Okamoto, Y., 2007. Cooperative folding mechanism of a $\beta$-hairpin peptide studied by multicanonical replica-exchange molecular dynamics simulation. Proteins. 66:846-859.
+
+
+\end{thebibliography}
+
+\end{document}

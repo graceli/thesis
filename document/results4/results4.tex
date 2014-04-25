@@ -1,31 +1,9 @@
 \chapter[MD simulations of PgaB-glucosamine binding]{Molecular Dynamics simulations of PgaB and monosaccharides of N-acetyl-glucosamine and glucosamine}
 
-\emph{Reference}: This work contributed to the manuscript, ``PgaB Contains a Carbohydrate Binding Domain Required for Modification and Export of Poly-$\beta$-1,6-N-acetyl-D-glucosamine", which is to be submitted to PNAS
-\\
-\\
 \emph{Contributions}:
 Grace Li conducted the MD simulation part of the research and wrote the section. Dustin Little conducted and interpreted the experimental results. Chris Ing parameterized the partial charges for glucosamine. R\'{e}gis Pom\`{e}s, Lynne Howell, Mark Nitz provided editorial input and guidance.
 
 \newpage
-
-% \section{Summary}
-% Note that this summary was taken from a draft of the paper written by Dustin from April 5th, 2013
-%Bacteria embedded in a self-produced matrix of exopolymeric substance, or biofilm, are tolerant to antibiotics, protected from the environment, and isolated from the innate immune system. Production and de-N-acetylation of the exopolysaccharide poly-$\beta$-1,6-N-acetyl-D-glucosamine (PNAG) is important for biofilm formation in Escherichia coli. PgaB is essential for the partial de-N-acetylation of PNAG (dPNAG); a process required for polymer export and subsequent biofilm formation. Here we report 1.9 √Ö crystal structures of PgaB‚Äôs isolated C-terminal domain (PgaB-CT) and complex with glucosamine. The structure of PgaB-CT has structural difference from the previously reported PgaB42-655 structure (\textbf{What are these differences?}). Characterization of PgaB-CT using tryptophan fluorescence quenching assays shows binding to PNAG oligomers with ~1-4 mM affinity. These data in combination with molecular dynamics simulations of PgaB with N-acetylglucosamine and glucosamine suggest PNAG de-N-acetylation occurs first, with subsequent binding of dPNAG to the C-terminal domain. We believe this concerted action plays a pivotal role in targeting dPNAG for export through the outer membrane porin PgaA.
-%
-%From the book chapter XXX, PNAG is a homopolymer of beta(1,6) glcnac but with 20\% of the monomers deacetylated. But then what would be the difference between dPNAG and PNAG? Or is it just a terminology difference between the two?
-
-% \section{Introduction}
-% \textbf{In the second paper, experiments were performed to characterize the ability of PgaB-CT domain to bind carbohydrate substrates, which are short oligosaccharides of \pnag. The results of this study suggests a mechanism by which polymer substrates are bound and synthesized onto the protein. Furthermore, a proposed mechanism of export is discussed.}
-
-% \textbf{commentary: From reading what Dustin has written in the current introduction, I think their experimental data is quite weak. Their key result is: ``We show PgaB-CT binds PNAG oligomers with low affinity (what's the range?) using tryptophan fluorescence quenching, and have determined the structure of PgaB-CT in complex with glucosamine.'' I think MD simulations will be their best leverage for the proposed mechanism of export.}
-
-% PgaB - description of the study, motivation and what has been done thus far
-% PgaB is a protein required for the partial de-N-acetylation of poly-$\beta$-1,6-$N$-acetylglucosamine (PNAG) into dPNAG, the functionally-relevant form of the exopolysaccharide essential for biofilm formation in a variety of pathogenic bacteria. \cite{Little:2012dp} 
-
-% PgaB structure has been deposited in the PDB -- I did not find this June 30th 2012
-
-% \textbf{The objectives of this study are to (1) identify preferred binding sites of GlcNAc and glucosamine, (2) gain insight into the polymer directionality and (3) identify protein structural motions which may be correlated with ligand binding.} PgaB is hypothesized to bind sugar polymers (most likely a 15-mer) across its two domains on its surface. The polymer is hypothesized to extend out from the catalytic binding site (N-terminal domain) onto the charged grooves of the C-terminal domain.  Experimentally it is known that shallow binding pockets exist at the surface of the proteins. REF?
-% To our knowledge, this is the only study thus far in literature which employs large-scale MD simulations to predict carbohydrate-protein interactions. -- this is just not true.
 
 \section{Summary}
 
@@ -41,7 +19,7 @@ The N-terminal domain of PgaB belongs to the family four carbohydrate esterases 
  
 Although PgaB functions by binding to PNAG, the molecular basis of the mechanism of export of PNAG by PgaB is currently not determined. Moreover, the binding mode and the length of its substrate polymer are not known.  Thus far, efforts to crystallize PgaB with oligosaccharides of varying lengths have been impeded by the weak binding of short sugar polymers (e.g. di- and tri-saccharides), and the insolubility of long sugar polymer chains (e.g. those longer than a hexamer). However, molecular dynamics (MD) simulations are not impeded by these challenges and are well-suited for characterizing carbohydrate-protein interactions.\cite{Fadda:2010p5889}
 
-In this study, we perform atomistic MD simulations of PgaB with the monosaccharide components of the functionally-relevant polymer dPNAG, $\beta$-N-acetyl-glucosamine (GlcNAc) and protonated $\beta$-glucosamine ($\beta$-D-GlcNH$_{3}^{+}$), to examine the putative polymeric binding site and binding mode. The weak binding affinity of these monosaccharides allows us to use a fragment-based methodology to probe for carbohydrate binding sites by employing large-scale brute force sampling. This approach has been employed successfully in our previous studies to examine the binding mechanism of inositol, a carbohydrate-like amyloid inhibitor, with amyloidogenic peptides and their aggregates.\cite{Li:2012bx, Li:2013fo}
+In this study, we perform atomistic MD simulations of PgaB with the monosaccharide components of the functionally-relevant polymer dPNAG, $\beta$-N-acetyl-glucosamine (GlcNAc) and protonated $\beta$-glucosamine ($\beta$-D-GlcNH$_{3}^{+}$), to examine the putative polymeric binding site and binding mode. The weak binding affinity and high dissociation rates of these monosaccharides allows us to use a fragment-based methodology to probe for carbohydrate binding sites by employing large-scale brute force sampling. This approach has been employed successfully in our previous studies to examine the binding mechanism of inositol, a carbohydrate-like amyloid inhibitor, with amyloidogenic peptides and their aggregates.\cite{Li:2012bx, Li:2013fo}
 
 % \textbf{What's special about this groove -- I should elaborate on this groove and why does it bind sugars here? Could take some of the text from the paper.} 
 
@@ -162,7 +140,7 @@ Together, the morphology of the overall binding density of both GlcNAc and \gluc
 % directionality paper
 % http://www.jbc.org/content/274/37/26557.full
 
-This study demonstrates the utility of large-scale MD simulations in predicting carbohydrate-protein binding modes. On the basis of the weak binding affinities of monosaccharides,  %\textbf{Why use this approach?  Why does bruteforce work in this case?} 
+This study demonstrates the utility of large-scale MD simulations in predicting carbohydrate-protein binding modes. On the basis of the weak binding affinities and high dissociation rates of monosaccharides,  %\textbf{Why use this approach?  Why does bruteforce work in this case?} 
 ($\sim$1-5 mM binding affinity), we observed spontaneous binding events on the nanosecond time scale at 300 K.  By using a high concentration of molecules, we were able to effectively sample the binding of monosaccharides to the protein surface by performing MD simulations using a conventional sampling approach and performing independent MD simulations.
 % Take a look at Nilu / CI's PNAS paper -- can lift some ideas for their writing from here as they did not use much enhanced sampling
 % The binding affinity of each sugar molecule is on the order of 0.5kT (note that I don't actually know this), the energetic barriers of binding and unbinding can be overcome at room temperature. 
